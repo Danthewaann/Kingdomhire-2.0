@@ -1,33 +1,16 @@
-# Kingdomhire
-This repository will be used to manage the code base for the new Kingdomhire website
+# Kingdomhire v2
+This is the repository for the new Kingdomhire v2 website
+I thought it was a good time to re-visit www.kingdomhire.co.uk and improve the site
 
-Since the hosting service for the Kingdomhire website now allows the use of MySQL databases, I can now
-add more useful features into the website
+Planned improvements:
 
-New planned features include:
-
-* __Allow a user to create an account__
-
-   Allow the user to create an account, using their *email*, *firstname*, *lastname*, *phone number* and *password*  
-   When logged into their account, the user can automatically **reserve a vehicle** without needing to 
-   fill-out their info into the **Vehicle Reservation Form**, 
-   this form will be accessible through the **Vehicles Page** when you click on a vehicle to reserve it
-
-* __New admin site__
+* __The Administrator Dashboard__
 
    A new admin site, where an admin can access a dashboard that allows them to directly query the database.  
    The admin can generate specific reports based on the database, such as *list of vehicles currently out for hire*,  
    or *List of all current reservations* etc.  
    More features will be included, such as a facility to add new vehicles into the database, which will in turn display
    the new vehicle on the website  
-   
-* __Vehicle reservation process__
-
-   A new process to allow the user to reserve a vehicle. The new **Vehicles Page** will allow the user to click on a vehicle
-   to **reserve it**, this will bring you to the new **Vehicle Reservation Page**. Here the user can fill-out their info  
-   (to be determined), and then submit the form.  
-   When the form is submitted, if the user has an **account**, they can view their reservation on their **Account Page**.  
-   The user will also receive an **email receipt** of their reservation if the user doesn't have an account
    
 * __More vehicles displayed on website, with search and sort functionality__
 

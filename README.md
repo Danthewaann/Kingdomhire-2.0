@@ -33,52 +33,52 @@ __vehicle_rates__ (__vehicle_engine_size__, weekly_rate_min, weekly_rate_max)
 __reservations__ (__id__, vehicle_id*, start_date, end_date, is_active)  
 __hires__ (__id__, vehicle_id*, start_date, end_date, is_active)  
 
-__vehicles__      
-   __id__ NOT NULL INT INCREMENTS  
-   __fuel_type__ NOT NULL VARCHAR(20)  
-   __gear_type__ NOT NULL VARCHAR(30)   
-   __seats__ NOT NULL TINYINT UNSIGNED  
-   __status__ NOT NULL ENUM(‘available’, ‘unavailable’, ‘out for hire’)  
-   __make__ NOT NULL VARCHAR30)  
-   __model__ NOT NULL VARCHAR(30)  
+|   vehicles table schema       |   
+|:----------------------------- |
+ __id__ NOT NULL INT INCREMENTS   
+ __fuel_type__ NOT NULL VARCHAR(20)  
+ __gear_type__ NOT NULL VARCHAR(30)   
+ __seats__ NOT NULL TINYINT UNSIGNED  
+ __status__ NOT NULL ENUM(‘available’, ‘unavailable’, ‘out for hire’)  
+ __make__ NOT NULL VARCHAR30)  
+ __model__ NOT NULL VARCHAR(30)  
+ PRIMARY KEY (__id__)  
+ FOREIGN KEY (__make__, __model__) REFERENCES __vehicle_types__(__make__, __model__)  
 
-PRIMARY KEY (__id__)  
-FOREIGN KEY (__make__, __model__) REFERENCES __vehicle_types__(__make__, __model__)  
-
-__vehicle_types__  
+| vehicle_types table schema    |
+|:----------------------------- |
 __make__ NOT NULL VARCHAR30)    
 __model__ NOT NULL VARCHAR(30)  
 __type__ NOT NULL VARCHAR(30)  
 __image__ VARCHAR(50)  
 __engine_size__ NOT NULL VARCHAR(10)  
-
 PRIMARY KEY (__make__, __model__)  
 FOREIGN KEY (__engine_size__) REFERENCES __vehicle_rates__(__vehicle_engine_size__)  
 
-__vehicle_rates__  
+| vehicle_rates table schema    |
+|:----------------------------- |
 __vehicle_engine_size__ NOT NULL VARCHAR(10)  
 __weekly_rate_min__ NOT NULL FLOAT(4,2)  
 __weekly_rate_max__ NOT NULL FLOAT(4,2)  
-
 PRIMARY KEY (__vehicle_type__)  
 
-__reservations__  
+| reservations table schema     |
+|:----------------------------- |
 __id__ NOT NULL INT INCREMENTS  
 __vehicle_id__ NOT NULL INT  
 __start_date__ NOT NULL DATE  
 __end_date__ NOT NULL DATE   
 __is_active__ NOT NULL BOOLEAN DEFAULTS TRUE  
-
 PRIMARY KEY (__id__)  
 FOREIGN KEY (__vehicle_id__) REFERENCES __vehicles__(__vehicle_id__)  
 
-__hires__  
+| hires table schema            |
+|:----------------------------- |
 __id__ NOT NULL INT INCREMENTS  
 __vehicle_id__ NOT NULL INT  
 __start_date__ NOT NULL DATE  
 __end_date__ NOT NULL DATE  
 __is_active__ NOT NULL BOOLEAN DEFAULTS TRUE  
-
 PRIMARY KEY (__id__)  
 FOREIGN KEY (__vehicle_id__) REFERENCES __vehicles__(__vehicle_id__)  
   

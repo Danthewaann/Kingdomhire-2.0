@@ -42,8 +42,8 @@ I thought it was a good time to re-visit www.kingdomhire.co.uk and improve the s
 __vehicles__ (__id__, fuel_type, gear_type, seats, status, make*, model*)  
 __vehicle_types__ (__make__, __model__, type, image,  engine_size*)  
 __vehicle_rates__ (__vehicle_engine_size__, weekly_rate_min, weekly_rate_max)  
-__reservations__ (__id__, vehicle_id*, start_date, end_date, is_active)  
-__hires__ (__id__, vehicle_id*, start_date, end_date, is_active)  
+__reservations__ (__id__, vehicle_id*, start_date, end_date, when_logged, is_active)  
+__hires__ (__id__, vehicle_id*, start_date, end_date, when_logged, is_active)  
 __users__ (__email__, password)  
 
 |   vehicles schema             |
@@ -81,6 +81,7 @@ __id__ NOT NULL INT INCREMENTS
 __vehicle_id__ NOT NULL INT  
 __start_date__ NOT NULL DATE  
 __end_date__ NOT NULL DATE   
+__when_logged__ NOT NULL TIMESTAMP NOW()
 __is_active__ NOT NULL BOOLEAN DEFAULTS TRUE  
 PRIMARY KEY (__id__)  
 FOREIGN KEY (__vehicle_id__) REFERENCES __vehicles__(__vehicle_id__)  
@@ -91,6 +92,7 @@ __id__ NOT NULL INT INCREMENTS
 __vehicle_id__ NOT NULL INT  
 __start_date__ NOT NULL DATE  
 __end_date__ NOT NULL DATE  
+__when_logged__ NOT NULL TIMESTAMP NOW()
 __is_active__ NOT NULL BOOLEAN DEFAULTS TRUE  
 PRIMARY KEY (__id__)  
 FOREIGN KEY (__vehicle_id__) REFERENCES __vehicles__(__vehicle_id__)  

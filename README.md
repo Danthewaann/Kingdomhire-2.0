@@ -39,34 +39,26 @@ I thought it was a good time to re-visit www.kingdomhire.co.uk and improve the s
    5. The website should have an __email form__, for the user to able fill-out and send to kingdomhire, to either directly contact kingdomhire to provide feedback, or to ask about hiring out a vehicle
    
 # Database Design  
-__vehicles__ (__id__, fuel_type, gear_type, seats, status, make*, model*)  
-__vehicle_types__ (__make__, __model__, type, image,  engine_size*)  
-__vehicle_rates__ (__vehicle_engine_size__, weekly_rate_min, weekly_rate_max)  
+__vehicles__ (__id__, make, model, fuel_type, gear_type, seats, status, type, image, engine_size*)  
+__vehicle_rates__ (__engine_size__, weekly_rate_min, weekly_rate_max)  
 __reservations__ (__id__, vehicle_id*, start_date, end_date, when_logged, is_active)  
 __hires__ (__id__, vehicle_id*, start_date, end_date, when_logged, is_active)  
 __users__ (__email__, password)  
 
 |   vehicles schema             |
 |:----------------------------- |
- __id__ NOT NULL INT INCREMENTS   
+ __id__ NOT NULL INT INCREMENTS 
+ __make__ NOT NULL VARCHAR30)    
+ __model__ NOT NULL VARCHAR(30) 
  __fuel_type__ NOT NULL VARCHAR(20)  
  __gear_type__ NOT NULL VARCHAR(30)   
  __seats__ NOT NULL TINYINT UNSIGNED  
  __status__ NOT NULL ENUM(‘available’, ‘unavailable’, ‘out for hire’)  
- __make__ NOT NULL VARCHAR30)  
- __model__ NOT NULL VARCHAR(30)  
+ __type__ NOT NULL VARCHAR(30)  
+ __image__ VARCHAR(50)  
+ __engine_size__ NOT NULL VARCHAR(10)  
  PRIMARY KEY (__id__)  
- FOREIGN KEY (__make__, __model__) REFERENCES __vehicle_types__(__make__, __model__)  
-
-| vehicle_types schema          |
-|:----------------------------- |
-__make__ NOT NULL VARCHAR30)    
-__model__ NOT NULL VARCHAR(30)  
-__type__ NOT NULL VARCHAR(30)  
-__image__ VARCHAR(50)  
-__engine_size__ NOT NULL VARCHAR(10)  
-PRIMARY KEY (__make__, __model__)  
-FOREIGN KEY (__engine_size__) REFERENCES __vehicle_rates__(__vehicle_engine_size__)  
+ FOREIGN KEY (__engine_size__) REFERENCES __vehicle_rates__(__engine_size__)  
 
 | vehicle_rates schema          |
 |:----------------------------- |

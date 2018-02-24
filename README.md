@@ -1,5 +1,5 @@
-# Kingdomhire v2
-This is the repository for the new Kingdomhire v2 website  
+# Kingdomhire-2.0
+This is the repository for the new Kingdomhire-2.0 website  
 I thought it was a good time to re-visit www.kingdomhire.co.uk and improve the site
 
 I am using *Laravel 5.5* to aid in the development process  

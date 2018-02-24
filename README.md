@@ -1,42 +1,107 @@
-# Kingdomhire
-This repository will be used to manage the code base for the new Kingdomhire website
+# Kingdomhire v2
+This is the repository for the new Kingdomhire v2 website  
+I thought it was a good time to re-visit www.kingdomhire.co.uk and improve the site
 
-Since the hosting service for the Kingdomhire website now allows the use of MySQL databases, I can now
-add more useful features into the website
-
-New planned features include:
-
-* __Allow a user to create an account__
-
-   Allow the user to create an account, using their *email*, *firstname*, *lastname*, *phone number* and *password*  
-   When logged into their account, the user can automatically **reserve a vehicle** without needing to 
-   fill-out their info into the **Vehicle Reservation Form**, 
-   this form will be accessible through the **Vehicles Page** when you click on a vehicle to reserve it
-
-* __New admin site__
-
-   A new admin site, where an admin can access a dashboard that allows them to directly query the database.  
-   The admin can generate specific reports based on the database, such as *list of vehicles currently out for hire*,  
-   or *List of all current reservations* etc.  
-   More features will be included, such as a facility to add new vehicles into the database, which will in turn display
-   the new vehicle on the website  
+# New Features
+### The Administrator Dashboard
+  A new admin dashbaord, where an admin can access a dashboard that allows them to directly query the database.  
+  The pursose of the dashbaord is allow an admin to be able to manage __vehicles__, __hires__ and __reservations__
+  
+  __Requirements__   
+   1. Allow an admin to login to the __Administrator Dashboard__, where the admin can perform a range of tasks related to managing *vehicles*, *reservations* and *hires*
+   2. An admin should be able to __add__, __delete__ and __change vehicles__ in the database.   
+      Change operations include: 
+      * changing vehicle price rates    
+      * changing a vehicles image  
+   3. An admin should be able to __add__, __delete__ and __change reservations__ and __hires__.  
+      Some change operations include: 
+      * extend a hire 
+      * shorten a hire 
+      * reschedule a reservation 
+      * cancel a reservation
+   4. An admin should be able to __generate reports__, such as: 
+      * list of hires made within a month/year 
+      * list of most popular vehicles hired 
+      * total profit made within a month/year 
+      * total amount of vehicles hired within a month/year 
+   5. An admin should be able to see a __list of all active reservations__,__a list of all active hires__ and __a list of all kingdomhire vehicles__ when they log into the __Administrator Dashboard__
+   6. An admin should be able to log a reservation for a vehicle, where when the reservation is logged for a date in the future, after some time has passed and the current real world date equals the start date of that reservation, a hire should be automatically logged for that vehicle
+   7. An admin should be able to manually log a hire for a vehicle, this is in cause a customer wants to hire out a vehicle on the same day they make contact with kingdomhire
    
-* __Vehicle reservation process__
-
-   A new process to allow the user to reserve a vehicle. The new **Vehicles Page** will allow the user to click on a vehicle
-   to **reserve it**, this will bring you to the new **Vehicle Reservation Page**. Here the user can fill-out their info  
-   (to be determined), and then submit the form.  
-   When the form is submitted, if the user has an **account**, they can view their reservation on their **Account Page**.  
-   The user will also receive an **email receipt** of their reservation if the user doesn't have an account
+### Website Business Information  
+   More important business info will need to be displayed on the website, along with a more complete list of kingdomhire vehicles
    
-* __More vehicles displayed on website, with search and sort functionality__
-
-   More vehicles will be added to the **Vehicles Page**. The vehicles will be displayed in a catalog-like format,  
-   where the user can search and sort through the vehicles, such as sort by vehicle type, number of seats etc.
+   __Requirements__
+   1. Anyone should be able to see a list of all kingdomhire vehicles on the vehicles page
+   2. Anyone should be able to see a vehicle's current status, which can be one of the following: *available*, *unavailable*, or *out for hire*
+   3. Anyone should be able to search through the list of kingdomhire vehicles by __vehicle type__ or __price rate__
+   4. The website should display kingdomhire’s __approximate opening hours__
+   5. The website should have an __email form__, for the user to able fill-out and send to kingdomhire, to either directly contact kingdomhire to provide feedback, or to ask about hiring out a vehicle
    
-* __More important business info to be included on the website__
+# Database Design  
+__vehicles__ (__id__, fuel_type, gear_type, seats, status, make*, model*)  
+__vehicle_types__ (__make__, __model__, type, image,  engine_size*)  
+__vehicle_rates__ (__vehicle_engine_size__, weekly_rate_min, weekly_rate_max)  
+__reservations__ (__id__, vehicle_id*, start_date, end_date, when_logged, is_active)  
+__hires__ (__id__, vehicle_id*, start_date, end_date, when_logged, is_active)  
+__users__ (__email__, password)  
 
-   Just some more additional business info, such as opening hours, vehicle price ranges and details about how to reserve a vehicle etc.
+|   vehicles schema             |
+|:----------------------------- |
+ __id__ NOT NULL INT INCREMENTS   
+ __fuel_type__ NOT NULL VARCHAR(20)  
+ __gear_type__ NOT NULL VARCHAR(30)   
+ __seats__ NOT NULL TINYINT UNSIGNED  
+ __status__ NOT NULL ENUM(‘available’, ‘unavailable’, ‘out for hire’)  
+ __make__ NOT NULL VARCHAR30)  
+ __model__ NOT NULL VARCHAR(30)  
+ PRIMARY KEY (__id__)  
+ FOREIGN KEY (__make__, __model__) REFERENCES __vehicle_types__(__make__, __model__)  
 
+| vehicle_types schema          |
+|:----------------------------- |
+__make__ NOT NULL VARCHAR30)    
+__model__ NOT NULL VARCHAR(30)  
+__type__ NOT NULL VARCHAR(30)  
+__image__ VARCHAR(50)  
+__engine_size__ NOT NULL VARCHAR(10)  
+PRIMARY KEY (__make__, __model__)  
+FOREIGN KEY (__engine_size__) REFERENCES __vehicle_rates__(__vehicle_engine_size__)  
 
-I am using *Laravel 5.5* to aid in the development process
+| vehicle_rates schema          |
+|:----------------------------- |
+__vehicle_engine_size__ NOT NULL VARCHAR(10)  
+__weekly_rate_min__ NOT NULL FLOAT(4,2)  
+__weekly_rate_max__ NOT NULL FLOAT(4,2)  
+PRIMARY KEY (__vehicle_type__)  
+
+| reservations schema           |
+|:----------------------------- |
+__id__ NOT NULL INT INCREMENTS  
+__vehicle_id__ NOT NULL INT  
+__start_date__ NOT NULL DATE  
+__end_date__ NOT NULL DATE   
+__when_logged__ NOT NULL TIMESTAMP NOW()
+__is_active__ NOT NULL BOOLEAN DEFAULTS TRUE  
+PRIMARY KEY (__id__)  
+FOREIGN KEY (__vehicle_id__) REFERENCES __vehicles__(__vehicle_id__)  
+
+| hires schema                  |
+|:----------------------------- |
+__id__ NOT NULL INT INCREMENTS  
+__vehicle_id__ NOT NULL INT  
+__start_date__ NOT NULL DATE  
+__end_date__ NOT NULL DATE  
+__when_logged__ NOT NULL TIMESTAMP NOW()
+__is_active__ NOT NULL BOOLEAN DEFAULTS TRUE  
+PRIMARY KEY (__id__)  
+FOREIGN KEY (__vehicle_id__) REFERENCES __vehicles__(__vehicle_id__)  
+
+| users schema                 |
+|:---------------------------- |
+__email__ NOT NULL VARCHAR(50)
+__password__ NOT NULL VARCHAR(30)
+PRIMARY KEY (__email__)
+
+  
+I am using *Laravel 5.5* to aid in the development process  

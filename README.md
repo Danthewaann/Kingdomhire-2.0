@@ -73,8 +73,8 @@ __password_resets__ (email, token, created_at)
 | vehicle_rates schema          |
 |:----------------------------- |
 __vehicle_engine_size__ NOT NULL VARCHAR(10)  
-__weekly_rate_min__ NOT NULL FLOAT(4,2)  
-__weekly_rate_max__ NOT NULL FLOAT(4,2)  
+__weekly_rate_min__ NOT NULL FLOAT(5,2)  
+__weekly_rate_max__ NOT NULL FLOAT(5,2)  
 __created_at__	NOT NULL TIMESTAMP DEFAULTS NOW()   
 __updated_at__	NOT NULL TIMESTAMP DEFAULTS NOW()     
 PRIMARY KEY (__vehicle_type__)  

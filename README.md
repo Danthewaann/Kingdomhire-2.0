@@ -46,11 +46,11 @@ I will be using a *MySQL* database backend for the new website
    6. The website should have an __email form__, for the user to able fill-out and send to kingdomhire, to either directly contact kingdomhire to provide feedback, or to ask about hiring out a vehicle
    
 # Database Design  
-__vehicles__ (__id__, make, model, fuel_type, gear_type, seats, status, type, image_path, engine_size*)  
-__vehicle_rates__ (__engine_size__, weekly_rate_min, weekly_rate_max)  
-__reservations__ (__id__, vehicle_id*, start_date, end_date, when_logged, is_active)  
-__hires__ (__id__, vehicle_id*, start_date, end_date, when_logged, is_active)  
-__users__ (__email__, password, remember_token)    
+__vehicles__ (__id__, make, model, fuel_type, gear_type, seats, status, type, image_path, created_at, updated_at, engine_size*)  
+__vehicle_rates__ (__engine_size__, weekly_rate_min, weekly_rate_max, created_at, updated_at)  
+__reservations__ (__id__, vehicle_id*, start_date, end_date, created_at, updated_at, is_active)  
+__hires__ (__id__, vehicle_id*, start_date, end_date, created_at, updated_at, is_active)  
+__users__ (__email__, password, remember_token, created_at, updated_at)    
 __password_resets__ (email, token, created_at)
 
 |   vehicles schema             |
@@ -65,6 +65,8 @@ __password_resets__ (email, token, created_at)
  __type__ NOT NULL VARCHAR(30)  
  __image_path__ VARCHAR(50)  
  __engine_size__ NOT NULL VARCHAR(10)  
+ __created_at__	NOT NULL TIMESTAMP DEFAULTS NOW()  
+ __updated_at__	NOT NULL TIMESTAMP DEFAULTS NOW()      
  PRIMARY KEY (__id__)  
  FOREIGN KEY (__engine_size__) REFERENCES __vehicle_rates__(__engine_size__)  
 
@@ -73,6 +75,8 @@ __password_resets__ (email, token, created_at)
 __vehicle_engine_size__ NOT NULL VARCHAR(10)  
 __weekly_rate_min__ NOT NULL FLOAT(4,2)  
 __weekly_rate_max__ NOT NULL FLOAT(4,2)  
+__created_at__	NOT NULL TIMESTAMP DEFAULTS NOW()   
+__updated_at__	NOT NULL TIMESTAMP DEFAULTS NOW()     
 PRIMARY KEY (__vehicle_type__)  
 
 | reservations schema           |
@@ -81,7 +85,8 @@ __id__ NOT NULL BIGINT INCREMENTS
 __vehicle_id__ NOT NULL INT  
 __start_date__ NOT NULL DATE  
 __end_date__ NOT NULL DATE   
-__when_logged__ NOT NULL TIMESTAMP NOW()  
+__created_at__	NOT NULL TIMESTAMP DEFAULTS NOW()   
+__updated_at__	NOT NULL TIMESTAMP DEFAULTS NOW()     
 __is_active__ NOT NULL BOOLEAN DEFAULTS TRUE  
 PRIMARY KEY (__id__)  
 FOREIGN KEY (__vehicle_id__) REFERENCES __vehicles__(__vehicle_id__)  
@@ -91,9 +96,10 @@ FOREIGN KEY (__vehicle_id__) REFERENCES __vehicles__(__vehicle_id__)
 __id__ NOT NULL BIGINT INCREMENTS  
 __vehicle_id__ NOT NULL INT  
 __start_date__ NOT NULL DATE  
-__end_date__ NOT NULL DATE  
-__when_logged__ NOT NULL TIMESTAMP NOW()  
-__is_active__ NOT NULL BOOLEAN DEFAULTS TRUE  
+__end_date__ NOT NULL DATE    
+__created_at__	NOT NULL TIMESTAMP DEFAULTS NOW()   
+__updated_at__	NOT NULL TIMESTAMP DEFAULTS NOW()    
+__is_active__ NOT NULL BOOLEAN DEFAULTS TRUE    
 PRIMARY KEY (__id__)  
 FOREIGN KEY (__vehicle_id__) REFERENCES __vehicles__(__vehicle_id__)  
 
@@ -101,12 +107,14 @@ FOREIGN KEY (__vehicle_id__) REFERENCES __vehicles__(__vehicle_id__)
 |:---------------------------- |
 __email__ NOT NULL VARCHAR(50)  
 __password__ NOT NULL VARCHAR(30)  
-__remember_token__ VARCHAR(100)  
+__remember_token__ VARCHAR(100)     
+__created_at__	NOT NULL TIMESTAMP DEFAULTS NOW()   
+__updated_at__	NOT NULL TIMESTAMP DEFAULTS NOW()   
 PRIMARY KEY (__email__)
 
 | password_resets schema       |  
 |:---------------------------- |  
 __email__ NOT NULL VARCHAR(50) INDEX  
 __token__ NOT NULL VARCHAR(100)  
-__created_at__ TIMESTAMP  
+__created_at__ NOT NULL TIMESTAMP DEFAULTS NOW()   
  

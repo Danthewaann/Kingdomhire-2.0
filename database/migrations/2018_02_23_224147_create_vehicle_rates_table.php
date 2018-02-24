@@ -15,9 +15,10 @@ class CreateVehicleRatesTable extends Migration
     {
         Schema::create('vehicle_rates', function (Blueprint $table) {
             $table->string('engine_size')->primary();
-            $table->float('weekly_rate_min');
-            $table->float('weekly_rate_max');
-            $table->timestamps();
+            $table->float('weekly_rate_min', 5, 2);
+            $table->float('weekly_rate_max', 5, 2);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

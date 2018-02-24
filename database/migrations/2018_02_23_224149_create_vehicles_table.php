@@ -23,9 +23,10 @@ class CreateVehiclesTable extends Migration
             $table->enum('status', ['available', 'unavailable', 'out_for_hire']);
             $table->string('type');
             $table->string('image_path');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->string('engine_size');
             $table->foreign('engine_size')->references('engine_size')->on('vehicle_rates');
-            $table->timestamps();
         });
     }
 

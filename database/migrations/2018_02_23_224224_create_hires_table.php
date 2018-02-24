@@ -17,7 +17,8 @@ class CreateHiresTable extends Migration
             $table->bigIncrements('id');
             $table->date('start_date');
             $table->date('end_date');
-            $table->timestamp('when_logged');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->boolean('is_active');
             $table->integer('vehicle_id')->unsigned();
             $table->foreign('vehicle_id')->references('id')->on('vehicles');

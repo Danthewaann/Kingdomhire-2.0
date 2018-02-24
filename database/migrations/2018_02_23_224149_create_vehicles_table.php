@@ -14,13 +14,13 @@ class CreateVehiclesTable extends Migration
     public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('make');
             $table->string('model');
             $table->string('fuel_type');
             $table->string('gear_type');
             $table->unsignedTinyInteger('seats');
-            $table->enum('status', ['available', 'unavailable', 'out for hire']);
+            $table->enum('status', ['available', 'unavailable', 'out_for_hire']);
             $table->string('type');
             $table->string('image_path');
             $table->string('engine_size');

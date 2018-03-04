@@ -4,6 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Vehicle
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Hire[] $hires
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Reservation[] $reservations
+ * @mixin \Eloquent
+ */
 class Vehicle extends Model
 {
     /**

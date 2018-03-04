@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UserTableSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,7 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->delete();
         \App\User::create(array(
+            'name' => 'Daniel',
             'email' => 'test@test.com',
             'password' => Hash::make('test123')
         ));

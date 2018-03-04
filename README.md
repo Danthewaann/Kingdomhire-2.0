@@ -27,7 +27,7 @@ I will be using a *MySQL* database backend for the new website
       * list of most popular vehicles hired 
       * total profit made within a month/year 
       * total amount of vehicles hired within a month/year 
-   5. An admin should be able to see a __list of all active reservations__,__a list of all active hires__ and __a list of all kingdomhire vehicles__ when they log into the __Administrator Dashboard__
+   5. An admin should be able to see a __list of all active reservations__, __a list of all active hires__ and __a list of all kingdomhire vehicles__ when they log into the __Administrator Dashboard__
    6. An admin should be __able to log a reservation for a vehicle__, where when the reservation is logged for a date in the future, after some time has passed and the current real world date equals the start date of that reservation, a hire should be automatically logged for that vehicle. After this happens the reservation will be __removed from the reservations table__
    7. An admin should be __able to log a hire for a vehicle__, this is in cause a customer wants to hire out a vehicle on the same day they contact kingdomhire
    8. An admin should be able to __reset their password__ if they forget it, this will require __an email verification process__
@@ -50,7 +50,7 @@ __vehicles__ (__id__, make, model, fuel_type, gear_type, seats, status, type, im
 __vehicle_rates__ (__engine_size__, weekly_rate_min, weekly_rate_max, created_at, updated_at)  
 __reservations__ (__id__, vehicle_id*, start_date, end_date, created_at, updated_at, is_active)  
 __hires__ (__id__, vehicle_id*, start_date, end_date, created_at, updated_at, is_active)  
-__users__ (__email__, password, remember_token, created_at, updated_at)    
+__users__ (__id__, name, email, password, remember_token, created_at, updated_at)    
 __password_resets__ (email, token, created_at)
 
 |   vehicles schema             |
@@ -105,12 +105,14 @@ FOREIGN KEY (__vehicle_id__) REFERENCES __vehicles__(__vehicle_id__)
 
 | users schema                 |
 |:---------------------------- |
-__email__ NOT NULL VARCHAR(50)  
+__id__ NOT NULL INT INCREMENTS
+__name__ NOT NULL VARCHAR(50)
+__email__ NOT NULL VARCHAR(50) UNIQUE
 __password__ NOT NULL VARCHAR(30)  
 __remember_token__ VARCHAR(100)     
 __created_at__	NOT NULL TIMESTAMP DEFAULTS NOW()   
 __updated_at__	NOT NULL TIMESTAMP DEFAULTS NOW()   
-PRIMARY KEY (__email__)
+PRIMARY KEY (__id__)
 
 | password_resets schema       |  
 |:---------------------------- |  

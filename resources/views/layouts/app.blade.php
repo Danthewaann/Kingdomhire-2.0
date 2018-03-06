@@ -15,6 +15,9 @@
 </head>
 <body>
   <div id="app">
+    <div class="container">
+      <img src="{{ asset('imgs/Kingdomhire_logo.svg') }}" style="width: 600px; height: 250px; float: left;"/>
+    </div>
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
@@ -26,47 +29,43 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-
-            <!-- Branding Image -->
-          <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
-          </a>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
           <!-- Left Side Of Navbar -->
           <ul class="nav navbar-nav">
-            &nbsp;
+            <a href="{{ route('home') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Home</a>
+            <a href="{{ route('vehicles') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Vehicles</a>
+            <a href="{{ route('contact') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Contact</a>
+
           </ul>
+          <!-- Right Side Of Navbar -->
+          <ul class="nav navbar-nav navbar-right">
+            <!-- Authentication Links -->
+            @guest
+              <a href="{{ route('login') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Login</a>
+            @else
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                  {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
 
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-              <!-- Authentication Links -->
-              @guest
-                <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('register') }}">Register</a></li>
-              @else
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                    {{ Auth::user()->name }} <span class="caret"></span>
-                  </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                      Logout
+                    </a>
 
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
-                        Logout
-                      </a>
-
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                      </form>
-                    </li>
-                    </ul>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                    </form>
                   </li>
-                @endguest
-            </ul>
+                  </ul>
+                </li>
+              @endguest
+          </ul>
         </div>
       </div>
     </nav>

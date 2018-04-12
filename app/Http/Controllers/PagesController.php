@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -13,7 +14,8 @@ class PagesController extends Controller
 
     public function vehicles()
     {
-        return view('vehicles');
+        $vehicles = DB::table('vehicles')->get();
+        return view('vehicles', ['vehicles' => $vehicles]);
     }
 
     public function contact()

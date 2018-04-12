@@ -18,6 +18,10 @@ Route::get('/contact', 'PagesController@contact')->name('contact');
 
 /* Administrator routes */
 Route::get('/admin', 'AdminController@index');
+Route::post('/admin/deleteVehicle', 'AdminController@deleteVehicle');
+Route::post('/admin/addVehicle', 'AdminController@addVehicle');
+Route::post('/admin/logReservation', 'AdminController@logReservation');
+Route::post('/admin/deleteReservation', 'AdminController@deleteReservation');
 
 /* Login routes */
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

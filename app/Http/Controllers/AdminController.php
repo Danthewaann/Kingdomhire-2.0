@@ -28,19 +28,17 @@ class AdminController extends Controller
     {
         $vehicles = DB::table('vehicles')->get();
         $reservations = DB::table('reservations')->get();
-        dd($reservations);
 //        $vehicle = \App\Reservation::find()->vehicle;
-//        dd($vehicle->make);
-//        $reservations_arr = array();
-//        foreach ($reservations as $reservation) {
-//            $vehicle = DB::table('vehicles')->where('id', '=', $reservation->vehicle_id)->get()->toArray();
-//            array_push($reservations_arr, array(
-//                'reservation_id' => $reservation->id,
-//                'vehicle_name' => $vehicle[0]->make . ' ' . $vehicle[0]->model,
-//                'start_date' => $reservation->start_date,
-//                'end_date' => $reservation->end_date
-//            ));
-//        }
+        $reservations_arr = array();
+        foreach ($reservations as $reservation) {
+            $vehicle = DB::table('vehicles')->where('id', '=', $reservation->vehicle_id)->get()->toArray();
+            array_push($reservations_arr, array(
+                'reservation_id' => $reservation->id,
+                'vehicle_name' => $vehicle[0]->make . ' ' . $vehicle[0]->model,
+                'start_date' => $reservation->start_date,
+                'end_date' => $reservation->end_date
+            ));
+        }
         return view('admin', ['vehicles' => $vehicles, 'reservations' => $reservations_arr]);
     }
 

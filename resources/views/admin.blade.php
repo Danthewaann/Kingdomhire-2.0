@@ -128,10 +128,10 @@
             <th>End Date</th>
             @foreach($reservations as $reservation)
                 <tr>
-                    <td>{{ $reservation->id }}</td>
-                    <td>{{ $reservation->vehicle->make }}</td>
-                    <td>{{ $reservation->start_date }}</td>
-                    <td>{{ $reservation->end_date }}</td>
+                    <td>{{ $reservation['reservation_id'] }}</td>
+                    <td>{{ $reservation['vehicle_name'] }}</td>
+                    <td>{{ $reservation['start_date'] }}</td>
+                    <td>{{ $reservation['end_date'] }}</td>
                 </tr>
             @endforeach
         </table>
@@ -177,7 +177,7 @@
                     <select id="reservation" class="form-control" name="reservation">
                         @if(!empty($reservations))
                             @foreach($reservations as $reservation)
-                                <option>{{ $reservation->vehicle->make }}</option>
+                                <option>{{ $reservation['reservation_id'] }}</option>
                             @endforeach
                         @endif
                     </select>

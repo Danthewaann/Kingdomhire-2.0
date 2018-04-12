@@ -22,7 +22,7 @@ class CreateVehiclesTable extends Migration
             $table->unsignedTinyInteger('seats');
             $table->enum('status', ['available', 'unavailable', 'out_for_hire']);
             $table->string('type');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
             $table->string('engine_size');

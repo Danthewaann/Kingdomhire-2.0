@@ -13,8 +13,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Vehicle extends Model
 {
+    protected $fillable = [
+        'make', 'model', 'fuel_type', 'gear_type', 'seats',
+        'status', 'type', 'image_path', 'engine_size'
+    ];
+
     /**
      * Get reservations for the vehicle
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function reservations()
     {
@@ -23,9 +29,19 @@ class Vehicle extends Model
 
     /**
      * Get hires for the vehicle
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function hires()
     {
         return $this->hasMany('App\Hire');
+    }
+
+    /**
+     * Get price rate for the vehicle
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function rate()
+    {
+        return $this->belongsTo('App\VehicleRate');
     }
 }

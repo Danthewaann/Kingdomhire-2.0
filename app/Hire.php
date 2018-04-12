@@ -14,6 +14,7 @@ class Hire extends Model
 {
     /**
      * Get vehicle associated with this hire
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function vehicle()
     {

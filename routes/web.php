@@ -22,6 +22,8 @@ Route::post('/admin/deleteVehicle', 'AdminController@deleteVehicle');
 Route::post('/admin/addVehicle', 'AdminController@addVehicle');
 Route::post('/admin/logReservation', 'AdminController@logReservation');
 Route::post('/admin/deleteReservation', 'AdminController@deleteReservation');
+Route::post('/admin/logHire', 'AdminController@logHire');
+Route::post('/admin/deleteHire', 'AdminController@deleteHire');
 
 /* Login routes */
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

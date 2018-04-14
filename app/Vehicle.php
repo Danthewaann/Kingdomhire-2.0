@@ -24,7 +24,7 @@ class Vehicle extends Model
      */
     public function reservations()
     {
-        return $this->hasMany('App\Reservation');
+        return $this->hasMany(Reservation::class);
     }
 
     /**
@@ -33,7 +33,7 @@ class Vehicle extends Model
      */
     public function hires()
     {
-        return $this->hasMany('App\Hire');
+        return $this->hasMany(Hire::class);
     }
 
     /**
@@ -42,6 +42,6 @@ class Vehicle extends Model
      */
     public function rate()
     {
-        return $this->belongsTo('App\VehicleRate');
+        return $this->belongsTo(VehicleRate::class);
     }
 }

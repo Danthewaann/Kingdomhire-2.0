@@ -13,11 +13,11 @@ class VehicleRate extends Model
     protected $table = 'vehicle_rates';
 
     /**
-     * Get vehicle associated with the vehicle rate
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * Get vehicles associated with the vehicle rate
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function vehicle()
+    public function vehicles()
     {
-        return $this->belongsTo('App\Vehicle');
+        return $this->hasMany(Vehicle::class);
     }
 }

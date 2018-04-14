@@ -20,6 +20,6 @@ class Reservation extends Model
      */
     public function vehicle()
     {
-        return $this->belongsTo('App\Vehicle');
+        return $this->belongsTo(Vehicle::class);
     }
 }

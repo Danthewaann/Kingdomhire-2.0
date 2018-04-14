@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Hire;
 use App\Vehicle;
 use App\Reservation;
 use Illuminate\Http\Request;
@@ -26,20 +27,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $vehicles = DB::table('vehicles')->get();
         $reservations = DB::table('reservations')->get();
-//        $vehicle = \App\Reservation::find()->vehicle;
-        $reservations_arr = array();
-        foreach ($reservations as $reservation) {
-            $vehicle = DB::table('vehicles')->where('id', '=', $reservation->vehicle_id)->get()->toArray();
-            array_push($reservations_arr, array(
-                'reservation_id' => $reservation->id,
-                'vehicle_name' => $vehicle[0]->make . ' ' . $vehicle[0]->model,
-                'start_date' => $reservation->start_date,
-                'end_date' => $reservation->end_date
-            ));
-        }
-        return view('admin', ['vehicles' => $vehicles, 'reservations' => $reservations_arr]);
+        $hires = DB::table('hires')->get();
+        $vehicles = Vehicle::with(['reservations', 'hires'])->get();
+        return view('admin', ['vehicles' => $vehicles, 'reservations' => $reservations, 'hires' => $hires]);
     }
 
     public function addVehicle(Request $request)
@@ -79,6 +70,23 @@ class AdminController extends Controller
     public function deleteReservation(Request $request)
     {
         DB::table('reservations')->where('id', '=', $request->get('reservation'))->delete();
+        return redirect()->to('/admin');
+    }
+
+    public function logHire(Request $request)
+    {
+        $vehicle_arr = explode(' ', $request->get('vehicle'));
+        $collection = DB::table('vehicles')->where([['make', '=', $vehicle_arr[0]], ['model', '=', $vehicle_arr[1]]])->get(['id'])->toArray();
+        Hire::create(array(
+            'vehicle_id' => $collection[0]->id,
+            'is_active' => true
+        ));
+        return redirect()->to('/admin');
+    }
+
+    public function deleteHire(Request $request)
+    {
+        DB::table('hires')->where('id', '=', $request->get('hire'))->delete();
         return redirect()->to('/admin');
     }
 }

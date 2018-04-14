@@ -15,8 +15,8 @@ class CreateHiresTable extends Migration
     {
         Schema::create('hires', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('start_date')->default(date('Y-m-d'));
+            $table->date('end_date')->default(date('Y-m-d'));
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
             $table->boolean('is_active');

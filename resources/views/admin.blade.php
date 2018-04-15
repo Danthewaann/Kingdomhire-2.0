@@ -9,40 +9,48 @@
     @endif
     <div class="row">
         @if(!$vehicles->isEmpty())
-            <div class="col-md-3">
+            <div class="col-md-4">
                @include('admin.vehicle.list')
             </div>
+        @endif
+        @if(!$reservations->isEmpty())
             <div class="col-md-4">
-                @include('admin.vehicle.delete')
+                @include('admin.reservation.list')
             </div>
         @endif
-        <div class="col-md-5">
-            @include('admin.vehicle.add')
-        </div>
+        @if(!$hires->isEmpty())
+            <div class="col-md-4">
+                @include('admin.hire.list')
+            </div>
+        @endif
+    </div>
+    <div class="row">
+        @if(!$vehicles->isEmpty())
+            <div class="col-md-6">
+                @include('admin.vehicle.delete')
+            </div>
+            <div class="col-md-6">
+                @include('admin.vehicle.add')
+            </div>
+        @endif
     </div>
     <div class="row">
         @if(!$reservations->isEmpty())
-            <div class="col-md-5">
-               @include('admin.reservation.list')
-            </div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 @include('admin.reservation.delete')
             </div>
         @endif
-        <div class="col-md-4">
+        <div class="col-md-6">
             @include('admin.reservation.add')
         </div>
     </div>
     <div class="row">
         @if(!$hires->isEmpty())
-            <div class="col-md-5">
-                @include('admin.hire.list')
-            </div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 @include('admin.hire.delete')
             </div>
         @endif
-        <div class="col-md-4">
+        <div class="col-md-6">
             @include('admin.hire.add')
         </div>
     </div>

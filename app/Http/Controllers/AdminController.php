@@ -52,7 +52,7 @@ class AdminController extends Controller
     public function deleteVehicle(Request $request)
     {
        $vehicle_arr = explode(' ', $request->get('delete'));
-       DB::table('vehicles')->where([['make', '=', $vehicle_arr[0]], ['model', '=', $vehicle_arr[1]]])->delete();
+       DB::table('vehicles')->where([['make', '=', $vehicle_arr[0]], ['model', '=', $vehicle_arr[1]]])->update(['is_active' => false]);
        return redirect()->to('/admin');
     }
 

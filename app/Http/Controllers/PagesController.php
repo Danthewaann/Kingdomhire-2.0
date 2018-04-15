@@ -14,7 +14,7 @@ class PagesController extends Controller
 
     public function vehicles()
     {
-        $vehicles = DB::table('vehicles')->get();
+        $vehicles = DB::table('vehicles')->where('is_active', '=', true)->get();
         return view('vehicles', ['vehicles' => $vehicles]);
     }
 

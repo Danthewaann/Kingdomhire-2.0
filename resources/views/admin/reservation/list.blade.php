@@ -1,4 +1,4 @@
-<h3>Reservations</h3>
+<h3>Current Reservations</h3>
 <table class="table">
     <th>Reservation Id</th>
     <th>Vehicle</th>
@@ -11,6 +11,13 @@
                 <td>{{ $vehicle->make }} {{ $vehicle->model }}</td>
                 <td>{{ $reservation->start_date }}</td>
                 <td>{{ $reservation->end_date }}</td>
+                <td>
+                  <form action="{{ url('admin/deleteReservation') }}" method="post">
+                    {{csrf_field()}}
+                    <button type="submit" class="btn btn-primary">Cancel Reservation</button>
+                    <input type="hidden" value="{{ $reservation->id }}" name="reservation" />
+                  </form>
+                </td>
             </tr>
         @endforeach
     @endforeach

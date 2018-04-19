@@ -20,10 +20,9 @@ class VehiclesTableSeeder extends Seeder
             'fuel_type' => 'Petrol',
             'gear_type' => 'Manuel',
             'seats' => '4',
-            'is_active' => true,
             'status' => 'available',
             'type' => 'Hatchback',
-            'image_path' => asset('imgs/peugeot_307.jpg'),
+            'image_path' => asset('storage/imgs/peugeot_307.jpg'),
             'engine_size' => 'small'
         ));
         \App\Vehicle::create(array(
@@ -32,10 +31,9 @@ class VehiclesTableSeeder extends Seeder
             'fuel_type' => 'Petrol',
             'gear_type' => 'Manuel',
             'seats' => '5',
-            'is_active' => true,
             'status' => 'available',
             'type' => 'Hatchback',
-            'image_path' => asset('imgs/peugeot_308.jpg'),
+            'image_path' => asset('storage/imgs/peugeot_308.jpg'),
             'engine_size' => 'small'
         ));
         \App\Vehicle::create(array(
@@ -44,10 +42,9 @@ class VehiclesTableSeeder extends Seeder
             'fuel_type' => 'Diesel',
             'gear_type' => 'Manuel',
             'seats' => '3',
-            'is_active' => true,
             'status' => 'available',
             'type' => 'Large Van',
-            'image_path' => asset('imgs/renault_master.jpg'),
+            'image_path' => asset('storage/imgs/renault_master.jpg'),
             'engine_size' => 'large'
         ));
         \App\Vehicle::create(array(
@@ -56,10 +53,9 @@ class VehiclesTableSeeder extends Seeder
             'fuel_type' => 'Diesel',
             'gear_type' => 'Manuel',
             'seats' => '3',
-            'is_active' => true,
             'status' => 'available',
             'type' => 'Small Van',
-            'image_path' => asset('imgs/renault_traffic.jpg'),
+            'image_path' => asset('storage/imgs/renault_traffic.jpg'),
             'engine_size' => 'medium'
         ));
         \App\Vehicle::create(array(
@@ -68,10 +64,9 @@ class VehiclesTableSeeder extends Seeder
             'fuel_type' => 'Diesel',
             'gear_type' => 'Manuel/Automatic',
             'seats' => '7',
-            'is_active' => true,
             'status' => 'available',
             'type' => 'People Carrier',
-            'image_path' => asset('imgs/kia_sedona.jpg'),
+            'image_path' => asset('storage/imgs/kia_sedona.jpg'),
             'engine_size' => 'medium'
         ));
         \App\Vehicle::create(array(
@@ -80,10 +75,9 @@ class VehiclesTableSeeder extends Seeder
             'fuel_type' => 'Petrol',
             'gear_type' => 'Automatic',
             'seats' => '5',
-            'is_active' => true,
             'status' => 'available',
             'type' => 'Convertable',
-            'image_path' => asset('imgs/megane_convertable.jpg'),
+            'image_path' => asset('storage/imgs/megane_convertable.jpg'),
             'engine_size' => 'medium'
         ));
     }

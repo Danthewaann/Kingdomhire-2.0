@@ -42,6 +42,6 @@ class Vehicle extends Model
      */
     public function rate()
     {
-        return $this->belongsTo(VehicleRate::class);
+        return $this->belongsTo(VehicleRate::class, 'vehicle_rate_id');
     }
 }

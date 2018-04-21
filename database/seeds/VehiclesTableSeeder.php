@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 
 class VehiclesTableSeeder extends Seeder
@@ -13,7 +14,10 @@ class VehiclesTableSeeder extends Seeder
     public function run()
     {
         DB::table('vehicles')->delete();
-        $this->call(VehicleRatesTableSeeder::class);
+        $small = DB::table('vehicle_rates')->where('engine_size', '=', 'small')->get()->pluck('id')[0];
+        $medium = DB::table('vehicle_rates')->where('engine_size', '=', 'medium')->get()->pluck('id')[0];
+        $large = DB::table('vehicle_rates')->where('engine_size', '=', 'large')->get()->pluck('id')[0];
+
         \App\Vehicle::create(array(
             'make' => 'Peugeot',
             'model' => '307',
@@ -23,7 +27,7 @@ class VehiclesTableSeeder extends Seeder
             'status' => 'available',
             'type' => 'Hatchback',
             'image_path' => asset('storage/imgs/peugeot_307.jpg'),
-            'engine_size' => 'small'
+            'vehicle_rate_id' => $small
         ));
         \App\Vehicle::create(array(
             'make' => 'Peugeot',
@@ -34,7 +38,7 @@ class VehiclesTableSeeder extends Seeder
             'status' => 'available',
             'type' => 'Hatchback',
             'image_path' => asset('storage/imgs/peugeot_308.jpg'),
-            'engine_size' => 'small'
+            'vehicle_rate_id' => $small
         ));
         \App\Vehicle::create(array(
             'make' => 'Renault',
@@ -45,7 +49,7 @@ class VehiclesTableSeeder extends Seeder
             'status' => 'available',
             'type' => 'Large Van',
             'image_path' => asset('storage/imgs/renault_master.jpg'),
-            'engine_size' => 'large'
+            'vehicle_rate_id' => $large
         ));
         \App\Vehicle::create(array(
             'make' => 'Renault',
@@ -56,7 +60,7 @@ class VehiclesTableSeeder extends Seeder
             'status' => 'available',
             'type' => 'Small Van',
             'image_path' => asset('storage/imgs/renault_traffic.jpg'),
-            'engine_size' => 'medium'
+            'vehicle_rate_id' => $medium
         ));
         \App\Vehicle::create(array(
             'make' => 'Kia',
@@ -67,7 +71,7 @@ class VehiclesTableSeeder extends Seeder
             'status' => 'available',
             'type' => 'People Carrier',
             'image_path' => asset('storage/imgs/kia_sedona.jpg'),
-            'engine_size' => 'medium'
+            'vehicle_rate_id' => $medium
         ));
         \App\Vehicle::create(array(
             'make' => 'Megane',
@@ -78,7 +82,7 @@ class VehiclesTableSeeder extends Seeder
             'status' => 'available',
             'type' => 'Convertable',
             'image_path' => asset('storage/imgs/megane_convertable.jpg'),
-            'engine_size' => 'medium'
+            'vehicle_rate_id' => $medium
         ));
     }
 }

@@ -9,7 +9,7 @@
     @endif
     <div class="row">
         @if(!$vehicles->isEmpty())
-            <div class="col-md-6">
+            <div class="col-md-12">
                @include('admin.vehicle.list')
             </div>
         @endif

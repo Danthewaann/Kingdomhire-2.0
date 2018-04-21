@@ -30,7 +30,7 @@ class AdminController extends Controller
     {
         $reservations = DB::table('reservations')->get();
         $hires = DB::table('hires')->get();
-        $vehicles = Vehicle::with(['reservations', 'hires'])->get();
+        $vehicles = Vehicle::with(['reservations', 'hires', 'rate'])->get();
         return view('admin', ['vehicles' => $vehicles, 'reservations' => $reservations, 'hires' => $hires]);
     }
 

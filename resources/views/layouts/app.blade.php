@@ -16,7 +16,7 @@
 <body>
   <div id="app">
     <div class="container">
-      <img src="{{ asset('imgs/Kingdomhire_logo.svg') }}" style="width: 600px; height: 250px; float: left;"/>
+      <img src="{{ asset('static/Kingdomhire_logo.svg') }}" style="width: 600px; height: 250px; float: left;"/>
     </div>
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">

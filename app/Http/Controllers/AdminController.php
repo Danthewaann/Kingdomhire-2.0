@@ -7,6 +7,7 @@ use App\Vehicle;
 use App\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -35,6 +36,13 @@ class AdminController extends Controller
 
     public function addVehicle(Request $request)
     {
+        $path = null;
+        if($request->hasFile('vehicle_image')) {
+            $image_name = $request->get('make') . '_' . $request->get('model') . '.' . $request->file('vehicle_image')->extension();
+            $path = $request->file('vehicle_image')->storeAs('imgs', $image_name, 'public');
+            $path = asset('storage/' . $path);
+        }
+
         Vehicle::create(array(
            'make' => $request->get('make'),
            'model' => $request->get('model'),
@@ -43,7 +51,7 @@ class AdminController extends Controller
            'seats' => $request->get('seats'),
            'status' => 'available',
            'type' => $request->get('type'),
-           'image_path' => null,
+           'image_path' => $path,
            'engine_size' => $request->get('engine_size')
         ));
         return redirect()->to('/admin');

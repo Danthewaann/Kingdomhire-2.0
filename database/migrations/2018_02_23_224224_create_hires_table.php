@@ -21,7 +21,7 @@ class CreateHiresTable extends Migration
             $table->timestamp('updated_at')->useCurrent();
             $table->boolean('is_active');
             $table->integer('vehicle_id')->unsigned();
-            $table->foreign('vehicle_id')->references('id')->on('vehicles');
+            $table->foreign('vehicle_id')->references('id')->onDelete('cascade')->on('vehicles');
         });
     }
 

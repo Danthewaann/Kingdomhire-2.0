@@ -1,4 +1,4 @@
-<form action="{{url('admin/addVehicle')}}" method="post">
+<form action="{{url('admin/addVehicle')}}" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
     <div class="form-row">
         <div class="col-xs-12">
@@ -56,6 +56,11 @@
                 <option>Large</option>
             </select>
         </div>
+        <div class="form-group col-xs-6">
+            <label for="vehicle_image">Vehicle Image (optional)</label>
+            <input type="file" class="form-control" name="vehicle_image" id="vehicle_image">
+        </div>
+
     </div>
     <div class="form-row">
         <div class="col-xs-12">

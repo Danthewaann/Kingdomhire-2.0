@@ -14,7 +14,8 @@ class CreateVehicleRatesTable extends Migration
     public function up()
     {
         Schema::create('vehicle_rates', function (Blueprint $table) {
-            $table->string('engine_size')->primary();
+            $table->increments('id');
+            $table->string('engine_size')->unique();
             $table->float('weekly_rate_min', 5, 2);
             $table->float('weekly_rate_max', 5, 2);
             $table->timestamp('created_at')->useCurrent();

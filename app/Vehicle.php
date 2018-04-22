@@ -15,7 +15,7 @@ class Vehicle extends Model
 {
     protected $fillable = [
         'make', 'model', 'fuel_type', 'gear_type', 'seats',
-        'status', 'type', 'image_path', 'engine_size'
+        'status', 'type', 'image_path', 'vehicle_rate_id'
     ];
 
     /**

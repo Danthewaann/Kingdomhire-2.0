@@ -1,23 +1,48 @@
-<form action="{{ url('admin/logHire') }}" method="post">
-    {{csrf_field()}}
-    <div class="form-row">
-        <div class="col-xs-12">
-            <h3>Log a vehicle hire</h3>
+@extends('layouts.app')
+
+@section('content')
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>Vehicle Hire Form</h3></div>
+        <div class="panel-body">
+            <form action="{{ route('hire.log') }}" method="post">
+                {{csrf_field()}}
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="form-row">
+                            <label for="vehicle">Vehicle</label>
+                            <input id="vehicle" style="max-width: 300px;" class="form-control" type="text" value="{{ $make.' '.$model }}" disabled/>
+                            <input type="hidden" value="{{ $make.' '.$model }}" name="vehicle" />
+                        </div>
+                    </div>
+                    <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }} col-md-12">
+                        <div class="form-row">
+                            <label for="start_date">Start Date</label>
+                            {{ Form::text('start_date', '', array('class' => 'form-control datepicker', 'style' => 'max-width: 300px;')) }}
+                            @if( $errors->has('start_date'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('start_date') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }} col-md-12">
+                        <div class="form-row">
+                            <label for="end_date">End Date</label>
+                            {{ Form::text('end_date', '', array('class' => 'form-control datepicker', 'style' => 'max-width: 300px;')) }}
+                            @if( $errors->has('end_date'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('end_date') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn btn-primary">Log Hire</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="form-row">
-        <div class="form-group col-xs-6">
-            <label for="vehicle">Vehicle</label>
-            <select id="vehicle" class="form-control" name="vehicle">
-                @foreach($vehicles as $vehicle)
-                    <option>{{ $vehicle->make }} {{ $vehicle->model }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-row">
-            <div class="col-xs-12">
-                <button type="submit" class="btn btn-primary">Log Hire</button>
-            </div>
-        </div>
-    </div>
-</form>
+@endsection

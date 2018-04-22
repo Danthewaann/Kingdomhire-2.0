@@ -14,9 +14,9 @@ class VehiclesTableSeeder extends Seeder
     public function run()
     {
         DB::table('vehicles')->delete();
-        $small = DB::table('vehicle_rates')->where('engine_size', '=', 'small')->get()->pluck('id')[0];
-        $medium = DB::table('vehicle_rates')->where('engine_size', '=', 'medium')->get()->pluck('id')[0];
-        $large = DB::table('vehicle_rates')->where('engine_size', '=', 'large')->get()->pluck('id')[0];
+        $small = DB::table('vehicle_rates')->where('engine_size', '=', 'Small')->get()->pluck('id')[0];
+        $medium = DB::table('vehicle_rates')->where('engine_size', '=', 'Medium')->get()->pluck('id')[0];
+        $large = DB::table('vehicle_rates')->where('engine_size', '=', 'Large')->get()->pluck('id')[0];
 
         \App\Vehicle::create(array(
             'make' => 'Peugeot',

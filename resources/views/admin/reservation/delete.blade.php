@@ -1,4 +1,4 @@
-<form action="{{ url('admin/deleteReservation') }}" method="post">
+<form action="{{ url('admin/reservations/delete') }}" method="post">
     {{csrf_field()}}
     <div class="form-row">
         <div class="col-xs-12">

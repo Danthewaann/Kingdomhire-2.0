@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -71,10 +72,21 @@
       </div>
     </nav>
 
-    @yield('content')
+    <div class="container">
+      @yield('content')
+    </div>
   </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $(function() {
+        $( ".datepicker" ).datepicker({
+          dateFormat: "yy-mm-dd"
+        });
+      });
+    </script>
 </body>
 </html>

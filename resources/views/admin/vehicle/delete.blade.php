@@ -1,4 +1,4 @@
-<form action="{{ url('admin/deleteVehicle') }}" method="post">
+<form action="{{ url('admin/vehicles/delete') }}" method="post">
     {{csrf_field()}}
     <div class="form-row">
         <div class="col-xs-12">

@@ -20,8 +20,10 @@ Route::get('/contact', 'PagesController@contact')->name('contact');
 Route::get('/admin', 'AdminController@index');
 Route::post('/admin/deleteVehicle', 'AdminController@deleteVehicle');
 Route::post('/admin/addVehicle', 'AdminController@addVehicle');
+Route::get('/admin/reservation', 'AdminController@getReservationForm');
 Route::post('/admin/logReservation', 'AdminController@logReservation');
 Route::post('/admin/deleteReservation', 'AdminController@deleteReservation');
+Route::get('/admin/hire', 'AdminController@getHireForm');
 Route::post('/admin/logHire', 'AdminController@logHire');
 Route::post('/admin/deleteHire', 'AdminController@deleteHire');
 

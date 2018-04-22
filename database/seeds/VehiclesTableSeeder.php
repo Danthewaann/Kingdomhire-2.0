@@ -24,7 +24,6 @@ class VehiclesTableSeeder extends Seeder
             'fuel_type' => 'Petrol',
             'gear_type' => 'Manuel',
             'seats' => '4',
-            'status' => 'available',
             'type' => 'Hatchback',
             'image_path' => asset('storage/imgs/peugeot_307.jpg'),
             'vehicle_rate_id' => $small
@@ -35,7 +34,6 @@ class VehiclesTableSeeder extends Seeder
             'fuel_type' => 'Petrol',
             'gear_type' => 'Manuel',
             'seats' => '5',
-            'status' => 'available',
             'type' => 'Hatchback',
             'image_path' => asset('storage/imgs/peugeot_308.jpg'),
             'vehicle_rate_id' => $small
@@ -46,7 +44,6 @@ class VehiclesTableSeeder extends Seeder
             'fuel_type' => 'Diesel',
             'gear_type' => 'Manuel',
             'seats' => '3',
-            'status' => 'available',
             'type' => 'Large Van',
             'image_path' => asset('storage/imgs/renault_master.jpg'),
             'vehicle_rate_id' => $large
@@ -57,7 +54,6 @@ class VehiclesTableSeeder extends Seeder
             'fuel_type' => 'Diesel',
             'gear_type' => 'Manuel',
             'seats' => '3',
-            'status' => 'available',
             'type' => 'Small Van',
             'image_path' => asset('storage/imgs/renault_traffic.jpg'),
             'vehicle_rate_id' => $medium
@@ -68,7 +64,6 @@ class VehiclesTableSeeder extends Seeder
             'fuel_type' => 'Diesel',
             'gear_type' => 'Manuel/Automatic',
             'seats' => '7',
-            'status' => 'available',
             'type' => 'People Carrier',
             'image_path' => asset('storage/imgs/kia_sedona.jpg'),
             'vehicle_rate_id' => $medium
@@ -79,7 +74,6 @@ class VehiclesTableSeeder extends Seeder
             'fuel_type' => 'Petrol',
             'gear_type' => 'Automatic',
             'seats' => '5',
-            'status' => 'available',
             'type' => 'Convertable',
             'image_path' => asset('storage/imgs/megane_convertable.jpg'),
             'vehicle_rate_id' => $medium

@@ -11,7 +11,8 @@ class ReservationsController extends Controller
 {
     private $rules = [
         'start_date' => 'required|date',
-        'end_date' => 'required|date'
+        'end_date' => 'required|date',
+        'vehicle' => 'required'
     ];
 
     /**
@@ -26,11 +27,7 @@ class ReservationsController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make([
-            'start_date' => $request->get('start_date'),
-            'end_date' => $request->get('end_date')],
-            $this->rules
-        );
+        $validator = Validator::make($request->all(), $this->rules);
 
         if($validator->fails())
         {
@@ -54,7 +51,7 @@ class ReservationsController extends Controller
     public function cancel($id)
     {
         DB::table('reservations')->where('id', '=', $id)->delete();
-        return redirect()->to('/admin');
+        return redirect()->back();
     }
 
     public function showForm($make, $model)

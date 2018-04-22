@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-    <div class="panel-heading"><h3>Current Vehicles list</h3></div>
+    <div class="panel-heading"><h3>Current vehicles list</h3></div>
     <div class="panel-body">
         <table class="table">
             <thead>
@@ -19,7 +19,7 @@
             @foreach($vehicles as $vehicle)
                 @if($vehicle->is_active == true)
                 <tr>
-                    <td>{{ $vehicle->make }} {{ $vehicle->model }}</td>
+                    <td><a href="{{ route('vehicle.show', ['make' => $vehicle->make, 'model' => $vehicle->model]) }}">{{ $vehicle->make }} {{ $vehicle->model }}</a></td>
                     <td>{{ $vehicle->type }}</td>
                     <td>{{ $vehicle->fuel_type }}</td>
                     <td>{{ $vehicle->gear_type }}</td>

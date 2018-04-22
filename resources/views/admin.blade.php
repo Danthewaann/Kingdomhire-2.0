@@ -16,20 +16,16 @@
     </div>
     <div class="row">
         @if(!$vehicles->isEmpty())
-            <div class="col-md-6">
+            <div class="col-md-7">
                 @include('admin.vehicle.add')
             </div>
         @endif
-        @if(!$reservations->isEmpty())
-            <div class="col-md-6">
-                @include('admin.reservation.list')
-            </div>
-        @endif
-        @if(!$hires->isEmpty())
-            <div class="col-md-6">
-                @include('admin.hire.list')
-            </div>
-        @endif
+        <div class="col-md-5">
+            @include('admin.reservation.list')
+        </div>
+        <div class="col-md-5">
+            @include('admin.hire.list')
+        </div>
     </div>
 </div>
 @endsection

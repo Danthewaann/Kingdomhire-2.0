@@ -13,6 +13,7 @@ class HiresController extends Controller
         'start_date' => 'required|date',
         'end_date' => 'required|date'
     ];
+
     /**
      * Create a new controller instance.
      *
@@ -25,11 +26,7 @@ class HiresController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make([
-            'start_date' => $request->get('start_date'),
-            'end_date' => $request->get('end_date')],
-            $this->rules
-        );
+        $validator = Validator::make($request->all(), $this->rules);
 
         if($validator->fails())
         {

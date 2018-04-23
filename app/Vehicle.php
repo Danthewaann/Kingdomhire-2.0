@@ -44,4 +44,13 @@ class Vehicle extends Model
     {
         return $this->belongsTo(VehicleRate::class, 'vehicle_rate_id');
     }
+
+    /**
+     * Get images associated with the vehicle
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->hasMany(VehicleImage::class);
+    }
 }

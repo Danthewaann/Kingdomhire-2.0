@@ -29,7 +29,7 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin', [
-            'vehicles' => DBQuery::getVehicles(),
+            'vehicles' => DBQuery::getActiveVehicles(),
             'reservations' => DBQuery::getReservations(),
             'hires' => DBQuery::getHires(),
             'rates' => DBQuery::getVehicleRates()

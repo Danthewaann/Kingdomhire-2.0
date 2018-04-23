@@ -6,9 +6,14 @@ use Illuminate\Support\Facades\DB;
 
 class DBQuery
 {
-    public static function getVehicles()
+    public static function getAllVehicles()
     {
         return Vehicle::with(['reservations', 'hires', 'rate'])->get();
+    }
+
+    public static function getActiveVehicles()
+    {
+        return Vehicle::with(['reservations', 'hires', 'rate'])->where('is_active', '=', true)->get();
     }
 
     public static function getReservations()

@@ -17,7 +17,6 @@
                 </tr>
             </thead>
             @foreach($vehicles as $vehicle)
-                @if($vehicle->is_active == true)
                 <tr>
                     <td><a href="{{ route('vehicle.show', ['make' => $vehicle->make, 'model' => $vehicle->model]) }}">{{ $vehicle->make }} {{ $vehicle->model }}</a></td>
                     <td>{{ $vehicle->type }}</td>
@@ -27,13 +26,11 @@
                     <td>£{{ $vehicle->rate->weekly_rate_min }}-£{{ $vehicle->rate->weekly_rate_max }}</td>
                     <td>{{ $vehicle->status }}</td>
                     <td><a href="{{ route('reservation.form', ['make' => $vehicle->make, 'model' => $vehicle->model]) }}">Log Reservation</a></td>
-                    <td><a href="{{ route('hire.form', ['make' => $vehicle->make, 'model' => $vehicle->model]) }}">Log Hire</a></td>
                     <td>{{ Form::open(['route' => ['vehicle.discontinue', $vehicle->make, $vehicle->model], 'method' => 'delete']) }}
                         {{ Form::submit('Discontinue', ['class' => 'btn btn-primary']) }}
                         {{ Form::close() }}
                     </td>
                 </tr>
-                @endif
             @endforeach
         </table>
     </div>

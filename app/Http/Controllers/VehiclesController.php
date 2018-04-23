@@ -74,7 +74,7 @@ class VehiclesController extends Controller
         $vehicle = Vehicle::with(['reservations', 'hires', 'rate'])
             ->where([['make', '=', $make], ['model', '=', $model]])
             ->get();
-//        $reservations = Reservation::where('vehicle_id', '=', $vehicle->first()->id);
+
         return view('admin.vehicle.show', [
             'vehicles' => $vehicle,
             'reservations' => $vehicle->first()->reservations,

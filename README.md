@@ -28,8 +28,8 @@ I will be using a *MySQL* database backend for the new website
       * total profit made within a month/year 
       * total amount of vehicles hired within a month/year 
    5. An admin should be able to see a __list of all active reservations__, __a list of all active hires__ and __a list of all kingdomhire vehicles__ when they log into the __Administrator Dashboard__
-   6. An admin should be __able to log a reservation for a vehicle__, where when the reservation is logged for a date in the future, after some time has passed and the current real world date equals the start date of that reservation, a hire should be automatically logged for that vehicle. After this happens the reservation will be __removed from the reservations table__
-   7. An admin should be __able to log a hire for a vehicle__, this is in cause a customer wants to hire out a vehicle on the same day they contact kingdomhire
+   6. An admin should be __able to log a reservation for a vehicle__, where when the reservation is logged for a date in the future, after some time has passed and the current real world date is equal or earlier than the start date of that reservation, 
+   a hire should be automatically logged for that vehicle. After this happens the reservation will be __removed from the reservations table__
    8. An admin should be able to __reset their password__ if they forget it, this will require __an email verification process__
    9. An admin should be able to __change their password__, they will need to know their __current password__ to do able to do this
    10. To allow an admin to login to the __Administrator Dashboard__, they will need to provide an __email address__ and __password__, which will need be already inserted into the database

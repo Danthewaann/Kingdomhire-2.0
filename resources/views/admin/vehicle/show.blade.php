@@ -2,11 +2,17 @@
 
 @section('content')
 <div class="row">
-  @foreach($vehicles as $vehicle)
+  @if(!empty($vehicles))
+    @foreach($vehicles as $vehicle)
+      <div class="col-md-4">
+        @include('admin.vehicle.list-public')
+      </div>
+    @endforeach
+  @else
     <div class="col-md-4">
       @include('admin.vehicle.list-public')
     </div>
-  @endforeach
+  @endif
   <div class="col-md-4">
     @include('admin.reservation.list')
   </div>

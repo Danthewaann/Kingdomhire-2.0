@@ -35,13 +35,13 @@ class ReservationsController extends Controller
         }
 
         $vehicle_arr = explode(' ', $request->get('vehicle'));
-        $vehicle = DB::table('vehicles')
+        $vehicle_id = DB::table('vehicles')
             ->where([['make', '=', $vehicle_arr[0]], ['model', '=', $vehicle_arr[1]]])
-            ->get(['id'])
-            ->toArray()[0];
+            ->pluck('id')
+            ->first();
 
         Reservation::create(array(
-            'vehicle_id' => $vehicle->id,
+            'vehicle_id' => $vehicle_id,
             'start_date' =>  $request->get('start_date'),
             'end_date' =>  $request->get('end_date')
         ));

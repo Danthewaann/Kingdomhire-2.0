@@ -53,9 +53,4 @@ class HiresController extends Controller
         DB::table('hires')->where('id', '=', $id)->delete();
         return redirect()->to('/admin');
     }
-
-    public function showForm($make, $model)
-    {
-        return view('admin.hire.add', ['make' => $make, 'model' => $model]);
-    }
 }

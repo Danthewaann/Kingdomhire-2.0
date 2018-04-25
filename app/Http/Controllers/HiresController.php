@@ -47,10 +47,4 @@ class HiresController extends Controller
 
         return redirect()->to('/admin');
     }
-
-    public function cancel($id)
-    {
-        DB::table('hires')->where('id', '=', $id)->delete();
-        return redirect()->to('/admin');
-    }
 }

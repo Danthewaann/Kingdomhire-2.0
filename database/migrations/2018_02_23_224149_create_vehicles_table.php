@@ -26,8 +26,8 @@ class CreateVehiclesTable extends Migration
             $table->string('image_path')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
-            $table->integer('vehicle_rate_id')->unsigned();
-            $table->foreign('vehicle_rate_id')->references('id')->on('vehicle_rates');
+            $table->integer('vehicle_rate_id')->unsigned()->nullable();
+            $table->foreign('vehicle_rate_id')->references('id')->onDelete('Set null')->on('vehicle_rates');
         });
     }
 

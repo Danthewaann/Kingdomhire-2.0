@@ -13,7 +13,6 @@
                     <th>Status</th>
                     <th></th>
                     <th></th>
-                    <th></th>
                 </tr>
             </thead>
             @foreach($vehicles as $vehicle)
@@ -23,9 +22,12 @@
                     <td>{{ $vehicle->fuel_type }}</td>
                     <td>{{ $vehicle->gear_type }}</td>
                     <td>{{ $vehicle->seats }}</td>
-                    <td>£{{ $vehicle->rate->weekly_rate_min }}-£{{ $vehicle->rate->weekly_rate_max }}</td>
+                    @if(!empty($vehicle->rate))
+                        <td>{{ $vehicle->rate->engine_size }} (£{{ $vehicle->rate->weekly_rate_min }}-£{{ $vehicle->rate->weekly_rate_max }})</td>
+                    @else
+                        <td>N/A</td>
+                    @endif
                     <td>{{ $vehicle->status }}</td>
-                    <td><a href="{{ route('reservation.form', ['make' => $vehicle->make, 'model' => $vehicle->model]) }}">Log Reservation</a></td>
                     <td>{{ Form::open(['route' => ['vehicle.discontinue', $vehicle->make, $vehicle->model], 'method' => 'delete']) }}
                         {{ Form::submit('Discontinue', ['class' => 'btn btn-primary']) }}
                         {{ Form::close() }}

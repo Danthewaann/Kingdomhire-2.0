@@ -5,7 +5,7 @@
     @else
       <h3>No current reservations</h3>
     @endif
-    <a href="{{ route('reservation.form', ['make' => $vehicle->make, 'model' => $vehicle->model]) }}">Log Reservation</a>
+    <a href="{{ route('reservation.form', ['make' => $vehicle->make, 'model' => $vehicle->model]) }}" class="btn btn-primary" role="button" aria-pressed="true">Log Reservation</a>
   </div>
 @else
   <div class="panel-heading">

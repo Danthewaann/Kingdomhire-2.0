@@ -40,7 +40,7 @@ class ReservationsController extends Controller
             ->where([['make', '=', $vehicle_arr[0]], ['model', '=', $vehicle_arr[1]]])
             ->pluck('id')
             ->first();
-        dd(date('Y-m-d'), $request->get('start_date'));
+
         if($request->get('start_date') == date('Y-m-d'))
         {
             Hire::create(array(

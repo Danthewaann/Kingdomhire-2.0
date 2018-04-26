@@ -7,25 +7,25 @@
             {{ session('status') }}
         </div>
     @endif
-    <div class="row">
-        @if(!$vehicles->isEmpty())
-            <div class="col-md-12">
-               @include('admin.vehicle.list')
-            </div>
-        @endif
+    @if(!$vehicles->isEmpty())
+        <div class="col-md-12">
+            @include('admin.vehicle.list')
+        </div>
+    @endif
+
+    @if(!$vehicles->isEmpty() and !$rates->isEmpty())
+        <div class="col-md-6">
+            @include('admin.vehicle-rate.list')
+            @include('admin.vehicle.add')
+            @include('admin.vehicle-rate.add')
+        </div>
+    @endif
+
+    <div class="col-md-6">
+        @include('admin.reservation.list')
     </div>
-    <div class="row">
-        @if(!$vehicles->isEmpty())
-            <div class="col-md-7">
-                @include('admin.vehicle.add')
-            </div>
-        @endif
-        <div class="col-md-5">
-            @include('admin.reservation.list')
-        </div>
-        <div class="col-md-5">
-            @include('admin.hire.list')
-        </div>
+    <div class="col-md-6">
+        @include('admin.hire.list')
     </div>
 </div>
 @endsection

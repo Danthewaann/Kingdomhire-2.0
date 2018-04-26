@@ -19,10 +19,6 @@ Route::get('/contact', 'PagesController@contact')->name('contact');
 /* Administrator routes */
 Route::get('/admin', 'AdminController@index');
 
-Route::get('/admin/vehicles/{make}_{model}/logHire', 'HiresController@showForm')->name('hire.form');
-Route::post('/admin/hires/log', 'HiresController@store')->name('hire.log');
-Route::delete('/admin/hires/{id}/cancel', 'HiresController@cancel')->name('hire.cancel');
-
 Route::post('/admin/vehicles/add', 'VehiclesController@store')->name('vehicle.add');
 Route::get('/admin/vehicles/{make}_{model}', 'VehiclesController@show')->name('vehicle.show');
 Route::delete('/admin/vehicles/{make}_{model}/discontinue', 'VehiclesController@discontinue')->name('vehicle.discontinue');
@@ -30,6 +26,9 @@ Route::delete('/admin/vehicles/{make}_{model}/discontinue', 'VehiclesController@
 Route::get('/admin/vehicles/{make}_{model}/logReservation', 'ReservationsController@showForm')->name('reservation.form');
 Route::post('/admin/reservations/log', 'ReservationsController@store')->name('reservation.log');
 Route::delete('/admin/reservations/{id}/cancel', 'ReservationsController@cancel')->name('reservation.cancel');
+
+Route::post('/admin/vehicle-rates/add', 'VehicleRatesController@store')->name('vehicle-rate.add');
+Route::delete('/admin/vehicle-rates/{rate}/delete', 'VehicleRatesController@destroy')->name('vehicle-rate.delete');
 
 /* Login routes */
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

@@ -12,7 +12,6 @@
                     <th>Weekly Price Rate</th>
                     <th>Status</th>
                     <th></th>
-                    <th></th>
                 </tr>
             </thead>
             @foreach($vehicles as $vehicle)
@@ -28,10 +27,6 @@
                         <td>N/A</td>
                     @endif
                     <td>{{ $vehicle->status }}</td>
-                    <td>{{ Form::open(['route' => ['vehicle.discontinue', $vehicle->make, $vehicle->model], 'method' => 'delete']) }}
-                        {{ Form::submit('Discontinue', ['class' => 'btn btn-primary']) }}
-                        {{ Form::close() }}
-                    </td>
                 </tr>
             @endforeach
         </table>

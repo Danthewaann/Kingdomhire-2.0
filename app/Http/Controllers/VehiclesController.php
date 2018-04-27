@@ -44,7 +44,7 @@ class VehiclesController extends Controller
 
         $vehicle_rate_id = DB::table('vehicle_rates')
             ->where('engine_size', '=', $request->get('engine_size'))
-            ->get()->pluck('id')[0];
+            ->get()->pluck('id')->first();
 
         Vehicle::create(array(
             'make' => $request->get('make'),
@@ -56,13 +56,33 @@ class VehiclesController extends Controller
             'image_path' => $path,
             'vehicle_rate_id' => $vehicle_rate_id
         ));
-        return redirect()->to('/admin');
+        return redirect()->back();
     }
 
     public function discontinue($make, $model)
     {
-        DB::table('vehicles')->where([['make', '=', $make], ['model', '=', $model]])->update(['is_active' => false]);
-        return redirect()->back();
+        DB::table('vehicles')
+            ->where([['make', '=', $make], ['model', '=', $model]])
+            ->update(['is_active' => false]);
+
+        $vehicle_id = DB::table('vehicles')
+            ->where([['make', '=', $make], ['model', '=', $model]])
+            ->get()->pluck('id')->first();
+
+        DB::table('reservations')
+            ->where('vehicle_id', '=', $vehicle_id)
+            ->delete();
+
+        return redirect()->route('admin.dashboard');
+    }
+
+    public function destroy($make, $model)
+    {
+        DB::table('vehicles')
+            ->where([['make', '=', $make], ['model', '=', $model]])
+            ->delete();
+
+        return redirect()->route('admin.dashboard');
     }
 
     public function showEditForm($make, $model)
@@ -96,7 +116,7 @@ class VehiclesController extends Controller
             ->where([['make', '=', $make], ['model', '=', $model]])
             ->update(['vehicle_rate_id' => $vehicle_rate_id, 'image_path' => $path ]);
 
-        return redirect()->route('vehicle.show', ['make' => $make, 'model' => $model]);
+        return redirect()->route('admin.vehicle.show', ['make' => $make, 'model' => $model]);
     }
 
     public function show($make, $model)

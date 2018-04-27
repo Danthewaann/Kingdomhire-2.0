@@ -38,7 +38,7 @@ class VehicleRatesController extends Controller
             'weekly_rate_min' => $request->get('weekly_rate_min'),
             'weekly_rate_max' => $request->get('weekly_rate_max')
         ));
-        return redirect()->to('/admin');
+        return redirect()->back();
     }
 
     public function destroy($engine_size)

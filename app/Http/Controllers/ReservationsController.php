@@ -12,8 +12,7 @@ class ReservationsController extends Controller
 {
     private $rules = [
         'start_date' => 'required|date',
-        'end_date' => 'required|date',
-        'vehicle' => 'required'
+        'end_date' => 'required|date'
     ];
 
     /**
@@ -26,7 +25,7 @@ class ReservationsController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $make, $model)
     {
         $validator = Validator::make($request->all(), $this->rules);
 
@@ -35,9 +34,8 @@ class ReservationsController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-        $vehicle_arr = explode(' ', $request->get('vehicle'));
         $vehicle_id = DB::table('vehicles')
-            ->where([['make', '=', $vehicle_arr[0]], ['model', '=', $vehicle_arr[1]]])
+            ->where([['make', '=', $make ], ['model', '=', $model]])
             ->pluck('id')
             ->first();
 
@@ -57,7 +55,7 @@ class ReservationsController extends Controller
                 'end_date' =>  $request->get('end_date')
             ));
         }
-        return redirect()->route('vehicle.show', ['make' => $vehicle_arr[0], 'model' => $vehicle_arr[1]]);
+        return redirect()->route('vehicle.show', ['make' => $make, 'model' => $model]);
     }
 
     public function cancel($id)

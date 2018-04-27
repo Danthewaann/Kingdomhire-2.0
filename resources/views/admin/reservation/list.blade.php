@@ -7,6 +7,7 @@
       </div>
     @endif
   @else
+
     @if(!$reservations->isEmpty())
       <div class="panel-body">
         @include('admin.reservation.list-table')

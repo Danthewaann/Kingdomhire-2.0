@@ -7,10 +7,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Vehicle;
+use App\DBQuery;
 
 class VehiclesController extends Controller
 {
-    private $rules = [
+    private $store_rules = [
+        'make' => 'required',
+        'model' => 'required',
+        'seats' => 'required|numeric|min:1|max:256'
+    ];
+
+    private $edit_rules = [
         'make' => 'required',
         'model' => 'required',
         'seats' => 'required|numeric|min:1|max:256'
@@ -27,7 +34,7 @@ class VehiclesController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->rules);
+        $validator = Validator::make($request->all(), $this->store_rules);
 
         if($validator->fails())
         {
@@ -64,9 +71,38 @@ class VehiclesController extends Controller
         return redirect()->back();
     }
 
-    public function destroy()
+    public function showEditForm($make, $model)
     {
+        $vehicle = Vehicle::with(['reservations', 'hires', 'rate'])
+            ->where([['make', '=', $make], ['model', '=', $model]])
+            ->get()->first();
 
+        return view('admin.vehicle.edit', ['vehicle' => $vehicle, 'rates' => DBQuery::getVehicleRates()]);
+    }
+
+    public function edit(Request $request, $make, $model)
+    {
+        $path = null;
+        if($request->hasFile('vehicle_image')) {
+            $image_name = $make.'_'.$model.'.'.$request->file('vehicle_image')->extension();
+            $path = $request->file('vehicle_image')->storeAs('imgs', $image_name, 'public');
+            $path = asset('storage/' . $path);
+        }
+        else {
+            $path = DB::table('vehicles')
+                ->where([['make', '=', $make], ['model', '=', $model]])
+                ->get()->pluck('image_path')->first();
+        }
+
+        $vehicle_rate_id = DB::table('vehicle_rates')
+            ->where('engine_size', '=', $request->get('engine_size'))
+            ->get()->pluck('id')->first();
+
+        DB::table('vehicles')
+            ->where([['make', '=', $make], ['model', '=', $model]])
+            ->update(['vehicle_rate_id' => $vehicle_rate_id, 'image_path' => $path ]);
+
+        return redirect()->route('vehicle.show', ['make' => $make, 'model' => $model]);
     }
 
     public function show($make, $model)

@@ -20,8 +20,11 @@ Route::get('/contact', 'PagesController@contact')->name('contact');
 Route::get('/admin', 'AdminController@index');
 
 Route::post('/admin/vehicles/add', 'VehiclesController@store')->name('vehicle.add');
+Route::post('/admin/vehicles/{make}_{model}/edit', 'VehiclesController@edit')->name('vehicle.edit');
+Route::get('/admin/vehicles/{make}_{model}/edit', 'VehiclesController@showEditForm')->name('vehicle.editForm');
 Route::get('/admin/vehicles/{make}_{model}', 'VehiclesController@show')->name('vehicle.show');
 Route::delete('/admin/vehicles/{make}_{model}/discontinue', 'VehiclesController@discontinue')->name('vehicle.discontinue');
+Route::delete('/admin/vehicles/{make}_{model}/delete', 'VehiclesController@destroy')->name('vehicle.delete');
 
 Route::get('/admin/vehicles/{make}_{model}/logReservation', 'ReservationsController@showForm')->name('reservation.form');
 Route::post('/admin/reservations/log', 'ReservationsController@store')->name('reservation.log');

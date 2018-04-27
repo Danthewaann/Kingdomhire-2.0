@@ -16,12 +16,6 @@ class VehiclesController extends Controller
         'model' => 'required',
         'seats' => 'required|numeric|min:1|max:256'
     ];
-
-    private $edit_rules = [
-        'make' => 'required',
-        'model' => 'required',
-        'seats' => 'required|numeric|min:1|max:256'
-    ];
     /**
      * Create a new controller instance.
      *

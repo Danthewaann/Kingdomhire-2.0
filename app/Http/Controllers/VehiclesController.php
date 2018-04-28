@@ -116,7 +116,7 @@ class VehiclesController extends Controller
             ->where([['make', '=', $make], ['model', '=', $model]])
             ->update(['vehicle_rate_id' => $vehicle_rate_id, 'image_path' => $path ]);
 
-        return redirect()->route('admin.vehicle.show', ['make' => $make, 'model' => $model]);
+        return redirect()->route('vehicle.show', ['make' => $make, 'model' => $model]);
     }
 
     public function show($make, $model)

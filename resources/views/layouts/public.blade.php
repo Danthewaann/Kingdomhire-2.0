@@ -35,9 +35,9 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
           <!-- Left Side Of Navbar -->
           <ul class="nav navbar-nav">
-            <a href="{{ route('home') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Home</a>
-            <a href="{{ route('vehicles') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Vehicles</a>
-            <a href="{{ route('contact') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Contact</a>
+            <a href="{{ route('public.home') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Home</a>
+            <a href="{{ route('public.vehicles') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Vehicles</a>
+            <a href="{{ route('public.contact') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Contact</a>
 
           </ul>
           <!-- Right Side Of Navbar -->

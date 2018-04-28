@@ -12,9 +12,9 @@
 */
 
 /* Basic page routes */
-Route::get('/', 'PagesController@home')->name('home');
-Route::get('/vehicles', 'PagesController@vehicles')->name('vehicles');
-Route::get('/contact', 'PagesController@contact')->name('contact');
+Route::get('/', 'PagesController@home')->name('public.home');
+Route::get('/vehicles', 'PagesController@vehicles')->name('public.vehicles');
+Route::get('/contact', 'PagesController@contact')->name('public.contact');
 
 /* Administrator routes */
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard');

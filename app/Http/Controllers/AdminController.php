@@ -28,7 +28,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin', [
+        return view('admin.admin-dashboard', [
             'vehicles' => DBQuery::getActiveVehicles(),
             'reservations' => DBQuery::getReservations(),
             'hires' => DBQuery::getHires(),

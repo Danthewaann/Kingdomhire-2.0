@@ -15,16 +15,16 @@ class PagesController extends Controller
     public function vehicles()
     {
         $vehicles = DB::table('vehicles')->where('is_active', '=', true)->get();
-        return view('vehicles', ['vehicles' => $vehicles]);
+        return view('public.vehicles', ['vehicles' => $vehicles]);
     }
 
     public function contact()
     {
-        return view('contact');
+        return view('public.contact');
     }
 
     public function home()
     {
-        return view('home');
+        return view('public.home');
     }
 }

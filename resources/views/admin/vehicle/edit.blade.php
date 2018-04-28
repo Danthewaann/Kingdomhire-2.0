@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin-main')
 
 @section('content')
 <div class="panel panel-default">
@@ -10,11 +10,17 @@
         <div class="form-group col-xs-6">
           <label for="engine_size">Engine Size</label>
           <select id="engine_size" class="form-control" name="engine_size">
-            <option value="{{ $vehicle->rate->engine_size }}">{{ $vehicle->rate->engine_size }} (£{{ $vehicle->rate->weekly_rate_min }}-£{{ $vehicle->rate->weekly_rate_max }})</option>
+            @if($vehicle->rate != null)
+              <option value="{{ $vehicle->rate->engine_size }}">{{ $vehicle->rate->engine_size }} (£{{ $vehicle->rate->weekly_rate_min }}-£{{ $vehicle->rate->weekly_rate_max }})</option>
+            @endif
             @foreach($rates as $rate)
-              @if($rate->engine_size != $vehicle->rate->engine_size)
-                <option value="{{ $rate->engine_size }}">{{ $rate->engine_size }} (£{{ $rate->weekly_rate_min }}-£{{ $rate->weekly_rate_max }})</option>
-              @endif
+                @if($vehicle->rate != null)
+                  @if($rate->engine_size != $vehicle->rate->engine_size)
+                    <option value="{{ $rate->engine_size }}">{{ $rate->engine_size }} (£{{ $rate->weekly_rate_min }}-£{{ $rate->weekly_rate_max }})</option>
+                  @endif
+                @else
+                  <option value="{{ $rate->engine_size }}">{{ $rate->engine_size }} (£{{ $rate->weekly_rate_min }}-£{{ $rate->weekly_rate_max }})</option>
+                @endif
             @endforeach
           </select>
         </div>

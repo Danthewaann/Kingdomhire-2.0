@@ -2,7 +2,7 @@
 <table class="table">
   <tr>
     <td>Vehicle</td>
-    <td>{{ $vehicle->make }} {{ $vehicle->model }}</td>
+    <td>{{ $vehicle->name() }}</td>
   </tr>
   <tr>
     <td>Type</td>

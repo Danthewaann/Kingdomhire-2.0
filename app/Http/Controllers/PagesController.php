@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\DBQuery;
 
 class PagesController extends Controller
 {
@@ -14,8 +13,7 @@ class PagesController extends Controller
 
     public function vehicles()
     {
-        $vehicles = DB::table('vehicles')->where('is_active', '=', true)->get();
-        return view('public.vehicles', ['vehicles' => $vehicles]);
+        return view('public.vehicles', ['vehicles' => DBQuery::getActiveVehicles()]);
     }
 
     public function contact()

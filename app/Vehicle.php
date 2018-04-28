@@ -54,6 +54,10 @@ class Vehicle extends Model
         return $this->hasMany(VehicleImage::class);
     }
 
+    /**
+     * Get the vehicle name (make + model)
+     * @return string
+     */
     public function name()
     {
         return $this->make.' '.$this->model;

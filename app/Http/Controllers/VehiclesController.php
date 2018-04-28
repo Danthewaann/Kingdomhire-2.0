@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;

@@ -3,7 +3,7 @@
   <table class="table" style="max-width: 300px;">
     <tr>
       <th>Vehicle</th>
-      <td><a href="{{ route('vehicle.show', ['make' => $vehicle->make, 'model' => $vehicle->model]) }}">{{ $vehicle->make }} {{ $vehicle->model }}</a></td>
+      <td><a href="{{ route('vehicle.show', ['make' => $vehicle->make, 'model' => $vehicle->model]) }}">{{ $vehicle->name() }}</a></td>
     </tr>
     <tr>
       <th>Status</th>

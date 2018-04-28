@@ -47,4 +47,9 @@ class HiresController extends Controller
 
         return redirect()->to('/admin');
     }
+
+    public function all()
+    {
+
+    }
 }

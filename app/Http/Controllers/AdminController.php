@@ -31,8 +31,7 @@ class AdminController extends Controller
         return view('admin.admin-dashboard', [
             'vehicles' => DBQuery::getActiveVehicles(),
             'reservations' => DBQuery::getReservations(),
-            'hires' => DBQuery::getHires(),
-            'rates' => DBQuery::getVehicleRates()
+            'hires' => DBQuery::getActiveHires()
         ]);
     }
 }

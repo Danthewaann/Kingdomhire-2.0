@@ -63,7 +63,7 @@ class VehiclesController extends Controller
     {
         DB::table('vehicles')
             ->where([['make', '=', $make], ['model', '=', $model]])
-            ->update(['is_active' => false]);
+            ->update(['is_active' => false, 'status' => 'Unavailable']);
 
         $vehicle_id = DB::table('vehicles')
             ->where([['make', '=', $make], ['model', '=', $model]])
@@ -72,6 +72,10 @@ class VehiclesController extends Controller
         DB::table('reservations')
             ->where('vehicle_id', '=', $vehicle_id)
             ->delete();
+
+        DB::table('hires')
+            ->where('vehicle_id', '=', $vehicle_id)
+            ->update(['is_active' => false]);
 
         return redirect()->route('admin.dashboard');
     }
@@ -126,5 +130,13 @@ class VehiclesController extends Controller
             ->get()->first();
 
         return view('admin.vehicle.show', ['vehicle' => $vehicle]);
+    }
+
+    public function all()
+    {
+        return view('admin.admin-vehicles', [
+            'rates' => DBQuery::getVehicleRates(),
+            'vehicles' => DBQuery::getAllVehicles()
+        ]);
     }
 }

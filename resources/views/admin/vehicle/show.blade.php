@@ -15,7 +15,7 @@
   @else
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading"><h1>Vehicle Dashboard</h1></div>
+        <div class="panel-heading"><h1>{{ $vehicle->name() }} Dashboard</h1></div>
         <div class="panel-body">
           <ul class="nav navbar-nav">
             <a href="{{ route('reservation.form', ['make' => $vehicle->make, 'model' => $vehicle->model]) }}"

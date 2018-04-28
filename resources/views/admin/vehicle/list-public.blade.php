@@ -1,12 +1,8 @@
 <img src="{{ $vehicle->image_path }}" style="width: 100%; max-height: 225px;"/>
 <table class="table">
   <tr>
-    <td>Make</td>
-    <td>{{ $vehicle->make }}</td>
-  </tr>
-  <tr>
-    <td>Model</td>
-    <td>{{ $vehicle->model }}</td>
+    <td>Vehicle</td>
+    <td>{{ $vehicle->make }} {{ $vehicle->model }}</td>
   </tr>
   <tr>
     <td>Type</td>

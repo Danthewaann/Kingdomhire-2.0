@@ -35,15 +35,14 @@
       <div class="collapse navbar-collapse" id="app-navbar-collapse">
         <!-- Left Side Of Navbar -->
         <ul class="nav navbar-nav">
-          {{--<a href="{{ route('home') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Home</a>--}}
-          {{--<a href="{{ route('vehicles') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Vehicles</a>--}}
-          {{--<a href="{{ route('contact') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Contact</a>--}}
-
+          <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Home</a>
+          <a href="{{ route('admin.vehicles') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Vehicles</a>
+          <a href="{{ route('admin.reservations') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Reservations</a>
+          <a href="{{ route('admin.hires') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Hires</a>
         </ul>
         <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">
           <!-- Authentication Links -->
-          <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Admin</a>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
               {{ Auth::user()->name }} <span class="caret"></span>

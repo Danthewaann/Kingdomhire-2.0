@@ -3,6 +3,7 @@
     <tr>
       @if(!empty($vehicles))
         <th>Vehicle</th>
+        <th>Is Active</th>
       @endif
       <th>Start Date</th>
       <th>End Date</th>

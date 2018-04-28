@@ -21,9 +21,14 @@ class DBQuery
         return DB::table('reservations')->get();
     }
 
-    public static function getHires()
+    public static function getAllHires()
     {
         return DB::table('hires')->get();
+    }
+
+    public static function getActiveHires()
+    {
+        return DB::table('hires')->where('is_active', '=', true)->get();
     }
 
     public static function getVehicleRates()

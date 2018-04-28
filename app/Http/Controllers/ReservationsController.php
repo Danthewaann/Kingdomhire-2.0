@@ -46,6 +46,10 @@ class ReservationsController extends Controller
                 'start_date' =>  $request->get('start_date'),
                 'end_date' =>  $request->get('end_date')
             ));
+
+            DB::table('vehicles')
+                ->where([['make', '=', $make], ['model', '=', $model]])
+                ->update(['status' => 'Out for hire']);
         }
         else
         {
@@ -67,5 +71,10 @@ class ReservationsController extends Controller
     public function showForm($make, $model)
     {
         return view('admin.reservation.add', ['make' => $make, 'model' => $model]);
+    }
+
+    public function all()
+    {
+        
     }
 }

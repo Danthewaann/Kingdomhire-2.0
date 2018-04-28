@@ -53,4 +53,9 @@ class Vehicle extends Model
     {
         return $this->hasMany(VehicleImage::class);
     }
+
+    public function name()
+    {
+        return $this->make.' '.$this->model;
+    }
 }

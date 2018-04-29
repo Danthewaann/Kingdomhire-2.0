@@ -32,6 +32,11 @@ Route::get('/admin/reservations/', 'ReservationsController@all')->name('admin.re
 Route::get('/admin/hires/', 'HiresController@all')->name('admin.hires');
 Route::get('/admin/vehicles/{make}_{model}/log-reservation', 'ReservationsController@showForm')->name('reservation.form');
 Route::post('/admin/vehicles/{make}_{model}/log-reservation', 'ReservationsController@store')->name('reservation.log');
+Route::get('/admin/vehicles/{make}_{model}/reservation-{id}/edit', 'ReservationsController@showEditForm')->name('reservation.editForm');
+Route::post('/admin/vehicles/{make}_{model}/reservation-{id}/edit', 'ReservationsController@edit')->name('reservation.edit');
+Route::get('/admin/vehicles/{make}_{model}/hire-{id}/edit', 'HiresController@showEditForm')->name('hire.editForm');
+Route::post('/admin/vehicles/{make}_{model}/hire-{id}/edit', 'HiresController@edit')->name('hire.edit');
+
 Route::delete('/admin/reservation-{id}/cancel', 'ReservationsController@cancel')->name('reservation.cancel');
 
 Route::post('/admin/vehicle-rates/add', 'VehicleRatesController@store')->name('vehicle-rate.add');

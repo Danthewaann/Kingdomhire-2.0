@@ -7,6 +7,7 @@
       <th>Start Date</th>
       <th>End Date</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   @if(!empty($vehicles))

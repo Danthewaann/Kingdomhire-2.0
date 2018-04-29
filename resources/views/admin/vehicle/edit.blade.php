@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="panel panel-default">
-  <div class="panel-heading"><h3>Edit {{ $vehicle->make }} {{ $vehicle->model }}</h3></div>
+  <div class="panel-heading"><h3>Edit {{ $vehicle->name() }}</h3></div>
   <div class="panel-body">
     <form action="{{ route('vehicle.edit', ['make' => $vehicle->make, 'model' => $vehicle->model]) }}" method="post" enctype="multipart/form-data">
       {{csrf_field()}}

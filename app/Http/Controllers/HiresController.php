@@ -10,7 +10,6 @@ use App\Hire;
 class HiresController extends Controller
 {
     private $rules = [
-        'start_date' => 'required|date',
         'end_date' => 'required|date'
     ];
 
@@ -46,6 +45,28 @@ class HiresController extends Controller
         ));
 
         return redirect()->to('/admin');
+    }
+
+    public function showEditForm($make, $model, $id)
+    {
+        $hire = DB::table('hires')->where('id', '=', $id)->get()->first();
+        return view('admin.hire.edit', ['make' => $make, 'model' => $model, 'hire' => $hire]);
+    }
+
+    public function edit(Request $request, $make, $model, $id)
+    {
+        $validator = Validator::make($request->all(), $this->rules);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        DB::table('hires')->where('id', '=', $id)->update([
+            'end_date' => $request->get('end_date')
+        ]);
+
+        return redirect()->route('vehicle.show', ['make' => $make, 'model' => $model]);
     }
 
     public function all()

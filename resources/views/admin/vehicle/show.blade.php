@@ -41,10 +41,10 @@
       </div>
     </div>
   @endif
-  <div class="col-md-4">
+  <div class="col-md-5">
     @include('admin.reservation.list')
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     @include('admin.hire.list')
   </div>
 </div>

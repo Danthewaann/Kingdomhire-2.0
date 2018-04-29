@@ -63,7 +63,8 @@ class HiresController extends Controller
         }
 
         DB::table('hires')->where('id', '=', $id)->update([
-            'end_date' => $request->get('end_date')
+            'end_date' => $request->get('end_date'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         return redirect()->route('vehicle.show', ['make' => $make, 'model' => $model]);

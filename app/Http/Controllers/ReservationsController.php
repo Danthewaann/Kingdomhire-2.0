@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -90,7 +91,8 @@ class ReservationsController extends Controller
 
         DB::table('reservations')->where('id', '=', $id)->update([
             'start_date' => $request->get('start_date'),
-            'end_date' => $request->get('end_date')
+            'end_date' => $request->get('end_date'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         return redirect()->route('vehicle.show', ['make' => $make, 'model' => $model]);

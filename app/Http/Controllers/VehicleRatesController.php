@@ -72,6 +72,7 @@ class VehicleRatesController extends Controller
             ->update([
                 'weekly_rate_min' => $request->get('weekly_rate_min'),
                 'weekly_rate_max' => $request->get('weekly_rate_max'),
+                'updated_at' => date('Y-m-d H:i:s')
             ]);
 
         return redirect()->route('admin.dashboard');

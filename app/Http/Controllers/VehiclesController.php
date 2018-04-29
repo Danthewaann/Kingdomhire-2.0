@@ -117,7 +117,11 @@ class VehiclesController extends Controller
 
         DB::table('vehicles')
             ->where([['make', '=', $make], ['model', '=', $model]])
-            ->update(['vehicle_rate_id' => $vehicle_rate_id, 'image_path' => $path ]);
+            ->update([
+                'vehicle_rate_id' => $vehicle_rate_id,
+                'image_path' => $path,
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
 
         return redirect()->route('vehicle.show', ['make' => $make, 'model' => $model]);
     }

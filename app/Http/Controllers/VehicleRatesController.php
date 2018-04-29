@@ -14,6 +14,11 @@ class VehicleRatesController extends Controller
         'weekly_rate_min' => 'required',
         'weekly_rate_max' => 'required'
     ];
+
+    private $edit_rules = [
+        'weekly_rate_min' => 'required',
+        'weekly_rate_max' => 'required'
+    ];
     /**
      * Create a new controller instance.
      *
@@ -45,6 +50,31 @@ class VehicleRatesController extends Controller
     {
         DB::table('vehicle_rates')->where('engine_size', '=', $engine_size)->delete();
         return redirect()->back();
+    }
+
+    public function showEditForm($engine_size)
+    {
+        $rate = DB::table('vehicle_rates')->where('engine_size', '=', $engine_size)->get()->first();
+        return view('admin.vehicle-rate.edit', ['rate' => $rate]);
+    }
+
+    public function edit(Request $request, $engine_size)
+    {
+        $validator = Validator::make($request->all(), $this->edit_rules);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        DB::table('vehicle_rates')
+            ->where('engine_size', '=', $engine_size)
+            ->update([
+                'weekly_rate_min' => $request->get('weekly_rate_min'),
+                'weekly_rate_max' => $request->get('weekly_rate_max'),
+            ]);
+
+        return redirect()->route('admin.dashboard');
     }
 
 }

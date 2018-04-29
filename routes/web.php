@@ -40,6 +40,8 @@ Route::post('/admin/vehicles/{make}_{model}/hire-{id}/edit', 'HiresController@ed
 Route::delete('/admin/reservation-{id}/cancel', 'ReservationsController@cancel')->name('reservation.cancel');
 
 Route::post('/admin/vehicle-rates/add', 'VehicleRatesController@store')->name('vehicle-rate.add');
+Route::get('/admin/vehicle-rates/{rate}/edit', 'VehicleRatesController@showEditForm')->name('vehicle-rate.editForm');
+Route::post('/admin/vehicle-rates/{rate}/edit', 'VehicleRatesController@edit')->name('vehicle-rate.edit');
 Route::delete('/admin/vehicle-rates/{rate}/delete', 'VehicleRatesController@destroy')->name('vehicle-rate.delete');
 
 /* Login routes */

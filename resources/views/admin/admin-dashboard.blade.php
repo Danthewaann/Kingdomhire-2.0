@@ -7,17 +7,14 @@
         </div>
     @endif
     <div class="panel panel-default">
-        <div class="panel-heading"><h1>Main Dashboard</h1></div>
-        {{--<div class="panel-body">--}}
-        {{--</div>--}}
+      <div class="panel-heading"><h1>Main Dashboard</h1></div>
     </div>
-            <div class="col-md-6">
-                @include('admin.vehicle.list')
-            </div>
-            <div class="col-md-6">
-                @include('admin.reservation.list')
-                @include('admin.hire.list')
-            </div>
-        {{--</div>--}}
-    {{--</div>--}}
+    <div class="col-md-6">
+      @include('admin.vehicle.list')
+      @include('admin.vehicle-rate.list')
+    </div>
+    <div class="col-md-6">
+      @include('admin.reservation.list')
+      @include('admin.hire.list')
+    </div>
 @endsection

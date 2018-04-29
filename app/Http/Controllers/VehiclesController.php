@@ -41,10 +41,6 @@ class VehiclesController extends Controller
             $path = asset('storage/' . $path);
         }
 
-        $vehicle_rate_id = DB::table('vehicle_rates')
-            ->where('engine_size', '=', $request->get('engine_size'))
-            ->get()->pluck('id')->first();
-
         Vehicle::create(array(
             'make' => $request->get('make'),
             'model' => $request->get('model'),
@@ -53,20 +49,19 @@ class VehiclesController extends Controller
             'seats' => $request->get('seats'),
             'type' => $request->get('type'),
             'image_path' => $path,
-            'vehicle_rate_id' => $vehicle_rate_id
+            'vehicle_rate_id' =>  DBQuery::getVehicleRate($request->get('engine_size'))->id
         ));
+
         return redirect()->back();
     }
 
-    public function discontinue($make, $model)
+    public function discontinue($make, $model, $id)
     {
         DB::table('vehicles')
-            ->where([['make', '=', $make], ['model', '=', $model]])
+            ->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])
             ->update(['is_active' => false, 'status' => 'Unavailable']);
 
-        $vehicle_id = DB::table('vehicles')
-            ->where([['make', '=', $make], ['model', '=', $model]])
-            ->get()->pluck('id')->first();
+        $vehicle_id = DBQuery::getVehicle($make, $model, $id)->id;
 
         DB::table('reservations')
             ->where('vehicle_id', '=', $vehicle_id)
@@ -79,25 +74,24 @@ class VehiclesController extends Controller
         return redirect()->route('admin.dashboard');
     }
 
-    public function destroy($make, $model)
+    public function destroy($make, $model, $id)
     {
         DB::table('vehicles')
-            ->where([['make', '=', $make], ['model', '=', $model]])
+            ->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])
             ->delete();
 
         return redirect()->route('admin.dashboard');
     }
 
-    public function showEditForm($make, $model)
+    public function showEditForm($make, $model, $id)
     {
-        $vehicle = Vehicle::with(['reservations', 'hires', 'rate'])
-            ->where([['make', '=', $make], ['model', '=', $model]])
-            ->get()->first();
-
-        return view('admin.vehicle.edit', ['vehicle' => $vehicle, 'rates' => DBQuery::getVehicleRates()]);
+        return view('admin.vehicle.edit', [
+            'vehicle' => DBQuery::getVehicle($make, $model, $id),
+            'rates' => DBQuery::getVehicleRates()
+        ]);
     }
 
-    public function edit(Request $request, $make, $model)
+    public function edit(Request $request, $make, $model, $id)
     {
         $path = null;
         if($request->hasFile('vehicle_image')) {
@@ -106,33 +100,29 @@ class VehiclesController extends Controller
             $path = asset('storage/' . $path);
         }
         else {
-            $path = DB::table('vehicles')
-                ->where([['make', '=', $make], ['model', '=', $model]])
-                ->get()->pluck('image_path')->first();
+            $path = DBQuery::getVehicle($make, $model, $id)->pluck('image_path');
         }
 
-        $vehicle_rate_id = DB::table('vehicle_rates')
-            ->where('engine_size', '=', $request->get('engine_size'))
-            ->get()->pluck('id')->first();
-
         DB::table('vehicles')
-            ->where([['make', '=', $make], ['model', '=', $model]])
+            ->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])
             ->update([
-                'vehicle_rate_id' => $vehicle_rate_id,
+                'vehicle_rate_id' => DBQuery::getVehicleRate($request->get('engine_size'))->id,
                 'image_path' => $path,
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
 
-        return redirect()->route('vehicle.show', ['make' => $make, 'model' => $model]);
+        return redirect()->route('vehicle.show', [
+            'make' => $make,
+            'model' => $model,
+            'vehicle_id' => $id
+        ]);
     }
 
-    public function show($make, $model)
+    public function show($make, $model, $id)
     {
-        $vehicle = Vehicle::with(['reservations', 'hires', 'rate'])
-            ->where([['make', '=', $make], ['model', '=', $model]])
-            ->get()->first();
-
-        return view('admin.vehicle.show', ['vehicle' => $vehicle]);
+        return view('admin.vehicle.show', [
+            'vehicle' => DBQuery::getVehicle($make, $model, $id)
+        ]);
     }
 
     public function all()

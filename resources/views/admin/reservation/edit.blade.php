@@ -4,7 +4,7 @@
   <div class="panel panel-default">
     <div class="panel-heading"><h3>Edit Reservation Form</h3></div>
     <div class="panel-body">
-      <form action="{{ route('reservation.edit', ['make' => $make, 'model' => $model, 'id' => $reservation->id]) }}" method="post">
+      <form action="{{ route('reservation.edit', ['make' => $make, 'model' => $model, 'vehicle_id' => $vehicle_id, 'reservation_id' => $reservation->id]) }}" method="post">
         {{csrf_field()}}
         <div class="form-row">
           <div class="form-group col-md-12">

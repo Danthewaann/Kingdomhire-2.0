@@ -35,4 +35,32 @@ class DBQuery
     {
         return DB::table('vehicle_rates')->get();
     }
+
+    public static function getVehicle($make, $model, $id)
+    {
+        return Vehicle::with(['reservations', 'hires', 'rate', 'images'])
+            ->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])
+            ->get()->first();
+    }
+
+    public static function getVehicleRate($engine_size)
+    {
+        return DB::table('vehicle_rates')
+            ->where('engine_size', '=', $engine_size)
+            ->get()->first();
+    }
+
+    public static function getReservation($id)
+    {
+        return DB::table('reservations')
+            ->where('id', '=', $id)
+            ->get()->first();
+    }
+
+    public static function getHire($id)
+    {
+        return DB::table('hires')
+            ->where('id', '=', $id)
+            ->get()->first();
+    }
 }

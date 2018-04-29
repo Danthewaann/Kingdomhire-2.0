@@ -4,7 +4,7 @@
     <div class="panel panel-default">
         <div class="panel-heading"><h3>Vehicle Reservation Form</h3></div>
             <div class="panel-body">
-                <form action="{{ route('reservation.log', ['make' => $make, 'model' => $model]) }}" method="post">
+                <form action="{{ route('reservation.log', ['make' => $make, 'model' => $model, 'id' => $id]) }}" method="post">
                     {{csrf_field()}}
                     <div class="form-row">
                         <div class="form-group col-md-12">

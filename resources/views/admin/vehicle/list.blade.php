@@ -18,7 +18,7 @@
                 @foreach($vehicles as $vehicle)
                   @if($vehicle->is_active == true)
                     <tr>
-                      <td><a href="{{ route('vehicle.show', ['make' => $vehicle->make, 'model' => $vehicle->model]) }}">{{ $vehicle->make }} {{ $vehicle->model }}</a></td>
+                      <td><a href="{{ route('vehicle.show', ['make' => $vehicle->make, 'model' => $vehicle->model, 'id' => $vehicle->id]) }}">{{ $vehicle->name() }}</a></td>
                       <td>{{ $vehicle->status }}</td>
                     </tr>
                   @endif

@@ -21,21 +21,21 @@ Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 
 Route::get('/admin/vehicles/', 'VehiclesController@all')->name('admin.vehicles');
 Route::post('/admin/vehicles/add', 'VehiclesController@store')->name('vehicle.add');
-Route::post('/admin/vehicles/{make}_{model}/edit', 'VehiclesController@edit')->name('vehicle.edit');
-Route::get('/admin/vehicles/{make}_{model}/edit', 'VehiclesController@showEditForm')->name('vehicle.editForm');
+Route::post('/admin/vehicles/{make}_{model}_{id}/edit', 'VehiclesController@edit')->name('vehicle.edit');
+Route::get('/admin/vehicles/{make}_{model}_{id}/edit', 'VehiclesController@showEditForm')->name('vehicle.editForm');
 
-Route::get('/admin/vehicles/{make}_{model}', 'VehiclesController@show')->name('vehicle.show');
-Route::delete('/admin/vehicles/{make}_{model}/discontinue', 'VehiclesController@discontinue')->name('vehicle.discontinue');
-Route::delete('/admin/vehicles/{make}_{model}/delete', 'VehiclesController@destroy')->name('vehicle.delete');
+Route::get('/admin/vehicles/{make}_{model}_{id}', 'VehiclesController@show')->name('vehicle.show');
+Route::delete('/admin/vehicles/{make}_{model}_{id}/discontinue', 'VehiclesController@discontinue')->name('vehicle.discontinue');
+Route::delete('/admin/vehicles/{make}_{model}_{id}/delete', 'VehiclesController@destroy')->name('vehicle.delete');
 
 Route::get('/admin/reservations/', 'ReservationsController@all')->name('admin.reservations');
 Route::get('/admin/hires/', 'HiresController@all')->name('admin.hires');
-Route::get('/admin/vehicles/{make}_{model}/log-reservation', 'ReservationsController@showForm')->name('reservation.form');
-Route::post('/admin/vehicles/{make}_{model}/log-reservation', 'ReservationsController@store')->name('reservation.log');
-Route::get('/admin/vehicles/{make}_{model}/reservation-{id}/edit', 'ReservationsController@showEditForm')->name('reservation.editForm');
-Route::post('/admin/vehicles/{make}_{model}/reservation-{id}/edit', 'ReservationsController@edit')->name('reservation.edit');
-Route::get('/admin/vehicles/{make}_{model}/hire-{id}/edit', 'HiresController@showEditForm')->name('hire.editForm');
-Route::post('/admin/vehicles/{make}_{model}/hire-{id}/edit', 'HiresController@edit')->name('hire.edit');
+Route::get('/admin/vehicles/{make}_{model}_{id}/log-reservation', 'ReservationsController@showForm')->name('reservation.form');
+Route::post('/admin/vehicles/{make}_{model}_{id}/log-reservation', 'ReservationsController@store')->name('reservation.log');
+Route::get('/admin/vehicles/{make}_{model}_{vehicle_id}/reservation-{reservation_id}/edit', 'ReservationsController@showEditForm')->name('reservation.editForm');
+Route::post('/admin/vehicles/{make}_{model}_{vehicle_id}/reservation-{reservation_id}/edit', 'ReservationsController@edit')->name('reservation.edit');
+Route::get('/admin/vehicles/{make}_{model}_{vehicle_id}/hire-{hire_id}/edit', 'HiresController@showEditForm')->name('hire.editForm');
+Route::post('/admin/vehicles/{make}_{model}_{vehicle_id}/hire-{hire_id}/edit', 'HiresController@edit')->name('hire.edit');
 
 Route::delete('/admin/reservation-{id}/cancel', 'ReservationsController@cancel')->name('reservation.cancel');
 

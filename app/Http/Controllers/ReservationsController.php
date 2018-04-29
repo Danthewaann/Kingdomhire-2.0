@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use DateTime;
+use App\DBQuery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Reservation;
+use App\Vehicle;
 use App\Hire;
 
 class ReservationsController extends Controller
@@ -26,7 +27,7 @@ class ReservationsController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Request $request, $make, $model)
+    public function store(Request $request, $make, $model, $vehicle_id)
     {
         $validator = Validator::make($request->all(), $this->rules);
 
@@ -34,53 +35,63 @@ class ReservationsController extends Controller
         {
             return redirect()->back()->withErrors($validator);
         }
-
-        $vehicle_id = DB::table('vehicles')
-            ->where([['make', '=', $make ], ['model', '=', $model]])
-            ->pluck('id')
-            ->first();
-
         if($request->get('start_date') == date('Y-m-d'))
         {
             Hire::create(array(
-                'vehicle_id' => $vehicle_id,
+                'vehicle_id' => DBQuery::getVehicle($make, $model, $vehicle_id)->id,
                 'start_date' =>  $request->get('start_date'),
                 'end_date' =>  $request->get('end_date')
             ));
 
             DB::table('vehicles')
-                ->where([['make', '=', $make], ['model', '=', $model]])
+                ->where([['make', '=', $make], ['model', '=', $model] , ['id', '=', $vehicle_id]])
                 ->update(['status' => 'Out for hire']);
         }
         else
         {
             Reservation::create(array(
-                'vehicle_id' => $vehicle_id,
+                'vehicle_id' => DBQuery::getVehicle($make, $model, $vehicle_id)->id,
                 'start_date' =>  $request->get('start_date'),
                 'end_date' =>  $request->get('end_date')
             ));
         }
-        return redirect()->route('vehicle.show', ['make' => $make, 'model' => $model]);
+
+        return redirect()->route('vehicle.show', [
+            'make' => $make,
+            'model' => $model,
+            'id' => $vehicle_id
+        ]);
     }
 
     public function cancel($id)
     {
-        DB::table('reservations')->where('id', '=', $id)->delete();
+        DB::table('reservations')
+            ->where('id', '=', $id)
+            ->delete();
+
         return redirect()->back();
     }
 
-    public function showForm($make, $model)
+    public function showForm($make, $model, $vehicle_id)
     {
-        return view('admin.reservation.add', ['make' => $make, 'model' => $model]);
+        return view('admin.reservation.add', [
+            'make' => $make,
+            'model' => $model,
+            'id' => $vehicle_id
+        ]);
     }
 
-    public function showEditForm($make, $model, $id)
+    public function showEditForm($make, $model, $vehicle_id, $reservation_id)
     {
-        $reservation = DB::table('reservations')->where('id', '=', $id)->get()->first();
-        return view('admin.reservation.edit', ['make' => $make, 'model' => $model, 'reservation' => $reservation]);
+        return view('admin.reservation.edit', [
+            'make' => $make,
+            'model' => $model,
+            'vehicle_id' => $vehicle_id,
+            'reservation' => DBQuery::getReservation($reservation_id)
+        ]);
     }
 
-    public function edit(Request $request, $make, $model, $id)
+    public function edit(Request $request, $make, $model, $vehicle_id, $reservation_id)
     {
         $validator = Validator::make($request->all(), $this->rules);
 
@@ -89,13 +100,17 @@ class ReservationsController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-        DB::table('reservations')->where('id', '=', $id)->update([
+        DB::table('reservations')->where('id', '=', $reservation_id)->update([
             'start_date' => $request->get('start_date'),
             'end_date' => $request->get('end_date'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 
-        return redirect()->route('vehicle.show', ['make' => $make, 'model' => $model]);
+        return redirect()->route('vehicle.show', [
+            'make' => $make,
+            'model' => $model,
+            'id' => $vehicle_id
+        ]);
     }
 
     public function all()

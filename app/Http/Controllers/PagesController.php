@@ -6,11 +6,6 @@ use App\DBQuery;
 
 class PagesController extends Controller
 {
-    public function welcome()
-    {
-        return view('welcome');
-    }
-
     public function vehicles()
     {
         return view('public.vehicles', ['vehicles' => DBQuery::getActiveVehicles()]);

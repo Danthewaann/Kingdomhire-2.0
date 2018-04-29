@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DBQuery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -23,7 +24,17 @@ class HiresController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Request $request)
+    public function showEditForm($make, $model, $vehicle_id, $hire_id)
+    {
+        return view('admin.hire.edit', [
+            'make' => $make,
+            'model' => $model,
+            'vehicle_id' => $vehicle_id,
+            'hire' => DBQuery::getHire($hire_id)
+        ]);
+    }
+
+    public function edit(Request $request, $make, $model, $vehicle_id, $hire_id)
     {
         $validator = Validator::make($request->all(), $this->rules);
 
@@ -32,42 +43,16 @@ class HiresController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-        $vehicle_arr = explode(' ', $request->get('vehicle'));
-        $vehicle = DB::table('vehicles')
-            ->where([['make', '=', $vehicle_arr[0]], ['model', '=', $vehicle_arr[1]]])
-            ->get(['id'])
-            ->toArray()[0];
-
-        Hire::create(array(
-            'vehicle_id' => $vehicle->id,
-            'start_date' =>  $request->get('start_date'),
-            'end_date' =>  $request->get('end_date')
-        ));
-
-        return redirect()->to('/admin');
-    }
-
-    public function showEditForm($make, $model, $id)
-    {
-        $hire = DB::table('hires')->where('id', '=', $id)->get()->first();
-        return view('admin.hire.edit', ['make' => $make, 'model' => $model, 'hire' => $hire]);
-    }
-
-    public function edit(Request $request, $make, $model, $id)
-    {
-        $validator = Validator::make($request->all(), $this->rules);
-
-        if($validator->fails())
-        {
-            return redirect()->back()->withErrors($validator);
-        }
-
-        DB::table('hires')->where('id', '=', $id)->update([
+        DB::table('hires')->where('id', '=', $hire_id)->update([
             'end_date' => $request->get('end_date'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 
-        return redirect()->route('vehicle.show', ['make' => $make, 'model' => $model]);
+        return redirect()->route('vehicle.show', [
+            'make' => $make,
+            'model' => $model,
+            'vehicle_id' => $vehicle_id
+        ]);
     }
 
     public function all()

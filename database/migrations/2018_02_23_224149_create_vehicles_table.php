@@ -23,7 +23,6 @@ class CreateVehiclesTable extends Migration
             $table->boolean('is_active')->default(true);
             $table->enum('status', ['Available', 'Unavailable', 'Out for hire'])->default('Available');
             $table->string('type');
-            $table->string('image_path')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
             $table->integer('vehicle_rate_id')->unsigned()->nullable();

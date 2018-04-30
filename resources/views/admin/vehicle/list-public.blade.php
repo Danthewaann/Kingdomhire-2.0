@@ -1,4 +1,6 @@
-<img src="{{ $vehicle->image_path }}" style="width: 100%; max-height: 225px;"/>
+@foreach($vehicle->images as $image)
+  @if($loop->first) <img src="{{ $image->image_uri }}" style="width: 100%; max-height: 225px;"/> @endif
+@endforeach
 <table class="table">
   <tr>
     <td>Vehicle</td>

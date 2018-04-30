@@ -26,7 +26,7 @@
         </div>
         <div class="form-group col-xs-6">
           <label for="vehicle_image">Vehicle Image</label>
-          <input type="file" class="form-control" name="vehicle_image" id="vehicle_image" value="{{ $vehicle->image_path }}" multiple>
+          <input type="file" class="form-control" name="vehicle_images[]" id="vehicle_image" value="{{ $vehicle->image_path }}" multiple>
         </div>
       </div>
       <div class="form-row">

@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class VehicleImage extends Model
 {
+    protected $fillable = [
+        'image_uri', 'vehicle_id'
+    ];
     /**
      * Get vehicle associated with the image
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

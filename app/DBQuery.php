@@ -8,12 +8,12 @@ class DBQuery
 {
     public static function getAllVehicles()
     {
-        return Vehicle::with(['reservations', 'hires', 'rate'])->get();
+        return Vehicle::with(['reservations', 'hires', 'rate', 'images'])->get();
     }
 
     public static function getActiveVehicles()
     {
-        return Vehicle::with(['reservations', 'hires', 'rate'])->where('is_active', '=', true)->get();
+        return Vehicle::with(['reservations', 'hires', 'rate', 'images'])->where('is_active', '=', true)->get();
     }
 
     public static function getReservations()
@@ -40,6 +40,13 @@ class DBQuery
     {
         return Vehicle::with(['reservations', 'hires', 'rate', 'images'])
             ->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])
+            ->get()->first();
+    }
+
+    public static function getVehicleWithoutId($make, $model)
+    {
+        return Vehicle::with(['reservations', 'hires', 'rate', 'images'])
+            ->where([['make', '=', $make], ['model', '=', $model]])
             ->get()->first();
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\VehicleImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -34,13 +35,6 @@ class VehiclesController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-        $path = null;
-        if($request->hasFile('vehicle_image')) {
-            $image_name = $request->get('make').'_'.$request->get('model').'.'.$request->file('vehicle_image')->extension();
-            $path = $request->file('vehicle_image')->storeAs('imgs', $image_name, 'public');
-            $path = asset('storage/' . $path);
-        }
-
         Vehicle::create(array(
             'make' => $request->get('make'),
             'model' => $request->get('model'),
@@ -48,9 +42,28 @@ class VehiclesController extends Controller
             'gear_type' => $request->get('gear_type'),
             'seats' => $request->get('seats'),
             'type' => $request->get('type'),
-            'image_path' => $path,
             'vehicle_rate_id' =>  DBQuery::getVehicleRate($request->get('engine_size'))->id
         ));
+
+        if($request->hasFile('vehicle_images')) {
+            $images = $request->file('vehicle_images');
+            $i = 1;
+            foreach ($images as $image) {
+                $image_name = $request->get('make').'_'.
+                    $request->get('model').'_'.$i.'.'.
+                    $image->extension();
+
+                $image_path = $image->storeAs('imgs/'.$request->get('make').'_'.
+                    $request->get('model'), $image_name, 'public');
+
+                VehicleImage::create(array(
+                    'image_uri' => asset('storage/' . $image_path),
+                    'vehicle_id' => DBQuery::getVehicleWithoutId($request->get('make'), $request->get('model'))->id
+                ));
+
+                $i++;
+            }
+        }
 
         return redirect()->back();
     }

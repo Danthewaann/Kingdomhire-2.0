@@ -25,7 +25,6 @@ class VehiclesTableSeeder extends Seeder
             'gear_type' => 'Manuel',
             'seats' => '4',
             'type' => 'Hatchback',
-            'image_path' => asset('storage/imgs/peugeot_307.jpg'),
             'vehicle_rate_id' => $small
         ));
         \App\Vehicle::create(array(
@@ -35,7 +34,6 @@ class VehiclesTableSeeder extends Seeder
             'gear_type' => 'Manuel',
             'seats' => '5',
             'type' => 'Hatchback',
-            'image_path' => asset('storage/imgs/peugeot_308.jpg'),
             'vehicle_rate_id' => $small
         ));
         \App\Vehicle::create(array(
@@ -45,7 +43,6 @@ class VehiclesTableSeeder extends Seeder
             'gear_type' => 'Manuel',
             'seats' => '3',
             'type' => 'Large Van',
-            'image_path' => asset('storage/imgs/renault_master.jpg'),
             'vehicle_rate_id' => $large
         ));
         \App\Vehicle::create(array(
@@ -55,7 +52,6 @@ class VehiclesTableSeeder extends Seeder
             'gear_type' => 'Manuel',
             'seats' => '3',
             'type' => 'Small Van',
-            'image_path' => asset('storage/imgs/renault_traffic.jpg'),
             'vehicle_rate_id' => $medium
         ));
         \App\Vehicle::create(array(
@@ -65,7 +61,6 @@ class VehiclesTableSeeder extends Seeder
             'gear_type' => 'Manuel/Automatic',
             'seats' => '7',
             'type' => 'People Carrier',
-            'image_path' => asset('storage/imgs/kia_sedona.jpg'),
             'vehicle_rate_id' => $medium
         ));
         \App\Vehicle::create(array(
@@ -75,7 +70,6 @@ class VehiclesTableSeeder extends Seeder
             'gear_type' => 'Automatic',
             'seats' => '5',
             'type' => 'Convertable',
-            'image_path' => asset('storage/imgs/megane_convertable.jpg'),
             'vehicle_rate_id' => $medium
         ));
     }

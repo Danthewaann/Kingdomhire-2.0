@@ -71,7 +71,7 @@
           </div>
           <div class="form-group col-xs-6">
               <label for="vehicle_image">Vehicle Image (optional)</label>
-              <input type="file" class="form-control" name="vehicle_image" id="vehicle_image" multiple>
+              <input type="file" class="form-control" name="vehicle_images[]" id="vehicle_image" multiple>
           </div>
 
       </div>

@@ -1,13 +1,12 @@
 <div class="panel panel-default">
   @include('admin.reservation.list-heading')
-  @if(empty($vehicles))
+  @if(empty($vehicles) and !empty($vehicle))
     @if(!$vehicle->reservations->isEmpty())
       <div class="panel-body">
         @include('admin.reservation.list-table')
       </div>
     @endif
   @else
-
     @if(!$reservations->isEmpty())
       <div class="panel-body">
         @include('admin.reservation.list-table')

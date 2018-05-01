@@ -107,7 +107,6 @@ class VehiclesController extends Controller
 
     public function edit(Request $request, $make, $model, $id)
     {
-//        dd($request);
         if($request->hasFile('vehicle_images_add')) {
             $images = $request->file('vehicle_images_add');
             $i = count(Vehicle::with(['images'])->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])->get()->first()->images);

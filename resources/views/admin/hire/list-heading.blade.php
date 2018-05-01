@@ -1,4 +1,4 @@
-@if(empty($vehicles))
+@if(empty($vehicles) and !empty($vehicle))
   <div class="panel-heading">
     @if(!$vehicle->hires->isEmpty())
       <h3>Active hire</h3>

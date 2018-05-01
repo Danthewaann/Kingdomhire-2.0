@@ -115,6 +115,8 @@ class ReservationsController extends Controller
 
     public function all()
     {
-        
+        return view('admin.admin-reservations', [
+            'reservations' => DBQuery::getReservations()
+        ]);
     }
 }

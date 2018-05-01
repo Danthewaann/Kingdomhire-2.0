@@ -18,12 +18,12 @@ class DBQuery
 
     public static function getReservations()
     {
-        return DB::table('reservations')->get();
+        return Reservation::with('vehicle')->get();
     }
 
     public static function getAllHires()
     {
-        return DB::table('hires')->get();
+        return Hire::with('vehicle')->get();
     }
 
     public static function getActiveHires()

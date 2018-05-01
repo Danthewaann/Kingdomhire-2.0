@@ -57,6 +57,8 @@ class HiresController extends Controller
 
     public function all()
     {
-
+        return view('admin.admin-hires', [
+            'hires' => DBQuery::getAllHires()
+        ]);
     }
 }

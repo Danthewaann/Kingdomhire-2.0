@@ -1,7 +1,7 @@
 <table class="table">
   <thead>
     <tr>
-      @if(!empty($vehicles))
+      @if(!empty($vehicles) or !empty($hires))
         <th>Vehicle</th>
       @endif
       <th>Start Date</th>

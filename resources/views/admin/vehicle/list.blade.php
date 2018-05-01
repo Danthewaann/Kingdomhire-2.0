@@ -8,6 +8,7 @@
     </div>
     @if(!$vehicles->isEmpty())
         <div class="panel-body">
+          <div class="table-responsive">
             <table class="table">
                 <thead>
                     <tr>
@@ -24,6 +25,7 @@
                   @endif
                 @endforeach
             </table>
+          </div>
         </div>
     @endif
 </div>

@@ -1,6 +1,6 @@
-<div style="width: 210px; display: inline-block; padding: 10px;">
+<div class="col-md-3">
   @foreach($vehicle->images as $image)
-    @if($loop->first) <img src="{{ $image->image_uri }}" style="width: 100%; height: 125px;"/> @endif
+    @if($loop->first) <img src="{{ $image->image_uri }}" style="width: 100%; height: 175px;"/> @endif
   @endforeach
   <table class="table" style="max-width: 300px;">
     <tr>

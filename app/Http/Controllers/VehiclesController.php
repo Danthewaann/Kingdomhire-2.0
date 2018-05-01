@@ -35,7 +35,7 @@ class VehiclesController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-        Vehicle::create(array(
+        $vehicle_id = Vehicle::create(array(
             'make' => $request->get('make'),
             'model' => $request->get('model'),
             'fuel_type' => $request->get('fuel_type'),
@@ -43,7 +43,7 @@ class VehiclesController extends Controller
             'seats' => $request->get('seats'),
             'type' => $request->get('type'),
             'vehicle_rate_id' =>  DBQuery::getVehicleRate($request->get('engine_size'))->id
-        ));
+        ))->id;
 
         if($request->hasFile('vehicle_images')) {
             $images = $request->file('vehicle_images');
@@ -54,11 +54,12 @@ class VehiclesController extends Controller
                     $image->extension();
 
                 $image_path = $image->storeAs('imgs/'.$request->get('make').'_'.
-                    $request->get('model'), $image_name, 'public');
+                    $request->get('model').'-'.$vehicle_id, $image_name, 'public');
 
                 VehicleImage::create(array(
+                    'name' => $image_name,
                     'image_uri' => asset('storage/' . $image_path),
-                    'vehicle_id' => DBQuery::getVehicleWithoutId($request->get('make'), $request->get('model'))->id
+                    'vehicle_id' => $vehicle_id
                 ));
 
                 $i++;
@@ -106,21 +107,34 @@ class VehiclesController extends Controller
 
     public function edit(Request $request, $make, $model, $id)
     {
-        $path = null;
-        if($request->hasFile('vehicle_image')) {
-            $image_name = $make.'_'.$model.'.'.$request->file('vehicle_image')->extension();
-            $path = $request->file('vehicle_image')->storeAs('imgs', $image_name, 'public');
-            $path = asset('storage/' . $path);
+//        dd($request);
+        if($request->hasFile('vehicle_images_add')) {
+            $images = $request->file('vehicle_images_add');
+            $i = count(Vehicle::with(['images'])->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])->get()->first()->images);
+            foreach ($images as $image) {
+                $i++;
+                $image_name = $make.'_'.$model.'_'.$i.'.'.$image->extension();
+                $image_path = $image->storeAs('imgs/'.$make.'_'.$model.'-'.$id, $image_name, 'public');
+
+                VehicleImage::create(array(
+                    'name' => $image_name,
+                    'image_uri' => asset('storage/' . $image_path),
+                    'vehicle_id' => $id
+                ));
+            }
         }
-        else {
-            $path = DBQuery::getVehicle($make, $model, $id)->pluck('image_path');
+
+        if($request->has('vehicle_images_del')) {
+            $images = $request->get('vehicle_images_del');
+            foreach ($images as $image) {
+                DB::table('vehicle_images')->where('name', '=', $image)->delete();
+            }
         }
 
         DB::table('vehicles')
             ->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])
             ->update([
                 'vehicle_rate_id' => DBQuery::getVehicleRate($request->get('engine_size'))->id,
-                'image_path' => $path,
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
 

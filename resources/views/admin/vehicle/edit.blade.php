@@ -4,37 +4,57 @@
 <div class="panel panel-default">
   <div class="panel-heading"><h3>Edit {{ $vehicle->name() }}</h3></div>
   <div class="panel-body">
-    <form action="{{ route('vehicle.edit', ['make' => $vehicle->make, 'model' => $vehicle->model, 'id' => $vehicle->id]) }}" method="post" enctype="multipart/form-data">
-      {{csrf_field()}}
-      <div class="form-row">
-        <div class="form-group col-xs-6">
-          <label for="engine_size">Engine Size</label>
-          <select id="engine_size" class="form-control" name="engine_size">
-            @if($vehicle->rate != null)
-              <option value="{{ $vehicle->rate->engine_size }}">{{ $vehicle->rate->engine_size }} (£{{ $vehicle->rate->weekly_rate_min }}-£{{ $vehicle->rate->weekly_rate_max }})</option>
-            @endif
-            @foreach($rates as $rate)
-                @if($vehicle->rate != null)
-                  @if($rate->engine_size != $vehicle->rate->engine_size)
+    <div class="col-md-6">
+      <form action="{{ route('vehicle.edit', ['make' => $vehicle->make, 'model' => $vehicle->model, 'id' => $vehicle->id]) }}" method="post" enctype="multipart/form-data">
+        {{csrf_field()}}
+          <div class="form-group row col-xs-12">
+            <label for="engine_size">Engine Size</label>
+            <select id="engine_size" class="form-control" name="engine_size">
+              @if($vehicle->rate != null)
+                <option value="{{ $vehicle->rate->engine_size }}">{{ $vehicle->rate->engine_size }} (£{{ $vehicle->rate->weekly_rate_min }}-£{{ $vehicle->rate->weekly_rate_max }})</option>
+              @endif
+              @foreach($rates as $rate)
+                  @if($vehicle->rate != null)
+                    @if($rate->engine_size != $vehicle->rate->engine_size)
+                      <option value="{{ $rate->engine_size }}">{{ $rate->engine_size }} (£{{ $rate->weekly_rate_min }}-£{{ $rate->weekly_rate_max }})</option>
+                    @endif
+                  @else
                     <option value="{{ $rate->engine_size }}">{{ $rate->engine_size }} (£{{ $rate->weekly_rate_min }}-£{{ $rate->weekly_rate_max }})</option>
                   @endif
-                @else
-                  <option value="{{ $rate->engine_size }}">{{ $rate->engine_size }} (£{{ $rate->weekly_rate_min }}-£{{ $rate->weekly_rate_max }})</option>
-                @endif
-            @endforeach
-          </select>
-        </div>
-        <div class="form-group col-xs-6">
-          <label for="vehicle_image">Vehicle Image</label>
-          <input type="file" class="form-control" name="vehicle_images[]" id="vehicle_image" value="{{ $vehicle->image_path }}" multiple>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-xs-12">
+              @endforeach
+            </select>
+          </div>
+        @if(!$vehicle->images->isEmpty())
+          <div class="form-group row col-xs-12">
+            <label for="vehicle_images_del">Delete Images (hold shift to select more than one)</label>
+            <select multiple class="form-control" name="vehicle_images_del[]" id="vehicle_images_del">
+              @foreach($vehicle->images as $image)
+                <option>{{ $image->name }}</option>
+              @endforeach
+            </select>
+          </div>
+        @endif
+          <div class="form-group row col-xs-12">
+            <label for="vehicle_images_add">Add Images</label>
+            <input type="file" class="form-control" name="vehicle_images_add[]" id="vehicle_images_add" value="{{ $vehicle->image_path }}" multiple>
+          </div>
+        <div class="form-group row col-xs-12">
           <button type="submit" class="btn btn-primary">Edit Vehicle</button>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
+    <div class="col-md-6">
+      @foreach($vehicle->images as $image)
+        <div style="width: 210px; display: inline-block; padding: 10px;">
+          <img src="{{ $image->image_uri }}" style="width: 100%; height: 125px;"/>
+          <table class="table">
+            <tr>
+              <th>{{ $image->name }}</th>
+            </tr>
+          </table>
+        </div>
+      @endforeach
+    </div>
   </div>
 </div>
 @endsection

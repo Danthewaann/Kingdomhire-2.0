@@ -14,7 +14,7 @@ class ReservationsToHires extends Command
      *
      * @var string
      */
-    protected $signature = 'scheduler:ReservationsToHires';
+    protected $signature = 'scheduler:reservations-to-hires';
 
     /**
      * The console command description.
@@ -51,7 +51,6 @@ class ReservationsToHires extends Command
 
                 DB::table('reservations')->where('id', '=', $reservation->id)->delete();
             }
-
         }
     }
 }

@@ -26,7 +26,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('scheduler:ReservationsToHires')->everyMinute();
+        $schedule->command('scheduler:reservations-to-hires')->everyMinute();
+        $schedule->command('scheduler:active-to-inactive-hires')->everyMinute();
     }
 
     /**

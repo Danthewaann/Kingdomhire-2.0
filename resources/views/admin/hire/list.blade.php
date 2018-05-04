@@ -1,16 +1,8 @@
 <div class="panel panel-default">
   @include('admin.hire.list-heading')
-  @if(empty($vehicles) and !empty($vehicle))
-    @if(!$vehicle->hires->isEmpty())
+    @if((!empty($hires) and count($hires) > 0) or ( !empty($vehicle) and count($vehicle->hires) > 0))
       <div class="panel-body">
         @include('admin.hire.list-table')
       </div>
     @endif
-  @else
-    @if(!$hires->isEmpty())
-      <div class="panel-body">
-        @include('admin.hire.list-table')
-      </div>
-    @endif
-  @endif
 </div>

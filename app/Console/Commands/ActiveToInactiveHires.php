@@ -41,7 +41,7 @@ class ActiveToInactiveHires extends Command
     {
         $hires = DBQuery::getActiveHires();
         foreach($hires as $hire) {
-            if($hire->end_date >= date('Y-m-d')) {
+            if($hire->end_date <= date('Y-m-d')) {
                 DB::table('hires')
                     ->where('id', '=', $hire->id)
                     ->update(['is_active' => false]);

@@ -1,4 +1,4 @@
-@if(!empty($vehicle))
+@if(!empty($vehicle) and (count($vehicle->hires) > 0))
   @foreach($vehicle->hires as $hire)
     <tr>
         @if(!empty($vehicles))

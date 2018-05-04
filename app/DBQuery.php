@@ -28,7 +28,7 @@ class DBQuery
 
     public static function getActiveHires()
     {
-        return DB::table('hires')->where('is_active', '=', true)->get();
+        return Hire::with('vehicle')->where('is_active', '=', true)->get();
     }
 
     public static function getVehicleRates()

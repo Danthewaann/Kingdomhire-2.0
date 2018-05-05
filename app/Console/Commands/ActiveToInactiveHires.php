@@ -45,6 +45,10 @@ class ActiveToInactiveHires extends Command
                 DB::table('hires')
                     ->where('id', '=', $hire->id)
                     ->update(['is_active' => false]);
+
+                DB::table('vehicles')
+                    ->where('id', '=', $hire->vehicle->id)
+                    ->update(['status' => 'Available']);
             }
         }
     }

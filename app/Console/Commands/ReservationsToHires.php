@@ -49,7 +49,13 @@ class ReservationsToHires extends Command
                     'vehicle_id' => $reservation->vehicle->id,
                 ));
 
-                DB::table('reservations')->where('id', '=', $reservation->id)->delete();
+                DB::table('reservations')
+                    ->where('id', '=', $reservation->id)
+                    ->delete();
+
+                DB::table('vehicles')
+                    ->where('id', '=', $reservation->vehicle->id)
+                    ->update(['status' => 'Out for hire']);
             }
         }
     }

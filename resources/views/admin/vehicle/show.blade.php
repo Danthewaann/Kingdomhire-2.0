@@ -42,7 +42,7 @@
     </div>
   @endif
   <div class="col-md-5 col-xs-6">
-    @include('admin.reservation.list')
+    @include('admin.vehicle.list-reservations')
   </div>
   <div class="col-md-5 col-xs-6">
     @include('admin.vehicle.list-active-hire')

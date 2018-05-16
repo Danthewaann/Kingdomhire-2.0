@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    @if(!$vehicle->reservations->isEmpty())
+      <h3>Current reservations</h3>
+    @else
+      <h3>No current reservations</h3>
+    @endif
+  </div>
+  @if(!$vehicle->reservations->isEmpty())
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th></th>
+          </tr>
+          </thead>
+          @foreach($vehicle->reservations as $reservation)
+            <tr>
+              <td>{{ $reservation->start_date }}</td>
+              <td>{{ $reservation->end_date }}</td>
+              <td>
+                {{ Form::open(['route' => ['reservation.cancel', $reservation->id], 'method' => 'delete']) }}
+                {{ Form::submit('Cancel', ['class' => 'btn btn-primary']) }}
+                {{ Form::close() }}
+              </td>
+              <td>
+                <a href="{{ route('reservation.editForm', ['make' => $vehicle->make, 'model' => $vehicle->model, 'vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
+                   class="btn btn-primary" role="button" aria-pressed="true">Re-schedule</a>
+              </td>
+            </tr>
+          @endforeach
+        </table>
+      </div>
+    </div>
+  @endif
+</div>

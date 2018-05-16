@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 /**
  * App\Vehicle
@@ -62,4 +63,18 @@ class Vehicle extends Model
     {
         return $this->make.' '.$this->model;
     }
+
+    public function getActiveHire()
+    {
+        return DB::table('hires')
+          ->where([['vehicle_id', '=', $this->id], ['is_active', '=', true]])
+          ->get()->first();
+    }
+
+  public function getInactiveHires()
+  {
+      return DB::table('hires')
+        ->where([['vehicle_id', '=', $this->id], ['is_active', '=', false]])
+        ->get();
+  }
 }

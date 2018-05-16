@@ -4,7 +4,7 @@
 <div class="row">
   @if(!empty($vehicles))
     @foreach($vehicles as $vehicle)
-      <div class="col-md-4">
+      <div class="col-md-4 col-xs-4">
         <div class="panel panel-default">
           <div class="panel-body">
             @include('admin.vehicle.list-public')
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4 col-xs-6">
       <div class="panel panel-default">
         <div class="panel-body">
           @include('admin.vehicle.list-public')
@@ -41,11 +41,14 @@
       </div>
     </div>
   @endif
-  <div class="col-md-5">
+  <div class="col-md-5 col-xs-6">
     @include('admin.reservation.list')
   </div>
-  <div class="col-md-5">
-    @include('admin.hire.list')
+  <div class="col-md-5 col-xs-6">
+    @include('admin.vehicle.list-active-hire')
   </div>
+    <div class="col-md-5 col-xs-6">
+      @include('admin.vehicle.list-inactive-hires')
+    </div>
 </div>
 @endsection

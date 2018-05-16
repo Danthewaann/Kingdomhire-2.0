@@ -15,6 +15,6 @@
     </div>
     <div class="col-md-6">
       @include('admin.reservation.list')
-      @include('admin.hire.list')
+      @include('admin.hire.list-active')
     </div>
 @endsection

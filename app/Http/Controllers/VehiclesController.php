@@ -146,9 +146,6 @@ class VehiclesController extends Controller
 
     public function show($make, $model, $id)
     {
-//      $vehicle = DBQuery::getVehicle($make, $model, $id);
-//      $hire = $vehicle->getActiveHire();
-//      dd($vehicle, empty($hire));
         return view('admin.vehicle.show', [
             'vehicle' => DBQuery::getVehicle($make, $model, $id)
         ]);

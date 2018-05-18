@@ -2,7 +2,7 @@
 This is the repository for the new Kingdomhire-2.0 website  
 I thought it was a good time to re-visit www.kingdomhire.co.uk and improve the site
 
-I am using *Laravel 5.5* to aid in the development process  
+I am using *Laravel 5.6* to aid in the development process  
 I will be using a *MySQL* database backend for the new website
 
 # New Features

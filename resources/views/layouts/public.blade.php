@@ -37,16 +37,15 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
           <!-- Left Side Of Navbar -->
           <ul class="nav navbar-nav">
-            <a href="{{ route('public.home') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Home</a>
-            <a href="{{ route('public.vehicles') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Vehicles</a>
-            <a href="{{ route('public.contact') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Contact</a>
-
+            <a href="{{ route('public.home') }}" class="btn btn-primary btn-lg navbar-btn" role="button" aria-disabled="true">Home</a>
+            <a href="{{ route('public.vehicles') }}" class="btn btn-primary btn-lg navbar-btn" role="button" aria-disabled="true">Vehicles</a>
+            <a href="{{ route('public.contact') }}" class="btn btn-primary btn-lg navbar-btn" role="button" aria-disabled="true">Contact</a>
           </ul>
           <!-- Right Side Of Navbar -->
           <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->
             @guest
-              <a href="{{ route('login') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Login</a>
+              <a href="{{ route('login') }}" class="btn btn-primary btn-lg navbar-btn" role="button" aria-disabled="true">Login</a>
             @else
               <a href="{{ url('admin') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Admin</a>
               <li class="dropdown">

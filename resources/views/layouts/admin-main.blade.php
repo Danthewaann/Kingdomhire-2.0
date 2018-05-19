@@ -37,10 +37,10 @@
       <div class="collapse navbar-collapse" id="app-navbar-collapse">
         <!-- Left Side Of Navbar -->
         <ul class="nav navbar-nav">
-          <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Home</a>
-          <a href="{{ route('admin.vehicles') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Vehicles</a>
-          <a href="{{ route('admin.reservations') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Reservations</a>
-          <a href="{{ route('admin.hires') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Hires</a>
+          <a href="{{ route('admin.dashboard') }}" class="btn btn-primary navbar-btn btn-lg" style="color: white;" role="button" aria-disabled="true">Home</a>
+          <a href="{{ route('admin.vehicles') }}" class="btn btn-primary navbar-btn btn-lg" style="color: white;" role="button" aria-disabled="true">Vehicles</a>
+          <a href="{{ route('admin.reservations') }}" class="btn btn-primary navbar-btn btn-lg" style="color: white;" role="button" aria-disabled="true">Reservations</a>
+          <a href="{{ route('admin.hires') }}" class="btn btn-primary navbar-btn btn-lg" style="color: white;" role="button" aria-disabled="true">Hires</a>
         </ul>
         <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">

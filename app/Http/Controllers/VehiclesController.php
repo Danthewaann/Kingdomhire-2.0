@@ -113,7 +113,7 @@ class VehiclesController extends Controller
             foreach ($images as $image) {
                 $i++;
                 $image_name = $make.'_'.$model.'_'.$i.'.'.$image->extension();
-                $image_path = $image->storeAs('imgs/'.$make.'_'.$model.'-'.$id, $image_name, 'public');
+                $image_path = $image->storeAs('imgs/'.$make.'_'.$model, $image_name, 'public');
 
                 VehicleImage::create(array(
                     'name' => $image_name,

@@ -14,25 +14,30 @@ I will be using a *MySQL* database backend for the new website
    1. Allow an admin to login to the __Administrator Dashboard__, where the admin can perform a range of tasks related to managing *vehicles*, *reservations* and *hires*
    2. An admin should be able to __add__, __delete__ and __change vehicles__ in the database.   
       Change operations include: 
-      * changing vehicle price rates    
-      * changing a vehicle's image  
+      * associate a vehicle price rate with a vehicle    
+      * associated image/s with a vehicle (upload image/s)
+      * disassociate image/s from a vehicle (delete an images)  
    3. An admin should be able to __add__, __delete__ and __change reservations__ and __hires__.  
       Some change operations include: 
       * extend a hire 
       * shorten a hire 
       * reschedule a reservation 
       * cancel a reservation
-   4. An admin should be able to __generate reports__, such as: 
+   4. An admin should be able to __generate reports/graphs__, such as: 
       * list of hires made within a month/year 
       * list of most popular vehicles hired 
       * total profit made within a month/year 
       * total amount of vehicles hired within a month/year 
-   5. An admin should be able to see a __list of all active reservations__, __a list of all active hires__ and __a list of all kingdomhire vehicles__ when they log into the __Administrator Dashboard__
-   6. An admin should be __able to log a reservation for a vehicle__, where when the reservation is logged for a date in the future, after some time has passed and the current real world date is equal or earlier than the start date of that reservation, 
+   5. Allow an admin to export and download any __generated reports/graphs__ made from existing data from the database onto their computer
+   6. An admin should be able to __create a vehicle price rate__, with a __min__ and __max__ weekly price rate assigned to it
+      * An admin can then associate the vehicle rate with any particular vehicle
+   7. An admin should be able to see a __list of all active reservations__, __a list of all active hires__ and __a list of all kingdomhire vehicles__ when they log into the __Administrator Dashboard__
+   8. An admin should be __able to log a reservation for a vehicle__, where when the reservation is logged for a date in the future, after some time has passed and the current real world date is equal or earlier than the start date of that reservation, 
    a hire should be automatically logged for that vehicle. After this happens the reservation will be __removed from the reservations table__
-   8. An admin should be able to __reset their password__ if they forget it, this will require __an email verification process__
-   9. An admin should be able to __change their password__, they will need to know their __current password__ to do able to do this
-   10. To allow an admin to login to the __Administrator Dashboard__, they will need to provide an __email address__ and __password__, which will need be already inserted into the database
+   9. An admin should be able to __reset their password__ if they forget it, this will require __an email verification process__
+   10. An admin should be able to __change their password__, they will need to know their __current password__ to do able to do this
+   11. To allow an admin to login to the __Administrator Dashboard__, they will need to provide an __email address__ and __password__, which will need be already inserted into the database
+   12. Allow an admin to export and download the content of the entire database into a spreadsheet friendly format
    
 ### Website Business Information  
    More important business info will need to be displayed on the website, along with a more complete list of kingdomhire vehicles

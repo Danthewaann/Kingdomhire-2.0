@@ -51,7 +51,7 @@ class VehicleRatesController extends Controller
             'weekly_rate_min' => $request->get('weekly_rate_min'),
             'weekly_rate_max' => $request->get('weekly_rate_max')
         ));
-        return redirect()->back();
+        return redirect()->route('vehicle-rate.index');
     }
 
     public function destroy($engine_size)
@@ -89,7 +89,7 @@ class VehicleRatesController extends Controller
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('vehicle-rate.index');
     }
 
 }

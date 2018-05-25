@@ -66,7 +66,7 @@ class VehiclesController extends Controller
             }
         }
 
-        return redirect()->back();
+        return redirect()->route('admin.vehicles');
     }
 
     public function discontinue($make, $model, $id)
@@ -85,7 +85,7 @@ class VehiclesController extends Controller
             ->where('vehicle_id', '=', $vehicle_id)
             ->update(['is_active' => false]);
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.vehicles');
     }
 
     public function destroy($make, $model, $id)
@@ -94,7 +94,7 @@ class VehiclesController extends Controller
             ->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])
             ->delete();
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.vehicles');
     }
 
     public function showEditForm($make, $model, $id)

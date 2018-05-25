@@ -9,7 +9,7 @@
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="engine_size">Engine Size</label>
-            <input id="engine_size" style="max-width: 300px;" class="form-control" value="{{ $rate->engine_size }}" disabled/>
+            <input id="engine_size" name="engine_size" style="max-width: 300px;" class="form-control" value="{{ $rate->engine_size }}" readonly/>
           </div>
         </div>
         <div class="form-row">
@@ -35,8 +35,11 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="col-xs-12">
+          <div class="col-xs-1">
             <button type="submit" class="btn btn-primary">Edit Rate</button>
+          </div>
+          <div class="col-xs-1">
+            <a href="{{ route('vehicle-rate.index') }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
           </div>
         </div>
       </form>

@@ -12,13 +12,14 @@ class VehicleRatesController extends Controller
 {
     private $rules = [
         'engine_size' => 'required',
-        'weekly_rate_min' => 'required',
-        'weekly_rate_max' => 'required'
+        'weekly_rate_min' => 'required|numeric|min:1|max:100',
+        'weekly_rate_max' => 'required|numeric|min:2|max:200'
     ];
 
     private $edit_rules = [
-        'weekly_rate_min' => 'required',
-        'weekly_rate_max' => 'required'
+        'engine_size' => 'required',
+        'weekly_rate_min' => 'required|numeric|min:1|max:100',
+        'weekly_rate_max' => 'required|numeric|min:2|max:200'
     ];
     /**
      * Create a new controller instance.
@@ -43,7 +44,9 @@ class VehicleRatesController extends Controller
 
         if($validator->fails())
         {
-            return redirect()->back()->withErrors($validator);
+            return redirect()->back()
+                ->withInput($request->input())
+                ->withErrors($validator);
         }
 
         VehicleRate::create(array(

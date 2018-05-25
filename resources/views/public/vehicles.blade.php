@@ -8,7 +8,7 @@
           <div class="panel-heading"><h1>Vehicles List</h1></div>
         </div>
         @foreach($vehicles as $vehicle)
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-12">
             <div class="panel panel-default">
               <div class="panel-body">
                 @include('admin.vehicle.list-public')

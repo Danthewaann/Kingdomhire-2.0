@@ -11,7 +11,6 @@
     </div>
     <div class="col-md-6">
       @include('admin.vehicle.list')
-      @include('admin.vehicle-rate.list')
     </div>
     <div class="col-md-6">
       @include('admin.reservation.list')

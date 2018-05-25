@@ -30,6 +30,13 @@ class VehicleRatesController extends Controller
         $this->middleware('auth');
     }
 
+    public function index()
+    {
+        return view('admin.admin-vehicles-rates', [
+            'rates' => DBQuery::getVehicleRates()
+        ]);
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), $this->rules);
@@ -51,6 +58,11 @@ class VehicleRatesController extends Controller
     {
         DB::table('vehicle_rates')->where('engine_size', '=', $engine_size)->delete();
         return redirect()->back();
+    }
+
+    public function showAddForm()
+    {
+        return view('admin.vehicle-rate.add');
     }
 
     public function showEditForm($engine_size)

@@ -1,3 +1,6 @@
+@extends('layouts.admin-main')
+
+@section('content')
 <div class="panel panel-default">
   <div class="panel-heading"><h3>Add a vehicle</h3></div>
   <div class="panel-body">
@@ -83,3 +86,4 @@
   </form>
   </div>
 </div>
+@endsection

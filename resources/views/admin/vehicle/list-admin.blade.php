@@ -1,4 +1,4 @@
-<div class="col-md-3 col-xs-12">
+<div class="col-md-4 col-sm-6 col-xs-12">
   @foreach($vehicle->images as $image)
     @if($loop->first) <img src="{{ $image->image_uri }}" style="width: 100%; height: 225px;"/> @endif
   @endforeach

@@ -105,6 +105,13 @@ class VehiclesController extends Controller
         ]);
     }
 
+    public function showAddForm()
+    {
+        return view('admin.vehicle.add', [
+          'rates' => DBQuery::getVehicleRates()
+        ]);
+    }
+
     public function edit(Request $request, $make, $model, $id)
     {
         if($request->hasFile('vehicle_images_add')) {

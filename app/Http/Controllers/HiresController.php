@@ -11,7 +11,8 @@ use App\Hire;
 class HiresController extends Controller
 {
     private $rules = [
-        'end_date' => 'required|date'
+        'start_date' => 'required|date|before_or_equal:today',
+        'end_date' => 'required|date|after:start_date'
     ];
 
     /**
@@ -40,7 +41,9 @@ class HiresController extends Controller
 
         if($validator->fails())
         {
-            return redirect()->back()->withErrors($validator);
+            return redirect()->back()
+                ->withInput($request->input())
+                ->withErrors($validator);
         }
 
         DB::table('hires')->where('id', '=', $hire_id)->update([

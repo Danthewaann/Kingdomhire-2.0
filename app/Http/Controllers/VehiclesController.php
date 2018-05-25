@@ -32,7 +32,9 @@ class VehiclesController extends Controller
 
         if($validator->fails())
         {
-            return redirect()->back()->withErrors($validator);
+            return redirect()->back()
+                ->withInput($request->input())
+                ->withErrors($validator);
         }
 
         $vehicle_id = Vehicle::create(array(

@@ -16,7 +16,8 @@
           <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }} col-md-12">
             <div class="form-row">
               <label for="start_date">Start Date</label>
-              {{ Form::text('start_date', $hire->start_date, array('class' => 'form-control datepicker', 'style' => 'max-width: 300px;', 'disabled' => 'true')) }}
+              <input id="start_date" name="start_date" style="max-width: 300px;" class="form-control" type="text" value="{{ $hire->start_date }}" readonly/>
+              {{--{{ Form::text('start_date', $hire->start_date, array('class' => 'form-control datepicker', 'style' => 'max-width: 300px;', 'readonly' => 'true')) }}--}}
               @if( $errors->has('start_date'))
                 <span class="help-block">
                     <strong>{{ $errors->first('start_date') }}</strong>

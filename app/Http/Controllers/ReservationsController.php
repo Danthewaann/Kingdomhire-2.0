@@ -13,8 +13,8 @@ use App\Hire;
 class ReservationsController extends Controller
 {
     private $rules = [
-        'start_date' => 'required|date',
-        'end_date' => 'required|date'
+        'start_date' => 'required|date|after_or_equal:today',
+        'end_date' => 'required|date|after:start_date'
     ];
 
     /**
@@ -33,12 +33,15 @@ class ReservationsController extends Controller
 
         if($validator->fails())
         {
-            return redirect()->back()->withErrors($validator);
+            return redirect()->back()
+                ->withInput($request->input())
+                ->withErrors($validator);
         }
+
         if($request->get('start_date') == date('Y-m-d'))
         {
             Hire::create(array(
-                'vehicle_id' => DBQuery::getVehicle($make, $model, $vehicle_id)->id,
+                'vehicle_id' => $vehicle_id,
                 'start_date' =>  $request->get('start_date'),
                 'end_date' =>  $request->get('end_date')
             ));
@@ -50,7 +53,7 @@ class ReservationsController extends Controller
         else
         {
             Reservation::create(array(
-                'vehicle_id' => DBQuery::getVehicle($make, $model, $vehicle_id)->id,
+                'vehicle_id' => $vehicle_id,
                 'start_date' =>  $request->get('start_date'),
                 'end_date' =>  $request->get('end_date')
             ));
@@ -97,7 +100,9 @@ class ReservationsController extends Controller
 
         if($validator->fails())
         {
-            return redirect()->back()->withErrors($validator);
+            return redirect()->back()
+                ->withInput($request->input())
+                ->withErrors($validator);
         }
 
         DB::table('reservations')->where('id', '=', $reservation_id)->update([

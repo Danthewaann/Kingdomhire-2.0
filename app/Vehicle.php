@@ -11,6 +11,32 @@ use Illuminate\Support\Facades\DB;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Hire[] $hires
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Reservation[] $reservations
  * @mixin \Eloquent
+ * @property int $id
+ * @property string $make
+ * @property string $model
+ * @property string $fuel_type
+ * @property string $gear_type
+ * @property int $seats
+ * @property int $is_active
+ * @property string $status
+ * @property string $type
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property int|null $vehicle_rate_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\VehicleImage[] $images
+ * @property-read \App\VehicleRate|null $rate
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereFuelType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereGearType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereMake($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereModel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereSeats($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereVehicleRateId($value)
  */
 class Vehicle extends Model
 {
@@ -66,11 +92,11 @@ class Vehicle extends Model
 
     public function getActiveHire()
     {
-        return Hire::where([['vehicle_id', '=', $this->id], ['is_active', '=', true]])->get()->first();
+        return $this->hires->where('is_active', '=', true)->first();
     }
 
     public function getInactiveHires()
     {
-        return Hire::where([['vehicle_id', '=', $this->id], ['is_active', '=', false]])->get();
+        return $this->hires->where('is_active', '=', false);
     }
 }

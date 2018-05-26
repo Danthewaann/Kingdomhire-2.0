@@ -9,6 +9,20 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property-read \App\Vehicle $vehicle
  * @mixin \Eloquent
+ * @property int $id
+ * @property string $start_date
+ * @property string $end_date
+ * @property int $is_active
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property int $vehicle_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereVehicleId($value)
  */
 class Hire extends Model
 {

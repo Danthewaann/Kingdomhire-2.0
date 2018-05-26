@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DBQuery;
+use App\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -31,7 +32,7 @@ class HiresController extends Controller
             'make' => $make,
             'model' => $model,
             'vehicle_id' => $vehicle_id,
-            'hire' => DBQuery::getHire($hire_id)
+            'hire' => Hire::find($hire_id)
         ]);
     }
 
@@ -47,7 +48,7 @@ class HiresController extends Controller
         }
 
         $messages = array();
-        $reservations = DBQuery::getVehicleReservations($make, $model, $vehicle_id);
+        $reservations = Reservation::whereVehicleId($vehicle_id)->get();
         if(DBQuery::doesHireConflict($request->get('start_date'), $request->get('end_date'), $reservations, $messages)) {
             return redirect()->back()
                 ->withInput($request->input())
@@ -69,7 +70,7 @@ class HiresController extends Controller
     public function all()
     {
         return view('admin.admin-hires', [
-            'hires' => DBQuery::getAllHires()
+            'hires' => Hire::all()
         ]);
     }
 }

@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Reservation;
 use App\Vehicle;
-use App\Hire;
 
 class ReservationsController extends Controller
 {
@@ -38,8 +37,8 @@ class ReservationsController extends Controller
         }
 
         $messages = array();
-        $reservations = DBQuery::getVehicleReservations($vehicle_id);
-        $activeHire = DBQuery::getVehicle($make, $model, $vehicle_id)->getActiveHire();
+        $reservations = Reservation::whereVehicleId($vehicle_id)->get();
+        $activeHire = Vehicle::find($vehicle_id)->getActiveHire();
         if (DBQuery::doesReservationConflict($request->get('start_date'), $request->get('end_date'), $reservations, $messages, $activeHire)) {
             return redirect()->back()
                 ->withInput($request->input())
@@ -84,7 +83,7 @@ class ReservationsController extends Controller
             'make' => $make,
             'model' => $model,
             'vehicle_id' => $vehicle_id,
-            'reservation' => DBQuery::getReservation($reservation_id)
+            'reservation' => Reservation::find($reservation_id)
         ]);
     }
 
@@ -100,8 +99,13 @@ class ReservationsController extends Controller
         }
 
         $messages = array();
-        $reservations = DBQuery::getVehicleReservationsNotEqual($vehicle_id, $reservation_id);
-        $activeHire = DBQuery::getVehicle($make, $model, $vehicle_id)->getActiveHire();
+        $reservations = Reservation::all()
+            ->where('vehicle_id', '=', $vehicle_id)
+            ->reject(function($reservation) use ($reservation_id) {
+                return $reservation->id == $reservation_id;
+            });
+
+        $activeHire = Vehicle::find($vehicle_id)->getActiveHire();
         if(DBQuery::doesReservationConflict($request->get('start_date'), $request->get('end_date'), $reservations, $messages, $activeHire)) {
             return redirect()->back()
                 ->withInput($request->input())
@@ -124,7 +128,7 @@ class ReservationsController extends Controller
     public function all()
     {
         return view('admin.admin-reservations', [
-            'reservations' => DBQuery::getReservations()
+            'reservations' => Reservation::orderBy('end_date')->get()
         ]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\DBQuery;
+use App\Hire;
 use DB;
 use Illuminate\Console\Command;
 
@@ -39,7 +39,7 @@ class ActiveToInactiveHires extends Command
      */
     public function handle()
     {
-        $hires = DBQuery::getActiveHires();
+        $hires = Hire::whereIsActive(true)->get();
         foreach($hires as $hire) {
             if($hire->end_date <= date('Y-m-d')) {
                 DB::table('hires')

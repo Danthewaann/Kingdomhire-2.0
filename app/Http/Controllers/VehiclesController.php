@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\VehicleImage;
+use App\VehicleRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Vehicle;
-use App\DBQuery;
 
 class VehiclesController extends Controller
 {
@@ -44,7 +44,7 @@ class VehiclesController extends Controller
             'gear_type' => $request->get('gear_type'),
             'seats' => $request->get('seats'),
             'type' => $request->get('type'),
-            'vehicle_rate_id' =>  DBQuery::getVehicleRate($request->get('engine_size'))->id
+            'vehicle_rate_id' => VehicleRate::whereEngineSize($request->get('engine_size'))->get()->first()->id
         ))->id;
 
         if($request->hasFile('vehicle_images')) {
@@ -77,14 +77,12 @@ class VehiclesController extends Controller
             ->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])
             ->update(['is_active' => false, 'status' => 'Unavailable']);
 
-        $vehicle_id = DBQuery::getVehicle($make, $model, $id)->id;
-
         DB::table('reservations')
-            ->where('vehicle_id', '=', $vehicle_id)
+            ->where('vehicle_id', '=', $id)
             ->delete();
 
         DB::table('hires')
-            ->where('vehicle_id', '=', $vehicle_id)
+            ->where('vehicle_id', '=', $id)
             ->update(['is_active' => false]);
 
         return redirect()->route('admin.vehicles');
@@ -102,15 +100,15 @@ class VehiclesController extends Controller
     public function showEditForm($make, $model, $id)
     {
         return view('admin.vehicle.edit', [
-            'vehicle' => DBQuery::getVehicle($make, $model, $id),
-            'rates' => DBQuery::getVehicleRates()
+            'vehicle' => Vehicle::find($id),
+            'rates' => VehicleRate::all()
         ]);
     }
 
     public function showAddForm()
     {
         return view('admin.vehicle.add', [
-          'rates' => DBQuery::getVehicleRates()
+          'rates' => VehicleRate::all()
         ]);
     }
 
@@ -142,7 +140,7 @@ class VehiclesController extends Controller
         DB::table('vehicles')
             ->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])
             ->update([
-                'vehicle_rate_id' => DBQuery::getVehicleRate($request->get('engine_size'))->id,
+                'vehicle_rate_id' => VehicleRate::whereEngineSize($request->get('engine_size'))->get()->first()->id,
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
 
@@ -156,15 +154,15 @@ class VehiclesController extends Controller
     public function show($make, $model, $id)
     {
         return view('admin.vehicle.show', [
-            'vehicle' => DBQuery::getVehicle($make, $model, $id)
+            'vehicle' => Vehicle::find($id)
         ]);
     }
 
     public function all()
     {
         return view('admin.admin-vehicles', [
-            'rates' => DBQuery::getVehicleRates(),
-            'vehicles' => DBQuery::getAllVehicles()
+            'rates' => VehicleRate::all(),
+            'vehicles' => Vehicle::all()
         ]);
     }
 }

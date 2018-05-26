@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\DBQuery;
 use App\Hire;
+use App\Reservation;
 use DB;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
@@ -41,7 +41,7 @@ class ReservationsToHires extends Command
      */
     public function handle()
     {
-        $reservations = DBQuery::getReservations();
+        $reservations = Reservation::all();
         foreach($reservations as $reservation) {
             if($reservation->start_date <= date('Y-m-d')) {
                 Hire::create(array(

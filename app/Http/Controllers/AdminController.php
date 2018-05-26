@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Hire;
 use App\Vehicle;
 use App\Reservation;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\DBQuery;
+use App\VehicleRate;
 
 class AdminController extends Controller
 {
@@ -29,10 +27,10 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.admin-dashboard', [
-            'vehicles' => DBQuery::getActiveVehicles(),
-            'reservations' => DBQuery::getReservations(),
-            'hires' => DBQuery::getActiveHires(),
-            'rates' => DBQuery::getVehicleRates()
+            'vehicles' => Vehicle::whereIsActive(true)->get(),
+            'reservations' => Reservation::orderBy('end_date')->get(),
+            'hires' => Hire::whereIsActive(true)->get(),
+            'rates' => VehicleRate::all()
         ]);
     }
 }

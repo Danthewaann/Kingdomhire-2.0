@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\DBQuery;
 use App\VehicleRate;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -34,7 +33,7 @@ class VehicleRatesController extends Controller
     public function index()
     {
         return view('admin.admin-vehicles-rates', [
-            'rates' => DBQuery::getVehicleRates()
+            'rates' => VehicleRate::all()
         ]);
     }
 
@@ -71,7 +70,7 @@ class VehicleRatesController extends Controller
     public function showEditForm($engine_size)
     {
         return view('admin.vehicle-rate.edit', [
-            'rate' => DBQuery::getVehicleRate($engine_size)
+            'rate' => VehicleRate::whereEngineSize($engine_size)->get()->first()
         ]);
     }
 

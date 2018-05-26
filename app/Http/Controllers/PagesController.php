@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\DBQuery;
+use App\Vehicle;
 
 class PagesController extends Controller
 {
     public function vehicles()
     {
-        return view('public.vehicles', ['vehicles' => DBQuery::getActiveVehicles()]);
+        return view('public.vehicles', ['vehicles' => Vehicle::whereIsActive(true)->get()]);
     }
 
     public function contact()

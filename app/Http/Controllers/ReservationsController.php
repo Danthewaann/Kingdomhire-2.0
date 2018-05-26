@@ -31,8 +31,7 @@ class ReservationsController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($validator);
@@ -41,32 +40,17 @@ class ReservationsController extends Controller
         $messages = array();
         $reservations = DBQuery::getVehicleReservations($vehicle_id);
         $activeHire = DBQuery::getVehicle($make, $model, $vehicle_id)->getActiveHire();
-        if(DBQuery::doesReservationConflict($request->get('start_date'), $request->get('end_date'), $reservations, $messages, $activeHire)) {
+        if (DBQuery::doesReservationConflict($request->get('start_date'), $request->get('end_date'), $reservations, $messages, $activeHire)) {
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($messages);
         }
 
-        if($request->get('start_date') == date('Y-m-d'))
-        {
-            Hire::create(array(
-                'vehicle_id' => $vehicle_id,
-                'start_date' =>  $request->get('start_date'),
-                'end_date' =>  $request->get('end_date')
-            ));
-
-            DB::table('vehicles')
-                ->where([['make', '=', $make], ['model', '=', $model] , ['id', '=', $vehicle_id]])
-                ->update(['status' => 'Out for hire']);
-        }
-        else
-        {
-            Reservation::create(array(
-                'vehicle_id' => $vehicle_id,
-                'start_date' =>  $request->get('start_date'),
-                'end_date' =>  $request->get('end_date')
-            ));
-        }
+        Reservation::create(array(
+            'vehicle_id' => $vehicle_id,
+            'start_date' => $request->get('start_date'),
+            'end_date' => $request->get('end_date')
+        ));
 
         return redirect()->route('vehicle.show', [
             'make' => $make,
@@ -74,6 +58,7 @@ class ReservationsController extends Controller
             'id' => $vehicle_id
         ]);
     }
+
 
     public function cancel($id)
     {
@@ -123,28 +108,11 @@ class ReservationsController extends Controller
                 ->withErrors($messages);
         }
 
-        if($request->get('start_date') == date('Y-m-d'))
-        {
-            Hire::create(array(
-                'vehicle_id' => $vehicle_id,
-                'start_date' =>  $request->get('start_date'),
-                'end_date' =>  $request->get('end_date')
-            ));
-
-            DB::table('vehicles')
-                ->where([['make', '=', $make], ['model', '=', $model] , ['id', '=', $vehicle_id]])
-                ->update(['status' => 'Out for hire']);
-
-            DB::table('reservations')->where('id', '=', $reservation_id)->delete();
-        }
-        else
-        {
-            DB::table('reservations')->where('id', '=', $reservation_id)->update([
-                'start_date' => $request->get('start_date'),
-                'end_date' => $request->get('end_date'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]);
-        }
+        DB::table('reservations')->where('id', '=', $reservation_id)->update([
+            'start_date' => $request->get('start_date'),
+            'end_date' => $request->get('end_date'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
 
         return redirect()->route('vehicle.show', [
             'make' => $make,

@@ -6,6 +6,7 @@ use App\DBQuery;
 use App\Hire;
 use DB;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class ReservationsToHires extends Command
 {
@@ -56,6 +57,9 @@ class ReservationsToHires extends Command
                 DB::table('vehicles')
                     ->where('id', '=', $reservation->vehicle->id)
                     ->update(['status' => 'Out for hire']);
+
+                Log::channel('cron')->info("[ReservationsToHires] Reservation [id = ".$reservation->id.
+                    ", start_date = ".$reservation->start_date.", end_date = ".$reservation->end_date."] converted to hire");
             }
         }
     }

@@ -49,6 +49,9 @@ class ActiveToInactiveHires extends Command
                 DB::table('vehicles')
                     ->where('id', '=', $hire->vehicle->id)
                     ->update(['status' => 'Available']);
+
+                Log::channel('cron')->info("[ActiveToInactiveHires] Active hire [id = ".$hire->id.
+                    ", start_date = ".$hire->start_date.", end_date = ".$hire->end_date."] set to inactive");
             }
         }
     }

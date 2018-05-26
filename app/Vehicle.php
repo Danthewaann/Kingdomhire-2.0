@@ -66,15 +66,11 @@ class Vehicle extends Model
 
     public function getActiveHire()
     {
-        return DB::table('hires')
-          ->where([['vehicle_id', '=', $this->id], ['is_active', '=', true]])
-          ->get()->first();
+        return Hire::where([['vehicle_id', '=', $this->id], ['is_active', '=', true]])->get()->first();
     }
 
-  public function getInactiveHires()
-  {
-      return DB::table('hires')
-        ->where([['vehicle_id', '=', $this->id], ['is_active', '=', false]])
-        ->get();
-  }
+    public function getInactiveHires()
+    {
+        return Hire::where([['vehicle_id', '=', $this->id], ['is_active', '=', false]])->get();
+    }
 }

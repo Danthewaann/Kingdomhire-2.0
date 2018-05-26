@@ -15,6 +15,7 @@
             <th>Start Date</th>
             <th>End Date</th>
             <th></th>
+            <th></th>
           </tr>
           </thead>
           @foreach($vehicle->reservations as $reservation)

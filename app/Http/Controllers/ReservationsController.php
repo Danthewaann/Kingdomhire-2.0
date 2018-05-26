@@ -39,9 +39,9 @@ class ReservationsController extends Controller
         }
 
         $messages = array();
-        $reservations = DBQuery::getVehicleReservations($make, $model, $vehicle_id);
+        $reservations = DBQuery::getVehicleReservations($vehicle_id);
         $activeHire = DBQuery::getVehicle($make, $model, $vehicle_id)->getActiveHire();
-        if(DBQuery::doesReservationConflict($request->get('start_date'), $request->get('end_date'), $reservations, $activeHire, $messages)) {
+        if(DBQuery::doesReservationConflict($request->get('start_date'), $request->get('end_date'), $reservations, $messages, $activeHire)) {
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($messages);
@@ -117,7 +117,7 @@ class ReservationsController extends Controller
         $messages = array();
         $reservations = DBQuery::getVehicleReservationsNotEqual($vehicle_id, $reservation_id);
         $activeHire = DBQuery::getVehicle($make, $model, $vehicle_id)->getActiveHire();
-        if(DBQuery::doesReservationConflict($request->get('start_date'), $request->get('end_date'), $reservations, $activeHire, $messages)) {
+        if(DBQuery::doesReservationConflict($request->get('start_date'), $request->get('end_date'), $reservations, $messages, $activeHire)) {
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($messages);

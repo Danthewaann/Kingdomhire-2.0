@@ -80,17 +80,19 @@ class DBQuery
         return Hire::where('id', '=', $id)->get()->first();
     }
 
-    public static function doesReservationConflict($start_date, $end_date, $reservations, Hire $activeHire = null, &$errorMessages)
+    public static function doesReservationConflict($start_date, $end_date, &$reservations, &$errorMessages, Hire &$activeHire = null)
     {
         foreach ($reservations as $reservation) {
             if ($start_date < $reservation->start_date && $end_date >= $reservation->start_date) {
                 $errorMessages['end_date'] = 'end date conflicts with another reservation';
                 break;
-            } elseif ($start_date >= $reservation->start_date && $end_date <= $reservation->end_date) {
+            }
+            elseif ($start_date >= $reservation->start_date && $end_date <= $reservation->end_date) {
                 $errorMessages['start_date'] = 'start date conflicts with another reservation';
                 $errorMessages['end_date'] = 'end date conflicts with another reservation';
                 break;
-            } elseif ($start_date <= $reservation->end_date && $end_date > $reservation->end_date) {
+            }
+            elseif ($start_date <= $reservation->end_date && $end_date > $reservation->end_date) {
                 $errorMessages['start_date'] = 'start date conflicts with another reservation';
                 break;
             }
@@ -112,17 +114,19 @@ class DBQuery
         return count($errorMessages) > 0;
     }
 
-    public static function doesHireConflict($start_date, $end_date, $reservations, &$errorMessages)
+    public static function doesHireConflict($start_date, $end_date, &$reservations, &$errorMessages)
     {
         foreach ($reservations as $reservation) {
             if ($start_date < $reservation->start_date && $end_date >= $reservation->start_date) {
                 $errorMessages['end_date'] = 'end date conflicts with another reservation';
                 break;
-            } elseif ($start_date >= $reservation->start_date && $end_date <= $reservation->end_date) {
+            }
+            elseif ($start_date >= $reservation->start_date && $end_date <= $reservation->end_date) {
                 $errorMessages['start_date'] = 'start date conflicts with another reservation';
                 $errorMessages['end_date'] = 'end date conflicts with another reservation';
                 break;
-            } elseif ($start_date <= $reservation->end_date && $end_date > $reservation->end_date) {
+            }
+            elseif ($start_date <= $reservation->end_date && $end_date > $reservation->end_date) {
                 $errorMessages['start_date'] = 'start date conflicts with another reservation';
                 break;
             }

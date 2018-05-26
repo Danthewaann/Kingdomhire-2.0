@@ -13,8 +13,8 @@ use App\Hire;
 class ReservationsController extends Controller
 {
     private $rules = [
-        'start_date' => 'required|date|after_or_equal:today',
-        'end_date' => 'required|date|after:start_date'
+        'start_date' => 'required|date_format:Y-m-d|after_or_equal:today',
+        'end_date' => 'required|date_format:Y-m-d|after:start_date'
     ];
 
     /**
@@ -36,6 +36,15 @@ class ReservationsController extends Controller
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($validator);
+        }
+
+        $messages = array();
+        $reservations = DBQuery::getVehicleReservations($make, $model, $vehicle_id);
+        $activeHire = DBQuery::getVehicle($make, $model, $vehicle_id)->getActiveHire();
+        if(DBQuery::doesReservationConflict($request->get('start_date'), $request->get('end_date'), $reservations, $activeHire, $messages)) {
+            return redirect()->back()
+                ->withInput($request->input())
+                ->withErrors($messages);
         }
 
         if($request->get('start_date') == date('Y-m-d'))
@@ -105,11 +114,37 @@ class ReservationsController extends Controller
                 ->withErrors($validator);
         }
 
-        DB::table('reservations')->where('id', '=', $reservation_id)->update([
-            'start_date' => $request->get('start_date'),
-            'end_date' => $request->get('end_date'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
+        $messages = array();
+        $reservations = DBQuery::getVehicleReservationsNotEqual($vehicle_id, $reservation_id);
+        $activeHire = DBQuery::getVehicle($make, $model, $vehicle_id)->getActiveHire();
+        if(DBQuery::doesReservationConflict($request->get('start_date'), $request->get('end_date'), $reservations, $activeHire, $messages)) {
+            return redirect()->back()
+                ->withInput($request->input())
+                ->withErrors($messages);
+        }
+
+        if($request->get('start_date') == date('Y-m-d'))
+        {
+            Hire::create(array(
+                'vehicle_id' => $vehicle_id,
+                'start_date' =>  $request->get('start_date'),
+                'end_date' =>  $request->get('end_date')
+            ));
+
+            DB::table('vehicles')
+                ->where([['make', '=', $make], ['model', '=', $model] , ['id', '=', $vehicle_id]])
+                ->update(['status' => 'Out for hire']);
+
+            DB::table('reservations')->where('id', '=', $reservation_id)->delete();
+        }
+        else
+        {
+            DB::table('reservations')->where('id', '=', $reservation_id)->update([
+                'start_date' => $request->get('start_date'),
+                'end_date' => $request->get('end_date'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+        }
 
         return redirect()->route('vehicle.show', [
             'make' => $make,

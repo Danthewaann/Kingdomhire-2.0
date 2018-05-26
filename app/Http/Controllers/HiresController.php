@@ -11,8 +11,8 @@ use App\Hire;
 class HiresController extends Controller
 {
     private $rules = [
-        'start_date' => 'required|date|before_or_equal:today',
-        'end_date' => 'required|date|after:start_date'
+        'start_date' => 'required|date_format:Y-m-d|before_or_equal:today',
+        'end_date' => 'required|date_format:Y-m-d|after:start_date'
     ];
 
     /**
@@ -44,6 +44,14 @@ class HiresController extends Controller
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($validator);
+        }
+
+        $messages = array();
+        $reservations = DBQuery::getVehicleReservations($make, $model, $vehicle_id);
+        if(DBQuery::doesHireConflict($request->get('start_date'), $request->get('end_date'), $reservations, $messages)) {
+            return redirect()->back()
+                ->withInput($request->input())
+                ->withErrors($messages);
         }
 
         DB::table('hires')->where('id', '=', $hire_id)->update([

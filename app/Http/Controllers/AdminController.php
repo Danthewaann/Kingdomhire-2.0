@@ -33,8 +33,7 @@ class AdminController extends Controller
         return view('admin.admin-dashboard', [
             'vehicles' => $activeVehicles,
             'reservations' => Reservation::orderBy('end_date')->get(),
-            'hires' => Hire::whereIsActive(true)->get(),
-            'rates' => VehicleRate::all()
+            'hires' => Hire::whereIsActive(true)->orderBy('end_date')->get()
         ]);
     }
 }

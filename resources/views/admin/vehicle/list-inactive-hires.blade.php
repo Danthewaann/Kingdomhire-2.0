@@ -16,7 +16,7 @@
             <th>End Date</th>
           </tr>
           </thead>
-          @foreach($vehicle->getInactiveHires() as $hire)
+          @foreach($vehicle->getInactiveHires()->sortByDesc('end_date') as $hire)
             <tr>
               <td>{{ $hire->start_date }}</td>
               <td>{{ $hire->end_date }}</td>

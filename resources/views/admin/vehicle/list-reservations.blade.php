@@ -18,7 +18,7 @@
             <th></th>
           </tr>
           </thead>
-          @foreach($vehicle->reservations as $reservation)
+          @foreach($vehicle->reservations->sortBy('end_date') as $reservation)
             <tr>
               <td>{{ $reservation->start_date }}</td>
               <td>{{ $reservation->end_date }}</td>

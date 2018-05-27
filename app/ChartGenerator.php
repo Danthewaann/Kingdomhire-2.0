@@ -34,9 +34,10 @@ class ChartGenerator
 
         Lava::BarChart('Vehicle Reservations', $vehiclesTable, [
             'title' => 'Vehicle Reservations',
+            'height' => '400',
             'chartArea' => [
-                'left' => '20%',
-                'top' => '20%'
+                'left' => '25%',
+                'top' => '25%',
             ],
             'fontSize' => 14,
             'legend' => [

@@ -70,7 +70,12 @@ class ChartGenerator
             array_push($data, [
                 'label' => ($item instanceof Reservation ? 'Reservation' : 'Hire'),
                 'start' => $item->start_date,
-                'end' => $item->end_date
+                /*
+                 * when creating the gantt chart, the final day in each reservation/hire is truncated
+                 * e.g the end date "2018-05-03" becomes "2018-05-02" on the gantt chart
+                 * so we add on an extra day to counter this, so the proper end date is displayed
+                */
+                'end' => date('Y-m-d', strtotime($item->end_date . ' +1 day'))
             ]);
         }
 

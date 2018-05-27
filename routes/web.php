@@ -26,6 +26,7 @@ Route::post('/admin/vehicles/{make}_{model}_{id}/edit', 'VehiclesController@edit
 Route::get('/admin/vehicles/{make}_{model}_{id}/edit', 'VehiclesController@showEditForm')->name('vehicle.editForm');
 
 Route::get('/admin/vehicles/{make}_{model}_{id}', 'VehiclesController@show')->name('vehicle.show');
+Route::get('/admin/vehicles/{make}_{model}_{id}/charts', 'VehiclesController@showCharts')->name('vehicle.charts');
 Route::delete('/admin/vehicles/{make}_{model}_{id}/discontinue', 'VehiclesController@discontinue')->name('vehicle.discontinue');
 Route::delete('/admin/vehicles/{make}_{model}_{id}/delete', 'VehiclesController@destroy')->name('vehicle.delete');
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ChartGenerator;
 use App\Hire;
 use App\Vehicle;
 use App\Reservation;
@@ -26,8 +27,11 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $activeVehicles = Vehicle::whereIsActive(true)->get();
+        ChartGenerator::drawReservationsBarChart($activeVehicles);
+
         return view('admin.admin-dashboard', [
-            'vehicles' => Vehicle::whereIsActive(true)->get(),
+            'vehicles' => $activeVehicles,
             'reservations' => Reservation::orderBy('end_date')->get(),
             'hires' => Hire::whereIsActive(true)->get(),
             'rates' => VehicleRate::all()

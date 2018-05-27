@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ChartGenerator;
 use App\VehicleImage;
 use App\VehicleRate;
 use Illuminate\Http\Request;
@@ -155,6 +156,16 @@ class VehiclesController extends Controller
     {
         return view('admin.vehicle.show', [
             'vehicle' => Vehicle::find($id)
+        ]);
+    }
+
+    public function showCharts($make, $model, $id)
+    {
+        $vehicle = Vehicle::find($id);
+
+        return view('admin.vehicle.charts', [
+            'vehicle' => $vehicle,
+            'gantt' => ChartGenerator::drawVehicleReservationsAndHiresGanttChart($vehicle)
         ]);
     }
 

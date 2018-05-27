@@ -100,7 +100,6 @@ class ReservationsController extends Controller
 
         $messages = array();
         if(DBQuery::doesDatesConflict($vehicle_id, $request->get('start_date'), $request->get('end_date'), $messages, $reservation_id)) {
-//            dd($messages);
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($messages);

@@ -34,17 +34,20 @@ class ChartGenerator
 
         Lava::BarChart('Vehicle Reservations', $vehiclesTable, [
             'title' => 'Vehicle Reservations',
-            'height' => '400',
+            'colors' => [
+                'rgb(40,143,91)'
+            ],
+            'height' => count($activeVehicles)*45,
             'chartArea' => [
-                'left' => '25%',
-                'top' => '25%',
+                'left' => '22.5%',
+                'top' => '15%',
             ],
             'fontSize' => 14,
             'legend' => [
                 'position' => 'top',
             ],
             'bar' => [
-                'groupWidth' => '10'
+                'groupWidth' => '15'
             ],
             'hAxis' => [
                 'maxValue' => 10,
@@ -59,36 +62,21 @@ class ChartGenerator
     public static function drawVehicleReservationsAndHiresGanttChart(Vehicle $vehicle)
     {
         $data = array();
-        $reservations = Reservation::whereVehicleId($vehicle->id)
-            ->orderBy('start_date', 'asc')
-            ->orderBy('end_date', 'asc')
-            ->get();
+        $reservations = Reservation::whereVehicleId($vehicle->id)->get();
+        $hires = Hire::whereVehicleId($vehicle->id)->get();
+        $reservationsAndHires = $reservations->merge($hires)->sortBy('start_date');
 
-        $hires = Hire::whereVehicleId($vehicle->id)
-            ->orderBy('start_date', 'asc')
-            ->orderBy('end_date', 'asc')
-            ->get(['start_date', 'end_date']);
-
-        foreach ($reservations as $reservation) {
+        foreach ($reservationsAndHires as $item) {
             array_push($data, [
-                'label' => 'Reservation [ '.$reservation->start_date.' to '.$reservation->end_date.' ]',
-                'start' => $reservation->start_date,
-                'end' => $reservation->end_date
-            ]);
-        }
-
-        foreach ($hires as $hire) {
-            array_push($data, [
-                'label' => 'Hire [ '.$hire->start_date.' to '.$hire->end_date.' ]',
-                'start' => $hire->start_date,
-                'end' => $hire->end_date
+                'label' => ($item instanceof Reservation ? 'Reservation' : 'Hire'),
+                'start' => $item->start_date,
+                'end' => $item->end_date
             ]);
         }
 
         $gantt = new Gantt($data, array(
-            'title' => 'Reservations & Hires',
-            'cellwidth'  => 50,
-            'cellheight' => 50
+            'cellwidth'  => 35,
+            'cellheight' => 40
         ));
 
         return $gantt;

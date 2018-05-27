@@ -19,7 +19,7 @@
           <th></th>
         </tr>
         </thead>
-        @foreach($hires as $hire)
+        @foreach($hires->sortBy('end_date') as $hire)
           <tr>
             <td><a href="{{ route('vehicle.show', ['make' => $hire->vehicle->make, 'model' => $hire->vehicle->model, 'id' => $hire->vehicle->id]) }}">{{ $hire->vehicle->name() }} </a></td>
             @if($hire->is_active == true)

@@ -19,7 +19,7 @@
             <th></th>
           </tr>
           </thead>
-          @foreach($reservations as $reservation)
+          @foreach($reservations->sortBy('end_date') as $reservation)
             <tr>
               <td><a href="{{ route('vehicle.show', ['make' => $reservation->vehicle->make, 'model' => $reservation->vehicle->model, 'id' => $reservation->vehicle->id]) }}">{{ $reservation->vehicle->name() }}</a></td>
               <td>{{ $reservation->start_date }}</td>

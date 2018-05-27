@@ -3,7 +3,7 @@
 .gantt {
   position: relative;
   overflow: hidden;
-  color: #93a1a1;
+  color: white;
   background: #002b36; }
 
 .gantt * {
@@ -30,7 +30,7 @@
   left: 0;
   bottom: 0;
   top: 0;
-  width: 199px;
+  width: 400px;
   border-right: 1px solid #000b0d;
   z-index: 2; }
 
@@ -52,7 +52,8 @@
 .gantt aside .gantt-label strong {
   display: block;
   padding: 0 20px;
-  color: #93a1a1;
+  color: white;
+  font-size: 18px;
   border-bottom: 1px solid #001f27;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -61,8 +62,8 @@
 /* data section */
 .gantt-data {
   position: relative;
-  overflow-x: scroll;
-  margin-left: 200px;
+  overflow-x: auto;
+  margin-left: 400px;
   white-space: nowrap; }
 
 /* data section header */
@@ -80,7 +81,9 @@
 
 .gantt header .gantt-day span {
   text-indent: 0;
-  text-align: center; }
+  text-align: center;
+  font-size: 16px;
+}
 
 .gantt header .gantt-day.today span {
   color: #fff; }

@@ -71,7 +71,7 @@ class ChartGenerator
 
         foreach ($reservations as $reservation) {
             array_push($data, [
-                'label' => 'Reservation',
+                'label' => 'Reservation [ '.$reservation->start_date.' to '.$reservation->end_date.' ]',
                 'start' => $reservation->start_date,
                 'end' => $reservation->end_date
             ]);
@@ -79,15 +79,16 @@ class ChartGenerator
 
         foreach ($hires as $hire) {
             array_push($data, [
-                'label' => 'Hire',
+                'label' => 'Hire [ '.$hire->start_date.' to '.$hire->end_date.' ]',
                 'start' => $hire->start_date,
                 'end' => $hire->end_date
             ]);
         }
 
         $gantt = new Gantt($data, array(
-            'cellwidth'  => 20,
-            'cellheight' => 35
+            'title' => 'Reservations & Hires',
+            'cellwidth'  => 50,
+            'cellheight' => 50
         ));
 
         return $gantt;

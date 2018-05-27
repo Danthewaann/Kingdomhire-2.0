@@ -48,8 +48,7 @@ class HiresController extends Controller
         }
 
         $messages = array();
-        $reservations = Reservation::whereVehicleId($vehicle_id)->get();
-        if(DBQuery::doesHireConflict($request->get('start_date'), $request->get('end_date'), $reservations, $messages)) {
+        if(DBQuery::doesDatesConflict($vehicle_id, $request->get('start_date'), $request->get('end_date'), $messages, $hire_id)) {
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($messages);

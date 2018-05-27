@@ -35,6 +35,17 @@
                                 @endif
                             </div>
                         </div>
+                        @if( $errors->has('conflict'))
+                            <div class="form-group has-error col-md-12">
+                                <div class="form-row">
+                                      <span class="help-block">
+                                          @foreach($errors->get('conflict') as $error)
+                                              <strong>{{ $error }}</strong><br>
+                                          @endforeach
+                                      </span>
+                                </div>
+                            </div>
+                        @endif
                         <div class="form-row">
                             <div class="col-xs-12">
                                 <button type="submit" class="btn btn-primary">Log Reservation</button>

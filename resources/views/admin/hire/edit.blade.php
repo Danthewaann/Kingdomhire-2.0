@@ -17,7 +17,6 @@
             <div class="form-row">
               <label for="start_date">Start Date</label>
               <input id="start_date" name="start_date" style="max-width: 300px;" class="form-control" type="text" value="{{ $hire->start_date }}" readonly/>
-              {{--{{ Form::text('start_date', $hire->start_date, array('class' => 'form-control datepicker', 'style' => 'max-width: 300px;', 'readonly' => 'true')) }}--}}
               @if( $errors->has('start_date'))
                 <span class="help-block">
                     <strong>{{ $errors->first('start_date') }}</strong>
@@ -36,6 +35,17 @@
               @endif
             </div>
           </div>
+          @if( $errors->has('conflict'))
+            <div class="form-group has-error col-md-12">
+              <div class="form-row">
+                  <span class="help-block">
+                    @foreach($errors->get('conflict') as $error)
+                      <strong>{{ $error }}</strong><br>
+                    @endforeach
+                  </span>
+              </div>
+            </div>
+          @endif
           <div class="form-row">
             <div class="col-xs-12">
               <button type="submit" class="btn btn-primary">Edit Hire</button>

@@ -4,7 +4,12 @@
   <div class="panel panel-default">
     <div class="panel-heading"><h1>Hires Dashboard</h1></div>
   </div>
-  <div class="col-md-12">
-    @include('admin.hire.list-all')
+  <div class="row">
+    <div class="col-md-6">
+      @include('admin.hire.list-active')
+    </div>
+    <div class="col-md-6">
+      @include('admin.hire.list-inactive')
+    </div>
   </div>
 @endsection

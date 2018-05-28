@@ -9,7 +9,9 @@
       </ul>
     </div>
   </div>
-  <div class="col-md-12">
-    @include('admin.vehicle-rate.list')
+  <div class="row">
+    <div class="col-md-12">
+      @include('admin.vehicle-rate.list')
+    </div>
   </div>
 @endsection

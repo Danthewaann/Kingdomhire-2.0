@@ -1,12 +1,12 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    @if(!$hires->isEmpty())
+    @if(!$activeHires->isEmpty())
       <h3>Active hires</h3>
     @else
       <h3>No active hires</h3>
     @endif
   </div>
-  @if((!$hires->isEmpty()))
+  @if((!$activeHires->isEmpty()))
     <div class="panel-body">
       <div class="table-responsive">
         <table class="table">
@@ -18,7 +18,7 @@
             <th></th>
           </tr>
           </thead>
-          @foreach($hires as $hire)
+          @foreach($activeHires as $hire)
             <tr>
               <td><a href="{{ route('vehicle.show', ['make' => $hire->vehicle->make, 'model' => $hire->vehicle->model, 'id' => $hire->vehicle->id]) }}">{{ $hire->vehicle->name() }} </a></td>
               <td>{{ $hire->start_date }}</td>

@@ -10,13 +10,15 @@
       </ul>
     </div>
   </div>
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading"><h3>All Vehicles</h3></div>
-      <div class="panel-body">
-        @foreach($vehicles as $vehicle)
-          @include('admin.vehicle.list-admin')
-        @endforeach
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3>All Vehicles</h3></div>
+        <div class="panel-body">
+          @foreach($vehicles as $vehicle)
+            @include('admin.vehicle.list-admin')
+          @endforeach
+        </div>
       </div>
     </div>
   </div>

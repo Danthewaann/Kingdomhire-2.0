@@ -4,13 +4,13 @@
   <div class="panel panel-default">
     <div class="panel-heading"><h3>Edit Reservation Form</h3></div>
     <div class="panel-body">
-      <form action="{{ route('reservation.edit', ['make' => $make, 'model' => $model, 'vehicle_id' => $vehicle_id, 'reservation_id' => $reservation->id]) }}" method="post">
+      <form action="{{ route('reservation.edit', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}" method="post">
         {{csrf_field()}}
         <div class="form-row">
           <div class="form-group col-md-12">
             <div class="form-row">
               <label for="vehicle">Vehicle</label>
-              <input id="vehicle" style="max-width: 300px;" class="form-control" type="text" value="{{ $make.' '.$model }}" disabled/>
+              <input id="vehicle" style="max-width: 300px;" class="form-control" type="text" value="{{ $vehicle->name() }}" disabled/>
             </div>
           </div>
           <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }} col-md-12">

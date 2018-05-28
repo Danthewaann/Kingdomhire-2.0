@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DBQuery;
 use App\Reservation;
+use App\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -26,17 +27,15 @@ class HiresController extends Controller
         $this->middleware('auth');
     }
 
-    public function showEditForm($make, $model, $vehicle_id, $hire_id)
+    public function showEditForm($vehicle_id, $hire_id)
     {
         return view('admin.hire.edit', [
-            'make' => $make,
-            'model' => $model,
-            'vehicle_id' => $vehicle_id,
+            'vehicle' => Vehicle::find($vehicle_id),
             'hire' => Hire::find($hire_id)
         ]);
     }
 
-    public function edit(Request $request, $make, $model, $vehicle_id, $hire_id)
+    public function edit(Request $request, $vehicle_id, $hire_id)
     {
         $validator = Validator::make($request->all(), $this->rules);
 
@@ -60,8 +59,6 @@ class HiresController extends Controller
         ]);
 
         return redirect()->route('vehicle.show', [
-            'make' => $make,
-            'model' => $model,
             'vehicle_id' => $vehicle_id
         ]);
     }

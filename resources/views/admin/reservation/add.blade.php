@@ -4,13 +4,13 @@
     <div class="panel panel-default">
         <div class="panel-heading"><h3>Vehicle Reservation Form</h3></div>
             <div class="panel-body">
-                <form action="{{ route('reservation.log', ['make' => $make, 'model' => $model, 'id' => $id]) }}" method="post">
+                <form action="{{ route('reservation.log', ['id' => $vehicle->id]) }}" method="post">
                     {{csrf_field()}}
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <div class="form-row">
                                 <label for="vehicle">Vehicle</label>
-                                <input id="vehicle" style="max-width: 300px;" class="form-control" type="text" value="{{ $make.' '.$model }}" disabled/>
+                                <input id="vehicle" style="max-width: 300px;" class="form-control" type="text" value="{{ $vehicle->name() }}" disabled/>
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }} col-md-12">

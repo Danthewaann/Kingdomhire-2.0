@@ -28,7 +28,7 @@
                 {{ Form::close() }}
               </td>
               <td>
-                <a href="{{ route('reservation.editForm', ['make' => $vehicle->make, 'model' => $vehicle->model, 'vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
+                <a href="{{ route('reservation.editForm', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
                    class="btn btn-primary" role="button" aria-pressed="true">Re-schedule</a>
               </td>
             </tr>

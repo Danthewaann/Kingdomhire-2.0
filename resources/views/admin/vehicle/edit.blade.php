@@ -5,7 +5,7 @@
   <div class="panel-heading"><h3>Edit {{ $vehicle->name() }}</h3></div>
   <div class="panel-body">
     <div class="col-md-6">
-      <form action="{{ route('vehicle.edit', ['make' => $vehicle->make, 'model' => $vehicle->model, 'id' => $vehicle->id]) }}" method="post" enctype="multipart/form-data">
+      <form action="{{ route('vehicle.edit', ['id' => $vehicle->id]) }}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
           <div class="form-group row col-xs-12">
             <label for="engine_size">Engine Size</label>

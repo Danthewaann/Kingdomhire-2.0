@@ -26,7 +26,7 @@ class ReservationsController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Request $request, $make, $model, $vehicle_id)
+    public function store(Request $request, $vehicle_id)
     {
         $validator = Validator::make($request->all(), $this->rules);
 
@@ -37,8 +37,6 @@ class ReservationsController extends Controller
         }
 
         $messages = array();
-        $reservations = Reservation::whereVehicleId($vehicle_id)->get();
-        $activeHire = Vehicle::find($vehicle_id)->getActiveHire();
         if (DBQuery::doesDatesConflict($vehicle_id, $request->get('start_date'), $request->get('end_date'), $messages)) {
             return redirect()->back()
                 ->withInput($request->input())
@@ -52,9 +50,7 @@ class ReservationsController extends Controller
         ));
 
         return redirect()->route('vehicle.show', [
-            'make' => $make,
-            'model' => $model,
-            'id' => $vehicle_id
+            'vehicle' => Vehicle::find($vehicle_id)
         ]);
     }
 
@@ -68,26 +64,22 @@ class ReservationsController extends Controller
         return redirect()->back();
     }
 
-    public function showForm($make, $model, $vehicle_id)
+    public function showForm($vehicle_id)
     {
         return view('admin.reservation.add', [
-            'make' => $make,
-            'model' => $model,
-            'id' => $vehicle_id
+            'vehicle' => Vehicle::find($vehicle_id)
         ]);
     }
 
-    public function showEditForm($make, $model, $vehicle_id, $reservation_id)
+    public function showEditForm($vehicle_id, $reservation_id)
     {
         return view('admin.reservation.edit', [
-            'make' => $make,
-            'model' => $model,
-            'vehicle_id' => $vehicle_id,
+            'vehicle' => Vehicle::find($vehicle_id),
             'reservation' => Reservation::find($reservation_id)
         ]);
     }
 
-    public function edit(Request $request, $make, $model, $vehicle_id, $reservation_id)
+    public function edit(Request $request, $vehicle_id, $reservation_id)
     {
         $validator = Validator::make($request->all(), $this->rules);
 
@@ -112,8 +104,6 @@ class ReservationsController extends Controller
         ]);
 
         return redirect()->route('vehicle.show', [
-            'make' => $make,
-            'model' => $model,
             'id' => $vehicle_id
         ]);
     }

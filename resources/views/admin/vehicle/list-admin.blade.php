@@ -5,7 +5,7 @@
   <table class="table">
     <tr>
       <th>Vehicle</th>
-      <td><a href="{{ route('vehicle.show', ['make' => $vehicle->make, 'model' => $vehicle->model, 'id' => $vehicle->id]) }}">{{ $vehicle->name() }}</a></td>
+      <td><a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">{{ $vehicle->name() }}</a></td>
     </tr>
     <tr>
       <th>Status</th>

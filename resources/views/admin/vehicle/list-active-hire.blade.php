@@ -21,7 +21,7 @@
             <td>{{ $vehicle->getActiveHire()->start_date }}</td>
             <td>{{ $vehicle->getActiveHire()->end_date }}</td>
             <td>
-              <a href="{{ route('hire.edit', ['make' => $vehicle->make, 'model' => $vehicle->model, 'vehicle_id' => $vehicle->id, 'hire_id' => $vehicle->getActiveHire()->id]) }}"
+              <a href="{{ route('hire.edit', ['vehicle_id' => $vehicle->id, 'hire_id' => $vehicle->getActiveHire()->id]) }}"
                  class="btn btn-primary" role="button" aria-pressed="true">Shorten/Extend</a>
             </td>
           </tr>

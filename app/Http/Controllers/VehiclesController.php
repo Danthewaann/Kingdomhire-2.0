@@ -72,10 +72,10 @@ class VehiclesController extends Controller
         return redirect()->route('admin.vehicles');
     }
 
-    public function discontinue($make, $model, $id)
+    public function discontinue($id)
     {
         DB::table('vehicles')
-            ->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])
+            ->where('id', '=', $id)
             ->update(['is_active' => false, 'status' => 'Unavailable']);
 
         DB::table('reservations')
@@ -89,16 +89,16 @@ class VehiclesController extends Controller
         return redirect()->route('admin.vehicles');
     }
 
-    public function destroy($make, $model, $id)
+    public function destroy($id)
     {
         DB::table('vehicles')
-            ->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])
+            ->where('id', '=', $id)
             ->delete();
 
         return redirect()->route('admin.vehicles');
     }
 
-    public function showEditForm($make, $model, $id)
+    public function showEditForm($id)
     {
         return view('admin.vehicle.edit', [
             'vehicle' => Vehicle::find($id),
@@ -113,15 +113,16 @@ class VehiclesController extends Controller
         ]);
     }
 
-    public function edit(Request $request, $make, $model, $id)
+    public function edit(Request $request, $id)
     {
+        $vehicle = Vehicle::find($id);
         if($request->hasFile('vehicle_images_add')) {
             $images = $request->file('vehicle_images_add');
-            $i = count(Vehicle::with(['images'])->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])->get()->first()->images);
+            $i = count(VehicleImage::whereVehicleId($id)->get());
             foreach ($images as $image) {
                 $i++;
-                $image_name = $make.'_'.$model.'_'.$i.'.'.$image->extension();
-                $image_path = $image->storeAs('imgs/'.$make.'_'.$model, $image_name, 'public');
+                $image_name = $vehicle->make.'_'.$vehicle->model.'_'.$i.'.'.$image->extension();
+                $image_path = $image->storeAs('imgs/'.$vehicle->make.'_'.$vehicle->model, $image_name, 'public');
 
                 VehicleImage::create(array(
                     'name' => $image_name,
@@ -139,30 +140,26 @@ class VehiclesController extends Controller
         }
 
         DB::table('vehicles')
-            ->where([['make', '=', $make], ['model', '=', $model], ['id', '=', $id]])
-            ->update([
+            ->where('id', '=', $id)->update([
                 'vehicle_rate_id' => VehicleRate::whereEngineSize($request->get('engine_size'))->get()->first()->id,
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
 
         return redirect()->route('vehicle.show', [
-            'make' => $make,
-            'model' => $model,
-            'vehicle_id' => $id
+            'vehicle' => $vehicle
         ]);
     }
 
-    public function show($make, $model, $id)
+    public function show($id)
     {
         return view('admin.vehicle.show', [
             'vehicle' => Vehicle::find($id)
         ]);
     }
 
-    public function showCharts($make, $model, $id)
+    public function showCharts($id)
     {
         $vehicle = Vehicle::find($id);
-
         return view('admin.vehicle.charts', [
             'vehicle' => $vehicle,
             'gantt' => ChartGenerator::drawVehicleReservationsAndHiresGanttChart($vehicle)

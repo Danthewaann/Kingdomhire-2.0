@@ -21,7 +21,7 @@
           </thead>
           @foreach($reservations as $reservation)
             <tr>
-              <td><a href="{{ route('vehicle.show', ['make' => $reservation->vehicle->make, 'model' => $reservation->vehicle->model, 'id' => $reservation->vehicle->id]) }}">{{ $reservation->vehicle->name() }}</a></td>
+              <td><a href="{{ route('vehicle.show', ['id' => $reservation->vehicle->id]) }}">{{ $reservation->vehicle->name() }}</a></td>
               <td>{{ $reservation->start_date }}</td>
               <td>{{ $reservation->end_date }}</td>
               <td>
@@ -30,7 +30,7 @@
                 {{ Form::close() }}
               </td>
               <td>
-                <a href="{{ route('reservation.editForm', ['make' => $reservation->vehicle->make, 'model' => $reservation->vehicle->model, 'vehicle_id' => $reservation->vehicle->id, 'reservation_id' => $reservation->id]) }}"
+                <a href="{{ route('reservation.editForm', ['vehicle_id' => $reservation->vehicle->id, 'reservation_id' => $reservation->id]) }}"
                    class="btn btn-primary" role="button" aria-pressed="true">Re-schedule</a>
               </td>
             </tr>

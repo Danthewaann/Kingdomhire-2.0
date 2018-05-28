@@ -70,7 +70,6 @@ class HiresController extends Controller
     {
         return view('admin.admin-hires', [
             'activeHires' => Hire::whereIsActive(true)
-//                ->orderBy('start_date')
                 ->orderBy('end_date')
                 ->get(),
             'inactiveHires' => Hire::whereIsActive(false)

@@ -19,19 +19,19 @@ Route::get('/contact', 'PagesController@contact')->name('public.contact');
 /* Administrator routes */
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 
-Route::get('/admin/vehicles/', 'VehiclesController@all')->name('admin.vehicles');
+Route::get('/admin/vehicles', 'VehiclesController@all')->name('admin.vehicles');
 Route::get('/admin/vehicles/add', 'VehiclesController@showAddForm')->name('vehicle.addForm');
 Route::post('/admin/vehicles/add', 'VehiclesController@store')->name('vehicle.add');
 Route::post('/admin/vehicles/{id}/edit', 'VehiclesController@edit')->name('vehicle.edit');
 Route::get('/admin/vehicles/{id}/edit', 'VehiclesController@showEditForm')->name('vehicle.editForm');
 
-Route::get('/admin/vehicles/{id}', 'VehiclesController@show')->name('vehicle.show');
+Route::get('/admin/vehicles/{id}', 'VehiclesController@show')->name('vehicle.show')->where('id', '\d+');
 Route::get('/admin/vehicles/{id}/charts', 'VehiclesController@showCharts')->name('vehicle.charts');
 Route::delete('/admin/vehicles/{id}/discontinue', 'VehiclesController@discontinue')->name('vehicle.discontinue');
 Route::delete('/admin/vehicles/{id}/delete', 'VehiclesController@destroy')->name('vehicle.delete');
 
-Route::get('/admin/reservations/', 'ReservationsController@all')->name('admin.reservations');
-Route::get('/admin/hires/', 'HiresController@all')->name('admin.hires');
+Route::get('/admin/reservations', 'ReservationsController@all')->name('admin.reservations');
+Route::get('/admin/hires', 'HiresController@all')->name('admin.hires');
 Route::get('/admin/vehicles/{id}/log-reservation', 'ReservationsController@showForm')->name('reservation.form');
 Route::post('/admin/vehicles/{id}/log-reservation', 'ReservationsController@store')->name('reservation.log');
 Route::get('/admin/vehicles/{vehicle_id}/reservation/{reservation_id}/edit', 'ReservationsController@showEditForm')->name('reservation.editForm');
@@ -41,7 +41,7 @@ Route::post('/admin/vehicles/{vehicle_id}/hire/{hire_id}/edit', 'HiresController
 
 Route::delete('/admin/reservations/{id}/cancel', 'ReservationsController@cancel')->name('reservation.cancel');
 
-Route::get('/admin/vehicles/rates/', 'VehicleRatesController@index')->name('vehicle-rate.index');
+Route::get('/admin/vehicles/rates', 'VehicleRatesController@index')->name('vehicle-rate.index');
 Route::post('/admin/vehicles/rates/add', 'VehicleRatesController@store')->name('vehicle-rate.add');
 Route::get('/admin/vehicles/rates/add', 'VehicleRatesController@showAddForm')->name('vehicle-rate.addForm');
 Route::get('/admin/vehicles/rates/{rate}/edit', 'VehicleRatesController@showEditForm')->name('vehicle-rate.editForm');

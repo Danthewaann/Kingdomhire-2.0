@@ -169,7 +169,6 @@ class VehiclesController extends Controller
     public function all()
     {
         return view('admin.admin-vehicles', [
-            'rates' => VehicleRate::all(),
             'vehicles' => Vehicle::all()
         ]);
     }

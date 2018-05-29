@@ -39,14 +39,22 @@
                 @endif
               </div>
             </div>
-            @if( $errors->has('conflict'))
+            @if( $errors->has('reservation') or $errors->has('hire'))
               <div class="form-group has-error col-md-12">
                 <div class="form-row">
-                    <span class="help-block">
-                      @foreach($errors->get('conflict') as $error)
-                        <strong>{{ $error }}</strong><br>
-                      @endforeach
-                    </span>
+                  <span class="help-block">
+                    @if($errors->has('reservation'))
+                      <strong>Other reservation</strong><br>
+                      <strong>Start date = {{ $errors->get('reservation')['start_date'] }}</strong><br>
+                      <strong>End date = {{ $errors->get('reservation')['end_date'] }}</strong>
+                      <br><br>
+                    @endif
+                    @if($errors->has('hire'))
+                      <strong>Current active hire</strong><br>
+                      <strong>Start date = {{ $errors->get('hire')['start_date'] }}</strong><br>
+                      <strong>End date = {{ $errors->get('hire')['end_date'] }}</strong>
+                    @endif
+                  </span>
                 </div>
               </div>
             @endif

@@ -11,7 +11,7 @@ class DBQuery
             ->get()->first();
     }
 
-    public static function doesDatesConflict($vehicle_id, $start_date, $end_date, &$errorMessages, $edit_id = null)
+    public static function doesDatesConflict($vehicle_id, $start_date, $end_date, &$errorMessages, $edit_id = null, $checkActiveHire = false)
     {
         $reservations = Reservation::all()->where('vehicle_id', '=', $vehicle_id);
         $activeHire = Vehicle::find($vehicle_id)->getActiveHire();
@@ -34,24 +34,28 @@ class DBQuery
             }
 
             if(count($errorMessages) > 0) {
-                $errorMessages['conflict']['start_date'] = 'Start date = '.$reservation->start_date;
-                $errorMessages['conflict']['end_date'] = 'End date = '.$reservation->end_date;
-                return true;
+                $errorMessages['reservation'] = $reservation;
+                break;
             }
         }
 
-        if ($activeHire != null) {
+        if ($activeHire != null && $checkActiveHire == true) {
             if ($start_date < $activeHire->start_date && $end_date >= $activeHire->start_date) {
                 $errorMessages['end_date'] = 'End date conflicts with current active hire';
             }
+            elseif ($start_date >= $activeHire->start_date && $end_date <= $activeHire->end_date) {
+                $errorMessages['start_date'] = 'Start date conflicts with current active hire';
+                $errorMessages['end_date'] = 'End date conflicts with current active hire';
+            }
+            elseif ($start_date <= $activeHire->end_date && $end_date > $activeHire->end_date) {
+                $errorMessages['start_date'] = 'Start date conflicts with current active hire';
+            }
 
             if(count($errorMessages) > 0) {
-                $errorMessages['conflict']['start_date'] = 'Start date = '.$activeHire->start_date;
-                $errorMessages['conflict']['end_date'] = 'End date = '.$activeHire->end_date;
-                return true;
+                $errorMessages['hire'] = $activeHire;
             }
         }
 
-        return false;
+        return count($errorMessages) > 0;
     }
 }

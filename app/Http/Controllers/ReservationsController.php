@@ -37,7 +37,7 @@ class ReservationsController extends Controller
         }
 
         $messages = array();
-        if (DBQuery::doesDatesConflict($vehicle_id, $request->get('start_date'), $request->get('end_date'), $messages)) {
+        if (DBQuery::doesDatesConflict($vehicle_id, $request->get('start_date'), $request->get('end_date'), $messages, null, true)) {
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($messages);
@@ -91,7 +91,7 @@ class ReservationsController extends Controller
         }
 
         $messages = array();
-        if(DBQuery::doesDatesConflict($vehicle_id, $request->get('start_date'), $request->get('end_date'), $messages, $reservation_id)) {
+        if(DBQuery::doesDatesConflict($vehicle_id, $request->get('start_date'), $request->get('end_date'), $messages, $reservation_id, true)) {
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($messages);

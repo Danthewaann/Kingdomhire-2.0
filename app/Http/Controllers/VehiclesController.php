@@ -152,7 +152,7 @@ class VehiclesController extends Controller
 
     public function show($id)
     {
-        return view('admin.vehicle.show', [
+        return view('admin.vehicle.dashboard', [
             'vehicle' => Vehicle::find($id)
         ]);
     }
@@ -163,6 +163,20 @@ class VehiclesController extends Controller
         return view('admin.vehicle.charts', [
             'vehicle' => $vehicle,
             'gantt' => ChartGenerator::drawVehicleReservationsAndHiresGanttChart($vehicle)
+        ]);
+    }
+
+    public function showHires($id)
+    {
+        return view('admin.vehicle.hires', [
+            'vehicle' => Vehicle::find($id)
+        ]);
+    }
+
+    public function showReservations($id)
+    {
+        return view('admin.vehicle.reservations', [
+            'vehicle' => Vehicle::find($id)
         ]);
     }
 

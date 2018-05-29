@@ -39,7 +39,7 @@ class ChartGenerator
             ],
             'height' => count($activeVehicles)*45,
             'chartArea' => [
-                'left' => '22.5%',
+                'left' => '20%',
                 'top' => '15%',
             ],
             'fontSize' => 14,
@@ -79,10 +79,13 @@ class ChartGenerator
             ]);
         }
 
-        $gantt = new Gantt($data, array(
-            'cellwidth'  => 35,
-            'cellheight' => 40
-        ));
+        $gantt = null;
+        if ($reservationsAndHires->isNotEmpty()) {
+            $gantt = new Gantt($data, array(
+                'cellwidth' => 35,
+                'cellheight' => 40
+            ));
+        }
 
         return $gantt;
     }

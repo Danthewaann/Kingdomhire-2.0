@@ -27,6 +27,8 @@ Route::get('/admin/vehicles/{id}/edit', 'VehiclesController@showEditForm')->name
 
 Route::get('/admin/vehicles/{id}', 'VehiclesController@show')->name('vehicle.show')->where('id', '\d+');
 Route::get('/admin/vehicles/{id}/charts', 'VehiclesController@showCharts')->name('vehicle.charts');
+Route::get('/admin/vehicles/{id}/reservations', 'VehiclesController@showReservations')->name('vehicle.reservations');
+Route::get('/admin/vehicles/{id}/hires', 'VehiclesController@showHires')->name('vehicle.hires');
 Route::delete('/admin/vehicles/{id}/discontinue', 'VehiclesController@discontinue')->name('vehicle.discontinue');
 Route::delete('/admin/vehicles/{id}/delete', 'VehiclesController@destroy')->name('vehicle.delete');
 

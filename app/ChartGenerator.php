@@ -23,9 +23,15 @@ class ChartGenerator
         } catch (InvalidLabel $e) {
         }
 
+        $maxReservationsForVehicle = 0;
         foreach ($activeVehicles as $vehicle) {
+            //Get the number of reservations from the vehicle that has the most reservations
+            $numOfReservations = count($vehicle->reservations);
+            if($numOfReservations > $maxReservationsForVehicle) {
+                $maxReservationsForVehicle = $numOfReservations;
+            }
             try {
-                $vehiclesTable->addRow([$vehicle->name(), count($vehicle->reservations)]);
+                $vehiclesTable->addRow([$vehicle->name(), $numOfReservations]);
             } catch (InvalidCellCount $e) {
             } catch (InvalidRowDefinition $e) {
             } catch (InvalidRowProperty $e) {
@@ -33,28 +39,104 @@ class ChartGenerator
         }
 
         Lava::BarChart('Vehicle Reservations', $vehiclesTable, [
-            'title' => 'Vehicle Reservations',
+            'title' => 'Current Active Reservations',
             'colors' => [
                 'rgb(40,143,91)'
             ],
-            'height' => count($activeVehicles)*45,
+            'height' => count($activeVehicles)*55,
             'chartArea' => [
                 'left' => '20%',
-                'top' => '15%',
+                'top' => '20%',
+                'width' => '75%',
             ],
             'fontSize' => 14,
             'legend' => [
                 'position' => 'top',
             ],
             'bar' => [
-                'groupWidth' => '15'
+                'groupWidth' => '20'
             ],
             'hAxis' => [
-                'maxValue' => 10,
+                'maxValue' => ($maxReservationsForVehicle > 3 ? $maxReservationsForVehicle : 3),
                 'gridlines' => [
-                    'count' => 11
+                    'count' => ($maxReservationsForVehicle > 3 ? $maxReservationsForVehicle : 3)+1
                 ],
                 'title' => 'Number of active reservations',
+            ],
+        ]);
+    }
+
+    public static function drawPastHiresColumnChart($pastHires)
+    {
+        $pastHiresTable = \Lava::DataTable();
+        try {
+            $pastHiresTable->addStringColumn('Month')
+                ->addNumberColumn('Hires Per Month');
+        } catch (InvalidColumnType $e) {
+        } catch (InvalidLabel $e) {
+        }
+
+        $hiresPerMonth = [
+            'January' => 0,
+            'February' => 0,
+            'March' => 0,
+            'April' => 0,
+            'May' => 0,
+            'June' => 0,
+            'July' => 0,
+            'August' => 0,
+            'September' => 0,
+            'October' => 0,
+            'November' => 0,
+            'December' => 0
+        ];
+
+        foreach ($pastHires as $hire) {
+            $currentYear = date('Y');
+            if(date('Y', strtotime($hire->end_date)) == $currentYear) {
+                $month = date('F', strtotime($hire->end_date));
+                $hiresPerMonth[$month]++;
+            }
+        }
+
+        $maxAmountOfHiresForMonth = 0;
+        foreach ($hiresPerMonth as $month => $hires) {
+            //Get the number of hires from the month that has the most hires
+            if($hires > $maxAmountOfHiresForMonth) {
+                $maxAmountOfHiresForMonth = $hires;
+            }
+            try {
+                $pastHiresTable->addRow([$month, $hires]);
+            } catch (InvalidCellCount $e) {
+            } catch (InvalidRowDefinition $e) {
+            } catch (InvalidRowProperty $e) {
+            }
+        }
+
+        Lava::ColumnChart('Hires per month', $pastHiresTable, [
+            'title' => 'Hires Per Month for '.date('Y'),
+            'colors' => [
+                'rgb(40,143,91)'
+            ],
+            'height' => 400,
+            'chartArea' => [
+                'left' => '15%',
+                'top' => '20%',
+                'width' => '80%',
+            ],
+            'fontSize' => 14,
+            'legend' => [
+                'position' => 'top',
+            ],
+            'bar' => [
+                'groupWidth' => '25'
+            ],
+            'vAxis' => [
+                'maxValue' => ($maxAmountOfHiresForMonth > 3 ? $maxAmountOfHiresForMonth : 3),
+                'gridlines' => [
+                    'count' => ($maxAmountOfHiresForMonth > 3 ? $maxAmountOfHiresForMonth : 3)+1
+                ],
+                'title' => 'Number of hires per month',
             ],
         ]);
     }

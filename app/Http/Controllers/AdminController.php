@@ -28,12 +28,12 @@ class AdminController extends Controller
     public function index()
     {
         $activeVehicles = Vehicle::whereIsActive(true)->get();
+        $pastHires = Hire::whereIsActive(false)->get();
         ChartGenerator::drawReservationsBarChart($activeVehicles);
+        ChartGenerator::drawPastHiresColumnChart($pastHires);
 
         return view('admin.admin-dashboard', [
-            'vehicles' => $activeVehicles,
-            'reservations' => Reservation::orderBy('end_date')->get(),
-            'activeHires' => Hire::whereIsActive(true)->orderBy('end_date')->get()
+            'vehicles' => $activeVehicles
         ]);
     }
 }

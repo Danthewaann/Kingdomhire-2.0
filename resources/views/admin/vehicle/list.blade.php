@@ -3,7 +3,7 @@
         @if($vehicles->isEmpty())
             <h3>No vehicles present</h3>
         @else
-            <h3>Active vehicles list</h3>
+            <h3>Active vehicles</h3>
         @endif
     </div>
     @if(!$vehicles->isEmpty())

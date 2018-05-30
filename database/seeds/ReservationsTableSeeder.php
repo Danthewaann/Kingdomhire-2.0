@@ -24,15 +24,21 @@ class ReservationsTableSeeder extends Seeder
                 $reservationLength = rand(3, 10);
                 $start = date('Y-m-d', rand($start_date, $end_date));
                 $end = date('Y-m-d', strtotime($start . '+ '.$reservationLength.' days'));
-                if(count($vehicle->reservations) > 0) {
-                    foreach ($vehicle->reservations as $reservation) {
-                        if(!DBQuery::datesConflict($reservation, $start, $end)) {
-                            Reservation::create([
-                                'start_date' => $start,
-                                'end_date' => $end,
-                                'vehicle_id' => $vehicle->id
-                            ]);
+                $reservations = Reservation::whereVehicleId($vehicle->id)->get();
+                if($reservations->isNotEmpty()) {
+                    $conflicts = false;
+                    foreach ($reservations as $reservation) {
+                        if(DBQuery::datesConflict($reservation, $start, $end)) {
+                            $conflicts = true;
+                            break;
                         }
+                    }
+                    if(!$conflicts) {
+                        Reservation::create([
+                            'start_date' => $start,
+                            'end_date' => $end,
+                            'vehicle_id' => $vehicle->id
+                        ]);
                     }
                 }
                 else {

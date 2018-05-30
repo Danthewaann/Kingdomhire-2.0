@@ -22,40 +22,48 @@ class DBQuery
         }
 
         foreach ($reservations as $reservation) {
-            if ($start_date < $reservation->start_date && $end_date >= $reservation->start_date) {
-                $errorMessages['end_date'] = 'End date conflicts with another reservation';
-            }
-            elseif ($start_date >= $reservation->start_date && $end_date <= $reservation->end_date) {
-                $errorMessages['start_date'] = 'Start date conflicts with another reservation';
-                $errorMessages['end_date'] = 'End date conflicts with another reservation';
-            }
-            elseif ($start_date <= $reservation->end_date && $end_date > $reservation->end_date) {
-                $errorMessages['start_date'] = 'Start date conflicts with another reservation';
-            }
-
-            if(count($errorMessages) > 0) {
-                $errorMessages['reservation'] = $reservation;
+            if(self::datesConflict($reservation, $start_date, $end_date, $errorMessages)) {
                 break;
             }
         }
 
         if ($activeHire != null && $checkActiveHire == true) {
-            if ($start_date < $activeHire->start_date && $end_date >= $activeHire->start_date) {
-                $errorMessages['end_date'] = 'End date conflicts with current active hire';
-            }
-            elseif ($start_date >= $activeHire->start_date && $end_date <= $activeHire->end_date) {
-                $errorMessages['start_date'] = 'Start date conflicts with current active hire';
-                $errorMessages['end_date'] = 'End date conflicts with current active hire';
-            }
-            elseif ($start_date <= $activeHire->end_date && $end_date > $activeHire->end_date) {
-                $errorMessages['start_date'] = 'Start date conflicts with current active hire';
-            }
-
-            if(count($errorMessages) > 0) {
-                $errorMessages['hire'] = $activeHire;
-            }
+            self::datesConflict($activeHire, $start_date, $end_date, $errorMessages);
         }
 
         return count($errorMessages) > 0;
+    }
+
+    public static function datesConflict($item, $start_date, $end_date, &$errorMessages = null)
+    {
+        $conflicts = false;
+        $item_type = ($item instanceof Reservation ? 'another reservation' : 'current active hire');
+        if ($start_date < $item->start_date && $end_date >= $item->start_date) {
+            if(!is_null($errorMessages)) {
+                $errorMessages['end_date'] = 'End date conflicts with ' . $item_type;
+            }
+            $conflicts = true;
+        }
+        elseif ($start_date >= $item->start_date && $end_date <= $item->end_date) {
+            if(!is_null($errorMessages)) {
+                $errorMessages['start_date'] = 'Start date conflicts with ' . $item_type;
+                $errorMessages['end_date'] = 'End date conflicts with ' . $item_type;
+            }
+            $conflicts = true;
+        }
+        elseif ($start_date <= $item->end_date && $end_date > $item->end_date) {
+            if(!is_null($errorMessages)) {
+                $errorMessages['start_date'] = 'Start date conflicts with ' . $item_type;
+            }
+            $conflicts = true;
+        }
+
+        if(!is_null($errorMessages)) {
+            if (count($errorMessages) > 0) {
+                $errorMessages[($item instanceof Reservation ? 'reservation' : 'hire')] = $item;
+            }
+        }
+
+        return $conflicts;
     }
 }

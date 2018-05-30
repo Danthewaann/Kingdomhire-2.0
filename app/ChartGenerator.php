@@ -63,10 +63,14 @@ class ChartGenerator
     {
         $data = array();
         $reservations = Reservation::whereVehicleId($vehicle->id)->get();
-        $hires = Hire::whereVehicleId($vehicle->id)->get();
-        $reservationsAndHires = $reservations->merge($hires)->sortBy('start_date');
-
-        foreach ($reservationsAndHires as $item) {
+        $activeHire = $vehicle->getActiveHire();
+        if($activeHire != null) {
+            $reservationsAndActiveHire = $reservations->merge(collect([$activeHire]))->sortBy('start_date');
+        }
+        else {
+            $reservationsAndActiveHire = $reservations->sortBy('start_date');
+        }
+        foreach ($reservationsAndActiveHire as $item) {
             array_push($data, [
                 'label' => ($item instanceof Reservation ? 'Reservation' : 'Hire'),
                 'start' => $item->start_date,
@@ -80,10 +84,10 @@ class ChartGenerator
         }
 
         $gantt = null;
-        if ($reservationsAndHires->isNotEmpty()) {
+        if ($reservationsAndActiveHire->isNotEmpty()) {
             $gantt = new Gantt($data, array(
-                'cellwidth' => 35,
-                'cellheight' => 40
+                'cellwidth' => 30,
+                'cellheight' => 35
             ));
         }
 

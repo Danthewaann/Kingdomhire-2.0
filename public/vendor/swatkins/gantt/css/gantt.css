@@ -82,7 +82,7 @@
 .gantt header .gantt-day span {
   text-indent: 0;
   text-align: center;
-  font-size: 16px;
+  /*font-size: 16px;*/
 }
 
 .gantt header .gantt-day.today span {

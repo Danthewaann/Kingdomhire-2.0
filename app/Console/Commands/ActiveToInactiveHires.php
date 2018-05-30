@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Hire;
 use DB;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class ActiveToInactiveHires extends Command
 {

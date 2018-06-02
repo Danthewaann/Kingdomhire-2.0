@@ -168,8 +168,11 @@ class VehiclesController extends Controller
 
     public function showHires($id)
     {
+        $vehicle = Vehicle::find($id);
+        ChartGenerator::drawPastHiresBarChart($vehicle->getInactiveHires());
+
         return view('admin.vehicle.hires', [
-            'vehicle' => Vehicle::find($id)
+            'vehicle' => $vehicle
         ]);
     }
 

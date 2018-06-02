@@ -43,7 +43,7 @@ class ChartGenerator
             'colors' => [
                 'rgb(40,143,91)'
             ],
-            'height' => count($activeVehicles)*55,
+            'height' => count($activeVehicles)*60,
             'chartArea' => [
                 'left' => '20%',
                 'top' => '20%',
@@ -66,7 +66,7 @@ class ChartGenerator
         ]);
     }
 
-    public static function drawPastHiresColumnChart($pastHires)
+    public static function drawPastHiresBarChart($pastHires)
     {
         $pastHiresTable = \Lava::DataTable();
         try {
@@ -113,7 +113,7 @@ class ChartGenerator
             }
         }
 
-        Lava::ColumnChart('Hires per month', $pastHiresTable, [
+        Lava::BarChart('Hires per month', $pastHiresTable, [
             'title' => 'Hires Per Month for '.date('Y'),
             'colors' => [
                 'rgb(40,143,91)'
@@ -121,7 +121,7 @@ class ChartGenerator
             'height' => 400,
             'chartArea' => [
                 'left' => '15%',
-                'top' => '20%',
+                'top' => '15%',
                 'width' => '80%',
             ],
             'fontSize' => 14,
@@ -129,9 +129,9 @@ class ChartGenerator
                 'position' => 'top',
             ],
             'bar' => [
-                'groupWidth' => '25'
+                'groupWidth' => '15'
             ],
-            'vAxis' => [
+            'hAxis' => [
                 'maxValue' => ($maxAmountOfHiresForMonth > 3 ? $maxAmountOfHiresForMonth : 3),
                 'gridlines' => [
                     'count' => ($maxAmountOfHiresForMonth > 3 ? $maxAmountOfHiresForMonth : 3)+1

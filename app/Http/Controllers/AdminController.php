@@ -30,7 +30,7 @@ class AdminController extends Controller
         $activeVehicles = Vehicle::whereIsActive(true)->get();
         $pastHires = Hire::whereIsActive(false)->get();
         ChartGenerator::drawReservationsBarChart($activeVehicles);
-        ChartGenerator::drawPastHiresColumnChart($pastHires);
+        ChartGenerator::drawPastHiresBarChart($pastHires);
 
         return view('admin.admin-dashboard', [
             'vehicles' => $activeVehicles

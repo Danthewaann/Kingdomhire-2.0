@@ -25,7 +25,7 @@
           <div id="hires_per_month"></div>
         </div>
       </div>
-      @columnchart('Hires per month', 'hires_per_month')
+      @barchart('Hires per month', 'hires_per_month')
     </div>
   </div>
 @endsection

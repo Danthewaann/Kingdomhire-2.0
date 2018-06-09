@@ -118,9 +118,9 @@ class ChartGenerator
             'colors' => [
                 'rgb(40,143,91)'
             ],
-            'height' => 400,
+            'height' => 500,
             'chartArea' => [
-                'left' => '15%',
+                'left' => '12.5%',
                 'top' => '15%',
                 'width' => '80%',
             ],
@@ -132,9 +132,9 @@ class ChartGenerator
                 'groupWidth' => '15'
             ],
             'hAxis' => [
-                'maxValue' => ($maxAmountOfHiresForMonth > 3 ? $maxAmountOfHiresForMonth : 3),
+                'maxValue' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5),
                 'gridlines' => [
-                    'count' => ($maxAmountOfHiresForMonth > 3 ? $maxAmountOfHiresForMonth : 3)+1
+                    'count' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5)+1
                 ],
                 'title' => 'Number of hires per month',
             ],

@@ -1,8 +1,8 @@
-<div class="col-md-4 col-xs-6">
+<div class="col-md-4 col-xs-12">
   <div class="panel panel-default">
     <div class="panel-body">
       @foreach($vehicle->images as $image)
-        @if($loop->first) <img src="{{ $image->image_uri }}" style="width: 100%; height: 225px;"/> @endif
+        @if($loop->first) <img src="{{ $image->image_uri }}" style="width: 100%; height: 25%;"/> @endif
       @endforeach
       <table class="table">
         <tr>

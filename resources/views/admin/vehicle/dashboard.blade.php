@@ -6,6 +6,8 @@
     @include('admin.vehicle.summary')
     <div class="col-md-5 col-xs-12">
       @include('admin.vehicle.list-reservations')
+    </div>
+    <div class="col-md-5 col-xs-12">
       @include('admin.vehicle.list-active-hire')
     </div>
   </div>

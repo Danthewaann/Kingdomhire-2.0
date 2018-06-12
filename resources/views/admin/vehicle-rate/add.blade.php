@@ -5,7 +5,7 @@
   <div class="panel-heading"><h3>Add a vehicle rate</h3></div>
   <div class="panel-body">
     <form action="{{ route('vehicle-rate.add') }}" method="post">
-      {{csrf_field()}}
+      @csrf
       <div class="form-row">
         <div class="form-group{{ $errors->has('engine_size') ? ' has-error' : '' }} col-md-12">
           <label for="make">Engine Size</label>

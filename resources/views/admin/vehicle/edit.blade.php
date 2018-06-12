@@ -10,7 +10,8 @@
     <div class="panel-body">
       <div class="col-md-6">
         <form action="{{ route('vehicle.edit', ['id' => $vehicle->id]) }}" method="post" enctype="multipart/form-data">
-          {{csrf_field()}}
+          @csrf
+          @method('PATCH')
             <div class="form-group row col-xs-12">
               <label for="engine_size">Engine Size</label>
               <select id="engine_size" class="form-control" name="engine_size">

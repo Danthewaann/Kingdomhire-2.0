@@ -5,7 +5,7 @@
   <div class="panel-heading"><h3>Add a vehicle</h3></div>
   <div class="panel-body">
   <form action="{{ route('vehicle.add') }}" method="post" enctype="multipart/form-data">
-      {{csrf_field()}}
+      @csrf
       <div class="form-row">
           <div class="form-group{{ $errors->has('make') ? ' has-error' : '' }} col-xs-6">
               <label for="make">Make</label>

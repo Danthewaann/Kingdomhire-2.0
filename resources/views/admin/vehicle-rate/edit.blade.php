@@ -5,7 +5,8 @@
     <div class="panel-heading"><h3>Edit Vehicle Rate</h3></div>
     <div class="panel-body">
       <form action="{{ route('vehicle-rate.edit', ['rate' => $rate->engine_size]) }}" method="post">
-        {{csrf_field()}}
+        @csrf
+        @method('PATCH')
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="engine_size">Engine Size</label>

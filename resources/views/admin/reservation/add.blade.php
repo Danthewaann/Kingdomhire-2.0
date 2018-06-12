@@ -9,7 +9,7 @@
             <div class="panel-heading"><h3>Reservation Form</h3></div>
                 <div class="panel-body">
                     <form action="{{ route('reservation.log', ['id' => $vehicle->id]) }}" method="post">
-                        {{csrf_field()}}
+                        @csrf
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <div class="form-row">

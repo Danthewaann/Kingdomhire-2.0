@@ -9,7 +9,8 @@
       <div class="panel-heading"><h3>Edit Reservation Form</h3></div>
       <div class="panel-body">
         <form action="{{ route('reservation.edit', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}" method="post">
-          {{csrf_field()}}
+          @csrf
+          @method('PATCH')
           <div class="form-row">
             <div class="form-group col-md-12">
               <div class="form-row">

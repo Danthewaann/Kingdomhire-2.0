@@ -20,7 +20,7 @@
                             <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }} col-md-12">
                                 <div class="form-row">
                                     <label for="start_date">Start Date</label>
-                                    {{ Form::text('start_date', '', array('class' => 'form-control datepicker', 'style' => 'max-width: 300px;')) }}
+                                    {{ Form::text('start_date', '', array('class' => 'form-control datepicker', 'style' => 'max-width: 300px;', 'autocomplete' => 'off')) }}
                                     @if( $errors->has('start_date'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('start_date') }}</strong>
@@ -31,7 +31,7 @@
                             <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }} col-md-12">
                                 <div class="form-row">
                                     <label for="end_date">End Date</label>
-                                    {{ Form::text('end_date', '', array('class' => 'form-control datepicker', 'style' => 'max-width: 300px;')) }}
+                                    {{ Form::text('end_date', '', array('class' => 'form-control datepicker', 'style' => 'max-width: 300px;', 'autocomplete' => 'off')) }}
                                     @if( $errors->has('end_date'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('end_date') }}</strong>

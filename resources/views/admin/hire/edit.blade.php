@@ -32,7 +32,7 @@
             <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }} col-md-12">
               <div class="form-row">
                 <label for="end_date">End Date</label>
-                {{ Form::text('end_date', $hire->end_date, array('class' => 'form-control datepicker', 'style' => 'max-width: 300px;')) }}
+                {{ Form::text('end_date', $hire->end_date, array('class' => 'form-control datepicker', 'style' => 'max-width: 300px;', 'autocomplete' => 'off')) }}
                 @if( $errors->has('end_date'))
                   <span class="help-block">
                       <strong>{{ $errors->first('end_date') }}</strong>

@@ -9,7 +9,7 @@
       <div class="form-row">
           <div class="form-group{{ $errors->has('make') ? ' has-error' : '' }} col-xs-6">
               <label for="make">Make</label>
-              <input type="text" class="form-control" id="make" name="make" value="{{ old('make') }}" placeholder="Enter make">
+              <input type="text" class="form-control" id="make" name="make" value="{{ old('make') }}" autocomplete="off" placeholder="Enter make">
               @if( $errors->has('make'))
                 <span class="help-block">
                     <strong>{{ $errors->first('make') }}</strong>
@@ -18,7 +18,7 @@
           </div>
           <div class="form-group{{ $errors->has('model') ? ' has-error' : '' }} col-xs-6">
               <label for="model">Model</label>
-              <input type="text" class="form-control" id="model" name="model" value="{{ old('model') }}" placeholder="Enter model">
+              <input type="text" class="form-control" id="model" name="model" value="{{ old('model') }}" autocomplete="off" placeholder="Enter model">
               @if( $errors->has('model'))
                   <span class="help-block">
                     <strong>{{ $errors->first('model') }}</strong>
@@ -46,7 +46,7 @@
       <div class="form-row">
           <div class="form-group{{ $errors->has('seats') ? ' has-error' : '' }} col-xs-6">
               <label for="seats">Seats</label>
-              <input type="text" class="form-control" id="seats" name="seats" placeholder="Enter number of seats" value="{{ old('seats') }}">
+              <input type="text" class="form-control" id="seats" name="seats" placeholder="Enter number of seats" value="{{ old('seats') }}" autocomplete="off">
               @if( $errors->has('seats'))
                   <span class="help-block">
                     <strong>{{ $errors->first('seats') }}</strong>

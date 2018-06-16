@@ -17,13 +17,13 @@
 </head>
 <body>
 <div id="app">
-  <div class="container">
+  <div class="container-fluid">
     <div style="max-width: 600px; min-width: 200px; padding: 10px; float: left;">
       <img src="{{ asset('static/Kingdomhire_logo.svg') }}" style="position: relative; width: 100%;"/>
     </div>
   </div>
   <nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
+    <div class="container-fluid">
       <div class="navbar-header">
 
         <!-- Collapsed Hamburger -->
@@ -70,7 +70,7 @@
     </div>
   </nav>
 
-  <div class="container">
+  <div class="container-fluid">
     @yield('content')
   </div>
 </div>

@@ -2,6 +2,7 @@
   <div class="panel-heading">
     @if(!$inactiveHires->isEmpty())
       <h3>Past hires</h3>
+      <span>{{ count($inactiveHires) }} hire(s) in total</span>
     @else
       <h3>No past hires</h3>
     @endif
@@ -9,13 +10,12 @@
   @if((!$inactiveHires->isEmpty()))
   <div class="panel-body">
     <div class="table-responsive">
-      <table class="table">
+      <table class="table table-bordered table-hover table-sm">
         <thead>
         <tr>
           <th>Vehicle</th>
           <th>Start Date</th>
           <th>End Date</th>
-          <th></th>
         </tr>
         </thead>
         @foreach($inactiveHires as $hire)

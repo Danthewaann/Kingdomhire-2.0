@@ -3,8 +3,10 @@
 @section('content')
 @include('admin.vehicle.navbar')
 <div class="row">
-  @include('admin.vehicle.summary')
-  <div class="col-md-5 col-xs-12">
+  <div class="col-md-3 col-sm-4 col-xs-12">
+    @include('admin.vehicle.summary')
+  </div>
+  <div class="col-md-3 col-sm-5 col-xs-12">
     <div class="panel panel-default">
       <div class="panel-heading"><h3>Edit Hire Form</h3></div>
       <div class="panel-body">

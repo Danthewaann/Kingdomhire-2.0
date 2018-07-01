@@ -3,47 +3,22 @@
 @section('content')
   @include('admin.vehicle.navbar')
   <div class="row">
-    @include('admin.vehicle.summary')
-    <div class="col-md-5 col-xs-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          @if(!$vehicle->reservations->isEmpty())
-            <h3>Current reservations</h3>
-          @else
-            <h3>No current reservations</h3>
-          @endif
-        </div>
-        @if(!$vehicle->reservations->isEmpty())
+    <div class="col-md-3 col-sm-4 col-xs-12">
+      @include('admin.vehicle.summary')
+    </div>
+    <div class="col-md-9 col-sm-8 col-xs-12">
+      @if($gantt != null)
+        <div class="panel panel-default">
+          <div class="panel-heading"><h3>Reservations & Hires Gantt Chart</h3></div>
           <div class="panel-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                <tr>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-                </thead>
-                @foreach($vehicle->reservations->sortBy('end_date') as $reservation)
-                  <tr>
-                    <td>{{ $reservation->start_date }}</td>
-                    <td>{{ $reservation->end_date }}</td>
-                    <td>
-                      {{ Form::open(['route' => ['reservation.cancel', $reservation->id], 'method' => 'delete']) }}
-                      {{ Form::submit('Cancel', ['class' => 'btn btn-primary']) }}
-                      {{ Form::close() }}
-                    </td>
-                    <td>
-                      <a href="{{ route('reservation.editForm', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
-                         class="btn btn-primary" role="button" aria-pressed="true">Re-schedule</a>
-                    </td>
-                  </tr>
-                @endforeach
-              </table>
-            </div>
+            {!! $gantt !!}
           </div>
-        @endif
+        </div>
+      @endif
+      <div class="row">
+        <div class="col-md-5 col-sm-9 col-xs-12">
+          @include('admin.vehicle.list-reservations')
+        </div>
       </div>
     </div>
   </div>

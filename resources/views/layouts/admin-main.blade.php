@@ -17,15 +17,12 @@
 </head>
 <body>
 <div id="app">
-  <div class="container-fluid">
-    <div style="max-width: 600px; min-width: 200px; padding: 10px; float: left;">
-      <img src="{{ asset('static/Kingdomhire_logo.svg') }}" style="position: relative; width: 100%;"/>
-    </div>
-  </div>
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
       <div class="navbar-header">
-
+        <a href="{{ url('/admin') }}">
+          <img src="{{ asset('static/Kingdomhire_logo.svg') }}" width="375" height="150">
+        </a>
         <!-- Collapsed Hamburger -->
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
           <span class="sr-only">Toggle Navigation</span>
@@ -37,7 +34,7 @@
 
       <div class="collapse navbar-collapse" id="app-navbar-collapse">
         <!-- Left Side Of Navbar -->
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" style="padding-top: 80px;">
           <a href="{{ route('admin.dashboard') }}" class="btn btn-primary navbar-btn btn-lg" style="color: white;" role="button" aria-disabled="true">Home</a>
           <a href="{{ route('admin.vehicles') }}" class="btn btn-primary navbar-btn btn-lg" style="color: white;" role="button" aria-disabled="true">Vehicles</a>
           <a href="{{ route('admin.reservations') }}" class="btn btn-primary navbar-btn btn-lg" style="color: white;" role="button" aria-disabled="true">Reservations</a>
@@ -71,7 +68,11 @@
   </nav>
 
   <div class="container-fluid">
+    <div class="col-md-12">
+    <div class="row">
     @yield('content')
+    </div>
+    </div>
   </div>
 </div>
 

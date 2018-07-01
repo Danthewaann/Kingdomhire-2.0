@@ -49,7 +49,7 @@ class ChartGenerator
                 'top' => '20%',
                 'width' => '75%',
             ],
-            'fontSize' => 14,
+            'fontSize' => 12,
             'legend' => [
                 'position' => 'top',
             ],
@@ -118,18 +118,18 @@ class ChartGenerator
             'colors' => [
                 'rgb(40,143,91)'
             ],
-            'height' => 500,
+            'height' => 700,
             'chartArea' => [
                 'left' => '12.5%',
-                'top' => '15%',
+                'top' => '10%',
                 'width' => '80%',
             ],
-            'fontSize' => 14,
+            'fontSize' => 12,
             'legend' => [
                 'position' => 'top',
             ],
             'bar' => [
-                'groupWidth' => '15'
+                'groupWidth' => '20'
             ],
             'hAxis' => [
                 'maxValue' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5),

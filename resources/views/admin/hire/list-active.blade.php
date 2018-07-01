@@ -2,6 +2,7 @@
   <div class="panel-heading">
     @if(!$activeHires->isEmpty())
       <h3>Active hires</h3>
+      <span>{{ count($activeHires) }} hire(s) in total</span>
     @else
       <h3>No active hires</h3>
     @endif
@@ -9,7 +10,7 @@
   @if((!$activeHires->isEmpty()))
     <div class="panel-body">
       <div class="table-responsive">
-        <table class="table">
+        <table class="table table-hover table-sm">
           <thead>
           <tr>
             <th>Vehicle</th>

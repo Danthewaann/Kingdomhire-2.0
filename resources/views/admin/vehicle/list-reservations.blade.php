@@ -2,6 +2,7 @@
   <div class="panel-heading">
     @if(!$vehicle->reservations->isEmpty())
       <h3>Current reservations</h3>
+      <span>{{ count($vehicle->reservations) }} reservation(s) in total</span>
     @else
       <h3>No current reservations</h3>
     @endif
@@ -9,7 +10,7 @@
   @if(!$vehicle->reservations->isEmpty())
     <div class="panel-body">
       <div class="table-responsive">
-        <table class="table">
+        <table class="table table-hover table-sm">
           <thead>
           <tr>
             <th>Start Date</th>

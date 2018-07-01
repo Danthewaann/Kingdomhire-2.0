@@ -14,8 +14,6 @@
              class="btn btn-primary" style="margin: 1px;" role="button" aria-pressed="true">Hires</a>
           <a href="{{ route('reservation.form', ['id' => $vehicle->id]) }}"
              class="btn btn-primary" style="margin: 1px;" role="button" aria-pressed="true">Log Reservation</a>
-          <a href="{{ route('vehicle.charts', ['id' => $vehicle->id]) }}"
-             class="btn btn-primary" style="margin: 1px;" role="button" aria-pressed="true">Charts</a>
           {{ Form::open(['route' => ['vehicle.discontinue', $vehicle->id], 'style' => 'display: inline-block; margin: 1px;', 'method' => 'delete']) }}
           {{ Form::submit('Discontinue', ['class' => 'btn btn-primary']) }}
           {{ Form::close() }}

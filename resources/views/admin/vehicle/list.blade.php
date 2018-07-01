@@ -9,7 +9,7 @@
     @if(!$vehicles->isEmpty())
         <div class="panel-body">
           <div class="table-responsive">
-            <table class="table">
+            <table class="table table-bordered table-hover table-sm">
                 <thead>
                     <tr>
                         <th>Vehicle</th>

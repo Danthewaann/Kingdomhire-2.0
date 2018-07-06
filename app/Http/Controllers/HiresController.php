@@ -66,7 +66,9 @@ class HiresController extends Controller
     public function all()
     {
         return view('admin.admin-hires', [
+            'vehicles' => Vehicle::all(),
             'activeHires' => Hire::whereIsActive(true)
+                ->orderBy('start_date', 'desc')
                 ->orderBy('end_date')
                 ->get(),
             'inactiveHires' => Hire::whereIsActive(false)

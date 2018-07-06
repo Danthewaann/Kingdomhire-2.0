@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading"><h1>{{ $vehicle->name() }} Dashboard</h1></div>
-      <div class="panel-body">
+      <div class="panel-body" style="padding: unset">
         <ul class="nav navbar-nav" style="padding: 10px;">
           <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}"
              class="btn btn-primary" style="margin: 1px;" role="button" aria-pressed="true">Home</a>

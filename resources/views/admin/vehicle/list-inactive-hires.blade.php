@@ -8,23 +8,22 @@
     @endif
   </div>
   @if(!$vehicle->getInactiveHires()->isEmpty())
-    <div class="panel-body">
+
       <div class="table-responsive">
         <table class="table table-bordered table-hover table-sm">
           <thead>
           <tr>
-            <th>Start Date</th>
-            <th>End Date</th>
+            <th style="padding-left: 15px">Start Date</th>
+            <th style="padding-left: 15px">End Date</th>
           </tr>
           </thead>
           @foreach($vehicle->getInactiveHires()->sortByDesc('end_date') as $hire)
             <tr>
-              <td>{{ $hire->start_date }}</td>
-              <td>{{ $hire->end_date }}</td>
+              <td style="padding-left: 15px">{{ date('jS F Y', strtotime($hire->start_date)) }}</td>
+              <td style="padding-left: 15px">{{ date('jS F Y', strtotime($hire->end_date)) }}</td>
             </tr>
           @endforeach
         </table>
       </div>
-    </div>
   @endif
 </div>

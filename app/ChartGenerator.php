@@ -31,7 +31,9 @@ class ChartGenerator
                 $maxReservationsForVehicle = $numOfReservations;
             }
             try {
-                $vehiclesTable->addRow([$vehicle->name(), $numOfReservations]);
+                if($numOfReservations > 0) {
+                    $vehiclesTable->addRow([$vehicle->name(), $numOfReservations]);
+                }
             } catch (InvalidCellCount $e) {
             } catch (InvalidRowDefinition $e) {
             } catch (InvalidRowProperty $e) {
@@ -39,29 +41,34 @@ class ChartGenerator
         }
 
         Lava::BarChart('Vehicle Reservations', $vehiclesTable, [
-            'title' => 'Current Active Reservations',
             'colors' => [
                 'rgb(40,143,91)'
             ],
-            'height' => count($activeVehicles)*60,
+            'height' => count($activeVehicles)*50,
             'chartArea' => [
                 'left' => '20%',
-                'top' => '20%',
+                'top' => '12.5%',
                 'width' => '75%',
             ],
-            'fontSize' => 12,
             'legend' => [
                 'position' => 'top',
             ],
             'bar' => [
                 'groupWidth' => '20'
             ],
+            'vAxis' => [
+                'textPosition' => 'out',
+                'textStyle' => [
+                    'color' => 'black',
+                    'auraColor' => 'none',
+                ],
+            ],
             'hAxis' => [
                 'maxValue' => ($maxReservationsForVehicle > 3 ? $maxReservationsForVehicle : 3),
                 'gridlines' => [
                     'count' => ($maxReservationsForVehicle > 3 ? $maxReservationsForVehicle : 3)+1
                 ],
-                'title' => 'Number of active reservations',
+                'title' => 'Number of reservations',
             ],
         ]);
     }
@@ -77,24 +84,24 @@ class ChartGenerator
         }
 
         $hiresPerMonth = [
-            'January' => 0,
-            'February' => 0,
-            'March' => 0,
-            'April' => 0,
+            'Jan' => 0,
+            'Feb' => 0,
+            'Mar' => 0,
+            'Apr' => 0,
             'May' => 0,
-            'June' => 0,
-            'July' => 0,
-            'August' => 0,
-            'September' => 0,
-            'October' => 0,
-            'November' => 0,
-            'December' => 0
+            'Jun' => 0,
+            'Jul' => 0,
+            'Aug' => 0,
+            'Sep' => 0,
+            'Oct' => 0,
+            'Nov' => 0,
+            'Dec' => 0
         ];
 
         foreach ($pastHires as $hire) {
             $currentYear = date('Y');
             if(date('Y', strtotime($hire->end_date)) == $currentYear) {
-                $month = date('F', strtotime($hire->end_date));
+                $month = date('M', strtotime($hire->end_date));
                 $hiresPerMonth[$month]++;
             }
         }
@@ -113,16 +120,16 @@ class ChartGenerator
             }
         }
 
-        Lava::BarChart('Hires per month', $pastHiresTable, [
-            'title' => 'Hires Per Month for '.date('Y'),
+        Lava::ColumnChart('Hires per month', $pastHiresTable, [
             'colors' => [
                 'rgb(40,143,91)'
             ],
-            'height' => 700,
+            'height' => 350,
             'chartArea' => [
                 'left' => '12.5%',
-                'top' => '10%',
+                'top' => '12.5%',
                 'width' => '80%',
+                'height' => '75%'
             ],
             'fontSize' => 12,
             'legend' => [
@@ -131,12 +138,13 @@ class ChartGenerator
             'bar' => [
                 'groupWidth' => '20'
             ],
-            'hAxis' => [
+            'vAxis' => [
+                'minValue' => 0,
                 'maxValue' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5),
                 'gridlines' => [
                     'count' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5)+1
                 ],
-                'title' => 'Number of hires per month',
+                'title' => 'Number of hires',
             ],
         ]);
     }
@@ -169,7 +177,7 @@ class ChartGenerator
         if ($reservationsAndActiveHire->isNotEmpty()) {
             $gantt = new Gantt($data, array(
                 'cellwidth' => 30,
-                'cellheight' => 35
+                'cellheight' => 40
             ));
         }
 

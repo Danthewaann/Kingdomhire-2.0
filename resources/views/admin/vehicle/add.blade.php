@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="col-md-5">
+  <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading"><h3>Add a vehicle</h3></div>
       <div class="panel-body">
@@ -87,5 +88,6 @@
       </form>
       </div>
     </div>
+  </div>
 </div>
 @endsection

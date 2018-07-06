@@ -152,18 +152,22 @@ class VehiclesController extends Controller
 
     public function show($id)
     {
+        $vehicle = Vehicle::find($id);
         return view('admin.vehicle.dashboard', [
-            'vehicle' => Vehicle::find($id)
+            'vehicle' => $vehicle,
+            'gantt' => ChartGenerator::drawVehicleReservationsAndHiresGanttChart($vehicle)
         ]);
     }
 
     public function showHires($id)
     {
         $vehicle = Vehicle::find($id);
-        ChartGenerator::drawPastHiresBarChart($vehicle->getInactiveHires());
+        $pastHires = $vehicle->getInactiveHires();
+        ChartGenerator::drawPastHiresBarChart($pastHires);
 
         return view('admin.vehicle.hires', [
-            'vehicle' => $vehicle
+            'vehicle' => $vehicle,
+            'pastHires' => $pastHires
         ]);
     }
 

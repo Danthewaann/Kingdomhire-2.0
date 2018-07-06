@@ -19,7 +19,7 @@ class ReservationsTableSeeder extends Seeder
         $end_date = strtotime("2018-12-31");
         $vehicles = Vehicle::all();
         foreach ($vehicles as $vehicle) {
-            $numOfReservations = rand(1, 10);
+            $numOfReservations = rand(10, 20);
             for($i = 0; $i < $numOfReservations; $i++) {
                 $reservationLength = rand(3, 10);
                 $start = date('Y-m-d', rand($start_date, $end_date));

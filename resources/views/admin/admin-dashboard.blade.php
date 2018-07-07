@@ -6,22 +6,13 @@
           {{ session('status') }}
       </div>
   @endif
-  <div class="panel panel-default">
-    <div class="panel-heading"><h1>Admin Dashboard</h1></div>
-    <div class="panel-body" style="padding: unset">
-      <ul class="nav navbar-nav" style="padding: 10px;">
-        <a href="{{ route('vehicle.add') }}" class="btn btn-primary" style="margin: 1px;" role="button" aria-pressed="true">Add A Vehicle</a>
-        <a href="{{ route('vehicle-rate.index') }}" class="btn btn-primary" style="margin: 1px;" role="button" aria-pressed="true">Manage Vehicle Rates</a>
-      </ul>
-    </div>
-  </div>
   <div class="row">
-    <div class="col-md-2 col-sm-5 col-xs-12">
+    <div class="col-md-3 col-sm-5 col-xs-12">
       @include('admin.vehicle.list')
     </div>
-    <div class="col-md-6 col-sm-7 col-xs-12">
+    <div class="col-md-5 col-sm-7 col-xs-12">
       <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading panel-title-text">
           <h3>Hires per month for {{ date('Y') }}</h3>
         </div>
         <div class="panel-body" style="padding: unset">
@@ -30,7 +21,7 @@
         </div>
       </div>
       <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading panel-title-text">
           <h3>Number of reservations per vehicle</h3>
         </div>
         <div class="panel-body" style="padding: unset">

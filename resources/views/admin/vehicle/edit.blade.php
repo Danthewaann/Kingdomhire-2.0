@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col-md-6 col-sm-8 col-xs-12">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3>Edit</h3></div>
+          <div class="panel-heading panel-title-text"><h3>Edit</h3></div>
           <div class="panel-body">
             <div class="col-md-6">
               <form action="{{ route('vehicle.edit', ['id' => $vehicle->id]) }}" method="post" enctype="multipart/form-data">

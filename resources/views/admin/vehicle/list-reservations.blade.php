@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading panel-title-text">
     @if(!$vehicle->reservations->isEmpty())
       <h3>Current reservations</h3>
       <span>{{ count($vehicle->reservations) }} reservation(s) in total</span>

@@ -8,7 +8,7 @@
   </div>
   <div class="col-md-3 col-sm-5 col-xs-12">
     <div class="panel panel-default">
-      <div class="panel-heading"><h3>Edit Hire Form</h3></div>
+      <div class="panel-heading panel-title-text"><h3>Edit Hire Form</h3></div>
       <div class="panel-body">
         <form action="{{ route('hire.edit', ['vehicle_id' => $vehicle->id, 'hire_id' => $hire->id]) }}" method="post">
           @csrf

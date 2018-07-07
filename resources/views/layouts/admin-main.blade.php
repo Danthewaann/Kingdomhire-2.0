@@ -19,9 +19,9 @@
 <div id="app">
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
-      <div class="navbar-header">
+      <div class="navbar-header" style="width: 100%">
         <a href="{{ url('/admin') }}">
-          <img src="{{ asset('static/Kingdomhire_logo.svg') }}" width="375" height="150">
+          <img src="{{ asset('static/Kingdomhire_logo.svg') }}" width="400" style="padding: 5px 15px 5px 0px;">
         </a>
         <!-- Collapsed Hamburger -->
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
@@ -34,11 +34,39 @@
 
       <div class="collapse navbar-collapse" id="app-navbar-collapse">
         <!-- Left Side Of Navbar -->
-        <ul class="nav navbar-nav" style="padding-top: 80px;">
-          <a href="{{ route('admin.dashboard') }}" class="btn btn-primary navbar-btn btn-lg" style="color: white;" role="button" aria-disabled="true">Home</a>
-          <a href="{{ route('admin.vehicles') }}" class="btn btn-primary navbar-btn btn-lg" style="color: white;" role="button" aria-disabled="true">Vehicles</a>
-          <a href="{{ route('admin.reservations') }}" class="btn btn-primary navbar-btn btn-lg" style="color: white;" role="button" aria-disabled="true">Reservations</a>
-          <a href="{{ route('admin.hires') }}" class="btn btn-primary navbar-btn btn-lg" style="color: white;" role="button" aria-disabled="true">Hires</a>
+        <ul class="nav navbar-nav">
+          <li class="navbar-brand">
+            Admin Dashboard
+          </li>
+          <li class="{{ Request::is('admin') ? 'active' : '' }}">
+            <a href="{{ route('admin.dashboard') }}">Home</a>
+          </li>
+          <li class="dropdown{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+              Vehicles
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="{{ route('vehicle.add') }}">Add a vehicle</a>
+              </li>
+              <li>
+                <a href="{{ route('admin.vehicles') }}">Vehicles list</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown{{ Request::is('admin/rates*') ? ' active' : '' }}">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+              Rates
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="{{ route('vehicle-rate.add') }}">Add a rate</a>
+              </li>
+              <li>
+                <a href="{{ route('vehicle-rate.index') }}">Manage rates</a>
+              </li>
+            </ul>
+          </li>
         </ul>
         <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">
@@ -68,11 +96,7 @@
   </nav>
 
   <div class="container-fluid">
-    <div class="col-md-12">
-    <div class="row">
     @yield('content')
-    </div>
-    </div>
   </div>
 </div>
 

@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading panel-title-text">
     @if(!$activeHires->isEmpty())
       <h3>Active hires</h3>
       <span>{{ count($activeHires) }} hire(s) in total</span>

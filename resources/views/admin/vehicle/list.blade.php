@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-    <div class="panel-heading">
+    <div class="panel-heading panel-title-text">
         @if($vehicles->isEmpty())
             <h3>No vehicles present</h3>
         @else

@@ -18,7 +18,7 @@ class ChartGenerator
         $vehiclesTable = \Lava::DataTable();
         try {
             $vehiclesTable->addStringColumn('Vehicle')
-                ->addNumberColumn('Active Reservations');
+                ->addNumberColumn('Number of reservations');
         } catch (InvalidColumnType $e) {
         } catch (InvalidLabel $e) {
         }
@@ -31,9 +31,7 @@ class ChartGenerator
                 $maxReservationsForVehicle = $numOfReservations;
             }
             try {
-                if($numOfReservations > 0) {
-                    $vehiclesTable->addRow([$vehicle->name(), $numOfReservations]);
-                }
+            	$vehiclesTable->addRow([$vehicle->name(), $numOfReservations]);
             } catch (InvalidCellCount $e) {
             } catch (InvalidRowDefinition $e) {
             } catch (InvalidRowProperty $e) {
@@ -45,13 +43,21 @@ class ChartGenerator
                 'rgb(40,143,91)'
             ],
             'height' => count($activeVehicles)*50,
+            'fontSize' => 12,
+            'fontName' => 'Raleway',
             'chartArea' => [
                 'left' => '20%',
                 'top' => '12.5%',
                 'width' => '75%',
+                'height' => '75%'
             ],
             'legend' => [
                 'position' => 'top',
+                'textStyle' => [
+                    'fontSize' => 14,
+                    'color' => '#636b6f',
+                    'fontName' => 'Raleway',
+                ]
             ],
             'bar' => [
                 'groupWidth' => '20'
@@ -59,16 +65,18 @@ class ChartGenerator
             'vAxis' => [
                 'textPosition' => 'out',
                 'textStyle' => [
-                    'color' => 'black',
-                    'auraColor' => 'none',
+                    'color' => '#636b6f',
                 ],
             ],
             'hAxis' => [
+                'textStyle' => [
+                    'color' => '#636b6f',
+                ],
+                'minValue' => 0,
                 'maxValue' => ($maxReservationsForVehicle > 3 ? $maxReservationsForVehicle : 3),
                 'gridlines' => [
                     'count' => ($maxReservationsForVehicle > 3 ? $maxReservationsForVehicle : 3)+1
                 ],
-                'title' => 'Number of reservations',
             ],
         ]);
     }
@@ -78,7 +86,7 @@ class ChartGenerator
         $pastHiresTable = \Lava::DataTable();
         try {
             $pastHiresTable->addStringColumn('Month')
-                ->addNumberColumn('Hires Per Month');
+                ->addNumberColumn('Number of hires');
         } catch (InvalidColumnType $e) {
         } catch (InvalidLabel $e) {
         }
@@ -126,25 +134,37 @@ class ChartGenerator
             ],
             'height' => 350,
             'chartArea' => [
-                'left' => '12.5%',
                 'top' => '12.5%',
-                'width' => '80%',
+                'width' => '87.5%',
                 'height' => '75%'
             ],
             'fontSize' => 12,
+            'fontName' => 'Raleway',
             'legend' => [
                 'position' => 'top',
+                'textStyle' => [
+                    'fontSize' => 14,
+                    'color' => '#636b6f',
+                    'fontName' => 'Raleway',
+                ]
             ],
             'bar' => [
                 'groupWidth' => '20'
             ],
+            'hAxis' => [
+                'textStyle' => [
+                    'color' => '#636b6f',
+                ],
+            ],
             'vAxis' => [
+                'textStyle' => [
+                    'color' => '#636b6f',
+                ],
                 'minValue' => 0,
                 'maxValue' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5),
                 'gridlines' => [
                     'count' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5)+1
                 ],
-                'title' => 'Number of hires',
             ],
         ]);
     }

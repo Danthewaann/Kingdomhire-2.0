@@ -1,11 +1,10 @@
 <div class="panel panel-default">
-  <div class="panel-heading"><h3>Vehicle price rates</h3></div>
-  <div class="panel-body">
+  <div class="panel-heading panel-title-text"><h3>Vehicle price rates</h3></div>
     <div class="table-responsive">
       <table class="table">
         <thead>
           <tr>
-            <th>Engine Size</th>
+            <th style="padding-left: 15px">Engine Size</th>
             <th>Weekly Minimum Rate</th>
             <th>Weekly Maximum Rate</th>
             <th></th>
@@ -14,7 +13,7 @@
         </thead>
         @foreach($rates as $rate)
           <tr>
-            <td>{{ $rate->engine_size }}</td>
+            <td style="padding-left: 15px">{{ $rate->engine_size }}</td>
             <td>£{{ $rate->weekly_rate_min }}</td>
             <td>£{{ $rate->weekly_rate_max }}</td>
             <td>
@@ -30,5 +29,4 @@
         @endforeach
       </table>
     </div>
-  </div>
 </div>

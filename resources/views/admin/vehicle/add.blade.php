@@ -4,7 +4,7 @@
 <div class="col-md-5">
   <div class="row">
     <div class="panel panel-default">
-      <div class="panel-heading"><h3>Add a vehicle</h3></div>
+      <div class="panel-heading panel-title-text"><h3>Add a vehicle</h3></div>
       <div class="panel-body">
       <form action="{{ route('vehicle.add') }}" method="post" enctype="multipart/form-data">
           @csrf

@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="row">
-<div class="col-md-4 col-sm-8 col-xs-12">
+<div class="col-md-3 col-sm-8 col-xs-12">
   <div class="panel panel-default">
-    <div class="panel-heading"><h3>Add a vehicle rate</h3></div>
+    <div class="panel-heading panel-title-text"><h3>Add a vehicle price rate</h3></div>
     <div class="panel-body">
       <form action="{{ route('vehicle-rate.add') }}" method="post">
         @csrf
@@ -44,9 +44,6 @@
         <div class="form-row">
           <div class="col-xs-2">
             <button type="submit" class="btn btn-primary">Add Vehicle Rate</button>
-          </div>
-          <div class="col-xs-1">
-            <a href="{{ route('vehicle-rate.index') }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
           </div>
         </div>
       </form>

@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading panel-title-text">
     @if(!empty($vehicle->getActiveHire()))
       <h3>Active hire</h3>
     @else

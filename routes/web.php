@@ -45,12 +45,12 @@ Route::get('/admin/vehicles/{vehicle_id}/hires/{hire_id}/edit', 'HiresController
 Route::patch('/admin/vehicles/{vehicle_id}/hires/{hire_id}/edit', 'HiresController@edit')->name('hire.edit');
 
 /* Vehicle rates routes */
-Route::get('/admin/vehicles/rates', 'VehicleRatesController@index')->name('vehicle-rate.index');
-Route::get('/admin/vehicles/rates/add', 'VehicleRatesController@showAddForm')->name('vehicle-rate.addForm');
-Route::post('/admin/vehicles/rates/add', 'VehicleRatesController@store')->name('vehicle-rate.add');
-Route::get('/admin/vehicles/rates/{rate}/edit', 'VehicleRatesController@showEditForm')->name('vehicle-rate.editForm');
-Route::patch('/admin/vehicles/rates/{rate}/edit', 'VehicleRatesController@edit')->name('vehicle-rate.edit');
-Route::delete('/admin/vehicles/rates/{rate}/delete', 'VehicleRatesController@destroy')->name('vehicle-rate.delete');
+Route::get('/admin/rates', 'VehicleRatesController@index')->name('vehicle-rate.index');
+Route::get('/admin/rates/add', 'VehicleRatesController@showAddForm')->name('vehicle-rate.addForm');
+Route::post('/admin/rates/add', 'VehicleRatesController@store')->name('vehicle-rate.add');
+Route::get('/admin/rates/{rate}/edit', 'VehicleRatesController@showEditForm')->name('vehicle-rate.editForm');
+Route::patch('/admin/rates/{rate}/edit', 'VehicleRatesController@edit')->name('vehicle-rate.edit');
+Route::delete('/admin/rates/{rate}/delete', 'VehicleRatesController@destroy')->name('vehicle-rate.delete');
 
 /* Login routes */
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

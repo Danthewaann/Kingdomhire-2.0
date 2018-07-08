@@ -21,16 +21,17 @@ class DBQuery
             });
         }
 
+        $reservationErrorMessages = [];
         foreach ($reservations as $reservation) {
-            if(self::datesConflict($reservation, $start_date, $end_date, $errorMessages)) {
-                break;
-            }
+            self::datesConflict($reservation, $start_date, $end_date, $reservationErrorMessages);
         }
 
+        $hireErrorMessages = [];
         if ($activeHire != null && $checkActiveHire == true) {
-            self::datesConflict($activeHire, $start_date, $end_date, $errorMessages);
+            self::datesConflict($activeHire, $start_date, $end_date, $hireErrorMessages);
         }
 
+        $errorMessages = array_merge($reservationErrorMessages, $hireErrorMessages);
         return count($errorMessages) > 0;
     }
 

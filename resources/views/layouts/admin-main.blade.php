@@ -18,11 +18,13 @@
 <body>
 <div id="app">
   <nav class="navbar navbar-default navbar-static-top">
-    <div class="container-fluid">
-      <div class="navbar-header" style="width: 100%">
-        <a href="{{ url('/admin') }}">
-          <img src="{{ asset('static/Kingdomhire_logo.svg') }}" width="400" style="padding: 5px 15px 5px 0px;">
-        </a>
+    {{--<div class="container-fluid" style="padding: unset">--}}
+      <div class="navbar-header" style="min-width: 100%; background-color: #338D60">
+        <div style="max-width: 100%; padding: 5px 5px 5px 5px;">
+          <a href="{{ url('/admin') }}">
+            <img src="{{ asset('static/Kingdomhire_logo.svg') }}" style="max-width: 100%; width: 400px">
+          </a>
+        </div>
         <!-- Collapsed Hamburger -->
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
           <span class="sr-only">Toggle Navigation</span>
@@ -32,18 +34,18 @@
         </button>
       </div>
 
-      <div class="collapse navbar-collapse" id="app-navbar-collapse">
+      <div class="collapse navbar-collapse vehicle-dashboard-navbar-collapse vehicle-dashboard-navbar" id="app-navbar-collapse">
         <!-- Left Side Of Navbar -->
         <ul class="nav navbar-nav">
-          <li class="navbar-brand">
-            Admin Dashboard
+          <li>
+            <a class="vehicle-dashboard-brand">Admin Dashboard</a>
           </li>
           <li class="{{ Request::is('admin') ? 'active' : '' }}">
             <a href="{{ route('admin.dashboard') }}">Home</a>
           </li>
           <li class="dropdown{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              Vehicles
+              Vehicles <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -56,7 +58,7 @@
           </li>
           <li class="dropdown{{ Request::is('admin/rates*') ? ' active' : '' }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              Rates
+              Rates <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -92,7 +94,7 @@
           </li>
         </ul>
       </div>
-    </div>
+    {{--</div>--}}
   </nav>
 
   <div class="container-fluid">

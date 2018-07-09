@@ -11,3 +11,50 @@
 .panel-title-text {
   color: white !important;
 }
+
+.vehicle-dashboard-heading {
+  padding: 0;
+}
+
+.vehicle-dashboard-info {
+  color: $text-color;
+  border-radius: unset;
+  margin-bottom: 0;
+  border: unset;
+}
+
+.vehicle-dashboard-brand {
+  font-size: 1.5rem;
+  cursor: default !important;
+}
+
+a.vehicle-dashboard-brand:hover {
+  background-color: transparent !important;
+}
+
+.vehicle-dashboard-navbar {
+  margin-bottom: 0;
+  background-color: #207349;
+}
+
+.vehicle-dashboard-navbar-collapse {
+  padding-right: 15px !important;
+}
+
+.button-link {
+  background: none !important;
+  color: inherit;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
+  cursor: pointer;
+}
+
+td {
+  width: 25%;
+}
+
+table {
+  margin-bottom: 0 !important;
+  font-size: 1.3rem !important;
+}

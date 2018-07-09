@@ -2,17 +2,14 @@
 
 @section('content')
 <div class="row">
-  <div class="col-md-3 col-sm-4 col-xs-12">
-    @include('admin.vehicle.summary')
-  </div>
-  <div class="col-md-9 col-sm-4 col-xs-12">
+  <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
     @include('admin.vehicle.navbar')
     <div class="row">
-      <div class="col-md-6 col-sm-8 col-xs-12">
+      <div class="col-md-9 col-xs-12">
         <div class="panel panel-default">
           <div class="panel-heading panel-title-text"><h3>Edit</h3></div>
           <div class="panel-body">
-            <div class="col-md-6">
+            <div class="col-md-8">
               <form action="{{ route('vehicle.edit', ['id' => $vehicle->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
@@ -35,7 +32,7 @@
                   </div>
                 @if(!$vehicle->images->isEmpty())
                   <div class="form-group row col-xs-12">
-                    <label for="vehicle_images_del">Delete Images (hold shift to select more than one)</label>
+                    <label for="vehicle_images_del">Delete Images</label>
                     <select multiple class="form-control" name="vehicle_images_del[]" id="vehicle_images_del">
                       @foreach($vehicle->images as $image)
                         <option>{{ $image->name }}</option>
@@ -52,7 +49,7 @@
                 </div>
               </form>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               @foreach($vehicle->images as $image)
                 <div style="width: 210px; display: inline-block; padding: 10px;">
                   <img src="{{ $image->image_uri }}" style="width: 100%; height: 125px;"/>

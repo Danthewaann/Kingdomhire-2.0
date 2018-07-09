@@ -30,7 +30,7 @@
   left: 0;
   bottom: 0;
   top: 0;
-  width: 150px;
+  width: 175px;
   border-right: 1px solid #000b0d;
   z-index: 2; }
 
@@ -63,7 +63,7 @@
 .gantt-data {
   position: relative;
   overflow-x: auto;
-  margin-left: 150px;
+  margin-left: 175px;
   white-space: nowrap; }
 
 /* data section header */

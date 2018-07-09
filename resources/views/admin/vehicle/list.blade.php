@@ -8,23 +8,21 @@
         @endif
     </div>
     @if(!$vehicles->isEmpty())
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover table-sm">
+        <table class="table table-bordered table-hover table-condensed">
             <thead>
                 <tr>
-                    <th style="padding-left: 15px">Vehicle</th>
+                    <th>Vehicle</th>
                     <th>Status</th>
                 </tr>
             </thead>
             @foreach($vehicles as $vehicle)
               @if($vehicle->is_active == true)
                 <tr>
-                  <td style="padding-left: 15px"><a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">{{ $vehicle->name() }}</a></td>
-                  <td style="padding-right: 15px">{{ $vehicle->status }}</td>
+                  <td><a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">{{ $vehicle->name() }}</a></td>
+                  <td>{{ $vehicle->status }}</td>
                 </tr>
               @endif
             @endforeach
         </table>
-      </div>
     @endif
 </div>

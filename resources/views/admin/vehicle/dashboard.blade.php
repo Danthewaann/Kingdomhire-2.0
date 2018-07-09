@@ -1,29 +1,35 @@
 @extends('layouts.admin-main')
 
 @section('content')
-  <div class="row">
-    <div class="col-md-3 col-sm-4 col-xs-12">
-      @include('admin.vehicle.summary')
-    </div>
-    <div class="col-md-9 col-sm-4 col-xs-12">
-      @include('admin.vehicle.navbar')
+<div class="row">
+  <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
+    @include('admin.vehicle.navbar')
+    @if($gantt != null)
       <div class="row">
-        <div class="col-md-4 col-sm-8 col-xs-12">
-          @include('admin.vehicle.list-active-hire')
-          @include('admin.vehicle.list-reservations')
-        </div>
-        @if($gantt != null)
-          <div class="col-md-8 col-sm-12 col-xs-12">
-            <div class="panel panel-default">
-              <div class="panel-heading panel-title-text"><h3>Reservations & Hires Gantt Chart</h3></div>
-              <div class="panel-body" style="padding: unset">
-                {!! $gantt !!}
-              </div>
-            </div>
-          </div>
-        @endif
+        <div class="col-md-12 col-xs-12">
+          @include('admin.vehicle.gantt')
         </div>
       </div>
-    </div>
+    @endif
   </div>
+  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+    @include('admin.vehicle.list-active-hire')
+    @include('admin.vehicle.list-reservations')
+  </div>
+  {{--<div class="col-md-9">--}}
+    {{--<div class="row">--}}
+      {{--@if($gantt != null)--}}
+        {{--<div class="col-md-12 col-xs-12">--}}
+          {{--@include('admin.vehicle.gantt')--}}
+        {{--</div>--}}
+      {{--@endif--}}
+      {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
+        {{--@include('admin.vehicle.list-active-hire')--}}
+      {{--</div>--}}
+      {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
+        {{--@include('admin.vehicle.list-reservations')--}}
+      {{--</div>--}}
+    {{--</div>--}}
+  {{--</div>--}}
+</div>
 @endsection

@@ -2,7 +2,7 @@
   @foreach($vehicle->images as $image)
     @if($loop->first) <img src="{{ $image->image_uri }}" style="width: 100%; height: 225px;"/> @endif
   @endforeach
-  <table class="table table-hover table-sm">
+  <table class="table table-hover table-condensed">
     <tr>
       <th>Vehicle</th>
       <td><a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">{{ $vehicle->name() }}</a></td>

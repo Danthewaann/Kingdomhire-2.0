@@ -182,7 +182,7 @@ class ChartGenerator
         }
         foreach ($reservationsAndActiveHire as $item) {
             array_push($data, [
-                'label' => ($item instanceof Reservation ? 'Reservation' : 'Hire'),
+                'label' => ($item instanceof Reservation ? 'Reservation' : 'Active hire'),
                 'start' => $item->start_date,
                 /*
                  * when creating the gantt chart, the final day in each reservation/hire is truncated
@@ -196,6 +196,7 @@ class ChartGenerator
         $gantt = null;
         if ($reservationsAndActiveHire->isNotEmpty()) {
             $gantt = new Gantt($data, array(
+                'title' => 'Schedule',
                 'cellwidth' => 30,
                 'cellheight' => 40
             ));

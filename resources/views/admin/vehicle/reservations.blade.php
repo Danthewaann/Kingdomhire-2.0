@@ -1,25 +1,17 @@
 @extends('layouts.admin-main')
 
 @section('content')
-  @include('admin.vehicle.navbar')
   <div class="row">
-    <div class="col-md-3 col-sm-4 col-xs-12">
-      @include('admin.vehicle.summary')
+    <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12">
+      @include('admin.vehicle.navbar')
     </div>
-    <div class="col-md-9 col-sm-8 col-xs-12">
       @if($gantt != null)
-        <div class="panel panel-default">
-          <div class="panel-heading"><h3>Reservations & Hires Gantt Chart</h3></div>
-          <div class="panel-body" style="padding: unset">
-            {!! $gantt !!}
-          </div>
+        <div class="col-md-12 col-xs-12">
+          @include('admin.vehicle.gantt')
         </div>
       @endif
-      <div class="row">
-        <div class="col-md-5 col-sm-9 col-xs-12">
-          @include('admin.vehicle.list-reservations')
-        </div>
-      </div>
+    <div class="col-md-3 col-sm-7 col-xs-12">
+      @include('admin.vehicle.list-reservations')
     </div>
   </div>
 @endsection

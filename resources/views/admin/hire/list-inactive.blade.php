@@ -13,8 +13,8 @@
     <div class="row">
       @foreach($vehicles as $vehicle)
         <div class="col-md-6">
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover table-sm">
+          <div style="overflow: auto; max-height: 400px">
+            <table class="table table-bordered table-hover table-condensed">
               <h3><a href="{{ route('vehicle.show', ['make' => $vehicle->make, 'model' => $vehicle->model, 'id' => $vehicle->id]) }}">{{ $vehicle->name() }} </a></h3>
               <span>{{ count($vehicle->getInactiveHires()) }} hire(s) in total</span>
               <thead>

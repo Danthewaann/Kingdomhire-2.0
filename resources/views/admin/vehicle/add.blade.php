@@ -1,7 +1,7 @@
 @extends('layouts.admin-main')
 
 @section('content')
-<div class="col-md-5">
+<div class="col-md-6 col-sm-8 col-xs-12">
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading panel-title-text"><h3>Add a vehicle</h3></div>

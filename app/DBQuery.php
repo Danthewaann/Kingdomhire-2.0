@@ -23,7 +23,9 @@ class DBQuery
 
         $reservationErrorMessages = [];
         foreach ($reservations as $reservation) {
-            self::datesConflict($reservation, $start_date, $end_date, $reservationErrorMessages);
+            if(self::datesConflict($reservation, $start_date, $end_date, $reservationErrorMessages)) {
+                break;
+            }
         }
 
         $hireErrorMessages = [];

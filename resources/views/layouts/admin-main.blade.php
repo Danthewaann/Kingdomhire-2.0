@@ -18,83 +18,81 @@
 <body>
 <div id="app">
   <nav class="navbar navbar-default navbar-static-top">
-    {{--<div class="container-fluid" style="padding: unset">--}}
-      <div class="navbar-header" style="min-width: 100%; background-color: #338D60">
-        <div style="max-width: 100%; padding: 5px 5px 5px 5px;">
-          <a href="{{ url('/admin') }}">
-            <img src="{{ asset('static/Kingdomhire_logo.svg') }}" style="max-width: 100%; width: 400px">
+    <div class="navbar-header" style="min-width: 100%; background-color: #338D60">
+      <div style="max-width: 100%; padding: 5px 5px 5px 5px;">
+        <a href="{{ url('/admin') }}">
+          <img src="{{ asset('static/Kingdomhire_logo.svg') }}" style="max-width: 100%; width: 400px">
+        </a>
+      </div>
+      <!-- Collapsed Hamburger -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse vehicle-dashboard-navbar-collapse vehicle-dashboard-navbar" id="app-navbar-collapse">
+      <!-- Left Side Of Navbar -->
+      <ul class="nav navbar-nav">
+        <li class="{{ Request::is('admin') ? 'active' : '' }}">
+          <a href="{{ route('admin.dashboard') }}">Home</a>
+        </li>
+        <li class="dropdown{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+            Vehicles <span class="caret"></span>
           </a>
-        </div>
-        <!-- Collapsed Hamburger -->
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-          <span class="sr-only">Toggle Navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{ route('vehicle.add') }}">Add a vehicle</a>
+            </li>
+            <li>
+              <a href="{{ route('admin.vehicles') }}">Vehicles list</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown{{ Request::is('admin/rates*') ? ' active' : '' }}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+            Rates <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{ route('vehicle-rate.add') }}">Add a rate</a>
+            </li>
+            <li>
+              <a href="{{ route('vehicle-rate.index') }}">Manage rates</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!-- Right Side Of Navbar -->
+      <ul class="nav navbar-nav navbar-right">
+        <!-- Authentication Links -->
+        <li>
+          <a href="{{ route('public.home') }}">Main Site</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+            {{ Auth::user()->name }} <span class="caret"></span>
+          </a>
 
-      <div class="collapse navbar-collapse vehicle-dashboard-navbar-collapse vehicle-dashboard-navbar" id="app-navbar-collapse">
-        <!-- Left Side Of Navbar -->
-        <ul class="nav navbar-nav">
-          <li>
-            <a class="vehicle-dashboard-brand">Admin Dashboard</a>
-          </li>
-          <li class="{{ Request::is('admin') ? 'active' : '' }}">
-            <a href="{{ route('admin.dashboard') }}">Home</a>
-          </li>
-          <li class="dropdown{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              Vehicles <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="{{ route('vehicle.add') }}">Add a vehicle</a>
-              </li>
-              <li>
-                <a href="{{ route('admin.vehicles') }}">Vehicles list</a>
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown{{ Request::is('admin/rates*') ? ' active' : '' }}">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              Rates <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="{{ route('vehicle-rate.add') }}">Add a rate</a>
-              </li>
-              <li>
-                <a href="{{ route('vehicle-rate.index') }}">Manage rates</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <!-- Right Side Of Navbar -->
-        <ul class="nav navbar-nav navbar-right">
-          <!-- Authentication Links -->
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              {{ Auth::user()->name }} <span class="caret"></span>
-            </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{ route('logout') }}"
+                 onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                Logout
+              </a>
 
-            <ul class="dropdown-menu">
-              <li>
-                <a href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                      document.getElementById('logout-form').submit();">
-                  Logout
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  {{ csrf_field() }}
-                </form>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    {{--</div>--}}
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+              </form>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </nav>
 
   <div class="container-fluid">

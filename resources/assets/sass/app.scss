@@ -50,11 +50,20 @@ a.vehicle-dashboard-brand:hover {
   cursor: pointer;
 }
 
-td {
-  width: 25%;
-}
-
 table {
   margin-bottom: 0 !important;
-  font-size: 1.3rem !important;
+  font-size: 0.9em !important;
+}
+
+table.opening-hours th,
+table.opening-hours td {
+  font-size: 1.1em;
+}
+
+nav {
+  font-size: 1.2em !important;
+}
+
+body {
+  font-size: 1.9em;
 }

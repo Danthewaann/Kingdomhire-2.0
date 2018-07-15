@@ -17,12 +17,14 @@
 <body>
   <div id="app">
     <nav class="navbar navbar-default navbar-static-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a href="{{ url('/admin') }}">
-            <img src="{{ asset('static/Kingdomhire_logo.svg') }}" width="375" height="150">
-          </a>
-            <!-- Collapsed Hamburger -->
+      <div class="container">
+        <div class="navbar-header" style="min-width: 100%; background-color: #338D60; margin: 10px 0px 10px 0px">
+          <div style="max-width: 100%; padding: 5px 5px 5px 5px;">
+            <a href="{{ url('/admin') }}">
+              <img src="{{ asset('static/Kingdomhire_logo.svg') }}" style="max-width: 100%; width: 400px">
+            </a>
+          </div>
+          <!-- Collapsed Hamburger -->
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
             <span class="sr-only">Toggle Navigation</span>
             <span class="icon-bar"></span>
@@ -31,20 +33,30 @@
           </button>
         </div>
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+        <div class="collapse navbar-collapse vehicle-dashboard-navbar-collapse " id="app-navbar-collapse">
           <!-- Left Side Of Navbar -->
-          <ul class="nav navbar-nav" style="padding-top: 80px;">
-            <a href="{{ route('public.home') }}" class="btn btn-primary btn-lg navbar-btn" role="button" aria-disabled="true">Home</a>
-            <a href="{{ route('public.vehicles') }}" class="btn btn-primary btn-lg navbar-btn" role="button" aria-disabled="true">Vehicles</a>
-            <a href="{{ route('public.contact') }}" class="btn btn-primary btn-lg navbar-btn" role="button" aria-disabled="true">Contact</a>
+          <ul class="nav navbar-nav">
+            <li class="{{ Request::is('admin') ? 'active' : '' }}">
+              <a href="{{ route('public.home') }}">Home</a>
+            </li>
+            <li class="{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
+              <a href={{ route('public.vehicles') }}>Vehicles</a>
+            </li>
+            <li class="{{ Request::is('admin/rates*') ? ' active' : '' }}">
+              <a href="{{ route('public.contact') }}">Contact</a>
+            </li>
           </ul>
           <!-- Right Side Of Navbar -->
           <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->
             @guest
-              <a href="{{ route('login') }}" class="btn btn-primary btn-lg navbar-btn" role="button" aria-disabled="true">Login</a>
+              <li>
+                <a href="{{ route('login') }}">Login</a>
+              </li>
             @else
-              <a href="{{ url('admin') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Admin</a>
+              <li>
+                <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+              </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                   {{ Auth::user()->name }} <span class="caret"></span>
@@ -53,7 +65,7 @@
                 <ul class="dropdown-menu">
                   <li>
                     <a href="{{ route('logout') }}"
-                      onclick="event.preventDefault();
+                       onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                       Logout
                     </a>
@@ -62,18 +74,18 @@
                       {{ csrf_field() }}
                     </form>
                   </li>
-                  </ul>
-                </li>
-              @endguest
+                </ul>
+              </li>
+            @endguest
           </ul>
         </div>
       </div>
     </nav>
+  </div>
 
-    <div class="container-fluid">
+    <div class="container">
       @yield('content')
     </div>
-  </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

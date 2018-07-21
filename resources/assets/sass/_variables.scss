@@ -12,10 +12,15 @@ $panel-inner-border: $laravel-border-color;
 
 // Brands
 $brand-primary: #439D70;
-$brand-info: #8eb4cb;
+$brand-info: #3b8b63;
 $brand-success: #2ab27b;
 $brand-warning: #cbb956;
 $brand-danger: #bf5329;
+
+//rgb(75, 206, 138)
+$btn-info-color: white !default;
+$btn-info-bg: $brand-info !default;
+$btn-info-border: darken($btn-info-bg, 5%) !default;
 
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";

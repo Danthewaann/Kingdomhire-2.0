@@ -4217,30 +4217,30 @@ fieldset[disabled] .btn-success.focus {
 }
 
 .btn-info {
-  color: #fff;
-  background-color: #8eb4cb;
-  border-color: #7da8c3;
+  color: white;
+  background-color: #3b8b63;
+  border-color: #337956;
 }
 
 .btn-info:focus,
 .btn-info.focus {
-  color: #fff;
-  background-color: #6b9dbb;
-  border-color: #3d6983;
+  color: white;
+  background-color: #2c674a;
+  border-color: #0d2017;
 }
 
 .btn-info:hover {
-  color: #fff;
-  background-color: #6b9dbb;
-  border-color: #538db0;
+  color: white;
+  background-color: #2c674a;
+  border-color: #214e38;
 }
 
 .btn-info:active,
 .btn-info.active,
 .open > .btn-info.dropdown-toggle {
-  color: #fff;
-  background-color: #6b9dbb;
-  border-color: #538db0;
+  color: white;
+  background-color: #2c674a;
+  border-color: #214e38;
 }
 
 .btn-info:active:hover,
@@ -4252,9 +4252,9 @@ fieldset[disabled] .btn-success.focus {
 .open > .btn-info.dropdown-toggle:hover,
 .open > .btn-info.dropdown-toggle:focus,
 .open > .btn-info.dropdown-toggle.focus {
-  color: #fff;
-  background-color: #538db0;
-  border-color: #3d6983;
+  color: white;
+  background-color: #214e38;
+  border-color: #0d2017;
 }
 
 .btn-info:active,
@@ -4272,13 +4272,13 @@ fieldset[disabled] .btn-success.focus {
 fieldset[disabled] .btn-info:hover,
 fieldset[disabled] .btn-info:focus,
 fieldset[disabled] .btn-info.focus {
-  background-color: #8eb4cb;
-  border-color: #7da8c3;
+  background-color: #3b8b63;
+  border-color: #337956;
 }
 
 .btn-info .badge {
-  color: #8eb4cb;
-  background-color: #fff;
+  color: #3b8b63;
+  background-color: white;
 }
 
 .btn-warning {
@@ -6175,12 +6175,12 @@ a.label:focus {
 }
 
 .label-info {
-  background-color: #8eb4cb;
+  background-color: #3b8b63;
 }
 
 .label-info[href]:hover,
 .label-info[href]:focus {
-  background-color: #6b9dbb;
+  background-color: #2c674a;
 }
 
 .label-warning {
@@ -6501,7 +6501,7 @@ a.thumbnail.active {
 }
 
 .progress-bar-info {
-  background-color: #8eb4cb;
+  background-color: #3b8b63;
 }
 
 .progress-striped .progress-bar-info {

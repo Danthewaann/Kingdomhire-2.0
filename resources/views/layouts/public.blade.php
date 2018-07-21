@@ -18,15 +18,12 @@
 {{--<div class="container-fluid">--}}
   <div id="app">
     <nav class="navbar navbar-default navbar-static-top" style="margin: 0; border: unset;">
-      <div class="jumbotron jumbotron-home" style="background-color: #1D855C">
+      <div class="jumbotron jumbotron-home">
         <div class="bg"></div>
         <div class="container">
           <div class="navbar-header" style="min-width: 100%; margin: 10px 0px 10px 0px">
-            {{--<div style="max-width: 100%; padding: 5px 5px 5px 5px;">--}}
-            <a href="{{ url('/admin') }}">
               <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo" width="100%">
-            </a>
-          {{--</div>--}}
+
           <!-- Collapsed Hamburger -->
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
               <span class="sr-only">Toggle Navigation</span>
@@ -41,13 +38,13 @@
         <div class="collapse navbar-collapse vehicle-dashboard-navbar-collapse" id="app-navbar-collapse">
           <!-- Left Side Of Navbar -->
           <ul class="nav navbar-nav">
-            <li class="{{ Request::is('admin') ? 'active' : '' }}">
+            <li class="{{ Request::is('/') ? 'active' : '' }}">
               <a href="{{ route('public.home') }}">Home</a>
             </li>
-            <li class="{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
+            <li class="{{ Request::is('vehicles') ? ' active' : '' }}">
               <a href={{ route('public.vehicles') }}>Vehicles</a>
             </li>
-            <li class="{{ Request::is('admin/rates*') ? ' active' : '' }}">
+            <li class="{{ Request::is('contact') ? ' active' : '' }}">
               <a href="{{ route('public.contact') }}">Contact</a>
             </li>
           </ul>

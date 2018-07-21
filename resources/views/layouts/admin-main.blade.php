@@ -74,7 +74,7 @@
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-            {{ Auth::user()->name }} <span class="caret"></span>
+             {{ Auth::user()->name }} <span class="caret"></span>
           </a>
 
           <ul class="dropdown-menu">

@@ -1,10 +1,10 @@
-<div class="panel panel-default vehicle-dashboard-info" style="min-width: 45%; width: 500px; max-width: 100%; float: left">
-  {{--<div class="panel-heading" style="padding: unset">--}}
-    {{--@foreach($vehicle->images as $image)--}}
-      {{--@if($loop->first) <img src="{{ $image->image_uri }}" style="width: 100%; height: 25%;"/> @endif--}}
-    {{--@endforeach--}}
-  {{--</div>--}}
-  <table class="table table-bordered table-hover table-condensed">
+<div class="panel panel-default" style="min-width: 45%; width: 500px; max-width: 100%; float: left; color: #636b6f">
+  <div class="panel-heading" style="padding: unset">
+    @foreach($vehicle->images as $image)
+      @if($loop->first) <img src="{{ $image->image_uri }}" style="width: 100%; height: 250px;"/> @endif
+    @endforeach
+  </div>
+  <table class="table table-bordered table-condensed" style="min-height: 350px">
     <tr>
       <td>Vehicle</td>
       <td>{{ $vehicle->name() }}</td>

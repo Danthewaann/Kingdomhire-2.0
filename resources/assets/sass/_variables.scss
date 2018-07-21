@@ -1,7 +1,7 @@
 
 // Body
-//$body-bg: #FCFCFC;
 $body-bg: rgb(61,61,61);
+//$body-bg: #ECECEC;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -25,12 +25,14 @@ $line-height-base: 1.6;
 $text-color: #636b6f;
 
 // Navbar
+$navbar-default-color: white;
 $navbar-default-bg: #338D60;
+$navbar-default-border: $brand-primary;
 $navbar-default-link-color: white;
 $navbar-default-link-hover-color: white;
-$navbar-default-link-hover-bg: #3bb270;
+$navbar-default-link-hover-bg: $brand-primary;
 $navbar-default-link-active-color: white;
-$navbar-default-link-active-bg: #3bb270;
+$navbar-default-link-active-bg: $brand-primary;
 
 // Buttons
 $btn-default-color: $text-color;
@@ -41,6 +43,32 @@ $input-border-focus: lighten($brand-primary, 25%);
 $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
-//$panel-default-heading-bg: rgb(40,143,91);
 $panel-default-heading-bg: #338D60;
-//$panel-bg: #5EAB84;
+$panel-border-radius: 0;
+$panel-inner-border: #3bb270;
+
+//tables
+//$table-bg: #2B7550;
+//$table-bg-hover: #368F62;
+//$table-border-color: #3bb270;
+
+//jumbotron
+$jumbotron-color: white;
+$jumbotron-bg: $brand-primary;
+
+//tabs
+$nav-tabs-border-color: unset;
+
+//thumbnails
+//$thumbnail-padding: 0;
+$thumbnail-border: 0;
+$thumbnail-bg: rgba(61,61,61,0.3);
+$thumbnail-caption-color: white;
+
+//tabs
+$nav-link-hover-bg: $brand-primary;
+$nav-tabs-border-color: $brand-primary;
+$nav-tabs-link-hover-border-color: $brand-primary;
+$nav-tabs-active-link-hover-bg: $navbar-default-link-active-bg;
+$nav-tabs-active-link-hover-color: white;
+$nav-tabs-active-link-hover-border-color: $brand-primary;

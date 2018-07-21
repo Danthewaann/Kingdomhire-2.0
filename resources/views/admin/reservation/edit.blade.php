@@ -25,7 +25,7 @@
                     {{ Form::text('start_date', $reservation->start_date, array('class' => 'form-control datepicker', 'autocomplete' => 'off')) }}
                     @if( $errors->has('start_date'))
                       <span class="help-block">
-                          <strong>{{ $errors->first('start_date') }}</strong>
+                          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>{{ $errors->first('start_date') }}</strong>
                       </span>
                     @endif
                   </div>
@@ -36,7 +36,7 @@
                     {{ Form::text('end_date', $reservation->end_date, array('class' => 'form-control datepicker', 'autocomplete' => 'off')) }}
                     @if( $errors->has('end_date'))
                       <span class="help-block">
-                          <strong>{{ $errors->first('end_date') }}</strong>
+                          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>{{ $errors->first('end_date') }}</strong>
                       </span>
                     @endif
                   </div>

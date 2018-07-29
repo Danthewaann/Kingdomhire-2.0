@@ -15,14 +15,13 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-{{--<div class="container-fluid">--}}
   <div id="app">
-    <nav class="navbar navbar-default navbar-static-top" style="margin: 0; border: unset;">
+    <nav class="navbar navbar-default navbar-static-top public-navbar">
       <div class="jumbotron jumbotron-home">
         <div class="bg"></div>
         <div class="container">
-          <div class="navbar-header" style="min-width: 100%; margin: 10px 0px 10px 0px">
-              <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo" width="100%">
+          <div class="navbar-header public-navbar-header">
+            <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo" width="100%">
 
           <!-- Collapsed Hamburger -->
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
@@ -81,15 +80,10 @@
             @endguest
           </ul>
         </div>
-        </div>
       </div>
     </nav>
-  </div>
-{{--</div>--}}
-
-  {{--<div class="container">--}}
     @yield('content')
-  {{--</div>--}}
+  </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

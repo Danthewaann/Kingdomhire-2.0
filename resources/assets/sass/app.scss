@@ -23,22 +23,9 @@
   border: unset;
 }
 
-.vehicle-dashboard-brand {
-  font-size: 1.5rem;
-  cursor: default !important;
-}
-
-a.vehicle-dashboard-brand:hover {
-  background-color: transparent !important;
-}
-
 .vehicle-dashboard-navbar {
   margin-bottom: 0;
-  background-color: #207349;
-}
-
-.vehicle-dashboard-navbar-collapse {
-  padding-right: 15px !important;
+  border: 0;
 }
 
 .button-link {
@@ -56,8 +43,8 @@ table {
   //font-size: 0.9em !important;
 }
 
-table.opening-hours th,
-table.opening-hours td {
+.opening-hours th,
+.opening-hours td {
   font-size: 1.4em;
 }
 
@@ -69,19 +56,6 @@ body {
   //font-size: 21px;
   //color: white;
 }
-
-//.jumbotron-main {
-//  //height: 300px;
-//  text-align: center;
-//  //background-color: rgba(0,0,0,0.5);
-//  overflow: hidden;
-//  text-shadow: 2px 2px rgba(0,0,0,0.4);
-//  position:relative;
-//  padding-top:50px;
-//  padding-bottom:50px;
-//  box-shadow: inset 0 0 20px 10px rgba(0,0,0,0.8);
-//}
-
 
 %jumbotron-base {
   //width: 100%;
@@ -107,7 +81,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  //z-index: 1;
   -webkit-filter: blur(6px);
   -moz-filter: blur(6px);
   -o-filter: blur(6px);
@@ -124,7 +98,6 @@ body {
 
   .bg {
     @extend %jumbotron-base-img;
-    //background: black url("/static/home.jpg") center 52% no-repeat;
     background: #000 url("/static/nav-img.jpg") 28% 40% no-repeat;
   }
 }
@@ -170,7 +143,7 @@ body {
 
 .nav-tabs > li > a {
   color: white !important;
-  margin-right: 10px !important;
+  //margin-right: 10px !important;
 }
 
 .vehicles-tab-content {
@@ -195,11 +168,94 @@ body {
 
 .text-link {
   font-weight: bolder;
-  //font-style: italic;
   color: white;
 }
 
 .text-link:hover, .text-link:focus {
-  //color: ;
   text-decoration: none !important;
+}
+
+.vehicle-summary > tbody > tr > th {
+  text-align: right;
+  color: white;
+  //background-color: rgba(0,0,0,0.2);
+  background-color: #337d57;
+  border-top: unset !important;
+  //border-bottom: 2px solid #307753 !important;
+  //border-right: 2px solid rgba(0,0,0,0.1) !important;
+}
+
+.vehicle-summary > tbody > tr > th.last {
+  border-bottom: 2px solid #307753 !important;
+}
+
+.vehicle-summary > tbody > tr > td {
+  border-top: unset !important;
+  color: white;
+  background-color: #37855e;
+  border-bottom: 2px solid #307753 !important;
+}
+
+.contact-info th,
+.contact-info td {
+  font-size: 1.4em;
+}
+
+.public-navbar {
+  margin-bottom: 0;
+  border: 0;
+}
+
+.admin-navbar {
+  border: 0;
+}
+
+.public-navbar-header {
+  min-width: 100%;
+  margin: 10px 0px;
+}
+
+.admin-navbar-header {
+  //max-width: 100%;
+  //padding: 5px 5px 5px 5px;
+}
+
+.jumbotron-vehicle-dashboard {
+  //padding: 0 !important;
+  border-radius: 0 !important;
+  min-height: 650px;
+}
+
+.vehicle-dashboard-navbar-tabs {
+  //background-color: transparent !important;
+  border-radius: 4px 4px 0 0;
+  //margin-bottom: 0;
+  //border: 0;
+  //padding: 10px 0px 0px 10px;
+}
+
+.vehicle-dashboard-navbar-tabs > li > a:hover {
+  background-color: #3b8b63;
+  border-top: 1px solid rgb(75, 206, 138);
+  border-left: 1px solid rgb(75, 206, 138);
+  border-right: 1px solid rgb(75, 206, 138);
+  //rgb(75, 206, 138);
+  //padding: 10px 0px 0px 10px;
+}
+
+.vehicle-dashboard-navbar-tabs > li > a:focus {
+  background-color: #3b8b63;
+  //border-top: 1px solid rgb(75, 206, 138);;
+  //padding: 10px 0px 0px 10px;
+}
+
+.vehicle-dashboard-navbar-tabs > li > a:active {
+  background-color: #3b8b63 !important;
+  //border-top: 1px solid rgb(75, 206, 138);;
+  //padding: 10px 0px 0px 10px;
+}
+
+.vehicle-dashboard-tab-content {
+  //background-color: $brand-info;
+  //padding: 20px;
 }

@@ -129,8 +129,9 @@ class ChartGenerator
         }
 
         Lava::ColumnChart('Hires per month', $pastHiresTable, [
+            'backgroundColor' => '#439D70',
             'colors' => [
-                'rgb(40,143,91)'
+                'rgb(75, 206, 138)'
             ],
             'height' => 350,
             'chartArea' => [
@@ -144,7 +145,7 @@ class ChartGenerator
                 'position' => 'top',
                 'textStyle' => [
                     'fontSize' => 14,
-                    'color' => '#636b6f',
+                    'color' => 'white',
                     'fontName' => 'Raleway',
                 ]
             ],
@@ -153,17 +154,19 @@ class ChartGenerator
             ],
             'hAxis' => [
                 'textStyle' => [
-                    'color' => '#636b6f',
+                    'color' => 'white',
                 ],
             ],
             'vAxis' => [
+                'baselineColor' => 'rgb(75, 206, 138)',
                 'textStyle' => [
-                    'color' => '#636b6f',
+                    'color' => 'white',
                 ],
                 'minValue' => 0,
                 'maxValue' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5),
                 'gridlines' => [
-                    'count' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5)+1
+                    'count' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5)+1,
+                    'color' => 'rgb(75, 206, 138)'
                 ],
             ],
         ]);

@@ -6,23 +6,29 @@
     <h1>Contact us</h1>
     <p>Have any queries or complaints? You can contact us via mobile phone or email, whichever you prefer.</p>
     <h3>Our contact information</h3>
-    <div class="col-md-7">
+    <div class="col-md-6">
       <div class="row">
-        <table class="table opening-hours">
-          <tr>
-            <th>Mobile number</th>
-            <td>0777 55 34402</td>
-            <td>
-              <a href="tel:07775534402" class="btn btn-info btn-lg" role="button" style="width: 100%" aria-pressed="true">Phone Us</a>
-            </td>
-          </tr>
-          <tr>
-            <th>Email</th>
-            <td>kingdomhire@googlemail.com</td>
-            <td>
-              <a href="mailto:kingdomhire@googlemail.com" class="btn btn-info btn-lg" role="button" style="width: 100%" aria-pressed="true">Email Us</a>
-            </td>
-          </tr>
+        <table class="table contact-info">
+          <thead>
+            <tr>
+              <th>Phone</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="max-width: 200px">0777 55 34402</td>
+              <td style="max-width: 200px"><span style="word-wrap: break-word;">kingdomhire@googlemail.com</span></td>
+            </tr>
+            <tr>
+              <td>
+                <a href="tel:07775534402" class="btn btn-info btn-lg" role="button" aria-pressed="true">Phone Us</a>
+              </td>
+              <td>
+                <a href="mailto:kingdomhire@googlemail.com" class="btn btn-info btn-lg" role="button" aria-pressed="true">Email Us</a>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

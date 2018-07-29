@@ -5230,13 +5230,13 @@ tbody.collapse.in {
 .nav-tabs.nav-justified > .active > a:hover,
 .nav-tabs-justified > .active > a:focus,
 .nav-tabs.nav-justified > .active > a:focus {
-  border: 1px solid #ddd;
+  border: 1px solid #4bce8a;
 }
 
 @media (min-width: 768px) {
   .nav-tabs-justified > li > a,
   .nav-tabs.nav-justified > li > a {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #4bce8a;
     border-radius: 4px 4px 0 0;
   }
 
@@ -5246,7 +5246,7 @@ tbody.collapse.in {
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #3d3d3d;
+    border-bottom-color: #4bce8a;
   }
 }
 
@@ -8365,22 +8365,9 @@ button.close {
   border: unset;
 }
 
-.vehicle-dashboard-brand {
-  font-size: 1.5rem;
-  cursor: default !important;
-}
-
-a.vehicle-dashboard-brand:hover {
-  background-color: transparent !important;
-}
-
 .vehicle-dashboard-navbar {
   margin-bottom: 0;
-  background-color: #207349;
-}
-
-.vehicle-dashboard-navbar-collapse {
-  padding-right: 15px !important;
+  border: 0;
 }
 
 .button-link {
@@ -8396,8 +8383,8 @@ table {
   margin-bottom: 0 !important;
 }
 
-table.opening-hours th,
-table.opening-hours td {
+.opening-hours th,
+.opening-hours td {
   font-size: 1.4em;
 }
 
@@ -8425,7 +8412,6 @@ nav {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
   -webkit-filter: blur(6px);
   -moz-filter: blur(6px);
   -o-filter: blur(6px);
@@ -8471,7 +8457,6 @@ nav {
 
 .nav-tabs > li > a {
   color: white !important;
-  margin-right: 10px !important;
 }
 
 .vehicles-tab-content {
@@ -8502,5 +8487,66 @@ nav {
 .text-link:hover,
 .text-link:focus {
   text-decoration: none !important;
+}
+
+.vehicle-summary > tbody > tr > th {
+  text-align: right;
+  color: white;
+  background-color: #337d57;
+  border-top: unset !important;
+}
+
+.vehicle-summary > tbody > tr > th.last {
+  border-bottom: 2px solid #307753 !important;
+}
+
+.vehicle-summary > tbody > tr > td {
+  border-top: unset !important;
+  color: white;
+  background-color: #37855e;
+  border-bottom: 2px solid #307753 !important;
+}
+
+.contact-info th,
+.contact-info td {
+  font-size: 1.4em;
+}
+
+.public-navbar {
+  margin-bottom: 0;
+  border: 0;
+}
+
+.admin-navbar {
+  border: 0;
+}
+
+.public-navbar-header {
+  min-width: 100%;
+  margin: 10px 0px;
+}
+
+.jumbotron-vehicle-dashboard {
+  border-radius: 0 !important;
+  min-height: 650px;
+}
+
+.vehicle-dashboard-navbar-tabs {
+  border-radius: 4px 4px 0 0;
+}
+
+.vehicle-dashboard-navbar-tabs > li > a:hover {
+  background-color: #3b8b63;
+  border-top: 1px solid #4bce8a;
+  border-left: 1px solid #4bce8a;
+  border-right: 1px solid #4bce8a;
+}
+
+.vehicle-dashboard-navbar-tabs > li > a:focus {
+  background-color: #3b8b63;
+}
+
+.vehicle-dashboard-navbar-tabs > li > a:active {
+  background-color: #3b8b63 !important;
 }
 

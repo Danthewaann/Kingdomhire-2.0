@@ -76,7 +76,7 @@
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-               {{ Auth::user()->name }} <span class="caret"></span>
+              {{ Auth::user()->name }} <span class="caret"></span>
             </a>
 
             <ul class="dropdown-menu">
@@ -99,7 +99,17 @@
   </nav>
 
   <div class="container-fluid">
-    @yield('content')
+    <div class="row">
+      <div class="col-md-3">
+        @include('admin.vehicle.summary')
+      </div>
+      <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+        @include('admin.vehicle.navbar')
+        <div class="jumbotron jumbotron-vehicle-dashboard">
+          @yield('content')
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

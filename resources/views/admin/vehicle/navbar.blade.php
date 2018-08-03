@@ -1,48 +1,52 @@
-<nav class="navbar navbar-default navbar-static-top vehicle-dashboard-navbar">
+<div class="row">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <!-- Collapsed Hamburger -->
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dashboard-navbar-collapse" aria-expanded="false">
-        <span class="sr-only">Toggle Navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+    <nav class="navbar navbar-default navbar-static-top vehicle-dashboard-navbar-tabs">
+      <ul class="nav navbar-default nav-tabs nav-justified vehicle-dashboard-navbar-tabs" id="dashboard-navbar-tabs-collapse">
+        <li class="{{ count($errors) == 0 ? 'active' : '' }}"><a data-toggle="tab" href="#info">Info</a></li>
+        <li><a data-toggle="tab" href="#schedule">Schedule</a></li>
+        <li class="{{ count($errors) > 0 ? 'active' : '' }}"><a data-toggle="tab" href="#reservations">Reservations</a></li>
+        <li><a data-toggle="tab" href="#hires">Hires</a></li>
+        <li><a data-toggle="tab" href="#edit">Edit</a></li>
+      </ul>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="tab-content vehicle-dashboard-tab-content">
+          <div id="info" class="tab-pane fade{{ count($errors) == 0 ? ' in active' : '' }}">
+            <div class="col-md-5">
+              <div class="row">
+                @include('admin.vehicle.list-active-hire')
+                @include('admin.vehicle.list-reservations')
+              </div>
+            </div>
+          </div>
+          <div id="schedule" class="tab-pane fade">
+            <div class="col-md-12">
+              <div class="row">
+                @if($gantt != null)
+                  @include('admin.vehicle.gantt')
+                @endif
+              </div>
+            </div>
+          </div>
+          <div id="reservations" class="tab-pane fade{{ count($errors) > 0 ? ' in active' : '' }}">
+            <div class="col-md-4 col-sm-12 col-xs-12">
+              <div class="row">
+                @include('admin.reservation.add')
+              </div>
+            </div>
+          </div>
+          <div id="hires" class="tab-pane fade">
+            @if($pastHires->isNotEmpty())
+              <div id="hires_per_month"></div>
+              @columnchart('Hires per month', 'hires_per_month')
+            @endif
+          </div>
+          <div id="edit" class="tab-pane fade">
+            @include('admin.vehicle.edit')
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse vehicle-dashboard-navbar-collapse" id="dashboard-navbar-collapse">
-      <!-- Left Side Of Navbar -->
-      <ul class="nav navbar-nav">
-        <li class="{{ Request::path() == 'admin/vehicles/'.$vehicle->id ? 'active' : '' }}">
-          <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">Vehicle Dashboard</a>
-        </li>
-      </ul>
-      <!-- Right Side Of Navbar -->
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-            Other <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a>
-                {{ Form::open(['route' => ['vehicle.discontinue', $vehicle->id], 'method' => 'delete']) }}
-                {{ Form::submit('Discontinue', ['class' => 'button-link']) }}
-                {{ Form::close() }}
-              </a>
-            </li>
-            <li>
-              <a>
-                {{ Form::open(['route' => ['vehicle.delete', $vehicle->id], 'method' => 'delete']) }}
-                {{ Form::submit('Delete', ['class' => 'button-link']) }}
-                {{ Form::close() }}
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+</div>

@@ -104,7 +104,6 @@
         @include('admin.vehicle.summary')
       </div>
       <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
-        @include('admin.vehicle.navbar')
         <div class="jumbotron jumbotron-vehicle-dashboard">
           @yield('content')
         </div>

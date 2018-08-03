@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Welcome to Kingdomhire</h1>
+				<h1>What is Kingdomhire?</h1>
 			</div>
 			<div class="col-md-8">
 				<h2>Car &amp; Van Hire Specialist</h2>

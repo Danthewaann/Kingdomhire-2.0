@@ -17,7 +17,7 @@
 </head>
 <body>
 <div id="app">
-  <nav class="navbar navbar-default navbar-static-top admin-navbar">
+  <nav class="navbar navbar-default navbar-static-top public-navbar">
     <div class="jumbotron jumbotron-home">
       <div class="bg"></div>
       <div class="container-fluid">
@@ -98,10 +98,11 @@
     </div>
   </nav>
 
-  <div class="container-fluid">
+  <div class="jumbotron">
     @yield('content')
   </div>
 </div>
+
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>

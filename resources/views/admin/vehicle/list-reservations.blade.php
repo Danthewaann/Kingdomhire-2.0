@@ -5,18 +5,27 @@
   <h3>No current reservations</h3>
 @endif
 @if(!$vehicle->reservations->isEmpty())
-  <table class="table table-condensed">
-    <tr>
-      <th style="width: 35%">Start Date</th>
-      <th>End Date</th>
-      <th></th>
-    </tr>
-  </table>
+  {{--<table class="table table-condensed">--}}
+    {{--<tr>--}}
+      {{--<th>Start Date</th>--}}
+      {{--<th>End Date</th>--}}
+      {{--<th></th>--}}
+    {{--</tr>--}}
+  {{--</table>--}}
   <div style="overflow: auto; max-height: 420px">
     <table class="table table-condensed">
+      <thead>
+      <tr>
+        <th>Made By</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th></th>
+      </tr>
+      </thead>
       <tbody>
         @foreach($vehicle->reservations->sortBy('end_date') as $reservation)
           <tr>
+            <td>{{ $reservation->made_by }}</td>
             <td>{{ date('jS F Y', strtotime($reservation->start_date)) }}</td>
             <td>{{ date('jS F Y', strtotime($reservation->end_date)) }}</td>
             <td>

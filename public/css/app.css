@@ -3032,12 +3032,12 @@ th {
   padding: 8px;
   line-height: 1.6;
   vertical-align: top;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #4bce8a;
 }
 
 .table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid #4bce8a;
 }
 
 .table > caption + thead > tr:first-child > th,
@@ -3050,7 +3050,7 @@ th {
 }
 
 .table > tbody + tbody {
-  border-top: 2px solid #ddd;
+  border-top: 2px solid #4bce8a;
 }
 
 .table .table {
@@ -3067,7 +3067,7 @@ th {
 }
 
 .table-bordered {
-  border: 1px solid #ddd;
+  border: 1px solid #4bce8a;
 }
 
 .table-bordered > thead > tr > th,
@@ -3076,7 +3076,7 @@ th {
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > th,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #ddd;
+  border: 1px solid #4bce8a;
 }
 
 .table-bordered > thead > tr > th,
@@ -3089,7 +3089,7 @@ th {
 }
 
 .table-hover > tbody > tr:hover {
-  background-color: #f5f5f5;
+  background-color: #368F62;
 }
 
 table col[class*="col-"] {
@@ -3117,7 +3117,7 @@ table th[class*="col-"] {
 .table > tfoot > tr > th.active,
 .table > tfoot > tr.active > td,
 .table > tfoot > tr.active > th {
-  background-color: #f5f5f5;
+  background-color: #368F62;
 }
 
 .table-hover > tbody > tr > td.active:hover,
@@ -3125,7 +3125,7 @@ table th[class*="col-"] {
 .table-hover > tbody > tr.active:hover > td,
 .table-hover > tbody > tr:hover > .active,
 .table-hover > tbody > tr.active:hover > th {
-  background-color: #e8e8e8;
+  background-color: #2f7c55;
 }
 
 .table > thead > tr > td.success,
@@ -3231,7 +3231,7 @@ table th[class*="col-"] {
     margin-bottom: 16.5px;
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    border: 1px solid #ddd;
+    border: 1px solid #4bce8a;
   }
 
   .table-responsive > .table {
@@ -7011,7 +7011,7 @@ button.list-group-item-danger.active:focus {
 .panel > .panel-body + .table-responsive,
 .panel > .table + .panel-body,
 .panel > .table-responsive + .panel-body {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #4bce8a;
 }
 
 .panel > .table > tbody:first-child > tr:first-child th,
@@ -8350,48 +8350,6 @@ button.close {
   }
 }
 
-.panel-title-text {
-  color: white !important;
-}
-
-.vehicle-dashboard-heading {
-  padding: 0;
-}
-
-.vehicle-dashboard-info {
-  color: #636b6f;
-  border-radius: unset;
-  margin-bottom: 0;
-  border: unset;
-}
-
-.vehicle-dashboard-navbar {
-  margin-bottom: 0;
-  border: 0;
-}
-
-.button-link {
-  background: none !important;
-  color: inherit;
-  border: none;
-  padding: 0 !important;
-  font: inherit;
-  cursor: pointer;
-}
-
-table {
-  margin-bottom: 0 !important;
-}
-
-.opening-hours th,
-.opening-hours td {
-  font-size: 1.4em;
-}
-
-nav {
-  font-size: 1.2em !important;
-}
-
 .jumbotron-home,
 .jumbotron-vehicles,
 .jumbotron-contact {
@@ -8447,6 +8405,60 @@ nav {
   z-index: 2;
 }
 
+.jumbotron-vehicle-dashboard {
+  border-radius: 0 !important;
+  min-height: 650px;
+}
+
+.jumbotron-header {
+  margin-bottom: 0;
+  padding-top: 28px;
+}
+
+.jumbotron-content {
+  background-color: #3b8b63;
+  margin-bottom: 0;
+}
+
+.vehicle-dashboard-info {
+  color: #636b6f;
+  border-radius: unset;
+  margin-bottom: 0;
+  border: unset;
+}
+
+.vehicle-dashboard-navbar {
+  margin-bottom: 0;
+  border: 0;
+}
+
+.button-link {
+  background: none !important;
+  color: inherit;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
+  cursor: pointer;
+}
+
+table {
+  margin-bottom: 0 !important;
+  color: white !important;
+}
+
+.opening-hours th,
+.opening-hours td {
+  font-size: 1.4em;
+}
+
+nav {
+  font-size: 1.2em !important;
+}
+
+body {
+  color: white;
+}
+
 .logo {
   -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
           filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
@@ -8461,17 +8473,10 @@ nav {
 
 .vehicles-tab-content {
   background-color: #439D70;
+  border-left: 1px solid #4bce8a;
+  border-right: 1px solid #4bce8a;
+  border-bottom: 1px solid #4bce8a;
   padding: 20px;
-}
-
-.jumbotron-header {
-  margin-bottom: 0;
-  padding-top: 28px;
-}
-
-.jumbotron-content {
-  background-color: #3b8b63;
-  margin-bottom: 0;
 }
 
 .map {
@@ -8496,6 +8501,31 @@ nav {
   border-top: unset !important;
 }
 
+.vehicle-table > tbody > tr > th {
+  text-align: right;
+  color: white;
+  width: 45%;
+  background-color: #3b8b63;
+  border-top: unset !important;
+}
+
+.vehicle-table > tbody > tr > th.last {
+  border-bottom: 1px solid #4bce8a !important;
+}
+
+.vehicle-table > tbody > tr > th.first {
+  border-top: 1px solid #4bce8a !important;
+}
+
+.vehicle-table > tbody > tr > td.first {
+  border-top: unset !important;
+}
+
+.vehicle-table > tbody > tr > td {
+  color: white;
+  border-bottom: 1px solid #4bce8a !important;
+}
+
 .vehicle-summary > tbody > tr > th.last {
   border-bottom: 2px solid #307753 !important;
 }
@@ -8505,6 +8535,12 @@ nav {
   color: white;
   background-color: #37855e;
   border-bottom: 2px solid #307753 !important;
+}
+
+.vehicle-img {
+  width: 100%;
+  height: 255px;
+  border: 1px solid #4bce8a;
 }
 
 .contact-info th,
@@ -8526,20 +8562,30 @@ nav {
   margin: 10px 0px;
 }
 
-.jumbotron-vehicle-dashboard {
-  border-radius: 0 !important;
-  min-height: 650px;
-}
-
 .vehicle-dashboard-navbar-tabs {
   border-radius: 4px 4px 0 0;
 }
 
 .vehicle-dashboard-navbar-tabs > li > a:hover {
-  background-color: #3b8b63;
+  background-color: #3b8b63 !important;
   border-top: 1px solid #4bce8a;
   border-left: 1px solid #4bce8a;
   border-right: 1px solid #4bce8a;
+}
+
+.vehicle-navbar-tabs > li > a:hover {
+  background-color: #439D70 !important;
+  border-top: 1px solid #4bce8a;
+  border-left: 1px solid #4bce8a;
+  border-right: 1px solid #4bce8a;
+}
+
+.vehicle-navbar-tabs > li > a:focus {
+  background-color: #439D70;
+}
+
+.vehicle-navbar-tabs > li > a:active {
+  background-color: #439D70 !important;
 }
 
 .vehicle-dashboard-navbar-tabs > li > a:focus {
@@ -8548,5 +8594,36 @@ nav {
 
 .vehicle-dashboard-navbar-tabs > li > a:active {
   background-color: #3b8b63 !important;
+}
+
+nav-tabs-justified > .active > a,
+.nav-tabs.nav-justified > .active > a,
+.nav-tabs-justified > .active > a:hover,
+.nav-tabs.nav-justified > .active > a:hover,
+.nav-tabs.nav-justified > .active > a:hover,
+.nav-tabs-justified > .active > a:focus,
+.nav-tabs.nav-justified > .active > a:focus,
+.nav-tabs.nav-justified > .active > a:focus {
+  background-color: #439D70 !important;
+}
+
+nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
+.nav-tabs.vehicle-dashboard-navbar-tabs.nav-justified > .active > a,
+.nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a:hover,
+.vehicle-dashboard-navbar-tabs.nav-tabs.nav-justified > .active > a:hover,
+.nav-tabs.vehicle-dashboard-navbar-tabs.nav-justified > .active > a:hover,
+.nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a:focus,
+.vehicle-dashboard-navbar-tabs.nav-tabs.nav-justified > .active > a:focus,
+.nav-tabs.vehicle-dashboard-navbar-tabs.nav-justified > .active > a:focus {
+  background-color: #3b8b63 !important;
+}
+
+.vehicles-list > tbody > tr > td {
+  border-top: unset !important;
+  padding: unset !important;
+}
+
+.table .table {
+  background-color: transparent;
 }
 

@@ -39,23 +39,24 @@ class ChartGenerator
         }
 
         Lava::BarChart('Vehicle Reservations', $vehiclesTable, [
+            'backgroundColor' => '#439D70',
             'colors' => [
-                'rgb(40,143,91)'
+                'rgb(75, 206, 138)'
             ],
             'height' => count($activeVehicles)*50,
             'fontSize' => 12,
             'fontName' => 'Raleway',
             'chartArea' => [
-                'left' => '20%',
+//                'left' => '20%',
                 'top' => '12.5%',
-                'width' => '75%',
+                'width' => '95%',
                 'height' => '75%'
             ],
             'legend' => [
                 'position' => 'top',
                 'textStyle' => [
                     'fontSize' => 14,
-                    'color' => '#636b6f',
+                    'color' => 'white',
                     'fontName' => 'Raleway',
                 ]
             ],
@@ -63,19 +64,21 @@ class ChartGenerator
                 'groupWidth' => '20'
             ],
             'vAxis' => [
-                'textPosition' => 'out',
+                'textPosition' => 'in',
                 'textStyle' => [
-                    'color' => '#636b6f',
+                    'color' => 'white',
                 ],
             ],
             'hAxis' => [
+                'baselineColor' => 'rgb(75, 206, 138)',
                 'textStyle' => [
-                    'color' => '#636b6f',
+                    'color' => 'white',
                 ],
                 'minValue' => 0,
                 'maxValue' => ($maxReservationsForVehicle > 3 ? $maxReservationsForVehicle : 3),
                 'gridlines' => [
-                    'count' => ($maxReservationsForVehicle > 3 ? $maxReservationsForVehicle : 3)+1
+                    'count' => ($maxReservationsForVehicle > 3 ? $maxReservationsForVehicle : 3)+1,
+                    'color' => 'rgb(75, 206, 138)'
                 ],
             ],
         ]);
@@ -136,7 +139,7 @@ class ChartGenerator
             'height' => 350,
             'chartArea' => [
                 'top' => '12.5%',
-                'width' => '87.5%',
+                'width' => '95%',
                 'height' => '75%'
             ],
             'fontSize' => 12,

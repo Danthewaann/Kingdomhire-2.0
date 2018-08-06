@@ -17,6 +17,12 @@ $brand-success: #2ab27b;
 $brand-warning: #cbb956;
 $brand-danger: #bf5329;
 
+// Colours
+$light-green: #439D70;
+$lighter-green: rgb(75, 206, 138);
+$dark-green: #3b8b63;
+
+
 //rgb(75, 206, 138)
 $btn-info-color: white !default;
 $btn-info-bg: $brand-info !default;
@@ -53,9 +59,8 @@ $panel-border-radius: 0;
 $panel-inner-border: #3bb270;
 
 //tables
-//$table-bg: #2B7550;
-//$table-bg-hover: #368F62;
-//$table-border-color: #3bb270;
+$table-bg-hover: #368F62;
+$table-border-color: $lighter-green;
 
 //jumbotron
 $jumbotron-color: white;
@@ -75,6 +80,7 @@ $nav-link-hover-bg: $brand-primary;
 $nav-tabs-border-color: $brand-primary;
 $nav-tabs-link-hover-border-color: $brand-primary;
 $nav-tabs-active-link-hover-bg: $navbar-default-link-active-bg;
+//$nav-tabs-active-link-hover-bg: $brand-primary;
 $nav-tabs-active-link-hover-color: white;
 $nav-tabs-active-link-hover-border-color: $brand-primary;
 $nav-tabs-justified-link-border-color: rgb(75, 206, 138);

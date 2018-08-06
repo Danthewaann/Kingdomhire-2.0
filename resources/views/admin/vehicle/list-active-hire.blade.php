@@ -7,12 +7,14 @@
   <table class="table table-condensed">
     {{--<thead>--}}
     <tr>
+      <th>Hired By</th>
       <th>Start Date</th>
       <th>End Date</th>
       <th></th>
     </tr>
     {{--</thead>--}}
     <tr>
+      <td>{{ $vehicle->getActiveHire()->hired_by }}</td>
       <td>{{ date('jS F Y', strtotime($vehicle->getActiveHire()->start_date)) }}</td>
       <td>{{ date('jS F Y', strtotime($vehicle->getActiveHire()->end_date)) }}</td>
       <td>

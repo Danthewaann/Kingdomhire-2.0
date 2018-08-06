@@ -1,10 +1,15 @@
-@extends('layouts.admin-vehicle-dashboard')
+@extends('layouts.admin-main')
 
 @section('content')
-<div class="row">
+{{--<div class="col-md-12">--}}
+{{--<div class="row">--}}
   <div class="container-fluid">
-    <nav class="navbar navbar-default navbar-static-top vehicle-dashboard-navbar-tabs">
-      <ul class="nav navbar-default nav-tabs nav-justified vehicle-dashboard-navbar-tabs" id="dashboard-navbar-tabs-collapse">
+    <div class="col-md-3">
+      @include('admin.vehicle.summary')
+    </div>
+    <div class="col-md-9">
+    <nav class="navbar navbar-static-top vehicle-dashboard-navbar-tabs">
+      <ul class="nav nav-tabs nav-justified vehicle-dashboard-navbar-tabs" id="dashboard-navbar-tabs-collapse">
         <li class="{{ count($errors) == 0 ? 'active' : '' }}"><a data-toggle="tab" href="#info">Info</a></li>
         <li><a data-toggle="tab" href="#schedule">Schedule</a></li>
         <li class="{{ count($errors) > 0 ? 'active' : '' }}"><a data-toggle="tab" href="#reservations">Reservations</a></li>
@@ -53,4 +58,5 @@
     </div>
   </div>
 </div>
+{{--</div>--}}
 @endsection

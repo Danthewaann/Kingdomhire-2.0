@@ -90,6 +90,16 @@ class Vehicle extends Model
         return $this->make.' '.$this->model;
     }
 
+    public function getNextReservation()
+    {
+        return $this->reservations->sortBy('end_date')->first();
+    }
+
+    public function hasActiveHire()
+    {
+        return $this->getActiveHire() != null;
+    }
+
     public function getActiveHire()
     {
         return $this->hires->where('is_active', '=', true)->first();

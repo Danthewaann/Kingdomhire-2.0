@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Vehicle;
 use App\Reservation;
 use App\DBQuery;
+//use Faker\Generator as Faker;
 
 class ReservationsTableSeeder extends Seeder
 {
@@ -18,6 +19,7 @@ class ReservationsTableSeeder extends Seeder
         $start_date = strtotime("2018-01-01");
         $end_date = strtotime("2018-12-31");
         $vehicles = Vehicle::all();
+        $faker = Faker\Factory::create();
         foreach ($vehicles as $vehicle) {
             $numOfReservations = rand(1, 20);
             for($i = 0; $i < $numOfReservations; $i++) {
@@ -35,6 +37,7 @@ class ReservationsTableSeeder extends Seeder
                     }
                     if(!$conflicts) {
                         Reservation::create([
+                            'made_by' => $faker->name,
                             'start_date' => $start,
                             'end_date' => $end,
                             'vehicle_id' => $vehicle->id
@@ -43,6 +46,7 @@ class ReservationsTableSeeder extends Seeder
                 }
                 else {
                     Reservation::create([
+                        'made_by' => $faker->name,
                         'start_date' => $start,
                         'end_date' => $end,
                         'vehicle_id' => $vehicle->id

@@ -38,7 +38,8 @@ class AdminController extends Controller
             'vehicles' => $activeVehicles,
             'activeHires' => $activeHires,
             'pastHires' => $pastHires,
-            'reservations' => $reservations
+            'reservations' => $reservations,
+            'rates' => VehicleRate::all()
         ]);
     }
 }

@@ -12,6 +12,7 @@ use App\Vehicle;
 class ReservationsController extends Controller
 {
     private $rules = [
+        'made_by' => 'required|alpha',
         'start_date' => 'required|date_format:Y-m-d|after_or_equal:today',
         'end_date' => 'required|date_format:Y-m-d|after:start_date'
     ];
@@ -45,6 +46,7 @@ class ReservationsController extends Controller
 
         Reservation::create(array(
             'vehicle_id' => $vehicle_id,
+            'made_by' => $request->made_by,
             'start_date' => $request->get('start_date'),
             'end_date' => $request->get('end_date')
         ));
@@ -98,6 +100,7 @@ class ReservationsController extends Controller
         }
 
         DB::table('reservations')->where('id', '=', $reservation_id)->update([
+            'made_by' => $request->made_by,
             'start_date' => $request->get('start_date'),
             'end_date' => $request->get('end_date'),
             'updated_at' => date('Y-m-d H:i:s')

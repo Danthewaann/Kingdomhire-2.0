@@ -1,11 +1,11 @@
 <div style="display: inline-block; width: 100%; margin-bottom: 20px">
   @foreach($vehicle->images as $image)
-    @if($loop->first) <img src="{{ $image->image_uri }}" style="width: 100%; min-height: 250px; max-height: 350px"/> @endif
+    @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img"/> @endif
   @endforeach
-  <table class="table table-condensed vehicle-summary">
+  <table class="table table-condensed vehicle-table">
     <tr>
       <th>Vehicle</th>
-      <td>{{ $vehicle->name() }}</td>
+      <td class="first">{{ $vehicle->name() }}</td>
     </tr>
     <tr>
       <th>Type</th>

@@ -1,0 +1,92 @@
+%jumbotron-base {
+  //width: 100%;
+  //height: 100%;
+  //alignment: center;
+  //max-width: 3000px;
+  margin: 0;
+  overflow: hidden;
+  text-shadow: 2px 2px rgba(0,0,0,0.4);
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  //box-shadow: inset 0 0 20px 10px rgba(0,0,0,0.8);
+  //margin-bottom: 0;
+}
+
+%jumbotron-base-img {
+  //width: 60%;
+  //height: 100%;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  //z-index: 1;
+  -webkit-filter: blur(6px);
+  -moz-filter: blur(6px);
+  -o-filter: blur(6px);
+  -ms-filter: blur(6px);
+  filter: blur(6px);
+  transform: scale(1.03);
+  opacity: 0.9;
+  //margin: auto;
+}
+
+.jumbotron-home {
+  @extend %jumbotron-base;
+  text-align: center;
+
+  .bg {
+    @extend %jumbotron-base-img;
+    background: #000 url("/static/nav-img.jpg") 28% 40% no-repeat;
+  }
+}
+
+.jumbotron-vehicles {
+  @extend %jumbotron-base;
+  text-align: center;
+
+  .bg {
+    @extend %jumbotron-base-img;
+    background: #000 url("/static/van.jpg") 45% 44% no-repeat;
+  }
+}
+
+.jumbotron-contact {
+  @extend %jumbotron-base;
+
+  .bg {
+    @extend %jumbotron-base-img;
+    background: #000 url("/static/carRepair.jpg") 50% 38% no-repeat;
+  }
+}
+
+@mixin jumbotron-bg($img) {
+  background: #000 url($img) center center no-repeat;
+}
+
+@mixin jumbotron-text($text-align) {
+  text-align: $text-align;
+}
+
+.jumbotron .container {
+  position:relative;
+  z-index:2;
+}
+
+.jumbotron-vehicle-dashboard {
+  //padding: 0 !important;
+  border-radius: 0 !important;
+  min-height: 650px;
+}
+
+.jumbotron-header {
+  margin-bottom: 0;
+  padding-top: 28px;
+}
+
+.jumbotron-content {
+  background-color: #3b8b63;
+  margin-bottom: 0;
+}

@@ -3,6 +3,19 @@
   @csrf
   <div class="form-row">
     <input id="vehicle" class="form-control" type="hidden" value="{{ $vehicle->name() }}" disabled/>
+    <div class="form-group{{ $errors->has('made_by') ? ' has-error' : '' }}">
+      <div class="form-row">
+        <label for="made_by">Made By</label>
+        {{ Form::text('made_by', '', array('class' => 'form-control', 'autocomplete' => 'off')) }}
+        @if( $errors->has('made_by'))
+          <div class="help-block">
+            <div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>{{ $errors->first('made_by') }}</strong>
+            </div>
+          </div>
+        @endif
+      </div>
+    </div>
     <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
       <div class="form-row">
         <label for="start_date">Start Date</label>

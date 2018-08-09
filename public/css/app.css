@@ -1406,7 +1406,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
   color: #636b6f;
-  background-color: #3d3d3d;
+  background-color: #439D70;
 }
 
 input,
@@ -3054,7 +3054,7 @@ th {
 }
 
 .table .table {
-  background-color: #3d3d3d;
+  background-color: #439D70;
 }
 
 .table-condensed > thead > tr > th,
@@ -6596,7 +6596,7 @@ a.thumbnail.active {
   padding: 10px 15px;
   margin-bottom: -1px;
   background-color: #fff;
-  border: 1px solid #242323;
+  border: 1px solid #347957;
 }
 
 .list-group-item:first-child {
@@ -7112,17 +7112,17 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-default {
-  border-color: #242323;
+  border-color: #347957;
 }
 
 .panel-default > .panel-heading {
   color: #333333;
   background-color: #338D60;
-  border-color: #242323;
+  border-color: #347957;
 }
 
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #242323;
+  border-top-color: #347957;
 }
 
 .panel-default > .panel-heading .badge {
@@ -7131,7 +7131,7 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #242323;
+  border-bottom-color: #347957;
 }
 
 .panel-primary {
@@ -8407,7 +8407,12 @@ button.close {
 
 .jumbotron-vehicle-dashboard {
   border-radius: 0 !important;
+  margin-bottom: 0 !important;
   min-height: 650px;
+}
+
+.jumbotron-admin {
+  margin-bottom: 0;
 }
 
 .jumbotron-header {
@@ -8501,29 +8506,39 @@ body {
   border-top: unset !important;
 }
 
+.vehicle-table {
+  height: 275px !important;
+}
+
 .vehicle-table > tbody > tr > th {
   text-align: right;
   color: white;
   width: 45%;
+  vertical-align: middle;
   background-color: #3b8b63;
   border-top: unset !important;
 }
 
 .vehicle-table > tbody > tr > th.last {
+  vertical-align: middle;
   border-bottom: 1px solid #4bce8a !important;
 }
 
 .vehicle-table > tbody > tr > th.first {
+  vertical-align: middle;
   border-top: 1px solid #4bce8a !important;
 }
 
 .vehicle-table > tbody > tr > td.first {
+  vertical-align: middle;
   border-top: unset !important;
 }
 
 .vehicle-table > tbody > tr > td {
   color: white;
+  vertical-align: middle;
   border-bottom: 1px solid #4bce8a !important;
+  border-left: 1px solid #4bce8a !important;
 }
 
 .vehicle-summary > tbody > tr > th.last {
@@ -8539,7 +8554,7 @@ body {
 
 .vehicle-img {
   width: 100%;
-  height: 255px;
+  height: 275px;
   border: 1px solid #4bce8a;
 }
 
@@ -8620,10 +8635,21 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 
 .vehicles-list > tbody > tr > td {
   border-top: unset !important;
+  border-left: 1px solid #4bce8a;
   padding: unset !important;
 }
 
 .table .table {
   background-color: transparent;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
 }
 

@@ -46,6 +46,7 @@ class ReservationsToHires extends Command
             if($reservation->start_date <= date('Y-m-d')) {
                 Hire::create(array(
                     'hired_by' => $reservation->made_by,
+                    'rate' => $reservation->rate,
                     'start_date' => $reservation->start_date,
                     'end_date' => $reservation->end_date,
                     'vehicle_id' => $reservation->vehicle->id,

@@ -34,12 +34,13 @@
         </div>
       </div>
     </div>
+    {{--@dd($vehicles)--}}
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="app-navbar-collapse">
         <!-- Left Side Of Navbar -->
         <ul class="nav navbar-nav">
           <li class="{{ Request::is('admin') ? 'active' : '' }}">
-            <a href="{{ route('admin.dashboard') }}">Home</a>
+            <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
           </li>
           <li class="dropdown{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -49,8 +50,16 @@
               <li>
                 <a href="{{ route('vehicle.add') }}">Add a vehicle</a>
               </li>
-              <li>
-                <a href="{{ route('admin.vehicles') }}">Vehicles list</a>
+              <li class="divider"></li>
+              <li class="dropdown-submenu">
+                <a href="#" class="submenu">Vehicles list <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  @foreach(\App\Vehicle::all() as $vehicle)
+                    <li>
+                      <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">{{ $vehicle->name() }}</a>
+                    </li>
+                  @endforeach
+                </ul>
               </li>
             </ul>
           </li>
@@ -62,8 +71,16 @@
               <li>
                 <a href="{{ route('vehicle-rate.add') }}">Add a rate</a>
               </li>
-              <li>
-                <a href="{{ route('vehicle-rate.index') }}">Manage rates</a>
+              <li class="divider"></li>
+              <li class="dropdown-submenu">
+                <a href="{{ route('vehicle-rate.index') }}" class="submenu">Edit rates <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  @foreach(\App\VehicleRate::all() as $rate)
+                    <li>
+                      <a href="{{ route('vehicle-rate.edit', ['rate' => $rate->name]) }}">{{ $rate->getFullName() }}</a>
+                    </li>
+                  @endforeach
+                </ul>
               </li>
             </ul>
           </li>
@@ -98,7 +115,7 @@
     </div>
   </nav>
 
-  <div class="jumbotron">
+  <div class="jumbotron jumbotron-admin">
     @yield('content')
   </div>
 </div>
@@ -109,10 +126,15 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-  $(function() {
-    $( ".datepicker" ).datepicker({
-      dateFormat: "yy-mm-dd"
-    });
+  $(document).ready(function () {
+      $('.dropdown-submenu a.submenu').on("click", function(e){
+          $(this).next('ul').toggle();
+          e.stopPropagation();
+          e.preventDefault();
+      });
+      $( ".datepicker" ).datepicker({
+          dateFormat: "yy-mm-dd"
+      });
   });
 </script>
 </body>

@@ -51,7 +51,7 @@
           <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->
             @guest
-              <li>
+              <li class="{{ Request::is('login') ? ' active' : '' }}">
                 <a href="{{ route('login') }}">Login</a>
               </li>
             @else
@@ -85,16 +85,9 @@
     @yield('content')
   </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-      $(function() {
-        $( ".datepicker" ).datepicker({
-          dateFormat: "yy-mm-dd"
-        });
-      });
-    </script>
 </body>
 </html>

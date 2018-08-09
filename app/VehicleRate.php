@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
 class VehicleRate extends Model
 {
     protected $fillable = [
-        'engine_size', 'weekly_rate_min', 'weekly_rate_max'
+        'name', 'weekly_rate_min', 'weekly_rate_max'
     ];
 
     protected $table = 'vehicle_rates';
@@ -37,5 +37,10 @@ class VehicleRate extends Model
     public function vehicles()
     {
         return $this->hasMany(Vehicle::class);
+    }
+
+    public function getFullName()
+    {
+        return $this->name.' (£'.$this->weekly_rate_min.'-£'.$this->weekly_rate_max.')';
     }
 }

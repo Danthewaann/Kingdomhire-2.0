@@ -1,13 +1,14 @@
 @extends('layouts.public')
 
 @section('content')
-<div class="container" style="margin-top: 22px">
+    <div class="jumbotron jumbotron-header">
+<div class="container">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <div class="panel panel-default">
-            <div class="panel-heading panel-title-text">Login</div>
+        {{--<div class="panel panel-default">--}}
+            <h3>Login</h3>
 
-            <div class="panel-body">
+            {{--<div class="panel-body">--}}
                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
 
@@ -51,18 +52,18 @@
 
                     <div class="form-group">
                         <div class="col-md-8 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-info">
                                 Login
                             </button>
 
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                            <a class="btn btn-link text-link" href="{{ route('password.request') }}">
                                 Forgot Your Password?
                             </a>
                         </div>
                     </div>
                     </form>
                 </div>
-            </div>
+            {{--</div>--}}
         </div>
     </div>
 </div>

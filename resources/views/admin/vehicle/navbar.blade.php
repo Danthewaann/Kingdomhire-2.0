@@ -24,7 +24,7 @@
             <div class="col-md-12">
               <div class="row">
                 @if($gantt != null)
-                  @include('admin.vehicle.gantt')
+                  {!! $gantt !!}
                 @endif
               </div>
             </div>

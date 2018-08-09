@@ -10,16 +10,11 @@ use Illuminate\Http\Request;
 class VehicleRatesController extends Controller
 {
     private $rules = [
-        'engine_size' => 'required',
+        'name' => 'required',
         'weekly_rate_min' => 'required|numeric|min:1|max:100',
         'weekly_rate_max' => 'required|numeric|min:2|max:200'
     ];
 
-    private $edit_rules = [
-        'engine_size' => 'required',
-        'weekly_rate_min' => 'required|numeric|min:1|max:100',
-        'weekly_rate_max' => 'required|numeric|min:2|max:200'
-    ];
     /**
      * Create a new controller instance.
      *
@@ -49,16 +44,16 @@ class VehicleRatesController extends Controller
         }
 
         VehicleRate::create(array(
-            'engine_size' => $request->get('engine_size'),
+            'name' => $request->get('name'),
             'weekly_rate_min' => $request->get('weekly_rate_min'),
             'weekly_rate_max' => $request->get('weekly_rate_max')
         ));
-        return redirect()->route('vehicle-rate.index');
+        return redirect()->route('admin.dashboard');
     }
 
-    public function destroy($engine_size)
+    public function destroy($name)
     {
-        DB::table('vehicle_rates')->where('engine_size', '=', $engine_size)->delete();
+        DB::table('vehicle_rates')->where('name', '=', $name)->delete();
         return redirect()->back();
     }
 
@@ -67,16 +62,16 @@ class VehicleRatesController extends Controller
         return view('admin.vehicle-rate.add');
     }
 
-    public function showEditForm($engine_size)
+    public function showEditForm($name)
     {
         return view('admin.vehicle-rate.edit', [
-            'rate' => VehicleRate::whereEngineSize($engine_size)->get()->first()
+            'rate' => VehicleRate::whereName($name)->get()->first()
         ]);
     }
 
-    public function edit(Request $request, $engine_size)
+    public function edit(Request $request, $name)
     {
-        $validator = Validator::make($request->all(), $this->edit_rules);
+        $validator = Validator::make($request->all(), $this->rules);
 
         if($validator->fails())
         {
@@ -84,14 +79,15 @@ class VehicleRatesController extends Controller
         }
 
         DB::table('vehicle_rates')
-            ->where('engine_size', '=', $engine_size)
+            ->where('name', '=', $name)
             ->update([
+                'name' => $request->name,
                 'weekly_rate_min' => $request->get('weekly_rate_min'),
                 'weekly_rate_max' => $request->get('weekly_rate_max'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
 
-        return redirect()->route('vehicle-rate.index');
+        return redirect()->route('admin.dashboard');
     }
 
 }

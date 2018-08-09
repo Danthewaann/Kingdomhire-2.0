@@ -139,11 +139,20 @@ class VehiclesController extends Controller
             }
         }
 
-        DB::table('vehicles')
-            ->where('id', '=', $id)->update([
-                'vehicle_rate_id' => VehicleRate::whereEngineSize($request->get('engine_size'))->get()->first()->id,
-                'updated_at' => date('Y-m-d H:i:s')
-            ]);
+        if($request->rate_name != "") {
+            DB::table('vehicles')
+                ->where('id', '=', $id)->update([
+                    'vehicle_rate_id' => VehicleRate::whereName($request->get('rate_name'))->get()->first()->id,
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]);
+        }
+        else {
+            DB::table('vehicles')
+                ->where('id', '=', $id)->update([
+                    'vehicle_rate_id' => null,
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]);
+        }
 
         return redirect()->route('vehicle.show', [
             'vehicle' => $vehicle

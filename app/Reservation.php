@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Reservation extends Model
 {
-    protected $fillable = ['vehicle_id', 'is_active', 'start_date', 'end_date', 'made_by'];
+    protected $fillable = ['vehicle_id', 'is_active', 'start_date', 'end_date', 'made_by', 'rate'];
 
     /**
      * Get vehicle associated with this reservation

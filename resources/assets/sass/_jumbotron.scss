@@ -78,7 +78,12 @@
 .jumbotron-vehicle-dashboard {
   //padding: 0 !important;
   border-radius: 0 !important;
+  margin-bottom: 0 !important;
   min-height: 650px;
+}
+
+.jumbotron-admin {
+  margin-bottom: 0;
 }
 
 .jumbotron-header {

@@ -7,7 +7,7 @@
     </div>
       @if($gantt != null)
         <div class="col-md-12 col-xs-12">
-          @include('admin.vehicle.gantt')
+          {!! $gantt !!}
         </div>
       @endif
     <div class="col-md-3 col-sm-7 col-xs-12">

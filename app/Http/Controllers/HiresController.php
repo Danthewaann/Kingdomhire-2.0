@@ -14,6 +14,7 @@ class HiresController extends Controller
 {
     private $rules = [
         'hired_by' => 'required|alpha',
+        'rate' => 'nullable|integer',
         'start_date' => 'required|date_format:Y-m-d|before_or_equal:today',
         'end_date' => 'required|date_format:Y-m-d|after:start_date'
     ];
@@ -56,6 +57,7 @@ class HiresController extends Controller
 
         DB::table('hires')->where('id', '=', $hire_id)->update([
             'hired_by' => $request->hired_by,
+            'rate' => $request->rate,
             'end_date' => $request->get('end_date'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);

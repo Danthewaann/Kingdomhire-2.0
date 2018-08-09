@@ -29,7 +29,13 @@
     </tr>
     <tr>
       <th class="last">Weekly Price Rate</th>
-      <td>{{ $vehicle->rate->engine_size }} (£{{ $vehicle->rate->weekly_rate_min }}-£{{ $vehicle->rate->weekly_rate_max }})</td>
+      <td>
+        @if($vehicle->rate != null)
+          {{ $vehicle->rate->name }} (£{{ $vehicle->rate->weekly_rate_min }}-£{{ $vehicle->rate->weekly_rate_max }})
+        @else
+          N/A
+        @endif
+      </td>
     </tr>
   </table>
 </div>

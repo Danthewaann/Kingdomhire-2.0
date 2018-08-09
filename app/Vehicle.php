@@ -90,6 +90,11 @@ class Vehicle extends Model
         return $this->make.' '.$this->model;
     }
 
+    public function getTotalProfit()
+    {
+       return $this->hires->sum('rate');
+    }
+
     public function getNextReservation()
     {
         return $this->reservations->sortBy('end_date')->first();
@@ -108,5 +113,15 @@ class Vehicle extends Model
     public function getInactiveHires()
     {
         return $this->hires->where('is_active', '=', false);
+    }
+
+    public function getCompleteHires()
+    {
+        return $this->getInactiveHires()->where('rate', '!=', null);
+    }
+
+    public function getIncompleteHires()
+    {
+        return $this->hires->where('rate', '=', null);
     }
 }

@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Hire extends Model
 {
-    protected $fillable = ['vehicle_id', 'is_active', 'start_date', 'end_date', 'hired_by'];
+    protected $fillable = ['vehicle_id', 'is_active', 'start_date', 'end_date', 'hired_by', 'rate'];
 
     /**
      * Get vehicle associated with this hire

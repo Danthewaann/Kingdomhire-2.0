@@ -9,26 +9,22 @@
     <div class="col-md-6">
       <div class="row">
         <table class="table contact-info">
-          <thead>
-            <tr>
-              <th>Phone</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="max-width: 200px">0777 55 34402</td>
-              <td style="max-width: 200px"><span style="word-wrap: break-word;">kingdomhire@googlemail.com</span></td>
-            </tr>
-            <tr>
-              <td>
-                <a href="tel:07775534402" class="btn btn-info btn-lg" role="button" aria-pressed="true">Phone Us</a>
-              </td>
-              <td>
-                <a href="mailto:kingdomhire@googlemail.com" class="btn btn-info btn-lg" role="button" aria-pressed="true">Email Us</a>
-              </td>
-            </tr>
-          </tbody>
+          <tr>
+            <th>Phone</th>
+            <th>Email</th>
+          </tr>
+          <tr>
+            <td style="max-width: 200px">0777 55 34402</td>
+            <td style="max-width: 200px"><span style="word-wrap: break-word;">kingdomhire@googlemail.com</span></td>
+          </tr>
+          <tr>
+            <td>
+              <a href="tel:07775534402" class="btn btn-info btn-lg" role="button" aria-pressed="true">Phone Us</a>
+            </td>
+            <td>
+              <a href="mailto:kingdomhire@googlemail.com" class="btn btn-info btn-lg" role="button" aria-pressed="true">Email Us</a>
+            </td>
+          </tr>
         </table>
       </div>
     </div>

@@ -8448,7 +8448,6 @@ button.close {
 
 table {
   margin-bottom: 0 !important;
-  color: white !important;
 }
 
 .opening-hours th,
@@ -8651,5 +8650,13 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
   top: 0;
   left: 100%;
   margin-top: -1px;
+}
+
+#start_date_calender:hover {
+  cursor: pointer;
+}
+
+#end_date_calender:hover {
+  cursor: pointer;
 }
 

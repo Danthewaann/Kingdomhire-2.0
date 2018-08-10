@@ -21,7 +21,7 @@
                   @if( $errors->has('hired_by'))
                     <div class="help-block">
                       <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>{{ $errors->first('hired_by') }}</strong>
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->first('hired_by') }}</strong>
                       </div>
                     </div>
                   @endif
@@ -29,15 +29,15 @@
               </div>
               <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
                 <div class="form-row">
-                  <label for="start_date">Start Date*</label>
+                  <label for="start_date_readonly">Start Date*</label>
                   <div class="input-group">
-                    <input id="start_date" name="start_date" class="form-control" type="text" value="{{ $hire->start_date }}" readonly/>
+                    <input id="start_date_readonly" class="form-control" type="text" name="start_date" value="{{ $hire->start_date }}" readonly/>
                     <span class="input-group-addon"> <span class="glyphicon glyphicon-calendar"></span></span>
                   </div>
                   @if( $errors->has('start_date'))
                     <div class="help-block">
                       <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>{{ $errors->first('start_date') }}</strong>
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->first('start_date') }}</strong>
                       </div>
                     </div>
                   @endif
@@ -47,13 +47,16 @@
                 <div class="form-row">
                   <label for="end_date">End Date*</label>
                   <div class="input-group">
-                    {{ Form::text('end_date', $hire->end_date, array('class' => 'form-control datepicker', 'autocomplete' => 'off', 'placeholder' => 'e.g. '.date('Y-m-d', strtotime(date('Y-m-d') . ' +3 days')))) }}
-                    <span class="input-group-addon"> <span class="glyphicon glyphicon-calendar"></span></span>
+                    {{ Form::text('end_date', $hire->end_date, array(
+                      'class' => 'form-control datepicker', 'autocomplete' => 'off',
+                      'placeholder' => 'e.g. '.date('Y-m-d', strtotime(date('Y-m-d') . ' +3 days')), 'id' => 'end_date'))
+                    }}
+                    <span class="input-group-addon" id="end_date_calender"> <span class="glyphicon glyphicon-calendar"></span></span>
                   </div>
                   @if( $errors->has('end_date'))
                     <div class="help-block">
                       <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>{{ $errors->first('end_date') }}</strong>
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->first('end_date') }}</strong>
                       </div>
                     </div>
                   @endif
@@ -69,7 +72,7 @@
                   @if( $errors->has('rate'))
                     <div class="help-block">
                       <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>{{ $errors->first('rate') }}</strong>
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->first('rate') }}</strong>
                       </div>
                     </div>
                   @endif

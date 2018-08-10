@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-md-7">
                   <h3>Vehicle Statistics</h3>
-                  <p>
+                  <p style="font-size: 14px;">
                     <b>Overall total profit:</b> £{{ $vehicle->getTotalProfit() }} <br>
                     <b>Date added:</b> {{ $vehicle->created_at }} <br>
                     <b>Last changed:</b> {{ $vehicle->updated_at  }}

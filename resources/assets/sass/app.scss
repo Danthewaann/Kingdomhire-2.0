@@ -35,7 +35,6 @@
 table {
   //background-color: #196c4b;
   margin-bottom: 0 !important;
-  color: white !important;
   //font-size: 0.9em !important;
 }
 
@@ -287,4 +286,11 @@ td {
   margin-top: -1px;
 }
 
+#start_date_calender:hover {
+  cursor: pointer;
+}
+
+#end_date_calender:hover {
+  cursor: pointer;
+}
 

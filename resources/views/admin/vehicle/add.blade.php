@@ -67,10 +67,10 @@
             </select>
           </div>
           <div class="form-group col-xs-6">
-            <label for="rate_name">Rate*</label>
+            <label for="rate_name">Weekly Rate*</label>
             <select id="rate_name" class="form-control" name="rate_name">
               @foreach($rates as $rate)
-                <option value="{{ $rate->name }}">{{ $rate->name }} (£{{ $rate->weekly_rate_min }}-£{{ $rate->weekly_rate_max }})</option>
+                <option value="{{ $rate->name }}">{{ $rate->getFullname() }}</option>
               @endforeach
             </select>
           </div>

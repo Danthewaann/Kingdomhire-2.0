@@ -4,7 +4,7 @@
 <div class="container-fluid">
   <div class="col-md-3 col-sm-8 col-xs-12">
     <div class="col-md-12">
-      <h3>Add a vehicle price rate</h3>
+      <h3>Add a weekly rate</h3>
     </div>
     <form action="{{ route('vehicle-rate.add') }}" method="post">
       @csrf

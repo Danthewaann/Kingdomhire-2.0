@@ -21,7 +21,7 @@
                 @if( $errors->has('made_by'))
                   <div class="help-block">
                     <div class="alert alert-danger" role="alert">
-                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>{{ $errors->first('made_by') }}</strong>
+                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->first('made_by') }}</strong>
                     </div>
                   </div>
                 @endif
@@ -31,13 +31,15 @@
               <div class="form-row">
                 <label for="start_date">Start Date*</label>
                 <div class="input-group">
-                  {{ Form::text('start_date', $reservation->start_date, array('class' => 'form-control datepicker', 'autocomplete' => 'off', 'placeholder' => 'e.g. '.date('Y-m-d'))) }}
-                  <span class="input-group-addon"> <span class="glyphicon glyphicon-calendar"></span></span>
+                  {{ Form::text('start_date', $reservation->start_date, array(
+                    'class' => 'form-control datepicker', 'autocomplete' => 'off', 'placeholder' => 'e.g. '.date('Y-m-d'), 'id' => 'start_date'))
+                  }}
+                  <span class="input-group-addon" id="start_date_calender"> <span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
                 @if( $errors->has('start_date'))
                   <div class="help-block">
                     <div class="alert alert-danger" role="alert">
-                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>{{ $errors->first('start_date') }}</strong>
+                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->first('start_date') }}</strong>
                     </div>
                   </div>
                 @endif
@@ -47,13 +49,16 @@
               <div class="form-row">
                 <label for="end_date">End Date*</label>
                 <div class="input-group">
-                  {{ Form::text('end_date', $reservation->end_date, array('class' => 'form-control datepicker', 'autocomplete' => 'off', 'placeholder' => 'e.g. '.date('Y-m-d', strtotime(date('Y-m-d') . ' +3 days')))) }}
-                  <span class="input-group-addon"> <span class="glyphicon glyphicon-calendar"></span></span>
+                  {{ Form::text('end_date', $reservation->end_date, array(
+                    'class' => 'form-control datepicker', 'autocomplete' => 'off',
+                    'placeholder' => 'e.g. '.date('Y-m-d', strtotime(date('Y-m-d') . ' +3 days')), 'id' => 'end_date'))
+                  }}
+                  <span class="input-group-addon" id="end_date_calender"> <span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
                 @if( $errors->has('end_date'))
                   <div class="help-block">
                     <div class="alert alert-danger" role="alert">
-                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>{{ $errors->first('end_date') }}</strong>
+                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->first('end_date') }}</strong>
                     </div>
                   </div>
                 @endif
@@ -69,7 +74,7 @@
                 @if( $errors->has('rate'))
                   <div class="help-block">
                     <div class="alert alert-danger" role="alert">
-                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>{{ $errors->first('rate') }}</strong>
+                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->first('rate') }}</strong>
                     </div>
                   </div>
                 @endif

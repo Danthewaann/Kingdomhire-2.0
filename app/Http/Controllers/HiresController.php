@@ -13,7 +13,7 @@ use App\Hire;
 class HiresController extends Controller
 {
     private $rules = [
-        'hired_by' => 'required|alpha',
+        'hired_by' => 'required|string',
         'rate' => 'nullable|integer',
         'start_date' => 'required|date_format:Y-m-d|before_or_equal:today',
         'end_date' => 'required|date_format:Y-m-d|after:start_date'

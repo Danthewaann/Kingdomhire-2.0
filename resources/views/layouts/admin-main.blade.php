@@ -65,15 +65,15 @@
           </li>
           <li class="dropdown{{ Request::is('admin/rates*') ? ' active' : '' }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              Rates <span class="caret"></span>
+              Weekly Rates <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="{{ route('vehicle-rate.add') }}">Add a rate</a>
+                <a href="{{ route('vehicle-rate.add') }}">Add a weekly rate</a>
               </li>
               <li class="divider"></li>
               <li class="dropdown-submenu">
-                <a href="{{ route('vehicle-rate.index') }}" class="submenu">Edit rates <span class="caret"></span></a>
+                <a href="{{ route('vehicle-rate.index') }}" class="submenu">Edit weekly rates <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   @foreach(\App\VehicleRate::all() as $rate)
                     <li>
@@ -132,8 +132,17 @@
           e.stopPropagation();
           e.preventDefault();
       });
-      $( ".datepicker" ).datepicker({
-          dateFormat: "yy-mm-dd"
+      $( "#start_date" ).datepicker({
+        dateFormat: "yy-mm-dd"
+      });
+      $("#start_date_calender").click(function () {
+        $( "#start_date" ).focus();
+      });
+      $( "#end_date" ).datepicker({
+        dateFormat: "yy-mm-dd"
+      });
+      $("#end_date_calender").click(function () {
+        $( "#end_date" ).focus();
       });
   });
 </script>

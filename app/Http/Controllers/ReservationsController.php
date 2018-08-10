@@ -12,7 +12,7 @@ use App\Vehicle;
 class ReservationsController extends Controller
 {
     private $rules = [
-        'made_by' => 'required|alpha',
+        'made_by' => 'required|string',
         'rate' => 'nullable|integer',
         'start_date' => 'required|date_format:Y-m-d|after_or_equal:today',
         'end_date' => 'required|date_format:Y-m-d|after:start_date'

@@ -28,10 +28,10 @@
           <td>{{ date('jS F Y', strtotime($reservation->end_date)) }}</td>
           <td>
             <a style="width: 100%" href="{{ route('reservation.editForm', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
-               class="btn btn-info" role="button" aria-pressed="true">Edit
+               class="btn btn-primary" role="button" aria-pressed="true">Edit
             </a>
             {{ Form::open(['route' => ['reservation.cancel', $reservation->id], 'method' => 'delete']) }}
-            {{ Form::submit('Cancel', ['class' => 'btn btn-info', 'style' => 'width: 100%; margin-top: 5px;']) }}
+            {{ Form::submit('Cancel', ['class' => 'btn btn-primary', 'style' => 'width: 100%; margin-top: 5px;']) }}
             {{ Form::close() }}
           </td>
         </tr>

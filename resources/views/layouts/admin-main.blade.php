@@ -144,6 +144,10 @@
       $("#end_date_calender").click(function () {
         $( "#end_date" ).focus();
       });
+
+      // $("#hires_button").click(function () {
+      //   $("#overall_vehicle_hires_per_month").show();
+      // });
   });
 </script>
 </body>

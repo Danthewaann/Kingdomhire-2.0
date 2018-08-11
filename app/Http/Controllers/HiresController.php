@@ -15,7 +15,6 @@ class HiresController extends Controller
     private $rules = [
         'hired_by' => 'required|string',
         'rate' => 'nullable|integer',
-        'start_date' => 'required|date_format:Y-m-d|before_or_equal:today',
         'end_date' => 'required|date_format:Y-m-d|after:start_date'
     ];
 
@@ -49,7 +48,7 @@ class HiresController extends Controller
         }
 
         $messages = array();
-        if(DBQuery::doesDatesConflict($vehicle_id, $request->get('start_date'), $request->get('end_date'), $messages, $hire_id)) {
+        if(DBQuery::doesDatesConflict($vehicle_id, $request->start_date, $request->end_date, $messages, $hire_id)) {
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($messages);
@@ -58,7 +57,7 @@ class HiresController extends Controller
         DB::table('hires')->where('id', '=', $hire_id)->update([
             'hired_by' => $request->hired_by,
             'rate' => $request->rate,
-            'end_date' => $request->get('end_date'),
+            'end_date' => $request->end_date,
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 

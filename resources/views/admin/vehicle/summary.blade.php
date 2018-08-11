@@ -28,7 +28,7 @@
       <td>{{ $vehicle->status }}</td>
     </tr>
     <tr>
-      <th class="last">Weekly Price Rate</th>
+      <th class="last">Weekly Rate</th>
       <td>
         @if($vehicle->rate != null)
           {{ $vehicle->rate->name }} (£{{ $vehicle->rate->weekly_rate_min }}-£{{ $vehicle->rate->weekly_rate_max }})

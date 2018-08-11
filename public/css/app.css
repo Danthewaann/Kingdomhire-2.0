@@ -7283,8 +7283,8 @@ button.list-group-item-danger.active:focus {
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #e3e3e3;
+  background-color: #3b8b63;
+  border: 1px solid #307251;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -8506,7 +8506,7 @@ body {
 }
 
 .vehicle-table {
-  height: 275px !important;
+  height: 254px !important;
 }
 
 .vehicle-table > tbody > tr > th {
@@ -8553,8 +8553,18 @@ body {
 
 .vehicle-img {
   width: 100%;
-  height: 275px;
+  height: 300px;
   border: 1px solid #4bce8a;
+}
+
+.vehicle-img-public {
+  width: 100%;
+  height: 235px;
+  border: 1px solid #4bce8a;
+}
+
+a > .vehicle-img {
+  height: 254px;
 }
 
 .contact-info th,
@@ -8578,10 +8588,11 @@ body {
 
 .vehicle-dashboard-navbar-tabs {
   border-radius: 4px 4px 0 0;
+  margin-bottom: 0;
 }
 
 .vehicle-dashboard-navbar-tabs > li > a:hover {
-  background-color: #3b8b63 !important;
+  background-color: #439D70 !important;
   border-top: 1px solid #4bce8a;
   border-left: 1px solid #4bce8a;
   border-right: 1px solid #4bce8a;
@@ -8629,7 +8640,7 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 .nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a:focus,
 .vehicle-dashboard-navbar-tabs.nav-tabs.nav-justified > .active > a:focus,
 .nav-tabs.vehicle-dashboard-navbar-tabs.nav-justified > .active > a:focus {
-  background-color: #3b8b63 !important;
+  background-color: #439D70 !important;
 }
 
 .vehicles-list > tbody > tr > td {
@@ -8658,5 +8669,9 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 
 #end_date_calender:hover {
   cursor: pointer;
+}
+
+#overall_vehicle_hires_per_month {
+  display: none;
 }
 

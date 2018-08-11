@@ -91,7 +91,7 @@
       </div>
     @endif
     <div class="form-row">
-      <button type="submit" class="btn btn-info">Log Reservation</button>
+      <button type="submit" class="btn btn-primary">Log Reservation</button>
     </div>
   </div>
 </form>

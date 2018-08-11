@@ -11,24 +11,26 @@
 @if($vehicles->isNotEmpty())
     <div class="row">
         <div class="col-md-12">
-            <div style="overflow: auto; max-height: 869px">
+            <div style="overflow-x: auto; max-height: 869px">
                 <div class="col-md-12">
                     <div class="row">
                     @foreach($vehicles as $vehicle)
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <div class="row">
                             @foreach($vehicle->images as $image)
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">
-                                            @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img"/> @endif
-                                        </a>
+                                @if($loop->first)
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">
+                                                @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img"/> @endif
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             @endforeach
                             <div class="col-md-6">
                                 <div class="row">
-                                    <table class="table table-condensed vehicle-table" style=" margin-bottom: 22px !important;">
+                                    <table class="table table-condensed vehicle-table" style=" margin-bottom: 5px !important;">
                                         <tr>
                                             <th class="first">Vehicle</th>
                                             <td>{{ $vehicle->name() }}</td>

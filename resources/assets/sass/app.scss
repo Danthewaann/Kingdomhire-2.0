@@ -97,7 +97,8 @@ body {
 }
 
 .vehicle-table {
-  height: 275px !important;
+  height: 254px !important;
+  //height: 200px !important;
 }
 
 .vehicle-table > tbody > tr > th {
@@ -154,9 +155,21 @@ body {
 
 .vehicle-img {
   width: 100%;
-  //height: 200px;
-  height: 275px;
+  //height: 275px;
+  //height: 250px;
+  height: 300px;
   border: 1px solid $lighter-green;
+}
+
+.vehicle-img-public {
+  width: 100%;
+  height: 235px;
+  border: 1px solid $lighter-green;
+}
+
+a > .vehicle-img {
+  height: 254px;
+  //height: 200px;
 }
 
 .contact-info th,
@@ -186,13 +199,14 @@ body {
 .vehicle-dashboard-navbar-tabs {
   //background-color: transparent !important;
   border-radius: 4px 4px 0 0;
-  //margin-bottom: 0;
+  margin-bottom: 0;
   //border: 0;
   //padding: 10px 0px 0px 10px;
 }
 
 .vehicle-dashboard-navbar-tabs > li > a:hover {
-  background-color: #3b8b63 !important;
+  //background-color: #3b8b63 !important;
+  background-color: $light-green !important;
   border-top: 1px solid rgb(75, 206, 138);
   border-left: 1px solid rgb(75, 206, 138);
   border-right: 1px solid rgb(75, 206, 138);
@@ -216,13 +230,15 @@ body {
 }
 
 .vehicle-navbar-tabs > li > a:focus {
-  background-color: #439D70;
+  //background-color: #439D70;
+  background-color: $light-green;
   //border-top: 1px solid rgb(75, 206, 138);;
   //padding: 10px 0px 0px 10px;
 }
 
 .vehicle-navbar-tabs > li > a:active {
-  background-color: #439D70 !important;
+  //background-color: #439D70 !important;
+  background-color: $light-green !important;
   //border-top: 1px solid rgb(75, 206, 138);;
   //padding: 10px 0px 0px 10px;
 }
@@ -250,7 +266,8 @@ nav-tabs-justified > .active > a,
 .nav-tabs.nav-justified > .active > a:hover,
 .nav-tabs-justified > .active > a:focus,
 .nav-tabs.nav-justified > .active > a:focus {
-  background-color: #439D70 !important;
+  //background-color: #439D70 !important;
+  background-color: $light-green !important;
 }
 
 nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
@@ -259,7 +276,8 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 .nav-tabs.nav-justified.vehicle-dashboard-navbar-tabs > .active > a:hover,
 .nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a:focus,
 .nav-tabs.nav-justified.vehicle-dashboard-navbar-tabs > .active > a:focus {
-  background-color: #3b8b63 !important;
+  //background-color: #3b8b63 !important;
+  background-color: $light-green !important;
 }
 
 .vehicles-list > tbody > tr > td {
@@ -292,5 +310,9 @@ td {
 
 #end_date_calender:hover {
   cursor: pointer;
+}
+
+#overall_vehicle_hires_per_month {
+  display: none;
 }
 

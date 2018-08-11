@@ -8,8 +8,9 @@ use Khill\Lavacharts\Exceptions\InvalidColumnType;
 use Khill\Lavacharts\Exceptions\InvalidLabel;
 use Khill\Lavacharts\Exceptions\InvalidRowDefinition;
 use Khill\Lavacharts\Exceptions\InvalidRowProperty;
-use Khill\Lavacharts\DataTables;
-use Khill\Lavacharts\Lavacharts;
+use Khill\Lavacharts\DataTables\DataFactory;
+use Khill\Lavacharts\Charts\ChartFactory;
+use Khill\Lavacharts\Volcano;
 use Lava;
 use Swatkins\LaravelGantt\Gantt;
 
@@ -46,12 +47,13 @@ class ChartGenerator
                 'rgb(75, 206, 138)'
             ],
             'height' => count($activeVehicles)*50,
+            'width' => 700,
             'fontSize' => 14,
             'fontName' => 'Raleway',
             'chartArea' => [
-                'top' => '12.5%',
+                'top' => '10%',
                 'width' => '95%',
-                'height' => '75%'
+                'height' => '80%'
             ],
             'legend' => [
                 'position' => 'top',
@@ -60,9 +62,6 @@ class ChartGenerator
                     'color' => 'white',
                     'fontName' => 'Raleway',
                 ]
-            ],
-            'bar' => [
-                'groupWidth' => '25'
             ],
             'vAxis' => [
                 'textPosition' => 'in',
@@ -137,12 +136,13 @@ class ChartGenerator
             'colors' => [
                 'rgb(75, 206, 138)'
             ],
-            'height' => 350,
+            'height' => 400,
+            'width' => 755,
             'chartArea' => [
-                'top' => '12.5%',
+                'top' => '10%',
                 'left' => '5%',
                 'width' => '95%',
-                'height' => '75%'
+                'height' => '85%'
             ],
             'fontSize' => 14,
             'fontName' => 'Raleway',
@@ -153,9 +153,6 @@ class ChartGenerator
                     'color' => 'white',
                     'fontName' => 'Raleway',
                 ]
-            ],
-            'bar' => [
-                'groupWidth' => '25'
             ],
             'hAxis' => [
                 'textStyle' => [
@@ -180,6 +177,8 @@ class ChartGenerator
     public static function drawOverallPastHiresBarChart($pastHires)
     {
         $years = [];
+        $maxAmountOfHiresForMonth = 0;
+        $series = [];
         $hiresPerMonth = [
             'Jan' => 0,
             'Feb' => 0,
@@ -194,109 +193,147 @@ class ChartGenerator
             'Nov' => 0,
             'Dec' => 0
         ];
-        foreach ($pastHires as $hire) {
-            $year = date('Y', strtotime($hire->end_date));
-            if(!array_key_exists($year, $years)) {
-                $years[$year] = $hiresPerMonth;
+
+        if(count($pastHires) == 0) {
+            $pastHiresTable = \Lava::DataTable();
+            try {
+                $pastHiresTable->addStringColumn('Month')
+                    ->addNumberColumn('Number of hires');
+            } catch (InvalidColumnType $e) {
+            } catch (InvalidLabel $e) {
             }
-            $years[$year][date('M', strtotime($hire->end_date))]++;
+
+            foreach ($hiresPerMonth as $month => $hires) {
+                try {
+                    $pastHiresTable->addRow([$month, $hires]);
+                } catch (InvalidCellCount $e) {
+                } catch (InvalidRowDefinition $e) {
+                } catch (InvalidRowProperty $e) {
+                }
+            }
         }
-        $json = [
-            'cols' => [
-                [
+        else {
+            foreach ($pastHires as $hire) {
+                $year = date('Y', strtotime($hire->end_date));
+                if (!array_key_exists($year, $years)) {
+                    $years[$year] = $hiresPerMonth;
+                }
+                $years[$year][date('M', strtotime($hire->end_date))]++;
+            }
+            $json = [
+                'cols' => [
+                    [
+                        'id' => '',
+                        'label' => 'Month',
+                        'pattern' => '',
+                        'type' => 'string'
+                    ]
+                ],
+                'rows' => []
+            ];
+
+
+            $i = 0;
+            foreach ($years as $year => $months) {
+                array_push($json['cols'], [
                     'id' => '',
-                    'label' => 'Month',
-                    'pattern' => '',
-                    'type' => 'string'
-                ]
-            ],
-            'rows' => []
-        ];
-        $maxAmountOfHiresForMonth = 0;
-        $i = 0;
-        foreach($years as $year => $months) {
-            array_push($json['cols'], [
-                'id' => '',
-                'label' => $year,
-                'type' => 'number'
-            ]);
-            $i++;
-            if (count($json['rows']) == 0) {
-                foreach ($months as $month => $hires) {
-                    if ($hires > $maxAmountOfHiresForMonth) {
-                        $maxAmountOfHiresForMonth = $hires;
-                    }
-                    array_push($json['rows'], [
-                        'c' => [
-                            [
-                                'v' => $month,
-                                'f' => $month.' '.$year
-                            ],
-                            [
-                                'v' => $hires,
-                                'f' => $hires.' for '.$year
+                    'label' => $year,
+                    'type' => 'number'
+                ]);
+                $i++;
+                if (count($json['rows']) == 0) {
+                    foreach ($months as $month => $hires) {
+                        array_push($json['rows'], [
+                            'c' => [
+                                [
+                                    'v' => $month,
+                                    'f' => $month . ' ' . $year
+                                ],
+                                [
+                                    'v' => $hires,
+                                    'f' => $hires . ' for ' . $year
+                                ]
                             ]
-                        ]
-                    ]);
-                }
-            }
-            else {
-                $j = 0;
-                foreach ($months as $month => $hires) {
-                    //Get the number of hires from the month that has the most hires
-                    if ($hires > $maxAmountOfHiresForMonth) {
-                        $maxAmountOfHiresForMonth = $hires;
+                        ]);
                     }
+                } else {
+                    $j = 0;
+                    foreach ($months as $month => $hires) {
 
-                    array_push($json['rows'][$j]['c'], [
-                        'v' => $hires
-                    ]);
-                    $j++;
+                        array_push($json['rows'][$j]['c'], [
+                            'v' => $hires
+                        ]);
+                        $j++;
+                    }
+                }
+            }
+
+            $json_str = json_encode($json);
+            $pastHiresTable = DataFactory::createFromJson($json_str);
+
+            $r = 75;
+            $g = 206;
+            $b = 138;
+            foreach (array_keys($years) as $year) {
+                array_push($series, [
+                    'labelInLegend' => $year,
+                    //                'color' => 'rgb('.$r.', '.$g.','.$b.')'
+                ]);
+                $r += 30;
+                $g += 5;
+                $b += 15;
+            }
+
+            foreach ($years as $year) {
+                foreach (array_keys($year) as $month) {
+                    $hiresPerMonth[$month] += $year[$month];
+                }
+            }
+
+            foreach ($hiresPerMonth as $hires) {
+                //Get the number of hires from the month that has the most hires
+                if ($hires > $maxAmountOfHiresForMonth) {
+                    $maxAmountOfHiresForMonth = $hires;
                 }
             }
         }
 
-        $json_str = json_encode($json);
-        $pastHiresTable = DataTables\DataFactory::createFromJson($json_str);
-
-        $series = [];
-        foreach (array_keys($years) as $year) {
-            array_push($series, [
-                'labelInLegend' => $year
-            ]);
-        }
-
-        Lava::BarChart('Hires per month', $pastHiresTable, [
-            'isStacked' => 'true',
-            'backgroundColor' => '#439D70',
-            'height' => 700,
-            'chartArea' => [
-                'top' => '12.5%',
-                'left' => '10%',
-                'width' => '90%',
-                'height' => '80%'
+        Lava::ColumnChart('Overall Hires per month', $pastHiresTable, [
+            'colors' => [
+                'rgb(75, 206, 138)',
+                'rgb(75, 190, 206)',
+                'rgb(186, 146, 203)',
+                'rgb(206, 194, 75)',
+                'rgb(206, 107, 75)'
             ],
-            'fontSize' => 12,
+            'isStacked' => 'true',
+            'backgroundColor' => 'transparent',
+//            'height' => $maxAmountOfHiresForMonth*25,
+            'height' => 600,
+            'width' => 700,
+            'chartArea' => [
+                'top' => '10%',
+                'left' => '5%',
+                'width' => '95%',
+                'height' => '85%'
+            ],
+            'fontSize' => 14,
             'fontName' => 'Raleway',
             'legend' => [
-                'minLines' => count($years),
-                'alignment' => 'start',
+                'maxLines' => count($years),
                 'position' => 'top',
                 'textStyle' => [
-                    'fontSize' => 18,
+                    'fontSize' => 14,
                     'color' => 'white',
                     'fontName' => 'Raleway',
                 ]
             ],
-            'bar' => [
-                'groupWidth' => '30'
-            ],
-            'vAxis' => [
+            'hAxis' => [
                 'textStyle' => [
                     'color' => 'white',
                 ],
             ],
-            'hAxis' => [
+            'vAxis' => [
                 'baselineColor' => 'rgb(75, 206, 138)',
                 'textStyle' => [
                     'color' => 'white',
@@ -307,9 +344,6 @@ class ChartGenerator
                     'count' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5)+1,
                     'color' => 'rgb(75, 206, 138)'
                 ],
-                'minorGridlines' => [
-                    'count' => 3
-                ]
             ],
             'series' => $series
         ]);

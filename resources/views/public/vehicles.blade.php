@@ -19,15 +19,9 @@
       <div id="all" class="tab-pane fade in active">
         <div class="row">
           @foreach($vehicles as $vehicle)
-            {{--@if(count($vehicles) > 2)--}}
-              <div class="col-md-4 col-xs-12">
-                @include('admin.vehicle.summary')
-              </div>
-            {{--@else--}}
-              {{--<div class="col-md-6 col-xs-12">--}}
-                {{--@include('admin.vehicle.summary')--}}
-              {{--</div>--}}
-            {{--@endif--}}
+            <div class="col-md-4 col-xs-12">
+              @include('admin.vehicle.list-public')
+            </div>
           @endforeach
         </div>
       </div>
@@ -35,15 +29,9 @@
         <div id="{{ str_replace(" ", "-", array_keys($vehicles->groupBy('type')->toArray())[$i]) }}" class="tab-pane fade">
           <div class="row">
             @foreach($vehicles->groupBy('type')->slice($i, 1)->first() as $vehicle)
-              {{--@if(count($vehicles->groupBy('type')->slice($i, 1)->first()) > 2)--}}
-                <div class="col-md-4 col-xs-12">
-                  @include('admin.vehicle.summary')
-                </div>
-              {{--@else--}}
-                {{--<div class="col-md-6 col-xs-12">--}}
-                  {{--@include('admin.vehicle.summary')--}}
-                {{--</div>--}}
-              {{--@endif--}}
+              <div class="col-md-4 col-xs-12">
+                @include('admin.vehicle.list-public')
+              </div>
             @endforeach
           </div>
         </div>

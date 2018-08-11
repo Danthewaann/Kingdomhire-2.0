@@ -2,12 +2,13 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="col-md-3">
-        @include('admin.vehicle.summary')
-    </div>
-    <div class="col-md-9">
-      <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="row">
+  <div class="col-md-3">
+      @include('admin.vehicle.summary')
+  </div>
+  <div class="col-md-9">
+    <div class="col-md-3 col-sm-12 col-xs-12">
+      <div class="row">
+        <div class="well">
           <h3>Edit active hire</h3>
           <form action="{{ route('hire.edit', ['vehicle_id' => $vehicle->id, 'hire_id' => $hire->id]) }}" method="post">
             @csrf
@@ -31,7 +32,7 @@
                 <div class="form-row">
                   <label for="start_date_readonly">Start Date*</label>
                   <div class="input-group">
-                    <input id="start_date_readonly" class="form-control" type="text" name="start_date" value="{{ $hire->start_date }}" readonly/>
+                    <input id="start_date_readonly" class="form-control" type="text" value="{{ $hire->start_date }}" disabled/>
                     <span class="input-group-addon"> <span class="glyphicon glyphicon-calendar"></span></span>
                   </div>
                   @if( $errors->has('start_date'))
@@ -100,8 +101,8 @@
               <div class="form-row">
                 <div class="row">
                   <div class="col-xs-12">
-                    <button type="submit" class="btn btn-info">Update</button>
-                    <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-info">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-primary">Cancel</a>
                   </div>
                 </div>
               </div>
@@ -110,5 +111,6 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
 @endsection

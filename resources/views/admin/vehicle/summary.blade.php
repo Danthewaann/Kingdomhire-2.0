@@ -2,7 +2,7 @@
   @foreach($vehicle->images as $image)
     @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img"/> @endif
   @endforeach
-  <table class="table table-condensed vehicle-table">
+  <table class="table table-condensed vehicle-table-public">
     <tr>
       <th>Vehicle</th>
       <td class="first">{{ $vehicle->name() }}</td>

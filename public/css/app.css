@@ -8425,6 +8425,61 @@ button.close {
   margin-bottom: 0;
 }
 
+.vehicle-table-public {
+  height: 254px !important;
+}
+
+.vehicle-table-public tbody tr th {
+  background-color: #3b8b63;
+  border-top: unset !important;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.vehicle-table-public tbody tr th.last {
+  border-bottom: 1px solid #4bce8a !important;
+}
+
+.vehicle-table-public tbody tr th.first {
+  border-top: 1px solid #4bce8a !important;
+}
+
+.vehicle-table-public tbody tr td {
+  vertical-align: middle;
+  border-bottom: 1px solid #4bce8a !important;
+  border-left: 1px solid #4bce8a !important;
+}
+
+.vehicle-table-public tbody tr td.first {
+  border-top: unset !important;
+}
+
+.vehicle-table-admin {
+  height: 260px !important;
+  margin-bottom: 20px !important;
+}
+
+.vehicle-table-admin tbody tr th {
+  background-color: #439D70;
+  border-top: unset !important;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.vehicle-table-admin tbody tr th.last {
+  border-bottom: 1px solid #4bce8a !important;
+}
+
+.vehicle-table-admin tbody tr td {
+  vertical-align: middle;
+  border-bottom: 1px solid #4bce8a !important;
+  border-left: 1px solid #4bce8a !important;
+}
+
+.vehicle-table-admin tbody tr td.first {
+  border-top: unset !important;
+}
+
 .vehicle-dashboard-info {
   color: #636b6f;
   border-radius: unset;
@@ -8444,10 +8499,6 @@ button.close {
   padding: 0 !important;
   font: inherit;
   cursor: pointer;
-}
-
-table {
-  margin-bottom: 0 !important;
 }
 
 .opening-hours th,
@@ -8483,6 +8534,10 @@ body {
   padding: 20px;
 }
 
+.vehicles-tab-content-admin {
+  padding-top: 20px;
+}
+
 .map {
   width: 100%;
   height: 500px;
@@ -8505,41 +8560,6 @@ body {
   border-top: unset !important;
 }
 
-.vehicle-table {
-  height: 254px !important;
-}
-
-.vehicle-table > tbody > tr > th {
-  text-align: right;
-  color: white;
-  width: 45%;
-  vertical-align: middle;
-  background-color: #3b8b63;
-  border-top: unset !important;
-}
-
-.vehicle-table > tbody > tr > th.last {
-  vertical-align: middle;
-  border-bottom: 1px solid #4bce8a !important;
-}
-
-.vehicle-table > tbody > tr > th.first {
-  vertical-align: middle;
-  border-top: 1px solid #4bce8a !important;
-}
-
-.vehicle-table > tbody > tr > td.first {
-  vertical-align: middle;
-  border-top: unset !important;
-}
-
-.vehicle-table > tbody > tr > td {
-  color: white;
-  vertical-align: middle;
-  border-bottom: 1px solid #4bce8a !important;
-  border-left: 1px solid #4bce8a !important;
-}
-
 .vehicle-summary > tbody > tr > th.last {
   border-bottom: 2px solid #307753 !important;
 }
@@ -8553,18 +8573,12 @@ body {
 
 .vehicle-img {
   width: 100%;
-  height: 300px;
-  border: 1px solid #4bce8a;
-}
-
-.vehicle-img-public {
-  width: 100%;
   height: 235px;
   border: 1px solid #4bce8a;
 }
 
 a > .vehicle-img {
-  height: 254px;
+  height: 235px;
 }
 
 .contact-info th,
@@ -8647,10 +8661,6 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
   border-top: unset !important;
   border-left: 1px solid #4bce8a;
   padding: unset !important;
-}
-
-.table .table {
-  background-color: transparent;
 }
 
 .dropdown-submenu {

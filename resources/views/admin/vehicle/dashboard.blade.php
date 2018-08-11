@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container-fluid">
-  <div class="col-lg-3 col-md-5 col-sm-5">
+  <div class="col-lg-2 col-md-5 col-sm-5">
     @include('admin.vehicle.summary')
   </div>
-  <div class="col-lg-9 col-md-7 col-sm-7">
+  <div class="col-lg-10 col-md-7 col-sm-7">
     <div class="well">
       <div class="row">
         <div class="col-md-12">

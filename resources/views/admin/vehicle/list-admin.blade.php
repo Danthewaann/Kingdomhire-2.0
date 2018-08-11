@@ -1,23 +1,40 @@
-<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-  @foreach($vehicle->images as $image)
-    @if($loop->first) <img src="{{ $image->image_uri }}" style="width: 100%; height: 225px;"/> @endif
-  @endforeach
-  <table class="table table-hover table-condensed">
-    <tr>
-      <th>Vehicle</th>
-      <td><a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">{{ $vehicle->name() }}</a></td>
-    </tr>
-    <tr>
-      <th>Status</th>
-      <td>{{ $vehicle->status }}</td>
-    </tr>
-    <tr>
-      <th>Active</th>
-      @if($vehicle->is_active == true)
-        <td>Yes</td>
-      @else
-        <td>No</td>
-      @endif
-    </tr>
-  </table>
+<div class="row">
+  <div class="col-md-12">
+    @if($vehicles->isEmpty())
+      <h3>No vehicles present</h3>
+    @else
+      <h3>Vehicles</h3>
+      <span>{{ count($vehicles) }} vehicle(s) in total</span>
+    @endif
+  </div>
+</div>
+<div class="well">
+  <ul class="nav nav-tabs nav-justified vehicle-navbar-tabs">
+    <li class="active"><a data-toggle="tab" href="#all">All</a></li>
+    @foreach(array_keys($vehicles->groupBy('type')->toArray()) as $key)
+      <li><a data-toggle="tab" href="#{{ str_replace(" ", "-", $key) }}">{{ $key }}s</a></li>
+    @endforeach
+  </ul>
+  <div class="tab-content vehicles-tab-content-admin">
+    <div id="all" class="tab-pane fade in active">
+      <div class="row">
+        @foreach($vehicles as $vehicle)
+          <div class="col-md-4 col-xs-12">
+            @include('admin.vehicle.list')
+          </div>
+        @endforeach
+      </div>
+    </div>
+    @for($i = 0; $i < count($vehicles->groupBy('type')); $i++)
+      <div id="{{ str_replace(" ", "-", array_keys($vehicles->groupBy('type')->toArray())[$i]) }}" class="tab-pane fade">
+        <div class="row">
+          @foreach($vehicles->groupBy('type')->slice($i, 1)->first() as $vehicle)
+            <div class="col-md-4 col-xs-12">
+              @include('admin.vehicle.list')
+            </div>
+          @endforeach
+        </div>
+      </div>
+    @endfor
+  </div>
 </div>

@@ -122,6 +122,6 @@ class Vehicle extends Model
 
     public function getIncompleteHires()
     {
-        return $this->hires->where('rate', '=', null);
+        return $this->getInactiveHires()->where('rate', '=', null);
     }
 }

@@ -10,6 +10,7 @@
 
 // Local scss
 @import "jumbotron";
+@import "table";
 
 .vehicle-dashboard-info {
   color: $text-color;
@@ -30,12 +31,6 @@
   padding: 0 !important;
   font: inherit;
   cursor: pointer;
-}
-
-table {
-  //background-color: #196c4b;
-  margin-bottom: 0 !important;
-  //font-size: 0.9em !important;
 }
 
 .opening-hours th,
@@ -72,6 +67,15 @@ body {
   padding: 20px;
 }
 
+.vehicles-tab-content-admin {
+  //background-color: #439D70;
+  //border-left: 1px solid $lighter-green;
+  //border-right: 1px solid $lighter-green;
+  //border-bottom: 1px solid $lighter-green;
+  padding-top: 20px;
+  //padding-bottom: 20px;
+}
+
 .map {
   width: 100%;
   height: 500px;
@@ -96,52 +100,6 @@ body {
   //border-right: 2px solid rgba(0,0,0,0.1) !important;
 }
 
-.vehicle-table {
-  height: 254px !important;
-  //height: 200px !important;
-}
-
-.vehicle-table > tbody > tr > th {
-  text-align: right;
-  color: white;
-  width: 45%;
-  vertical-align: middle;
-  //background-color: rgba(0,0,0,0.2);
-  //background-color: #337d57;
-  background-color: $dark-green;
-  border-top: unset !important;
-  //border-bottom: 2px solid #307753 !important;
-  //border-right: 2px solid rgba(0,0,0,0.1) !important;
-}
-
-.vehicle-table > tbody > tr > th.last {
-  vertical-align: middle;
-
-  border-bottom: 1px solid $lighter-green !important;
-}
-
-.vehicle-table > tbody > tr > th.first {
-  vertical-align: middle;
-  border-top: 1px solid $lighter-green !important;
-}
-
-.vehicle-table > tbody > tr > td.first {
-  //border-top: unset !important;
-  //color: white;
-  //background-color: #37855e;
-  vertical-align: middle;
-  border-top: unset !important;
-}
-
-.vehicle-table > tbody > tr > td {
-  //border-top: unset !important;
-  color: white;
-  vertical-align: middle;
-  //background-color: #37855e;
-  border-bottom: 1px solid $lighter-green !important;
-  border-left: 1px solid $lighter-green !important;
-}
-
 .vehicle-summary > tbody > tr > th.last {
   border-bottom: 2px solid #307753 !important;
 }
@@ -157,19 +115,14 @@ body {
   width: 100%;
   //height: 275px;
   //height: 250px;
-  height: 300px;
-  border: 1px solid $lighter-green;
-}
-
-.vehicle-img-public {
-  width: 100%;
+  //min-height: 250px;
   height: 235px;
   border: 1px solid $lighter-green;
 }
 
 a > .vehicle-img {
-  height: 254px;
-  //height: 200px;
+  //height: 254px;
+  height: 235px;
 }
 
 .contact-info th,
@@ -288,10 +241,6 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 
 td {
   //padding: unset !important;
-}
-
-.table .table {
-  background-color: transparent;
 }
 
 .dropdown-submenu {

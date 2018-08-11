@@ -1,5 +1,5 @@
 @if(!$vehicle->getIncompleteHires()->isEmpty())
-    <h3>Incomplete hires</h3>
+    <h3>Incomplete past hires</h3>
     <span>{{ count($vehicle->getIncompleteHires()) }} hire(s) in total</span>
 @endif
 @if(!$vehicle->getIncompleteHires()->isEmpty())

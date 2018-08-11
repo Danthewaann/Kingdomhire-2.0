@@ -20,7 +20,7 @@
         <div class="row">
           @foreach($vehicles as $vehicle)
             <div class="col-md-4 col-xs-12">
-              @include('admin.vehicle.list-public')
+              @include('admin.vehicle.summary')
             </div>
           @endforeach
         </div>
@@ -30,7 +30,7 @@
           <div class="row">
             @foreach($vehicles->groupBy('type')->slice($i, 1)->first() as $vehicle)
               <div class="col-md-4 col-xs-12">
-                @include('admin.vehicle.list-public')
+                @include('admin.vehicle.summary')
               </div>
             @endforeach
           </div>

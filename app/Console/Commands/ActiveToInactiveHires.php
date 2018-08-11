@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Hire;
+use App\Vehicle;
 use DB;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
@@ -40,19 +41,24 @@ class ActiveToInactiveHires extends Command
      */
     public function handle()
     {
-        $hires = Hire::whereIsActive(true)->get();
-        foreach($hires as $hire) {
-            if($hire->end_date <= date('Y-m-d')) {
-                DB::table('hires')
-                    ->where('id', '=', $hire->id)
-                    ->update(['is_active' => false]);
+        $vehicles = Vehicle::all();
+        foreach ($vehicles as $vehicle) {
+            $activeHire = $vehicle->getActiveHire();
+            if ($activeHire != null) {
+                if ($activeHire->end_date <= date('Y-m-d')) {
+                    Hire::whereId($activeHire->id)->update(['is_active' => false]);
+//                    DB::table('hires')
+//                        ->where('id', '=', $activeHire->id)
+//                        ->update(['is_active' => false]);
 
-                DB::table('vehicles')
-                    ->where('id', '=', $hire->vehicle->id)
-                    ->update(['status' => 'Available']);
+                    Vehicle::whereId($vehicle->id)->update(['status' => 'Available']);
+//                    DB::table('vehicles')
+//                        ->where('id', '=', $vehicle->id)
+//                        ->update(['status' => 'Available']);
 
-                Log::channel('cron')->info("[ActiveToInactiveHires] Active hire [id = ".$hire->id.
-                    ", start_date = ".$hire->start_date.", end_date = ".$hire->end_date."] set to inactive");
+                    Log::channel('cron')->info("[ActiveToInactiveHires] Active hire [id = " . $activeHire->id .
+                        ", start_date = " . $activeHire->start_date . ", end_date = " . $activeHire->end_date . "] set to inactive");
+                }
             }
         }
     }

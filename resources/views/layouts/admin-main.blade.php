@@ -40,11 +40,11 @@
         <!-- Left Side Of Navbar -->
         <ul class="nav navbar-nav">
           <li class="{{ Request::is('admin') ? 'active' : '' }}">
-            <a href="{{ route('admin.dashboard') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
+            <a href="{{ route('admin.dashboard') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
           </li>
           <li class="dropdown{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              <span class="glyphicon glyphicon-wrench"></span> Vehicles
+              <span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Vehicles
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -65,7 +65,7 @@
           </li>
           <li class="dropdown{{ Request::is('admin/rates*') ? ' active' : '' }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              <span class="glyphicon glyphicon-gbp"></span> Weekly Rates
+              <span class="glyphicon glyphicon-gbp"></span>&nbsp;&nbsp;Weekly Rates
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -89,7 +89,7 @@
         <ul class="nav navbar-nav navbar-right">
           <!-- Authentication Links -->
           <li>
-            <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-globe"></span> Main Site</a>
+            <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;Main Site</a>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -103,7 +103,7 @@
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              <span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }}
+              <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ Auth::user()->name }}
             </a>
 
             <ul class="dropdown-menu">

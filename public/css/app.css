@@ -8425,6 +8425,10 @@ button.close {
   margin-bottom: 0;
 }
 
+table {
+  margin-bottom: 0 !important;
+}
+
 .vehicle-table-public {
   height: 254px !important;
 }
@@ -8685,5 +8689,34 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 
 #overall_vehicle_hires_per_month {
   display: none;
+}
+
+div.scrollable-list {
+  overflow: auto;
+}
+
+div.scrollable-list::-webkit-scrollbar {
+  background: #439D70;
+  overflow: auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+div.scrollable-list::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+
+div.scrollable-list::-webkit-scrollbar-thumb {
+  background: #4bce8a;
+  border-radius: 5px;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
+          box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
+}
+
+div.scrollable-list::-webkit-scrollbar-thumb:hover {
+  background: #37c97d;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
+          box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
 }
 

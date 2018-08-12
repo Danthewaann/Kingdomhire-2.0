@@ -4,7 +4,7 @@
   <h3>No active hire</h3>
 @endif
 @if(!empty($vehicle->getActiveHire()))
-  <div style="overflow-y: auto; max-height: 570px">
+  <div class="scrollable-list" style="max-height: 570px">
     <table class="table table-condensed">
       <tr>
         <th>Hired By</th>
@@ -26,7 +26,7 @@
         <td>{{ date('jS F Y', strtotime($vehicle->getActiveHire()->end_date)) }}</td>
         <td>
           <a style="width: 100%" href="{{ route('hire.edit', ['vehicle_id' => $vehicle->id, 'hire_id' => $vehicle->getActiveHire()->id]) }}"
-             class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+             class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
         </td>
       </tr>
     </table>

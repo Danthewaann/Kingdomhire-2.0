@@ -1,14 +1,14 @@
-<div class="row">
-  <div class="col-md-12">
-    @if($vehicles->isEmpty())
-      <h3>No vehicles present</h3>
-    @else
-      <h3>Vehicles</h3>
-      <span>{{ count($vehicles) }} vehicle(s) in total</span>
-    @endif
-  </div>
-</div>
 <div class="well">
+  <div class="row">
+    <div class="col-md-12">
+      @if($vehicles->isEmpty())
+        <h3>No vehicles present</h3>
+      @else
+        <h3>Vehicles</h3>
+        <h5>{{ count($vehicles) }} vehicle(s) in total</h5>
+      @endif
+    </div>
+  </div>
   <ul class="nav nav-tabs nav-justified vehicle-navbar-tabs">
     <li class="active"><a data-toggle="tab" href="#all">All</a></li>
     @foreach(array_keys($vehicles->groupBy('type')->toArray()) as $key)

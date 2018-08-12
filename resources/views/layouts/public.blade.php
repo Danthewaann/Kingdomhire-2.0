@@ -26,9 +26,10 @@
           <!-- Collapsed Hamburger -->
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
               <span class="sr-only">Toggle Navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+              <span class="glyphicon glyphicon-menu-hamburger"></span>
+              {{--<span class="icon-bar"></span>--}}
+              {{--<span class="icon-bar"></span>--}}
+              {{--<span class="icon-bar"></span>--}}
             </button>
           </div>
         </div>
@@ -38,13 +39,13 @@
           <!-- Left Side Of Navbar -->
           <ul class="nav navbar-nav">
             <li class="{{ Request::is('/') ? 'active' : '' }}">
-              <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
+              <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
             </li>
             <li class="{{ Request::is('vehicles') ? ' active' : '' }}">
-              <a href={{ route('public.vehicles') }}><span class="glyphicon glyphicon-wrench"></span> Vehicles</a>
+              <a href={{ route('public.vehicles') }}><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Vehicles</a>
             </li>
             <li class="{{ Request::is('contact') ? ' active' : '' }}">
-              <a href="{{ route('public.contact') }}"><span class="glyphicon glyphicon-phone-alt"></span> Contact</a>
+              <a href="{{ route('public.contact') }}"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;Contact</a>
             </li>
           </ul>
           <!-- Right Side Of Navbar -->
@@ -52,15 +53,15 @@
             <!-- Authentication Links -->
             @guest
               <li class="{{ Request::is('login') ? ' active' : '' }}">
-                <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</a>
               </li>
             @else
               <li>
-                <a href="{{ route('admin.dashboard') }}"><span class="glyphicon glyphicon-stats"></span> Admin Dashboard</a>
+                <a href="{{ route('admin.dashboard') }}"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;Admin Dashboard</a>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                  <span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }}
+                  <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ Auth::user()->name }}
                 </a>
                 <ul class="dropdown-menu">
                   <li>

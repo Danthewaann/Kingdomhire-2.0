@@ -1,11 +1,11 @@
 @if(!$vehicle->reservations->isEmpty())
   <h3>Reservations</h3>
-  <span>{{ count($vehicle->reservations) }} reservation(s) in total</span>
+  <h5>{{ count($vehicle->reservations) }} reservation(s) in total</h5>
 @else
   <h3>No reservations</h3>
 @endif
 @if(!$vehicle->reservations->isEmpty())
-  <div style="overflow-y: auto; max-height: 570px">
+  <div class="scrollable-list" style="max-height: 590px">
     <table class="table table-condensed">
       <tr>
         <th>Made By</th>
@@ -28,10 +28,10 @@
           <td>{{ date('jS F Y', strtotime($reservation->end_date)) }}</td>
           <td>
             <a style="width: 100%" href="{{ route('reservation.editForm', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
-               class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span> Edit
+               class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit
             </a>
             {{ Form::open(['route' => ['reservation.cancel', $reservation->id], 'method' => 'delete']) }}
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 5px;"><span class="glyphicon glyphicon-trash"></span> Cancel</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 5px;"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
             {{--{{ Form::submit('Cancel', ['class' => 'btn btn-primary', 'style' => 'width: 100%; margin-top: 5px;']) }}--}}
             {{ Form::close() }}
           </td>

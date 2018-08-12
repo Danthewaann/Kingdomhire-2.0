@@ -32,14 +32,16 @@ class AdminController extends Controller
         $pastHires = Hire::whereIsActive(false)->get()->sortBy('end_date');
         $reservations = Reservation::all()->sortByDesc('start_date')->sortBy('end_date');
         ChartGenerator::drawReservationsBarChart($vehicles);
-        ChartGenerator::drawOverallPastHiresBarChart($pastHires);
+        $maxAmountOfHiresPerMonth = ChartGenerator::drawOverallPastHiresBarChart($pastHires);
 
         return view('admin.admin-dashboard', [
             'vehicles' => $vehicles,
             'activeHires' => $activeHires,
             'pastHires' => $pastHires,
             'reservations' => $reservations,
-            'rates' => VehicleRate::all()
+            'rates' => VehicleRate::all(),
+            'gantt' => ChartGenerator::drawVehiclesActiveHiresGanttChart($vehicles),
+            'maxAmountOfHiresPerMonth' => $maxAmountOfHiresPerMonth
         ]);
     }
 }

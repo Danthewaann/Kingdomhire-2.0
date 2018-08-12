@@ -11,10 +11,10 @@
         <div class="col-md-12">
         <nav class="navbar vehicle-dashboard-navbar-tabs">
           <ul class="nav nav-tabs nav-justified vehicle-dashboard-navbar-tabs" id="dashboard-navbar-tabs-collapse">
-            <li class="{{ count($errors) == 0 ? 'active' : '' }}"><a data-toggle="tab" href="#info_tab"><span class="glyphicon glyphicon-info-sign"></span> Info</a></li>
-            <li class="{{ count($errors) > 0 ? 'active' : '' }}"><a data-toggle="tab" href="#reservations_tab"><span class="glyphicon glyphicon-list"></span> Reservations</a></li>
-            <li><a data-toggle="tab" id="hires_button" href="#hires_tab"><span class="glyphicon glyphicon-list"></span> Hires</a></li>
-            <li><a data-toggle="tab" href="#edit_tab"><span class="glyphicon glyphicon-edit"></span> Edit</a></li>
+            <li class="{{ count($errors) == 0 ? 'active' : '' }}"><a data-toggle="tab" href="#info_tab"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;Info</a></li>
+            <li class="{{ count($errors) > 0 ? 'active' : '' }}"><a data-toggle="tab" href="#reservations_tab"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Reservations</a></li>
+            <li><a data-toggle="tab" id="hires_button" href="#hires_tab"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Hires</a></li>
+            <li><a data-toggle="tab" href="#edit_tab"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a></li>
           </ul>
         </nav>
         <div class="container-fluid">

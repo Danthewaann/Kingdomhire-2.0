@@ -83,8 +83,7 @@
             </div>
               <div class="form-row">
                 <div class="col-xs-12">
-                  <button type="submit" class="btn btn-primary">Add Vehicle</button>
-                  <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Cancel</a>
+                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Add Vehicle</button>
                 </div>
               </div>
           </form>

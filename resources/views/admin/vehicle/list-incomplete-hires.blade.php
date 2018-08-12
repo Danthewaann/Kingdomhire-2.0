@@ -1,9 +1,9 @@
 @if(!$vehicle->getIncompleteHires()->isEmpty())
     <h3>Incomplete past hires</h3>
-    <span>{{ count($vehicle->getIncompleteHires()) }} hire(s) in total</span>
+    <h5>{{ count($vehicle->getIncompleteHires()) }} hire(s) in total</h5>
 @endif
 @if(!$vehicle->getIncompleteHires()->isEmpty())
-    <div style="overflow: auto; max-height: 420px">
+    <div class="scrollable-list" style="max-height: 420px">
         <table class="table table-condensed">
             <tr>
                 <th>Hired By</th>

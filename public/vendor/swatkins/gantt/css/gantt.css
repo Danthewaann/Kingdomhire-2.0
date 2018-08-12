@@ -4,7 +4,10 @@
   position: relative;
   overflow: hidden;
   color: white;
-  background: #002b36; }
+  /*background: #002b36; */
+  /*background: #3b8b63;*/
+  background: transparent;
+}
 
 .gantt * {
   font-weight: normal;
@@ -17,7 +20,8 @@
 /* optional title */
 .gantt figcaption {
   position: absolute;
-  top: 25px;
+  /*top: 25px;*/
+  top: 10px;
   left: 20px;
   font-size: 20px;
   color: #fff;
@@ -31,7 +35,8 @@
   bottom: 0;
   top: 0;
   width: 175px;
-  border-right: 1px solid #000b0d;
+  /*border-right: 1px solid #000b0d;*/
+  border-right: 1px solid rgb(75, 206, 138);
   z-index: 2; }
 
 .gantt aside:before {
@@ -43,18 +48,21 @@
   bottom: 0;
   content: "";
   border-left: 1px solid rgba(255, 255, 255, 0.03);
-  background: linear-gradient(left, rgba(0, 43, 54, 0.7), rgba(0, 43, 54, 0));
+  /*background: linear-gradient(left, rgba(0, 43, 54, 0.7), rgba(0, 43, 54, 0));*/
   z-index: 3; }
 
 .gantt aside .gantt-labels {
-  border-top: 1px solid #001f27; }
+  /*border-top: 1px solid #001f27; */
+  border-top: 1px solid rgb(75, 206, 138);
+}
 
 .gantt aside .gantt-label strong {
   display: block;
   padding: 0 20px;
   color: white;
   font-size: 1em;
-  border-bottom: 1px solid #001f27;
+  /*border-bottom: 1px solid #001f27;*/
+  border-bottom: 1px solid rgb(75, 206, 138);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
@@ -78,8 +86,11 @@
 
 .gantt header .gantt-month strong {
   display: block;
-  border-right: 1px solid #001f27;
-  border-bottom: 1px solid #001f27; }
+  /*border-right: 1px solid #001f27;*/
+  border-right: 1px solid rgb(75, 206, 138);
+  /*border-bottom: 1px solid #001f27;*/
+  border-bottom: 1px solid rgb(75, 206, 138);
+}
 
 .gantt header .gantt-day span {
   text-indent: 0;
@@ -102,23 +113,28 @@
 
 .gantt-day span {
   display: block;
-  border-right: 1px solid #001f27;
-  border-bottom: 1px solid #001f27;
+  /*border-right: 1px solid #001f27;*/
+  border-right: 1px solid rgb(75, 206, 138);
+  /*border-bottom: 1px solid #001f27;*/
+  border-bottom: 1px solid rgb(75, 206, 138);
   text-indent: -12000px;
   font-size: 60%; }
 
 .gantt-day.weekend span {
-  background: #073642; }
+  /*background: #073642; */
+  background: #439D70;
+  }
 
 /* data blocks */
 .gantt-block {
   position: absolute;
   top: 0;
   z-index: 1;
-  margin: 4px;
-  border-radius: 3px;
-  box-shadow: rgba(0, 0, 0, 0.9) 0 2px 6px, rgba(255, 255, 255, 0.2) 0 1px 0 inset;
-  opacity: .9; }
+  /*margin: 4px;*/
+  /*border-radius: 3px;*/
+  /*box-shadow: rgba(0, 0, 0, 0.9) 0 2px 6px, rgba(255, 255, 255, 0.2) 0 1px 0 inset;*/
+  /*opacity: .9;*/
+}
 
 .gantt-block-label {
   display: block;
@@ -127,7 +143,9 @@
 
 /* block colors */
 .gantt-block {
-  background: #268bd2; }
+  background: #268bd2;
+  /*background: #439D70;*/
+}
 
 .gantt-block.important {
   background: #b58900; }
@@ -157,12 +175,20 @@
 
 /* scrollbar styles */
 .gantt ::-webkit-scrollbar {
-  background: #002b36;
+  /*background: #002b36;*/
+  border-radius: 5px;
+  background: #439D70;
   height: 10px; }
 
 .gantt ::-webkit-scrollbar-thumb {
-  background: #93a1a1;
+  /*background: #93a1a1;*/
+  border-radius: 5px;
+  background: rgb(75, 206, 138);
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset; }
+
+.gantt ::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
 
 /* selection styles */
 .gantt ::-moz-selection {

@@ -51,7 +51,6 @@ class ChartGenerator
             'fontSize' => 14,
             'fontName' => 'Raleway',
             'chartArea' => [
-                'top' => '10%',
                 'width' => '95%',
                 'height' => '80%'
             ],
@@ -139,7 +138,6 @@ class ChartGenerator
             'height' => 400,
             'width' => 755,
             'chartArea' => [
-                'top' => '10%',
                 'left' => '5%',
                 'width' => '95%',
                 'height' => '85%'
@@ -308,11 +306,10 @@ class ChartGenerator
             ],
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
-//            'height' => $maxAmountOfHiresForMonth*25,
-            'height' => 700,
+            'height' => $maxAmountOfHiresForMonth*30,
+//            'height' => 700,
             'width' => 700,
             'chartArea' => [
-                'top' => '10%',
                 'left' => '5%',
                 'width' => '95%',
                 'height' => '85%'
@@ -347,6 +344,8 @@ class ChartGenerator
             ],
             'series' => $series
         ]);
+
+        return $maxAmountOfHiresForMonth;
     }
 
     public static function drawVehicleReservationsAndHiresGanttChart(Vehicle $vehicle)
@@ -377,6 +376,37 @@ class ChartGenerator
         if ($reservationsAndActiveHire->isNotEmpty()) {
             $gantt = new Gantt($data, array(
                 'title' => 'Schedule',
+                'cellwidth' => 30,
+                'cellheight' => 40
+            ));
+        }
+
+        return $gantt;
+    }
+
+    public static function drawVehiclesActiveHiresGanttChart($vehicles)
+    {
+        $data = array();
+        foreach ($vehicles as $vehicle) {
+            $activeHire = $vehicle->getActiveHire();
+            if($activeHire != null) {
+                array_push($data, [
+                    'label' => $vehicle->name(),
+                    'start' => $activeHire->start_date,
+                    /*
+                     * when creating the gantt chart, the final day in each reservation/hire is truncated
+                     * e.g the end date "2018-05-03" becomes "2018-05-02" on the gantt chart
+                     * so we add on an extra day to counter this, so the proper end date is displayed
+                    */
+                    'end' => date('Y-m-d', strtotime($activeHire->end_date . ' +1 day'))
+                ]);
+            }
+        }
+
+        $gantt = null;
+        if (count($data) > 0) {
+            $gantt = new Gantt($data, array(
+                'title' => "Active <br> Hires",
                 'cellwidth' => 30,
                 'cellheight' => 40
             ));

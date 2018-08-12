@@ -265,3 +265,29 @@ td {
   display: none;
 }
 
+div.scrollable-list {
+  overflow: auto;
+}
+
+div.scrollable-list::-webkit-scrollbar {
+  background: $light-green;
+  overflow: auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+div.scrollable-list::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+
+div.scrollable-list::-webkit-scrollbar-thumb {
+  background: $lighter-green;
+  border-radius: 5px;
+  box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
+}
+
+div.scrollable-list::-webkit-scrollbar-thumb:hover {
+  background: darken($lighter-green, 5);
+  box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
+}

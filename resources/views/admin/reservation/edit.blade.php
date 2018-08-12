@@ -103,8 +103,8 @@
               <div class="form-row">
                 <div class="row">
                   <div class="col-xs-12">
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Update</button>
-                    <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span> Back</a>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Update</button>
+                    <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
                   </div>
                 </div>
               </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-  <div class="col-md-3 col-sm-8 col-xs-12">
+  <div class="col-md-4 col-sm-8 col-xs-12">
     <div class="well">
       <div class="row">
         <div class="col-md-12">
@@ -26,7 +26,7 @@
             <div class="form-group{{ $errors->has('weekly_rate_min') ? ' has-error' : '' }} col-md-12">
               <label for="weekly_rate_min">Weekly Rate Minimum*</label>
               <div class="input-group">
-                <span class="input-group-addon">£</span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
                 <input id="weekly_rate_min" type="text" class="form-control" name="weekly_rate_min" value="{{ $rate->weekly_rate_min }}" autocomplete="off">
               </div>
               @if( $errors->has('weekly_rate_min'))
@@ -40,7 +40,7 @@
             <div class="form-group{{ $errors->has('weekly_rate_max') ? ' has-error' : '' }} col-md-12">
               <label for="weekly_rate_max">Weekly Rate Maximum*</label>
               <div class="input-group">
-                <span class="input-group-addon">£</span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
                 <input id="weekly_rate_max" type="text" class="form-control" name="weekly_rate_max" value="{{ $rate->weekly_rate_max }}" autocomplete="off">
               </div>
               @if( $errors->has('weekly_rate_max'))
@@ -58,9 +58,10 @@
                   <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Cancel</a>
                 </div>
                 <div class="col-xs-3 col-xs-offset-3">
-                  {{ Form::open(['route' => ['vehicle-rate.delete', $rate->name], 'method' => 'delete']) }}
-                  {{ Form::submit('Delete', ['class' => 'btn btn-primary', 'style' => 'float:right']) }}
-                  {{ Form::close() }}
+                  {{--<button type="submit" class="btn btn-primary">Delete</button>--}}
+                  {{--{{ Form::open(['route' => ['vehicle-rate.delete', $rate->name], 'method' => 'delete']) }}--}}
+                  {{--{{ Form::submit('Delete', ['class' => 'btn btn-primary', 'style' => 'float:right']) }}--}}
+                  {{--{{ Form::close() }}--}}
                 </div>
               </div>
             </div>

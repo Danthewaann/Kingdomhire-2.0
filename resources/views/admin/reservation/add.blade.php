@@ -1,4 +1,4 @@
-<h3>Log a reservation</h3>
+<h3>Book reservation</h3>
 <form action="{{ route('reservation.log', ['id' => $vehicle->id]) }}" method="post">
   @csrf
   <div class="form-row">
@@ -57,7 +57,7 @@
       <div class="form-row">
         <label for="rate">Rate</label>
         <div class="input-group">
-          <span class="input-group-addon">£</span>
+          <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
           {{ Form::text('rate', '', array('class' => 'form-control', 'autocomplete' => 'off', 'aria-label' => 'Amount (to the nearest pound)')) }}
         </div>
         @if( $errors->has('rate'))
@@ -91,7 +91,7 @@
       </div>
     @endif
     <div class="form-row">
-      <button type="submit" class="btn btn-primary">Log Reservation</button>
+      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-book"></span> Book Reservation</button>
     </div>
   </div>
 </form>

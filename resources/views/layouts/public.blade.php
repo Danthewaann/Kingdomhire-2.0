@@ -38,13 +38,13 @@
           <!-- Left Side Of Navbar -->
           <ul class="nav navbar-nav">
             <li class="{{ Request::is('/') ? 'active' : '' }}">
-              <a href="{{ route('public.home') }}">Home</a>
+              <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
             </li>
             <li class="{{ Request::is('vehicles') ? ' active' : '' }}">
-              <a href={{ route('public.vehicles') }}>Vehicles</a>
+              <a href={{ route('public.vehicles') }}><span class="glyphicon glyphicon-wrench"></span> Vehicles</a>
             </li>
             <li class="{{ Request::is('contact') ? ' active' : '' }}">
-              <a href="{{ route('public.contact') }}">Contact</a>
+              <a href="{{ route('public.contact') }}"><span class="glyphicon glyphicon-phone-alt"></span> Contact</a>
             </li>
           </ul>
           <!-- Right Side Of Navbar -->
@@ -52,17 +52,16 @@
             <!-- Authentication Links -->
             @guest
               <li class="{{ Request::is('login') ? ' active' : '' }}">
-                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a>
               </li>
             @else
               <li>
-                <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+                <a href="{{ route('admin.dashboard') }}"><span class="glyphicon glyphicon-stats"></span> Admin Dashboard</a>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                  {{ Auth::user()->name }} <span class="caret"></span>
+                  <span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }}
                 </a>
-
                 <ul class="dropdown-menu">
                   <li>
                     <a href="{{ route('logout') }}"

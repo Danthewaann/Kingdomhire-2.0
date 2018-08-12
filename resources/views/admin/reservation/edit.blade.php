@@ -6,7 +6,7 @@
     @include('admin.vehicle.summary')
   </div>
   <div class="col-md-10">
-    <div class="col-md-3 col-sm-12 col-xs-12">
+    <div class="col-md-4 col-sm-12 col-xs-12">
       <div class="row">
         <div class="well">
           <h3>Edit reservation</h3>
@@ -69,7 +69,7 @@
                 <div class="form-row">
                   <label for="rate">Rate</label>
                   <div class="input-group">
-                    <span class="input-group-addon">£</span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
                     {{ Form::text('rate', $reservation->rate, array('class' => 'form-control', 'autocomplete' => 'off', 'aria-label' => 'Amount (to the nearest pound)')) }}
                   </div>
                   @if( $errors->has('rate'))
@@ -103,8 +103,8 @@
               <div class="form-row">
                 <div class="row">
                   <div class="col-xs-12">
-                    <button type="submit" class="btn btn-primary">Update</button>
-                    <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-primary">Cancel</a>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Update</button>
+                    <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span> Back</a>
                   </div>
                 </div>
               </div>

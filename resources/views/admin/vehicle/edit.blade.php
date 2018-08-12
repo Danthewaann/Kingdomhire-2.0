@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <h2>Edit vehicle</h2>
+  <h2>Edit {{ $vehicle->name() }}</h2>
 </div>
 <div class="col-md-12">
   <div class="row">
@@ -31,7 +31,7 @@
             <label for="vehicle_images_del">Delete Images</label>
             <select multiple class="form-control" name="vehicle_images_del[]" id="vehicle_images_del">
               @foreach($vehicle->images as $image)
-                <option>{{ $image->name }}</option>
+                <option value="{{ $image->name }}">{{ $image->name }}</option>
               @endforeach
             </select>
           </div>
@@ -41,7 +41,7 @@
             <input type="file" name="vehicle_images_add[]" id="vehicle_images_add" value="{{ $vehicle->image_path }}" multiple>
           </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary">Edit Vehicle</button>
+          <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Update</button>
         </div>
       </form>
     </div>

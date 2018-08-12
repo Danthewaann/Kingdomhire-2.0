@@ -10,13 +10,13 @@
   <div class="col-md-5 col-sm-5 col-xs-12">
     <h3>Reservations per vehicle</h3>
     <span>{{ count($reservations) }} reservation(s) in total</span>
-    <div style="overflow-y: auto; height: {{ count($vehicles)*50+20 }}px">
+    <div style="overflow-y: auto; height: {{ count($vehicles)*55+20 }}px">
       <div id="vehicle_reservations"></div>
       @barchart('Vehicle Reservations', 'vehicle_reservations')
     </div>
     <h3>Past hires</h3>
     <span>{{ count($pastHires) }} hire(s) in total</span>
-    <div style="overflow-y: auto; height: 620px;">
+    <div style="overflow-y: auto; height: 720px;">
       <div id="overall_hires_per_month"></div>
       @columnchart('Overall Hires per month', 'overall_hires_per_month')
     </div>

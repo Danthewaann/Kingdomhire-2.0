@@ -8432,6 +8432,7 @@ button.close {
 .vehicle-table-public tbody tr th {
   background-color: #3b8b63;
   border-top: unset !important;
+  border-left: 1px solid #4bce8a !important;
   text-align: right;
   vertical-align: middle;
 }
@@ -8462,6 +8463,7 @@ button.close {
 .vehicle-table-admin tbody tr th {
   background-color: #439D70;
   border-top: unset !important;
+  border-left: 1px solid #4bce8a !important;
   text-align: right;
   vertical-align: middle;
 }

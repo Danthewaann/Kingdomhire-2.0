@@ -16,7 +16,7 @@
 				<p>Kingdom Car Hire cater for general, public and business needs. Whatever you need, we are sure we can help you out.</p>
 			</div>
 			<div class="col-md-4">
-				<h2>Opening hours</h2>
+				<h2><span class="glyphicon glyphicon-calendar"></span> Opening hours</h2>
 				<table class="table opening-hours">
 					<tr>
 						<th>Weekdays</th>

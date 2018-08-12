@@ -11,10 +11,10 @@
         <div class="col-md-12">
         <nav class="navbar vehicle-dashboard-navbar-tabs">
           <ul class="nav nav-tabs nav-justified vehicle-dashboard-navbar-tabs" id="dashboard-navbar-tabs-collapse">
-            <li class="{{ count($errors) == 0 ? 'active' : '' }}"><a data-toggle="tab" href="#info_tab">Info</a></li>
-            <li class="{{ count($errors) > 0 ? 'active' : '' }}"><a data-toggle="tab" href="#reservations_tab">Reservations</a></li>
-            <li><a data-toggle="tab" id="hires_button" href="#hires_tab">Hires</a></li>
-            <li><a data-toggle="tab" href="#edit_tab">Edit</a></li>
+            <li class="{{ count($errors) == 0 ? 'active' : '' }}"><a data-toggle="tab" href="#info_tab"><span class="glyphicon glyphicon-info-sign"></span> Info</a></li>
+            <li class="{{ count($errors) > 0 ? 'active' : '' }}"><a data-toggle="tab" href="#reservations_tab"><span class="glyphicon glyphicon-list"></span> Reservations</a></li>
+            <li><a data-toggle="tab" id="hires_button" href="#hires_tab"><span class="glyphicon glyphicon-list"></span> Hires</a></li>
+            <li><a data-toggle="tab" href="#edit_tab"><span class="glyphicon glyphicon-edit"></span> Edit</a></li>
           </ul>
         </nav>
         <div class="container-fluid">
@@ -22,31 +22,51 @@
             <div class="tab-content vehicle-dashboard-tab-content">
               <div id="info_tab" class="tab-pane fade{{ count($errors) == 0 ? ' in active' : '' }}">
                 <div class="row">
-                  <div class="col-md-5">
-                    @include('admin.vehicle.list-active-hire')
-                    @include('admin.vehicle.list-next-reservation')
-                  </div>
-                  <div class="col-md-7">
-                    <h3>Vehicle Statistics</h3>
-                    <p style="font-size: 14px;">
-                      <b>Overall total profit:</b> £{{ $vehicle->getTotalProfit() }} <br>
-                      <b>Date added:</b> {{ $vehicle->created_at }} <br>
-                      <b>Last changed:</b> {{ $vehicle->updated_at  }}
-                    </p>
-                    @if($gantt != null)
-                      {!! $gantt !!}
-                    @endif
-                  </div>
+                  @if($vehicle->reservations->isNotEmpty() or $vehicle->hasActiveHire())
+                    <div class="col-md-5">
+                      @include('admin.vehicle.list-active-hire')
+                      @include('admin.vehicle.list-next-reservation')
+                    </div>
+                    <div class="col-md-7">
+                      <h3>Vehicle Statistics</h3>
+                      <p style="font-size: 14px;">
+                        <b>Overall total profit:</b> £{{ $vehicle->getTotalProfit() }} <br>
+                        <b>Date added:</b> {{ $vehicle->created_at }} <br>
+                        <b>Last changed:</b> {{ $vehicle->updated_at  }}
+                      </p>
+                      @if($gantt != null)
+                        {!! $gantt !!}
+                      @endif
+                    </div>
+                  @else
+                    <div class="col-md-5">
+                      @include('admin.vehicle.list-active-hire')
+                      @include('admin.vehicle.list-next-reservation')
+                      <h3>Vehicle Statistics</h3>
+                      <p style="font-size: 14px;">
+                        <b>Overall total profit:</b> £{{ $vehicle->getTotalProfit() }} <br>
+                        <b>Date added:</b> {{ $vehicle->created_at }} <br>
+                        <b>Last changed:</b> {{ $vehicle->updated_at  }}
+                      </p>
+                    </div>
+                  @endif
                 </div>
               </div>
               <div id="reservations_tab" class="tab-pane fade{{ count($errors) > 0 ? ' in active' : '' }}">
                 <div class="row">
-                  <div class="col-md-4 col-sm-12 col-xs-12">
-                    @include('admin.vehicle.list-reservations')
-                  </div>
-                  <div class="col-md-3 col-sm-12 col-xs-12">
-                    @include('admin.reservation.add')
-                  </div>
+                  @if($vehicle->reservations->isNotEmpty())
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                      @include('admin.vehicle.list-reservations')
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                      @include('admin.reservation.add')
+                    </div>
+                  @else
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                      @include('admin.vehicle.list-reservations')
+                      @include('admin.reservation.add')
+                    </div>
+                  @endif
                 </div>
               </div>
               <div id="hires_tab" class="tab-pane fade">

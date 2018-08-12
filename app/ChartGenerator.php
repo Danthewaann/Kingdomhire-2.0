@@ -46,7 +46,7 @@ class ChartGenerator
             'colors' => [
                 'rgb(75, 206, 138)'
             ],
-            'height' => count($activeVehicles)*50,
+            'height' => count($activeVehicles)*55,
             'width' => 700,
             'fontSize' => 14,
             'fontName' => 'Raleway',
@@ -309,7 +309,7 @@ class ChartGenerator
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
 //            'height' => $maxAmountOfHiresForMonth*25,
-            'height' => 600,
+            'height' => 700,
             'width' => 700,
             'chartArea' => [
                 'top' => '10%',

@@ -40,11 +40,11 @@
         <!-- Left Side Of Navbar -->
         <ul class="nav navbar-nav">
           <li class="{{ Request::is('admin') ? 'active' : '' }}">
-            <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+            <a href="{{ route('admin.dashboard') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
           </li>
           <li class="dropdown{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              Vehicles <span class="caret"></span>
+              <span class="glyphicon glyphicon-wrench"></span> Vehicles
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -65,7 +65,7 @@
           </li>
           <li class="dropdown{{ Request::is('admin/rates*') ? ' active' : '' }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              Weekly Rates <span class="caret"></span>
+              <span class="glyphicon glyphicon-gbp"></span> Weekly Rates
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -89,11 +89,21 @@
         <ul class="nav navbar-nav navbar-right">
           <!-- Authentication Links -->
           <li>
-            <a href="{{ route('public.home') }}">Main Site</a>
+            <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-globe"></span> Main Site</a>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-               {{ Auth::user()->name }} <span class="caret"></span>
+              <span class="glyphicon glyphicon-cog"></span> Settings
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">Change password</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+              <span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }}
             </a>
 
             <ul class="dropdown-menu">

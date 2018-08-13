@@ -112,16 +112,26 @@ body {
 }
 
 .vehicle-img {
+  text-align: center;
   width: 100%;
+  margin-bottom: 0 !important;
   //height: 275px;
   //height: 250px;
   //min-height: 250px;
+  display: inline-block;
+  vertical-align: middle;
   height: 235px;
   border: 1px solid $lighter-green;
+  line-height: 235px;
 }
 
 a > .vehicle-img {
   //height: 254px;
+  text-align: center;
+  margin-bottom: 0 !important;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 235px;
   height: 235px;
 }
 

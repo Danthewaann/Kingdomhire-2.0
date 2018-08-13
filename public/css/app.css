@@ -1457,7 +1457,7 @@ img {
   line-height: 1.6;
   background-color: rgba(61, 61, 61, 0.3);
   border: 1px solid 0;
-  border-radius: 4px;
+  border-radius: 0;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   display: inline-block;
@@ -6316,7 +6316,7 @@ a.badge:focus {
   line-height: 1.6;
   background-color: rgba(61, 61, 61, 0.3);
   border: 1px solid 0;
-  border-radius: 4px;
+  border-radius: 0;
   -webkit-transition: border 0.2s ease-in-out;
   transition: border 0.2s ease-in-out;
 }
@@ -8578,12 +8578,22 @@ body {
 }
 
 .vehicle-img {
+  text-align: center;
   width: 100%;
+  margin-bottom: 0 !important;
+  display: inline-block;
+  vertical-align: middle;
   height: 235px;
   border: 1px solid #4bce8a;
+  line-height: 235px;
 }
 
 a > .vehicle-img {
+  text-align: center;
+  margin-bottom: 0 !important;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 235px;
   height: 235px;
 }
 

@@ -1,7 +1,15 @@
 <div style="display: inline-block; width: 100%; margin-bottom: 20px">
-  @foreach($vehicle->images as $image)
-    @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img"/> @endif
-  @endforeach
+  @if($vehicle->images->isEmpty())
+    <div class="vehicle-img thumbnail text-link">
+      <span style="display: inline-block;">
+        <h2 style="margin: 0"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;Image N/A</h2>
+      </span>
+    </div>
+  @else
+    @foreach($vehicle->images as $image)
+      @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img thumbnail"/> @endif
+    @endforeach
+  @endif
   <table class="table table-condensed vehicle-table-public">
     <tr>
       <th>Vehicle</th>

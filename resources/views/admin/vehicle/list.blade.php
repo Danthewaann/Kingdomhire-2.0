@@ -1,10 +1,20 @@
-@foreach($vehicle->images as $image)
-  @if($loop->first)
-    <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">
-      @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img"/> @endif
-    </a>
-  @endif
-@endforeach
+@if($vehicle->images->isEmpty())
+  <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">
+    <div class="vehicle-img thumbnail text-link">
+      <span style="display: inline-block;">
+        <h2 style="margin: 0"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;Image N/A</h2>
+      </span>
+    </div>
+  </a>
+@else
+  @foreach($vehicle->images as $image)
+    @if($loop->first)
+      <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">
+        @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img thumbnail"/> @endif
+      </a>
+    @endif
+  @endforeach
+@endif
 <table class="table table-condensed vehicle-table-admin">
   <tr>
     <th>Vehicle</th>

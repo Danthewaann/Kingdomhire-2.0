@@ -24,7 +24,7 @@
           @endif
           <h3>Past hires</h3>
           <h5>{{ count($pastHires) }} hire(s) in total</h5>
-          <div class="scrollable-list" style="height: {{ $maxAmountOfHiresPerMonth*30+20 }}px">
+          <div class="scrollable-list" style="height: {{ $maxAmountOfHiresPerMonth > 5 ? $maxAmountOfHiresPerMonth*30+20 : 420 }}px">
             <div id="overall_hires_per_month"></div>
             @columnchart('Overall Hires per month', 'overall_hires_per_month')
           </div>

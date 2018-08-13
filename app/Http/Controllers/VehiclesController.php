@@ -45,7 +45,7 @@ class VehiclesController extends Controller
             'gear_type' => $request->get('gear_type'),
             'seats' => $request->get('seats'),
             'type' => $request->get('type'),
-            'vehicle_rate_id' => VehicleRate::whereEngineSize($request->get('engine_size'))->get()->first()->id
+            'vehicle_rate_id' => VehicleRate::whereName($request->get('rate_name'))->get()->first()->id
         ))->id;
 
         if($request->hasFile('vehicle_images')) {
@@ -69,7 +69,7 @@ class VehiclesController extends Controller
             }
         }
 
-        return redirect()->route('admin.vehicles');
+        return redirect()->route('admin.dashboard');
     }
 
     public function discontinue($id)

@@ -35,14 +35,14 @@ class ReservationsController extends Controller
         if ($validator->fails()) {
             return redirect()->back()
                 ->withInput($request->input())
-                ->withErrors($validator);
+                ->withErrors($validator, 'reservations');
         }
 
         $messages = array();
         if (DBQuery::doesDatesConflict($vehicle_id, $request->get('start_date'), $request->get('end_date'), $messages, null, true)) {
             return redirect()->back()
                 ->withInput($request->input())
-                ->withErrors($messages);
+                ->withErrors($messages, 'reservations');
         }
 
         Reservation::create(array(

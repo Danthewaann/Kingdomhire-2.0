@@ -14,9 +14,11 @@
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} col-md-12">
               <label for="name">Name*</label>
               <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" autocomplete="off" placeholder="Enter name">
-              @if( $errors->has('engine_size'))
+              @if( $errors->has('name'))
                 <span class="help-block">
-                  <strong>{{ $errors->first('name') }}</strong>
+                  <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('name') }}</strong>
+                  </div>
                 </span>
               @endif
             </div>
@@ -30,7 +32,9 @@
               </div>
               @if( $errors->has('weekly_rate_min'))
                 <span class="help-block">
-                  <strong>{{ $errors->first('weekly_rate_min') }}</strong>
+                  <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('weekly_rate_min') }}</strong>
+                  </div>
                 </span>
               @endif
             </div>
@@ -44,7 +48,9 @@
               </div>
               @if( $errors->has('weekly_rate_max'))
                 <span class="help-block">
-                  <strong>{{ $errors->first('weekly_rate_max') }}</strong>
+                  <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('weekly_rate_max') }}</strong>
+                  </div>
                 </span>
               @endif
             </div>

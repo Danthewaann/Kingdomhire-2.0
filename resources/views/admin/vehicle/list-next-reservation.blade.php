@@ -26,10 +26,10 @@
           <td>{{ date('jS F Y', strtotime($vehicle->reservations->sortBy('end_date')->first()->end_date)) }}</td>
           <td>
               <a style="width: 100%" href="{{ route('reservation.editForm', ['vehicle_id' => $vehicle->id, 'reservation_id' => $vehicle->reservations->sortBy('end_date')->first()->id]) }}"
-                 class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span> Edit
+                 class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit
               </a>
               {{ Form::open(['route' => ['reservation.cancel', $vehicle->reservations->sortBy('end_date')->first()->id], 'method' => 'delete']) }}
-              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 5px;"><span class="glyphicon glyphicon-trash"></span> Cancel</button>
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 5px;"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
               {{--{{ Form::submit('Cancel', ['class' => 'btn btn-primary', 'style' => 'width: 100%; margin-top: 5px;']) }}--}}
               {{ Form::close() }}
           </td>

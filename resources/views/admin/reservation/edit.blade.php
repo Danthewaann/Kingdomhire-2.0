@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container-fluid">
-  <div class="col-md-2">
+  <div class="col-md-3">
     @include('admin.vehicle.summary')
   </div>
-  <div class="col-md-10">
+  <div class="col-md-9">
     <div class="col-md-4 col-sm-12 col-xs-12">
       <div class="row">
         <div class="well">
@@ -14,7 +14,6 @@
             @csrf
             @method('PATCH')
             <div class="form-row">
-              <input id="vehicle" class="form-control" type="hidden" value="{{ $vehicle->name() }}" disabled/>
               <div class="form-group{{ $errors->has('made_by') ? ' has-error' : '' }}">
                 <div class="form-row">
                   <label for="made_by">Made By*</label>

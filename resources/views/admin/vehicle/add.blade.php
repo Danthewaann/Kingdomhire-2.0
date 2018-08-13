@@ -16,7 +16,9 @@
                 <input type="text" class="form-control" id="make" name="make" value="{{ old('make') }}" autocomplete="off" placeholder="Enter make">
                 @if( $errors->has('make'))
                   <span class="help-block">
-                    <strong>{{ $errors->first('make') }}</strong>
+                    <div class="alert alert-danger" role="alert">
+                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('make') }}</strong>
+                    </div>
                   </span>
                 @endif
               </div>
@@ -25,7 +27,9 @@
                 <input type="text" class="form-control" id="model" name="model" value="{{ old('model') }}" autocomplete="off" placeholder="Enter model">
                 @if( $errors->has('model'))
                   <span class="help-block">
-                    <strong>{{ $errors->first('model') }}</strong>
+                    <div class="alert alert-danger" role="alert">
+                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('model') }}</strong>
+                    </div>
                   </span>
                 @endif
               </div>
@@ -53,7 +57,9 @@
                 <input type="text" class="form-control" id="seats" name="seats" placeholder="Enter number of seats" value="{{ old('seats') }}" autocomplete="off">
                 @if( $errors->has('seats'))
                   <span class="help-block">
-                    <strong>{{ $errors->first('seats') }}</strong>
+                    <div class="alert alert-danger" role="alert">
+                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('seats') }}</strong>
+                    </div>
                   </span>
                 @endif
               </div>
@@ -76,9 +82,16 @@
                   @endforeach
                 </select>
               </div>
-              <div class="form-group col-xs-6">
+              <div class="form-group{{ $errors->has('vehicle_images') ? ' has-error' : '' }} col-xs-6">
                 <label for="vehicle_image">Image(s)</label>
                 <input type="file" class="form-control" name="vehicle_images[]" id="vehicle_image" multiple>
+                @if( $errors->has('vehicle_images'))
+                  <span class="help-block">
+                    <div class="alert alert-danger" role="alert">
+                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('vehicle_images') }}</strong>
+                    </div>
+                  </span>
+                @endif
               </div>
             </div>
               <div class="form-row">

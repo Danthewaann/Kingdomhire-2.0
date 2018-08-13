@@ -15,7 +15,24 @@ class VehiclesController extends Controller
     private $store_rules = [
         'make' => 'required',
         'model' => 'required',
-        'seats' => 'required|numeric|min:1|max:256'
+        'seats' => 'required|numeric|min:1|max:256',
+        'vehicle_images' => 'array|nullable|image'
+    ];
+
+    private $edit_rules = [
+        'vehicle_images_add' => 'nullable|array|image',
+        'vehicle_images_del' => 'nullable|array'
+    ];
+
+    private $store_error_messages = [
+        'make.required' => 'Vehicle make (manufacturer) is required',
+        'model.required' => 'Vehicle model is required',
+        'seats.required' => 'Number of seats is required',
+        'vehicle_images.image' => 'Only image type files can be uploaded'
+    ];
+
+    private $edit_error_messages = [
+        'vehicle_images_add.image' => 'Only image type files can be uploaded'
     ];
     /**
      * Create a new controller instance.
@@ -29,7 +46,7 @@ class VehiclesController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->store_rules);
+        $validator = Validator::make($request->all(), $this->store_rules, $this->store_error_messages);
 
         if($validator->fails())
         {
@@ -115,6 +132,23 @@ class VehiclesController extends Controller
 
     public function edit(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), $this->edit_rules, $this->edit_error_messages);
+//        dd($request, $validator);
+//        dd($validator->fails());
+        if($validator->fails())
+        {
+//            $errors = [
+//                'edit' => [
+//                    $validator->errors()
+//                ]
+//            ];
+//            dd($errors);
+//            dd($validator->errors());
+            return redirect()->back()
+                ->withInput($request->input())
+                ->withErrors($validator, 'edit');
+        }
+
         $vehicle = Vehicle::find($id);
         if($request->hasFile('vehicle_images_add')) {
             $images = $request->file('vehicle_images_add');

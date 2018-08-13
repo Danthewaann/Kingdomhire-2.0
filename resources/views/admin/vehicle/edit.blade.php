@@ -26,7 +26,7 @@
               @endforeach
             </select>
           </div>
-        @if(!$vehicle->images->isEmpty())
+        @if($vehicle->images->isNotEmpty())
           <div class="form-group">
             <label for="vehicle_images_del">Delete Images</label>
             <select multiple class="form-control" name="vehicle_images_del[]" id="vehicle_images_del">
@@ -36,9 +36,16 @@
             </select>
           </div>
         @endif
-          <div class="form-group">
-            <label for="vehicle_images_add">Add Images</label>
-            <input type="file" name="vehicle_images_add[]" id="vehicle_images_add" value="{{ $vehicle->image_path }}" multiple>
+          <div class="form-group{{ $errors->hasBag('edit') ? ' has-error' : '' }}">
+            <label for="vehicle_images_add"><span class="glyphicon glyphicon-upload"></span> Add Images</label>
+            <input type="file" name="vehicle_images_add[]" id="vehicle_images_add" value="{{ $vehicle->image_path }}" data-multiple-caption="{count} files selected" multiple>
+            @if($errors->hasBag('edit') and $errors->edit->has('vehicle_images_add'))
+              <div class="help-block">
+                <div class="alert alert-danger" role="alert">
+                  <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->edit->first('vehicle_images_add') }}</strong>
+                </div>
+              </div>
+            @endif
           </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Update</button>

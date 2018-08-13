@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container-fluid">
-  <div class="col-md-2">
+  <div class="col-md-3">
       @include('admin.vehicle.summary')
   </div>
-  <div class="col-md-10">
+  <div class="col-md-9">
     <div class="col-md-4 col-sm-12 col-xs-12">
       <div class="row">
         <div class="well">
@@ -14,7 +14,6 @@
             @csrf
             @method('PATCH')
             <div class="form-row">
-              <input id="vehicle" class="form-control" type="hidden" value="{{ $vehicle->name() }}" disabled/>
               <div class="form-group{{ $errors->has('made_by') ? ' has-error' : '' }}">
                 <div class="form-row">
                   <label for="made_by">Hired By*</label>
@@ -22,7 +21,7 @@
                   @if( $errors->has('hired_by'))
                     <div class="help-block">
                       <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->first('hired_by') }}</strong>
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('hired_by') }}</strong>
                       </div>
                     </div>
                   @endif
@@ -38,7 +37,7 @@
                   @if( $errors->has('start_date'))
                     <div class="help-block">
                       <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->first('start_date') }}</strong>
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('start_date') }}</strong>
                       </div>
                     </div>
                   @endif
@@ -73,7 +72,7 @@
                   @if( $errors->has('rate'))
                     <div class="help-block">
                       <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->first('rate') }}</strong>
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('rate') }}</strong>
                       </div>
                     </div>
                   @endif
@@ -84,13 +83,13 @@
                   <div class="form-row">
                     <span class="help-block">
                       @if($errors->has('reservation'))
-                        <strong>Other reservation</strong><br>
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>Other reservation</strong><br>
                         <strong>Start date = {{ $errors->get('reservation')['start_date'] }}</strong><br>
                         <strong>End date = {{ $errors->get('reservation')['end_date'] }}</strong>
                         <br><br>
                       @endif
                       @if($errors->has('hire'))
-                        <strong>Current active hire</strong><br>
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>Current active hire</strong><br>
                         <strong>Start date = {{ $errors->get('hire')['start_date'] }}</strong><br>
                         <strong>End date = {{ $errors->get('hire')['end_date'] }}</strong>
                       @endif

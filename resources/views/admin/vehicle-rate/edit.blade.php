@@ -17,8 +17,10 @@
               <input id="name" type="text" class="form-control" name="name" value="{{ $rate->name }}" autocomplete="off">
               @if( $errors->has('name'))
                 <span class="help-block">
-                    <strong>{{ $errors->first('name') }}</strong>
-                  </span>
+                  <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('name') }}</strong>
+                  </div>
+                </span>
               @endif
             </div>
           </div>
@@ -31,7 +33,9 @@
               </div>
               @if( $errors->has('weekly_rate_min'))
                 <span class="help-block">
-                  <strong>{{ $errors->first('weekly_rate_min') }}</strong>
+                  <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('weekly_rate_min') }}</strong>
+                  </div>
                 </span>
               @endif
             </div>
@@ -45,7 +49,9 @@
               </div>
               @if( $errors->has('weekly_rate_max'))
                 <span class="help-block">
-                  <strong>{{ $errors->first('weekly_rate_max') }}</strong>
+                  <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('weekly_rate_max') }}</strong>
+                  </div>
                 </span>
               @endif
             </div>

@@ -12,7 +12,6 @@ use Khill\Lavacharts\DataTables\DataFactory;
 use Khill\Lavacharts\Charts\ChartFactory;
 use Khill\Lavacharts\Volcano;
 use Lava;
-use Swatkins\LaravelGantt\Gantt;
 
 class ChartGenerator
 {
@@ -306,8 +305,7 @@ class ChartGenerator
             ],
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
-            'height' => $maxAmountOfHiresForMonth*30,
-//            'height' => 700,
+            'height' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth*30 : 400),
             'width' => 700,
             'chartArea' => [
                 'left' => '5%',
@@ -374,7 +372,7 @@ class ChartGenerator
 
         $gantt = null;
         if ($reservationsAndActiveHire->isNotEmpty()) {
-            $gantt = new Gantt($data, array(
+            $gantt = new GanttChart($data, array(
                 'title' => 'Schedule',
                 'cellwidth' => 30,
                 'cellheight' => 40
@@ -405,7 +403,7 @@ class ChartGenerator
 
         $gantt = null;
         if (count($data) > 0) {
-            $gantt = new Gantt($data, array(
+            $gantt = new GanttChart($data, array(
                 'title' => "Active <br> Hires",
                 'cellwidth' => 30,
                 'cellheight' => 40

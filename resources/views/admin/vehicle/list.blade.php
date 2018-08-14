@@ -1,17 +1,25 @@
 @if($vehicle->images->isEmpty())
-  <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">
+  <div style="position: relative">
     <div class="vehicle-img thumbnail text-link">
       <span style="display: inline-block;">
         <h2 style="margin: 0"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;Image N/A</h2>
       </span>
     </div>
-  </a>
+    <div style="position: absolute; left: 5px; top: 236px;">
+      <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-primary vehicle-img-button">Dashboard</a>
+      {{--<button class="btn btn-primary btn-sm">{{ $vehicle->name() }} dashboard</button>--}}
+    </div>
+  </div>
 @else
   @foreach($vehicle->images as $image)
     @if($loop->first)
-      <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">
+      <div style="position: relative">
         @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img thumbnail"/> @endif
-      </a>
+          <div style="position: absolute; left: 5px; top: 236px;">
+            <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
+            {{--<button class="btn btn-primary btn-sm">{{ $vehicle->name() }} dashboard</button>--}}
+          </div>
+      </div>
     @endif
   @endforeach
 @endif

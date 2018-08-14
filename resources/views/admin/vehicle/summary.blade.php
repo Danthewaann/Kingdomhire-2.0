@@ -7,7 +7,12 @@
     </div>
   @else
     @foreach($vehicle->images as $image)
-      @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img thumbnail"/> @endif
+      <div style="position: relative">
+        @if($loop->first) <img src="{{ $image->image_uri }}" class="thumbnail vehicle-img"/> @endif
+        <div style="position: absolute; left: 5px; top: 236px">
+          <button class="btn btn-info vehicle-img-button">View images</button>
+        </div>
+      </div>
     @endforeach
   @endif
   <table class="table table-condensed vehicle-table-public">

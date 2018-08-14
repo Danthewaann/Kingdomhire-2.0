@@ -116,6 +116,7 @@ body {
   width: 100%;
   margin-bottom: 0 !important;
   transition: 0.5s;
+  //background-color: $light-green;
   //height: 275px;
   //height: 250px;
   //min-height: 250px;
@@ -126,15 +127,15 @@ body {
   line-height: 275px;
 }
 
-img.vehicle-img:hover {
-  opacity: 0.7;
-  cursor: pointer;
-}
-
-div.vehicle-img:hover {
-  background-color: $light-green;
-  cursor: pointer;
-}
+//img.vehicle-img:hover {
+//  opacity: 0.7;
+//  cursor: pointer;
+//}
+//
+//div.vehicle-img:hover {
+//  background-color: $light-green;
+//  cursor: pointer;
+//}
 
 a > .vehicle-img {
   //height: 254px;
@@ -146,15 +147,21 @@ a > .vehicle-img {
   height: 235px;
 }
 
-a > img.vehicle-img:hover {
-  opacity: 0.7;
-  cursor: pointer;
+.vehicle-img-button {
+  border-radius: 0px 4px 0px 0px !important;
+  //-moz-border-radius-topright: 4px;
+  border: 0 !important;
 }
 
-a > div.vehicle-img:hover {
-  background-color: $light-green;
-  cursor: pointer;
-}
+//a > img.vehicle-img:hover {
+//  opacity: 0.7;
+//  cursor: pointer;
+//}
+//
+//a > div.vehicle-img:hover {
+//  background-color: $light-green;
+//  cursor: pointer;
+//}
 
 .contact-info th,
 .contact-info td {

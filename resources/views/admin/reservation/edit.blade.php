@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
   <div class="col-md-3">
-    @include('admin.vehicle.summary')
+    @include('admin.vehicle.list')
   </div>
   <div class="col-md-9">
     <div class="col-md-4 col-sm-12 col-xs-12">
@@ -102,8 +102,10 @@
               <div class="form-row">
                 <div class="row">
                   <div class="col-xs-12">
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Update</button>
-                    <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
+                    <div class="btn-group btn-group-lg">
+                      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
+                      <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
+                    </div>
                   </div>
                 </div>
               </div>

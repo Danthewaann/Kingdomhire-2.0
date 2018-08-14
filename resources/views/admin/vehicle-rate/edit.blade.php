@@ -60,7 +60,7 @@
             <div class="col-xs-12">
               <div class="row">
                 <div class="col-xs-6">
-                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Update</button>
+                  <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
                 </div>
                 <div class="col-xs-3 col-xs-offset-3">
                   {{--<button type="submit" class="btn btn-primary">Delete</button>--}}

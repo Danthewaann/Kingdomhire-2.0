@@ -27,13 +27,15 @@
           <td>{{ date('jS F Y', strtotime($reservation->start_date)) }}</td>
           <td>{{ date('jS F Y', strtotime($reservation->end_date)) }}</td>
           <td>
-            <a style="width: 100%" href="{{ route('reservation.editForm', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
-               class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit
-            </a>
-            {{ Form::open(['route' => ['reservation.cancel', $reservation->id], 'method' => 'delete']) }}
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 5px;"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
-            {{--{{ Form::submit('Cancel', ['class' => 'btn btn-primary', 'style' => 'width: 100%; margin-top: 5px;']) }}--}}
-            {{ Form::close() }}
+            <div class="btn-group-vertical btn-group-lg">
+              <a href="{{ route('reservation.editForm', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
+                 class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit
+              </a>
+              {{ Form::open(['route' => ['reservation.cancel', $reservation->id], 'method' => 'delete']) }}
+              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
+              {{--{{ Form::submit('Cancel', ['class' => 'btn btn-primary', 'style' => 'width: 100%; margin-top: 5px;']) }}--}}
+              {{ Form::close() }}
+            </div>
           </td>
         </tr>
         @endforeach

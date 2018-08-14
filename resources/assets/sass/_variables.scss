@@ -75,7 +75,9 @@ $nav-tabs-border-color: unset;
 //thumbnails
 //$thumbnail-padding: 0;
 $thumbnail-border: 0;
-$thumbnail-bg: rgba(61,61,61,0.3);
+//$thumbnail-bg: rgba(61,61,61,0.3);
+$thumbnail-bg: $dark-green;
+//$thumbnail-bg: $brand-info;
 $thumbnail-caption-color: white;
 $thumbnail-border-radius: 0;
 

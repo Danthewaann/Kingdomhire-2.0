@@ -48,7 +48,7 @@
             @endif
           </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Update</button>
+          <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
         </div>
       </form>
     </div>

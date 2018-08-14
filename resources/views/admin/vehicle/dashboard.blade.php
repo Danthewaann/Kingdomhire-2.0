@@ -7,7 +7,9 @@
 
 <div class="container-fluid">
   <div class="col-lg-3 col-md-5 col-sm-5">
-    @include('admin.vehicle.summary')
+    <div class="well">
+    @include('admin.vehicle.list')
+  </div>
   </div>
   <div class="col-lg-9 col-md-7 col-sm-7">
     <div class="well">

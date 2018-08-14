@@ -25,8 +25,10 @@
         <td>{{ date('jS F Y', strtotime($vehicle->getActiveHire()->start_date)) }}</td>
         <td>{{ date('jS F Y', strtotime($vehicle->getActiveHire()->end_date)) }}</td>
         <td>
-          <a style="width: 100%" href="{{ route('hire.edit', ['vehicle_id' => $vehicle->id, 'hire_id' => $vehicle->getActiveHire()->id]) }}"
-             class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
+          <div class="btn-group-lg" style="float: right">
+            <a href="{{ route('hire.edit', ['vehicle_id' => $vehicle->id, 'hire_id' => $vehicle->getActiveHire()->id]) }}"
+               class="btn btn-lg btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
+          </div>
         </td>
       </tr>
     </table>

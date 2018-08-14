@@ -96,7 +96,7 @@
             </div>
               <div class="form-row">
                 <div class="col-xs-12">
-                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Add Vehicle</button>
+                  <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Add Vehicle</button>
                 </div>
               </div>
           </form>

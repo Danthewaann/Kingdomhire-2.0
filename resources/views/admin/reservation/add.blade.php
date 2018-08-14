@@ -90,7 +90,7 @@
       </div>
     @endif
     <div class="form-row">
-      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Book Reservation</button>
+      <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Book Reservation</button>
     </div>
   </div>
 </form>

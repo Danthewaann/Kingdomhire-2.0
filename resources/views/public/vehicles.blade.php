@@ -1,6 +1,9 @@
 @extends('layouts.public')
 
 @section('content')
+@foreach($vehicles as $vehicle)
+  @include('admin.vehicle.modal-gallery')
+@endforeach
 <div class="jumbotron jumbotron-header">
   <div class="container">
     <h1>Our fleet</h1>
@@ -19,7 +22,7 @@
       <div id="all" class="tab-pane fade in active">
         <div class="row">
           @foreach($vehicles as $vehicle)
-            <div class="col-md-4 col-xs-12">
+            <div class="col-md-4 col-sm-6 col-xs-12">
               @include('admin.vehicle.summary')
             </div>
           @endforeach
@@ -29,7 +32,7 @@
         <div id="{{ str_replace(" ", "-", array_keys($vehicles->groupBy('type')->toArray())[$i]) }}" class="tab-pane fade">
           <div class="row">
             @foreach($vehicles->groupBy('type')->slice($i, 1)->first() as $vehicle)
-              <div class="col-md-4 col-xs-12">
+              <div class="col-md-4 col-sm-6 col-xs-12">
                 @include('admin.vehicle.summary')
               </div>
             @endforeach

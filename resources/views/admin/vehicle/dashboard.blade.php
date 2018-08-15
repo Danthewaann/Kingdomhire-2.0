@@ -1,15 +1,10 @@
 @extends('layouts.admin-main')
 
 @section('content')
-  {{--@dd($errors)--}}
-{{--  @dd($errors, $errors->reservations->has('rate'))--}}
-  {{--@dd($errors->hasBag('reservations'))--}}
-
+@include('admin.vehicle.modal-gallery')
 <div class="container-fluid">
   <div class="col-lg-3 col-md-5 col-sm-5">
-    <div class="well">
-    @include('admin.vehicle.list')
-  </div>
+    @include('admin.vehicle.summary')
   </div>
   <div class="col-lg-9 col-md-7 col-sm-7">
     <div class="well">
@@ -61,7 +56,7 @@
               <div id="reservations_tab" class="tab-pane fade{{ $errors->hasBag('reservations') ? ' in active' : '' }}">
                 <div class="row">
                   @if($vehicle->reservations->isNotEmpty())
-                    <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-md-5 col-sm-12 col-xs-12">
                       @include('admin.vehicle.list-reservations')
                     </div>
                     <div class="col-md-4 col-sm-12 col-xs-12">
@@ -77,14 +72,14 @@
               </div>
               <div id="hires_tab" class="tab-pane fade">
                 <div class="row">
-                  <div class="col-md-4 col-sm-12 col-xs-12">
+                  <div class="col-md-5 col-sm-12 col-xs-12">
                     @if($vehicle->getIncompleteHires()->isNotEmpty())
                       @include('admin.vehicle.list-incomplete-hires')
                     @endif
                     @include('admin.vehicle.list-inactive-hires')
                   </div>
                   @if($pastHires->isNotEmpty())
-                    <div class="col-md-8 col-sm-12 col-xs-12">
+                    <div class="col-md-7 col-sm-12 col-xs-12">
                       <h3>Hires per month for {{ date('Y') }}</h3>
                       {{--<div style="overflow-y: auto; height: 620px;">--}}
                         {{--<div id="overall_vehicle_hires_per_month"></div>--}}

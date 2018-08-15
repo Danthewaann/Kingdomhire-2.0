@@ -11,6 +11,7 @@
 // Local scss
 @import "jumbotron";
 @import "table";
+@import "modal";
 
 .vehicle-dashboard-info {
   color: $text-color;
@@ -171,6 +172,7 @@ a > .vehicle-img {
 .public-navbar {
   margin-bottom: 0;
   border: 0;
+  z-index: unset !important;
 }
 
 .admin-navbar {

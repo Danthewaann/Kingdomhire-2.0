@@ -160,5 +160,40 @@
       // });
   });
 </script>
+<script>
+    // Open the Modal
+    function openModal(id) {
+        document.getElementById(id).style.display = "block";
+    }
+
+    // Close the Modal
+    function closeModal(id) {
+        document.getElementById(id).style.display = "none";
+    }
+
+    var slideIndex = 1;
+    // showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n, vehicle_id) {
+        showSlides(slideIndex += n, vehicle_id);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n, vehicle_id) {
+        showSlides(slideIndex = n, vehicle_id);
+    }
+
+    function showSlides(n, vehicle_id) {
+        var i;
+        var slides = document.querySelectorAll('.'+vehicle_id);
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex-1].style.display = "block";
+    }
+</script>
 </body>
 </html>

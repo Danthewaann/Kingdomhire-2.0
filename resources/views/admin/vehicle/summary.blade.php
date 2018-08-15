@@ -1,19 +1,17 @@
 <div style="display: inline-block; width: 100%; margin-bottom: 20px">
   @if($vehicle->images->isEmpty())
-    <div class="vehicle-img thumbnail text-link">
+    <div class="vehicle-img thumbnail">
       <span style="display: inline-block;">
         <h2 style="margin: 0"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;Image N/A</h2>
       </span>
     </div>
   @else
-    @foreach($vehicle->images as $image)
-      <div style="position: relative">
-        @if($loop->first) <img src="{{ $image->image_uri }}" class="thumbnail vehicle-img"/> @endif
-        <div style="position: absolute; left: 5px; top: 236px">
-          <button class="btn btn-info vehicle-img-button">View images</button>
-        </div>
+    <div style="position: relative">
+      <img src="{{ $vehicle->images->first()->image_uri }}" class="thumbnail vehicle-img"/>
+      <div style="position: absolute; left: 5px; top: 236px">
+        <button class="btn btn-info vehicle-img-button" onclick="openModal('{{ str_replace(" ", "-", $vehicle->name()) }}');currentSlide(1, '{{ str_replace(" ", "-", $vehicle->name()).'-images' }}')">View images</button>
       </div>
-    @endforeach
+    </div>
   @endif
   <table class="table table-condensed vehicle-table-public">
     <tr>

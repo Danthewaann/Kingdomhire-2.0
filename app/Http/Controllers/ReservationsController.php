@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DBQuery;
+use App\Hire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -45,13 +46,24 @@ class ReservationsController extends Controller
                 ->withErrors($messages, 'reservations');
         }
 
-        Reservation::create(array(
-            'vehicle_id' => $vehicle_id,
-            'made_by' => $request->made_by,
-            'rate' => $request->rate,
-            'start_date' => $request->get('start_date'),
-            'end_date' => $request->get('end_date')
-        ));
+        if($request->start_date == date('Y-m-d')) {
+            Hire::create([
+                'vehicle_id' => $vehicle_id,
+                'hired_by' => $request->made_by,
+                'rate' => $request->rate,
+                'start_date' => $request->get('start_date'),
+                'end_date' => $request->get('end_date')
+            ]);
+        }
+        else {
+            Reservation::create(array(
+                'vehicle_id' => $vehicle_id,
+                'made_by' => $request->made_by,
+                'rate' => $request->rate,
+                'start_date' => $request->get('start_date'),
+                'end_date' => $request->get('end_date')
+            ));
+        }
 
         return redirect()->route('vehicle.show', [
             'vehicle' => Vehicle::find($vehicle_id)

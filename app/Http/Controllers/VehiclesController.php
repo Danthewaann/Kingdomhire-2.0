@@ -20,7 +20,7 @@ class VehiclesController extends Controller
     ];
 
     private $edit_rules = [
-        'vehicle_images_add' => 'nullable|array|image',
+        'vehicle_images_add' => 'nullable|array',
         'vehicle_images_del' => 'nullable|array'
     ];
 
@@ -133,17 +133,9 @@ class VehiclesController extends Controller
     public function edit(Request $request, $id)
     {
         $validator = Validator::make($request->all(), $this->edit_rules, $this->edit_error_messages);
-//        dd($request, $validator);
-//        dd($validator->fails());
+
         if($validator->fails())
         {
-//            $errors = [
-//                'edit' => [
-//                    $validator->errors()
-//                ]
-//            ];
-//            dd($errors);
-//            dd($validator->errors());
             return redirect()->back()
                 ->withInput($request->input())
                 ->withErrors($validator, 'edit');

@@ -1,6 +1,6 @@
 @if($vehicle->images->isEmpty())
   <div style="position: relative">
-    <div class="vehicle-img thumbnail text-link">
+    <div class="vehicle-img thumbnail">
       <span style="display: inline-block;">
         <h2 style="margin: 0"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;Image N/A</h2>
       </span>

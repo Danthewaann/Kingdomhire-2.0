@@ -7,7 +7,7 @@
     </div>
 @endif
 <div class="container-fluid">
-    <div class="col-md-5 col-sm-5 col-xs-12">
+    <div class="col-md-5 col-sm-12 col-xs-12">
       <div class="well">
         <div class="row">
           <div class="col-md-12">
@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-7 col-sm-7 col-xs-12">
+    <div class="col-md-7 col-sm-12 col-xs-12">
         @include('admin.vehicle.list-admin')
     </div>
 </div>

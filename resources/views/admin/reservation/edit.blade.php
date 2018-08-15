@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
   <div class="col-md-3">
-    @include('admin.vehicle.list')
+    @include('admin.vehicle.summary')
   </div>
   <div class="col-md-9">
     <div class="col-md-4 col-sm-12 col-xs-12">

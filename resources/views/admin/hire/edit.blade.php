@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
   <div class="col-md-3">
-      @include('admin.vehicle.list')
+      @include('admin.vehicle.summary')
   </div>
   <div class="col-md-9">
     <div class="col-md-4 col-sm-12 col-xs-12">
@@ -31,7 +31,7 @@
                 <div class="form-row">
                   <label for="start_date_readonly">Start Date*</label>
                   <div class="input-group">
-                    <input id="start_date_readonly" class="form-control" type="text" value="{{ $hire->start_date }}" disabled/>
+                    <input id="start_date_readonly" class="form-control" type="text" name="start_date" value="{{ $hire->start_date }}" readonly/>
                     <span class="input-group-addon"> <span class="glyphicon glyphicon-calendar"></span></span>
                   </div>
                   @if( $errors->has('start_date'))

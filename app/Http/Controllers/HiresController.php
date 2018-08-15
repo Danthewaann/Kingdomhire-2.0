@@ -15,7 +15,8 @@ class HiresController extends Controller
     private $rules = [
         'hired_by' => 'required|string',
         'rate' => 'nullable|integer',
-        'end_date' => 'required|date_format:Y-m-d|after:start_date'
+        'start_date' => 'required|date_format:Y-m-d',
+        'end_date' => 'required|date_format:Y-m-d|after_or_equal:start_date'
     ];
 
     /**
@@ -30,10 +31,19 @@ class HiresController extends Controller
 
     public function showEditForm($vehicle_id, $hire_id)
     {
-        return view('admin.hire.edit', [
-            'vehicle' => Vehicle::find($vehicle_id),
-            'hire' => Hire::find($hire_id)
-        ]);
+        $hire = Hire::find($hire_id);
+        if($hire->is_active == true) {
+            return view('admin.hire.edit', [
+                'vehicle' => Vehicle::find($vehicle_id),
+                'hire' => $hire
+            ]);
+        }
+        else {
+            return view('admin.hire.edit-past-hire', [
+                'vehicle' => Vehicle::find($vehicle_id),
+                'hire' => $hire
+            ]);
+        }
     }
 
     public function edit(Request $request, $vehicle_id, $hire_id)

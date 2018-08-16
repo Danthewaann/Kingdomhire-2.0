@@ -23,6 +23,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereStartDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereVehicleId($value)
+ * @property string|null $hired_by
+ * @property int|null $rate
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereHiredBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereRate($value)
  */
 class Hire extends Model
 {

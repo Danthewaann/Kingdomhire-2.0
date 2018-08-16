@@ -46,11 +46,12 @@ class ChartGenerator
                 'rgb(75, 206, 138)'
             ],
             'height' => count($activeVehicles)*55,
-            'width' => 700,
+            'width' => '100%',
             'fontSize' => 14,
             'fontName' => 'Raleway',
             'chartArea' => [
-                'width' => '95%',
+                'left' => '5%',
+                'width' => '90%',
                 'height' => '80%'
             ],
             'legend' => [
@@ -306,10 +307,10 @@ class ChartGenerator
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
             'height' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth*30 : 400),
-            'width' => 700,
+            'width' => '100%',
             'chartArea' => [
                 'left' => '5%',
-                'width' => '95%',
+                'width' => '90%',
                 'height' => '85%'
             ],
             'fontSize' => 14,

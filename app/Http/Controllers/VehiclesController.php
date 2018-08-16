@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Vehicle;
+use Session;
 
 class VehiclesController extends Controller
 {
@@ -55,7 +56,7 @@ class VehiclesController extends Controller
                 ->withErrors($validator);
         }
 
-        $vehicle_id = Vehicle::create(array(
+        $vehicle = Vehicle::create(array(
             'make' => $request->get('make'),
             'model' => $request->get('model'),
             'fuel_type' => $request->get('fuel_type'),
@@ -63,7 +64,7 @@ class VehiclesController extends Controller
             'seats' => $request->get('seats'),
             'type' => $request->get('type'),
             'vehicle_rate_id' => VehicleRate::whereName($request->get('rate_name'))->get()->first()->id
-        ))->id;
+        ));
 
         if($request->hasFile('vehicle_images')) {
             $images = $request->file('vehicle_images');
@@ -74,17 +75,21 @@ class VehiclesController extends Controller
                     $image->extension();
 
                 $image_path = $image->storeAs('imgs/'.$request->get('make').'_'.
-                    $request->get('model').'-'.$vehicle_id, $image_name, 'public');
+                    $request->get('model').'-'.$vehicle->id, $image_name, 'public');
 
                 VehicleImage::create(array(
                     'name' => $image_name,
                     'image_uri' => asset('storage/' . $image_path),
-                    'vehicle_id' => $vehicle_id
+                    'vehicle_id' => $vehicle->id
                 ));
 
                 $i++;
             }
         }
+
+        Session::flash('status', [
+            'vehicle' => 'Successfully created vehicle '.$vehicle->name()
+        ]);
 
         return redirect()->route('admin.dashboard');
     }
@@ -103,16 +108,26 @@ class VehiclesController extends Controller
             ->where('vehicle_id', '=', $id)
             ->update(['is_active' => false]);
 
-        return redirect()->route('admin.vehicles');
+        Session::flash('status', [
+            'vehicle' => 'Successfully discontinued vehicle '.Vehicle::find($id)->name()
+        ]);
+
+        return redirect()->route('admin.dashboard');
     }
 
     public function destroy($id)
     {
-        DB::table('vehicles')
-            ->where('id', '=', $id)
-            ->delete();
+        $vehicle = Vehicle::find($id);
+        try {
+            $vehicle->delete();
+        } catch (\Exception $e) {
+        }
 
-        return redirect()->route('admin.vehicles');
+        Session::flash('status', [
+            'vehicle' => 'Successfully deleted vehicle '.$vehicle->name()
+        ]);
+
+        return redirect()->route('admin.dashboard');
     }
 
     public function showEditForm($id)
@@ -179,6 +194,10 @@ class VehiclesController extends Controller
                     'updated_at' => date('Y-m-d H:i:s')
                 ]);
         }
+
+        Session::flash('status', [
+            'edit' => 'Successfully edited '.$vehicle->name()
+        ]);
 
         return redirect()->route('vehicle.show', [
             'vehicle' => $vehicle

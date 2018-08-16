@@ -8,7 +8,7 @@
         <div class="col-md-12">
           <h3>Edit weekly rate</h3>
         </div>
-        <form action="{{ route('vehicle-rate.edit', ['rate' => $rate->name]) }}" method="post">
+        <form action="{{ route('vehicle-rate.edit', ['rate' => $rate->name]) }}" method="post" id="weekly_rate_edit_form">
           @csrf
           @method('PATCH')
           <div class="form-row">
@@ -56,22 +56,17 @@
               @endif
             </div>
           </div>
-          <div class="form-row">
+        </form>
+        {{ Form::open(['route' => ['vehicle-rate.delete', $rate->name], 'method' => 'delete', 'id' => 'weekly_rate_delete_form']) }}
+        {{ Form::close() }}
+        <div class="col-xs-12">
+          <div class="row">
             <div class="col-xs-12">
-              <div class="row">
-                <div class="col-xs-6">
-                  <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
-                </div>
-                <div class="col-xs-3 col-xs-offset-3">
-                  {{--<button type="submit" class="btn btn-primary">Delete</button>--}}
-                  {{--{{ Form::open(['route' => ['vehicle-rate.delete', $rate->name], 'method' => 'delete']) }}--}}
-                  {{--{{ Form::submit('Delete', ['class' => 'btn btn-primary', 'style' => 'float:right']) }}--}}
-                  {{--{{ Form::close() }}--}}
-                </div>
-              </div>
+              <button type="submit" form="weekly_rate_edit_form" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
+              <button type="submit" form="weekly_rate_delete_form" class="btn btn-lg btn-primary" style="float: right"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>

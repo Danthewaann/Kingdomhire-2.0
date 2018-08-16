@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Reservation;
 use App\Vehicle;
+use Session;
 
 class ReservationsController extends Controller
 {
@@ -65,6 +66,12 @@ class ReservationsController extends Controller
             ));
         }
 
+        Session::flash('status', [
+            'info' => [
+                'reservation' => 'Successfully booked reservation!'
+            ]
+        ]);
+
         return redirect()->route('vehicle.show', [
             'vehicle' => Vehicle::find($vehicle_id)
         ]);
@@ -77,6 +84,11 @@ class ReservationsController extends Controller
             ->where('id', '=', $id)
             ->delete();
 
+        Session::flash('status', [
+            'info' => [
+                'reservation' => 'Successfully canceled reservation!'
+            ]
+        ]);
         return redirect()->back();
     }
 
@@ -119,6 +131,12 @@ class ReservationsController extends Controller
             'start_date' => $request->get('start_date'),
             'end_date' => $request->get('end_date'),
             'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        Session::flash('status', [
+            'info' => [
+                'reservation' => 'Successfully edited reservation!'
+            ]
         ]);
 
         return redirect()->route('vehicle.show', [

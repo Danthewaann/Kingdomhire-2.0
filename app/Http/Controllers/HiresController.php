@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Hire;
+use Session;
 
 class HiresController extends Controller
 {
@@ -70,6 +71,21 @@ class HiresController extends Controller
             'end_date' => $request->end_date,
             'updated_at' => date('Y-m-d H:i:s')
         ]);
+
+        if(Hire::find($hire_id)->is_active == true) {
+            Session::flash('status', [
+                'info' => [
+                    'hire' => 'Successfully edited active hire!'
+                ]
+            ]);
+        }
+        else {
+            Session::flash('status', [
+                'hires' => [
+                    'hire' => 'Successfully edited past hire!'
+                ]
+            ]);
+        }
 
         return redirect()->route('vehicle.show', [
             'vehicle_id' => $vehicle_id

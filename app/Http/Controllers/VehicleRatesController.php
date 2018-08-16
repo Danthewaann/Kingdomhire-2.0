@@ -6,6 +6,7 @@ use App\VehicleRate;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Http\Request;
+use Session;
 
 class VehicleRatesController extends Controller
 {
@@ -43,18 +44,29 @@ class VehicleRatesController extends Controller
                 ->withErrors($validator);
         }
 
-        VehicleRate::create(array(
+        $vehicle_rate = VehicleRate::create(array(
             'name' => $request->get('name'),
             'weekly_rate_min' => $request->get('weekly_rate_min'),
             'weekly_rate_max' => $request->get('weekly_rate_max')
         ));
+
+        Session::flash('status', [
+            'weekly_rate_add' => 'Successfully created weekly rate '.$vehicle_rate->getFullName()
+        ]);
+
         return redirect()->route('admin.dashboard');
     }
 
     public function destroy($name)
     {
-        DB::table('vehicle_rates')->where('name', '=', $name)->delete();
-        return redirect()->back();
+        $vehicle_rate = VehicleRate::whereName($name)->get()->first();
+        $vehicle_rate->delete();
+
+        Session::flash('status', [
+            'weekly_rate' => 'Successfully deleted weekly rate '.$vehicle_rate->getFullName()
+        ]);
+
+        return redirect()->route('admin.dashboard');
     }
 
     public function showAddForm()
@@ -78,14 +90,17 @@ class VehicleRatesController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-        DB::table('vehicle_rates')
-            ->where('name', '=', $name)
-            ->update([
-                'name' => $request->name,
-                'weekly_rate_min' => $request->get('weekly_rate_min'),
-                'weekly_rate_max' => $request->get('weekly_rate_max'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]);
+        $vehicle_rate = VehicleRate::whereName($name)->get()->first();
+        $vehicle_rate->update([
+            'name' => $request->name,
+            'weekly_rate_min' => $request->get('weekly_rate_min'),
+            'weekly_rate_max' => $request->get('weekly_rate_max'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        Session::flash('status', [
+            'weekly_rate' => 'Successfully updated weekly rate '.$vehicle_rate->getFullName()
+        ]);
 
         return redirect()->route('admin.dashboard');
     }

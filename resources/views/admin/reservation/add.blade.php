@@ -89,8 +89,14 @@
         </div>
       </div>
     @endif
-    <div class="form-row">
-      <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Book Reservation</button>
+    <div class="row">
+      <div class="col-md-5 col-sm-7 col-xs-12">
+        <div class="btn-group btn-group-justified">
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Book Reservation</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </form>

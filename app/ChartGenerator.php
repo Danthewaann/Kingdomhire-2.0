@@ -50,14 +50,12 @@ class ChartGenerator
             'fontSize' => 14,
             'fontName' => 'Raleway',
             'chartArea' => [
-                'left' => '5%',
-                'width' => '90%',
+                'width' => '95%',
                 'height' => '80%'
             ],
             'legend' => [
                 'position' => 'top',
                 'textStyle' => [
-                    'fontSize' => 14,
                     'color' => 'white',
                     'fontName' => 'Raleway',
                 ]
@@ -142,12 +140,10 @@ class ChartGenerator
                 'width' => '95%',
                 'height' => '85%'
             ],
-            'fontSize' => 14,
             'fontName' => 'Raleway',
             'legend' => [
                 'position' => 'top',
                 'textStyle' => [
-                    'fontSize' => 14,
                     'color' => 'white',
                     'fontName' => 'Raleway',
                 ]
@@ -306,20 +302,20 @@ class ChartGenerator
             ],
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
-            'height' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth*30 : 400),
+//            'height' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth*30 : 400),
+            'height' => ($maxAmountOfHiresForMonth > 10 ? $maxAmountOfHiresForMonth*30 : 400),
             'width' => '100%',
             'chartArea' => [
-                'left' => '5%',
+                'left' => '7.5%',
+//                'left' => '5%',
                 'width' => '90%',
-                'height' => '85%'
+                'height' => '80%'
             ],
-            'fontSize' => 14,
             'fontName' => 'Raleway',
             'legend' => [
                 'maxLines' => count($years),
                 'position' => 'top',
                 'textStyle' => [
-                    'fontSize' => 14,
                     'color' => 'white',
                     'fontName' => 'Raleway',
                 ]
@@ -328,6 +324,8 @@ class ChartGenerator
                 'textStyle' => [
                     'color' => 'white',
                 ],
+                'slantedText' => 'true',
+                'slantedTextAngle' => 45
             ],
             'vAxis' => [
                 'baselineColor' => 'rgb(75, 206, 138)',

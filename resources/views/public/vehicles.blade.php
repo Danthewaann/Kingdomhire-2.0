@@ -12,33 +12,39 @@
 </div>
 <div class="jumbotron jumbotron-content">
   <div class="container">
-    <ul class="nav nav-tabs nav-justified vehicle-navbar-tabs">
-      <li class="active"><a data-toggle="tab" href="#all">All</a></li>
-      @foreach(array_keys($vehicles->groupBy('type')->toArray()) as $key)
-        <li><a data-toggle="tab" href="#{{ str_replace(" ", "-", $key) }}">{{ $key }}s</a></li>
-      @endforeach
-    </ul>
-    <div class="tab-content vehicles-tab-content">
-      <div id="all" class="tab-pane fade in active">
-        <div class="row">
-          @foreach($vehicles as $vehicle)
-            <div class="col-md-4 col-sm-6 col-xs-12">
-              @include('admin.vehicle.summary')
-            </div>
+    <div class="row">
+      <div class="col-lg-2 col-md-3 col-sm-3">
+        <ul class="nav nav-pills nav-stacked vehicle-navbar-tabs" id="myTabs">
+          <li class="active"><a href="#all" data-toggle="pill">All</a></li>
+          @foreach(array_keys($vehicles->groupBy('type')->toArray()) as $key)
+            <li><a data-toggle="pill" href="#{{ str_replace(" ", "-", $key) }}">{{ $key }}s</a></li>
           @endforeach
+        </ul>
+      </div>
+      <div class="col-lg-10 col-md-9 col-sm-9">
+        <div class="tab-content vehicles-tab-content">
+          <div id="all" class="tab-pane fade in active">
+            <div class="row">
+              @foreach($vehicles as $vehicle)
+                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12">
+                  @include('admin.vehicle.public-summary')
+                </div>
+              @endforeach
+            </div>
+          </div>
+          @for($i = 0; $i < count($vehicles->groupBy('type')); $i++)
+            <div id="{{ str_replace(" ", "-", array_keys($vehicles->groupBy('type')->toArray())[$i]) }}" class="tab-pane fade">
+              <div class="row">
+                @foreach($vehicles->groupBy('type')->slice($i, 1)->first() as $vehicle)
+                  <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12">
+                    @include('admin.vehicle.public-summary')
+                  </div>
+                @endforeach
+              </div>
+            </div>
+          @endfor
         </div>
       </div>
-      @for($i = 0; $i < count($vehicles->groupBy('type')); $i++)
-        <div id="{{ str_replace(" ", "-", array_keys($vehicles->groupBy('type')->toArray())[$i]) }}" class="tab-pane fade">
-          <div class="row">
-            @foreach($vehicles->groupBy('type')->slice($i, 1)->first() as $vehicle)
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                @include('admin.vehicle.summary')
-              </div>
-            @endforeach
-          </div>
-        </div>
-      @endfor
     </div>
   </div>
 </div>

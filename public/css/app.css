@@ -8465,7 +8465,7 @@ table {
 }
 
 .vehicle-table-admin tbody tr th {
-  background-color: #439D70;
+  background-color: #3b8b63;
   border-top: unset !important;
   border-left: 1px solid #4bce8a !important;
   text-align: right;
@@ -8626,7 +8626,8 @@ img.hover-shadow {
 
 .opening-hours th,
 .opening-hours td {
-  font-size: 1.4em;
+  font-size: 1.3em;
+  text-align: justify;
 }
 
 nav {
@@ -8649,11 +8650,14 @@ body {
   color: white !important;
 }
 
+.nav-pills > li > a {
+  color: white !important;
+  text-align: center;
+}
+
 .vehicles-tab-content {
   background-color: #439D70;
-  border-left: 1px solid #4bce8a;
-  border-right: 1px solid #4bce8a;
-  border-bottom: 1px solid #4bce8a;
+  border: 1px solid #4bce8a;
   padding: 20px;
 }
 
@@ -8700,10 +8704,16 @@ body {
   margin-bottom: 0 !important;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  background-color: #3b8b63;
   display: inline-block;
   vertical-align: middle;
-  height: 275px;
+  height: 200px;
   border: 1px solid #4bce8a;
+  line-height: 200px;
+}
+
+.vehicle-dashboard-img {
+  height: 275px;
   line-height: 275px;
 }
 
@@ -8718,12 +8728,15 @@ a > .vehicle-img {
 
 .vehicle-img-button {
   border-radius: 0px 4px 0px 0px !important;
-  border: 0 !important;
+  border-color: #4bce8a;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
 }
 
 .contact-info th,
 .contact-info td {
-  font-size: 1.4em;
+  font-size: 1.3em;
+  text-align: justify;
 }
 
 .public-navbar {
@@ -8755,9 +8768,7 @@ a > .vehicle-img {
 
 .vehicle-navbar-tabs > li > a:hover {
   background-color: #439D70 !important;
-  border-top: 1px solid #4bce8a;
-  border-left: 1px solid #4bce8a;
-  border-right: 1px solid #4bce8a;
+  border: 1px solid #4bce8a;
 }
 
 .vehicle-navbar-tabs > li > a:focus {
@@ -8798,6 +8809,12 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
   background-color: #439D70 !important;
 }
 
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  border: 1px solid #4bce8a;
+}
+
 .vehicles-list > tbody > tr > td {
   border-top: unset !important;
   border-left: 1px solid #4bce8a;
@@ -8820,10 +8837,6 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 
 #end_date_calender:hover {
   cursor: pointer;
-}
-
-#overall_vehicle_hires_per_month {
-  display: none;
 }
 
 div.scrollable-list {

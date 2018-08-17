@@ -21,7 +21,7 @@
     <div class="jumbotron jumbotron-home">
       <div class="bg"></div>
       <div class="container-fluid">
-        <div class="navbar-header admin-navbar-header">
+        <div class="navbar-header public-navbar-header">
           <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo" width="100%">
 
           <!-- Collapsed Hamburger -->
@@ -93,20 +93,12 @@
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              <span class="glyphicon glyphicon-cog"></span> Settings
+              <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Account
             </a>
             <ul class="dropdown-menu">
               <li>
                 <a href="#">Change password</a>
               </li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ Auth::user()->name }}
-            </a>
-
-            <ul class="dropdown-menu">
               <li>
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();

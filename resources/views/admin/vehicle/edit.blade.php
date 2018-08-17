@@ -62,17 +62,17 @@
       <div class="row">
         <div class="col-md-4 col-xs-12">
           <div class="btn-group btn-group-justified">
-            <div class="btn-group btn-group-lg">
+            <div class="btn-group">
               <button type="submit" form="vehicle_edit_form" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
             </div>
           </div>
         </div>
         <div class="col-md-7 col-xs-12 col-md-offset-1">
           <div class="btn-group btn-group-justified" style="float: right">
-            <div class="btn-group btn-group-lg">
-              <button type="submit" form="vehicle_duscontinue_form" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;Discontinue</button>
+            <div class="btn-group">
+              <button type="submit" form="vehicle_discontinue_form" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;Discontinue</button>
             </div>
-            <div class="btn-group btn-group-lg">
+            <div class="btn-group">
               <button type="submit" form="vehicle_delete_form" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
             </div>
           </div>

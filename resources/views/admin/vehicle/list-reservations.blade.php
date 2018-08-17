@@ -21,20 +21,24 @@
             @if($reservation->rate != null)
               £{{ $reservation->rate }}
             @else
-              Not assigned
+              N/A
             @endif
           </td>
           <td>{{ date('jS F Y', strtotime($reservation->start_date)) }}</td>
           <td>{{ date('jS F Y', strtotime($reservation->end_date)) }}</td>
           <td>
-            <div class="btn-group-vertical btn-group-lg">
-              <a href="{{ route('reservation.editForm', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
-                 class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit
-              </a>
-              {{ Form::open(['route' => ['reservation.cancel', $reservation->id], 'method' => 'delete']) }}
-              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
-              {{--{{ Form::submit('Cancel', ['class' => 'btn btn-primary', 'style' => 'width: 100%; margin-top: 5px;']) }}--}}
-              {{ Form::close() }}
+            <div class="btn-group btn-group-vertical" style="width: 100%">
+              <div class="btn-group">
+                <a href="{{ route('reservation.editForm', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
+                   class="btn btn-primary" style="width: 100%" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit
+                </a>
+              </div>
+              <div class="btn-group">
+                {{ Form::open(['route' => ['reservation.cancel', $reservation->id], 'method' => 'delete']) }}
+                <button type="submit" style="width: 100%" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
+                {{--{{ Form::submit('Cancel', ['class' => 'btn btn-primary', 'style' => 'width: 100%; margin-top: 5px;']) }}--}}
+                {{ Form::close() }}
+              </div>
             </div>
           </td>
         </tr>

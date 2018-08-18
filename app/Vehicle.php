@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\DB;
  * @property \Carbon\Carbon $updated_at
  * @property int|null $vehicle_rate_id
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\VehicleImage[] $images
- * @property-read \App\VehicleRate|null $rate
+ * @property-read \App\WeeklyRate|null $rate
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereFuelType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereGearType($value)
@@ -42,7 +42,7 @@ class Vehicle extends Model
 {
     protected $fillable = [
         'make', 'model', 'fuel_type', 'gear_type', 'seats',
-        'status', 'type', 'image_path', 'vehicle_rate_id'
+        'status', 'type', 'image_path', 'weekly_rate_id'
     ];
 
     /**
@@ -64,12 +64,12 @@ class Vehicle extends Model
     }
 
     /**
-     * Get price rate for the vehicle
+     * Get weekly price rate for the vehicle
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function rate()
     {
-        return $this->belongsTo(VehicleRate::class, 'vehicle_rate_id');
+        return $this->belongsTo(WeeklyRate::class, 'weekly_rate_id');
     }
 
     /**

@@ -6,7 +6,7 @@ use App\ChartGenerator;
 use App\Hire;
 use App\Vehicle;
 use App\Reservation;
-use App\VehicleRate;
+use App\WeeklyRate;
 
 class AdminController extends Controller
 {
@@ -39,7 +39,7 @@ class AdminController extends Controller
             'activeHires' => $activeHires,
             'pastHires' => $pastHires,
             'reservations' => $reservations,
-            'rates' => VehicleRate::all(),
+            'rates' => WeeklyRate::all(),
             'gantt' => ChartGenerator::drawVehiclesActiveHiresGanttChart($vehicles),
             'maxAmountOfHiresPerMonth' => $maxAmountOfHiresPerMonth
         ]);

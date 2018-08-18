@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         Eloquent::unguard();
         $this->call(UsersTableSeeder::class);
-        $this->call(VehicleRatesTableSeeder::class);
+        $this->call(WeeklyRatesTableSeeder::class);
         $this->call(VehiclesTableSeeder::class);
         $this->call(VehicleImagesTableSeeder::class);
         $this->call(ReservationsTableSeeder::class);

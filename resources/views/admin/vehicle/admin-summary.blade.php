@@ -34,7 +34,7 @@
     <th>Weekly Rate</th>
     <td>
       @if($vehicle->rate != null)
-        {{ $vehicle->rate->name }} (£{{ $vehicle->rate->weekly_rate_min }}-£{{ $vehicle->rate->weekly_rate_max }})
+        {{ $vehicle->rate->getFullName() }}
       @else
         N/A
       @endif

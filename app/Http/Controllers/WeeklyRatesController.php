@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\VehicleRate;
+use App\WeeklyRate;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Http\Request;
 use Session;
 
-class VehicleRatesController extends Controller
+class WeeklyRatesController extends Controller
 {
     private $rules = [
         'name' => 'required',
@@ -29,7 +29,7 @@ class VehicleRatesController extends Controller
     public function index()
     {
         return view('admin.admin-vehicles-rates', [
-            'rates' => VehicleRate::all()
+            'rates' => WeeklyRate::all()
         ]);
     }
 
@@ -44,7 +44,7 @@ class VehicleRatesController extends Controller
                 ->withErrors($validator);
         }
 
-        $vehicle_rate = VehicleRate::create(array(
+        $vehicle_rate = WeeklyRate::create(array(
             'name' => $request->get('name'),
             'weekly_rate_min' => $request->get('weekly_rate_min'),
             'weekly_rate_max' => $request->get('weekly_rate_max')
@@ -59,7 +59,7 @@ class VehicleRatesController extends Controller
 
     public function destroy($name)
     {
-        $vehicle_rate = VehicleRate::whereName($name)->get()->first();
+        $vehicle_rate = WeeklyRate::whereName($name)->get()->first();
         $vehicle_rate->delete();
 
         Session::flash('status', [
@@ -77,7 +77,7 @@ class VehicleRatesController extends Controller
     public function showEditForm($name)
     {
         return view('admin.vehicle-rate.edit', [
-            'rate' => VehicleRate::whereName($name)->get()->first()
+            'rate' => WeeklyRate::whereName($name)->get()->first()
         ]);
     }
 
@@ -90,7 +90,7 @@ class VehicleRatesController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-        $vehicle_rate = VehicleRate::whereName($name)->get()->first();
+        $vehicle_rate = WeeklyRate::whereName($name)->get()->first();
         $vehicle_rate->update([
             'name' => $request->name,
             'weekly_rate_min' => $request->get('weekly_rate_min'),

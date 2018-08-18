@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ChartGenerator;
 use App\VehicleImage;
-use App\VehicleRate;
+use App\WeeklyRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -63,7 +63,7 @@ class VehiclesController extends Controller
             'gear_type' => $request->get('gear_type'),
             'seats' => $request->get('seats'),
             'type' => $request->get('type'),
-            'vehicle_rate_id' => VehicleRate::whereName($request->get('rate_name'))->get()->first()->id
+            'vehicle_rate_id' => WeeklyRate::whereName($request->get('rate_name'))->get()->first()->id
         ));
 
         if($request->hasFile('vehicle_images')) {
@@ -134,14 +134,14 @@ class VehiclesController extends Controller
     {
         return view('admin.vehicle.edit', [
             'vehicle' => Vehicle::find($id),
-            'rates' => VehicleRate::all()
+            'rates' => WeeklyRate::all()
         ]);
     }
 
     public function showAddForm()
     {
         return view('admin.vehicle.add', [
-          'rates' => VehicleRate::all()
+          'rates' => WeeklyRate::all()
         ]);
     }
 
@@ -183,7 +183,7 @@ class VehiclesController extends Controller
         if($request->rate_name != "") {
             DB::table('vehicles')
                 ->where('id', '=', $id)->update([
-                    'vehicle_rate_id' => VehicleRate::whereName($request->get('rate_name'))->get()->first()->id,
+                    'vehicle_rate_id' => WeeklyRate::whereName($request->get('rate_name'))->get()->first()->id,
                     'updated_at' => date('Y-m-d H:i:s')
                 ]);
         }
@@ -213,7 +213,7 @@ class VehiclesController extends Controller
         return view('admin.vehicle.dashboard', [
             'vehicle' => $vehicle,
             'gantt' => ChartGenerator::drawVehicleReservationsAndHiresGanttChart($vehicle),
-            'rates' => VehicleRate::all(),
+            'rates' => WeeklyRate::all(),
             'pastHires' => $pastHires
         ]);
     }

@@ -75,7 +75,7 @@
               <li class="dropdown-submenu">
                 <a href="{{ route('vehicle-rate.index') }}" class="submenu">Edit weekly rates <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  @foreach(\App\VehicleRate::all() as $rate)
+                  @foreach(\App\WeeklyRate::all() as $rate)
                     <li>
                       <a href="{{ route('vehicle-rate.edit', ['rate' => $rate->name]) }}">{{ $rate->getFullName() }}</a>
                     </li>

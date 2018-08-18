@@ -40,4 +40,28 @@ class Hire extends Model
     {
         return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
+
+    public function conflicts(Reservation $reservation, &$errorMessages = [])
+    {
+        $conflicts = false;
+        if ($this->start_date < $reservation->start_date && $this->end_date >= $reservation->start_date) {
+            $errorMessages['end_date'] = 'End date conflicts with another reservation';
+            $conflicts = true;
+        }
+        elseif ($this->start_date >= $reservation->start_date && $this->end_date <= $reservation->end_date) {
+            $errorMessages['start_date'] = 'Start date conflicts with another reservation';
+            $errorMessages['end_date'] = 'End date conflicts with another reservation';
+            $conflicts = true;
+        }
+        elseif ($this->start_date <= $reservation->end_date && $this->end_date > $reservation->end_date) {
+            $errorMessages['start_date'] = 'Start date conflicts with another reservation';
+            $conflicts = true;
+        }
+
+        if ($conflicts) {
+            $errorMessages['reservation'] = $reservation;
+        }
+
+        return $conflicts;
+    }
 }

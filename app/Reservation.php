@@ -38,4 +38,61 @@ class Reservation extends Model
     {
         return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
+
+//    public function doesDatesConflict($start_date, $end_date)
+//    {
+////        $vehicle = Vehicle::find($this->vehicle_id);
+//        $reservations = $this->vehicle->reservations->reject(function($reservation) {
+//            return $reservation->id == $this->id;
+//        });
+//
+//        $activeHire = $this->vehicle->getActiveHire();
+//        $errorMessages = [];
+//        foreach ($reservations as $reservation) {
+//            if ($start_date < $reservation->start_date && $end_date >= $reservation->start_date) {
+//                if(!is_null($errorMessages)) {
+//                    $errorMessages['end_date'] = 'End date conflicts with another reservation';
+//                }
+//                $conflicts = true;
+//            }
+//            elseif ($start_date >= $reservation->start_date && $end_date <= $reservation->end_date) {
+//                if(!is_null($errorMessages)) {
+//                    $errorMessages['start_date'] = 'Start date conflicts with another reservation';
+//                    $errorMessages['end_date'] = 'End date conflicts with another reservation';
+//                }
+//                $conflicts = true;
+//            }
+//            elseif ($start_date <= $reservation->end_date && $end_date > $reservation->end_date) {
+//                if(!is_null($errorMessages)) {
+//                    $errorMessages['start_date'] = 'Start date conflicts with another reservation';
+//                }
+//                $conflicts = true;
+//            }
+//        }
+//    }
+
+    public function conflicts($other, &$errorMessages = [])
+    {
+        $conflicts = false;
+        $item_type = ($other instanceof Reservation ? 'another reservation' : 'current active hire');
+        if ($this->start_date < $other->start_date && $this->end_date >= $other->start_date) {
+            $errorMessages['end_date'] = 'End date conflicts with ' . $item_type;
+            $conflicts = true;
+        }
+        elseif ($this->start_date >= $other->start_date && $this->end_date <= $other->end_date) {
+            $errorMessages['start_date'] = 'Start date conflicts with '. $item_type;
+            $errorMessages['end_date'] = 'End date conflicts with '. $item_type;
+            $conflicts = true;
+        }
+        elseif ($this->start_date <= $other->end_date && $this->end_date > $other->end_date) {
+            $errorMessages['start_date'] = 'Start date conflicts with '. $item_type;
+            $conflicts = true;
+        }
+
+        if ($conflicts) {
+            $errorMessages[($other instanceof Reservation ? 'reservation' : 'hire')] = $other;
+        }
+
+        return $conflicts;
+    }
 }

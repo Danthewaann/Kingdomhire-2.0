@@ -14,21 +14,21 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Vehicle[] $vehicles
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleRate whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleRate whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleRate whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleRate whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleRate whereWeeklyRateMax($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleRate whereWeeklyRateMin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereWeeklyRateMax($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereWeeklyRateMin($value)
  * @mixin \Eloquent
  */
-class VehicleRate extends Model
+class WeeklyRate extends Model
 {
     protected $fillable = [
         'name', 'weekly_rate_min', 'weekly_rate_max'
     ];
 
-    protected $table = 'vehicle_rates';
+    protected $table = 'weekly_rates';
 
     /**
      * Get vehicles associated with the vehicle rate

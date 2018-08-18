@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVehicleRatesTable extends Migration
+class CreateWeeklyRatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateVehicleRatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('vehicle_rates', function (Blueprint $table) {
+        Schema::create('weekly_rates', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
             $table->float('weekly_rate_min', 5, 2);
@@ -30,6 +30,6 @@ class CreateVehicleRatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicle_rates');
+        Schema::dropIfExists('weekly_rates');
     }
 }

@@ -16,6 +16,9 @@
           <div class="col-md-12">
             <div class="form-group">
               <label for="vehicle_status">Status</label>
+              @if($vehicle->status == 'Out for hire')
+                <input type="text" id="vehicle_status" class="form-control" disabled value="{{ $vehicle->status }}">
+              @else
               <select id="vehicle_status" class="form-control" name="vehicle_status">
                 <option value="{{ $vehicle->status }}">{{ $vehicle->status }}</option>
                 @if($vehicle->status == 'Available')
@@ -24,6 +27,7 @@
                   <option value="Available">Available</option>
                 @endif
               </select>
+              @endif
             </div>
             <div class="form-group">
               <label for="rate_name">Weekly Rate</label>

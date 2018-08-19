@@ -71,7 +71,7 @@ class HireRequest extends FormRequest
 
             $errorMessages = [];
             foreach ($hire->vehicle->reservations as $reservation) {
-                $hire->conflicts($reservation, $errorMessages);
+                $hire->conflictsWith($reservation, $errorMessages);
             }
 
             if (!empty($errorMessages)) {

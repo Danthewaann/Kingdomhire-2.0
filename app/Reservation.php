@@ -26,9 +26,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Reservation whereMadeBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Reservation whereRate($value)
  */
-class Reservation extends Model
+class Reservation extends ConflictableModel
 {
     protected $fillable = ['vehicle_id', 'is_active', 'start_date', 'end_date', 'made_by', 'rate'];
+
+    protected $conflict_message = 'conflicts with another reservation';
 
     /**
      * Get vehicle associated with this reservation
@@ -39,28 +41,8 @@ class Reservation extends Model
         return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 
-    public function conflicts($other, &$errorMessages = [])
+    public function __toString()
     {
-        $conflicts = false;
-        $item_type = ($other instanceof Reservation ? 'another reservation' : 'current active hire');
-        if ($this->start_date < $other->start_date && $this->end_date >= $other->start_date) {
-            $errorMessages['end_date'] = 'End date conflicts with ' . $item_type;
-            $conflicts = true;
-        }
-        elseif ($this->start_date >= $other->start_date && $this->end_date <= $other->end_date) {
-            $errorMessages['start_date'] = 'Start date conflicts with '. $item_type;
-            $errorMessages['end_date'] = 'End date conflicts with '. $item_type;
-            $conflicts = true;
-        }
-        elseif ($this->start_date <= $other->end_date && $this->end_date > $other->end_date) {
-            $errorMessages['start_date'] = 'Start date conflicts with '. $item_type;
-            $conflicts = true;
-        }
-
-        if ($conflicts) {
-            $errorMessages[($other instanceof Reservation ? 'reservation' : 'hire')] = $other;
-        }
-
-        return $conflicts;
+        return "reservation";
     }
 }

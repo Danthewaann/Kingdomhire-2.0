@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Vehicle $vehicle
  * @mixin \Eloquent
  * @property int $id
+ * @property string|null $hired_by
+ * @property int|null $rate
  * @property string $start_date
  * @property string $end_date
  * @property int $is_active
@@ -23,14 +25,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereStartDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereVehicleId($value)
- * @property string|null $hired_by
- * @property int|null $rate
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereHiredBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereRate($value)
  */
-class Hire extends Model
+class Hire extends ConflictableModel
 {
     protected $fillable = ['vehicle_id', 'is_active', 'start_date', 'end_date', 'hired_by', 'rate'];
+
+    protected $conflict_message = 'conflicts with current active hire';
 
     /**
      * Get vehicle associated with this hire
@@ -41,27 +43,8 @@ class Hire extends Model
         return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 
-    public function conflicts(Reservation $reservation, &$errorMessages = [])
+    public function __toString()
     {
-        $conflicts = false;
-        if ($this->start_date < $reservation->start_date && $this->end_date >= $reservation->start_date) {
-            $errorMessages['end_date'] = 'End date conflicts with another reservation';
-            $conflicts = true;
-        }
-        elseif ($this->start_date >= $reservation->start_date && $this->end_date <= $reservation->end_date) {
-            $errorMessages['start_date'] = 'Start date conflicts with another reservation';
-            $errorMessages['end_date'] = 'End date conflicts with another reservation';
-            $conflicts = true;
-        }
-        elseif ($this->start_date <= $reservation->end_date && $this->end_date > $reservation->end_date) {
-            $errorMessages['start_date'] = 'Start date conflicts with another reservation';
-            $conflicts = true;
-        }
-
-        if ($conflicts) {
-            $errorMessages['reservation'] = $reservation;
-        }
-
-        return $conflicts;
+        return "hire";
     }
 }

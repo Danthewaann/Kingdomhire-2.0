@@ -70,7 +70,7 @@ class ReservationRequest extends FormRequest
             });
             $items = ($vehicle->hasActiveHire()) ? $reservations->merge(collect([$vehicle->getActiveHire()])) : $reservations;
             foreach ($items as $item) {
-                $reservation->conflicts($item, $errorMessages);
+                $reservation->conflictsWith($item, $errorMessages);
             }
 
             if (!empty($errorMessages)) {

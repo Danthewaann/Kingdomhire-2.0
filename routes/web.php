@@ -28,7 +28,8 @@ Route::get('/admin/vehicles/{vehicle_id}/edit', 'VehiclesController@showEditForm
 Route::patch('/admin/vehicles/{vehicle_id}/edit', 'VehiclesController@edit')->name('vehicle.edit');
 Route::get('/admin/vehicles/{id}/reservations', 'VehiclesController@showReservations')->name('vehicle.reservations');
 Route::get('/admin/vehicles/{id}/hires', 'VehiclesController@showHires')->name('vehicle.hires');
-Route::delete('/admin/vehicles/{vehicle_id}/discontinue', 'VehiclesController@discontinue')->name('vehicle.discontinue');
+Route::patch('/admin/vehicles/{vehicle_id}/discontinue', 'VehiclesController@discontinue')->name('vehicle.discontinue');
+Route::patch('/admin/vehicles/{vehicle_id}/re-continue', 'VehiclesController@recontinue')->name('vehicle.recontinue');
 Route::delete('/admin/vehicles/{vehicle_id}/delete', 'VehiclesController@destroy')->name('vehicle.delete');
 Route::get('/admin/vehicles/add', 'VehiclesController@showAddForm')->name('vehicle.addForm');
 Route::post('/admin/vehicles/add', 'VehiclesController@store')->name('vehicle.add');

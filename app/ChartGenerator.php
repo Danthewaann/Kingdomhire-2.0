@@ -45,7 +45,7 @@ class ChartGenerator
             'colors' => [
                 'rgb(75, 206, 138)'
             ],
-            'height' => count($activeVehicles)*55,
+            'height' => (count($activeVehicles) > 5) ? count($activeVehicles)*55 : 330,
             'width' => '100%',
             'fontSize' => 14,
             'fontName' => 'Raleway',
@@ -309,7 +309,7 @@ class ChartGenerator
                 'left' => '7.5%',
 //                'left' => '5%',
                 'width' => '90%',
-                'height' => '80%'
+                'height' => '90%'
             ],
             'fontName' => 'Raleway',
             'legend' => [
@@ -329,6 +329,8 @@ class ChartGenerator
             ],
             'vAxis' => [
                 'baselineColor' => 'rgb(75, 206, 138)',
+//                'textPosition' => 'none',
+//                'viewWindowMode' => 'maximized',
                 'textStyle' => [
                     'color' => 'white',
                 ],

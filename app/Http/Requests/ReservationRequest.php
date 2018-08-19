@@ -78,18 +78,18 @@ class ReservationRequest extends FormRequest
                 $this->failedValidation($validator);
             }
             else {
-                if ($reservation->start_date == date('Y-m-d')) {
-                    Hire::create([
-                        'vehicle_id' => $data['vehicle_id'],
-                        'hired_by' => $data['made_by'],
-                        'rate' => $data['rate'],
-                        'start_date' => $data['start_date'],
-                        'end_date' => $data['end_date']
-                    ]);
-                    $reservation->delete();
-                } else {
+//                if ($reservation->start_date == date('Y-m-d')) {
+//                    Hire::create([
+//                        'vehicle_id' => $data['vehicle_id'],
+//                        'hired_by' => $data['made_by'],
+//                        'rate' => $data['rate'],
+//                        'start_date' => $data['start_date'],
+//                        'end_date' => $data['end_date']
+//                    ]);
+//                    $reservation->delete();
+//                } else {
                     $reservation->save();
-                }
+//                }
             }
         });
     }

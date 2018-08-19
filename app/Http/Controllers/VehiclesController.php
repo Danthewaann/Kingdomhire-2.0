@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\ChartGenerator;
+use App\Reservation;
 use App\VehicleImage;
 use App\WeeklyRate;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -21,6 +23,7 @@ class VehiclesController extends Controller
     ];
 
     private $edit_rules = [
+        'vehicle_status' => 'nullable',
         'vehicle_images_add' => 'nullable|array',
         'vehicle_images_del' => 'nullable|array'
     ];
@@ -94,34 +97,53 @@ class VehiclesController extends Controller
         return redirect()->route('admin.dashboard');
     }
 
-    public function discontinue($id)
+    public function recontinue($id)
     {
-        DB::table('vehicles')
-            ->where('id', '=', $id)
-            ->update(['is_active' => false, 'status' => 'Unavailable']);
-
-        DB::table('reservations')
-            ->where('vehicle_id', '=', $id)
-            ->delete();
-
-        DB::table('hires')
-            ->where('vehicle_id', '=', $id)
-            ->update(['is_active' => false]);
+        $vehicle = Vehicle::withTrashed()->where('id', $id)->get()->first();
+        $vehicle->status = 'Available';
+        $vehicle->save();
+        $vehicle->restore();
 
         Session::flash('status', [
-            'vehicle' => 'Successfully discontinued vehicle '.Vehicle::find($id)->name()
+            'info' => [
+                're-continue' => 'Successfully re-continued '.$vehicle->name()
+            ]
         ]);
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('vehicle.show', [
+            'vehicle' => $vehicle
+        ]);
+    }
+
+    public function discontinue($id)
+    {
+        $vehicle = Vehicle::find($id);
+        $vehicle->status = 'Unavailable';
+        Reservation::destroy($vehicle->reservations->pluck('id')->toArray());
+        if ($vehicle->hasActiveHire())  {
+            $activeHire = $vehicle->getActiveHire();
+            $activeHire->is_active = false;
+            $activeHire->save();
+        }
+
+        $vehicle->save();
+        $vehicle->delete();
+
+        Session::flash('status', [
+            'info' => [
+                'discontinue' => 'Successfully discontinued '.$vehicle->name()
+            ]
+        ]);
+
+        return redirect()->route('vehicle.show', [
+            'vehicle' => $vehicle
+        ]);
     }
 
     public function destroy($id)
     {
-        $vehicle = Vehicle::find($id);
-        try {
-            $vehicle->delete();
-        } catch (\Exception $e) {
-        }
+        $vehicle = Vehicle::withTrashed()->where('id', $id)->get()->first();
+        $vehicle->forceDelete();
 
         Session::flash('status', [
             'vehicle' => 'Successfully deleted vehicle '.$vehicle->name()
@@ -157,6 +179,10 @@ class VehiclesController extends Controller
         }
 
         $vehicle = Vehicle::find($id);
+        $vehicle->status = $request->vehicle_status;
+        $vehicle->weekly_rate_id = ($request->rate_name != "") ? WeeklyRate::whereName($request->get('rate_name'))->get()->first()->id : null;
+        $vehicle->save();
+
         if($request->hasFile('vehicle_images_add')) {
             $images = $request->file('vehicle_images_add');
             $i = count(VehicleImage::whereVehicleId($id)->get());
@@ -180,21 +206,6 @@ class VehiclesController extends Controller
             }
         }
 
-        if($request->rate_name != "") {
-            DB::table('vehicles')
-                ->where('id', '=', $id)->update([
-                    'vehicle_rate_id' => WeeklyRate::whereName($request->get('rate_name'))->get()->first()->id,
-                    'updated_at' => date('Y-m-d H:i:s')
-                ]);
-        }
-        else {
-            DB::table('vehicles')
-                ->where('id', '=', $id)->update([
-                    'vehicle_rate_id' => null,
-                    'updated_at' => date('Y-m-d H:i:s')
-                ]);
-        }
-
         Session::flash('status', [
             'edit' => 'Successfully edited '.$vehicle->name()
         ]);
@@ -206,10 +217,26 @@ class VehiclesController extends Controller
 
     public function show($id)
     {
-        $vehicle = Vehicle::find($id);
+        try {
+            $vehicle = Vehicle::findOrFail($id);
+        }
+        catch (ModelNotFoundException $exception) {
+            $vehicle = Vehicle::onlyTrashed()->where('id', $id)->get()->first();
+            if ($vehicle == null) {
+                throw $exception;
+            }
+            else {
+                $pastHires = $vehicle->getInactiveHires()->SortBy('end_date');
+                ChartGenerator::drawOverallPastHiresBarChart($pastHires);
+                return view('admin.vehicle.dashboard-discontinued', [
+                    'vehicle' => $vehicle,
+                    'pastHires' => $pastHires
+                ]);
+            }
+        }
+
         $pastHires = $vehicle->getInactiveHires()->SortBy('end_date');
         ChartGenerator::drawPastHiresBarChart($pastHires);
-//        ChartGenerator::drawOverallPastHiresBarChart($pastHires);
         return view('admin.vehicle.dashboard', [
             'vehicle' => $vehicle,
             'gantt' => ChartGenerator::drawVehicleReservationsAndHiresGanttChart($vehicle),

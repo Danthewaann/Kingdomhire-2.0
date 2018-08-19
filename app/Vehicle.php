@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Vehicle
@@ -37,13 +37,31 @@ use Illuminate\Support\Facades\DB;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereVehicleRateId($value)
+ * @property \Carbon\Carbon|null $deleted_at
+ * @property int|null $weekly_rate_id
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Query\Builder|\App\Vehicle onlyTrashed()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereWeeklyRateId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Vehicle withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Vehicle withoutTrashed()
  */
 class Vehicle extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'make', 'model', 'fuel_type', 'gear_type', 'seats',
         'status', 'type', 'image_path', 'weekly_rate_id'
     ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
 
     /**
      * Get reservations for the vehicle

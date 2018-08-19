@@ -10,7 +10,7 @@ class PagesController extends Controller
     public function vehicles()
     {
         return view('public.vehicles', [
-            'vehicles' => Vehicle::whereIsActive(true)->get()
+            'vehicles' => Vehicle::with(['images', 'rate'])->get()
         ]);
     }
 
@@ -21,8 +21,9 @@ class PagesController extends Controller
 
     public function home()
     {
-        return view('public.home', [
-            'images' => VehicleImage::inRandomOrder()->get()
-        ]);
+//        return view('public.home', [
+//            'images' => VehicleImage::inRandomOrder()->get()
+//        ]);
+        return view('public.home');
     }
 }

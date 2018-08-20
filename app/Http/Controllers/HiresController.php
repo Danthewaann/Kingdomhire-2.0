@@ -58,7 +58,7 @@ class HiresController extends Controller
             ]);
         }
 
-        return redirect()->route('vehicle.show', [
+        return redirect()->route('admin.vehicle.home', [
             'vehicle_id' => $request->vehicle_id
         ]);
     }

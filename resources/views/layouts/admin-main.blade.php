@@ -34,21 +34,20 @@
         </div>
       </div>
     </div>
-    {{--@dd($vehicles)--}}
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="app-navbar-collapse">
         <!-- Left Side Of Navbar -->
         <ul class="nav navbar-nav">
           <li class="{{ Request::is('admin') ? 'active' : '' }}">
-            <a href="{{ route('admin.dashboard') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
+            <a href="{{ route('admin.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
           </li>
           <li class="dropdown{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              <span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Vehicles
+              <span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Vehicles <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="{{ route('vehicle.add') }}">Add a vehicle</a>
+                <a href="{{ route('admin.vehicle.addForm') }}">Add a vehicle</a>
               </li>
               <li class="divider"></li>
               <li class="dropdown-submenu">
@@ -56,7 +55,7 @@
                 <ul class="dropdown-menu">
                   @foreach(\App\Vehicle::all() as $vehicle)
                     <li>
-                      <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">{{ $vehicle->name() }}</a>
+                      <a href="{{ route('admin.vehicle.home', ['id' => $vehicle->id]) }}">{{ $vehicle->name() }}</a>
                     </li>
                   @endforeach
                 </ul>
@@ -65,19 +64,19 @@
           </li>
           <li class="dropdown{{ Request::is('admin/rates*') ? ' active' : '' }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              <span class="glyphicon glyphicon-gbp"></span>&nbsp;&nbsp;Weekly Rates
+              <span class="glyphicon glyphicon-gbp"></span>&nbsp;&nbsp;Weekly Rates <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="{{ route('vehicle-rate.add') }}">Add a weekly rate</a>
+                <a href="{{ route('admin.weekly-rate.add') }}">Add a weekly rate</a>
               </li>
               <li class="divider"></li>
               <li class="dropdown-submenu">
-                <a href="{{ route('vehicle-rate.index') }}" class="submenu">Edit weekly rates <span class="caret"></span></a>
+                <a href="{{ route('admin.weekly-rate.index') }}" class="submenu">Edit weekly rates <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   @foreach(\App\WeeklyRate::all() as $rate)
                     <li>
-                      <a href="{{ route('vehicle-rate.edit', ['rate' => $rate->name]) }}">{{ $rate->getFullName() }}</a>
+                      <a href="{{ route('admin.weekly-rate.edit', ['rate' => $rate->name]) }}">{{ $rate->getFullName() }}</a>
                     </li>
                   @endforeach
                 </ul>
@@ -93,7 +92,7 @@
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Account
+              <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Account <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li>

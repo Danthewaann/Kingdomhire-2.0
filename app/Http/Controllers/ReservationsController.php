@@ -32,7 +32,7 @@ class ReservationsController extends Controller
             ]
         ]);
 
-        return redirect()->route('vehicle.show', [
+        return redirect()->route('admin.vehicle.home', [
             'vehicle' => Vehicle::find($request->vehicle_id)
         ]);
     }
@@ -74,7 +74,7 @@ class ReservationsController extends Controller
             ]
         ]);
 
-        return redirect()->route('vehicle.show', [
+        return redirect()->route('admin.vehicle.home', [
             'id' => $request->vehicle_id
         ]);
     }

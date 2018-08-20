@@ -36,9 +36,9 @@
                     <b>Date added:</b> {{ $vehicle->created_at }} <br>
                     <b>Date discontinued:</b> {{ $vehicle->deleted_at }}
                   </p>
-                  {{ Form::open(['route' => ['vehicle.recontinue', $vehicle->id], 'method' => 'patch', 'id' => 'vehicle_recontinue_form']) }}
+                  {{ Form::open(['route' => ['admin.vehicle.recontinue', $vehicle->id], 'method' => 'patch', 'id' => 'vehicle_recontinue_form']) }}
                   {{ Form::close() }}
-                  {{ Form::open(['route' => ['vehicle.delete', $vehicle->id], 'method' => 'delete', 'id' => 'vehicle_delete_form']) }}
+                  {{ Form::open(['route' => ['admin.vehicle.delete', $vehicle->id], 'method' => 'delete', 'id' => 'vehicle_delete_form']) }}
                   {{ Form::close() }}
                   <div class="row">
                     <div class="col-md-7 col-xs-12">

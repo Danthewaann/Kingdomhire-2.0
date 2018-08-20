@@ -21,9 +21,6 @@ class PagesController extends Controller
 
     public function home()
     {
-//        return view('public.home', [
-//            'images' => VehicleImage::inRandomOrder()->get()
-//        ]);
         return view('public.home');
     }
 }

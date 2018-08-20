@@ -9,7 +9,7 @@
           <div class="col-md-12">
             <h3>Add a weekly rate</h3>
           </div>
-          <form action="{{ route('vehicle-rate.add') }}" method="post">
+          <form action="{{ route('admin.weekly-rate.add') }}" method="post">
             @csrf
             <div class="form-row">
               <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} col-md-12">
@@ -58,7 +58,7 @@
             </div>
             <div class="form-row">
               <div class="col-xs-12">
-                <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Add Weekly Rate</button>
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Add Weekly Rate</button>
               </div>
             </div>
           </form>

@@ -1,4 +1,4 @@
-<div class="col-md-5">
+<div class="col-md-4">
   @if(!empty(session()->get('status')['edit']))
     <div class="alert alert-success" style="margin-top: 22px">
       <span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;{{ session()->get('status')['edit'] }}
@@ -9,7 +9,7 @@
 <div class="col-md-12">
   <div class="row">
     <div class="col-md-4 col-xs-12">
-      <form action="{{ route('vehicle.edit', ['id' => $vehicle->id]) }}" method="post" enctype="multipart/form-data" id="vehicle_edit_form">
+      <form action="{{ route('admin.vehicle.edit', ['id' => $vehicle->id]) }}" method="post" enctype="multipart/form-data" id="vehicle_edit_form">
         @csrf
         @method('PATCH')
         <div class="row">
@@ -72,9 +72,9 @@
           </div>
         </div>
       </form>
-      {{ Form::open(['route' => ['vehicle.discontinue', $vehicle->id], 'method' => 'patch', 'id' => 'vehicle_discontinue_form']) }}
+      {{ Form::open(['route' => ['admin.vehicle.discontinue', $vehicle->id], 'method' => 'patch', 'id' => 'vehicle_discontinue_form']) }}
       {{ Form::close() }}
-      {{ Form::open(['route' => ['vehicle.delete', $vehicle->id], 'method' => 'delete', 'id' => 'vehicle_delete_form']) }}
+      {{ Form::open(['route' => ['admin.vehicle.delete', $vehicle->id], 'method' => 'delete', 'id' => 'vehicle_delete_form']) }}
       {{ Form::close() }}
       <div class="row">
         <div class="col-md-4 col-xs-12">

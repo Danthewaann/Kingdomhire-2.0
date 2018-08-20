@@ -29,12 +29,12 @@
           <td>
             <div class="btn-group btn-group-vertical" style="width: 100%">
               <div class="btn-group">
-                <a href="{{ route('reservation.editForm', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
+                <a href="{{ route('admin.vehicle.reservation.editForm', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
                    class="btn btn-primary" style="width: 100%" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit
                 </a>
               </div>
               <div class="btn-group">
-                {{ Form::open(['route' => ['reservation.cancel', $reservation->id], 'method' => 'delete']) }}
+                {{ Form::open(['route' => ['admin.vehicle.reservation.cancel', $reservation->id], 'method' => 'delete']) }}
                 <button type="submit" style="width: 100%" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
                 {{--{{ Form::submit('Cancel', ['class' => 'btn btn-primary', 'style' => 'width: 100%; margin-top: 5px;']) }}--}}
                 {{ Form::close() }}

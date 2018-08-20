@@ -54,19 +54,19 @@ class WeeklyRatesController extends Controller
             'weekly_rate_add' => 'Successfully created weekly rate '.$vehicle_rate->getFullName()
         ]);
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.home');
     }
 
     public function destroy($name)
     {
-        $vehicle_rate = WeeklyRate::whereName($name)->get()->first();
+        $vehicle_rate = WeeklyRate::whereName($name)->first();
         $vehicle_rate->delete();
 
         Session::flash('status', [
             'weekly_rate' => 'Successfully deleted weekly rate '.$vehicle_rate->getFullName()
         ]);
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.home');
     }
 
     public function showAddForm()
@@ -77,7 +77,7 @@ class WeeklyRatesController extends Controller
     public function showEditForm($name)
     {
         return view('admin.vehicle-rate.edit', [
-            'rate' => WeeklyRate::whereName($name)->get()->first()
+            'rate' => WeeklyRate::whereName($name)->first()
         ]);
     }
 
@@ -90,7 +90,7 @@ class WeeklyRatesController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-        $vehicle_rate = WeeklyRate::whereName($name)->get()->first();
+        $vehicle_rate = WeeklyRate::whereName($name)->first();
         $vehicle_rate->update([
             'name' => $request->name,
             'weekly_rate_min' => $request->get('weekly_rate_min'),
@@ -102,7 +102,7 @@ class WeeklyRatesController extends Controller
             'weekly_rate' => 'Successfully updated weekly rate '.$vehicle_rate->getFullName()
         ]);
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.home');
     }
 
 }

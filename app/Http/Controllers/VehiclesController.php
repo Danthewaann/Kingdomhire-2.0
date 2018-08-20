@@ -66,7 +66,7 @@ class VehiclesController extends Controller
             'gear_type' => $request->get('gear_type'),
             'seats' => $request->get('seats'),
             'type' => $request->get('type'),
-            'vehicle_rate_id' => WeeklyRate::whereName($request->get('rate_name'))->get()->first()->id
+            'vehicle_rate_id' => WeeklyRate::whereName($request->get('rate_name'))->first()->id
         ));
 
         if($request->hasFile('vehicle_images')) {
@@ -94,12 +94,12 @@ class VehiclesController extends Controller
             'vehicle' => 'Successfully created vehicle '.$vehicle->name()
         ]);
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.home');
     }
 
     public function recontinue($id)
     {
-        $vehicle = Vehicle::withTrashed()->where('id', $id)->get()->first();
+        $vehicle = Vehicle::withTrashed()->where('id', $id)->first();
         $vehicle->status = 'Available';
         $vehicle->save();
         $vehicle->restore();
@@ -110,7 +110,7 @@ class VehiclesController extends Controller
             ]
         ]);
 
-        return redirect()->route('vehicle.show', [
+        return redirect()->route('admin.vehicle.home', [
             'vehicle' => $vehicle
         ]);
     }
@@ -135,21 +135,21 @@ class VehiclesController extends Controller
             ]
         ]);
 
-        return redirect()->route('vehicle.show', [
+        return redirect()->route('admin.vehicle.home', [
             'vehicle' => $vehicle
         ]);
     }
 
     public function destroy($id)
     {
-        $vehicle = Vehicle::withTrashed()->where('id', $id)->get()->first();
+        $vehicle = Vehicle::withTrashed()->where('id', $id)->first();
         $vehicle->forceDelete();
 
         Session::flash('status', [
             'vehicle' => 'Successfully deleted vehicle '.$vehicle->name()
         ]);
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.home');
     }
 
     public function showEditForm($id)
@@ -163,7 +163,8 @@ class VehiclesController extends Controller
     public function showAddForm()
     {
         return view('admin.vehicle.add', [
-          'rates' => WeeklyRate::all()
+            'rates' => WeeklyRate::all(),
+            'types' => Vehicle::$types
         ]);
     }
 
@@ -179,8 +180,8 @@ class VehiclesController extends Controller
         }
 
         $vehicle = Vehicle::find($id);
-        $vehicle->status = $request->vehicle_status;
-        $vehicle->weekly_rate_id = ($request->rate_name != "") ? WeeklyRate::whereName($request->get('rate_name'))->get()->first()->id : null;
+        $vehicle->status = ($request->vehicle_status == null) ? $vehicle->status : $request->vehicle_status;
+        $vehicle->weekly_rate_id = ($request->rate_name != "") ? WeeklyRate::whereName($request->get('rate_name'))->first()->id : null;
         $vehicle->save();
 
         if($request->hasFile('vehicle_images_add')) {
@@ -210,7 +211,7 @@ class VehiclesController extends Controller
             'edit' => 'Successfully edited '.$vehicle->name()
         ]);
 
-        return redirect()->route('vehicle.show', [
+        return redirect()->route('admin.vehicle.home', [
             'vehicle' => $vehicle
         ]);
     }
@@ -221,7 +222,7 @@ class VehiclesController extends Controller
             $vehicle = Vehicle::findOrFail($id);
         }
         catch (ModelNotFoundException $exception) {
-            $vehicle = Vehicle::onlyTrashed()->where('id', $id)->get()->first();
+            $vehicle = Vehicle::onlyTrashed()->where('id', $id)->first();
             if ($vehicle == null) {
                 throw $exception;
             }

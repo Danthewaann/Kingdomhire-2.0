@@ -1,15 +1,30 @@
 <div class="well">
   <div class="row">
     <div class="col-md-12">
-      @if($activeVehicles->isEmpty())
-        <h3>No vehicles present</h3>
-      @else
-        <h3>Vehicles</h3>
-        <h5>{{ count($activeVehicles) }} vehicle(s) in total</h5>
-      @endif
+      <div class="row">
+        <div class="col-md-2" style="text-align: center">
+          @if($activeVehicles->isEmpty())
+            <h3>No vehicles present</h3>
+          @else
+            <h3>Vehicles</h3>
+            <h5>{{ count($activeVehicles) }} vehicle(s) in total</h5>
+          @endif
+        </div>
+      {{--@if($activeVehicles->isEmpty())--}}
+        {{--<h3>No vehicles present</h3>--}}
+      {{--@else--}}
+        {{--<h3>Vehicles</h3>--}}
+        {{--<h5>{{ count($activeVehicles) }} vehicle(s) in total</h5>--}}
+      {{--@endif--}}
+        @if($gantt != null)
+          <div class="col-md-10">
+            <div style="padding: 0 0 30px 0; float: right; width: 100%">
+              {!! $gantt !!}
+            </div>
+          </div>
+        @endif
+      </div>
     </div>
-  </div>
-  <div class="row">
     <div class="col-lg-2 col-md-2 col-sm-2">
       <ul class="nav nav-pills nav-stacked vehicle-navbar-tabs" id="myTabs">
         <li class="active"><a href="#all" class="btn" data-toggle="pill">All</a></li>

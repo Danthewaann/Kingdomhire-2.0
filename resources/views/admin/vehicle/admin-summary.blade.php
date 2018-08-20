@@ -6,7 +6,7 @@
       </span>
     </div>
     <div style="position: absolute; left: 1px; top: 164px;">
-      <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-primary vehicle-img-button">Dashboard</a>
+      <a href="{{ route('admin.vehicle.home', ['id' => $vehicle->id]) }}" class="btn btn-primary vehicle-img-button">Dashboard</a>
     </div>
   </div>
 @else
@@ -15,7 +15,7 @@
       <div style="position: relative">
         @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img"/> @endif
           <div style="position: absolute; left: 1px; top: 164px;">
-            <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
+            <a href="{{ route('admin.vehicle.home', ['id' => $vehicle->id]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
           </div>
       </div>
     @endif

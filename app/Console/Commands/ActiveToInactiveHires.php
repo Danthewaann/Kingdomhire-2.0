@@ -47,14 +47,7 @@ class ActiveToInactiveHires extends Command
             if ($activeHire != null) {
                 if ($activeHire->end_date <= date('Y-m-d')) {
                     Hire::whereId($activeHire->id)->update(['is_active' => false]);
-//                    DB::table('hires')
-//                        ->where('id', '=', $activeHire->id)
-//                        ->update(['is_active' => false]);
-
                     Vehicle::whereId($vehicle->id)->update(['status' => 'Available']);
-//                    DB::table('vehicles')
-//                        ->where('id', '=', $vehicle->id)
-//                        ->update(['status' => 'Available']);
 
                     Log::channel('cron')->info("[ActiveToInactiveHires] Active hire [id = " . $activeHire->id .
                         ", start_date = " . $activeHire->start_date . ", end_date = " . $activeHire->end_date . "] set to inactive");

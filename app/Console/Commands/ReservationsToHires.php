@@ -55,12 +55,7 @@ class ReservationsToHires extends Command
                         'vehicle_id' => $reservation->vehicle->id,
                     ));
 
-//                    DB::table('reservations')
-//                        ->where('id', '=', $reservation->id)
-//                        ->delete();
-
                     Reservation::destroy($reservation->id);
-
                     Log::channel('cron')->info("[ReservationsToHires] Reservation [id = " . $reservation->id .
                         ", start_date = " . $reservation->start_date . ", end_date = " . $reservation->end_date . "] converted to hire");
                 }
@@ -68,9 +63,6 @@ class ReservationsToHires extends Command
 
             if($vehicle->hasActiveHire()) {
                 Vehicle::whereId($vehicle->id)->update(['status' => 'Out for hire']);
-//                DB::table('vehicles')
-//                    ->where('id', '=', $vehicle->id)
-//                    ->update(['status' => 'Out for hire']);
             }
         }
     }

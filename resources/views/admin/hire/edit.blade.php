@@ -15,7 +15,7 @@
         <div class="row">
           <div class="well">
             <h3>Edit active hire</h3>
-            <form action="{{ route('hire.edit', ['vehicle_id' => $vehicle->id, 'hire_id' => $hire->id]) }}" method="post">
+            <form action="{{ route('admin.vehicle.hire.edit', ['vehicle_id' => $vehicle->id, 'hire_id' => $hire->id]) }}" method="post">
               @csrf
               @method('PATCH')
               <div class="form-row">
@@ -114,7 +114,7 @@
                     <div class="col-xs-12">
                       <div class="btn-group">
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
-                        <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
+                        <a href="{{ route('admin.vehicle.home', ['id' => $vehicle->id]) }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
                       </div>
                     </div>
                   </div>

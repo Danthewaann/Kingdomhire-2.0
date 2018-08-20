@@ -34,12 +34,6 @@
   cursor: pointer;
 }
 
-.opening-hours th,
-.opening-hours td {
-  font-size: 1.3em;
-  text-align: justify;
-}
-
 nav {
   font-size: 1.2em !important;
 }
@@ -158,15 +152,11 @@ a > .vehicle-img {
   border-bottom: 0 !important;
 }
 
-//.vehicle-img-empty {
-//  border-color: $dark-green;
-//}
-
-
 .contact-info th,
-.contact-info td {
-  font-size: 1.3em;
-  //text-align: center;
+.opening-hours th,
+.contact-info td,
+.opening-hours td {
+  font-size: 1.2em;
   text-align: justify;
 }
 
@@ -284,6 +274,11 @@ td {
   //padding: unset !important;
 }
 
+.dropdown-menu > li > a,
+.dropdown-submenu > li > a {
+  text-align: center;
+}
+
 .dropdown-submenu {
   position: relative;
 }
@@ -373,3 +368,7 @@ div.scrollable-list::-webkit-scrollbar-thumb:hover {
 //  top: 0;
 //  left: 0;
 //}
+
+.navbar-nav > li > a {
+  text-align: center;
+}

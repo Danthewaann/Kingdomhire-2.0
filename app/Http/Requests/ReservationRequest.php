@@ -51,47 +51,48 @@ class ReservationRequest extends FormRequest
      */
     public function withValidator($validator)
     {
-        $validator->after(function (Validator $validator) {
-            $data = $validator->getData();
-            $reservation_id = isset($data['reservation_id']) ? $data['reservation_id'] : null;
-            $reservation = Reservation::findOrNew($reservation_id);
-            $reservation->setRawAttributes([
-                'vehicle_id' => $data['vehicle_id'],
-                'made_by' => $data['made_by'],
-                'rate' => $data['rate'],
-                'start_date' => $data['start_date'],
-                'end_date' => $data['end_date']
-            ]);
+        if ($validator->passes()) {
+            $validator->after(function (Validator $validator) {
+                $data = $validator->getData();
+                $reservation_id = isset($data['reservation_id']) ? $data['reservation_id'] : null;
+                $reservation = Reservation::findOrNew($reservation_id);
+                $reservation->setRawAttributes([
+                    'vehicle_id' => $data['vehicle_id'],
+                    'made_by' => $data['made_by'],
+                    'rate' => $data['rate'],
+                    'start_date' => $data['start_date'],
+                    'end_date' => $data['end_date']
+                ]);
 
-            $errorMessages = [];
-            $vehicle = $reservation->vehicle;
-            $reservations = $vehicle->reservations->reject(function($reservation) use ($reservation_id) {
-                return $reservation->id == $reservation_id;
-            });
-            $items = ($vehicle->hasActiveHire()) ? $reservations->merge(collect([$vehicle->getActiveHire()])) : $reservations;
-            foreach ($items as $item) {
-                $reservation->conflictsWith($item, $errorMessages);
-            }
+                $errorMessages = [];
+                $vehicle = $reservation->vehicle;
+                $reservations = $vehicle->reservations->reject(function ($reservation) use ($reservation_id) {
+                    return $reservation->id == $reservation_id;
+                });
+                $items = ($vehicle->hasActiveHire()) ? $reservations->merge(collect([$vehicle->getActiveHire()])) : $reservations;
+                foreach ($items as $item) {
+                    $reservation->conflictsWith($item, $errorMessages);
+                }
 
-            if (!empty($errorMessages)) {
-                $validator->errors()->merge($errorMessages);
-                $this->failedValidation($validator);
-            }
-            else {
-//                if ($reservation->start_date == date('Y-m-d')) {
-//                    Hire::create([
-//                        'vehicle_id' => $data['vehicle_id'],
-//                        'hired_by' => $data['made_by'],
-//                        'rate' => $data['rate'],
-//                        'start_date' => $data['start_date'],
-//                        'end_date' => $data['end_date']
-//                    ]);
-//                    $reservation->delete();
-//                } else {
+                if (!empty($errorMessages)) {
+                    $validator->errors()->merge($errorMessages);
+                    $this->failedValidation($validator);
+                } else {
+                    //                if ($reservation->start_date == date('Y-m-d')) {
+                    //                    Hire::create([
+                    //                        'vehicle_id' => $data['vehicle_id'],
+                    //                        'hired_by' => $data['made_by'],
+                    //                        'rate' => $data['rate'],
+                    //                        'start_date' => $data['start_date'],
+                    //                        'end_date' => $data['end_date']
+                    //                    ]);
+                    //                    $reservation->delete();
+                    //                } else {
                     $reservation->save();
-//                }
-            }
-        });
+                    //                }
+                }
+            });
+        }
     }
 
     /**

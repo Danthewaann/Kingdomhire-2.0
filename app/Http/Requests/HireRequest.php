@@ -51,37 +51,38 @@ class HireRequest extends FormRequest
      */
     public function withValidator($validator)
     {
-        $validator->after(function (Validator $validator) {
-            $data = collect($validator->getData());
-            $hire = Hire::find($data['hire_id']);
-            $original_data = collect($hire->getOriginal());
-            $data = $original_data->merge($data)->only([
-                'vehicle_id',
-                'hired_by',
-                'rate',
-                'start_date',
-                'end_date',
-                'is_active'
-            ]);
-            foreach (array_keys($data->toArray()) as $key) {
-                if($data[$key] != null) {
-                    $hire->setAttribute($key, $data[$key]);
+        if ($validator->passes()) {
+            $validator->after(function (Validator $validator) {
+                $data = collect($validator->getData());
+                $hire = Hire::find($data['hire_id']);
+                $original_data = collect($hire->getOriginal());
+                $data = $original_data->merge($data)->only([
+                    'vehicle_id',
+                    'hired_by',
+                    'rate',
+                    'start_date',
+                    'end_date',
+                    'is_active'
+                ]);
+                foreach (array_keys($data->toArray()) as $key) {
+                    if ($data[$key] != null) {
+                        $hire->setAttribute($key, $data[$key]);
+                    }
                 }
-            }
 
-            $errorMessages = [];
-            foreach ($hire->vehicle->reservations as $reservation) {
-                $hire->conflictsWith($reservation, $errorMessages);
-            }
+                $errorMessages = [];
+                foreach ($hire->vehicle->reservations as $reservation) {
+                    $hire->conflictsWith($reservation, $errorMessages);
+                }
 
-            if (!empty($errorMessages)) {
-                $validator->errors()->merge($errorMessages);
-                $this->failedValidation($validator);
-            }
-            else {
-                $hire->save();
-            }
-        });
+                if (!empty($errorMessages)) {
+                    $validator->errors()->merge($errorMessages);
+                    $this->failedValidation($validator);
+                } else {
+                    $hire->save();
+                }
+            });
+        }
     }
 
     /**

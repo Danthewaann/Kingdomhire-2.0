@@ -1,5 +1,5 @@
 <h3>Book reservation</h3>
-<form action="{{ route('reservation.log', ['id' => $vehicle->id]) }}" method="post">
+<form action="{{ route('admin.vehicle.reservation.add', ['id' => $vehicle->id]) }}" method="post">
   @csrf
   <div class="form-row">
     <div class="form-group{{ $errors->reservations->has('made_by') ? ' has-error' : '' }}">

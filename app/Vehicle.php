@@ -56,6 +56,21 @@ class Vehicle extends Model
         'status', 'type', 'image_path', 'weekly_rate_id'
     ];
 
+    public static $types = [
+        'Hatchback',
+        '4-by-4',
+        'Large Van',
+        'Small Van',
+        'People Carrier',
+        '4-door Saloon'
+    ];
+
+    public static $status = [
+        'Available',
+        'Unavailable',
+        'Out for hire'
+    ];
+
     /**
      * The attributes that should be mutated to dates.
      *

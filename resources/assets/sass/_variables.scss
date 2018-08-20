@@ -95,3 +95,33 @@ $nav-tabs-justified-active-link-border-color: rgb(75, 206, 138);
 //wells
 $well-bg: $dark-green;
 //$well-border: $lighter-green;
+
+//dropdowns
+//** Background for the dropdown menu.
+$dropdown-bg:                    $light-green;
+//** Dropdown menu `border-color`.
+$dropdown-border:                $lighter-green;
+//** Dropdown menu `border-color` **for IE8**.
+$dropdown-fallback-border:       $lighter-green;
+//** Divider color for between dropdown items.
+$dropdown-divider-bg:           $lighter-green;
+
+//** Dropdown link text color.
+$dropdown-link-color:            white;
+//** Hover color for dropdown links.
+$dropdown-link-hover-color:      white;
+//** Hover background for dropdown links.
+$dropdown-link-hover-bg:         $dark-green;
+
+//** Active dropdown menu item text color.
+//$dropdown-link-active-color:     $component-active-color !default;
+////** Active dropdown menu item background color.
+//$dropdown-link-active-bg:        $component-active-bg !default;
+//
+////** Disabled dropdown menu item background color.
+//$dropdown-link-disabled-color:   $gray-light !default;
+//
+////** Text color for headers within dropdown menus.
+//$dropdown-header-color:          $gray-light !default;
+
+$jumbotron-font-size: 18px;

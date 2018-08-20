@@ -4560,9 +4560,9 @@ tbody.collapse.in {
   list-style: none;
   font-size: 14px;
   text-align: left;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: #439D70;
+  border: 1px solid #4bce8a;
+  border: 1px solid #4bce8a;
   border-radius: 4px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
@@ -4578,7 +4578,7 @@ tbody.collapse.in {
   height: 1px;
   margin: 10px 0;
   overflow: hidden;
-  background-color: #e5e5e5;
+  background-color: #4bce8a;
 }
 
 .dropdown-menu > li > a {
@@ -4587,15 +4587,15 @@ tbody.collapse.in {
   clear: both;
   font-weight: normal;
   line-height: 1.6;
-  color: #333333;
+  color: white;
   white-space: nowrap;
 }
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   text-decoration: none;
-  color: #262626;
-  background-color: #f5f5f5;
+  color: white;
+  background-color: #3b8b63;
 }
 
 .dropdown-menu > .active > a,
@@ -6272,7 +6272,7 @@ a.badge:focus {
 
 .jumbotron p {
   margin-bottom: 15px;
-  font-size: 21px;
+  font-size: 18px;
   font-weight: 200;
 }
 
@@ -8624,12 +8624,6 @@ img.hover-shadow {
   cursor: pointer;
 }
 
-.opening-hours th,
-.opening-hours td {
-  font-size: 1.3em;
-  text-align: justify;
-}
-
 nav {
   font-size: 1.2em !important;
 }
@@ -8734,8 +8728,10 @@ a > .vehicle-img {
 }
 
 .contact-info th,
-.contact-info td {
-  font-size: 1.3em;
+.opening-hours th,
+.contact-info td,
+.opening-hours td {
+  font-size: 1.2em;
   text-align: justify;
 }
 
@@ -8821,6 +8817,11 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
   padding: unset !important;
 }
 
+.dropdown-menu > li > a,
+.dropdown-submenu > li > a {
+  text-align: center;
+}
+
 .dropdown-submenu {
   position: relative;
 }
@@ -8898,5 +8899,9 @@ div.scrollable-list::-webkit-scrollbar-thumb:hover {
 .file-input + label {
   cursor: pointer;
   /* "hand" cursor */
+}
+
+.navbar-nav > li > a {
+  text-align: center;
 }
 

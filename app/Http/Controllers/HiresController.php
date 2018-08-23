@@ -29,13 +29,13 @@ class HiresController extends Controller
         $hire = Hire::find($hire_id);
         if($hire->is_active == true) {
             return view('admin.hire.edit', [
-                'vehicle' => Vehicle::find($vehicle_id),
+                'vehicle' => Vehicle::withTrashed()->where('id', $vehicle_id)->first(),
                 'hire' => $hire
             ]);
         }
         else {
             return view('admin.hire.edit-past-hire', [
-                'vehicle' => Vehicle::find($vehicle_id),
+                'vehicle' => Vehicle::withTrashed()->where('id', $vehicle_id)->first(),
                 'hire' => $hire
             ]);
         }

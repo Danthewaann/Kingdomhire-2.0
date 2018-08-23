@@ -57,3 +57,24 @@ table {
     }
   }
 }
+
+.panel-table {
+  thead {
+    th.first {
+      padding-left: 10px;
+    }
+    th {
+      border: 0 !important;
+    }
+  }
+  tbody {
+    tr {
+      th.first {
+        padding-left: 10px;
+      }
+      td.first {
+        padding-left: 10px;
+      }
+    }
+  }
+}

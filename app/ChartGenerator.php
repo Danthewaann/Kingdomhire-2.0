@@ -45,7 +45,7 @@ class ChartGenerator
             'colors' => [
                 'rgb(75, 206, 138)'
             ],
-            'height' => (count($activeVehicles) > 5) ? count($activeVehicles)*55 : 330,
+            'height' => (count($activeVehicles) > 1) ? count($activeVehicles)*65 : 200,
             'width' => '100%',
             'fontSize' => 14,
             'fontName' => 'Raleway',
@@ -134,10 +134,10 @@ class ChartGenerator
                 'rgb(75, 206, 138)'
             ],
             'height' => 400,
-            'width' => 755,
+            'width' => '100%',
             'chartArea' => [
                 'left' => '5%',
-                'width' => '95%',
+                'width' => '70%',
                 'height' => '85%'
             ],
             'fontName' => 'Raleway',
@@ -302,14 +302,12 @@ class ChartGenerator
             ],
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
-//            'height' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth*30 : 400),
-            'height' => ($maxAmountOfHiresForMonth > 10 ? $maxAmountOfHiresForMonth*30 : 400),
+            'height' => ($maxAmountOfHiresForMonth > 10 ? $maxAmountOfHiresForMonth*30 : 600),
             'width' => '100%',
             'chartArea' => [
                 'left' => '7.5%',
-//                'left' => '5%',
                 'width' => '90%',
-                'height' => '90%'
+                'height' => '85%'
             ],
             'fontName' => 'Raleway',
             'legend' => [
@@ -329,15 +327,13 @@ class ChartGenerator
             ],
             'vAxis' => [
                 'baselineColor' => 'rgb(75, 206, 138)',
-//                'textPosition' => 'none',
-//                'viewWindowMode' => 'maximized',
                 'textStyle' => [
                     'color' => 'white',
                 ],
                 'minValue' => 0,
-                'maxValue' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5),
+                'maxValue' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 10),
                 'gridlines' => [
-                    'count' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5)+1,
+                    'count' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 10)+1,
                     'color' => 'rgb(75, 206, 138)'
                 ],
             ],
@@ -376,7 +372,7 @@ class ChartGenerator
             $gantt = new GanttChart($data, array(
                 'title' => 'Schedule',
                 'cellwidth' => 30,
-                'cellheight' => 40
+                'cellheight' => 35
             ));
         }
 

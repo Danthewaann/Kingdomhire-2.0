@@ -24,7 +24,7 @@ class GanttChart extends Gantt
 
         // sidebar with labels
         $html[] = '<aside>';
-        $html[] = '<ul class="gantt-labels" style="margin-top: ' . (($this->options['cellheight']*2)+1) . 'px">';
+        $html[] = '<ul class="gantt-labels" style="margin-top: ' . (($this->options['cellheight']*2)-1) . 'px">';
         foreach($this->blocks as $i => $block) {
             $html[] = '<li class="gantt-label"><strong ' . $cellstyle . '>' . $block['label'] . '</strong></li>';
         }

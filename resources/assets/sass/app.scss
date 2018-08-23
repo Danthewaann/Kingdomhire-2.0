@@ -64,6 +64,7 @@ body {
   background-color: #439D70;
   border: 1px solid $lighter-green;
   padding: 20px;
+  border-radius: $border-radius-base;
 }
 
 .vehicles-tab-content-admin {
@@ -150,6 +151,11 @@ a > .vehicle-img {
   //-moz-border-radius-topright: 4px;
   border-left: 0 !important;
   border-bottom: 0 !important;
+}
+
+
+table.contact-info {
+  margin-bottom: 0 !important;
 }
 
 .contact-info th,
@@ -274,9 +280,17 @@ td {
   //padding: unset !important;
 }
 
+.dropdown-header {
+  //background-color: $dark-green;
+  //border-top: 1px solid $lighter-green;
+  border-bottom: 1px solid $lighter-green;
+}
+
+.dropdown-header,
 .dropdown-menu > li > a,
 .dropdown-submenu > li > a {
   text-align: center;
+  font-size: $font-size-base;
 }
 
 .dropdown-submenu {
@@ -302,24 +316,24 @@ td {
 //}
 
 div.scrollable-list {
-  overflow: auto;
+  overflow-x: auto;
 }
 
 div.scrollable-list::-webkit-scrollbar {
-  background: $light-green;
+  background: $dark-green;
   overflow: auto;
   width: 10px;
   height: 10px;
-  border-radius: 5px;
+  //border-radius: 5px;
 }
 
 div.scrollable-list::-webkit-scrollbar-track {
-  border-radius: 5px;
+  //border-radius: 5px;
 }
 
 div.scrollable-list::-webkit-scrollbar-thumb {
   background: $lighter-green;
-  border-radius: 5px;
+  //border-radius: 5px;
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
 }
 
@@ -371,4 +385,31 @@ div.scrollable-list::-webkit-scrollbar-thumb:hover {
 
 .navbar-nav > li > a {
   text-align: center;
+}
+
+.panel {
+  margin: 15px 0;
+  //margin: 0;
+}
+
+.panel-heading {
+  color: white !important;
+}
+
+.panel-body > h5,
+.panel-heading > h5 {
+  color: white;
+  margin: 5px 0 0 0;
+}
+
+.panel-body > h3,
+.panel-heading > h3 {
+  color: white;
+  margin: 0;
+}
+
+.has-error .input-group-addon,
+.has-error .help-block,
+.has-error .control-label {
+  color: white;
 }

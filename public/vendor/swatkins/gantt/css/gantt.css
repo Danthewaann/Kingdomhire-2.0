@@ -101,6 +101,10 @@
 .gantt header .gantt-day.today span {
   color: #fff; }
 
+
+/*.gantt-items {*/
+  /*overflow: auto;*/
+/*}*/
 /* data items */
 .gantt-item {
   position: relative; }
@@ -122,7 +126,8 @@
 
 .gantt-day.weekend span {
   /*background: #073642; */
-  background: #439D70;
+  /*background: #439D70;*/
+  background: #3b8b63;
   }
 
 /* data blocks */
@@ -176,13 +181,14 @@
 /* scrollbar styles */
 .gantt ::-webkit-scrollbar {
   /*background: #002b36;*/
-  border-radius: 5px;
-  background: #439D70;
+  /*border-radius: 5px;*/
+  background: #3b8b63;
+  /*background: #439D70;*/
   height: 10px; }
 
 .gantt ::-webkit-scrollbar-thumb {
   /*background: #93a1a1;*/
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   background: rgb(75, 206, 138);
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset; }
 

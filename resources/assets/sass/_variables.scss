@@ -8,12 +8,13 @@ $body-bg:  #439D70;
 $laravel-border-color: darken($body-bg, 10%);
 $list-group-border: $laravel-border-color;
 $navbar-default-border: $laravel-border-color;
-$panel-default-border: $laravel-border-color;
-$panel-inner-border: $laravel-border-color;
+//$panel-default-border: $laravel-border-color;
+//$panel-inner-border: $laravel-border-color;
 
 // Brands
 //$brand-primary: #439D70;
-$brand-info: #3b8b63;
+//$brand-info: #3b8b63;
+
 $brand-success: #2ab27b;
 $brand-warning: #cbb956;
 $brand-danger: #bf5329;
@@ -24,6 +25,7 @@ $lighter-green: rgb(75, 206, 138);
 $dark-green: #3b8b63;
 
 $brand-primary: $light-green;
+$brand-info: $dark-green;
 
 
 //rgb(75, 206, 138)
@@ -57,9 +59,14 @@ $input-border-focus: lighten($brand-primary, 25%);
 $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
-$panel-default-heading-bg: #338D60;
-$panel-border-radius: 0;
-$panel-inner-border: #3bb270;
+$panel-default-heading-bg: $light-green;
+//$panel-default-heading-bg: darken($dark-green, 1);
+$panel-default-border: $lighter-green;
+$panel-inner-border: $dark-green;
+$panel-bg: $light-green;
+$panel-heading-padding: 10px;
+//$panel-border-radius: 0;
+//$panel-inner-border: #3bb270;
 
 //tables
 $table-bg-hover: #368F62;
@@ -71,8 +78,9 @@ $jumbotron-bg: $brand-primary;
 
 //tabs
 $nav-tabs-border-color: unset;
+//$nav-pills-border-radius: 0;
 
-//thumbnails
+  //thumbnails
 //$thumbnail-padding: 0;
 $thumbnail-border: 0;
 //$thumbnail-bg: rgba(61,61,61,0.3);
@@ -113,6 +121,8 @@ $dropdown-link-hover-color:      white;
 //** Hover background for dropdown links.
 $dropdown-link-hover-bg:         $dark-green;
 
+$dropdown-header-color: white;
+
 //** Active dropdown menu item text color.
 //$dropdown-link-active-color:     $component-active-color !default;
 ////** Active dropdown menu item background color.
@@ -125,3 +135,30 @@ $dropdown-link-hover-bg:         $dark-green;
 //$dropdown-header-color:          $gray-light !default;
 
 $jumbotron-font-size: 18px;
+
+//** Background color on `.list-group-item`
+$list-group-bg:                 $light-green;
+//** `.list-group-item` border color
+$list-group-border:             $lighter-green;
+
+$list-group-link-color:         white;
+$list-group-hover-bg:           $dark-green;
+$list-group-link-hover-color:   white;
+
+$headings-small-color: white;
+
+//$border-radius-base: 0;
+//$border-radius-large: 0;
+
+$input-border: $lighter-green;
+$input-group-addon-bg: lighten($dark-green, 5);
+$input-color: white;
+$input-color-placeholder: $lighter-green;
+$input-bg: $dark-green;
+$input-border-focus: $lighter-green;
+$input-bg-disabled: lighten($light-green, 5);
+
+$state-danger-text: $lighter-green;
+$state-danger-bg: lighten($light-green, 5);
+$state-danger-border: $lighter-green;
+$alert-danger-text: white;

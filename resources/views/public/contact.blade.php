@@ -13,7 +13,7 @@
         <table class="table contact-info">
           <tr>
             <th>Phone</th>
-            <td>0777 55 34402</td>
+            <td>07775534402</td>
           </tr>
           <tr>
             <th>E-Mail</th>

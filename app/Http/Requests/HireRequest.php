@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Vehicle;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Reservation;
 use App\Hire;
@@ -53,26 +54,31 @@ class HireRequest extends FormRequest
     {
         if ($validator->passes()) {
             $validator->after(function (Validator $validator) {
+                $errorMessages = [];
                 $data = collect($validator->getData());
                 $hire = Hire::find($data['hire_id']);
-                $original_data = collect($hire->getOriginal());
-                $data = $original_data->merge($data)->only([
-                    'vehicle_id',
-                    'hired_by',
-                    'rate',
-                    'start_date',
-                    'end_date',
-                    'is_active'
-                ]);
-                foreach (array_keys($data->toArray()) as $key) {
-                    if ($data[$key] != null) {
-                        $hire->setAttribute($key, $data[$key]);
-                    }
+                if ($hire->is_active == false) {
+                    $hire->setAttribute('rate', $data['rate']);
                 }
+                else {
+                    $original_data = collect($hire->getOriginal());
+                    $data = $original_data->merge($data)->only([
+                        'vehicle_id',
+                        'hired_by',
+                        'rate',
+                        'start_date',
+                        'end_date',
+                        'is_active'
+                    ]);
+                    foreach (array_keys($data->toArray()) as $key) {
+                        if ($data[$key] != null) {
+                            $hire->setAttribute($key, $data[$key]);
+                        }
+                    }
 
-                $errorMessages = [];
-                foreach ($hire->vehicle->reservations as $reservation) {
-                    $hire->conflictsWith($reservation, $errorMessages);
+                    foreach ($hire->vehicle->reservations as $reservation) {
+                        $hire->conflictsWith($reservation, $errorMessages);
+                    }
                 }
 
                 if (!empty($errorMessages)) {

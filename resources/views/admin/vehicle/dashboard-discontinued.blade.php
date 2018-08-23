@@ -24,24 +24,33 @@
                       </div>
                     @endforeach
                   @endif
-                  <h3>Overall past hires</h3>
-                  <h5>{{ $pastHires->count() }} hire(s) in total</h5>
-                  <div id="overall_vehicle_hires_per_month" class="row"></div>
-                  @columnchart('Overall Hires per month', 'overall_vehicle_hires_per_month')
+                  <div class="col-md-12">
+                    <h3>Overall past hires</h3>
+                    <h5>{{ $pastHires->count() }} hire(s) in total</h5>
+                    <div id="overall_vehicle_hires_per_month" class="row"></div>
+                    @columnchart('Overall Hires per month', 'overall_vehicle_hires_per_month')
+                  </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                   <h3>Vehicle statistics</h3>
-                  <p style="font-size: 14px;">
-                    <b>Overall total profit:</b> £{{ $vehicle->getTotalProfit() }} <br>
-                    <b>Date added:</b> {{ $vehicle->created_at }} <br>
-                    <b>Date discontinued:</b> {{ $vehicle->deleted_at }}
-                  </p>
+                  <table class="table table-condensed">
+                    <tr>
+                      <th>Total made</th>
+                      <th>Date added</th>
+                      <th>Date discontinued</th>
+                    </tr>
+                    <tr>
+                      <td>£{{ $vehicle->getTotalProfit() }}</td>
+                      <td>{{ date('j/M/Y H:ia', strtotime($vehicle->created_at)) }}</td>
+                      <td>{{ date('j/M/Y H:ia', strtotime($vehicle->deleted_at)) }}</td>
+                    </tr>
+                  </table>
                   {{ Form::open(['route' => ['admin.vehicle.recontinue', $vehicle->id], 'method' => 'patch', 'id' => 'vehicle_recontinue_form']) }}
                   {{ Form::close() }}
                   {{ Form::open(['route' => ['admin.vehicle.delete', $vehicle->id], 'method' => 'delete', 'id' => 'vehicle_delete_form']) }}
                   {{ Form::close() }}
                   <div class="row">
-                    <div class="col-md-7 col-xs-12">
+                    <div class="col-md-8 col-xs-12">
                       <div class="btn-group btn-group-justified" style="float: right">
                         <div class="btn-group">
                           <button type="submit" form="vehicle_recontinue_form" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Re-continue</button>

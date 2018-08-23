@@ -78,7 +78,7 @@
               <div class="help-block">
                 @if($errors->reservations->has('reservation'))
                   <div class="row">
-                    <div class="col-md-12" style="margin-bottom: 20px">
+                    <div class="col-md-12" style="margin: 5px 0 5px 0">
                       <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>Other reservation</strong><br>
                       <strong>Start date = {{ $errors->reservations->get('reservation')['start_date'] }}</strong><br>
                       <strong>End date = {{ $errors->reservations->get('reservation')['end_date'] }}</strong>
@@ -87,7 +87,7 @@
                 @endif
                 @if($errors->reservations->has('hire'))
                   <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" style="margin: 5px 0 5px 0">
                       <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>Current active hire</strong><br>
                       <strong>Start date = {{ $errors->reservations->get('hire')['start_date'] }}</strong><br>
                       <strong>End date = {{ $errors->reservations->get('hire')['end_date'] }}</strong>

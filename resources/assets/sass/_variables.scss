@@ -62,8 +62,9 @@ $input-color-placeholder: lighten($text-color, 30%);
 $panel-default-heading-bg: $light-green;
 //$panel-default-heading-bg: darken($dark-green, 1);
 $panel-default-border: $lighter-green;
-$panel-inner-border: $dark-green;
+$panel-inner-border: $lighter-green;
 $panel-bg: $light-green;
+$panel-footer-bg: $light-green;
 $panel-heading-padding: 10px;
 //$panel-border-radius: 0;
 //$panel-inner-border: #3bb270;
@@ -90,7 +91,7 @@ $thumbnail-caption-color: white;
 $thumbnail-border-radius: 0;
 
 //tabs
-$nav-link-hover-bg: $brand-primary;
+$nav-link-hover-bg: $dark-green;
 $nav-tabs-border-color: $brand-primary;
 $nav-tabs-link-hover-border-color: $brand-primary;
 $nav-tabs-active-link-hover-bg: $navbar-default-link-active-bg;

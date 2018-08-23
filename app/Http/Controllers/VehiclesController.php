@@ -66,7 +66,7 @@ class VehiclesController extends Controller
             'gear_type' => $request->get('gear_type'),
             'seats' => $request->get('seats'),
             'type' => $request->get('type'),
-            'vehicle_rate_id' => WeeklyRate::whereName($request->get('rate_name'))->first()->id
+            'weekly_rate_id' => WeeklyRate::whereName($request->get('rate_name'))->first()->id
         ));
 
         if($request->hasFile('vehicle_images')) {
@@ -237,7 +237,8 @@ class VehiclesController extends Controller
         }
 
         $pastHires = $vehicle->getInactiveHires()->SortBy('end_date');
-        ChartGenerator::drawPastHiresBarChart($pastHires);
+//        ChartGenerator::drawPastHiresBarChart($pastHires);
+        ChartGenerator::drawOverallPastHiresBarChart($pastHires);
         return view('admin.vehicle.dashboard', [
             'vehicle' => $vehicle,
             'gantt' => ChartGenerator::drawVehicleReservationsAndHiresGanttChart($vehicle),

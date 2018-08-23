@@ -61,9 +61,11 @@ body {
 }
 
 .vehicles-tab-content {
-  background-color: #439D70;
+  //background-color: #439D70;
+  background-color: $light-green;
   border: 1px solid $lighter-green;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
+  margin-bottom: 19px;
   border-radius: $border-radius-base;
 }
 
@@ -124,7 +126,7 @@ body {
   display: inline-block;
   vertical-align: middle;
   height: 200px;
-  border: 1px solid $lighter-green;
+  //border: 1px solid $lighter-green;
   line-height: 200px;
 }
 
@@ -192,7 +194,7 @@ table.contact-info {
 
 .vehicle-dashboard-navbar-tabs > li > a:hover {
   //background-color: #3b8b63 !important;
-  background-color: $light-green !important;
+  background-color: $dark-green !important;
   border-top: 1px solid rgb(75, 206, 138);
   border-left: 1px solid rgb(75, 206, 138);
   border-right: 1px solid rgb(75, 206, 138);
@@ -209,32 +211,32 @@ table.contact-info {
 //}
 
 .vehicle-navbar-tabs > li > a:hover {
-  background-color: #439D70 !important;
+  background-color: $dark-green !important;
   border: 1px solid rgb(75, 206, 138);
 }
 
 .vehicle-navbar-tabs > li > a:focus {
   //background-color: #439D70;
-  background-color: $light-green;
+  background-color: $dark-green;
   //border-top: 1px solid rgb(75, 206, 138);;
   //padding: 10px 0px 0px 10px;
 }
 
 .vehicle-navbar-tabs > li > a:active {
   //background-color: #439D70 !important;
-  background-color: $light-green !important;
+  background-color: $dark-green !important;
   //border-top: 1px solid rgb(75, 206, 138);;
   //padding: 10px 0px 0px 10px;
 }
 
 .vehicle-dashboard-navbar-tabs > li > a:focus {
-  background-color: #3b8b63;
+  background-color: $dark-green;
   //border-top: 1px solid rgb(75, 206, 138);;
   //padding: 10px 0px 0px 10px;
 }
 
 .vehicle-dashboard-navbar-tabs > li > a:active {
-  background-color: #3b8b63 !important;
+  background-color: $dark-green !important;
   //border-top: 1px solid rgb(75, 206, 138);;
   //padding: 10px 0px 0px 10px;
 }
@@ -251,7 +253,7 @@ nav-tabs-justified > .active > a,
 .nav-tabs-justified > .active > a:focus,
 .nav-tabs.nav-justified > .active > a:focus {
   //background-color: #439D70 !important;
-  background-color: $light-green !important;
+  background-color: $dark-green !important;
 }
 
 nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
@@ -261,7 +263,13 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 .nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a:focus,
 .nav-tabs.nav-justified.vehicle-dashboard-navbar-tabs > .active > a:focus {
   //background-color: #3b8b63 !important;
-  background-color: $light-green !important;
+  background-color: $dark-green !important;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  background-color: $dark-green !important;
 }
 
 .nav-pills > li.active > a,
@@ -388,7 +396,7 @@ div.scrollable-list::-webkit-scrollbar-thumb:hover {
 }
 
 .panel {
-  margin: 15px 0;
+  //margin: 15px 0;
   //margin: 0;
 }
 
@@ -412,4 +420,12 @@ div.scrollable-list::-webkit-scrollbar-thumb:hover {
 .has-error .help-block,
 .has-error .control-label {
   color: white;
+}
+
+.well {
+  padding: 19px 19px 0 19px;
+}
+
+.alert-danger {
+  margin-bottom: 0;
 }

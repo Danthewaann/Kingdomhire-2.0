@@ -21,7 +21,7 @@
     <div class="jumbotron jumbotron-home">
       <div class="bg"></div>
       <div class="container-fluid">
-        <div class="navbar-header admin-navbar-header">
+        <div class="navbar-header public-navbar-header">
           <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo" width="100%">
 
           <!-- Collapsed Hamburger -->
@@ -39,31 +39,57 @@
         <!-- Left Side Of Navbar -->
         <ul class="nav navbar-nav">
           <li class="{{ Request::is('admin') ? 'active' : '' }}">
-            <a href="{{ route('admin.dashboard') }}">Home</a>
+            <a href="{{ route('admin.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
           </li>
           <li class="dropdown{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              Vehicles <span class="caret"></span>
+              <span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Vehicles <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="{{ route('vehicle.add') }}">Add a vehicle</a>
+                <a href="{{ route('admin.vehicle.addForm') }}">Add a vehicle</a>
               </li>
-              <li>
-                <a href="{{ route('admin.vehicles') }}">Vehicles list</a>
+              {{--<li class="divider"></li>--}}
+              <li class="dropdown-submenu">
+                <a href="#" class="submenu">Vehicles list <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-header">Active vehicles</li>
+                  @foreach(\App\Vehicle::all() as $activeVehicle)
+                    <li>
+                      <a href="{{ route('admin.vehicle.home', ['id' => $activeVehicle->id]) }}">{{ $activeVehicle->name() }}</a>
+                    </li>
+                  @endforeach
+                  @if(\App\Vehicle::onlyTrashed()->get()->isNotEmpty())
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Discontinued vehicles</li>
+                    @foreach(\App\Vehicle::onlyTrashed()->get() as $inactiveVehicle)
+                      <li>
+                        <a href="{{ route('admin.vehicle.home', ['id' => $inactiveVehicle->id]) }}">{{ $inactiveVehicle->name() }}</a>
+                      </li>
+                    @endforeach
+                  @endif
+                </ul>
               </li>
             </ul>
           </li>
           <li class="dropdown{{ Request::is('admin/rates*') ? ' active' : '' }}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              Rates <span class="caret"></span>
+              <span class="glyphicon glyphicon-gbp"></span>&nbsp;&nbsp;Weekly Rates <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="{{ route('vehicle-rate.add') }}">Add a rate</a>
+                <a href="{{ route('admin.weekly-rate.add') }}">Add a weekly rate</a>
               </li>
-              <li>
-                <a href="{{ route('vehicle-rate.index') }}">Manage rates</a>
+              {{--<li class="divider"></li>--}}
+              <li class="dropdown-submenu">
+                <a href="{{ route('admin.weekly-rate.index') }}" class="submenu">Edit weekly rates <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  @foreach(\App\WeeklyRate::all() as $rate)
+                    <li>
+                      <a href="{{ route('admin.weekly-rate.edit', ['rate' => $rate->name]) }}">{{ $rate->getFullName() }}</a>
+                    </li>
+                  @endforeach
+                </ul>
               </li>
             </ul>
           </li>
@@ -72,14 +98,16 @@
         <ul class="nav navbar-nav navbar-right">
           <!-- Authentication Links -->
           <li>
-            <a href="{{ route('public.home') }}">Main Site</a>
+            <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;Main Site</a>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-              {{ Auth::user()->name }} <span class="caret"></span>
+              <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Account <span class="caret"></span>
             </a>
-
             <ul class="dropdown-menu">
+              <li>
+                <a href="#">Change password</a>
+              </li>
               <li>
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
@@ -98,17 +126,9 @@
     </div>
   </nav>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        @include('admin.vehicle.summary')
-      </div>
-      <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
-        <div class="jumbotron jumbotron-vehicle-dashboard">
-          @yield('content')
-        </div>
-      </div>
-    </div>
+  @include('admin.vehicle.dashboard-summary')
+  <div class="col-lg-9 col-md-7 col-sm-7">
+    @yield('content')
   </div>
 </div>
 
@@ -122,6 +142,41 @@
       dateFormat: "yy-mm-dd"
     });
   });
+</script>
+<script>
+  // Open the Modal
+  function openModal(id) {
+    document.getElementById(id).style.display = "block";
+  }
+
+  // Close the Modal
+  function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+  }
+
+  var slideIndex = 1;
+  // showSlides(slideIndex);
+
+  // Next/previous controls
+  function plusSlides(n, vehicle_id) {
+    showSlides(slideIndex += n, vehicle_id);
+  }
+
+  // Thumbnail image controls
+  function currentSlide(n, vehicle_id) {
+    showSlides(slideIndex = n, vehicle_id);
+  }
+
+  function showSlides(n, vehicle_id) {
+    var i;
+    var slides = document.querySelectorAll('.'+vehicle_id);
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex-1].style.display = "block";
+  }
 </script>
 </body>
 </html>

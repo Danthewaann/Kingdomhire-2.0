@@ -1,14 +1,16 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
-    @if(!$vehicle->getCompleteHires()->isEmpty())
-      <h3>Past hires</h3>
-      <h5>{{ count($vehicle->getCompleteHires()) }} hire(s) in total</h5>
-    @else
-      <h3>No past hires</h3>
-    @endif
-  </div>
   @if(!$vehicle->getCompleteHires()->isEmpty())
-    <div class="scrollable-list" style="max-height: 490px">
+  <div class="panel-heading">
+    <h3>Past hires</h3>
+    <h5>{{ count($vehicle->getCompleteHires()) }} hire(s) in total</h5>
+  </div>
+  @else
+    <div class="panel-body">
+      <h3 style="margin-left: -5px">No past hires</h3>
+    </div>
+  @endif
+  @if(!$vehicle->getCompleteHires()->isEmpty())
+    <div class="scrollable-list" style="max-height: 229px">
       <table class="table table-condensed panel-table">
         <thead>
           <tr>

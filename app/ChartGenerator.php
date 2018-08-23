@@ -302,12 +302,12 @@ class ChartGenerator
             ],
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
-            'height' => ($maxAmountOfHiresForMonth > 10 ? $maxAmountOfHiresForMonth*30 : 600),
+            'height' => ($maxAmountOfHiresForMonth > 10 ? $maxAmountOfHiresForMonth*25 : 346),
             'width' => '100%',
             'chartArea' => [
                 'left' => '7.5%',
                 'width' => '90%',
-                'height' => '85%'
+                'height' => '80%'
             ],
             'fontName' => 'Raleway',
             'legend' => [
@@ -331,9 +331,9 @@ class ChartGenerator
                     'color' => 'white',
                 ],
                 'minValue' => 0,
-                'maxValue' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 10),
+                'maxValue' => ($maxAmountOfHiresForMonth >= 5 ? $maxAmountOfHiresForMonth : 5),
                 'gridlines' => [
-                    'count' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 10)+1,
+                    'count' => ($maxAmountOfHiresForMonth >= 5 ? $maxAmountOfHiresForMonth : 5)+1,
                     'color' => 'rgb(75, 206, 138)'
                 ],
             ],
@@ -370,7 +370,6 @@ class ChartGenerator
         $gantt = null;
         if ($reservationsAndActiveHire->isNotEmpty()) {
             $gantt = new GanttChart($data, array(
-                'title' => 'Schedule',
                 'cellwidth' => 30,
                 'cellheight' => 35
             ));
@@ -401,9 +400,8 @@ class ChartGenerator
         $gantt = null;
         if (count($data) > 0) {
             $gantt = new GanttChart($data, array(
-                'title' => "Active <br> Hires",
-                'cellwidth' => 30,
-                'cellheight' => 40
+                'cellwidth' => 35,
+                'cellheight' => 35
             ));
         }
 

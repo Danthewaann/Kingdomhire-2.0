@@ -31,20 +31,22 @@ table {
   }
 }
 
-.vehicle-table-admin {
-  height: 260px !important;
-  margin-bottom: 20px !important;
+.vehicle-table-dashboard {
+  height: 254px !important;
   tbody {
     tr {
       th {
         background-color: $dark-green;
         border-top: unset !important;
-        border-left: 1px solid $lighter-green !important;
+        //border-left: 1px solid $lighter-green !important;
         text-align: right;
         vertical-align: middle;
       }
       th.last {
-        border-bottom: 1px solid $lighter-green !important;
+        //border-bottom: 1px solid $lighter-green !important;
+      }
+      th.first {
+        border-top: 1px solid $lighter-green !important;
       }
       td {
         vertical-align: middle;
@@ -52,11 +54,73 @@ table {
         border-left: 1px solid $lighter-green !important;
       }
       td.first {
-        border-top: unset !important;
+        border-top: 1px solid $lighter-green !important;
+      }
+      td.last {
+        border-bottom: unset !important;
       }
     }
   }
 }
+
+.vehicle-table-admin {
+  height: 244px !important;
+  tbody {
+    tr {
+      th {
+        background-color: $dark-green;
+        border-top: unset !important;
+        //border-left: 1px solid $lighter-green !important;
+        text-align: right;
+        vertical-align: middle;
+      }
+      th.last {
+        //border-bottom: 1px solid $lighter-green !important;
+      }
+      th.first {
+        border-top: 1px solid $lighter-green !important;
+      }
+      td {
+        vertical-align: middle;
+        border-bottom: 1px solid $lighter-green !important;
+        border-left: 1px solid $lighter-green !important;
+      }
+      td.first {
+        border-top: 1px solid $lighter-green !important;
+      }
+      td.last {
+        border-bottom: unset !important;
+      }
+    }
+  }
+}
+
+//.vehicle-table-admin {
+//  height: 280px !important;
+//  margin-bottom: 20px !important;
+//  tbody {
+//    tr {
+//      th {
+//        background-color: $dark-green;
+//        border-top: unset !important;
+//        border-left: 1px solid $lighter-green !important;
+//        text-align: right;
+//        vertical-align: middle;
+//      }
+//      th.last {
+//        border-bottom: 1px solid $lighter-green !important;
+//      }
+//      td {
+//        vertical-align: middle;
+//        border-bottom: 1px solid $lighter-green !important;
+//        border-left: 1px solid $lighter-green !important;
+//      }
+//      td.first {
+//        border-top: unset !important;
+//      }
+//    }
+//  }
+//}
 
 .panel-table {
   thead {

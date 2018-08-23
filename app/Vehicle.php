@@ -128,6 +128,51 @@ class Vehicle extends Model
        return $this->hires->sum('rate');
     }
 
+    public function getYearlyProfits()
+    {
+        $years = [];
+        foreach ($this->hires as $hire) {
+            $year = date('Y', strtotime($hire->end_date));
+            if (!array_key_exists($year, $years)) {
+                $years[$year] = $hire->rate;
+            }
+            else {
+                $years[$year] += $hire->rate;
+            }
+        }
+
+        return collect($years)->sortKeysDesc();
+    }
+
+    public function getMonthlyProfits()
+    {
+        $years = [];
+        $months = [
+            'Jan' => 0,
+            'Feb' => 0,
+            'Mar' => 0,
+            'Apr' => 0,
+            'May' => 0,
+            'Jun' => 0,
+            'Jul' => 0,
+            'Aug' => 0,
+            'Sep' => 0,
+            'Oct' => 0,
+            'Nov' => 0,
+            'Dec' => 0
+        ];
+        foreach ($this->hires as $hire) {
+            $month = date('M', strtotime($hire->end_date));
+            $year = date('Y', strtotime($hire->end_date));
+            if (!array_key_exists($year, $years)) {
+                $years[$year] = $months;
+            }
+            $years[$year][$month] += $hire->rate;
+        }
+
+        return collect($years)->sortKeysDesc();
+    }
+
     public function getNextReservation()
     {
         return $this->reservations->sortBy('end_date')->first();

@@ -1,5 +1,5 @@
 /* The Modal (background) */
-.modal {
+.img-modal {
   display: none;
   position: fixed;
   z-index: 2000;
@@ -13,12 +13,12 @@
   transition: 0.5s;
 }
 
-.modal:after {
+.img-modal:after {
   transition: 0.5s;
 }
 
 /* Modal Content */
-.modal-content {
+.img-modal-content {
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -50,6 +50,7 @@
   display: none;
   position: relative;
   max-height: 700px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 /* Next & previous buttons */

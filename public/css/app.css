@@ -7377,9 +7377,9 @@ button.close {
 
 .modal-content {
   position: relative;
-  background-color: #fff;
+  background-color: #439D70;
   border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #4bce8a;
   border-radius: 6px;
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
@@ -7409,7 +7409,7 @@ button.close {
 
 .modal-header {
   padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #4bce8a;
 }
 
 .modal-header:before,
@@ -7439,7 +7439,7 @@ button.close {
 .modal-footer {
   padding: 15px;
   text-align: right;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #4bce8a;
 }
 
 .modal-footer:before,
@@ -8535,7 +8535,7 @@ table {
 
 /* The Modal (background) */
 
-.modal {
+.img-modal {
   display: none;
   position: fixed;
   z-index: 2000;
@@ -8550,14 +8550,14 @@ table {
   transition: 0.5s;
 }
 
-.modal:after {
+.img-modal:after {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
 /* Modal Content */
 
-.modal-content {
+.img-modal-content {
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -8590,6 +8590,8 @@ table {
   display: none;
   position: relative;
   max-height: 700px;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 /* Next & previous buttons */

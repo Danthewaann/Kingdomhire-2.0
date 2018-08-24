@@ -163,3 +163,10 @@ $state-danger-text: $lighter-green;
 $state-danger-bg: lighten($light-green, 5);
 $state-danger-border: $lighter-green;
 $alert-danger-text: white;
+
+//modal
+$modal-content-bg: $light-green;
+//$modal-backdrop-bg: $light-green;
+$modal-header-border-color: $lighter-green;
+$modal-footer-border-color: $lighter-green;
+$modal-content-border-color: $lighter-green;

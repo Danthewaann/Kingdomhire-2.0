@@ -156,9 +156,20 @@
       $( "#end_date" ).focus();
     });
 
-    // $("#hires_button").click(function () {
-    //   $("#overall_vehicle_hires_per_month").show();
-    // });
+    //Might need in the future
+    $('#form-modal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      var action_for = button.data('for');
+      var id = button.data('id');
+
+      var modal = $(this);
+      if (action_for === 'reservation') {
+        modal.find('.modal-title').text('Cancel Reservation');
+        modal.find('.modal-body').text('Are you sure you want to cancel this reservation?');
+        modal.find('.modal-body #yes-button')
+      }
+    })
+
   });
 </script>
 <script>

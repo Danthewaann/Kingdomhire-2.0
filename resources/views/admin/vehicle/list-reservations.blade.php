@@ -24,6 +24,7 @@
       </thead>
       <tbody>
         @foreach($vehicle->reservations->sortBy('end_date') as $reservation)
+          @include('admin.reservation.cancel-modal')
           <tr>
             <td class="first">{{ $reservation->made_by }}</td>
             <td>
@@ -43,9 +44,7 @@
                   </a>
                 </div>
                 <div class="btn-group">
-                  {{ Form::open(['route' => ['admin.vehicle.reservation.cancel', $reservation->id], 'method' => 'delete']) }}
-                  <button type="submit" style="width: 100%" class="btn btn-info"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
-                  {{ Form::close() }}
+                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reservation-{{ $reservation->id }}"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
                 </div>
               </div>
             </td>

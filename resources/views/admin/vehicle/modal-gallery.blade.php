@@ -1,6 +1,6 @@
-<div id="{{ str_replace(" ", "-", $vehicle->name()) }}" class="modal">
+<div id="{{ str_replace(" ", "-", $vehicle->name()) }}" class="img-modal">
   <span class="close-modal cursor" onclick="closeModal('{{ str_replace(" ", "-", $vehicle->name()) }}')"><span class="glyphicon glyphicon-remove"></span></span>
-  <div class="modal-content">
+  <div class="img-modal-content">
     @for($i = 0; $i < count($vehicle->images); $i++)
       <div class="mySlides {{ str_replace(" ", "-", $vehicle->name()).'-images' }}">
         <div class="numbertext">{{ $i+1 }} / {{ count($vehicle->images) }}</div>

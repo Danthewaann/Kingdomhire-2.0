@@ -1,6 +1,7 @@
 @extends('layouts.admin-main')
 
 @section('content')
+@include('admin.vehicle-rate.delete-modal')
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-4 col-md-8 col-sm-8 col-xs-12">
@@ -58,21 +59,15 @@
                 </div>
               </div>
             </form>
-            {{ Form::open(['route' => ['admin.weekly-rate.delete', $rate->name], 'method' => 'delete', 'id' => 'weekly_rate_delete_form']) }}
-            {{ Form::close() }}
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-3 col-sm-3 col-xs-3 col-md-offset-3">
                     <button type="submit" form="weekly_rate_edit_form" class="btn btn-info"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
                   </div>
                   <div class="col-md-4 col-md-offset-2">
-                    <button type="submit" form="weekly_rate_delete_form" class="btn btn-info" style="float: right"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#weekly-rate-{{ $rate->id }}-delete" style="float: right"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
                   </div>
                 </div>
-                {{--<div class="col-xs-12">--}}
-                  {{--<button type="submit" form="weekly_rate_edit_form" class="btn btn-info"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>--}}
-                  {{--<button type="submit" form="weekly_rate_delete_form" class="btn btn-info" style="float: right"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>--}}
-                {{--</div>--}}
               </div>
           </div>
         </div>

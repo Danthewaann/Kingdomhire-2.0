@@ -105,9 +105,7 @@ class VehiclesController extends Controller
         $vehicle->restore();
 
         Session::flash('status', [
-            'info' => [
-                're-continue' => 'Successfully re-continued '.$vehicle->name()
-            ]
+            're-continue' => 'Successfully re-continued '.$vehicle->name()
         ]);
 
         return redirect()->route('admin.vehicle.home', [
@@ -130,9 +128,7 @@ class VehiclesController extends Controller
         $vehicle->delete();
 
         Session::flash('status', [
-            'info' => [
-                'discontinue' => 'Successfully discontinued '.$vehicle->name()
-            ]
+            'discontinue' => 'Successfully discontinued '.$vehicle->name()
         ]);
 
         return redirect()->route('admin.vehicle.home', [

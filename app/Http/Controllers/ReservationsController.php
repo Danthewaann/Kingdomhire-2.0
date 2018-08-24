@@ -27,9 +27,8 @@ class ReservationsController extends Controller
     public function store(ReservationRequest $request)
     {
         Session::flash('status', [
-            'info' => [
-                'reservation' => 'Successfully booked reservation!'
-            ]
+            'reservation' => 'Successfully booked reservation!'
+
         ]);
 
         return redirect()->route('admin.vehicle.home', [
@@ -43,9 +42,7 @@ class ReservationsController extends Controller
         Reservation::destroy($id);
 
         Session::flash('status', [
-            'info' => [
-                'reservation' => 'Successfully canceled reservation!'
-            ]
+            'reservation' => 'Successfully canceled reservation!'
         ]);
 
         return redirect()->back();
@@ -69,9 +66,7 @@ class ReservationsController extends Controller
     public function edit(ReservationRequest $request)
     {
         Session::flash('status', [
-            'info' => [
-                'reservation' => 'Successfully edited reservation!'
-            ]
+            'reservation' => 'Successfully edited reservation!'
         ]);
 
         return redirect()->route('admin.vehicle.home', [

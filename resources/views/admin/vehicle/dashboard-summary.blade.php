@@ -24,8 +24,12 @@
         @endif
         <table class="table table-condensed vehicle-table-dashboard">
           <tr>
-            <th class="first">Vehicle Type</th>
-            <td class="first">{{ $vehicle->type }}</td>
+            <th class="first">Status</th>
+            <td class="first">{{ $vehicle->status }}</td>
+          </tr>
+          <tr>
+            <th>Vehicle Type</th>
+            <td>{{ $vehicle->type }}</td>
           </tr>
           <tr>
             <th>Fuel Type</th>
@@ -48,8 +52,8 @@
               <th>Date Discontinued</th>
               <td>{{ date('j/M/Y H:ia', strtotime($vehicle->deleted_at)) }}</td>
             @else
-              <th>Status</th>
-              <td>{{ $vehicle->status }}</td>
+              <th>Last Changed</th>
+              <td>{{ date('j/M/Y H:ia', strtotime($vehicle->updated_at)) }}</td>
             @endif
           </tr>
           <tr>

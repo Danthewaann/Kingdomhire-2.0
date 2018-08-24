@@ -4,13 +4,7 @@
 <div class="well">
   <div class="row">
     <div class="col-md-5">
-      @if(!empty(session()->get('status')['info']))
-        @foreach(session()->get('status')['info'] as $message)
-          <div class="alert alert-success">
-            <span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;{{ $message }}
-          </div>
-        @endforeach
-      @endif
+      @include('admin.common.alert')
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3>Overall past hires</h3>

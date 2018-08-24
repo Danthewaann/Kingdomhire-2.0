@@ -137,10 +137,28 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-  $(function() {
-    $( ".datepicker" ).datepicker({
+  $(document).ready(function () {
+    $('.dropdown-submenu a.submenu').on("click", function(e){
+      $(this).next('ul').toggle();
+      e.stopPropagation();
+      e.preventDefault();
+    });
+    $( "#start_date" ).datepicker({
       dateFormat: "yy-mm-dd"
     });
+    $("#start_date_calender").click(function () {
+      $( "#start_date" ).focus();
+    });
+    $( "#end_date" ).datepicker({
+      dateFormat: "yy-mm-dd"
+    });
+    $("#end_date_calender").click(function () {
+      $( "#end_date" ).focus();
+    });
+
+    // $("#hires_button").click(function () {
+    //   $("#overall_vehicle_hires_per_month").show();
+    // });
   });
 </script>
 <script>

@@ -13,13 +13,7 @@
               </div>
               <div class="panel-body">
                 <p>Welcome, {{ Auth::user()->name }}</p>
-                @if(session()->has('status'))
-                  @foreach(session()->get('status') as $message)
-                    <div class="alert alert-success">
-                      <span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;{{ $message }}
-                    </div>
-                  @endforeach
-                @endif
+                @include('admin.common.alert')
               </div>
             </div>
           </div>

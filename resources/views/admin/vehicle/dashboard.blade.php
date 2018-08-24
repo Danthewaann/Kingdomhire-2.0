@@ -4,13 +4,7 @@
 <div class="well">
   <div class="row">
     <div class="col-lg-4 col-md-12">
-      @if(!empty(session()->get('status')['info']))
-        @foreach(session()->get('status')['info'] as $message)
-          <div class="alert alert-success">
-            <span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;{{ $message }}
-          </div>
-        @endforeach
-      @endif
+      @include('admin.common.alert')
       @include('admin.reservation.add')
       @include('admin.vehicle.list-active-hire')
       @include('admin.vehicle.list-reservations')

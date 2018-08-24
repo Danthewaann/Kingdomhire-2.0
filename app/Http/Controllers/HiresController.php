@@ -45,16 +45,12 @@ class HiresController extends Controller
     {
         if(Hire::find($request->hire_id)->is_active == true) {
             Session::flash('status', [
-                'info' => [
-                    'hire' => 'Successfully edited active hire!'
-                ]
+                'hire' => 'Successfully edited active hire!'
             ]);
         }
         else {
             Session::flash('status', [
-                'hires' => [
-                    'hire' => 'Successfully edited past hire!'
-                ]
+                'hire' => 'Successfully edited past hire!'
             ]);
         }
 

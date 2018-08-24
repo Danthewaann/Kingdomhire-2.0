@@ -45,7 +45,7 @@ class ChartGenerator
             'colors' => [
                 'rgb(75, 206, 138)'
             ],
-            'height' => (count($activeVehicles) > 1) ? count($activeVehicles)*65 : 200,
+            'height' => (count($activeVehicles) > 1) ? count($activeVehicles)*45 : 200,
             'width' => '100%',
             'fontSize' => 14,
             'fontName' => 'Raleway',

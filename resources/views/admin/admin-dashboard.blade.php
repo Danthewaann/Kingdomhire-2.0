@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 col-xs-6">
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h3>Reservations per vehicle</h3>
@@ -31,7 +31,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-12">
+          <div class="col-md-12 col-xs-6">
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h3>Past hires</h3>
@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 col-xs-12">
       <div class="well">
         @if($gantt != null)
           <div class="panel panel-default">
@@ -58,7 +58,7 @@
           </div>
         @endif
         <div class="row">
-          <div class="col-md-2 col-xs-12">
+          <div class="col-md-2 col-sm-3 col-xs-6">
             <div class="panel panel-default">
               <div class="panel-heading">
                 @if($activeVehicles->isEmpty() and $inactiveVehicles->isEmpty())
@@ -83,7 +83,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-10 col-sm-12 col-xs-12">
+          <div class="col-md-10 col-sm-9 col-xs-12">
             @include('admin.vehicle.list-admin')
           </div>
         </div>

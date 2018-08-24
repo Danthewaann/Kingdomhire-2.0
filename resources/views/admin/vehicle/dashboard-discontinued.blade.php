@@ -4,7 +4,6 @@
 <div class="well">
   <div class="row">
     <div class="col-md-5">
-      @include('admin.common.alert')
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3>Overall past hires</h3>

@@ -1703,12 +1703,12 @@ a.text-primary:focus {
 }
 
 .text-success {
-  color: #3c763d;
+  color: white;
 }
 
 a.text-success:hover,
 a.text-success:focus {
-  color: #2b542c;
+  color: #e6e5e5;
 }
 
 .text-info {
@@ -1752,12 +1752,12 @@ a.bg-primary:focus {
 }
 
 .bg-success {
-  background-color: #dff0d8;
+  background-color: #439D70;
 }
 
 a.bg-success:hover,
 a.bg-success:focus {
-  background-color: #c1e2b3;
+  background-color: #347957;
 }
 
 .bg-info {
@@ -3140,7 +3140,7 @@ table th[class*="col-"] {
 .table > tfoot > tr > th.success,
 .table > tfoot > tr.success > td,
 .table > tfoot > tr.success > th {
-  background-color: #dff0d8;
+  background-color: #439D70;
 }
 
 .table-hover > tbody > tr > td.success:hover,
@@ -3148,7 +3148,7 @@ table th[class*="col-"] {
 .table-hover > tbody > tr.success:hover > td,
 .table-hover > tbody > tr:hover > .success,
 .table-hover > tbody > tr.success:hover > th {
-  background-color: #d0e9c6;
+  background-color: #3b8b63;
 }
 
 .table > thead > tr > td.info,
@@ -3733,29 +3733,29 @@ select[multiple].input-lg,
 .has-success.checkbox label,
 .has-success.radio-inline label,
 .has-success.checkbox-inline label {
-  color: #3c763d;
+  color: white;
 }
 
 .has-success .form-control {
-  border-color: #3c763d;
+  border-color: white;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .has-success .form-control:focus {
-  border-color: #2b542c;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
+  border-color: #e6e5e5;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px white;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px white;
 }
 
 .has-success .input-group-addon {
-  color: #3c763d;
-  border-color: #3c763d;
-  background-color: #dff0d8;
+  color: white;
+  border-color: white;
+  background-color: #439D70;
 }
 
 .has-success .form-control-feedback {
-  color: #3c763d;
+  color: white;
 }
 
 .has-warning .help-block,
@@ -6380,17 +6380,17 @@ a.thumbnail.active {
 }
 
 .alert-success {
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #3c763d;
+  background-color: #439D70;
+  border-color: #4bce8a;
+  color: white;
 }
 
 .alert-success hr {
-  border-top-color: #c9e2b3;
+  border-top-color: #37c97d;
 }
 
 .alert-success .alert-link {
-  color: #2b542c;
+  color: #e6e5e5;
 }
 
 .alert-info {
@@ -6682,13 +6682,13 @@ button.list-group-item {
 }
 
 .list-group-item-success {
-  color: #3c763d;
-  background-color: #dff0d8;
+  color: white;
+  background-color: #439D70;
 }
 
 a.list-group-item-success,
 button.list-group-item-success {
-  color: #3c763d;
+  color: white;
 }
 
 a.list-group-item-success .list-group-item-heading,
@@ -6700,8 +6700,8 @@ a.list-group-item-success:hover,
 a.list-group-item-success:focus,
 button.list-group-item-success:hover,
 button.list-group-item-success:focus {
-  color: #3c763d;
-  background-color: #d0e9c6;
+  color: white;
+  background-color: #3b8b63;
 }
 
 a.list-group-item-success.active,
@@ -6711,8 +6711,8 @@ button.list-group-item-success.active,
 button.list-group-item-success.active:hover,
 button.list-group-item-success.active:focus {
   color: #fff;
-  background-color: #3c763d;
-  border-color: #3c763d;
+  background-color: white;
+  border-color: white;
 }
 
 .list-group-item-info {
@@ -7158,26 +7158,26 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-success {
-  border-color: #d6e9c6;
+  border-color: #4bce8a;
 }
 
 .panel-success > .panel-heading {
-  color: #3c763d;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
+  color: white;
+  background-color: #439D70;
+  border-color: #4bce8a;
 }
 
 .panel-success > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #d6e9c6;
+  border-top-color: #4bce8a;
 }
 
 .panel-success > .panel-heading .badge {
-  color: #dff0d8;
-  background-color: #3c763d;
+  color: #439D70;
+  background-color: white;
 }
 
 .panel-success > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #d6e9c6;
+  border-bottom-color: #4bce8a;
 }
 
 .panel-info {

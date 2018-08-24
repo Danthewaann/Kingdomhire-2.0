@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3>Yearly hires</h3>
+  </div>
+  <table class="table table-condensed table-bordered panel-table">
+    <thead>
+      <tr>
+        <th class="first">Year</th>
+        <th>Hires</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($vehicle->getYearlyHires() as $year => $hires)
+        <tr>
+          <td class="first">{{ $year }}</td>
+          <td>{{ $hires }}</td>
+        </tr>
+      @endforeach
+      <tr>
+        <td class="first">Total hires</td>
+        <td>{{ $vehicle->hires->count() }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

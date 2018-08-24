@@ -128,6 +128,20 @@ class Vehicle extends Model
        return $this->hires->sum('rate');
     }
 
+    public function getYearlyHires()
+    {
+        $years = [];
+        foreach ($this->hires as $hire) {
+            $year = date('Y', strtotime($hire->end_date));
+            if (!array_key_exists($year, $years)) {
+                $years[$year] = 0;
+            }
+            $years[$year]++;
+        }
+
+        return collect($years)->sortKeysDesc();
+    }
+    
     public function getYearlyProfits()
     {
         $years = [];

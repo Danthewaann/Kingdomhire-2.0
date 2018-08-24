@@ -3,6 +3,7 @@
 @include('admin.vehicle.delete-modal')
 <div class="col-lg-3 col-md-5 col-sm-5">
   <div class="well">
+    @include('admin.common.alert')
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2 style="text-align: center">Vehicle Dashboard</h2>
@@ -78,7 +79,7 @@
         @endif
         <div class="row">
           <div class="col-lg-12">
-            <div class="btn-group btn-group-justified" style="width: 100%">
+            <div class="btn-group btn-group-justified" style="table-layout: unset">
               @if(!$vehicle->trashed())
                 <div class="btn-group">
                   <a class="btn btn-info" href="{{ route('admin.vehicle.editForm', ['id' => $vehicle->id]) }}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>

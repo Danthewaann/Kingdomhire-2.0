@@ -4,7 +4,6 @@
 <div class="well">
   <div class="row">
     <div class="col-lg-4 col-md-12">
-      @include('admin.common.alert')
       @include('admin.reservation.add')
       @include('admin.vehicle.list-active-hire')
       @include('admin.vehicle.list-reservations')
@@ -25,13 +24,18 @@
         </div>
       @endif
       <div class="row">
-        <div class="col-lg-6">
-          @if($vehicle->getIncompleteHires()->isNotEmpty())
-            @include('admin.vehicle.list-incomplete-hires')
-          @endif
-          @include('admin.vehicle.list-inactive-hires')
+        <div class="col-lg-4">
+          {{--@if($vehicle->getIncompleteHires()->isNotEmpty())--}}
+            {{--@include('admin.vehicle.list-incomplete-hires')--}}
+          {{--@endif--}}
+          {{--@include('admin.vehicle.list-inactive-hires')--}}
+          <div class="row">
+            <div class="col-lg-12">
+              @include('admin.vehicle.yearly-hires')
+            </div>
+          </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-8">
           @if($vehicle->getInactiveHires()->isNotEmpty())
             <div class="panel panel-default">
               <div class="panel-heading">

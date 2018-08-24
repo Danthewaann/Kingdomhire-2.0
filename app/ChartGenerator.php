@@ -302,7 +302,7 @@ class ChartGenerator
             ],
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
-            'height' => ($maxAmountOfHiresForMonth > 10 ? $maxAmountOfHiresForMonth*25 : 346),
+            'height' => ($maxAmountOfHiresForMonth > 10 ? $maxAmountOfHiresForMonth*35 : 346),
             'width' => '100%',
             'chartArea' => [
                 'left' => '7.5%',

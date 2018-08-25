@@ -72,5 +72,7 @@ class VehiclesTableSeeder extends Seeder
             'type' => 'Convertable',
             'weekly_rate_id' => $medium
         ));
+
+        factory(\App\Vehicle::class, 15)->create();
     }
 }

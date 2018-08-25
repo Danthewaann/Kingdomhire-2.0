@@ -20,7 +20,6 @@ class CreateVehiclesTable extends Migration
             $table->string('fuel_type');
             $table->string('gear_type');
             $table->unsignedTinyInteger('seats');
-//            $table->boolean('is_active')->default(true);
             $table->enum('status', ['Available', 'Unavailable', 'Out for hire'])->default('Available');
             $table->string('type');
             $table->timestamp('created_at')->useCurrent();

@@ -34,7 +34,7 @@
       <th>Active Hire</th>
       <td>
         @if($vehicle->hasActiveHire())
-          {{ $vehicle->getActiveHire()->hired_by }}<br>
+          {{ $vehicle->getActiveHire()->name }}<br>
           {{ date('j/M/Y', strtotime($vehicle->getActiveHire()->start_date)) }} to<br>
           {{ date('j/M/Y', strtotime($vehicle->getActiveHire()->end_date)) }}
         @else
@@ -46,7 +46,7 @@
       <th>Next Reservation</th>
       <td>
         @if($vehicle->reservations->isNotEmpty())
-          {{ $vehicle->getNextReservation()->made_by }}<br>
+          {{ $vehicle->getNextReservation()->name }}<br>
           {{ date('j/M/Y', strtotime($vehicle->getNextReservation()->start_date)) }} to<br>
           {{ date('j/M/Y', strtotime($vehicle->getNextReservation()->end_date)) }}
         @else

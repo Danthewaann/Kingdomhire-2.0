@@ -36,8 +36,7 @@ class ReservationRequest extends FormRequest
         return [
             'vehicle_id' => 'required',
             'reservation_id' => 'nullable',
-            'made_by' => 'required|string',
-            'rate' => 'nullable|integer',
+            'name' => 'nullable|string',
             'start_date' => 'required|date_format:Y-m-d|after_or_equal:today',
             'end_date' => 'required|date_format:Y-m-d|after:start_date'
         ];
@@ -58,8 +57,7 @@ class ReservationRequest extends FormRequest
                 $reservation = Reservation::findOrNew($reservation_id);
                 $reservation->setRawAttributes([
                     'vehicle_id' => $data['vehicle_id'],
-                    'made_by' => $data['made_by'],
-                    'rate' => $data['rate'],
+                    'name' => $data['name'],
                     'start_date' => $data['start_date'],
                     'end_date' => $data['end_date']
                 ]);

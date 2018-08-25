@@ -10,13 +10,11 @@
     </div>
   @endif
   @if(!$vehicle->reservations->isEmpty())
-  <div class="scrollable-list" style="max-height: 440px">
-  {{--<div class="scrollable-list" style="max-height: 278px">--}}
+  <div class="scrollable-table">
     <table class="table table-condensed panel-table">
       <thead>
         <tr>
-          <th class="first">Made By</th>
-          <th>Rate</th>
+          <th class="first">ID</th>
           <th>Start Date</th>
           <th>End Date</th>
           <th></th>
@@ -26,14 +24,7 @@
         @foreach($vehicle->reservations->sortBy('end_date') as $reservation)
           @include('admin.reservation.cancel-modal')
           <tr>
-            <td class="first">{{ $reservation->made_by }}</td>
-            <td>
-              @if($reservation->rate != null)
-                £{{ $reservation->rate }}
-              @else
-                N/A
-              @endif
-            </td>
+            <td class="first">{{ $reservation->name }}</td>
             <td>{{ date('j/M/Y', strtotime($reservation->start_date)) }}</td>
             <td>{{ date('j/M/Y', strtotime($reservation->end_date)) }}</td>
             <td>

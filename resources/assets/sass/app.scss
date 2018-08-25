@@ -12,6 +12,17 @@
 @import "jumbotron";
 @import "table";
 @import "modal";
+@import "datepicker";
+
+.btn-info:focus {
+  outline-color: $lighter-green;
+  outline-width: 1px;
+}
+
+//:focus {
+//  outline-color: $lighter-green;
+//  outline-width: 1px;
+//}
 
 .vehicle-dashboard-info {
   color: $text-color;
@@ -176,6 +187,7 @@ table.contact-info {
 
 .admin-navbar {
   border: 0;
+  z-index: 0;
 }
 
 .public-navbar-header {
@@ -323,29 +335,35 @@ td {
 //  display: none;
 //}
 
-div.scrollable-list {
-  overflow-x: auto;
+div.scrollable-chart {
+  overflow-y: auto;
+  margin: -15px;
+  padding: 0 15px 15px 0;
+  max-height: 290px;
 }
 
-div.scrollable-list::-webkit-scrollbar {
+div.scrollable-table {
+  overflow-y: auto;
+  max-height: 440px;
+}
+
+div.scrollable-table::-webkit-scrollbar,
+div.scrollable-chart::-webkit-scrollbar {
   background: $dark-green;
   overflow: auto;
   width: 10px;
   height: 10px;
-  //border-radius: 5px;
 }
 
-div.scrollable-list::-webkit-scrollbar-track {
-  //border-radius: 5px;
-}
-
-div.scrollable-list::-webkit-scrollbar-thumb {
+div.scrollable-table::-webkit-scrollbar-thumb,
+div.scrollable-chart::-webkit-scrollbar-thumb {
   background: $lighter-green;
   //border-radius: 5px;
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
 }
 
-div.scrollable-list::-webkit-scrollbar-thumb:hover {
+div.scrollable-table::-webkit-scrollbar-thumb:hover,
+div.scrollable-chart::-webkit-scrollbar-thumb:hover {
   background: darken($lighter-green, 5);
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
 }

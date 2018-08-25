@@ -46,7 +46,7 @@
 }
 
 /* Hide the slides by default */
-.mySlides {
+.modal-slides {
   display: none;
   position: relative;
   max-height: 700px;
@@ -54,8 +54,8 @@
 }
 
 /* Next & previous buttons */
-.prev,
-.next {
+.modal-prev,
+.modal-next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -73,14 +73,14 @@
 }
 
 /* Position the "next button" to the right */
-.next {
+.modal-next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
+.modal-prev:hover,
+.modal-next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 

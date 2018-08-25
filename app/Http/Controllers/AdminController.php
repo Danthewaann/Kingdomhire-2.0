@@ -29,10 +29,11 @@ class AdminController extends Controller
     {
         $activeVehicles = Vehicle::all();
         $inactiveVehicles = Vehicle::onlyTrashed()->get();
+        $allVehicles = Vehicle::withTrashed()->get();
         $pastHires = Hire::whereIsActive(false)->get()->sortBy('end_date');
         $reservations = Reservation::all();
         ChartGenerator::drawReservationsBarChart($activeVehicles);
-        $maxAmountOfHiresPerMonth = ChartGenerator::drawOverallPastHiresBarChart($pastHires);
+        $maxAmountOfHiresPerMonth = ChartGenerator::drawOverallPastHiresBarChart($pastHires, $allVehicles);
 
         return view('admin.admin-dashboard', [
             'activeVehicles' => $activeVehicles,

@@ -45,13 +45,13 @@ class ChartGenerator
             'colors' => [
                 'rgb(75, 206, 138)'
             ],
-            'height' => (count($activeVehicles) > 1) ? count($activeVehicles)*45 : 200,
+            'height' => (count($activeVehicles) > 1) ? count($activeVehicles)*35 : 200,
             'width' => '100%',
             'fontSize' => 14,
             'fontName' => 'Raleway',
             'chartArea' => [
                 'width' => '95%',
-                'height' => '80%'
+                'height' => '90%'
             ],
             'legend' => [
                 'position' => 'top',
@@ -81,94 +81,7 @@ class ChartGenerator
         ]);
     }
 
-    public static function drawPastHiresBarChart($pastHires)
-    {
-        $pastHiresTable = \Lava::DataTable();
-        try {
-            $pastHiresTable->addStringColumn('Month')
-                ->addNumberColumn('Number of hires');
-        } catch (InvalidColumnType $e) {
-        } catch (InvalidLabel $e) {
-        }
-
-        $hiresPerMonth = [
-            'Jan' => 0,
-            'Feb' => 0,
-            'Mar' => 0,
-            'Apr' => 0,
-            'May' => 0,
-            'Jun' => 0,
-            'Jul' => 0,
-            'Aug' => 0,
-            'Sep' => 0,
-            'Oct' => 0,
-            'Nov' => 0,
-            'Dec' => 0
-        ];
-
-        foreach ($pastHires as $hire) {
-            $currentYear = date('Y');
-            if(date('Y', strtotime($hire->end_date)) == $currentYear) {
-                $month = date('M', strtotime($hire->end_date));
-                $hiresPerMonth[$month]++;
-            }
-        }
-
-        $maxAmountOfHiresForMonth = 0;
-        foreach ($hiresPerMonth as $month => $hires) {
-            //Get the number of hires from the month that has the most hires
-            if($hires > $maxAmountOfHiresForMonth) {
-                $maxAmountOfHiresForMonth = $hires;
-            }
-            try {
-                $pastHiresTable->addRow([$month, $hires]);
-            } catch (InvalidCellCount $e) {
-            } catch (InvalidRowDefinition $e) {
-            } catch (InvalidRowProperty $e) {
-            }
-        }
-
-        Lava::ColumnChart('Hires per month', $pastHiresTable, [
-            'backgroundColor' => 'transparent',
-            'colors' => [
-                'rgb(75, 206, 138)'
-            ],
-            'height' => 400,
-            'width' => '100%',
-            'chartArea' => [
-                'left' => '5%',
-                'width' => '70%',
-                'height' => '85%'
-            ],
-            'fontName' => 'Raleway',
-            'legend' => [
-                'position' => 'top',
-                'textStyle' => [
-                    'color' => 'white',
-                    'fontName' => 'Raleway',
-                ]
-            ],
-            'hAxis' => [
-                'textStyle' => [
-                    'color' => 'white',
-                ],
-            ],
-            'vAxis' => [
-                'baselineColor' => 'rgb(75, 206, 138)',
-                'textStyle' => [
-                    'color' => 'white',
-                ],
-                'minValue' => 0,
-                'maxValue' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5),
-                'gridlines' => [
-                    'count' => ($maxAmountOfHiresForMonth > 5 ? $maxAmountOfHiresForMonth : 5)+1,
-                    'color' => 'rgb(75, 206, 138)'
-                ],
-            ]
-        ]);
-    }
-
-    public static function drawOverallPastHiresBarChart($pastHires)
+    public static function drawOverallPastHiresBarChart($pastHires, $vehicles = [])
     {
         $years = [];
         $maxAmountOfHiresForMonth = 0;
@@ -302,12 +215,15 @@ class ChartGenerator
             ],
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
-            'height' => ($maxAmountOfHiresForMonth > 10 ? $maxAmountOfHiresForMonth*35 : 346),
+//            'height' => ($maxAmountOfHiresForMonth > 30 ? $maxAmountOfHiresForMonth*15 : 346),
+//            'height' => ($maxAmountOfHiresForMonth > 20 ? 646 : 346),
+            'height' => (count($vehicles) > 1) ? (count($vehicles)*30)-5 : 340,
             'width' => '100%',
             'chartArea' => [
                 'left' => '7.5%',
                 'width' => '90%',
                 'height' => '80%'
+//            'height' => ($maxAmountOfHiresForMonth > 30 ? 646 : 346)
             ],
             'fontName' => 'Raleway',
             'legend' => [
@@ -354,9 +270,10 @@ class ChartGenerator
         else {
             $reservationsAndActiveHire = $reservations->sortBy('start_date');
         }
+//        dd($reservationsAndActiveHire);
         foreach ($reservationsAndActiveHire as $item) {
             array_push($data, [
-                'label' => ($item instanceof Reservation ? 'R ('.$item->made_by.')' : 'H ('.$item->hired_by.')'),
+                'label' => ($item instanceof Reservation ? 'R' : 'H'). ' ('.$item->name.')',
                 'start' => $item->start_date,
                 /*
                  * when creating the gantt chart, the final day in each reservation/hire is truncated

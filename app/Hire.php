@@ -30,7 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Hire extends ConflictableModel
 {
-    protected $fillable = ['vehicle_id', 'is_active', 'start_date', 'end_date', 'hired_by', 'rate'];
+    protected $fillable = ['vehicle_id', 'is_active', 'start_date', 'end_date', 'name'];
 
     protected $conflict_message = 'conflicts with current active hire';
 

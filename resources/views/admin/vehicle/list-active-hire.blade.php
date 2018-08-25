@@ -13,8 +13,7 @@
       <table class="table table-condensed panel-table">
         <thead>
           <tr>
-            <th class="first">Hired By</th>
-            <th>Rate</th>
+            <th class="first">ID</th>
             <th>Start Date</th>
             <th>End Date</th>
             <th></th>
@@ -22,14 +21,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="first">{{ $vehicle->getActiveHire()->hired_by }}</td>
-            <td>
-              @if($vehicle->getActiveHire()->rate != null)
-                £{{ $vehicle->getActiveHire()->rate }}
-              @else
-                N/A
-              @endif
-            </td>
+            <td class="first">{{ $vehicle->getActiveHire()->name }}</td>
             <td>{{ date('j/M/Y', strtotime($vehicle->getActiveHire()->start_date)) }}</td>
             <td>{{ date('j/M/Y', strtotime($vehicle->getActiveHire()->end_date)) }}</td>
             <td>

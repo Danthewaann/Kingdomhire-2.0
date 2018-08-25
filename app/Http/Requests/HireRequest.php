@@ -37,8 +37,7 @@ class HireRequest extends FormRequest
         return [
             'vehicle_id' => 'required',
             'hire_id' => 'required',
-            'hired_by' => 'nullable|string',
-            'rate' => 'nullable|integer',
+            'name' => 'nullable|string',
             'start_date' => 'nullable|date_format:Y-m-d',
             'end_date' => 'nullable|date_format:Y-m-d|after_or_equal:start_date'
         ];
@@ -57,28 +56,23 @@ class HireRequest extends FormRequest
                 $errorMessages = [];
                 $data = collect($validator->getData());
                 $hire = Hire::find($data['hire_id']);
-                if ($hire->is_active == false) {
-                    $hire->setAttribute('rate', $data['rate']);
-                }
-                else {
-                    $original_data = collect($hire->getOriginal());
-                    $data = $original_data->merge($data)->only([
-                        'vehicle_id',
-                        'hired_by',
-                        'rate',
-                        'start_date',
-                        'end_date',
-                        'is_active'
-                    ]);
-                    foreach (array_keys($data->toArray()) as $key) {
-                        if ($data[$key] != null) {
-                            $hire->setAttribute($key, $data[$key]);
-                        }
-                    }
+                $original_data = collect($hire->getOriginal());
+                $data = $original_data->merge($data)->only([
+                    'vehicle_id',
+                    'name',
+                    'start_date',
+                    'end_date',
+                    'is_active'
+                ]);
 
-                    foreach ($hire->vehicle->reservations as $reservation) {
-                        $hire->conflictsWith($reservation, $errorMessages);
+                foreach (array_keys($data->toArray()) as $key) {
+                    if ($data[$key] != null) {
+                        $hire->setAttribute($key, $data[$key]);
                     }
+                }
+
+                foreach ($hire->vehicle->reservations as $reservation) {
+                    $hire->conflictsWith($reservation, $errorMessages);
                 }
 
                 if (!empty($errorMessages)) {

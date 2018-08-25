@@ -1,0 +1,27 @@
+.datepicker table tr td.new,
+.datepicker table tr td.old {
+  color: $lighter-green;
+}
+
+.datepicker table tr td.today {
+  color: white;
+  background-color: $lighter-green;
+}
+
+.datepicker table tr td.day:hover,
+.datepicker table tr td.focused {
+  background: $dark-green;
+  color: white;
+}
+
+.datepicker .datepicker-switch:hover,
+.datepicker .next:hover,
+.datepicker .prev:hover,
+.datepicker tfoot tr th:hover {
+  background-color: $dark-green;
+}
+
+.datepicker table tr td span.focused,
+.datepicker table tr td span:hover {
+  background-color: $dark-green;
+}

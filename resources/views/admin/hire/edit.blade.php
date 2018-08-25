@@ -13,14 +13,14 @@
             @csrf
             @method('PATCH')
             <div class="form-row">
-              <div class="form-group{{ $errors->hires->has('made_by') ? ' has-error' : '' }}">
+              <div class="form-group{{ $errors->hires->has('name') ? ' has-error' : '' }}">
                 <div class="form-row">
-                  <label for="made_by">Hired By*</label>
-                  {{ Form::text('hired_by', $hire->hired_by, array('class' => 'form-control', 'autocomplete' => 'off')) }}
-                  @if( $errors->hires->has('hired_by'))
+                  <label for="name">ID*</label>
+                  {{ Form::text('name', $hire->name, array('class' => 'form-control', 'autocomplete' => 'off')) }}
+                  @if( $errors->hires->has('name'))
                     <div class="help-block">
                       <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->hires->first('hired_by') }}</strong>
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->hires->first('name') }}</strong>
                       </div>
                     </div>
                   @endif
@@ -56,22 +56,6 @@
                     <div class="help-block">
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->hires->first('end_date') }}</strong>
-                      </div>
-                    </div>
-                  @endif
-                </div>
-              </div>
-              <div class="form-group{{ $errors->hires->has('rate') ? ' has-error' : '' }}">
-                <div class="form-row">
-                  <label for="rate">Rate</label>
-                  <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                    {{ Form::text('rate', $hire->rate, array('class' => 'form-control', 'autocomplete' => 'off', 'aria-label' => 'Amount (to the nearest pound)')) }}
-                  </div>
-                  @if( $errors->hires->has('rate'))
-                    <div class="help-block">
-                      <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->hires->first('rate') }}</strong>
                       </div>
                     </div>
                   @endif

@@ -13,14 +13,14 @@
             @csrf
             @method('PATCH')
             <div class="form-row">
-              <div class="form-group{{ $errors->reservations->has('made_by') ? ' has-error' : '' }}">
+              <div class="form-group{{ $errors->reservations->has('name') ? ' has-error' : '' }}">
                 <div class="form-row">
-                  <label for="made_by">Made By*</label>
-                  {{ Form::text('made_by', $reservation->made_by, array('class' => 'form-control', 'autocomplete' => 'off')) }}
-                  @if( $errors->reservations->has('made_by'))
+                  <label for="name">ID*</label>
+                  {{ Form::text('name', $reservation->name, array('class' => 'form-control', 'autocomplete' => 'off')) }}
+                  @if( $errors->reservations->has('name'))
                     <div class="help-block">
                       <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->reservations->first('made_by') }}</strong>
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->reservations->first('name') }}</strong>
                       </div>
                     </div>
                   @endif
@@ -58,22 +58,6 @@
                     <div class="help-block">
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->reservations->first('end_date') }}</strong>
-                      </div>
-                    </div>
-                  @endif
-                </div>
-              </div>
-              <div class="form-group{{ $errors->reservations->has('rate') ? ' has-error' : '' }}">
-                <div class="form-row">
-                  <label for="rate">Rate</label>
-                  <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                    {{ Form::text('rate', $reservation->rate, array('class' => 'form-control', 'autocomplete' => 'off', 'aria-label' => 'Amount (to the nearest pound)')) }}
-                  </div>
-                  @if( $errors->reservations->has('rate'))
-                    <div class="help-block">
-                      <div class="alert alert-danger" role="alert">
-                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->reservations->first('rate') }}</strong>
                       </div>
                     </div>
                   @endif

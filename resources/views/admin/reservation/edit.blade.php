@@ -15,7 +15,7 @@
             <div class="form-row">
               <div class="form-group{{ $errors->reservations->has('name') ? ' has-error' : '' }}">
                 <div class="form-row">
-                  <label for="name">ID*</label>
+                  <label for="name">ID</label>
                   {{ Form::text('name', $reservation->name, array('class' => 'form-control', 'autocomplete' => 'off')) }}
                   @if( $errors->reservations->has('name'))
                     <div class="help-block">

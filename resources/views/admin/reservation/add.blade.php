@@ -6,9 +6,7 @@
     <form class="form-horizontal" action="{{ route('admin.vehicle.reservation.add', ['id' => $vehicle->id]) }}" method="post">
       @csrf
       <div class="form-group{{ $errors->reservations->has('name') ? ' has-error' : '' }}">
-        <label for="name" class="col-md-3 control-label">
-          ID*&nbsp;&nbsp;
-        </label>
+        <label for="name" class="col-md-3 control-label">ID</label>
         <div class="col-md-9">
           <div class="input-group">
             {{ Form::text('name', '', array('class' => 'form-control', 'autocomplete' => 'off', 'placeholder' => 'Enter ID')) }}

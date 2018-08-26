@@ -15,7 +15,7 @@
             <div class="form-row">
               <div class="form-group{{ $errors->hires->has('name') ? ' has-error' : '' }}">
                 <div class="form-row">
-                  <label for="name">ID*</label>
+                  <label for="name">ID</label>
                   {{ Form::text('name', $hire->name, array('class' => 'form-control', 'autocomplete' => 'off')) }}
                   @if( $errors->hires->has('name'))
                     <div class="help-block">

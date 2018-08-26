@@ -24,7 +24,7 @@
         @foreach($vehicle->reservations->sortBy('end_date') as $reservation)
           @include('admin.reservation.cancel-modal')
           <tr>
-            <td class="first">{{ $reservation->name }}</td>
+            <td class="first">{{ $reservation->name ? $reservation->name : 'N/A'  }}</td>
             <td>{{ date('j/M/Y', strtotime($reservation->start_date)) }}</td>
             <td>{{ date('j/M/Y', strtotime($reservation->end_date)) }}</td>
             <td>

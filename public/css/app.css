@@ -8830,7 +8830,6 @@ table.contact-info {
 
 .admin-navbar {
   border: 0;
-  z-index: 0;
 }
 
 .public-navbar-header {
@@ -8949,7 +8948,7 @@ div.scrollable-chart {
 
 div.scrollable-table {
   overflow-y: auto;
-  max-height: 440px;
+  max-height: 450px;
 }
 
 div.scrollable-table::-webkit-scrollbar,

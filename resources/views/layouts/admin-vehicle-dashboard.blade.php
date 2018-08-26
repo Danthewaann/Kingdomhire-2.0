@@ -146,14 +146,18 @@
     });
     $( "#start_date" ).datepicker({
       format: "yyyy-mm-dd",
-      todayHighlight: true
+      todayHighlight: true,
+      autoclose: true,
+      zIndexOffset: 1000
     });
     $("#start_date_calender").click(function () {
       $( "#start_date" ).focus();
     });
     $( "#end_date" ).datepicker({
       format: "yyyy-mm-dd",
-      todayHighlight: true
+      todayHighlight: true,
+      autoclose: true,
+      zIndexOffset: 1000
     });
     $("#end_date_calender").click(function () {
       $( "#end_date" ).focus();

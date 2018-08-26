@@ -37,7 +37,7 @@ class ReservationsTableSeeder extends Seeder
                     }
                     if(!$conflicts) {
                         Reservation::create([
-                            'name' => $faker->lastName,
+                            'name' => substr($faker->firstName, 0, 1) . substr($faker->lastName, 0, 1),
                             'start_date' => $start,
                             'end_date' => $end,
                             'vehicle_id' => $vehicle->id
@@ -46,7 +46,7 @@ class ReservationsTableSeeder extends Seeder
                 }
                 else {
                     Reservation::create([
-                        'name' => $faker->lastName,
+                        'name' => substr($faker->firstName, 0, 1) . substr($faker->lastName, 0, 1),
                         'start_date' => $start,
                         'end_date' => $end,
                         'vehicle_id' => $vehicle->id

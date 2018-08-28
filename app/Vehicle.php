@@ -46,6 +46,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereWeeklyRateId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Vehicle withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Vehicle withoutTrashed()
+ * @property string|null $weekly_rate
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereWeeklyRate($value)
  */
 class Vehicle extends Model
 {
@@ -104,7 +106,7 @@ class Vehicle extends Model
      */
     public function rate()
     {
-        return $this->belongsTo(WeeklyRate::class, 'weekly_rate_id');
+        return $this->belongsTo(WeeklyRate::class, 'weekly_rate');
     }
 
     /**

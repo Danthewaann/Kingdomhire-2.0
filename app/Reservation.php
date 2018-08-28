@@ -10,8 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Vehicle $vehicle
  * @mixin \Eloquent
  * @property int $id
- * @property string|null $made_by
- * @property int|null $rate
+ * @property string|null $name
  * @property string $start_date
  * @property string $end_date
  * @property \Carbon\Carbon $created_at
@@ -23,8 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Reservation whereStartDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Reservation whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Reservation whereVehicleId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Reservation whereMadeBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Reservation whereRate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Reservation whereName($value)
  */
 class Reservation extends ConflictableModel
 {

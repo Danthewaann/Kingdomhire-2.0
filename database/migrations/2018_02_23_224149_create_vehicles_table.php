@@ -25,8 +25,8 @@ class CreateVehiclesTable extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
             $table->softDeletes();
-            $table->integer('weekly_rate_id')->unsigned()->nullable();
-            $table->foreign('weekly_rate_id')->references('id')->onDelete('Set null')->on('weekly_rates');
+            $table->string('weekly_rate')->nullable();
+            $table->foreign('weekly_rate')->references('name')->onDelete('Set null')->on('weekly_rates');
         });
     }
 

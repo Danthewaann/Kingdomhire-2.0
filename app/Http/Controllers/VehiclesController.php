@@ -66,7 +66,7 @@ class VehiclesController extends Controller
             'gear_type' => $request->get('gear_type'),
             'seats' => $request->get('seats'),
             'type' => $request->get('type'),
-            'weekly_rate_id' => WeeklyRate::whereName($request->get('rate_name'))->first()->id
+            'weekly_rate' => WeeklyRate::find($request->rate_name)->id
         ));
 
         if($request->hasFile('vehicle_images')) {
@@ -177,7 +177,7 @@ class VehiclesController extends Controller
 
         $vehicle = Vehicle::find($id);
         $vehicle->status = ($request->vehicle_status == null) ? $vehicle->status : $request->vehicle_status;
-        $vehicle->weekly_rate_id = ($request->rate_name != "") ? WeeklyRate::whereName($request->get('rate_name'))->first()->id : null;
+        $vehicle->weekly_rate = ($request->rate_name != "") ? WeeklyRate::find($request->rate_name)->id : null;
         $vehicle->save();
 
         if($request->hasFile('vehicle_images_add')) {

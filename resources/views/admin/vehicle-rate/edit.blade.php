@@ -13,6 +13,7 @@
           <div class="panel-body">
             <form class="form-horizontal" action="{{ route('admin.weekly-rate.edit', ['rate' => $rate->name]) }}" method="post" id="weekly_rate_edit_form">
               @csrf
+              @method('PATCH')
               <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="control-label col-md-3">Name*</label>
                 <div class="col-md-9">

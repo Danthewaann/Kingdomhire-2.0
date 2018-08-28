@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Vehicle;
 use App\WeeklyRate;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -10,7 +11,13 @@ use Session;
 
 class WeeklyRatesController extends Controller
 {
-    private $rules = [
+    private $store_rules = [
+        'name' => 'required|unique:weekly_rates',
+        'weekly_rate_min' => 'required|numeric|min:1|max:100',
+        'weekly_rate_max' => 'required|numeric|min:2|max:200'
+    ];
+
+    private $edit_rules = [
         'name' => 'required',
         'weekly_rate_min' => 'required|numeric|min:1|max:100',
         'weekly_rate_max' => 'required|numeric|min:2|max:200'
@@ -35,7 +42,7 @@ class WeeklyRatesController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->rules);
+        $validator = Validator::make($request->all(), $this->store_rules);
 
         if($validator->fails())
         {
@@ -57,13 +64,15 @@ class WeeklyRatesController extends Controller
         return redirect()->route('admin.home');
     }
 
-    public function destroy($name)
+    public function destroy(WeeklyRate $rate)
     {
-        $vehicle_rate = WeeklyRate::whereName($name)->first();
-        $vehicle_rate->delete();
+        try {
+            $rate->delete();
+        } catch (\Exception $e) {
+        }
 
         Session::flash('status', [
-            'weekly_rate' => 'Successfully deleted weekly rate '.$vehicle_rate->getFullName()
+            'weekly_rate' => 'Successfully deleted weekly rate '.$rate->getFullName()
         ]);
 
         return redirect()->route('admin.home');
@@ -81,25 +90,35 @@ class WeeklyRatesController extends Controller
         ]);
     }
 
-    public function edit(Request $request, $name)
+    public function edit(Request $request, WeeklyRate $rate)
     {
-        $validator = Validator::make($request->all(), $this->rules);
+        $validator = Validator::make($request->all(), $this->edit_rules);
 
         if($validator->fails())
         {
             return redirect()->back()->withErrors($validator);
         }
 
-        $vehicle_rate = WeeklyRate::whereName($name)->first();
-        $vehicle_rate->update([
+        $vehicles = Vehicle::whereWeeklyRate($rate->name)->get();
+        try {
+            $rate->delete();
+        } catch (\Exception $e) {
+        }
+
+        $rate = new WeeklyRate([
             'name' => $request->name,
-            'weekly_rate_min' => $request->get('weekly_rate_min'),
-            'weekly_rate_max' => $request->get('weekly_rate_max'),
-            'updated_at' => date('Y-m-d H:i:s')
+            'weekly_rate_min' => $request->weekly_rate_min,
+            'weekly_rate_max' => $request->weekly_rate_max,
         ]);
+        $rate->save();
+
+        foreach ($vehicles as $vehicle) {
+            $vehicle->weekly_rate = $rate->name;
+            $vehicle->save();
+        }
 
         Session::flash('status', [
-            'weekly_rate' => 'Successfully updated weekly rate '.$vehicle_rate->getFullName()
+            'weekly_rate' => 'Successfully updated weekly rate '.$rate->getFullName()
         ]);
 
         return redirect()->route('admin.home');

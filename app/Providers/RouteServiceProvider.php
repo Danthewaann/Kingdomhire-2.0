@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Auth;
+use App\User;
 use App\Vehicle;
 use App\WeeklyRate;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +37,10 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('weekly_rate', function ($value) {
             return WeeklyRate::where('name', $value)->first();
+        });
+
+        Route::bind('user', function ($value) {
+            return (Auth::user()->id == $value) ? User::find($value) : abort(404);
         });
 
         parent::boot();

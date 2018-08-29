@@ -53,7 +53,7 @@
             </li>
           </ul>
         </li>
-        <li class="dropdown{{ Request::is('admin/rates*') ? ' active' : '' }}">
+        <li class="dropdown{{ Request::is('admin/weekly-rates*') ? ' active' : '' }}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
             <span class="glyphicon glyphicon-gbp"></span>&nbsp;&nbsp;Weekly Rates <span class="caret"></span>
           </a>
@@ -81,13 +81,33 @@
         <li>
           <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;Main Site</a>
         </li>
-        <li class="dropdown">
+        <li class="dropdown{{ Request::is('admin/users*') ? ' active' : '' }}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-            <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Account <span class="caret"></span>
+            <span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Other <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href="#">Change password</a>
+              <a href="{{ route('admin.users.create') }}">Create a user</a>
+            </li>
+            <li>
+              <a href="{{ route('admin.users.index') }}" class="submenu">Users</span></a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+            <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ Auth::user()->name }} <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{ route('admin.users.edit', ['user' => Auth::user()->id]) }}">Change info</a>
+            </li>
+            <li>
+              <a href="{{ route('admin.users.edit-password', ['user' => Auth::user()->id]) }}">Change password</a>
+            </li>
+            <li>
+              {{--<button type="button" class="btn btn-info" data-toggle="modal" data-target="#user-{{ Auth::user()->id }}-delete"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>--}}
+              <a href="#" data-toggle="modal" data-target="#user-{{ Auth::user()->id }}-delete">Delete account</a>
             </li>
             <li>
               <a href="{{ route('logout') }}"
@@ -106,3 +126,4 @@
     </div>
   </div>
 </nav>
+@include('admin.user.destroy-modal')

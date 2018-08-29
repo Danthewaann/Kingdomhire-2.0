@@ -17,11 +17,6 @@ class ConflictableModel extends Model
 
     protected $fillable = ['id', 'start_date', 'end_date'];
 
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-    }
-
     public function hasStarted()
     {
         return $this->start_date == date('Y-m-d');

@@ -39,7 +39,7 @@ class ReservationsController extends Controller
 
         ]);
 
-        return redirect()->route('admin.vehicle.home', [
+        return redirect()->route('admin.vehicles.show', [
             'vehicle' => $request->vehicle_id
         ]);
     }
@@ -82,7 +82,7 @@ class ReservationsController extends Controller
             'reservation' => 'Successfully updated reservation!'
         ]);
 
-        return redirect()->route('admin.vehicle.home', [
+        return redirect()->route('admin.vehicles.show', [
             'vehicle' => $reservation->vehicle
         ]);
     }

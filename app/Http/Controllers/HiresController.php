@@ -48,7 +48,7 @@ class HiresController extends Controller
             'hire' => 'Successfully updated active hire!'
         ]);
 
-        return redirect()->route('admin.vehicle.home', [
+        return redirect()->route('admin.vehicles.show', [
             'vehicle' => $hire->vehicle
         ]);
     }

@@ -94,7 +94,7 @@
                   <div class="col-xs-12">
                     <div class="btn-group">
                       <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
-                      <a href="{{ route('admin.vehicle.home', ['id' => $vehicle->id]) }}" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
+                      <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->id]) }}" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
                     </div>
                   </div>
                 </div>

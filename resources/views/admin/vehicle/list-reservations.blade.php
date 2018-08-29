@@ -6,7 +6,7 @@
     </div>
   @else
     <div class="panel-body">
-      <h3>No reservations</h3>
+      <h3 style="margin-left: -5px">No reservations</h3>
     </div>
   @endif
   @if(!$vehicle->reservations->isEmpty())
@@ -30,7 +30,7 @@
             <td>
               <div class="btn-group btn-group-vertical" style="width: 100%">
                 <div class="btn-group">
-                  <a href="{{ route('admin.vehicle.reservation.editForm', ['vehicle_id' => $vehicle->id, 'reservation_id' => $reservation->id]) }}"
+                  <a href="{{ route('admin.reservations.edit', ['reservation' => $reservation->id]) }}"
                      class="btn btn-info" style="width: 100%" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit
                   </a>
                 </div>

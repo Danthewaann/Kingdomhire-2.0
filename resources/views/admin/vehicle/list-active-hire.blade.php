@@ -27,7 +27,7 @@
             <td>
               <div class="btn-group btn-group-justified" style="width: inherit">
                 <div class="btn-group">
-                  <a href="{{ route('admin.vehicle.hire.edit', ['vehicle_id' => $vehicle->id, 'hire_id' => $vehicle->getActiveHire()->id]) }}"
+                  <a href="{{ route('admin.hires.edit', ['hire' => $vehicle->getActiveHire()]) }}"
                      class="btn btn-info" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
                 </div>
               </div>

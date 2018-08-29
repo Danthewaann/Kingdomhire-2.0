@@ -14,13 +14,12 @@ class CreateWeeklyRatesTable extends Migration
     public function up()
     {
         Schema::create('weekly_rates', function (Blueprint $table) {
-            $table->string('name');
-//            $table->string('name')->unique();
+            $table->increments('id');
+            $table->string('name')->unique();
             $table->float('weekly_rate_min', 5, 2);
             $table->float('weekly_rate_max', 5, 2);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
-            $table->primary('name');
         });
     }
 

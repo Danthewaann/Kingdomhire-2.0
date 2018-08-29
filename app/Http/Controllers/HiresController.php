@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\DBQuery;
 use App\Http\Requests\HireRequest;
-use App\Reservation;
 use App\Vehicle;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Validator;
 use App\Hire;
 use Session;
 
@@ -24,53 +19,37 @@ class HiresController extends Controller
         $this->middleware('auth');
     }
 
-    public function showEditForm($vehicle_id, $hire_id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Hire  $hire
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Hire $hire)
     {
-        $hire = Hire::find($hire_id);
-        if($hire->is_active == true) {
-            return view('admin.hire.edit', [
-                'vehicle' => Vehicle::withTrashed()->where('id', $vehicle_id)->first(),
-                'hire' => $hire
-            ]);
-        }
-        else {
-            return view('admin.hire.edit-past-hire', [
-                'vehicle' => Vehicle::withTrashed()->where('id', $vehicle_id)->first(),
-                'hire' => $hire
-            ]);
-        }
-    }
-
-    public function edit(HireRequest $request)
-    {
-        if(Hire::find($request->hire_id)->is_active == true) {
-            Session::flash('status', [
-                'hire' => 'Successfully edited active hire!'
-            ]);
-        }
-        else {
-            Session::flash('status', [
-                'hire' => 'Successfully edited past hire!'
-            ]);
-        }
-
-        return redirect()->route('admin.vehicle.home', [
-            'vehicle_id' => $request->vehicle_id
+        return view('admin.hire.edit', [
+            'vehicle' => $hire->vehicle,
+            'hire' => $hire
         ]);
     }
 
-    public function all()
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param HireRequest $request
+     * @param  \App\Hire $hire
+     * @return \Illuminate\Http\Response
+     */
+    public function update(HireRequest $request, Hire $hire)
     {
-        return view('admin.admin-hires', [
-            'vehicles' => Vehicle::all(),
-            'activeHires' => Hire::whereIsActive(true)
-                ->orderBy('start_date', 'desc')
-                ->orderBy('end_date')
-                ->get(),
-            'inactiveHires' => Hire::whereIsActive(false)
-                ->orderBy('start_date', 'desc')
-                ->orderBy('end_date')
-                ->get()
+        $hire->update($request->all());
+
+        Session::flash('status', [
+            'hire' => 'Successfully updated active hire!'
+        ]);
+
+        return redirect()->route('admin.vehicle.home', [
+            'vehicle' => $hire->vehicle
         ]);
     }
 }

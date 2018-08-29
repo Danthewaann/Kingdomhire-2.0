@@ -9,7 +9,7 @@
           <h2 style="padding-left: 5px">Edit active hire</h2>
         </div>
         <div class="panel-body">
-          <form action="{{ route('admin.vehicle.hire.edit', ['vehicle_id' => $vehicle->id, 'hire_id' => $hire->id]) }}" method="post">
+          <form action="{{ route('admin.hires.update', ['hire' => $hire->id]) }}" method="post">
             @csrf
             @method('PATCH')
             <div class="form-row">

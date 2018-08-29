@@ -11,7 +11,7 @@
             <h3 style="padding-left: 5px">Edit weekly rate</h3>
           </div>
           <div class="panel-body">
-            <form class="form-horizontal" action="{{ route('admin.weekly-rate.edit', ['rate' => $rate->name]) }}" method="post" id="weekly_rate_edit_form">
+            <form class="form-horizontal" action="{{ route('admin.weekly-rates.update', ['weekly_rate' => $rate->name]) }}" method="post" id="weekly_rate_edit_form">
               @csrf
               @method('PATCH')
               <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

@@ -29,9 +29,6 @@ class WeeklyRate extends Model
     ];
 
     protected $table = 'weekly_rates';
-    public $incrementing = false;
-    protected $primaryKey = 'name';
-    protected $keyType = 'string';
 
     /**
      * Get vehicles associated with the vehicle rate

@@ -74,7 +74,7 @@
 
       <div class="panel-footer">
         @if($vehicle->trashed())
-          {{ Form::open(['route' => ['admin.vehicle.recontinue', $vehicle->id], 'method' => 'patch', 'id' => 'vehicle_recontinue_form']) }}
+          {{ Form::open(['route' => ['admin.vehicles.recontinue', $vehicle->id], 'method' => 'patch', 'id' => 'vehicle_recontinue_form']) }}
           {{ Form::close() }}
         @endif
         <div class="row">
@@ -82,7 +82,7 @@
             <div class="btn-group btn-group-justified" style="table-layout: unset">
               @if(!$vehicle->trashed())
                 <div class="btn-group">
-                  <a class="btn btn-info" href="{{ route('admin.vehicle.editForm', ['id' => $vehicle->id]) }}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
+                  <a class="btn btn-info" href="{{ route('admin.vehicles.edit', ['vehicle' => $vehicle->id]) }}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
                 </div>
                 <div class="btn-group">
                   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#vehicle-{{ $vehicle->id }}-discontinue"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;Discontinue</button>

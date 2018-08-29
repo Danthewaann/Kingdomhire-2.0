@@ -8,7 +8,7 @@
       <div class="modal-body">
         Are you sure you want to discontinue this vehicle?
       </div>
-      {{ Form::open(['route' => ['admin.vehicle.discontinue', $vehicle->id], 'method' => 'patch', 'id' => 'vehicle-'.$vehicle->id.'-discontinue-form']) }}
+      {{ Form::open(['route' => ['admin.vehicles.discontinue', $vehicle->id], 'method' => 'patch', 'id' => 'vehicle-'.$vehicle->id.'-discontinue-form']) }}
       {{ Form::close() }}
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;No</button>

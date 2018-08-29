@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
 /**
  * App\Vehicle
@@ -106,7 +107,7 @@ class Vehicle extends Model
      */
     public function rate()
     {
-        return $this->belongsTo(WeeklyRate::class, 'weekly_rate');
+        return $this->belongsTo(WeeklyRate::class, 'weekly_rate_id');
     }
 
     /**
@@ -127,11 +128,10 @@ class Vehicle extends Model
         return $this->make.' '.$this->model;
     }
 
-    public function getTotalProfit()
-    {
-       return $this->hires->sum('rate');
-    }
-
+    /**
+     * Get number of hires made in each unique year
+     * @return Collection
+     */
     public function getYearlyHires()
     {
         $years = [];
@@ -166,13 +166,36 @@ class Vehicle extends Model
         return $this->hires->where('is_active', '=', false);
     }
 
-    public function getCompleteHires()
+    public function getReservationsAndHires($except = [])
     {
-        return $this->getInactiveHires()->where('rate', '!=', null);
+        $items = $this->reservations->merge($this->hires);
+        $items = $items->reject(function ($item) use ($except) {
+            return in_array($item->id, $except);
+        });
+
+        return $items;
     }
 
-    public function getIncompleteHires()
+    public function linkImages($images)
     {
-        return $this->getInactiveHires()->where('rate', '=', null);
+        $i = $this->images->count();
+        foreach ($images as $image) {
+            $i++;
+            $image_name = $this->make.'_'.$this->model.'_'.$i.'.'.$image->extension();
+            $image_path = $image->storeAs('imgs/'.$this->make.'_'.$this->model.'-'.$this->id, $image_name, 'public');
+
+            VehicleImage::create(array(
+                'name' => $image_name,
+                'image_uri' => asset('storage/' . $image_path),
+                'vehicle_id' => $this->id
+            ));
+        }
+    }
+
+    public function deleteImages($images)
+    {
+        foreach ($images as $image) {
+            $this->images->where('name', $image)->first()->delete();
+        }
     }
 }

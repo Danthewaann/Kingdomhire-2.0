@@ -21,28 +21,26 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the main admin dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __invoke()
     {
         $activeVehicles = Vehicle::all();
         $inactiveVehicles = Vehicle::onlyTrashed()->get();
         $allVehicles = Vehicle::withTrashed()->get();
         $pastHires = Hire::whereIsActive(false)->get()->sortBy('end_date');
-        $reservations = Reservation::all();
         ChartGenerator::drawReservationsBarChart($activeVehicles);
-        $maxAmountOfHiresPerMonth = ChartGenerator::drawOverallPastHiresBarChart($pastHires, $allVehicles);
+        ChartGenerator::drawOverallPastHiresBarChart($pastHires, $allVehicles);
 
         return view('admin.admin-dashboard', [
             'activeVehicles' => $activeVehicles,
             'inactiveVehicles' => $inactiveVehicles,
             'pastHires' => $pastHires,
-            'reservations' => $reservations,
+            'reservations' => Reservation::all(),
             'rates' => WeeklyRate::all(),
-            'gantt' => ChartGenerator::drawVehiclesActiveHiresGanttChart($activeVehicles),
-            'maxAmountOfHiresPerMonth' => $maxAmountOfHiresPerMonth
+            'gantt' => ChartGenerator::drawVehiclesActiveHiresGanttChart($activeVehicles)
         ]);
     }
 }

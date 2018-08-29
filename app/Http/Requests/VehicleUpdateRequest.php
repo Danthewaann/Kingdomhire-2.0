@@ -3,17 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Validator;
-use App\ConflictableModel;
 
-class HireRequest extends FormRequest
+class VehicleUpdateRequest extends FormRequest
 {
     /**
      * The key to be used for the view error bag.
      *
      * @var string
      */
-    protected $errorBag = 'hires';
+    protected $errorBag = 'edit';
 
     /**
      * Determine if the user is authorized to make this request.
@@ -33,10 +31,21 @@ class HireRequest extends FormRequest
     public function rules()
     {
         return [
-            'hire' => 'required',
-            'name' => 'nullable|string',
-            'start_date' => 'nullable|date_format:Y-m-d',
-            'end_date' => 'nullable|date_format:Y-m-d|after_or_equal:start_date'
+            'vehicle_status' => 'nullable',
+            'vehicle_images_add' => 'nullable|array',
+            'vehicle_images_del' => 'nullable|array'
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'vehicle_images_add.image' => 'Only image type files can be uploaded'
         ];
     }
 
@@ -49,25 +58,7 @@ class HireRequest extends FormRequest
     public function withValidator($validator)
     {
         if ($validator->passes()) {
-            $validator->after(function (Validator $validator) {
-                $data = $validator->valid();
-                $reservationsAndHires = $data['hire']->vehicle->getReservationsAndHires([$data['hire']->id]);
-
-                $new = new ConflictableModel([
-                    'start_date' => $data['start_date'],
-                    'end_date' => $data['end_date']
-                ]);
-
-                $errorMessages = [];
-                foreach ($reservationsAndHires as $item) {
-                    $new->conflictsWith($item, $errorMessages);
-                }
-
-                if (!empty($errorMessages)) {
-                    $validator->errors()->merge($errorMessages);
-                    $this->failedValidation($validator);
-                }
-            });
+            //TODO need to validate provided images
         }
     }
 

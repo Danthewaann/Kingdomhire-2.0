@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\DBQuery;
-use App\Hire;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Validator;
 use App\Reservation;
-use App\Vehicle;
-use Session;
+use App\Hire;
 use App\Http\Requests\ReservationRequest;
+use Session;
 
 class ReservationsController extends Controller
 {
@@ -24,60 +19,91 @@ class ReservationsController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param ReservationRequest $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(ReservationRequest $request)
     {
+        if ($request->start_date == date('Y-m-d')) {
+            Hire::create($request->all());
+        }
+        else {
+            Reservation::create($request->all());
+        }
+
         Session::flash('status', [
             'reservation' => 'Successfully booked reservation!'
 
         ]);
 
         return redirect()->route('admin.vehicle.home', [
-            'vehicle' => Vehicle::find($request->vehicle_id)
+            'vehicle' => $request->vehicle_id
         ]);
     }
 
-
-    public function cancel($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Reservation  $reservation
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Reservation $reservation)
     {
-        Reservation::destroy($id);
+        return view('admin.reservation.edit', [
+            'vehicle' => $reservation->vehicle,
+            'reservation' => $reservation
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param ReservationRequest $request
+     * @param  \App\Reservation $reservation
+     * @return \Illuminate\Http\Response
+     */
+    public function update(ReservationRequest $request, Reservation $reservation)
+    {
+        if ($reservation->hasStarted()) {
+            Hire::create($request->all());
+            try {
+                $reservation->delete();
+            } catch (\Exception $e) {
+            }
+        }
+        else {
+            $reservation->update($request->all());
+        }
+
+        Session::flash('status', [
+            'reservation' => 'Successfully updated reservation!'
+        ]);
+
+        return redirect()->route('admin.vehicle.home', [
+            'vehicle' => $reservation->vehicle
+        ]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Reservation  $reservation
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Reservation $reservation)
+    {
+        try {
+            $reservation->delete();
+        } catch (\Exception $e) {
+        }
 
         Session::flash('status', [
             'reservation' => 'Successfully canceled reservation!'
         ]);
 
         return redirect()->back();
-    }
-
-    public function showForm($vehicle_id)
-    {
-        return view('admin.reservation.add', [
-            'vehicle' => Vehicle::find($vehicle_id)
-        ]);
-    }
-
-    public function showEditForm($vehicle_id, $reservation_id)
-    {
-        return view('admin.reservation.edit', [
-            'vehicle' => Vehicle::find($vehicle_id),
-            'reservation' => Reservation::find($reservation_id)
-        ]);
-    }
-
-    public function edit(ReservationRequest $request)
-    {
-        Session::flash('status', [
-            'reservation' => 'Successfully edited reservation!'
-        ]);
-
-        return redirect()->route('admin.vehicle.home', [
-            'id' => $request->vehicle_id
-        ]);
-    }
-
-    public function all()
-    {
-        return view('admin.admin-reservations', [
-            'reservations' => Reservation::orderBy('end_date')->get()
-        ]);
     }
 }

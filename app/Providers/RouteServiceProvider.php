@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Vehicle;
+use App\WeeklyRate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -23,9 +25,17 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::pattern('vehicle_id', '[0-9]+');
-        Route::pattern('reservation_id', '[0-9]+');
-        Route::pattern('hire_id', '[0-9]+');
+        Route::pattern('vehicle', '[0-9]+');
+        Route::pattern('reservation', '[0-9]+');
+        Route::pattern('hire', '[0-9]+');
+
+        Route::bind('vehicle', function ($value) {
+            return Vehicle::withTrashed()->where('id', $value)->first();
+        });
+
+        Route::bind('weekly_rate', function ($value) {
+            return WeeklyRate::where('name', $value)->first();
+        });
 
         parent::boot();
     }

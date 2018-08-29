@@ -16,7 +16,7 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-md-4 col-xs-12">
-              <form action="{{ route('admin.vehicle.edit', ['id' => $vehicle->id]) }}" method="post" enctype="multipart/form-data" id="vehicle_edit_form">
+              <form action="{{ route('admin.vehicles.update', ['vehicle' => $vehicle->id]) }}" method="post" enctype="multipart/form-data" id="vehicle_edit_form">
                 @csrf
                 @method('PATCH')
                 <div class="row">
@@ -79,15 +79,11 @@
                   </div>
                 </div>
               </form>
-              {{ Form::open(['route' => ['admin.vehicle.discontinue', $vehicle->id], 'method' => 'patch', 'id' => 'vehicle_discontinue_form']) }}
-              {{ Form::close() }}
-              {{ Form::open(['route' => ['admin.vehicle.delete', $vehicle->id], 'method' => 'delete', 'id' => 'vehicle_delete_form']) }}
-              {{ Form::close() }}
               <div class="row">
                 <div class="col-xs-12">
                   <div class="btn-group">
                     <button type="submit" form="vehicle_edit_form" class="btn btn-info"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
-                    <a href="{{ route('admin.vehicle.home', ['id' => $vehicle->id]) }}" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
+                    <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->id]) }}" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
                   </div>
                 </div>
               </div>

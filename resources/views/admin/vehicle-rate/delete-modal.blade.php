@@ -8,7 +8,7 @@
       <div class="modal-body">
         Are you sure you want to delete this weekly rate?
       </div>
-      {{ Form::open(['route' => ['admin.weekly-rate.delete', $rate->name], 'method' => 'delete', 'id' => 'weekly-rate-'.$rate->id.'-delete-form']) }}
+      {{ Form::open(['route' => ['admin.weekly-rates.destroy', $rate->name], 'method' => 'delete', 'id' => 'weekly-rate-'.$rate->id.'-delete-form']) }}
       {{ Form::close() }}
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;No</button>

@@ -10,7 +10,7 @@
             <h3 style="padding-left: 5px">Add a vehicle</h3>
           </div>
           <div class="panel-body">
-            <form action="{{ route('admin.vehicle.add') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.vehicles.store') }}" method="post" enctype="multipart/form-data">
               @csrf
               <div class="row">
                 <div class="col-md-6">

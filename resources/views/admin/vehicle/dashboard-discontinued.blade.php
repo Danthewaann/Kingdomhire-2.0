@@ -16,9 +16,6 @@
       </div>
     </div>
     <div class="col-md-5">
-      @if($vehicle->getIncompleteHires()->isNotEmpty())
-        @include('admin.vehicle.list-incomplete-hires')
-      @endif
       @include('admin.vehicle.list-inactive-hires')
     </div>
   </div>

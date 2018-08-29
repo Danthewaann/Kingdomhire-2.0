@@ -49,7 +49,7 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="{{ route('admin.vehicle.addForm') }}">Add a vehicle</a>
+                <a href="{{ route('admin.vehicles.create') }}">Add a vehicle</a>
               </li>
               {{--<li class="divider"></li>--}}
               <li class="dropdown-submenu">
@@ -58,7 +58,7 @@
                   <li class="dropdown-header">Active vehicles</li>
                   @foreach(\App\Vehicle::all() as $activeVehicle)
                     <li>
-                      <a href="{{ route('admin.vehicle.home', ['id' => $activeVehicle->id]) }}">{{ $activeVehicle->name() }}</a>
+                      <a href="{{ route('admin.vehicles.show', ['vehicle' => $activeVehicle->id]) }}">{{ $activeVehicle->name() }}</a>
                     </li>
                   @endforeach
                   @if(\App\Vehicle::onlyTrashed()->get()->isNotEmpty())
@@ -66,7 +66,7 @@
                     <li class="dropdown-header">Discontinued vehicles</li>
                     @foreach(\App\Vehicle::onlyTrashed()->get() as $inactiveVehicle)
                       <li>
-                        <a href="{{ route('admin.vehicle.home', ['id' => $inactiveVehicle->id]) }}">{{ $inactiveVehicle->name() }}</a>
+                        <a href="{{ route('admin.vehicles.show', ['vehicle' => $inactiveVehicle->id]) }}">{{ $inactiveVehicle->name() }}</a>
                       </li>
                     @endforeach
                   @endif
@@ -80,15 +80,15 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="{{ route('admin.weekly-rate.add') }}">Add a weekly rate</a>
+                <a href="{{ route('admin.weekly-rates.create') }}">Add a weekly rate</a>
               </li>
               {{--<li class="divider"></li>--}}
               <li class="dropdown-submenu">
-                <a href="{{ route('admin.weekly-rate.index') }}" class="submenu">Edit weekly rates <span class="caret"></span></a>
+                <a href="#" class="submenu">Edit weekly rates <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   @foreach(\App\WeeklyRate::all() as $rate)
                     <li>
-                      <a href="{{ route('admin.weekly-rate.edit', ['rate' => $rate->name]) }}">{{ $rate->getFullName() }}</a>
+                      <a href="{{ route('admin.weekly-rates.edit', ['weekly_rate' => $rate->name]) }}">{{ $rate->getFullName() }}</a>
                     </li>
                   @endforeach
                 </ul>

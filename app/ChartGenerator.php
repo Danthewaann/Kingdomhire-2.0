@@ -255,8 +255,6 @@ class ChartGenerator
             ],
             'series' => $series
         ]);
-
-        return $maxAmountOfHiresForMonth;
     }
 
     public static function drawVehicleReservationsAndHiresGanttChart(Vehicle $vehicle)

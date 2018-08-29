@@ -50,20 +50,15 @@
     </div>
     <div class="col-md-8 col-xs-12">
       <div class="well">
-        @if($gantt == null)
-          <div class="row">
-            <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            @if($gantt == null)
               <div class="panel panel-default">
                 <div class="panel-body">
                   <h3>No active hires</h3>
                 </div>
               </div>
-            </div>
-          </div>
-        @endif
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            @if($gantt != null)
+            @else
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3>Active hires</h3>
@@ -73,8 +68,6 @@
               </div>
             @endif
           </div>
-        </div>
-        <div class="row">
           <div class="col-md-2 col-sm-3 col-xs-12">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -107,5 +100,4 @@
       </div>
     </div>
   </div>
-</div>
 @endsection

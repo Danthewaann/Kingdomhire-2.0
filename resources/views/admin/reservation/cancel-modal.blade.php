@@ -8,7 +8,7 @@
       <div class="modal-body">
         Are you sure you want to cancel this reservation?
       </div>
-      {{ Form::open(['route' => ['admin.vehicle.reservation.cancel', $reservation->id], 'method' => 'delete', 'id' => 'reservation-'.$reservation->id.'-cancel-form']) }}
+      {{ Form::open(['route' => ['admin.reservations.destroy', $reservation->id], 'method' => 'delete', 'id' => 'reservation-'.$reservation->id.'-cancel-form']) }}
       {{ Form::close() }}
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;No</button>

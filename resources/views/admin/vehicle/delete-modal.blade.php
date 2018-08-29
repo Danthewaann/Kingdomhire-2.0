@@ -8,7 +8,7 @@
       <div class="modal-body">
         Are you sure you want to delete this vehicle?
       </div>
-      {{ Form::open(['route' => ['admin.vehicle.delete', $vehicle->id], 'method' => 'delete', 'id' => 'vehicle-'.$vehicle->id.'-delete-form']) }}
+      {{ Form::open(['route' => ['admin.vehicles.destroy', $vehicle->id], 'method' => 'delete', 'id' => 'vehicle-'.$vehicle->id.'-delete-form']) }}
       {{ Form::close() }}
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;No</button>

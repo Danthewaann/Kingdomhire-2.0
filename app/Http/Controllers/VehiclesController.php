@@ -4,40 +4,14 @@ namespace App\Http\Controllers;
 
 use App\ChartGenerator;
 use App\Reservation;
-use App\VehicleImage;
 use App\WeeklyRate;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Validator;
 use App\Vehicle;
+use App\Http\Requests\VehicleStoreRequest;
+use App\Http\Requests\VehicleUpdateRequest;
 use Session;
 
 class VehiclesController extends Controller
 {
-    private $store_rules = [
-        'make' => 'required',
-        'model' => 'required',
-        'seats' => 'required|numeric|min:1|max:256',
-        'vehicle_images' => 'array|nullable|image'
-    ];
-
-    private $edit_rules = [
-        'vehicle_status' => 'nullable',
-        'vehicle_images_add' => 'nullable|array',
-        'vehicle_images_del' => 'nullable|array'
-    ];
-
-    private $store_error_messages = [
-        'make.required' => 'Vehicle make (manufacturer) is required',
-        'model.required' => 'Vehicle model is required',
-        'seats.required' => 'Number of seats is required',
-        'vehicle_images.image' => 'Only image type files can be uploaded'
-    ];
-
-    private $edit_error_messages = [
-        'vehicle_images_add.image' => 'Only image type files can be uploaded'
-    ];
     /**
      * Create a new controller instance.
      *
@@ -48,46 +22,40 @@ class VehiclesController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        $validator = Validator::make($request->all(), $this->store_rules, $this->store_error_messages);
+        return view('admin.vehicle.add', [
+            'rates' => WeeklyRate::all(),
+            'types' => Vehicle::$types
+        ]);
+    }
 
-        if($validator->fails())
-        {
-            return redirect()->back()
-                ->withInput($request->input())
-                ->withErrors($validator);
-        }
-
-        $vehicle = Vehicle::create(array(
-            'make' => $request->get('make'),
-            'model' => $request->get('model'),
-            'fuel_type' => $request->get('fuel_type'),
-            'gear_type' => $request->get('gear_type'),
-            'seats' => $request->get('seats'),
-            'type' => $request->get('type'),
-            'weekly_rate' => WeeklyRate::find($request->rate_name)->id
-        ));
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param VehicleStoreRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(VehicleStoreRequest $request)
+    {
+        $vehicle = Vehicle::create([
+            'make' => $request->make,
+            'model' => $request->model,
+            'fuel_type' => $request->fuel_type,
+            'gear_type' => $request->gear_type,
+            'seats' => $request->seats,
+            'type' => $request->type,
+            'weekly_rate_id' => WeeklyRate::whereName($request->rate_name)->first()->id
+        ]);
 
         if($request->hasFile('vehicle_images')) {
             $images = $request->file('vehicle_images');
-            $i = 1;
-            foreach ($images as $image) {
-                $image_name = $request->get('make').'_'.
-                    $request->get('model').'_'.$i.'.'.
-                    $image->extension();
-
-                $image_path = $image->storeAs('imgs/'.$request->get('make').'_'.
-                    $request->get('model').'-'.$vehicle->id, $image_name, 'public');
-
-                VehicleImage::create(array(
-                    'name' => $image_name,
-                    'image_uri' => asset('storage/' . $image_path),
-                    'vehicle_id' => $vehicle->id
-                ));
-
-                $i++;
-            }
+            $vehicle->linkImages($images);
         }
 
         Session::flash('status', [
@@ -97,48 +65,86 @@ class VehiclesController extends Controller
         return redirect()->route('admin.home');
     }
 
-    public function recontinue($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Vehicle  $vehicle
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Vehicle $vehicle)
     {
-        $vehicle = Vehicle::withTrashed()->where('id', $id)->first();
-        $vehicle->status = 'Available';
-        $vehicle->save();
-        $vehicle->restore();
+        $pastHires = $vehicle->getInactiveHires()->sortBy('end_date');
+        ChartGenerator::drawOverallPastHiresBarChart($pastHires);
 
-        Session::flash('status', [
-            're-continue' => 'Successfully re-continued '.$vehicle->name()
-        ]);
+        if ($vehicle->trashed()) {
+            return view('admin.vehicle.dashboard-discontinued', [
+                'vehicle' => $vehicle,
+                'pastHires' => $pastHires
+            ]);
+        }
+        else {
+            return view('admin.vehicle.dashboard', [
+                'vehicle' => $vehicle,
+                'gantt' => ChartGenerator::drawVehicleReservationsAndHiresGanttChart($vehicle),
+                'pastHires' => $pastHires
+            ]);
+        }
+    }
 
-        return redirect()->route('admin.vehicle.home', [
-            'vehicle' => $vehicle
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Vehicle  $vehicle
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Vehicle $vehicle)
+    {
+        return view('admin.vehicle.edit', [
+            'vehicle' => $vehicle,
+            'rates' => WeeklyRate::all()
         ]);
     }
 
-    public function discontinue($id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param VehicleUpdateRequest $request
+     * @param  \App\Vehicle $vehicle
+     * @return \Illuminate\Http\Response
+     */
+    public function update(VehicleUpdateRequest $request, Vehicle $vehicle)
     {
-        $vehicle = Vehicle::find($id);
-        $vehicle->status = 'Unavailable';
-        Reservation::destroy($vehicle->reservations->pluck('id')->toArray());
-        if ($vehicle->hasActiveHire())  {
-            $activeHire = $vehicle->getActiveHire();
-            $activeHire->is_active = false;
-            $activeHire->save();
+        $vehicle->status = ($request->vehicle_status == null) ? $vehicle->status : $request->vehicle_status;
+        $vehicle->weekly_rate = ($request->rate_name != "") ? WeeklyRate::find($request->rate_name)->id : null;
+        $vehicle->save();
+
+        if($request->hasFile('vehicle_images_add')) {
+            $images = $request->file('vehicle_images_add');
+            $vehicle->linkImages($images);
         }
 
-        $vehicle->save();
-        $vehicle->delete();
+        if($request->has('vehicle_images_del')) {
+            $images = $request->get('vehicle_images_del');
+            $vehicle->deleteImages($images);
+        }
 
         Session::flash('status', [
-            'discontinue' => 'Successfully discontinued '.$vehicle->name()
+            'edit' => 'Successfully edited '.$vehicle->name()
         ]);
 
-        return redirect()->route('admin.vehicle.home', [
+        return redirect()->route('admin.vehicles.show', [
             'vehicle' => $vehicle
         ]);
     }
 
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Vehicle  $vehicle
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Vehicle $vehicle)
     {
-        $vehicle = Vehicle::withTrashed()->where('id', $id)->first();
         $vehicle->forceDelete();
 
         Session::flash('status', [
@@ -148,126 +154,55 @@ class VehiclesController extends Controller
         return redirect()->route('admin.home');
     }
 
-    public function showEditForm($id)
+    /**
+     * Soft delete the specified resource
+     *
+     * @param \App\Vehicle  $vehicle
+     * @return \Illuminate\Http\Response
+     */
+    public function discontinue(Vehicle $vehicle)
     {
-        return view('admin.vehicle.edit', [
-            'vehicle' => Vehicle::find($id),
-            'rates' => WeeklyRate::all()
-        ]);
-    }
-
-    public function showAddForm()
-    {
-        return view('admin.vehicle.add', [
-            'rates' => WeeklyRate::all(),
-            'types' => Vehicle::$types
-        ]);
-    }
-
-    public function edit(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), $this->edit_rules, $this->edit_error_messages);
-
-        if($validator->fails())
-        {
-            return redirect()->back()
-                ->withInput($request->input())
-                ->withErrors($validator, 'edit');
-        }
-
-        $vehicle = Vehicle::find($id);
-        $vehicle->status = ($request->vehicle_status == null) ? $vehicle->status : $request->vehicle_status;
-        $vehicle->weekly_rate = ($request->rate_name != "") ? WeeklyRate::find($request->rate_name)->id : null;
+        $vehicle->status = 'Unavailable';
         $vehicle->save();
-
-        if($request->hasFile('vehicle_images_add')) {
-            $images = $request->file('vehicle_images_add');
-            $i = count(VehicleImage::whereVehicleId($id)->get());
-            foreach ($images as $image) {
-                $i++;
-                $image_name = $vehicle->make.'_'.$vehicle->model.'_'.$i.'.'.$image->extension();
-                $image_path = $image->storeAs('imgs/'.$vehicle->make.'_'.$vehicle->model, $image_name, 'public');
-
-                VehicleImage::create(array(
-                    'name' => $image_name,
-                    'image_uri' => asset('storage/' . $image_path),
-                    'vehicle_id' => $id
-                ));
-            }
+        Reservation::destroy($vehicle->reservations->pluck('id')->toArray());
+        if ($vehicle->hasActiveHire())  {
+            $activeHire = $vehicle->getActiveHire();
+            $activeHire->is_active = false;
+            $activeHire->save();
         }
 
-        if($request->has('vehicle_images_del')) {
-            $images = $request->get('vehicle_images_del');
-            foreach ($images as $image) {
-                DB::table('vehicle_images')->where('name', '=', $image)->delete();
-            }
+        try {
+            $vehicle->delete();
+        } catch (\Exception $e) {
         }
 
         Session::flash('status', [
-            'edit' => 'Successfully edited '.$vehicle->name()
+            'discontinue' => 'Successfully discontinued '.$vehicle->name()
         ]);
 
-        return redirect()->route('admin.vehicle.home', [
+        return redirect()->route('admin.vehicles.show', [
             'vehicle' => $vehicle
         ]);
     }
 
-    public function show($id)
+    /**
+     * Restore the specified resource
+     *
+     * @param \App\Vehicle  $vehicle
+     * @return \Illuminate\Http\Response
+     */
+    public function recontinue(Vehicle $vehicle)
     {
-        try {
-            $vehicle = Vehicle::findOrFail($id);
-        }
-        catch (ModelNotFoundException $exception) {
-            $vehicle = Vehicle::onlyTrashed()->where('id', $id)->first();
-            if ($vehicle == null) {
-                throw $exception;
-            }
-            else {
-                $pastHires = $vehicle->getInactiveHires()->SortBy('end_date');
-                ChartGenerator::drawOverallPastHiresBarChart($pastHires);
-                return view('admin.vehicle.dashboard-discontinued', [
-                    'vehicle' => $vehicle,
-                    'pastHires' => $pastHires
-                ]);
-            }
-        }
+        $vehicle->status = 'Available';
+        $vehicle->save();
+        $vehicle->restore();
 
-        $pastHires = $vehicle->getInactiveHires()->SortBy('end_date');
-//        ChartGenerator::drawPastHiresBarChart($pastHires);
-        ChartGenerator::drawOverallPastHiresBarChart($pastHires);
-        return view('admin.vehicle.dashboard', [
-            'vehicle' => $vehicle,
-            'gantt' => ChartGenerator::drawVehicleReservationsAndHiresGanttChart($vehicle),
-            'rates' => WeeklyRate::all(),
-            'pastHires' => $pastHires
+        Session::flash('status', [
+            're-continue' => 'Successfully re-continued '.$vehicle->name()
         ]);
-    }
 
-    public function showHires($id)
-    {
-        $vehicle = Vehicle::find($id);
-        $pastHires = $vehicle->getInactiveHires();
-        ChartGenerator::drawPastHiresBarChart($pastHires);
-
-        return view('admin.vehicle.hires', [
-            'vehicle' => $vehicle,
-            'pastHires' => $pastHires
-        ]);
-    }
-
-    public function showReservations($id)
-    {
-        $vehicle = Vehicle::find($id);
-        return view('admin.vehicle.reservations', [
-            'vehicle' => $vehicle,
-            'gantt' => ChartGenerator::drawVehicleReservationsAndHiresGanttChart($vehicle)
-        ]);
-    }
-
-    public function all()
-    {
-        return view('admin.admin-vehicles', [
-            'vehicles' => Vehicle::all()
+        return redirect()->route('admin.vehicles.show', [
+            'vehicle' => $vehicle
         ]);
     }
 }

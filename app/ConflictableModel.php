@@ -15,6 +15,18 @@ class ConflictableModel extends Model
 {
     protected $conflict_message = "conflicts with another model";
 
+    protected $fillable = ['id', 'start_date', 'end_date'];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+    }
+
+    public function hasStarted()
+    {
+        return $this->start_date == date('Y-m-d');
+    }
+
     /**
      * Determine if this model conflicts with another ConflictableModel.
      * start and end dates from this model is compared against the time period

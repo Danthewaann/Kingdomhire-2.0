@@ -1,6 +1,7 @@
 @extends('layouts.admin-vehicle-dashboard')
 
 @section('content')
+  {{--@dd($errors)--}}
 <div class="well">
   <div class="row">
     <div class="col-lg-4 col-md-12">

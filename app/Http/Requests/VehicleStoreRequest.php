@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\WeeklyRate;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Validator;
 
-class WeeklyRateRequest extends FormRequest
+class VehicleStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +24,25 @@ class WeeklyRateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'weekly_rate' => 'nullable',
-            'weekly_rate_min' => 'required|numeric|min:1|max:100',
-            'weekly_rate_max' => 'required|numeric|min:2|max:200'
+            'make' => 'required',
+            'model' => 'required',
+            'seats' => 'required|numeric|min:1|max:256',
+            'vehicle_images' => 'array|nullable|image'
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'make.required' => 'Vehicle make (manufacturer) is required',
+            'model.required' => 'Vehicle model is required',
+            'seats.required' => 'Number of seats is required',
+            'vehicle_images.image' => 'Only image type files can be uploaded'
         ];
     }
 
@@ -42,24 +55,7 @@ class WeeklyRateRequest extends FormRequest
     public function withValidator($validator)
     {
         if ($validator->passes()) {
-            $validator->after(function (Validator $validator) {
-                if (!is_null($this->weekly_rate)) {
-                    $weeklyRates = WeeklyRate::all()->reject(function ($rate) {
-                        return $rate->id == $this->weekly_rate->id;
-                    });
-                }
-                else {
-                    $weeklyRates = WeeklyRate::all();
-                }
-                foreach ($weeklyRates as $weeklyRate) {
-                    if ($weeklyRate->name == $this->name) {
-                        $validator->errors()->merge([
-                            'name' => 'Weekly rate \''. $this->name .'\' already exists'
-                        ]);
-                        $this->failedValidation($validator);
-                    }
-                }
-            });
+            //TODO need to validate provided images
         }
     }
 

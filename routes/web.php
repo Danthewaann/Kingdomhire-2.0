@@ -21,44 +21,29 @@ Route::name('public.')->group(function () {
 /* Administrative private routes */
 Route::prefix('admin')->group(function () {
     Route::name('admin.')->group(function () {
-        Route::get('/', 'AdminController@index')->name('home');
+        Route::get('/', 'AdminController')->name('home');
 
         /* Vehicle specific routes */
-        Route::name('vehicle.')->group(function () {
-            Route::get('/vehicles/{vehicle_id}', 'VehiclesController@show')->name('home');
-            Route::get('/vehicles/{vehicle_id}/edit', 'VehiclesController@showEditForm')->name('editForm');
-            Route::patch('/vehicles/{vehicle_id}/edit', 'VehiclesController@edit')->name('edit');
-            Route::get('/vehicles/{id}/reservations', 'VehiclesController@showReservations')->name('reservations');
-            Route::get('/vehicles/{id}/hires', 'VehiclesController@showHires')->name('hires');
-            Route::patch('/vehicles/{vehicle_id}/discontinue', 'VehiclesController@discontinue')->name('discontinue');
-            Route::patch('/vehicles/{vehicle_id}/re-continue', 'VehiclesController@recontinue')->name('recontinue');
-            Route::delete('/vehicles/{vehicle_id}/delete', 'VehiclesController@destroy')->name('delete');
-            Route::get('/vehicles/add', 'VehiclesController@showAddForm')->name('addForm');
-            Route::post('/vehicles/add', 'VehiclesController@store')->name('add');
+        Route::resource('vehicles', 'VehiclesController')->only([
+            'show', 'create', 'store', 'edit', 'update', 'destroy'
+        ]);
+        Route::patch('/vehicles/{vehicle}/discontinue', 'VehiclesController@discontinue')->name('vehicles.discontinue');
+        Route::patch('/vehicles/{vehicle}/re-continue', 'VehiclesController@recontinue')->name('vehicles.recontinue');
 
-            /* Vehicle reservation specific routes */
-            Route::name('reservation.')->group(function () {
-                Route::get('/vehicles/{vehicle_id}/reservations/add', 'ReservationsController@showForm')->name('addForm');
-                Route::post('/vehicles/{vehicle_id}/reservations/add', 'ReservationsController@store')->name('add');
-                Route::get('/vehicles/{vehicle_id}/reservations/{reservation_id}/edit', 'ReservationsController@showEditForm')->name('editForm');
-                Route::patch('/vehicles/{vehicle_id}/reservations/{reservation_id}/edit', 'ReservationsController@edit')->name('edit');
-                Route::delete('/reservations/{reservation_id}/cancel', 'ReservationsController@cancel')->name('cancel');
-            });
+        /* Reservation specific routes */
+        Route::resource('reservations', 'ReservationsController')->only([
+            'store', 'edit', 'update', 'destroy'
+        ]);
 
-            /* Vehicle hire specific routes */
-            Route::name('hire.')->group(function () {
-                Route::get('/vehicles/{vehicle_id}/hires/{hire_id}/edit', 'HiresController@showEditForm')->name('editForm');
-                Route::patch('/vehicles/{vehicle_id}/hires/{hire_id}/edit', 'HiresController@edit')->name('edit');
-            });
-        });
+        /* Hire specific routes */
+        Route::resource('hires', 'HiresController')->only([
+            'edit', 'update',
+        ]);
 
-        /* Weekly rates routes */
-        Route::get('/rates', 'WeeklyRatesController@index')->name('weekly-rate.index');
-        Route::get('/rates/add', 'WeeklyRatesController@showAddForm')->name('weekly-rate.addForm');
-        Route::post('/rates/add', 'WeeklyRatesController@store')->name('weekly-rate.add');
-        Route::get('/rates/{rate}/edit', 'WeeklyRatesController@showEditForm')->name('weekly-rate.editForm');
-        Route::patch('/rates/{rate}/edit', 'WeeklyRatesController@edit')->name('weekly-rate.edit');
-        Route::delete('/rates/{rate}/delete', 'WeeklyRatesController@destroy')->name('weekly-rate.delete');
+        /* Weekly rate specific routes */
+        Route::resource('weekly-rates', 'WeeklyRatesController')->only([
+            'create', 'store', 'edit', 'update', 'destroy'
+        ]);
     });
 });
 

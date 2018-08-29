@@ -3,8 +3,9 @@
     <h3>Book reservation</h3>
   </div>
   <div class="panel-body">
-    <form class="form-horizontal" action="{{ route('admin.vehicle.reservation.add', ['id' => $vehicle->id]) }}" method="post">
+    <form class="form-horizontal" action="{{ route('admin.reservations.store') }}" method="post">
       @csrf
+      <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
       <div class="form-group{{ $errors->reservations->has('name') ? ' has-error' : '' }}">
         <label for="name" class="col-md-3 control-label">ID</label>
         <div class="col-md-9">

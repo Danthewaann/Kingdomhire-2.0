@@ -15,9 +15,9 @@ class VehiclesTableSeeder extends Seeder
     public function run()
     {
         DB::table('vehicles')->delete();
-        $small = WeeklyRate::find('Small')->name;
-        $medium = WeeklyRate::find('Medium')->name;
-        $large = WeeklyRate::find('Large')->name;
+        $small = WeeklyRate::whereName('Small')->first()->id;
+        $medium = WeeklyRate::whereName('Medium')->first()->id;
+        $large = WeeklyRate::whereName('Large')->first()->id;
 
         \App\Vehicle::create(array(
             'make' => 'Peugeot',
@@ -26,7 +26,7 @@ class VehiclesTableSeeder extends Seeder
             'gear_type' => 'Manuel',
             'seats' => '4',
             'type' => 'Hatchback',
-            'weekly_rate' => $small
+            'weekly_rate_id' => $small
         ));
         \App\Vehicle::create(array(
             'make' => 'Peugeot',
@@ -35,7 +35,7 @@ class VehiclesTableSeeder extends Seeder
             'gear_type' => 'Manuel',
             'seats' => '5',
             'type' => 'Hatchback',
-            'weekly_rate' => $small
+            'weekly_rate_id' => $small
         ));
         \App\Vehicle::create(array(
             'make' => 'Renault',
@@ -44,7 +44,7 @@ class VehiclesTableSeeder extends Seeder
             'gear_type' => 'Manuel',
             'seats' => '3',
             'type' => 'Large Van',
-            'weekly_rate' => $large
+            'weekly_rate_id' => $large
         ));
         \App\Vehicle::create(array(
             'make' => 'Renault',
@@ -53,7 +53,7 @@ class VehiclesTableSeeder extends Seeder
             'gear_type' => 'Manuel',
             'seats' => '3',
             'type' => 'Small Van',
-            'weekly_rate' => $medium
+            'weekly_rate_id' => $medium
         ));
         \App\Vehicle::create(array(
             'make' => 'Kia',
@@ -62,7 +62,7 @@ class VehiclesTableSeeder extends Seeder
             'gear_type' => 'Manuel/Automatic',
             'seats' => '7',
             'type' => 'People Carrier',
-            'weekly_rate' => $medium
+            'weekly_rate_id' => $medium
         ));
         \App\Vehicle::create(array(
             'make' => 'Megane',
@@ -71,7 +71,7 @@ class VehiclesTableSeeder extends Seeder
             'gear_type' => 'Automatic',
             'seats' => '5',
             'type' => 'Convertable',
-            'weekly_rate' => $medium
+            'weekly_rate_id' => $medium
         ));
 
         factory(\App\Vehicle::class, 15)->create();

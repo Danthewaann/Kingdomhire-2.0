@@ -44,6 +44,11 @@ Route::prefix('admin')->group(function () {
         Route::resource('weekly-rates', 'WeeklyRatesController')->only([
             'create', 'store', 'edit', 'update', 'destroy'
         ]);
+
+        /* User specific routes */
+        Route::resource('users', 'UsersController')->only([
+            'create', 'store', 'edit', 'update', 'destroy'
+        ]);
     });
 });
 

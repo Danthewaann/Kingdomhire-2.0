@@ -25,7 +25,7 @@ class WeeklyRatesController extends Controller
      */
     public function create()
     {
-        return view('admin.vehicle-rate.add');
+        return view('admin.weekly-rate.add');
     }
 
     /**
@@ -57,7 +57,7 @@ class WeeklyRatesController extends Controller
      */
     public function edit(WeeklyRate $weeklyRate)
     {
-        return view('admin.vehicle-rate.edit', [
+        return view('admin.weekly-rate.edit', [
             'rate' => $weeklyRate
         ]);
     }

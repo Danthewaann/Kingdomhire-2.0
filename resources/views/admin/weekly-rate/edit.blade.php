@@ -1,21 +1,23 @@
 @extends('layouts.admin-main')
 
 @section('content')
+@include('admin.weekly-rate.delete-modal')
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-4 col-md-8 col-sm-8 col-xs-12">
       <div class="well">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 style="padding-left: 5px">Add a weekly rate</h3>
+            <h3 style="padding-left: 5px">Edit weekly rate</h3>
           </div>
           <div class="panel-body">
-            <form class="form-horizontal" action="{{ route('admin.weekly-rate.add') }}" method="post">
+            <form class="form-horizontal" action="{{ route('admin.weekly-rates.update', ['weekly_rate' => $rate->name]) }}" method="post" id="weekly_rate_edit_form">
               @csrf
+              @method('PATCH')
               <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="control-label col-md-3">Name*</label>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" autocomplete="off" placeholder="Enter name">
+                  <input id="name" type="text" class="form-control" name="name" value="{{ $rate->name }}" autocomplete="off">
                   @if( $errors->has('name'))
                     <div class="help-block">
                       <div class="alert alert-danger" role="alert">
@@ -30,7 +32,7 @@
                 <div class="col-md-9">
                   <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                    <input type="text" class="form-control" id="weekly_rate_min" name="weekly_rate_min" value="{{ old('weekly_rate_min') }}" autocomplete="off" placeholder="Enter min rate">
+                    <input id="weekly_rate_min" type="text" class="form-control" name="weekly_rate_min" value="{{ $rate->weekly_rate_min }}" autocomplete="off">
                   </div>
                   @if( $errors->has('weekly_rate_min'))
                     <div class="help-block">
@@ -46,7 +48,7 @@
                 <div class="col-md-9">
                   <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                    <input type="text" class="form-control" id="weekly_rate_max" name="weekly_rate_max" value="{{ old('weekly_rate_max') }}" autocomplete="off" placeholder="Enter max rate">
+                    <input id="weekly_rate_max" type="text" class="form-control" name="weekly_rate_max" value="{{ $rate->weekly_rate_max }}" autocomplete="off">
                   </div>
                   @if( $errors->has('weekly_rate_max'))
                     <div class="help-block">
@@ -57,15 +59,21 @@
                   @endif
                 </div>
               </div>
+            </form>
               <div class="form-group">
-                <div class="col-md-4 col-md-offset-3">
-                  <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Add Weekly Rate</button>
+                <div class="row">
+                  <div class="col-md-3 col-sm-3 col-xs-3 col-md-offset-3">
+                    <button type="submit" form="weekly_rate_edit_form" class="btn btn-info"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
+                  </div>
+                  <div class="col-md-4 col-md-offset-2">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#weekly-rate-{{ $rate->id }}-delete" style="float: right"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
+                  </div>
                 </div>
               </div>
-            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 @endsection

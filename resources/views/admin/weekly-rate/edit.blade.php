@@ -62,10 +62,10 @@
             <div class="form-group">
               <div class="row">
                 <div class="col-sm-2 col-sm-offset-4">
-                  <button type="submit" form="weekly_rate_edit_form" class="btn btn-info"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
+                  <button type="submit" form="weekly_rate_edit_form" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
                 </div>
                 <div class="col-sm-3 col-sm-offset-1">
-                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#weekly-rate-{{ $rate->id }}-delete" style="float: right"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#weekly-rate-{{ $rate->id }}-delete" style="float: right"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
                 </div>
               </div>
             </div>

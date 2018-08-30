@@ -11,8 +11,8 @@
       {{ Form::open(['route' => ['admin.weekly-rates.destroy', $rate->name], 'method' => 'delete', 'id' => 'weekly-rate-'.$rate->id.'-delete-form']) }}
       {{ Form::close() }}
       <div class="modal-footer">
-        <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;No</button>
-        <button type="submit" form="weekly-rate-{{ $rate->id }}-delete-form" class="btn btn-info"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Yes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;No</button>
+        <button type="submit" form="weekly-rate-{{ $rate->id }}-delete-form" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Yes</button>
       </div>
     </div>
   </div>

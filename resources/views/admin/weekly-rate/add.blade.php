@@ -58,7 +58,7 @@
             </div>
             <div class="form-group">
               <div class="col-sm-4 col-sm-offset-4">
-                <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Add Weekly Rate</button>
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Add Weekly Rate</button>
               </div>
             </div>
           </form>

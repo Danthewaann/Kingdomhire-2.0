@@ -95,8 +95,8 @@
               <div class="row">
                 <div class="col-sm-6 col-sm-offset-4">
                   <div class="btn-group">
-                    <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
-                    <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->id]) }}" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
+                    <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->id]) }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
                   </div>
                 </div>
               </div>

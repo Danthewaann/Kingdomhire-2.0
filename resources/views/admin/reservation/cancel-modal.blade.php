@@ -11,8 +11,8 @@
       {{ Form::open(['route' => ['admin.reservations.destroy', $reservation->id], 'method' => 'delete', 'id' => 'reservation-'.$reservation->id.'-cancel-form']) }}
       {{ Form::close() }}
       <div class="modal-footer">
-        <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;No</button>
-        <button type="submit" form="reservation-{{ $reservation->id }}-cancel-form" class="btn btn-info"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Yes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;No</button>
+        <button type="submit" form="reservation-{{ $reservation->id }}-cancel-form" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Yes</button>
       </div>
     </div>
   </div>

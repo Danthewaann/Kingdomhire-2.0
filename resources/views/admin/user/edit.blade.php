@@ -57,7 +57,7 @@
             <div class="row">
               <div class="col-sm-6 col-sm-offset-4">
                 <div class="btn-group">
-                  <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
+                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
                 </div>
               </div>
             </div>

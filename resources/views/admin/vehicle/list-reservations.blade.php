@@ -31,11 +31,11 @@
               <div class="btn-group btn-group-vertical" style="width: 100%">
                 <div class="btn-group">
                   <a href="{{ route('admin.reservations.edit', ['reservation' => $reservation->id]) }}"
-                     class="btn btn-info" style="width: 100%" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit
+                     class="btn btn-primary" style="width: 100%" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit
                   </a>
                 </div>
                 <div class="btn-group">
-                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reservation-{{ $reservation->id }}"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reservation-{{ $reservation->id }}"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
                 </div>
               </div>
             </td>

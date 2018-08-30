@@ -98,7 +98,7 @@
             </div>
             <div class="row">
               <div class="col-sm-6 col-sm-offset-5">
-                <button type="submit" class="btn btn-info" style="float: right"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Add Vehicle</button>
+                <button type="submit" class="btn btn-primary" style="float: right"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Add Vehicle</button>
               </div>
             </div>
           </form>

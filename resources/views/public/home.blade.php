@@ -3,13 +3,11 @@
 @section('content')
 <div class="jumbotron jumbotron-header">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
+		{{--<div class="row">--}}
+			{{--<div class="col-md-12">--}}
 				<div class="row">
 					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-8"><h1>What is Kingdomhire?</h1></div>
-						</div>
+						<h1>What is Kingdomhire?</h1>
 					</div>
 					<div class="col-md-8">
 						<h2>Car &amp; Van Hire Specialist</h2>
@@ -18,45 +16,55 @@
 						<p style="text-align: justify;">Kingdomhire is located and based just outside <b>Markethill, Co. Armagh.</b> Exact directions can be found on our <b><a class="text-link" href="{{ route('public.contact') }}">Contact page.</a></b></p>
 						<p style="text-align: justify;">Kingdom Car Hire cater for general, public and business needs. Whatever you need, we are sure we can help you out.</p>
 					</div>
-					<div class="col-md-4">
-						<h2 style="text-align: justify; margin-top: 10px;"><span class="glyphicon glyphicon-calendar"></span>&nbsp;Opening hours</h2>
-						<table class="table opening-hours">
-							<tr>
-								<th>Weekdays</th>
-								<td>9am - 6pm</td>
-							</tr>
-							<tr>
-								<th>Saturday</th>
-								<td>9am - 1pm</td>
-							</tr>
-							<tr>
-								<th>Sunday</th>
-								<td>Closed</td>
-							</tr>
-						</table>
-						<h2 style="text-align: justify"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;Contact Information</h2>
-						<table class="table contact-info">
-							<tr>
-								<th>Phone</th>
-								<td>07775534402</td>
-              </tr>
-							<tr>
-								<th>E-Mail</th>
-								<td><span style="word-wrap: break-word;">kingdomhire@googlemail.com</span></td>
-              </tr>
-						</table>
-            <div class="btn-group btn-group-justified">
-              <div class="btn-group">
-                <a href="tel:07775534402" class="btn btn-info btn-lg" role="button" aria-pressed="true"><span class="glyphicon glyphicon-earphone"></span>&nbsp; Phone Us</a>
-              </div>
-              <div class="btn-group">
-                <a href="mailto:kingdomhire@googlemail.com" class="btn btn-info btn-lg" role="button" aria-pressed="true"><span class="glyphicon glyphicon-envelope"></span>&nbsp; Email Us</a>
-              </div>
-            </div>
+					<div class="col-md-4 col-sm-12">
+						<div class="row">
+							<div class="col-md-12 col-sm-6">
+								<h2 style="text-align: justify; margin-top: 10px;"><span class="glyphicon glyphicon-calendar"></span>&nbsp;Opening hours</h2>
+								<table class="table opening-hours">
+									<tr>
+										<th>Weekdays</th>
+										<td>9am - 6pm</td>
+									</tr>
+									<tr>
+										<th>Saturday</th>
+										<td>9am - 1pm</td>
+									</tr>
+									<tr>
+										<th>Sunday</th>
+										<td>Closed</td>
+									</tr>
+								</table>
+							</div>
+							<div class="col-md-12 col-sm-6">
+								<h2 style="margin-top: 10px;"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;Contact Information</h2>
+								<table class="table contact-info">
+									<tr>
+										<th>Phone</th>
+										<td>07775534402</td>
+									</tr>
+									<tr>
+										<th>E-Mail</th>
+										<td><span style="word-wrap: break-word;">kingdomhire@googlemail.com</span></td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<div class="btn-group btn-group-justified">
+												<div class="btn-group">
+													<a href="tel:07775534402" class="btn btn-primary btn-lg" role="button" aria-pressed="true"><span class="glyphicon glyphicon-earphone"></span>&nbsp; Phone Us</a>
+												</div>
+												<div class="btn-group">
+													<a href="mailto:kingdomhire@googlemail.com" class="btn btn-primary btn-lg" role="button" aria-pressed="true"><span class="glyphicon glyphicon-envelope"></span>&nbsp; Email Us</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+			{{--</div>--}}
+		{{--</div>--}}
 	</div>
 </div>
 <div class="jumbotron jumbotron-content">

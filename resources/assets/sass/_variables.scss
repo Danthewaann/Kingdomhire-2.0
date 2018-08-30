@@ -1,8 +1,11 @@
 
 // Body
-//$body-bg: rgb(61,61,61);
-$body-bg:  #439D70;
-//$body-bg: #ECECEC;
+$body-bg: #439D70;
+
+// Colours
+$light-green: #439D70;
+$lighter-green: rgb(75, 206, 138);
+$dark-green: #3b8b63;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -12,26 +15,14 @@ $navbar-default-border: $laravel-border-color;
 //$panel-inner-border: $laravel-border-color;
 
 // Brands
-//$brand-primary: #439D70;
-//$brand-info: #3b8b63;
-
+$brand-primary: $dark-green;
+$brand-info: lighten($dark-green, 5);
 $brand-success: #2ab27b;
 $brand-warning: #cbb956;
 $brand-danger: #bf5329;
 
-// Colours
-$light-green: #439D70;
-$lighter-green: rgb(75, 206, 138);
-$dark-green: #3b8b63;
-
-$brand-primary: $light-green;
-$brand-info: $dark-green;
-
-
-//rgb(75, 206, 138)
 $btn-info-color: white !default;
-$btn-info-bg: $brand-info !default;
-$btn-info-border: darken($btn-info-bg, 5%) !default;
+$btn-info-border: $lighter-green;
 
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
@@ -43,12 +34,12 @@ $text-color: #636b6f;
 // Navbar
 $navbar-default-color: white;
 $navbar-default-bg: #338D60;
-$navbar-default-border: $brand-primary;
+$navbar-default-border: $brand-info;
 $navbar-default-link-color: white;
 $navbar-default-link-hover-color: white;
-$navbar-default-link-hover-bg: $brand-primary;
+$navbar-default-link-hover-bg: $brand-info;
 $navbar-default-link-active-color: white;
-$navbar-default-link-active-bg: $brand-primary;
+$navbar-default-link-active-bg: $brand-info;
 
 // Buttons
 $btn-default-color: $text-color;
@@ -60,14 +51,11 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: $light-green;
-//$panel-default-heading-bg: darken($dark-green, 1);
 $panel-default-border: $lighter-green;
 $panel-inner-border: $lighter-green;
 $panel-bg: $light-green;
 $panel-footer-bg: $light-green;
 $panel-heading-padding: 10px;
-//$panel-border-radius: 0;
-//$panel-inner-border: #3bb270;
 
 //tables
 $table-bg-hover: #368F62;
@@ -75,18 +63,14 @@ $table-border-color: $lighter-green;
 
 //jumbotron
 $jumbotron-color: white;
-$jumbotron-bg: $brand-primary;
+$jumbotron-bg: $light-green;
 
 //tabs
 $nav-tabs-border-color: unset;
-//$nav-pills-border-radius: 0;
 
-  //thumbnails
-//$thumbnail-padding: 0;
+//thumbnails
 $thumbnail-border: 0;
-//$thumbnail-bg: rgba(61,61,61,0.3);
 $thumbnail-bg: $dark-green;
-//$thumbnail-bg: $brand-info;
 $thumbnail-caption-color: white;
 $thumbnail-border-radius: 0;
 
@@ -95,7 +79,6 @@ $nav-link-hover-bg: $dark-green;
 $nav-tabs-border-color: $brand-primary;
 $nav-tabs-link-hover-border-color: $brand-primary;
 $nav-tabs-active-link-hover-bg: $navbar-default-link-active-bg;
-//$nav-tabs-active-link-hover-bg: $brand-primary;
 $nav-tabs-active-link-hover-color: white;
 $nav-tabs-active-link-hover-border-color: $brand-primary;
 $nav-tabs-justified-link-border-color: rgb(75, 206, 138);
@@ -103,7 +86,6 @@ $nav-tabs-justified-active-link-border-color: rgb(75, 206, 138);
 
 //wells
 $well-bg: $dark-green;
-//$well-border: $lighter-green;
 
 //dropdowns
 //** Background for the dropdown menu.
@@ -177,5 +159,3 @@ $modal-content-border-color: $lighter-green;
 //popovers
 $popover-bg: $light-green;
 $popover-border-color: $lighter-green;
-
-$btn-info-border: $lighter-green;

@@ -82,8 +82,8 @@
               <div class="row">
                 <div class="col-xs-12">
                   <div class="btn-group">
-                    <button type="submit" form="vehicle_edit_form" class="btn btn-info"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
-                    <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->id]) }}" class="btn btn-info"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
+                    <button type="submit" form="vehicle_edit_form" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
+                    <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->id]) }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
                   </div>
                 </div>
               </div>

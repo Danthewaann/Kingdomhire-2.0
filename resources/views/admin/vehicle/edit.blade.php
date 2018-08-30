@@ -91,7 +91,7 @@
             <div class="col-md-7 col-sm-6 col-xs-12">
               <div class="row">
               @foreach($vehicle->images as $image)
-                <div class="col-md-4 col-sm-6 col-xs-6" style="margin-top: 22px">
+                <div class="col-md-4 col-sm-12" style="margin-top: 22px">
                   <img src="{{ $image->image_uri }}" style="width: 100%; height: 175px"/>
                   <table class="table">
                     <tr>

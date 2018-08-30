@@ -7,8 +7,8 @@
       @csrf
       <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
       <div class="form-group{{ $errors->reservations->has('name') ? ' has-error' : '' }}">
-        <label for="name" class="col-md-3 control-label">ID</label>
-        <div class="col-md-9">
+        <label for="name" class="col-sm-3 control-label">ID</label>
+        <div class="col-sm-9">
           <div class="input-group">
             {{ Form::text('name', '', array('class' => 'form-control', 'autocomplete' => 'off', 'placeholder' => 'Enter ID')) }}
             <div class="input-group-btn">
@@ -29,16 +29,9 @@
           @endif
         </div>
       </div>
-      {{--<div class="form-group">--}}
-        {{--<div class="input-group input-daterange">--}}
-          {{--<input type="text" class="form-control" value="2012-04-05">--}}
-          {{--<div class="input-group-addon">to</div>--}}
-          {{--<input type="text" class="form-control" value="2012-04-19">--}}
-        {{--</div>--}}
-      {{--</div>--}}
       <div class="form-group{{ $errors->reservations->has('start_date') ? ' has-error' : '' }}">
-        <label for="start_date" class="col-md-3 control-label">Start Date*</label>
-        <div class="col-md-9">
+        <label for="start_date" class="col-sm-3 control-label">Start Date*</label>
+        <div class="col-sm-9">
           <div class="input-group">
             {{ Form::text('start_date', '', array(
               'class' => 'form-control', 'autocomplete' => 'off', 'placeholder' => 'e.g. '.date('Y-m-d'), 'id' => 'start_date'))
@@ -55,8 +48,8 @@
         </div>
       </div>
       <div class="form-group{{ $errors->reservations->has('end_date') ? ' has-error' : '' }}">
-        <label for="end_date" class="col-md-3 control-label">End Date*</label>
-        <div class="col-md-9">
+        <label for="end_date" class="col-sm-3 control-label">End Date*</label>
+        <div class="col-sm-9">
           <div class="input-group">
             {{ Form::text('end_date', '', array(
               'class' => 'form-control', 'autocomplete' => 'off',
@@ -102,7 +95,7 @@
         </div>
       @endif
       <div class="row">
-        <div class="col-md-6 col-xs-6 col-md-offset-3">
+        <div class="col-sm-6 col-sm-offset-3">
           <div class="btn-group">
             <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Book reservation</button>
           </div>

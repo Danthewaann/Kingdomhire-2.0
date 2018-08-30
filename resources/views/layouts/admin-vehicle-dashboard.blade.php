@@ -23,7 +23,7 @@
 
   <div class="jumbotron jumbotron-admin">
     @include('admin.vehicle.dashboard-summary')
-    <div class="col-lg-9 col-md-7 col-sm-7">
+    <div class="col-lg-9 col-sm-7">
       @yield('content')
     </div>
   </div>

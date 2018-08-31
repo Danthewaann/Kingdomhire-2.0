@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-sm-8 col-sm-offset-4">
-                    <button type="submit" class="btn btn-info">
+                    <button type="submit" class="btn btn-primary">
                       Login
                     </button>
                     <a class="btn btn-link text-link" href="{{ route('password.request') }}">

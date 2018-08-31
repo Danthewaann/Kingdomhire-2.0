@@ -3,8 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Vehicle;
 use App\Reservation;
-use App\DBQuery;
-//use Faker\Generator as Faker;
+use Faker\Factory;
 
 class ReservationsTableSeeder extends Seeder
 {
@@ -19,7 +18,8 @@ class ReservationsTableSeeder extends Seeder
         $start_date = strtotime("2014-01-01");
         $end_date = strtotime("2018-12-31");
         $vehicles = Vehicle::all();
-        $faker = Faker\Factory::create();
+        $faker = Factory::create();
+
         foreach ($vehicles as $vehicle) {
             $numOfReservations = rand(1, 30);
             for($i = 0; $i < $numOfReservations; $i++) {
@@ -27,30 +27,28 @@ class ReservationsTableSeeder extends Seeder
                 $start = date('Y-m-d', rand($start_date, $end_date));
                 $end = date('Y-m-d', strtotime($start . '+ '.$reservationLength.' days'));
                 $reservations = Reservation::whereVehicleId($vehicle->id)->get();
+
+                $new = new Reservation([
+                    'name' => substr($faker->firstName, 0, 1) . substr($faker->lastName, 0, 1),
+                    'start_date' => $start,
+                    'end_date' => $end,
+                    'vehicle_id' => $vehicle->id
+                ]);
+
                 if($reservations->isNotEmpty()) {
                     $conflicts = false;
                     foreach ($reservations as $reservation) {
-                        if(DBQuery::datesConflict($reservation, $start, $end)) {
-                            $conflicts = true;
+                        $conflicts = $new->conflictsWith($reservation);
+                        if($conflicts) {
                             break;
                         }
                     }
                     if(!$conflicts) {
-                        Reservation::create([
-                            'name' => substr($faker->firstName, 0, 1) . substr($faker->lastName, 0, 1),
-                            'start_date' => $start,
-                            'end_date' => $end,
-                            'vehicle_id' => $vehicle->id
-                        ]);
+                        $new->save();
                     }
                 }
                 else {
-                    Reservation::create([
-                        'name' => substr($faker->firstName, 0, 1) . substr($faker->lastName, 0, 1),
-                        'start_date' => $start,
-                        'end_date' => $end,
-                        'vehicle_id' => $vehicle->id
-                    ]);
+                    $new->save();
                 }
             }
         }

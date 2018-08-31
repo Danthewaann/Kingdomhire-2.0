@@ -11,6 +11,8 @@ use Illuminate\Support\Collection;
  *
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Hire[] $hires
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Reservation[] $reservations
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\VehicleImage[] $images
+ * @property-read \App\WeeklyRate|null $rate
  * @mixin \Eloquent
  * @property int $id
  * @property string $make
@@ -23,9 +25,8 @@ use Illuminate\Support\Collection;
  * @property string $type
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
  * @property int|null $vehicle_rate_id
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\VehicleImage[] $images
- * @property-read \App\WeeklyRate|null $rate
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereFuelType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereGearType($value)
@@ -37,18 +38,13 @@ use Illuminate\Support\Collection;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereVehicleRateId($value)
- * @property \Carbon\Carbon|null $deleted_at
- * @property int|null $weekly_rate_id
- * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Query\Builder|\App\Vehicle onlyTrashed()
- * @method static bool|null restore()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereWeeklyRateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereVehicleRateId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Vehicle onlyTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Vehicle withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Vehicle withoutTrashed()
- * @property string|null $weekly_rate
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereWeeklyRate($value)
+ * @method static bool|null forceDelete()
+ * @method static bool|null restore()
  */
 class Vehicle extends Model
 {

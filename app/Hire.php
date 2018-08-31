@@ -2,13 +2,12 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 /**
  * App\Hire
  *
  * @property-read \App\Vehicle $vehicle
  * @mixin \Eloquent
+ * @property int $id
  * @property string|null $name
  * @property string $start_date
  * @property string $end_date
@@ -16,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property int $vehicle_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereEndDate($value)
@@ -23,7 +23,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereStartDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereVehicleId($value)
-
  */
 class Hire extends ConflictableModel
 {

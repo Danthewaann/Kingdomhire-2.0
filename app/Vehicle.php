@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\VehicleCreating;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
@@ -26,7 +27,7 @@ use Illuminate\Support\Collection;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon|null $deleted_at
- * @property int|null $vehicle_rate_id
+ * @property int|null $weekly_rate_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereFuelType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vehicle whereGearType($value)
@@ -50,6 +51,9 @@ class Vehicle extends Model
 {
     use SoftDeletes;
 
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     protected $fillable = [
         'make', 'model', 'fuel_type', 'gear_type', 'seats',
         'status', 'type', 'image_path', 'weekly_rate_id'
@@ -70,7 +74,14 @@ class Vehicle extends Model
         'Out for hire'
     ];
 
-
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'creating' => VehicleCreating::class,
+    ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -78,6 +89,41 @@ class Vehicle extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    /**
+     * Create a unique vehicle id that doesn't
+     * conflict with any vehicle id that exists
+     * in the database
+     *
+     * @param int $length character length of generated id
+     * @return string the newly generated id
+     */
+    public static function createUniqueId($length = 4)
+    {
+        $characters = '0123456789';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+
+        $vehicle_ids = Vehicle::withTrashed()->pluck('id')->toArray();
+        if (in_array($randomString, $vehicle_ids)) {
+            return Vehicle::createUniqueId();
+        }
+
+        return $randomString;
+    }
 
     /**
      * Get reservations for the vehicle

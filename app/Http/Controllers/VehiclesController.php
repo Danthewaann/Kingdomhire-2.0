@@ -59,7 +59,9 @@ class VehiclesController extends Controller
         }
 
         Session::flash('status', [
-            'vehicle' => 'Successfully created vehicle '.$vehicle->name()
+            'Successfully created vehicle!',
+            'Vehicle Name = '.$vehicle->name(),
+            'Vehicle Id = '.$vehicle->id,
         ]);
 
         return redirect()->route('admin.home');
@@ -115,7 +117,7 @@ class VehiclesController extends Controller
     public function update(VehicleUpdateRequest $request, Vehicle $vehicle)
     {
         $vehicle->status = ($request->vehicle_status == null) ? $vehicle->status : $request->vehicle_status;
-        $vehicle->weekly_rate = ($request->rate_name != "") ? WeeklyRate::find($request->rate_name)->id : null;
+        $vehicle->weekly_rate_id = ($request->rate_name != "") ? WeeklyRate::whereName($request->rate_name)->first()->id : null;
         $vehicle->save();
 
         if($request->hasFile('vehicle_images_add')) {
@@ -129,7 +131,9 @@ class VehiclesController extends Controller
         }
 
         Session::flash('status', [
-            'edit' => 'Successfully edited '.$vehicle->name()
+            'edit' => 'Successfully edited '.$vehicle->name(),
+            'Vehicle Name = '.$vehicle->name(),
+            'Vehicle Id = '.$vehicle->id,
         ]);
 
         return redirect()->route('admin.vehicles.show', [

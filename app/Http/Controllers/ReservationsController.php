@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Reservation;
 use App\Hire;
 use App\Http\Requests\ReservationRequest;
+use App\Vehicle;
 use Session;
 
 class ReservationsController extends Controller
@@ -40,7 +41,7 @@ class ReservationsController extends Controller
         ]);
 
         return redirect()->route('admin.vehicles.show', [
-            'vehicle' => $request->vehicle_id
+            'vehicle' => Vehicle::find($request->vehicle_id)
         ]);
     }
 

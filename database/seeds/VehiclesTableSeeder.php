@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\WeeklyRate;
+use App\Vehicle;
 
 
 class VehiclesTableSeeder extends Seeder
@@ -19,7 +20,7 @@ class VehiclesTableSeeder extends Seeder
         $medium = WeeklyRate::whereName('Medium')->first()->id;
         $large = WeeklyRate::whereName('Large')->first()->id;
 
-        \App\Vehicle::create(array(
+        Vehicle::create(array(
             'make' => 'Peugeot',
             'model' => '307',
             'fuel_type' => 'Petrol',
@@ -28,7 +29,7 @@ class VehiclesTableSeeder extends Seeder
             'type' => 'Hatchback',
             'weekly_rate_id' => $small
         ));
-        \App\Vehicle::create(array(
+        Vehicle::create(array(
             'make' => 'Peugeot',
             'model' => '308',
             'fuel_type' => 'Petrol',
@@ -37,7 +38,7 @@ class VehiclesTableSeeder extends Seeder
             'type' => 'Hatchback',
             'weekly_rate_id' => $small
         ));
-        \App\Vehicle::create(array(
+        Vehicle::create(array(
             'make' => 'Renault',
             'model' => 'Master',
             'fuel_type' => 'Diesel',
@@ -46,7 +47,7 @@ class VehiclesTableSeeder extends Seeder
             'type' => 'Large Van',
             'weekly_rate_id' => $large
         ));
-        \App\Vehicle::create(array(
+        Vehicle::create(array(
             'make' => 'Renault',
             'model' => 'Traffic',
             'fuel_type' => 'Diesel',
@@ -55,7 +56,7 @@ class VehiclesTableSeeder extends Seeder
             'type' => 'Small Van',
             'weekly_rate_id' => $medium
         ));
-        \App\Vehicle::create(array(
+        Vehicle::create(array(
             'make' => 'Kia',
             'model' => 'Sedona',
             'fuel_type' => 'Diesel',
@@ -64,7 +65,7 @@ class VehiclesTableSeeder extends Seeder
             'type' => 'People Carrier',
             'weekly_rate_id' => $medium
         ));
-        \App\Vehicle::create(array(
+        Vehicle::create(array(
             'make' => 'Megane',
             'model' => 'Convertable',
             'fuel_type' => 'Petrol',
@@ -74,6 +75,6 @@ class VehiclesTableSeeder extends Seeder
             'weekly_rate_id' => $medium
         ));
 
-        factory(\App\Vehicle::class, 15)->create();
+        factory(Vehicle::class, 15)->create();
     }
 }

@@ -27,12 +27,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::pattern('vehicle', '[0-9]+');
         Route::pattern('reservation', '[0-9]+');
         Route::pattern('hire', '[0-9]+');
 
         Route::bind('vehicle', function ($value) {
-            return Vehicle::withTrashed()->where('id', $value)->first();
+            return Vehicle::withTrashed()->where('slug', $value)->first();
         });
 
         Route::bind('weekly_rate', function ($value) {

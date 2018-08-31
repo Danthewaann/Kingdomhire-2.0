@@ -21,14 +21,18 @@
           <div style="position: relative">
             <img src="{{ $vehicle->images->first()->image_uri }}" class="vehicle-img vehicle-dashboard-img"/>
             <div style="position: absolute; left: 0; top: 240px">
-              <button class="btn btn-info vehicle-img-button" onclick="openModal('{{ str_replace(" ", "-", $vehicle->name()) }}');currentSlide(1, '{{ str_replace(" ", "-", $vehicle->name()).'-images' }}')">View images</button>
+              <button class="btn btn-info vehicle-img-button" onclick="openModal('{{ $vehicle->slug }}');currentSlide(1, '{{ $vehicle->slug.'-images' }}')">View images</button>
             </div>
           </div>
         @endif
         <table class="table table-condensed vehicle-table-dashboard">
           <tr>
-            <th class="first">Status</th>
-            <td class="first">{{ $vehicle->status }}</td>
+            <th class="first">Vehicle Id</th>
+            <td class="first">{{ $vehicle->id }}</td>
+          </tr>
+          <tr>
+            <th>Status</th>
+            <td>{{ $vehicle->status }}</td>
           </tr>
           <tr>
             <th>Vehicle Type</th>
@@ -74,7 +78,7 @@
 
       <div class="panel-footer">
         @if($vehicle->trashed())
-          {{ Form::open(['route' => ['admin.vehicles.recontinue', $vehicle->id], 'method' => 'patch', 'id' => 'vehicle_recontinue_form']) }}
+          {{ Form::open(['route' => ['admin.vehicles.recontinue', $vehicle->slug], 'method' => 'patch', 'id' => 'vehicle_recontinue_form']) }}
           {{ Form::close() }}
         @endif
         <div class="row">
@@ -82,14 +86,14 @@
             <div class="btn-group btn-group-justified" style="table-layout: unset">
               @if(!$vehicle->trashed())
                 <div class="btn-group">
-                  <a class="btn btn-primary" href="{{ route('admin.vehicles.edit', ['vehicle' => $vehicle->id]) }}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
+                  <a class="btn btn-primary" href="{{ route('admin.vehicles.edit', ['vehicle' => $vehicle->slug]) }}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
                 </div>
                 <div class="btn-group">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#vehicle-{{ $vehicle->id }}-discontinue"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;Discontinue</button>
                 </div>
               @else
                 <div class="btn-group">
-                  <button type="submit" form="vehicle_recontinue_form" class="btn btn-info"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Re-continue</button>
+                  <button type="submit" form="vehicle_recontinue_form" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Re-continue</button>
                 </div>
               @endif
               <div class="btn-group">

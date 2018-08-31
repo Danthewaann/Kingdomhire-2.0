@@ -37,7 +37,7 @@
                 <li class="dropdown-header">Active vehicles</li>
                 @foreach(\App\Vehicle::all() as $vehicle)
                   <li>
-                    <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->id]) }}">{{ $vehicle->name() }}</a>
+                    <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}">{{ $vehicle->name() }}</a>
                   </li>
                 @endforeach
                 @if(\App\Vehicle::onlyTrashed()->get()->isNotEmpty())
@@ -45,7 +45,7 @@
                   <li class="dropdown-header">Discontinued vehicles</li>
                   @foreach(\App\Vehicle::onlyTrashed()->get() as $vehicle)
                     <li>
-                      <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->id]) }}">{{ $vehicle->name() }}</a>
+                      <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}">{{ $vehicle->name() }}</a>
                     </li>
                   @endforeach
                 @endif

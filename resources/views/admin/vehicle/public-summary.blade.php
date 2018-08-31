@@ -15,8 +15,8 @@
         <div style="position: absolute; left: 0; top: 165px">
           <button class="btn btn-info vehicle-img-button"
                   onclick="
-                    openModal('{{ str_replace(" ", "-", $vehicle->name()) }}');
-                    currentSlide(1, '{{ str_replace(" ", "-", $vehicle->name()).'-images' }}')
+                    openModal('{{ $vehicle->slug }}');
+                    currentSlide(1, '{{ $vehicle->slug.'-images' }}')
                     "
           >View images</button>
         </div>
@@ -24,8 +24,12 @@
     @endif
     <table class="table table-condensed vehicle-table-dashboard">
       <tr>
-        <th class="first">Status</th>
-        <td class="first">{{ $vehicle->status }}</td>
+        <th class="first">Vehicle Id</th>
+        <td class="first">{{ $vehicle->id }}</td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td>{{ $vehicle->status }}</td>
       </tr>
       <tr>
         <th>Vehicle Type</th>

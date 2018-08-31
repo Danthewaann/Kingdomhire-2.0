@@ -20,7 +20,7 @@ class VehiclesTableSeeder extends Seeder
         $medium = WeeklyRate::whereName('Medium')->first()->id;
         $large = WeeklyRate::whereName('Large')->first()->id;
 
-        Vehicle::create(array(
+        Vehicle::create([
             'make' => 'Peugeot',
             'model' => '307',
             'fuel_type' => 'Petrol',
@@ -28,8 +28,8 @@ class VehiclesTableSeeder extends Seeder
             'seats' => '4',
             'type' => 'Hatchback',
             'weekly_rate_id' => $small
-        ));
-        Vehicle::create(array(
+        ]);
+        Vehicle::create([
             'make' => 'Peugeot',
             'model' => '308',
             'fuel_type' => 'Petrol',
@@ -37,8 +37,8 @@ class VehiclesTableSeeder extends Seeder
             'seats' => '5',
             'type' => 'Hatchback',
             'weekly_rate_id' => $small
-        ));
-        Vehicle::create(array(
+        ]);
+        Vehicle::create([
             'make' => 'Renault',
             'model' => 'Master',
             'fuel_type' => 'Diesel',
@@ -46,8 +46,8 @@ class VehiclesTableSeeder extends Seeder
             'seats' => '3',
             'type' => 'Large Van',
             'weekly_rate_id' => $large
-        ));
-        Vehicle::create(array(
+        ]);
+        Vehicle::create([
             'make' => 'Renault',
             'model' => 'Traffic',
             'fuel_type' => 'Diesel',
@@ -55,8 +55,8 @@ class VehiclesTableSeeder extends Seeder
             'seats' => '3',
             'type' => 'Small Van',
             'weekly_rate_id' => $medium
-        ));
-        Vehicle::create(array(
+        ]);
+        Vehicle::create([
             'make' => 'Kia',
             'model' => 'Sedona',
             'fuel_type' => 'Diesel',
@@ -64,8 +64,8 @@ class VehiclesTableSeeder extends Seeder
             'seats' => '7',
             'type' => 'People Carrier',
             'weekly_rate_id' => $medium
-        ));
-        Vehicle::create(array(
+        ]);
+        Vehicle::create([
             'make' => 'Megane',
             'model' => 'Convertable',
             'fuel_type' => 'Petrol',
@@ -73,7 +73,7 @@ class VehiclesTableSeeder extends Seeder
             'seats' => '5',
             'type' => 'Convertable',
             'weekly_rate_id' => $medium
-        ));
+        ]);
 
         factory(Vehicle::class, 15)->create();
     }

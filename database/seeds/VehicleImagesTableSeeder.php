@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Vehicle;
+use App\VehicleImage;
 
 class VehicleImagesTableSeeder extends Seeder
 {
@@ -11,35 +13,53 @@ class VehicleImagesTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\VehicleImage::create(array(
+        VehicleImage::create([
             'name' => 'peugeot_307.jpg',
-            'vehicle_id' => \App\DBQuery::getVehicleWithoutId('Peugeot', '307')->id,
+            'vehicle_id' => Vehicle::where([
+                ['make', '=', 'Peugeot'],
+                ['model', '=', '307']
+            ])->first()->id,
             'image_uri' => asset('storage/imgs/Peugeot_307/peugeot_307.jpg')
-        ));
-        \App\VehicleImage::create(array(
+        ]);
+        VehicleImage::create([
             'name' => 'peugeot_308.jpg',
-            'vehicle_id' => \App\DBQuery::getVehicleWithoutId('Peugeot', '308')->id,
+            'vehicle_id' => Vehicle::where([
+                ['make', '=', 'Peugeot'],
+                ['model', '=', '308']
+            ])->first()->id,
             'image_uri' => asset('storage/imgs/Peugeot_308/peugeot_308.jpg')
-        ));
-        \App\VehicleImage::create(array(
+        ]);
+        VehicleImage::create([
             'name' => 'renault_master.jpg',
-            'vehicle_id' => \App\DBQuery::getVehicleWithoutId('Renault', 'Master')->id,
+            'vehicle_id' => Vehicle::where([
+                ['make', '=', 'Renault'],
+                ['model', '=', 'Master']
+            ])->first()->id,
             'image_uri' => asset('storage/imgs/Renault_Master/renault_master.jpg')
-        ));
-        \App\VehicleImage::create(array(
+        ]);
+        VehicleImage::create([
             'name' => 'renault_traffic.jpg',
-            'vehicle_id' => \App\DBQuery::getVehicleWithoutId('Renault', 'Traffic')->id,
+            'vehicle_id' => Vehicle::where([
+                ['make', '=', 'Renault'],
+                ['model', '=', 'Traffic']
+            ])->first()->id,
             'image_uri' => asset('storage/imgs/Renault_Traffic/renault_traffic.jpg')
-        ));
-        \App\VehicleImage::create(array(
+        ]);
+        VehicleImage::create([
             'name' => 'kia_sedona.jpg',
-            'vehicle_id' => \App\DBQuery::getVehicleWithoutId('Kia', 'Sedona')->id,
+            'vehicle_id' => Vehicle::where([
+                ['make', '=', 'Kia'],
+                ['model', '=', 'Sedona']
+            ])->first()->id,
             'image_uri' => asset('storage/imgs/Kia_Sedona/kia_sedona.jpg')
-        ));
-        \App\VehicleImage::create(array(
+        ]);
+        VehicleImage::create([
             'name' => 'megane_convertable.jpg',
-            'vehicle_id' => \App\DBQuery::getVehicleWithoutId('Megane', 'Convertable')->id,
+            'vehicle_id' => Vehicle::where([
+                ['make', '=', 'Megane'],
+                ['model', '=', 'Convertable']
+            ])->first()->id,
             'image_uri' => asset('storage/imgs/Megane_Convertable/megane_convertable.jpg')
-        ));
+        ]);
     }
 }

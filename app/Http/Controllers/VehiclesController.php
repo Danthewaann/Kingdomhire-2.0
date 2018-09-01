@@ -29,7 +29,7 @@ class VehiclesController extends Controller
      */
     public function create()
     {
-        return view('admin.vehicle.add', [
+        return view('admin.vehicle.create', [
             'rates' => WeeklyRate::all(),
             'types' => Vehicle::$types
         ]);
@@ -79,13 +79,13 @@ class VehiclesController extends Controller
         ChartGenerator::drawOverallPastHiresBarChart($pastHires);
 
         if ($vehicle->trashed()) {
-            return view('admin.vehicle.dashboard-discontinued', [
+            return view('admin.vehicle.dashboards.discontinued', [
                 'vehicle' => $vehicle,
                 'pastHires' => $pastHires
             ]);
         }
         else {
-            return view('admin.vehicle.dashboard', [
+            return view('admin.vehicle.dashboards.active', [
                 'vehicle' => $vehicle,
                 'gantt' => ChartGenerator::drawVehicleReservationsAndHiresGanttChart($vehicle),
                 'pastHires' => $pastHires

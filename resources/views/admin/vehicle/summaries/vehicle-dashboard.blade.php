@@ -1,6 +1,6 @@
-@include('admin.vehicle.modal-gallery')
-@includeWhen(!$vehicle->trashed() ,'admin.vehicle.discontinue-modal')
-@include('admin.vehicle.delete-modal')
+@include('admin.vehicle.modals.image-gallery')
+@includeWhen(!$vehicle->trashed() ,'admin.vehicle.modals.discontinue')
+@include('admin.vehicle.modals.destroy')
 <div class="col-lg-3 col-md-5 col-sm-5">
   <div class="well">
     @include('admin.common.alert')

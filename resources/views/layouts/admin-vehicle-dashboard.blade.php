@@ -22,7 +22,7 @@
   @include('layouts.admin-navbar-base')
 
   <div class="jumbotron jumbotron-admin">
-    @include('admin.vehicle.dashboard-summary')
+    @include('admin.vehicle.summaries.vehicle-dashboard')
     <div class="col-lg-9 col-sm-7">
       @yield('content')
     </div>

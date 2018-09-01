@@ -5,9 +5,9 @@
 <div class="well">
   <div class="row">
     <div class="col-lg-4 col-md-12">
-      @include('admin.reservation.add')
-      @include('admin.vehicle.list-active-hire')
-      @include('admin.vehicle.list-reservations')
+      @include('admin.reservation.create')
+      @include('admin.vehicle.hires.show-active')
+      @include('admin.vehicle.reservations.show-all')
     </div>
     <div class="col-lg-8 col-md-12">
       @if($gantt != null)
@@ -26,27 +26,14 @@
       @endif
       <div class="row">
         <div class="col-lg-4">
-          {{--@if($vehicle->getIncompleteHires()->isNotEmpty())--}}
-            {{--@include('admin.vehicle.list-incomplete-hires')--}}
-          {{--@endif--}}
-          {{--@include('admin.vehicle.list-inactive-hires')--}}
           <div class="row">
             <div class="col-lg-12">
-              @include('admin.vehicle.yearly-hires')
+              @include('admin.vehicle.charts.yearly-hires')
             </div>
           </div>
         </div>
         <div class="col-lg-8">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3>Yearly hires chart</h3>
-              <h5>Shows hires per month per year</h5>
-            </div>
-            <div class="panel-body">
-              <div id="overall_hires_per_month"></div>
-              @columnchart('Overall Hires per month', 'overall_hires_per_month')
-            </div>
-          </div>
+          @include('admin.vehicle.charts.yearly-hires-graph')
         </div>
       </div>
     </div>

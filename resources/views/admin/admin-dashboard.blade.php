@@ -68,34 +68,7 @@
               </div>
             @endif
           </div>
-          <div class="col-md-2 col-sm-3 col-xs-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                @if($activeVehicles->isEmpty() and $inactiveVehicles->isEmpty())
-                  <h3 style="text-align: center; margin-top: 0">No vehicles present</h3>
-                @else
-                  <h3 style="text-align: center; margin-top: 0">Vehicles</h3>
-                  <h5 style="text-align: center">{{ $activeVehicles->count() + $inactiveVehicles->count() }} vehicle(s) in total</h5>
-                @endif
-              </div>
-              <div class="panel-body">
-                <ul class="nav nav-pills nav-stacked vehicle-navbar-tabs" id="myTabs">
-                  @if($activeVehicles->isNotEmpty())
-                    <li class="active"><a href="#all" class="btn" data-toggle="pill">All</a></li>
-                    @foreach(array_keys($activeVehicles->groupBy('type')->toArray()) as $key)
-                      <li><a data-toggle="pill" class="btn" href="#{{ str_replace(" ", "-", $key) }}">{{ $key }}s</a></li>
-                    @endforeach
-                  @endif
-                  @if($inactiveVehicles->isNotEmpty())
-                    <li class="{{ $activeVehicles->isEmpty() ? 'active' : '' }}"><a data-toggle="pill" class="btn" href="#discontinued">Discontinued</a></li>
-                  @endif
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-10 col-sm-9 col-xs-12">
-            @include('admin.vehicle.list-admin')
-          </div>
+          @include('admin.vehicle.lists.admin')
         </div>
       </div>
     </div>

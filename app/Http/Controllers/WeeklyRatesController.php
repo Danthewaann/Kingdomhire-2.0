@@ -25,7 +25,7 @@ class WeeklyRatesController extends Controller
      */
     public function create()
     {
-        return view('admin.weekly-rate.add');
+        return view('admin.weekly-rate.create');
     }
 
     /**

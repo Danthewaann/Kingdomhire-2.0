@@ -34,7 +34,7 @@ class AdminController extends Controller
         ChartGenerator::drawReservationsBarChart($activeVehicles);
         ChartGenerator::drawOverallPastHiresBarChart($pastHires, $allVehicles);
 
-        return view('admin.admin-dashboard', [
+        return view('admin.home', [
             'activeVehicles' => $activeVehicles,
             'inactiveVehicles' => $inactiveVehicles,
             'pastHires' => $pastHires,

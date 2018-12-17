@@ -78,7 +78,7 @@ class ChartGenerator
                     'color' => 'rgb(75, 206, 138)'
                 ],
                 'minorGridlines' => [
-                    'color' => 'rgb(75, 206, 138)'
+                    'count' => 0
                 ],
             ],
         ]);

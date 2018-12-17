@@ -13,29 +13,7 @@
                 <p style="text-align: justify">Have any queries or complaints? You can contact us via mobile phone or email, whichever you prefer.</p>
               </div>
               <div class="col-md-12 col-sm-6">
-                <h2 style="margin-top: 0px;"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;Contact Information</h2>
-                <table class="table contact-info">
-                  <tr>
-                    <th>Phone</th>
-                    <td>07775534402</td>
-                  </tr>
-                  <tr>
-                    <th>E-Mail</th>
-                    <td><span style="word-wrap: break-word;">kingdomhire@googlemail.com</span></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <div class="btn-group btn-group-justified">
-                        <div class="btn-group">
-                          <a href="tel:07775534402" class="btn btn-primary btn-lg" role="button" aria-pressed="true"><span class="glyphicon glyphicon-earphone"></span>&nbsp; Phone Us</a>
-                        </div>
-                        <div class="btn-group">
-                          <a href="mailto:kingdomhire@googlemail.com" class="btn btn-primary btn-lg" role="button" aria-pressed="true"><span class="glyphicon glyphicon-envelope"></span>&nbsp; Email Us</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
+                @include('public.contact-table')
               </div>
             </div>
           </div>

@@ -9,7 +9,7 @@
     <td><span style="word-wrap: break-word;">kingdomhire@googlemail.com</span></td>
   </tr>
   <tr>
-    <td colspan="2" style="padding: 10px 0px 0px 0px">
+    <td colspan="2" style="padding: 15px 0px 0px 0px">
       <div class="btn-group btn-group-justified">
         <div class="btn-group">
           <a href="tel:07775534402" class="btn btn-primary btn-lg" role="button" aria-pressed="true"><span class="glyphicon glyphicon-earphone"></span>&nbsp; Phone Us</a>

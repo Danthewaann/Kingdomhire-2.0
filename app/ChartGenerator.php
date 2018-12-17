@@ -77,6 +77,9 @@ class ChartGenerator
                     'count' => ($maxReservationsForVehicle > 3 ? $maxReservationsForVehicle : 3)+1,
                     'color' => 'rgb(75, 206, 138)'
                 ],
+                'minorGridlines' => [
+                    'color' => 'rgb(75, 206, 138)'
+                ],
             ],
         ]);
     }
@@ -251,6 +254,9 @@ class ChartGenerator
                 'gridlines' => [
                     'count' => ($maxAmountOfHiresForMonth >= 5 ? $maxAmountOfHiresForMonth : 5)+1,
                     'color' => 'rgb(75, 206, 138)'
+                ],
+                'minorGridlines' => [
+                    'count' => 0
                 ],
             ],
             'series' => $series

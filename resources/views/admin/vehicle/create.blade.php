@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group{{ $errors->has('seats') ? ' has-error' : '' }}">
                       <label for="seats">Seats*</label>
-                      <input type="text" class="form-control" id="seats" name="seats" placeholder="Enter number of seats" value="{{ old('seats') }}" autocomplete="off">
+                      <input type="number" class="form-control" id="seats" name="seats" placeholder="Enter number of seats" value="{{ old('seats') }}" autocomplete="off">
                       @if( $errors->has('seats'))
                         <div class="help-block">
                           <div class="alert alert-danger" role="alert">

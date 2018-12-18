@@ -3,30 +3,28 @@
 @section('content')
 <div class="jumbotron jumbotron-header">
 	<div class="container">
-		{{--<div class="row">--}}
-			{{--<div class="col-md-12">--}}
+		<div class="row">
+			<div class="col-md-12">
+				<h1>What is Kingdomhire?</h1>
+			</div>
+			<div class="col-md-8">
+				<h2>Car &amp; Van Hire Specialist</h2>
+				<p style="text-align: justify;">Kingdomhire is a one-man business owned and ran by proprietor Keith Black. The business specialises in vehicle hire and repair.
+					 Keith's experience spans over 40 years of working in the motor industry, so you can expect high quality service.</p>
+				<p style="text-align: justify;">Kingdomhire is located and based just outside <b>Markethill, Co. Armagh.</b> Exact directions can be found on our <b><a class="text-link" href="{{ route('public.contact') }}">Contact page.</a></b></p>
+				<p style="text-align: justify;">Kingdom Car Hire cater for general, public and business needs. Whatever you need, we are sure we can help you out.</p>
+			</div>
+			<div class="col-md-4 col-sm-12">
 				<div class="row">
-					<div class="col-md-12">
-						<h1>What is Kingdomhire?</h1>
+					<div class="col-md-12 col-sm-6">
+						@include('public.opening-hours-table')
 					</div>
-					<div class="col-md-8">
-						<h2>Car &amp; Van Hire Specialist</h2>
-						<p style="text-align: justify;">Kingdomhire is a one-man business owned and ran by proprietor Keith Black. The business specialises in vehicle hire and repair.
-							 Keith's experience spans over 40 years of working in the motor industry, so you can expect high quality service.</p>
-						<p style="text-align: justify;">Kingdomhire is located and based just outside <b>Markethill, Co. Armagh.</b> Exact directions can be found on our <b><a class="text-link" href="{{ route('public.contact') }}">Contact page.</a></b></p>
-						<p style="text-align: justify;">Kingdom Car Hire cater for general, public and business needs. Whatever you need, we are sure we can help you out.</p>
-					</div>
-					<div class="col-md-4 col-sm-12">
-						<div class="row">
-							<div class="col-md-12 col-sm-6">
-								@include('public.opening-hours-table')
-							</div>
-							<div class="col-md-12 col-sm-6">
-								@include('public.contact-table')
-							</div>
-						</div>
+					<div class="col-md-12 col-sm-6">
+						@include('public.contact-table')
 					</div>
 				</div>
+			</div>
+		</div>
 	</div>
 </div>
 <div class="jumbotron jumbotron-content">

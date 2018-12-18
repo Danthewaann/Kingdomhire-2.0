@@ -12,6 +12,7 @@
   <title>{{ config('app.name', 'Laravel') }} | Car & Van Hire Specialist</title>
 
   <!-- Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('vendor/swatkins/gantt/css/gantt.css') }}" rel="stylesheet" type="text/css">
 </head>
@@ -27,8 +28,7 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 <script>
   $(document).ready(function () {
       $('.dropdown-submenu a.submenu').on("click", function(e){
@@ -37,16 +37,22 @@
           e.preventDefault();
       });
       $( "#start_date" ).datepicker({
-        dateFormat: "yy-mm-dd"
+          format: "yyyy-mm-dd",
+          todayHighlight: true,
+          autoclose: true,
+          zIndexOffset: 1000
       });
       $("#start_date_calender").click(function () {
-        $( "#start_date" ).focus();
+          $( "#start_date" ).focus();
       });
       $( "#end_date" ).datepicker({
-        dateFormat: "yy-mm-dd"
+          format: "yyyy-mm-dd",
+          todayHighlight: true,
+          autoclose: true,
+          zIndexOffset: 1000
       });
       $("#end_date_calender").click(function () {
-        $( "#end_date" ).focus();
+          $( "#end_date" ).focus();
       });
 
       // $("#hires_button").click(function () {

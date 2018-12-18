@@ -36,7 +36,7 @@
                 <div class="col-sm-6">
                   <div class="input-group">
                     {{ Form::text('start_date', $reservation->start_date, array(
-                      'class' => 'form-control datepicker', 'autocomplete' => 'off', 'placeholder' => 'e.g. '.date('Y-m-d'), 'id' => 'start_date'))
+                      'class' => 'form-control', 'autocomplete' => 'off', 'placeholder' => 'e.g. '.date('Y-m-d'), 'id' => 'start_date'))
                     }}
                     <span class="input-group-addon" id="start_date_calender"> <span class="glyphicon glyphicon-calendar"></span></span>
                   </div>

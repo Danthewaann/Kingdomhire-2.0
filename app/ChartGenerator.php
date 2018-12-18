@@ -45,19 +45,20 @@ class ChartGenerator
             'colors' => [
                 'rgb(75, 206, 138)'
             ],
-            'height' => (count($activeVehicles) > 1) ? count($activeVehicles)*40 : 200,
+            'height' => 700,
             'width' => '100%',
-            'fontSize' => 14,
-            'fontName' => 'Raleway',
+            'fontSize' => 16,
+            'fontName' => 'Helvetica',
             'chartArea' => [
+                'top' => '7.5%',
                 'width' => '95%',
-                'height' => '90%'
+                'height' => '85%'
             ],
             'legend' => [
                 'position' => 'top',
                 'textStyle' => [
                     'color' => 'white',
-                    'fontName' => 'Raleway',
+                    'fontName' => 'Helvetica',
                 ]
             ],
             'vAxis' => [
@@ -187,7 +188,6 @@ class ChartGenerator
             foreach (array_keys($years) as $year) {
                 array_push($series, [
                     'labelInLegend' => $year,
-                    //                'color' => 'rgb('.$r.', '.$g.','.$b.')'
                 ]);
                 $r += 30;
                 $g += 5;
@@ -216,25 +216,23 @@ class ChartGenerator
                 'rgb(206, 194, 75)',
                 'rgb(206, 107, 75)'
             ],
+            'fontSize' => 16,
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
-//            'height' => ($maxAmountOfHiresForMonth > 30 ? $maxAmountOfHiresForMonth*15 : 346),
-//            'height' => ($maxAmountOfHiresForMonth > 20 ? 646 : 346),
-            'height' => (count($vehicles) > 1) ? 600 : 340,
+            'height' => (count($vehicles) > 1) ? 600 : 500,
             'width' => '100%',
             'chartArea' => [
                 'left' => '7.5%',
                 'width' => '90%',
                 'height' => '80%'
-//            'height' => ($maxAmountOfHiresForMonth > 30 ? 646 : 346)
             ],
-            'fontName' => 'Raleway',
+            'fontName' => 'Helvetica',
             'legend' => [
                 'maxLines' => count($years),
                 'position' => 'top',
                 'textStyle' => [
                     'color' => 'white',
-                    'fontName' => 'Raleway',
+                    'fontName' => 'Helvetica',
                 ]
             ],
             'hAxis' => [

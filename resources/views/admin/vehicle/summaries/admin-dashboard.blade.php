@@ -9,7 +9,7 @@
           <h2 style="margin: 0"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;Image N/A</h2>
         </span>
       </div>
-      <div style="position: absolute; left: 0; top: 265px;">
+      <div style="position: absolute; left: 0; top: 262px;">
         <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
       </div>
     </div>
@@ -18,7 +18,7 @@
       @if($loop->first)
         <div style="position: relative">
           @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img"/> @endif
-            <div style="position: absolute; left: 0; top: 265px;">
+            <div style="position: absolute; left: 0; top: 262px;">
               <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
             </div>
         </div>

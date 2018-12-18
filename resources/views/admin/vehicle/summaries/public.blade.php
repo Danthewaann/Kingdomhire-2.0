@@ -12,7 +12,7 @@
     @else
       <div style="position: relative">
         <img src="{{ $vehicle->images->first()->image_uri }}" class="vehicle-img"/>
-        <div style="position: absolute; left: 0; top: 265px">
+        <div style="position: absolute; left: 0; top: 262px">
           <button class="btn btn-info vehicle-img-button"
                   onclick="
                     openModal('{{ $vehicle->slug }}');

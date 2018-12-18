@@ -14,6 +14,27 @@
 @import "modal";
 @import "datepicker";
 
+@media(max-width:767px) {
+  html {
+    font-size: 1rem;
+  }
+}
+@media(min-width:768px) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+@media(min-width:992px) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+@media(min-width:1200px) {
+  html {
+    font-size: 1.6rem;
+  }
+}
+
 .btn-info:focus {
   outline-color: $lighter-green;
   outline-width: 1px;

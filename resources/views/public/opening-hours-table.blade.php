@@ -1,4 +1,4 @@
-<h2 style="text-align: justify; margin-top: 10px; padding-left: 8px"><span class="glyphicon glyphicon-calendar"></span>&nbsp;Opening hours</h2>
+<h3 style="text-align: justify; margin-top: 10px; padding-left: 8px"><span class="glyphicon glyphicon-calendar"></span>&nbsp;Opening hours</h3>
 <table class="table opening-hours">
   <tr>
     <th>Weekdays</th>

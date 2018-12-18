@@ -1,7 +1,7 @@
 @extends('layouts.admin-main')
 
 @section('content')
-<div class="col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1">
+<div class="col-lg-4 col-lg-offset-4 col-sm-10 col-sm-offset-1">
   <div class="row">
     <div class="well">
       <div class="panel panel-default">
@@ -12,7 +12,7 @@
           <form action="{{ route('admin.vehicles.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
-              <div class="col-sm-10 col-sm-offset-1">
+              <div class="col-sm-12">
                 <div class="row">
                   <div class="col-md-6 col-sm-6">
                     <div class="form-group{{ $errors->has('make') ? ' has-error' : '' }}">
@@ -97,8 +97,8 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6 col-sm-offset-5">
-                <button type="submit" class="btn btn-primary" style="float: right"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Add Vehicle</button>
+              <div class="col-sm-6">
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Add Vehicle</button>
               </div>
             </div>
           </form>

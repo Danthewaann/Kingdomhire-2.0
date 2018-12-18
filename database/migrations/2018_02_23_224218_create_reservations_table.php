@@ -18,8 +18,7 @@ class CreateReservationsTable extends Migration
             $table->string('name')->nullable();
             $table->date('start_date');
             $table->date('end_date');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
             $table->string('vehicle_id');
             $table->foreign('vehicle_id')->references('id')->onDelete('cascade')->on('vehicles');
         });

@@ -23,8 +23,7 @@ class CreateVehiclesTable extends Migration
             $table->unsignedTinyInteger('seats');
             $table->enum('status', ['Available', 'Unavailable', 'Out for hire'])->default('Available');
             $table->string('type');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
             $table->softDeletes();
             $table->integer('weekly_rate_id')->unsigned()->nullable();
             $table->primary('id');

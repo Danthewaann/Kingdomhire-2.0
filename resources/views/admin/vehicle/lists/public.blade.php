@@ -15,7 +15,7 @@
     <div id="all" class="tab-pane fade in active">
       <div class="row">
         @foreach($vehicles as $vehicle)
-          <div class="col-lg-4 col-sm-6">
+          <div class="col-lg-6 col-sm-12">
             @include('admin.vehicle.summaries.public')
           </div>
         @endforeach
@@ -25,7 +25,7 @@
       <div id="{{ str_replace(" ", "-", array_keys($vehicles->groupBy('type')->toArray())[$i]) }}" class="tab-pane fade">
         <div class="row">
           @foreach($vehicles->groupBy('type')->slice($i, 1)->first() as $vehicle)
-            <div class="col-lg-4 col-sm-6">
+            <div class="col-lg-6 col-sm-12">
               @include('admin.vehicle.summaries.public')
             </div>
           @endforeach

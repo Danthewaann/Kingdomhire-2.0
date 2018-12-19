@@ -219,7 +219,7 @@ class ChartGenerator
             'fontSize' => '1.1em',
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
-            'height' => (count($vehicles) > 1) ? 600 : 500,
+            'height' => 700,
             'width' => '100%',
             'chartArea' => [
                 'left' => '7.5%',

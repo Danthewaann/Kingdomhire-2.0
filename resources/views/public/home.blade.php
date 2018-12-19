@@ -37,7 +37,7 @@
 					<div class="col-md-6">
             <img src="{{ asset('static/van-right.jpg') }}" alt="" width="100%" style="box-shadow: rgba(0,0,0, 0.1) 0 0 10px; ">
 						<h2 style="text-align: justify; ">Our fleet of vehicles</h2>
-						<p style="text-align: justify">We have a wide selection of vehicles to choose from. We provide hatchbacks, 4-door salons, people carriers, small vans and large vans.
+						<p style="text-align: justify">We have a wide selection of vehicles to choose from. We provide hatchbacks, 4-door saloons, people carriers, small vans and large vans.
 						Our fleet is ever expanding to include more diverse vehicles, and we ensure that our vehicles are reliable and maintained, so make sure to get in
 							touch to see if we have what you want.</p>
 					</div>

@@ -56,7 +56,7 @@
                   </div>
                   <div class="form-group{{ $errors->hasBag('edit') ? ' has-error' : '' }}">
                     <label for="vehicle_images_add"><span class="glyphicon glyphicon-upload"></span> Add Images</label>
-                    <input type="file" name="vehicle_images_add[]" id="vehicle_images_add" value="{{ $vehicle->image_path }}" data-multiple-caption="{count} files selected" multiple>
+                    <input type="file" class="form-control" name="vehicle_images_add[]" id="vehicle_images_add" value="{{ $vehicle->image_path }}" data-multiple-caption="{count} files selected" multiple>
                     @if($errors->hasBag('edit') and $errors->edit->has('vehicle_images_add'))
                       <div class="help-block">
                         <div class="alert alert-danger" role="alert">

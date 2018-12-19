@@ -8,7 +8,7 @@
         <h5 style="text-align: center">{{ $activeVehicles->count() + $inactiveVehicles->count() }} vehicle(s) in total</h5>
       @endif
     </div>
-    <div class="panel-body">
+    <div class="panel-body" style="padding: 0;">
       <ul class="nav nav-pills nav-stacked vehicle-navbar-tabs" id="myTabs">
         @if($activeVehicles->isNotEmpty())
           <li class="active"><a href="#all" class="btn" data-toggle="pill">All</a></li>
@@ -25,7 +25,7 @@
 </div>
 <div class="col-md-10 col-sm-9 col-xs-12">
   @if($activeVehicles->isNotEmpty() or $inactiveVehicles->isNotEmpty())
-    <div class="tab-content vehicles-tab-content">
+    <div class="tab-content">
       @if($activeVehicles->isNotEmpty())
         <div id="all" class="tab-pane fade in active">
           <div class="row">
@@ -52,7 +52,7 @@
         <div id="discontinued" class="tab-pane fade{{ $activeVehicles->isEmpty() ? ' in active' : '' }}">
           <div class="row">
             @foreach($inactiveVehicles as $vehicle)
-              <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 @include('admin.vehicle.summaries.admin-dashboard')
               </div>
             @endforeach

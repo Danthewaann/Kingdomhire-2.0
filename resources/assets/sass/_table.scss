@@ -8,37 +8,7 @@ table {
   tbody {
     tr {
       th {
-        background-color: $dark-green;
-        border-top: unset !important;
-        border-left: 1px solid $lighter-green !important;
-        text-align: right;
-        vertical-align: middle;
-      }
-      th.last {
-        border-bottom: 1px solid $lighter-green !important;
-      }
-      th.first {
-        border-top: 1px solid $lighter-green !important;
-      }
-      td {
-        vertical-align: middle;
-        border-bottom: 1px solid $lighter-green !important;
-        border-left: 1px solid $lighter-green !important;
-      }
-      td.first {
-        border-top: unset !important;
-      }
-    }
-  }
-}
-
-.vehicle-table-dashboard {
-  height: 254px !important;
-  margin-bottom: 0;
-  tbody {
-    tr {
-      th {
-        background-color: $dark-green;
+        background-color: $darker-green;
         border-top: unset !important;
         //border-left: 1px solid $lighter-green !important;
         text-align: right;
@@ -54,6 +24,41 @@ table {
         vertical-align: middle;
         border-bottom: 1px solid $lighter-green !important;
         border-left: 1px solid $lighter-green !important;
+        background-color: lighten($light-green, 2.5%);
+      }
+      td.first {
+        border-top: 1px solid $lighter-green !important;
+      }
+      td.last {
+        border-bottom: unset !important;
+      }
+    }
+  }
+}
+
+.vehicle-table-dashboard {
+  height: 254px !important;
+  margin-bottom: 0;
+  tbody {
+    tr {
+      th {
+        background-color: $darker-green;
+        border-top: unset !important;
+        //border-left: 1px solid $lighter-green !important;
+        text-align: right;
+        vertical-align: middle;
+      }
+      th.last {
+        //border-bottom: 1px solid $lighter-green !important;
+      }
+      th.first {
+        border-top: 1px solid $lighter-green !important;
+      }
+      td {
+        vertical-align: middle;
+        border-bottom: 1px solid $lighter-green !important;
+        border-left: 1px solid $lighter-green !important;
+        background-color: lighten($light-green, 2.5%);
       }
       td.first {
         border-top: 1px solid $lighter-green !important;
@@ -71,7 +76,7 @@ table {
   tbody {
     tr {
       th {
-        background-color: $dark-green;
+        background-color: $darker-green;
         border-top: unset !important;
         //border-left: 1px solid $lighter-green !important;
         text-align: right;
@@ -87,6 +92,7 @@ table {
         vertical-align: middle;
         border-bottom: 1px solid $lighter-green !important;
         border-left: 1px solid $lighter-green !important;
+        background-color: lighten($light-green, 2.5%);
       }
       td.first {
         border-top: 1px solid $lighter-green !important;

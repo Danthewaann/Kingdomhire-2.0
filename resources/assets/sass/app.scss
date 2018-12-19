@@ -92,14 +92,14 @@ body {
   text-align: center;
 }
 
-.vehicles-tab-content {
-  //background-color: #439D70;
-  background-color: $light-green;
-  border: 1px solid $lighter-green;
-  padding: 20px 20px 0 20px;
-  margin-bottom: 19px;
-  border-radius: $border-radius-base;
-}
+//.vehicles-tab-content {
+//  //background-color: #439D70;
+//  background-color: $light-green;
+//  border: 1px solid $lighter-green;
+//  padding: 20px 20px 0 20px;
+//  margin-bottom: 19px;
+//  border-radius: $border-radius-base;
+//}
 
 .vehicles-tab-content-admin {
   //background-color: #439D70;
@@ -239,9 +239,10 @@ table.contact-info {
 //  border: 0 !important;
 //}
 
-//.vehicle-navbar-tabs {
-//  background-color: ;
-//}
+.vehicle-navbar-tabs {
+  background-color: lighten($light-green, 2.5%);
+  padding: 10px;
+}
 
 .vehicle-navbar-tabs > li > a:hover {
   background-color: $dark-green !important;

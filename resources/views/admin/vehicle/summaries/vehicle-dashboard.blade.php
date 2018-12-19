@@ -20,7 +20,7 @@
         @else
           <div style="position: relative">
             <img src="{{ $vehicle->images->first()->image_uri }}" class="vehicle-img vehicle-dashboard-img"/>
-            <div style="position: absolute; left: 0; top: 237px">
+            <div style="position: absolute; left: 0; top: 240px">
               <button class="btn btn-info vehicle-img-button" onclick="openModal('{{ $vehicle->slug }}');currentSlide(1, '{{ $vehicle->slug.'-images' }}')">View images</button>
             </div>
           </div>

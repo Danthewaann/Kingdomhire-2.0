@@ -47,7 +47,7 @@ class ChartGenerator
             ],
             'height' => 700,
             'width' => '100%',
-            'fontSize' => 16,
+            'fontSize' => 14,
             'fontName' => 'Helvetica',
             'chartArea' => [
                 'top' => '7.5%',
@@ -216,7 +216,7 @@ class ChartGenerator
                 'rgb(206, 194, 75)',
                 'rgb(206, 107, 75)'
             ],
-            'fontSize' => 16,
+            'fontSize' => 14,
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
             'height' => (count($vehicles) > 1) ? 600 : 500,

@@ -1406,7 +1406,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
   color: #636b6f;
-  background-color: #439D70;
+  background-color: #3f9469;
 }
 
 input,
@@ -3054,7 +3054,7 @@ th {
 }
 
 .table .table {
-  background-color: #439D70;
+  background-color: #3f9469;
 }
 
 .table-condensed > thead > tr > th,

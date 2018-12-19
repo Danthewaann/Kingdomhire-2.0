@@ -18,7 +18,7 @@
 			</div>
 			<div class="col-md-4 col-sm-12">
 				<div class="row">
-					<div class="col-md-12 col-sm-6" style="margin-top: 10px">
+					<div class="col-md-12 col-sm-6">
 						@include('public.opening-hours-table')
 					</div>
 					<div class="col-md-12 col-sm-6">

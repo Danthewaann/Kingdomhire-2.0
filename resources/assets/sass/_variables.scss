@@ -56,7 +56,7 @@ $input-color-placeholder: lighten($text-color, 30%);
 $panel-default-heading-bg: $light-green;
 $panel-default-border: $lighter-green;
 $panel-inner-border: $lighter-green;
-$panel-bg: $light-green;
+$panel-bg: lighten($light-green, 2.5%);
 $panel-footer-bg: $light-green;
 $panel-heading-padding: 10px;
 

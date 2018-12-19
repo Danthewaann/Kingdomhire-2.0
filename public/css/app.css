@@ -5145,7 +5145,7 @@ tbody.collapse.in {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: white;
-  background-color: #439d70;
+  background-color: #3b8b63;
   border: 1px solid #3b8b63;
   border-bottom-color: transparent;
   cursor: default;
@@ -5688,7 +5688,7 @@ tbody.collapse.in {
 }
 
 .navbar-default {
-  background-color: #3b8b63;
+  background-color: #439D70;
   border-color: #439d70;
 }
 
@@ -5713,14 +5713,14 @@ tbody.collapse.in {
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: white;
-  background-color: #439d70;
+  background-color: #3b8b63;
 }
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: white;
-  background-color: #439d70;
+  background-color: #3b8b63;
 }
 
 .navbar-default .navbar-nav > .disabled > a,
@@ -5751,7 +5751,7 @@ tbody.collapse.in {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #439d70;
+  background-color: #3b8b63;
   color: white;
 }
 
@@ -5763,14 +5763,14 @@ tbody.collapse.in {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
     color: white;
-    background-color: #439d70;
+    background-color: #3b8b63;
   }
 
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: white;
-    background-color: #439d70;
+    background-color: #3b8b63;
   }
 
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
@@ -6262,7 +6262,7 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: white;
-  background-color: #439D70;
+  background-color: #3b8b63;
 }
 
 .jumbotron h1,
@@ -6277,7 +6277,7 @@ a.badge:focus {
 }
 
 .jumbotron > hr {
-  border-top-color: #347957;
+  border-top-color: #2c674a;
 }
 
 .container .jumbotron,
@@ -8421,7 +8421,7 @@ button.close {
 }
 
 .jumbotron-content {
-  background-color: #3b8b63;
+  background-color: #439D70;
   margin-bottom: 0;
 }
 

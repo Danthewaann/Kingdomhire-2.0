@@ -33,13 +33,13 @@ $text-color: #636b6f;
 
 // Navbar
 $navbar-default-color: white;
-$navbar-default-bg: $dark-green;
+$navbar-default-bg: $light-green;
 $navbar-default-border: $brand-info;
 $navbar-default-link-color: white;
 $navbar-default-link-hover-color: white;
-$navbar-default-link-hover-bg: $brand-info;
+$navbar-default-link-hover-bg: $dark-green;
 $navbar-default-link-active-color: white;
-$navbar-default-link-active-bg: $brand-info;
+$navbar-default-link-active-bg: $dark-green;
 
 // Buttons
 $btn-default-color: $text-color;
@@ -63,7 +63,7 @@ $table-border-color: $lighter-green;
 
 //jumbotron
 $jumbotron-color: white;
-$jumbotron-bg: $light-green;
+$jumbotron-bg: $dark-green;
 
 //tabs
 $nav-tabs-border-color: unset;

@@ -2,7 +2,7 @@
 
 @section('content')
   {{--@dd($errors)--}}
-<div class="well">
+{{--<div class="container-fluid">--}}
   <div class="row">
     <div class="col-lg-4 col-md-12">
       @include('admin.reservation.create')
@@ -38,5 +38,5 @@
       </div>
     </div>
   </div>
-</div>
+{{--</div>--}}
 @endsection

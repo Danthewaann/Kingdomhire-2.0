@@ -4,7 +4,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4 col-sm-12 col-xs-12">
-      <div class="well">
+      {{--<div class="well">--}}
         <div class="row">
           <div class="col-md-12">
             <div class="panel panel-default">
@@ -46,10 +46,10 @@
             </div>
           </div>
         </div>
-      </div>
+      {{--</div>--}}
     </div>
     <div class="col-md-8 col-xs-12">
-      <div class="well">
+      {{--<div class="well">--}}
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             @if($gantt == null)
@@ -70,7 +70,7 @@
           </div>
           @include('admin.vehicle.lists.admin')
         </div>
-      </div>
+      {{--</div>--}}
     </div>
   </div>
 @endsection

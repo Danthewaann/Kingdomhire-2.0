@@ -9,7 +9,7 @@
   </div>
   @if((!$activeHires->isEmpty()))
     <div style="overflow: auto; max-height: 400px">
-      <table class="table table-hover table-condensed">
+      <table class="table table-hover table-condensed table-responsive">
         <thead>
         <tr>
           <th>Vehicle</th>

@@ -272,7 +272,7 @@ class ChartGenerator
         else {
             $reservationsAndActiveHire = $reservations->sortBy('start_date');
         }
-//        dd($reservationsAndActiveHire);
+
         foreach ($reservationsAndActiveHire as $item) {
             array_push($data, [
                 'label' => ($item instanceof Reservation ? 'R' : 'H'). ' ('.$item->name.')',

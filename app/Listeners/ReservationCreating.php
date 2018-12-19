@@ -18,6 +18,8 @@ class ReservationCreating
     public function handle(ReservationCreatingEvent $event)
     {
         $reservation = $event->reservation;
-        $reservation->name = Reservation::createUniqueId($reservation->vehicle->id);
+        if ($reservation->name == '') {
+            $reservation->name = Reservation::createUniqueId($reservation->vehicle->id);
+        }
     }
 }

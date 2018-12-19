@@ -36,11 +36,6 @@ class ReservationsController extends Controller
             Reservation::create($request->all());
         }
 
-//        if ($reservation->name == '') {
-//            $reservation->name = $vehicle->id.'-'.$reservation->id;
-//            $reservation->save();
-//        }
-
         Session::flash('status', [
             'reservation' => 'Successfully booked reservation!'
 

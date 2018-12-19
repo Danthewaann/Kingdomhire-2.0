@@ -17,19 +17,6 @@
               {{ Form::text('vehicle', $vehicle->name(), array('class' => 'form-control', 'disabled' => 'true')) }}
             </div>
           </div>
-            <div class="form-group{{ $errors->hires->has('name') ? ' has-error' : '' }}">
-              <label for="name" class="control-label col-sm-4">ID</label>
-              <div class="col-sm-6">
-                {{ Form::text('name', $hire->name, array('class' => 'form-control', 'autocomplete' => 'off')) }}
-                @if( $errors->hires->has('name'))
-                  <div class="help-block">
-                    <div class="alert alert-danger" role="alert">
-                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->hires->first('name') }}</strong>
-                    </div>
-                  </div>
-                @endif
-              </div>
-            </div>
             <div class="form-group{{ $errors->hires->has('start_date') ? ' has-error' : '' }}">
               <label for="start_date_readonly" class="control-label col-sm-4">Start Date</label>
               <div class="col-sm-6">

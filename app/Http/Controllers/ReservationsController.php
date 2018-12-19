@@ -30,16 +30,16 @@ class ReservationsController extends Controller
     {
         $vehicle = Vehicle::find($request->vehicle_id);
         if ($request->start_date == date('Y-m-d')) {
-            $reservation = Hire::create($request->all());
+            Hire::create($request->all());
         }
         else {
-            $reservation = Reservation::create($request->all());
+            Reservation::create($request->all());
         }
 
-        if ($reservation->name == '') {
-            $reservation->name = $vehicle->id.'-'.$reservation->id;
-            $reservation->save();
-        }
+//        if ($reservation->name == '') {
+//            $reservation->name = $vehicle->id.'-'.$reservation->id;
+//            $reservation->save();
+//        }
 
         Session::flash('status', [
             'reservation' => 'Successfully booked reservation!'

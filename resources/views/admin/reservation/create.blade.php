@@ -6,29 +6,6 @@
     <form class="form-horizontal" action="{{ route('admin.reservations.store') }}" method="post">
       @csrf
       <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-      <div class="form-group{{ $errors->reservations->has('name') ? ' has-error' : '' }}">
-        <label for="name" class="col-sm-4 control-label">ID</label>
-        <div class="col-sm-8">
-          <div class="input-group">
-            {{ Form::text('name', '', array('class' => 'form-control', 'autocomplete' => 'off', 'placeholder' => 'Enter ID')) }}
-            <div class="input-group-btn">
-              <a class="btn btn-info" role="button" data-trigger="focus" data-container="body" tabindex="0"
-                 data-toggle="popover" data-placement="top"
-                 data-content="ID is just a way for you to easily distinguish each reservation. Use the initials of whoever
-                           is making the reservation e.g. DB">
-                <span class="glyphicon glyphicon-info-sign"></span>
-              </a>
-            </div>
-          </div>
-          @if( $errors->reservations->has('name'))
-            <div class="help-block">
-              <div class="alert alert-danger" role="alert">
-                <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->reservations->first('name') }}</strong>
-              </div>
-            </div>
-          @endif
-        </div>
-      </div>
       <div class="form-group{{ $errors->reservations->has('start_date') ? ' has-error' : '' }}">
         <label for="start_date" class="col-sm-4 control-label">Start Date*</label>
         <div class="col-sm-8">

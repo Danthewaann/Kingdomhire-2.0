@@ -29,7 +29,7 @@ class ReservationsTableSeeder extends Seeder
                 $reservations = Reservation::whereVehicleId($vehicle->id)->get();
 
                 $new = new Reservation([
-                    'name' => substr($faker->firstName, 0, 1) . substr($faker->lastName, 0, 1),
+//                    'name' => substr($faker->firstName, 0, 1) . substr($faker->lastName, 0, 1),
                     'start_date' => $start,
                     'end_date' => $end,
                     'vehicle_id' => $vehicle->id

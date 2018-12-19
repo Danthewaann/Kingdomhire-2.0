@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\HireCreating;
 /**
  * App\Hire
  *
@@ -31,6 +32,15 @@ class Hire extends ConflictableModel
     protected $conflict_message = 'conflicts with current active hire';
 
     /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'creating' => HireCreating::class,
+    ];
+
+    /**
      * Get vehicle associated with this hire
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -42,5 +52,32 @@ class Hire extends ConflictableModel
     public function __toString()
     {
         return "hire";
+    }
+
+    /**
+     * Create a unique hire id that doesn't
+     * conflict with any hire id that exists
+     * in the database
+     *
+     * @param $vehicle_id
+     * @param int $length character length of generated id
+     * @return string the newly generated id
+     */
+    public static function createUniqueId($vehicle_id, $length = 4)
+    {
+        $characters = '0123456789';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+
+        $id = $vehicle_id.'-'.$randomString;
+        $hire_ids = Hire::all()->pluck('name')->toArray();
+        if (in_array($id, $hire_ids)) {
+            return Hire::createUniqueId($vehicle_id);
+        }
+
+        return $id;
     }
 }

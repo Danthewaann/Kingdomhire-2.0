@@ -34,7 +34,6 @@ class HireRequest extends FormRequest
     {
         return [
             'hire' => 'required',
-            'name' => 'nullable|string',
             'start_date' => 'nullable|date_format:Y-m-d',
             'end_date' => 'nullable|date_format:Y-m-d|after_or_equal:start_date'
         ];

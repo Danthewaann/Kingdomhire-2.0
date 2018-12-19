@@ -16,6 +16,12 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\VehicleCreating' => [
             'App\Listeners\VehicleCreating',
         ],
+        'App\Events\ReservationCreating' => [
+            'App\Listeners\ReservationCreating'
+        ],
+        'App\Events\HireCreating' => [
+            'App\Listeners\HireCreating'
+        ]
     ];
 
     /**

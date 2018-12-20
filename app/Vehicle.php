@@ -51,9 +51,6 @@ class Vehicle extends Model
 {
     use SoftDeletes;
 
-    protected $keyType = 'string';
-    public $incrementing = false;
-
     protected $fillable = [
         'make', 'model', 'fuel_type', 'gear_type', 'seats',
         'status', 'type', 'image_path', 'weekly_rate_id'

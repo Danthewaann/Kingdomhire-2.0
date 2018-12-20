@@ -18,7 +18,7 @@ class VehicleCreating
     public function handle(VehicleCreatingEvent $event)
     {
         $vehicle = $event->vehicle;
-        $vehicle->id = Vehicle::createUniqueId();
-        $vehicle->slug = str_slug($vehicle->name().' '.$vehicle->id);
+        $vehicle->name = Vehicle::createUniqueId();
+        $vehicle->slug = str_slug($vehicle->name().' '.$vehicle->name);
     }
 }

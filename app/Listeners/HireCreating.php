@@ -18,8 +18,8 @@ class HireCreating
     public function handle(HireCreatingEvent $event)
     {
         $hire = $event->hire;
-        if ($hire->name == '') {
-            $hire->name = Hire::createUniqueId($hire->vehicle->id);
+        if (empty($hire->name)) {
+            $hire->name = Hire::createUniqueId($hire->vehicle->name);
         }
     }
 }

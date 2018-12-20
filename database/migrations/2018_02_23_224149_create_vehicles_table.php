@@ -14,7 +14,8 @@ class CreateVehiclesTable extends Migration
     public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->string('id');
+            $table->increments('id');
+            $table->string('name')->unique();
             $table->string('slug');
             $table->string('make');
             $table->string('model');
@@ -26,7 +27,6 @@ class CreateVehiclesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->integer('weekly_rate_id')->unsigned()->nullable();
-            $table->primary('id');
             $table->foreign('weekly_rate_id')->references('id')->onDelete('Set null')->on('weekly_rates');
         });
     }

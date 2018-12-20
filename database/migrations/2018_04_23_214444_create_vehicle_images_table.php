@@ -18,7 +18,7 @@ class CreateVehicleImagesTable extends Migration
             $table->string('image_uri');
             $table->string('name');
             $table->timestamps();
-            $table->string('vehicle_id')->nullable();
+            $table->integer('vehicle_id')->unsigned()->nullable();
             $table->foreign('vehicle_id')->references('id')->onDelete('Set null')->on('vehicles');
         });
     }

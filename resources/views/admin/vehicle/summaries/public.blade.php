@@ -25,7 +25,7 @@
     <table class="table table-condensed vehicle-table-public">
       <tr>
         <th class="first">Vehicle Id</th>
-        <td class="first">{{ $vehicle->id }}</td>
+        <td class="first">{{ $vehicle->name }}</td>
       </tr>
       <tr>
         <th>Status</th>

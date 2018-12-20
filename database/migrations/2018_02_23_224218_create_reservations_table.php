@@ -19,7 +19,7 @@ class CreateReservationsTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();
-            $table->string('vehicle_id');
+            $table->integer('vehicle_id')->unsigned();
             $table->foreign('vehicle_id')->references('id')->onDelete('cascade')->on('vehicles');
         });
     }

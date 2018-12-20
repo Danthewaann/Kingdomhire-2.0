@@ -210,10 +210,14 @@ class Vehicle extends Model
 
     public function getReservationsAndHires($except = [])
     {
-        $items = $this->reservations->merge($this->hires);
-        $items = $items->reject(function ($item) use ($except) {
-            return in_array($item->id, $except);
-        });
+        $items = collect();
+        $items = $items->merge($this->hires);
+        $items = $items->merge($this->reservations);
+        if (!empty($except)) {
+            $items = $items->reject(function ($item) use ($except) {
+                return in_array($item->id, $except);
+            });
+        }
 
         return $items;
     }

@@ -1,26 +1,20 @@
 <div class="panel panel-default">
-  <div class="panel-heading" style="background-color: #3b8b63">
-    <h3 style="text-align: center">{{ $vehicle->name() }}</h3>
+  <div class="panel-heading vehicle-panel-heading">
+    <h3>{{ $vehicle->name() }}</h3>
   </div>
   @if($vehicle->images->isEmpty())
-    <div style="position: relative">
-      <div class="vehicle-img">
-        <span style="display: inline-block;">
-          <h2 style="margin: 0"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;Image N/A</h2>
-        </span>
+    <div class="vehicle-img">
+      <div class="vehicle-img-na">
+        <h2><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;No Image(s)</h2>
       </div>
-      <div style="position: absolute; left: 0; top: 265px;">
-        <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
-      </div>
+      <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
     </div>
   @else
     @foreach($vehicle->images as $image)
       @if($loop->first)
-        <div style="position: relative">
-          @if($loop->first) <img src="{{ $image->image_uri }}" class="vehicle-img"/> @endif
-            <div style="position: absolute; left: 0; top: 265px;">
-              <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
-            </div>
+        <div class="vehicle-img">
+          <img src="{{ $image->image_uri }}"/>
+            <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
         </div>
       @endif
     @endforeach

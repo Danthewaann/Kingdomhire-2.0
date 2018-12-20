@@ -14,3 +14,16 @@
     margin: 5px 0 0 0;
   }
 }
+
+.vehicle-panel-heading {
+  background-color: $darker-green !important;
+  h3 {
+    text-align: center;
+  }
+}
+
+.vehicle-panel-dashboard-heading {
+  h2, h4 {
+    text-align: center;
+  }
+}

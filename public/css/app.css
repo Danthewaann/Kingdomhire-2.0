@@ -8898,53 +8898,101 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
   margin: 5px 0 0 0;
 }
 
-.vehicle-img {
+.vehicle-panel-heading {
+  background-color: #3b8b63 !important;
+}
+
+.vehicle-panel-heading h3 {
   text-align: center;
-  width: 100%;
-  margin-bottom: 0 !important;
+}
+
+.vehicle-panel-dashboard-heading h2,
+.vehicle-panel-dashboard-heading h4 {
+  text-align: center;
+}
+
+.vehicle-img {
+  position: relative;
+  margin-bottom: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   background-color: #3f9469;
-  display: inline-block;
-  vertical-align: middle;
+}
+
+.vehicle-img img {
+  width: 100%;
   height: 300px;
-  line-height: 300px;
-}
-
-.vehicle-dashboard-img {
-  height: 275px;
-  line-height: 275px;
-}
-
-.vehicle-img-button {
-  border-radius: 0px 4px 0px 0px !important;
-  border-color: #4bce8a;
-  border-left: 0 !important;
-  border-bottom: 0 !important;
 }
 
 @media (max-width: 767px) {
-  html {
-    font-size: 1rem;
+  .vehicle-img img {
+    height: 225px;
   }
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 1.2rem;
+  .vehicle-img img {
+    height: 325px;
   }
 }
 
 @media (min-width: 992px) {
-  html {
-    font-size: 1.4rem;
+  .vehicle-img img {
+    height: 300px;
   }
 }
 
 @media (min-width: 1200px) {
-  html {
-    font-size: 1.6rem;
+  .vehicle-img img {
+    height: 300px;
   }
+}
+
+.vehicle-img div.vehicle-img-na {
+  height: 100%;
+}
+
+.vehicle-img div.vehicle-img-na h2 {
+  margin: 0;
+  text-align: center;
+  height: 100%;
+  line-height: 300px;
+  vertical-align: middle;
+}
+
+@media (max-width: 767px) {
+  .vehicle-img div.vehicle-img-na h2 {
+    line-height: 200px;
+  }
+}
+
+@media (min-width: 768px) {
+  .vehicle-img div.vehicle-img-na h2 {
+    line-height: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .vehicle-img div.vehicle-img-na h2 {
+    line-height: 300px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .vehicle-img div.vehicle-img-na h2 {
+    line-height: 300px;
+  }
+}
+
+.vehicle-img a,
+.vehicle-img button {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 0px 4px 0px 0px;
+  border-color: #4bce8a;
+  border-left: 0;
+  border-bottom: 0;
 }
 
 .logo {

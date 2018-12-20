@@ -4,77 +4,73 @@
 <div class="col-lg-3 col-md-5 col-sm-5">
   @include('admin.common.alert')
   <div class="panel panel-default">
-    <div class="panel-heading">
-      <h2 style="text-align: center">Vehicle Dashboard</h2>
-      <h4 style="text-align: center">{{ $vehicle->name() }}</h4>
+    <div class="panel-heading vehicle-panel-dashboard-heading">
+      <h2>Vehicle Dashboard</h2>
+      <h4>{{ $vehicle->name() }}</h4>
     </div>
-
-    <div style="display: inline-block; width: 100%;">
-      @if($vehicle->images->isEmpty())
-        <div class="vehicle-img vehicle-dashboard-img">
-    <span style="display: inline-block;">
-      <h2 style="margin: 0"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;Image N/A</h2>
-    </span>
-        </div>
-      @else
-        <div style="position: relative">
-          <img src="{{ $vehicle->images->first()->image_uri }}" class="vehicle-img vehicle-dashboard-img"/>
-          <div style="position: absolute; left: 0; top: 240px">
-            <button class="btn btn-info vehicle-img-button" onclick="openModal('{{ $vehicle->slug }}');currentSlide(1, '{{ $vehicle->slug.'-images' }}')">View images</button>
-          </div>
-        </div>
-      @endif
-      <table class="table table-condensed vehicle-table-dashboard">
-        <tr>
-          <th class="first">Vehicle Id</th>
-          <td class="first">{{ $vehicle->name }}</td>
-        </tr>
-        <tr>
-          <th>Status</th>
-          <td>{{ $vehicle->status }}</td>
-        </tr>
-        <tr>
-          <th>Vehicle Type</th>
-          <td>{{ $vehicle->type }}</td>
-        </tr>
-        <tr>
-          <th>Fuel Type</th>
-          <td>{{ $vehicle->fuel_type }}</td>
-        </tr>
-        <tr>
-          <th>Gear Type</th>
-          <td>{{ $vehicle->gear_type }}</td>
-        </tr>
-        <tr>
-          <th>Seats</th>
-          <td>{{ $vehicle->seats }}</td>
-        </tr>
-        <tr>
-          <th>Date Added</th>
-          <td>{{ date('j/M/Y H:ia', strtotime($vehicle->created_at)) }}</td>
-        </tr>
-        <tr>
-          @if($vehicle->trashed())
-            <th>Date Discontinued</th>
-            <td>{{ date('j/M/Y H:ia', strtotime($vehicle->deleted_at)) }}</td>
+    @if($vehicle->images->isEmpty())
+    <div class="vehicle-img">
+      <div class="vehicle-img-na">
+        <h2><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;No Image(s)</h2>
+      </div>
+    </div>
+    @else
+      <div class="vehicle-img">
+        <img src="{{ $vehicle->images->first()->image_uri }}" class="vehicle-dashboard-img"/>
+        <button class="btn btn-info vehicle-img-button"
+                onclick="openModal('{{ $vehicle->slug }}');
+                         currentSlide(1, '{{ $vehicle->slug.'-images' }}')">View images</button>
+      </div>
+    @endif
+    <table class="table table-condensed vehicle-table-dashboard">
+      <tr>
+        <th class="first">Vehicle Id</th>
+        <td class="first">{{ $vehicle->name }}</td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td>{{ $vehicle->status }}</td>
+      </tr>
+      <tr>
+        <th>Vehicle Type</th>
+        <td>{{ $vehicle->type }}</td>
+      </tr>
+      <tr>
+        <th>Fuel Type</th>
+        <td>{{ $vehicle->fuel_type }}</td>
+      </tr>
+      <tr>
+        <th>Gear Type</th>
+        <td>{{ $vehicle->gear_type }}</td>
+      </tr>
+      <tr>
+        <th>Seats</th>
+        <td>{{ $vehicle->seats }}</td>
+      </tr>
+      <tr>
+        <th>Date Added</th>
+        <td>{{ date('j/M/Y H:ia', strtotime($vehicle->created_at)) }}</td>
+      </tr>
+      <tr>
+        @if($vehicle->trashed())
+          <th>Date Discontinued</th>
+          <td>{{ date('j/M/Y H:ia', strtotime($vehicle->deleted_at)) }}</td>
+        @else
+          <th>Last Changed</th>
+          <td>{{ date('j/M/Y H:ia', strtotime($vehicle->updated_at)) }}</td>
+        @endif
+      </tr>
+      <tr>
+        <th class="last">Weekly Rate</th>
+        <td class="last">
+          @if($vehicle->rate != null)
+            {{ $vehicle->rate->getFullName() }}
           @else
-            <th>Last Changed</th>
-            <td>{{ date('j/M/Y H:ia', strtotime($vehicle->updated_at)) }}</td>
+            N/A
           @endif
-        </tr>
-        <tr>
-          <th class="last">Weekly Rate</th>
-          <td class="last">
-            @if($vehicle->rate != null)
-              {{ $vehicle->rate->getFullName() }}
-            @else
-              N/A
-            @endif
-          </td>
-        </tr>
-      </table>
-    </div>
-
+        </td>
+      </tr>
+    </table>
     <div class="panel-footer">
       @if($vehicle->trashed())
         {{ Form::open(['route' => ['admin.vehicles.recontinue', $vehicle->slug], 'method' => 'patch', 'id' => 'vehicle_recontinue_form']) }}

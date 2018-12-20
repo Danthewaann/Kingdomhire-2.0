@@ -54,23 +54,25 @@
             </div>
             @if( $errors->hires->has('reservation') or $errors->hires->has('hire'))
               <div class="form-group has-error">
-                <div class="alert alert-danger" role="alert">
-                  <div class="help-block">
-                    <div class="row">
-                      @if($errors->hires->has('reservation'))
-                        <div class="col-md-6">
-                          <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>Other reservation</strong><br>
-                          <strong>Start date = {{ $errors->hires->get('reservation')['start_date'] }}</strong><br>
-                          <strong>End date = {{ $errors->hires->get('reservation')['end_date'] }}</strong>
-                        </div>
-                      @endif
-                      @if($errors->hires->has('hire'))
-                        <div class="col-md-6">
-                          <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>Current active hire</strong><br>
-                          <strong>Start date = {{ $errors->hires->get('hire')['start_date'] }}</strong><br>
-                          <strong>End date = {{ $errors->hires->get('hire')['end_date'] }}</strong>
-                        </div>
-                      @endif
+                <div class="col-md-6 col-md-offset-4">
+                  <div class="alert alert-danger" role="alert">
+                    <div class="help-block">
+                      <div class="row">
+                        @if($errors->hires->has('reservation'))
+                          <div class="col-md-12">
+                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>Other reservation</strong><br>
+                            <strong>Start date = {{ $errors->hires->get('reservation')['start_date'] }}</strong><br>
+                            <strong>End date = {{ $errors->hires->get('reservation')['end_date'] }}</strong>
+                          </div>
+                        @endif
+                        @if($errors->hires->has('hire'))
+                          <div class="col-md-12">
+                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>Current active hire</strong><br>
+                            <strong>Start date = {{ $errors->hires->get('hire')['start_date'] }}</strong><br>
+                            <strong>End date = {{ $errors->hires->get('hire')['end_date'] }}</strong>
+                          </div>
+                        @endif
+                      </div>
                     </div>
                   </div>
                 </div>

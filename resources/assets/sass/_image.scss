@@ -1,0 +1,23 @@
+.vehicle-img {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0 !important;
+  transition: 0.5s;
+  background-color: $dark-green;
+  display: inline-block;
+  vertical-align: middle;
+  height: 300px;
+  line-height: 300px;
+}
+
+.vehicle-dashboard-img {
+  height: 275px;
+  line-height: 275px;
+}
+
+.vehicle-img-button {
+  border-radius: 0px 4px 0px 0px !important;
+  border-color: $lighter-green;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
+}

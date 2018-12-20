@@ -1405,7 +1405,7 @@ body {
   font-family: sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  color: #636b6f;
+  color: white;
   background-color: #3f9469;
 }
 
@@ -3840,7 +3840,7 @@ select[multiple].input-lg,
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #a4aaae;
+  color: white;
 }
 
 @media (min-width: 768px) {
@@ -3994,7 +3994,7 @@ select[multiple].input-lg,
 .btn:hover,
 .btn:focus,
 .btn.focus {
-  color: #636b6f;
+  color: white;
   text-decoration: none;
 }
 
@@ -4022,20 +4022,20 @@ fieldset[disabled] a.btn {
 }
 
 .btn-default {
-  color: #636b6f;
+  color: white;
   background-color: #fff;
   border-color: #ccc;
 }
 
 .btn-default:focus,
 .btn-default.focus {
-  color: #636b6f;
+  color: white;
   background-color: #e6e5e5;
   border-color: #8c8c8c;
 }
 
 .btn-default:hover {
-  color: #636b6f;
+  color: white;
   background-color: #e6e5e5;
   border-color: #adadad;
 }
@@ -4043,7 +4043,7 @@ fieldset[disabled] a.btn {
 .btn-default:active,
 .btn-default.active,
 .open > .btn-default.dropdown-toggle {
-  color: #636b6f;
+  color: white;
   background-color: #e6e5e5;
   border-color: #adadad;
 }
@@ -4057,7 +4057,7 @@ fieldset[disabled] a.btn {
 .open > .btn-default.dropdown-toggle:hover,
 .open > .btn-default.dropdown-toggle:focus,
 .open > .btn-default.dropdown-toggle.focus {
-  color: #636b6f;
+  color: white;
   background-color: #d4d4d4;
   border-color: #8c8c8c;
 }
@@ -4083,7 +4083,7 @@ fieldset[disabled] .btn-default.focus {
 
 .btn-default .badge {
   color: #fff;
-  background-color: #636b6f;
+  background-color: white;
 }
 
 .btn-primary {
@@ -7116,7 +7116,7 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-default > .panel-heading {
-  color: #333333;
+  color: white;
   background-color: #439D70;
   border-color: #4bce8a;
 }
@@ -7127,7 +7127,7 @@ button.list-group-item-danger.active:focus {
 
 .panel-default > .panel-heading .badge {
   color: #439D70;
-  background-color: #333333;
+  background-color: white;
 }
 
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
@@ -8538,6 +8538,18 @@ button.close {
   padding-left: 10px;
 }
 
+table.contact-info {
+  margin-bottom: 0 !important;
+}
+
+.contact-info th,
+.opening-hours th,
+.contact-info td,
+.opening-hours td {
+  font-size: 1.2em;
+  text-align: justify;
+}
+
 /* The Modal (background) */
 
 .img-modal {
@@ -8685,53 +8697,11 @@ img.hover-shadow {
   background-color: #3f9469;
 }
 
-@media (max-width: 767px) {
-  html {
-    font-size: 1rem;
-  }
+#start_date_calender:hover {
+  cursor: pointer;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 1.2rem;
-  }
-}
-
-@media (min-width: 992px) {
-  html {
-    font-size: 1.4rem;
-  }
-}
-
-@media (min-width: 1200px) {
-  html {
-    font-size: 1.6rem;
-  }
-}
-
-.btn-info:focus {
-  outline-color: #4bce8a;
-  outline-width: 1px;
-}
-
-.vehicle-dashboard-info {
-  color: #636b6f;
-  border-radius: unset;
-  margin-bottom: 0;
-  border: unset;
-}
-
-.vehicle-dashboard-navbar {
-  margin-bottom: 0;
-  border: 0;
-}
-
-.button-link {
-  background: none !important;
-  color: inherit;
-  border: none;
-  padding: 0 !important;
-  font: inherit;
+#end_date_calender:hover {
   cursor: pointer;
 }
 
@@ -8739,108 +8709,8 @@ nav {
   font-size: 1.2em !important;
 }
 
-body {
-  color: white;
-}
-
-.logo {
-  -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
-  max-width: 700px;
-  width: 100%;
-  margin: auto;
-}
-
-.nav-tabs > li > a {
-  color: white !important;
-}
-
-.nav-pills > li > a {
-  color: white !important;
+.navbar-nav > li > a {
   text-align: center;
-}
-
-.vehicles-tab-content-admin {
-  padding-top: 20px;
-}
-
-.map {
-  width: 100%;
-  height: 500px;
-}
-
-.text-link {
-  font-weight: bolder;
-  color: white;
-}
-
-.text-link:hover,
-.text-link:focus {
-  text-decoration: none !important;
-}
-
-.vehicle-summary > tbody > tr > th {
-  text-align: right;
-  color: white;
-  background-color: #337d57;
-  border-top: unset !important;
-}
-
-.vehicle-summary > tbody > tr > th.last {
-  border-bottom: 2px solid #307753 !important;
-}
-
-.vehicle-summary > tbody > tr > td {
-  border-top: unset !important;
-  color: white;
-  background-color: #37855e;
-  border-bottom: 2px solid #307753 !important;
-}
-
-.vehicle-img {
-  text-align: center;
-  width: 100%;
-  margin-bottom: 0 !important;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  background-color: #3f9469;
-  display: inline-block;
-  vertical-align: middle;
-  height: 300px;
-  line-height: 300px;
-}
-
-.vehicle-dashboard-img {
-  height: 275px;
-  line-height: 275px;
-}
-
-a > .vehicle-img {
-  text-align: center;
-  margin-bottom: 0 !important;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 235px;
-  height: 235px;
-}
-
-.vehicle-img-button {
-  border-radius: 0px 4px 0px 0px !important;
-  border-color: #4bce8a;
-  border-left: 0 !important;
-  border-bottom: 0 !important;
-}
-
-table.contact-info {
-  margin-bottom: 0 !important;
-}
-
-.contact-info th,
-.opening-hours th,
-.contact-info td,
-.opening-hours td {
-  font-size: 1.2em;
-  text-align: justify;
 }
 
 .public-navbar {
@@ -8918,6 +8788,11 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
   background-color: #3f9469 !important;
 }
 
+.nav-pills > li > a {
+  color: white;
+  text-align: center;
+}
+
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
@@ -8928,12 +8803,6 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   border: 1px solid #4bce8a;
-}
-
-.vehicles-list > tbody > tr > td {
-  border-top: unset !important;
-  border-left: 1px solid #4bce8a;
-  padding: unset !important;
 }
 
 .dropdown-header {
@@ -8955,14 +8824,6 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
   top: 0;
   left: 100%;
   margin-top: -1px;
-}
-
-#start_date_calender:hover {
-  cursor: pointer;
-}
-
-#end_date_calender:hover {
-  cursor: pointer;
 }
 
 div.scrollable-chart {
@@ -8999,69 +8860,104 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
           box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
 }
 
-.file-input {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
-
-.file-input + label {
-  font-size: 1.25em;
-  font-weight: 700;
-  color: white;
-  background-color: black;
-  display: inline-block;
-}
-
-.file-input:focus + label,
-.file-input + label:hover {
-  background-color: red;
-}
-
-.file-input:focus + label {
-  outline: 1px dotted #000;
-  outline: -webkit-focus-ring-color auto 5px;
-}
-
-.file-input + label {
-  cursor: pointer;
-  /* "hand" cursor */
-}
-
-.navbar-nav > li > a {
-  text-align: center;
-}
-
-.panel-heading {
-  color: white !important;
-}
-
-.panel-body > h5,
-.panel-heading > h5 {
-  color: white;
-  margin: 5px 0 0 0;
-}
-
-.panel-body > h3,
-.panel-heading > h3 {
-  color: white;
-  margin: 0;
-}
-
-.has-error .input-group-addon,
 .has-error .help-block,
 .has-error .control-label {
   color: white;
 }
 
-.well {
-  padding: 19px 19px 0 19px;
-}
-
 .alert-danger {
   margin-bottom: 0;
+}
+
+.panel-body,
+.panel-heading {
+  color: white;
+}
+
+.panel-body h5,
+.panel-heading h5 {
+  margin: 5px 0 0 0;
+}
+
+.panel-body h2,
+.panel-heading h2 {
+  margin: 0;
+}
+
+.panel-body h4,
+.panel-heading h4 {
+  margin: 5px 0 0 0;
+}
+
+.vehicle-img {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0 !important;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #3f9469;
+  display: inline-block;
+  vertical-align: middle;
+  height: 300px;
+  line-height: 300px;
+}
+
+.vehicle-dashboard-img {
+  height: 275px;
+  line-height: 275px;
+}
+
+.vehicle-img-button {
+  border-radius: 0px 4px 0px 0px !important;
+  border-color: #4bce8a;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
+}
+
+@media (max-width: 767px) {
+  html {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 992px) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 1.6rem;
+  }
+}
+
+.logo {
+  -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+  max-width: 700px;
+  width: 100%;
+  margin: auto;
+}
+
+.map {
+  width: 100%;
+  height: 800px;
+}
+
+.text-link {
+  font-weight: bolder;
+  color: white;
+}
+
+.text-link:hover,
+.text-link:focus {
+  text-decoration: none !important;
 }
 

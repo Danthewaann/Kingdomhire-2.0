@@ -5,7 +5,7 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2 style="padding-left: 5px">Change info</h2>
+        <h2>Change info</h2>
       </div>
       <div class="panel-body">
         <form class="form-horizontal" action="{{ route('admin.users.update', ['user' => $user->id]) }}" method="post">

@@ -25,3 +25,11 @@
 .datepicker table tr td span:hover {
   background-color: $dark-green;
 }
+
+#start_date_calender:hover {
+  cursor: pointer;
+}
+
+#end_date_calender:hover {
+  cursor: pointer;
+}

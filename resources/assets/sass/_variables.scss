@@ -32,7 +32,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 $font-family-sans-serif: sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.6;
-$text-color: #636b6f;
+$text-color: white;
 
 // Navbar
 $navbar-default-color: white;
@@ -57,6 +57,7 @@ $panel-default-heading-bg: $light-green;
 $panel-default-border: $lighter-green;
 $panel-inner-border: $lighter-green;
 $panel-bg: lighten($light-green, 2.5%);
+$panel-default-text: $text-color;
 $panel-footer-bg: $light-green;
 $panel-heading-padding: 10px;
 

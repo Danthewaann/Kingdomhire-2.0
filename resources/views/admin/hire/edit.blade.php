@@ -5,7 +5,7 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2 style="padding-left: 5px">Edit active hire</h2>
+        <h2>Edit active hire</h2>
       </div>
       <div class="panel-body">
         <form class="form-horizontal" action="{{ route('admin.hires.update', ['hire' => $hire->id]) }}" method="post">

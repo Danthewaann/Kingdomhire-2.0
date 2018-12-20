@@ -1,0 +1,32 @@
+div.scrollable-chart {
+  overflow-y: auto;
+  margin: -15px;
+  padding: 0 15px 15px 0;
+  max-height: 290px;
+}
+
+div.scrollable-table {
+  overflow-y: auto;
+  max-height: 450px;
+}
+
+div.scrollable-table::-webkit-scrollbar,
+div.scrollable-chart::-webkit-scrollbar {
+  background: $dark-green;
+  overflow: auto;
+  width: 10px;
+  height: 10px;
+}
+
+div.scrollable-table::-webkit-scrollbar-thumb,
+div.scrollable-chart::-webkit-scrollbar-thumb {
+  background: $lighter-green;
+  //border-radius: 5px;
+  box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
+}
+
+div.scrollable-table::-webkit-scrollbar-thumb:hover,
+div.scrollable-chart::-webkit-scrollbar-thumb:hover {
+  background: darken($lighter-green, 5);
+  box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
+}

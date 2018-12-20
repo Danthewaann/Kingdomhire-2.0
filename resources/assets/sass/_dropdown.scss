@@ -1,0 +1,20 @@
+.dropdown-header {
+  border-bottom: 1px solid $lighter-green;
+}
+
+.dropdown-header,
+.dropdown-menu > li > a,
+.dropdown-submenu > li > a {
+  text-align: center;
+  font-size: $font-size-base;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}

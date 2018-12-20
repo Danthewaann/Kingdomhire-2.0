@@ -6,7 +6,7 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 style="padding-left: 5px">Edit weekly rate</h3>
+        <h2>Edit weekly rate</h2>
       </div>
       <div class="panel-body">
         <form class="form-horizontal" action="{{ route('admin.weekly-rates.update', ['weekly_rate' => $rate->name]) }}" method="post" id="weekly_rate_edit_form">

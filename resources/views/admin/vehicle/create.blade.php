@@ -5,7 +5,7 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 style="padding-left: 5px">Add a vehicle</h3>
+        <h2>Add a vehicle</h2>
       </div>
       <div class="panel-body">
         <form action="{{ route('admin.vehicles.store') }}" method="post" enctype="multipart/form-data">

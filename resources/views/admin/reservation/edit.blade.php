@@ -5,7 +5,7 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2 style="padding-left: 5px">Edit reservation</h2>
+        <h2>Edit reservation</h2>
       </div>
       <div class="panel-body">
         <form class="form-horizontal" action="{{ route('admin.reservations.update', ['reservation' => $reservation->id]) }}" method="post">

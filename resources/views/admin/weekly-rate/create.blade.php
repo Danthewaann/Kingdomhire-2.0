@@ -5,7 +5,7 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 style="padding-left: 5px">Add a weekly rate</h3>
+        <h2>Add weekly rate</h2>
       </div>
       <div class="panel-body">
         <form class="form-horizontal" action="{{ route('admin.weekly-rates.store') }}" method="post">

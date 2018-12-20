@@ -5,7 +5,7 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3>Users</h3>
+        <h2>Users List</h2>
         <h5>{{ $users->count() }} user(s) in total</h5>
       </div>
       <div class="scrollable-table">

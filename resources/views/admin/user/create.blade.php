@@ -5,7 +5,7 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2 style="padding-left: 5px">Create a user</h2>
+        <h2>Create a user</h2>
       </div>
       <div class="panel-body">
         <form class="form-horizontal" action="{{ route('admin.users.store') }}" method="post">

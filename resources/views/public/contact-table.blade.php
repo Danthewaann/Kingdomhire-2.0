@@ -1,4 +1,4 @@
-<h3 style="padding-left: 8px"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;Contact Info</h3>
+<h2 style="padding-left: 8px"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;Contact Info</h2>
 <table class="table contact-info">
   <tr>
     <th>Phone</th>

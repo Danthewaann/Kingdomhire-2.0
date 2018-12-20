@@ -8374,7 +8374,7 @@ button.close {
   -moz-filter: blur(6px);
   -o-filter: blur(6px);
   -ms-filter: blur(6px);
-  filter: blur(6px);
+  filter: blur(10px);
   -webkit-transform: scale(1.03);
           transform: scale(1.03);
   opacity: 0.9;
@@ -8394,6 +8394,10 @@ button.close {
 
 .jumbotron-vehicles .bg {
   background: #000 url("/static/van.jpg") 45% 44% no-repeat;
+}
+
+.jumbotron-contact {
+  text-align: center;
 }
 
 .jumbotron-contact .bg {
@@ -8944,8 +8948,8 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 }
 
 .logo {
-  -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+  -webkit-filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.2));
   max-width: 700px;
   width: 100%;
   margin: auto;

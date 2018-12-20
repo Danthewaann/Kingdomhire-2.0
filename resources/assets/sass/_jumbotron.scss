@@ -27,7 +27,7 @@
   -moz-filter: blur(6px);
   -o-filter: blur(6px);
   -ms-filter: blur(6px);
-  filter: blur(6px);
+  filter: blur(10px);
   transform: scale(1.03);
   opacity: 0.9;
   //margin: auto;
@@ -54,6 +54,7 @@
 }
 
 .jumbotron-contact {
+  text-align: center;
   @extend %jumbotron-base;
 
   .bg {

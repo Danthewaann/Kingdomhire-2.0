@@ -8884,6 +8884,11 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
   margin: 0;
 }
 
+.panel-body h3,
+.panel-heading h3 {
+  margin: 0;
+}
+
 .panel-body h4,
 .panel-heading h4 {
   margin: 5px 0 0 0;

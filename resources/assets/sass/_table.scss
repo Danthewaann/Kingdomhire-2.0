@@ -116,6 +116,12 @@
 
 table.contact-info {
   margin-bottom: 0 !important;
+
+  tr.buttons {
+    td {
+      padding: 15px 0px 0px 0px;
+    }
+  }
 }
 
 .contact-info th,

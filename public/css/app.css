@@ -8546,6 +8546,10 @@ table.contact-info {
   margin-bottom: 0 !important;
 }
 
+table.contact-info tr.buttons td {
+  padding: 15px 0px 0px 0px;
+}
+
 .contact-info th,
 .opening-hours th,
 .contact-info td,
@@ -8944,7 +8948,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 1200px) {
   .vehicle-img img {
-    height: 350px;
+    height: 325px;
   }
 }
 
@@ -8962,7 +8966,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (max-width: 767px) {
   .vehicle-img div.vehicle-img-na h2 {
-    line-height: 200px;
+    line-height: 230px;
   }
 }
 
@@ -8980,7 +8984,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 1200px) {
   .vehicle-img div.vehicle-img-na h2 {
-    line-height: 250px;
+    line-height: 325px;
   }
 }
 
@@ -8993,6 +8997,18 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
   border-color: #4bce8a;
   border-left: 0;
   border-bottom: 0;
+}
+
+.paragraph {
+  text-align: justify;
+}
+
+.main-header {
+  margin-top: 10px;
+}
+
+.table-header {
+  padding-left: 8px;
 }
 
 .logo {

@@ -8,8 +8,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <h1 style="margin-top: 10px">Our fleet</h1>
-        <p style="text-align: justify">Below are all the vehicles in that are in our fleet. You need to call us to be able to reserve a vehicle.
+        <h1 class="main-header">Our fleet</h1>
+        <p class="paragraph">Below are all the vehicles in that are in our fleet. You need to call us to be able to reserve a vehicle.
           Make sure to reserve your vehicle at least 1 day before expected pickup.</p>
       </div>
       <div class="col-md-4 col-sm-12">

@@ -1,4 +1,4 @@
-<h2 style="padding-left: 8px"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;Contact Info</h2>
+<h2 class="table-header"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;Contact Info</h2>
 <table class="table contact-info">
   <tr>
     <th>Phone</th>
@@ -6,10 +6,10 @@
   </tr>
   <tr>
     <th>E-Mail</th>
-    <td><span style="word-wrap: break-word;">kingdomhire@googlemail.com</span></td>
+    <td>kingdomhire@googlemail.com</td>
   </tr>
-  <tr>
-    <td colspan="2" style="padding: 15px 0px 0px 0px">
+  <tr class="buttons">
+    <td colspan="2">
       <div class="btn-group btn-group-justified">
         <div class="btn-group">
           <a href="tel:07775534402" class="btn btn-info btn-lg" role="button" aria-pressed="true"><span class="glyphicon glyphicon-earphone"></span>&nbsp; Phone Us</a>

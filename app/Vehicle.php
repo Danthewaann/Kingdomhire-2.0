@@ -52,17 +52,8 @@ class Vehicle extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'make', 'model', 'fuel_type', 'gear_type', 'seats',
-        'status', 'type', 'image_path', 'weekly_rate_id'
-    ];
-
-    public static $types = [
-        'Hatchback',
-        '4-by-4',
-        'Large Van',
-        'Small Van',
-        'People Carrier',
-        '4-door Saloon'
+        'make', 'model', 'vehicle_fuel_type_id', 'vehicle_gear_type_id', 'seats',
+        'status', 'vehicle_type_id', 'image_path', 'weekly_rate_id'
     ];
 
     public static $status = [
@@ -147,6 +138,33 @@ class Vehicle extends Model
     public function rate()
     {
         return $this->belongsTo(WeeklyRate::class, 'weekly_rate_id');
+    }
+
+    /**
+     * Get vehicle type for the vehicle
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function type()
+    {
+        return $this->belongsTo(VehicleType::class, 'vehicle_type_id');
+    }
+
+    /**
+     * Get vehicle fuel type for the vehicle
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function fuelType()
+    {
+        return $this->belongsTo(VehicleFuelType::class, 'vehicle_fuel_type_id');
+    }
+
+    /**
+     * Get vehicle gear type for the vehicle
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function gearType()
+    {
+        return $this->belongsTo(VehicleGearType::class, 'vehicle_gear_type_id');
     }
 
     /**

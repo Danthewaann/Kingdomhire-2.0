@@ -3,8 +3,10 @@
     <div class="panel-body" style="padding: 0">
       <ul class="nav nav-pills nav-stacked vehicle-navbar-tabs" id="myTabs">
         <li class="active"><a href="#all" class="btn" data-toggle="pill">All</a></li>
-        @foreach(array_keys($vehicles->groupBy('type')->toArray()) as $key)
-          <li><a data-toggle="pill" class="btn" href="#{{ str_replace(" ", "-", $key) }}">{{ $key }}s</a></li>
+        @foreach($vehicleTypes as $vehicleType)
+          @if($vehicleType->vehicles->count() > 0)
+            <li><a data-toggle="pill" class="btn" href="#{{ str_replace(" ", "-", $vehicleType->name) }}">{{ $vehicleType->name }}s</a></li>
+          @endif
         @endforeach
       </ul>
     </div>
@@ -14,23 +16,29 @@
   <div class="tab-content">
     <div id="all" class="tab-pane fade in active">
       <div class="row">
-        @foreach($vehicles as $vehicle)
-          <div class="col-lg-6 col-sm-12">
-            @include('admin.vehicle.summaries.public')
-          </div>
+        @foreach($vehicleTypes as $vehicleType)
+          @if($vehicleType->vehicles->count() > 0)
+            @foreach($vehicleType->vehicles as $vehicle)
+              <div class="col-lg-6 col-sm-12">
+                @include('admin.vehicle.summaries.public')
+              </div>
+            @endforeach
+          @endif
         @endforeach
       </div>
     </div>
-    @for($i = 0; $i < count($vehicles->groupBy('type')); $i++)
-      <div id="{{ str_replace(" ", "-", array_keys($vehicles->groupBy('type')->toArray())[$i]) }}" class="tab-pane fade">
-        <div class="row">
-          @foreach($vehicles->groupBy('type')->slice($i, 1)->first() as $vehicle)
-            <div class="col-lg-6 col-sm-12">
-              @include('admin.vehicle.summaries.public')
-            </div>
-          @endforeach
+    @foreach($vehicleTypes as $vehicleType)
+      @if($vehicleType->vehicles->count() > 0)
+        <div id="{{ str_replace(" ", "-", $vehicleType->name) }}" class="tab-pane fade">
+          <div class="row">
+            @foreach($vehicleType->vehicles as $vehicle)
+              <div class="col-lg-6 col-sm-12">
+                @include('admin.vehicle.summaries.public')
+              </div>
+            @endforeach
+          </div>
         </div>
-      </div>
-    @endfor
+      @endif
+    @endforeach
   </div>
 </div>

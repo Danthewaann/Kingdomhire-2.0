@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Vehicle;
 use App\VehicleImage;
+use App\VehicleType;
 
 class PagesController extends Controller
 {
     public function vehicles()
     {
         return view('public.vehicles', [
-            'vehicles' => Vehicle::with(['images', 'rate'])->get()
+            'vehicleTypes' => VehicleType::with(['vehicles'])->get()
         ]);
+
     }
 
     public function contact()

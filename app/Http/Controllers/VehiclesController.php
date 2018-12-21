@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\ChartGenerator;
 use App\Reservation;
 use App\WeeklyRate;
+use App\VehicleType;
+use App\VehicleGearType;
+use App\VehicleFuelType;
 use App\Vehicle;
 use App\Http\Requests\VehicleStoreRequest;
 use App\Http\Requests\VehicleUpdateRequest;
@@ -31,7 +34,9 @@ class VehiclesController extends Controller
     {
         return view('admin.vehicle.create', [
             'rates' => WeeklyRate::all(),
-            'types' => Vehicle::$types
+            'types' => VehicleType::all(),
+            'fuelTypes' => VehicleFuelType::all(),
+            'gearTypes' => VehicleGearType::all()
         ]);
     }
 
@@ -43,14 +48,19 @@ class VehiclesController extends Controller
      */
     public function store(VehicleStoreRequest $request)
     {
+        $fuel_type_id = VehicleFuelType::whereName($request->fuel_type)->first()->id;
+        $gear_type_id = VehicleGearType::whereName($request->gear_type)->first()->id;
+        $type_id = VehicleType::whereName($request->type)->first()->id;
+        $weekly_rate_id =  WeeklyRate::whereName($request->rate_name)->first()->id;
+
         $vehicle = Vehicle::create([
             'make' => $request->make,
             'model' => $request->model,
-            'fuel_type' => $request->fuel_type,
-            'gear_type' => $request->gear_type,
+            'vehicle_fuel_type_id' => $fuel_type_id,
+            'vehicle_gear_type_id' => $gear_type_id,
             'seats' => $request->seats,
-            'type' => $request->type,
-            'weekly_rate_id' => WeeklyRate::whereName($request->rate_name)->first()->id
+            'vehicle_type_id' => $type_id,
+            'weekly_rate_id' => $weekly_rate_id
         ]);
 
         if($request->hasFile('vehicle_images')) {

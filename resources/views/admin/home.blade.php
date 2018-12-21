@@ -5,13 +5,13 @@
   <div class="col-md-4 col-sm-12 col-xs-12">
     <div class="row">
       <div class="col-md-12">
+        @include('admin.common.alert')
         <div class="panel panel-default">
           <div class="panel-heading">
             <h2>Administrator Dashboard</h2>
           </div>
           <div class="panel-body">
             <h4>Welcome, {{ Auth::user()->name }}</h4>
-            @include('admin.common.alert')
           </div>
         </div>
       </div>

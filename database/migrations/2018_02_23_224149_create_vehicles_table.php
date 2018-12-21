@@ -19,14 +19,17 @@ class CreateVehiclesTable extends Migration
             $table->string('slug');
             $table->string('make');
             $table->string('model');
-            $table->string('fuel_type');
-            $table->string('gear_type');
             $table->unsignedTinyInteger('seats');
             $table->enum('status', ['Available', 'Unavailable', 'Out for hire'])->default('Available');
-            $table->string('type');
+            $table->integer('vehicle_type_id')->unsigned()->nullable();
+            $table->integer('vehicle_fuel_type_id')->unsigned()->nullable();
+            $table->integer('vehicle_gear_type_id')->unsigned()->nullable();
+            $table->integer('weekly_rate_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('weekly_rate_id')->unsigned()->nullable();
+            $table->foreign('vehicle_type_id')->references('id')->onDelete('Set null')->on('vehicle_types');
+            $table->foreign('vehicle_fuel_type_id')->references('id')->onDelete('Set null')->on('vehicle_fuel_types');
+            $table->foreign('vehicle_gear_type_id')->references('id')->onDelete('Set null')->on('vehicle_gear_types');
             $table->foreign('weekly_rate_id')->references('id')->onDelete('Set null')->on('weekly_rates');
         });
     }

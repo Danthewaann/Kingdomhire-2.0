@@ -61,23 +61,24 @@
                     <label for="type">Vehicle Type*</label>
                     <select id="type" class="form-control" name="type">
                       @foreach($types as $type)
-                        <option>{{ $type }}</option>
+                        <option value="{{ $type->name }}">{{ $type->name }}</option>
                       @endforeach
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="fuel_type">Fuel Type*</label>
                     <select id="fuel_type" class="form-control" name="fuel_type">
-                      <option selected>Petrol</option>
-                      <option>Diesel</option>
+                      @foreach($fuelTypes as $type)
+                        <option value="{{ $type->name }}">{{ $type->name }}</option>
+                      @endforeach
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="gear_type">Gear Type*</label>
                     <select id="gear_type" class="form-control" name="gear_type">
-                      <option selected>Manuel</option>
-                      <option>Automatic</option>
-                      <option>Manuel & Automatic</option>
+                      @foreach($gearTypes as $type)
+                        <option value="{{ $type->name }}">{{ $type->name }}</option>
+                      @endforeach
                     </select>
                   </div>
                   <div class="form-group{{ $errors->has('vehicle_images') ? ' has-error' : '' }}">

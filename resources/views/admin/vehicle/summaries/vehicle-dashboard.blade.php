@@ -33,15 +33,33 @@
       </tr>
       <tr>
         <th>Vehicle Type</th>
-        <td>{{ $vehicle->type }}</td>
+        <td>
+          @if($vehicle->type != null)
+            {{ $vehicle->type->name }}
+          @else
+            N/A
+          @endif
+        </td>
       </tr>
       <tr>
         <th>Fuel Type</th>
-        <td>{{ $vehicle->fuel_type }}</td>
+        <td>
+          @if($vehicle->fuelType != null)
+            {{ $vehicle->fuelType->name }}
+          @else
+            N/A
+          @endif
+        </td>
       </tr>
       <tr>
         <th>Gear Type</th>
-        <td>{{ $vehicle->gear_type }}</td>
+        <td>
+          @if($vehicle->gearType != null)
+            {{ $vehicle->gearType->name }}
+          @else
+            N/A
+          @endif
+        </td>
       </tr>
       <tr>
         <th>Seats</th>

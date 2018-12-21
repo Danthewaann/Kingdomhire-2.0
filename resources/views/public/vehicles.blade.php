@@ -1,8 +1,10 @@
 @extends('layouts.public')
 
 @section('content')
-@foreach($vehicles as $vehicle)
-  @include('admin.vehicle.modals.image-gallery')
+@foreach($vehicleTypes as $vehicleType)
+  @foreach($vehicleType->vehicles as $vehicle)
+    @include('admin.vehicle.modals.image-gallery')
+  @endforeach
 @endforeach
 <div class="jumbotron jumbotron-header">
   <div class="container">

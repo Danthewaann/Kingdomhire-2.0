@@ -57,7 +57,7 @@ class VehicleImagesTableSeeder extends Seeder
             'name' => 'megane_convertable.jpg',
             'vehicle_id' => Vehicle::where([
                 ['make', '=', 'Megane'],
-                ['model', '=', 'Convertable']
+                ['model', '=', 'Convertible']
             ])->first()->id,
             'image_uri' => asset('storage/imgs/Megane_Convertable/megane_convertable.jpg')
         ]);

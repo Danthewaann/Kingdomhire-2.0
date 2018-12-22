@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\VehicleFuelType;
+use App\VehicleGearType;
+use App\VehicleType;
 use Auth;
 use App\User;
 use App\Vehicle;
@@ -35,7 +38,19 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('weekly_rate', function ($value) {
-            return WeeklyRate::where('name', $value)->first();
+            return WeeklyRate::whereName($value)->first();
+        });
+
+        Route::bind('vehicle_fuel_type', function ($value) {
+            return VehicleFuelType::whereName($value)->first();
+        });
+
+        Route::bind('vehicle_gear_type', function ($value) {
+            return VehicleGearType::whereName($value)->first();
+        });
+
+        Route::bind('vehicle_type', function ($value) {
+            return VehicleType::whereName($value)->first();
         });
 
         Route::bind('user', function ($value) {

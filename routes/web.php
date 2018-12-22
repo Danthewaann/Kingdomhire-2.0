@@ -30,6 +30,21 @@ Route::prefix('admin')->group(function () {
         Route::patch('/vehicles/{vehicle}/discontinue', 'VehiclesController@discontinue')->name('vehicles.discontinue');
         Route::patch('/vehicles/{vehicle}/re-continue', 'VehiclesController@recontinue')->name('vehicles.recontinue');
 
+        /* Vehicle fuel types specific routes */
+        Route::resource('vehicle-fuel-types', 'VehicleFuelTypesController')->only([
+            'create', 'store', 'edit', 'update', 'destroy'
+        ]);
+
+        /* Vehicle gear types specific routes */
+        Route::resource('vehicle-gear-types', 'VehicleGearTypesController')->only([
+            'create', 'store', 'edit', 'update', 'destroy'
+        ]);
+
+        /* Vehicle types specific routes */
+        Route::resource('vehicle-types', 'VehicleTypesController')->only([
+            'create', 'store', 'edit', 'update', 'destroy'
+        ]);
+
         /* Reservation specific routes */
         Route::resource('reservations', 'ReservationsController')->only([
             'store', 'edit', 'update', 'destroy'

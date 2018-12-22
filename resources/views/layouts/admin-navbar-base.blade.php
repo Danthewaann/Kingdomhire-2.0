@@ -74,6 +74,66 @@
             </li>
           </ul>
         </li>
+        <li class="dropdown{{ Request::is('admin/vehicle-fuel-types*') ? ' active' : '' }}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+            <span class="glyphicon glyphicon-gbp"></span>&nbsp;&nbsp;Fuel Types <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{ route('admin.vehicle-fuel-types.create') }}">Add a fuel type</a>
+            </li>
+            <li class="dropdown-submenu">
+              <a href="#" class="submenu">Edit fuel types <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                @foreach(\App\VehicleFuelType::all() as $vehicleFuelType)
+                  <li>
+                    <a href="{{ route('admin.vehicle-fuel-types.edit', ['vehicle_fuel_type' => $vehicleFuelType->name]) }}">{{ $vehicleFuelType->name }}</a>
+                  </li>
+                @endforeach
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown{{ Request::is('admin/vehicle-gear-types*') ? ' active' : '' }}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+            <span class="glyphicon glyphicon-gbp"></span>&nbsp;&nbsp;Gear Types <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{ route('admin.vehicle-gear-types.create') }}">Add a gear type</a>
+            </li>
+            <li class="dropdown-submenu">
+              <a href="#" class="submenu">Edit gear types <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                @foreach(\App\VehicleGearType::all() as $vehicleGearType)
+                  <li>
+                    <a href="{{ route('admin.vehicle-gear-types.edit', ['vehicle_gear_type' => $vehicleGearType->name]) }}">{{ $vehicleGearType->name }}</a>
+                  </li>
+                @endforeach
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown{{ Request::is('admin/vehicle-types*') ? ' active' : '' }}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+            <span class="glyphicon glyphicon-gbp"></span>&nbsp;&nbsp;Vehicle Types <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{ route('admin.vehicle-types.create') }}">Add a vehicle type</a>
+            </li>
+            <li class="dropdown-submenu">
+              <a href="#" class="submenu">Edit vehicle types <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                @foreach(\App\VehicleType::all() as $vehicleType)
+                  <li>
+                    <a href="{{ route('admin.vehicle-types.edit', ['vehicle_type' => $vehicleType->name]) }}">{{ $vehicleType->name }}</a>
+                  </li>
+                @endforeach
+              </ul>
+            </li>
+          </ul>
+        </li>
       </ul>
       <!-- Right Side Of Navbar -->
       <ul class="nav navbar-nav navbar-right">

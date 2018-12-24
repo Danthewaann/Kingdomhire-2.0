@@ -24,10 +24,8 @@
             <h5>{{ $reservations->count() }} reservation(s) in total</h5>
           </div>
           <div class="panel-body">
-            <div class="scrollable-chart">
-              <div id="vehicle_reservations"></div>
-              @barchart('Vehicle Reservations', 'vehicle_reservations')
-            </div>
+            <div id="vehicle_reservations"></div>
+            @barchart('Vehicle Reservations', 'vehicle_reservations')
           </div>
         </div>
       </div>

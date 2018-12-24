@@ -73,9 +73,9 @@ class ChartGenerator
                     'color' => 'white',
                 ],
                 'minValue' => 0,
-                'maxValue' => ($maxReservationsForVehicle > 3 ? $maxReservationsForVehicle : 3),
+                'maxValue' => ($maxReservationsForVehicle > 5 ? $maxReservationsForVehicle : 5),
                 'gridlines' => [
-                    'count' => ($maxReservationsForVehicle > 3 ? $maxReservationsForVehicle : 3)+1,
+                    'count' => ($maxReservationsForVehicle > 5 ? $maxReservationsForVehicle : 5),
                     'color' => 'rgb(75, 206, 138)'
                 ],
                 'minorGridlines' => [

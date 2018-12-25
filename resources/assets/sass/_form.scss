@@ -6,3 +6,7 @@
 .alert-danger {
   margin-bottom: 0;
 }
+
+.form-control[readonly] {
+  background-color: $dark-green;
+}

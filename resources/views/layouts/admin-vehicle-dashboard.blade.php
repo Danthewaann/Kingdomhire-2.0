@@ -46,7 +46,8 @@
       format: "yyyy-mm-dd",
       todayHighlight: true,
       autoclose: true,
-      zIndexOffset: 1000
+      zIndexOffset: 1000,
+      ignoreReadonly: true
     });
     $("#start_date_calender").click(function () {
       $( "#start_date" ).focus();
@@ -55,7 +56,8 @@
       format: "yyyy-mm-dd",
       todayHighlight: true,
       autoclose: true,
-      zIndexOffset: 1000
+      zIndexOffset: 1000,
+      ignoreReadonly: true
     });
     $("#end_date_calender").click(function () {
       $( "#end_date" ).focus();

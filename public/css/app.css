@@ -8877,6 +8877,10 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
   margin-bottom: 0;
 }
 
+.form-control[readonly] {
+  background-color: #3f9469;
+}
+
 .panel-body,
 .panel-heading {
   color: white;

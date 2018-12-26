@@ -243,7 +243,7 @@ class Vehicle extends Model
         foreach ($images as $image) {
             $i++;
             $image_name = $this->make.'_'.$this->model.'_'.$i.'.'.$image->extension();
-            $image_path = $image->storeAs('imgs/'.$this->make.'_'.$this->model.'-'.$this->id, $image_name, 'public');
+            $image_path = $image->storeAs('imgs/'.$this->make.'_'.$this->model, $image_name, 'public');
 
             VehicleImage::create(array(
                 'name' => $image_name,

@@ -51,20 +51,20 @@ nav {
 }
 
 .vehicle-navbar-tabs > li > a:hover {
-  background-color: $dark-green !important;
+  background-color: $light-green !important;
   border: 1px solid rgb(75, 206, 138);
 }
 
 .vehicle-navbar-tabs > li > a:focus {
   //background-color: #439D70;
-  background-color: $dark-green;
+  background-color: $light-green;
   //border-top: 1px solid rgb(75, 206, 138);;
   //padding: 10px 0px 0px 10px;
 }
 
 .vehicle-navbar-tabs > li > a:active {
   //background-color: #439D70 !important;
-  background-color: $dark-green !important;
+  background-color: $light-green !important;
   //border-top: 1px solid rgb(75, 206, 138);;
   //padding: 10px 0px 0px 10px;
 }
@@ -114,7 +114,7 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-  background-color: $dark-green !important;
+  background-color: $light-green !important;
 }
 
 .nav-pills > li.active > a,

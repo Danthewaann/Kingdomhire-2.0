@@ -11,8 +11,7 @@
             <h2>Administrator Dashboard</h2>
           </div>
           <div class="panel-body">
-            <h3>Welcome, {{ Auth::user()->name }}</h3>
-            {{--<h3>Summary info</h3>--}}
+            <h4>Welcome, {{ Auth::user()->name }}</h4>
           </div>
           <table class="table panel-table">
             <tr>

@@ -20,10 +20,6 @@
       <td class="first">{{ $vehicle->name }}</td>
     </tr>
     <tr>
-      <th>Status</th>
-      <td>{{ $vehicle->status }}</td>
-    </tr>
-    <tr>
       <th>Vehicle Type</th>
       <td>
         @if($vehicle->type != null)

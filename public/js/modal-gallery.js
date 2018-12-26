@@ -90,12 +90,12 @@ $(document).ready(function () {
 
     $('.modal-prev').click(function () {
         var vehicle = $(this).data('vehicle');
-        plusSlides(-1, vehicle);
+        plusSlides(-1, vehicle + '-images');
     });
 
     $('.modal-next').click(function () {
         var vehicle = $(this).data('vehicle');
-        plusSlides(1, vehicle);
+        plusSlides(1, vehicle + '-images');
     });
 });
 

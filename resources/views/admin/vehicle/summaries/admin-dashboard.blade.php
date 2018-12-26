@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading vehicle-panel-heading">
+  <div class="panel-heading vehicle-panel-admin-heading">
     <h3>{{ $vehicle->name() }}</h3>
   </div>
   @if($vehicle->images->isEmpty())

@@ -16,7 +16,14 @@
 }
 
 .vehicle-panel-heading {
-  background-color: $darker-green !important;
+  background-color: $light-green !important;
+  h3 {
+    text-align: center;
+  }
+}
+
+.vehicle-panel-admin-heading {
+  //background-color: $dark-green !important;
   h3 {
     text-align: center;
   }

@@ -4,7 +4,7 @@
   tbody {
     tr {
       th {
-        background-color: $darker-green;
+        background-color: $light-green;
         border-top: unset !important;
         text-align: right;
         vertical-align: middle;
@@ -34,7 +34,7 @@
   tbody {
     tr {
       th {
-        background-color: $darker-green;
+        background-color: $light-green;
         border-top: unset !important;
         text-align: right;
         vertical-align: middle;
@@ -64,14 +64,10 @@
   tbody {
     tr {
       th {
-        background-color: $darker-green;
+        background-color: $light-green;
         border-top: unset !important;
-        //border-left: 1px solid $lighter-green !important;
         text-align: right;
         vertical-align: middle;
-      }
-      th.last {
-        //border-bottom: 1px solid $lighter-green !important;
       }
       th.first {
         border-top: 1px solid $lighter-green !important;

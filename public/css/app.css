@@ -8435,7 +8435,7 @@ button.close {
 }
 
 .vehicle-table-public tbody tr th {
-  background-color: #3b8b63;
+  background-color: #439D70;
   border-top: unset !important;
   text-align: right;
   vertical-align: middle;
@@ -8466,7 +8466,7 @@ button.close {
 }
 
 .vehicle-table-dashboard tbody tr th {
-  background-color: #3b8b63;
+  background-color: #439D70;
   border-top: unset !important;
   text-align: right;
   vertical-align: middle;
@@ -8497,7 +8497,7 @@ button.close {
 }
 
 .vehicle-table-admin tbody tr th {
-  background-color: #3b8b63;
+  background-color: #439D70;
   border-top: unset !important;
   text-align: right;
   vertical-align: middle;
@@ -8754,16 +8754,16 @@ nav {
 }
 
 .vehicle-navbar-tabs > li > a:hover {
-  background-color: #3f9469 !important;
+  background-color: #439D70 !important;
   border: 1px solid #4bce8a;
 }
 
 .vehicle-navbar-tabs > li > a:focus {
-  background-color: #3f9469;
+  background-color: #439D70;
 }
 
 .vehicle-navbar-tabs > li > a:active {
-  background-color: #3f9469 !important;
+  background-color: #439D70 !important;
 }
 
 .vehicle-dashboard-navbar-tabs > li > a:focus {
@@ -8804,7 +8804,7 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-  background-color: #3f9469 !important;
+  background-color: #439D70 !important;
 }
 
 .nav-pills > li.active > a,
@@ -8907,10 +8907,14 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 }
 
 .vehicle-panel-heading {
-  background-color: #3b8b63 !important;
+  background-color: #439D70 !important;
 }
 
 .vehicle-panel-heading h3 {
+  text-align: center;
+}
+
+.vehicle-panel-admin-heading h3 {
   text-align: center;
 }
 

@@ -11,8 +11,23 @@
             <h2>Administrator Dashboard</h2>
           </div>
           <div class="panel-body">
-            <h4>Welcome, {{ Auth::user()->name }}</h4>
+            <h3>Welcome, {{ Auth::user()->name }}</h3>
+            {{--<h3>Summary info</h3>--}}
           </div>
+          <table class="table panel-table">
+            <tr>
+              <th class="first">Vehicles</th>
+              <th>Reservations</th>
+              <th>Active hires</th>
+              <th>Past hires</th>
+            </tr>
+            <tr>
+              <td class="first">{{ $activeVehicles->count() }}</td>
+              <td>{{ $reservations->count() }}</td>
+              <td>{{ $activeHires->count() }}</td>
+              <td>{{ $pastHires->count() }}</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
@@ -56,7 +71,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h2>Active hires</h2>
-              <h5>{{ \App\Hire::whereIsActive(true)->get()->count() }} active hire(s) in total</h5>
+              <h5>{{ $activeHires->count() }} active hire(s) in total</h5>
             </div>
             {!! $gantt !!}
           </div>

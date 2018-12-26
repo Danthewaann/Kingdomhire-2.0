@@ -11,7 +11,8 @@
         <div class="col-sm-8">
           <div class="input-group">
             {{ Form::text('start_date', '', array(
-              'class' => 'form-control', 'autocomplete' => 'off', 'placeholder' => 'e.g. '.date('Y-m-d'), 'id' => 'start_date'))
+              'class' => 'form-control', 'autocomplete' => 'off',
+              'placeholder' => 'e.g. '.date('Y-m-d'), 'id' => 'start_date', 'readonly' => 'readonly'))
             }}
             <span class="input-group-addon" id="start_date_calender"><span class="glyphicon glyphicon-calendar"></span></span>
           </div>
@@ -30,7 +31,8 @@
           <div class="input-group">
             {{ Form::text('end_date', '', array(
               'class' => 'form-control', 'autocomplete' => 'off',
-              'placeholder' => 'e.g. '.date('Y-m-d', strtotime(date('Y-m-d') . ' +3 days')), 'id' => 'end_date'))
+              'placeholder' => 'e.g. '.date('Y-m-d', strtotime(date('Y-m-d') . ' +3 days')),
+              'id' => 'end_date', 'readonly' => 'readonly'))
             }}
             <span class="input-group-addon" id="end_date_calender"><span class="glyphicon glyphicon-calendar"></span></span>
           </div>

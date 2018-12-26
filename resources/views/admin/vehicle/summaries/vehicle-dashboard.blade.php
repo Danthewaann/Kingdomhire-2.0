@@ -17,9 +17,7 @@
     @else
       <div class="vehicle-img">
         <img src="{{ $vehicle->images->first()->image_uri }}" class="vehicle-dashboard-img"/>
-        <button class="btn btn-info vehicle-img-button"
-                onclick="openModal('{{ $vehicle->slug }}');
-                         currentSlide(1, '{{ $vehicle->slug.'-images' }}')">View images</button>
+        <button class="btn btn-info vehicle-img-button vehicle-open-modal" data-vehicle="{{ $vehicle->slug }}">View images</button>
       </div>
     @endif
     <table class="table table-condensed vehicle-table-dashboard">

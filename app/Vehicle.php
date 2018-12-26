@@ -6,6 +6,7 @@ use App\Events\VehicleCreating;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * App\Vehicle
@@ -253,10 +254,12 @@ class Vehicle extends Model
         }
     }
 
-    public function deleteImages($images)
+    public function deleteImages($deleteImages)
     {
-        foreach ($images as $image) {
-            $this->images->where('name', $image)->first()->delete();
+        foreach ($deleteImages as $deleteImage) {
+            $imageInStorage = $this->images->where('name', $deleteImage)->first();
+            unlink(storage_path('app/public/imgs/'.$this->make.'_'.$this->model.'/'.$imageInStorage->name));
+            $imageInStorage->delete();
         }
     }
 }

@@ -1,34 +1,44 @@
 <div class="panel panel-default">
-  <div class="panel-heading panel-title-text">
-    @if(!$activeHires->isEmpty())
+  @if($activeHires->isNotEmpty())
+    <div class="panel-heading">
       <h3>Active hires</h3>
       <span>{{ count($activeHires) }} hire(s) in total</span>
-    @else
-      <h3>No active hires</h3>
-    @endif
-  </div>
-  @if((!$activeHires->isEmpty()))
-    <div style="overflow: auto; max-height: 400px">
-      <table class="table table-hover table-condensed table-responsive">
+    </div>
+  @else
+    <div class="panel-body">
+      <h3 style="margin-left: -5px">No active hires</h3>
+    </div>
+  @endif
+  @if($activeHires->count() > 0)
+    <div class="scrollable-list" style="max-height: 570px">
+      <table class="table table-condensed panel-table">
         <thead>
         <tr>
+          <th class="first">ID</th>
           <th>Vehicle</th>
           <th>Start Date</th>
           <th>End Date</th>
           <th></th>
         </tr>
         </thead>
-        @foreach($activeHires as $hire)
+        <tbody>
+        @foreach($activeHires as $activeHire)
           <tr>
-            <td><a href="{{ route('vehicle.show', ['id' => $hire->vehicle->id]) }}">{{ $hire->vehicle->name() }} </a></td>
-            <td>{{ date('jS F Y', strtotime($hire->start_date)) }}</td>
-            <td>{{ date('jS F Y', strtotime($hire->end_date)) }}</td>
+            <td class="first">{{ $activeHire->name }}</td>
+            <td>{{ $activeHire->vehicle->name() }}</td>
+            <td>{{ date('j/M/Y', strtotime($activeHire->start_date)) }}</td>
+            <td>{{ date('j/M/Y', strtotime($activeHire->end_date)) }}</td>
             <td>
-              <a style="width: 100%" href="{{ route('hire.edit', ['vehicle_id' => $hire->vehicle->id, 'hire_id' => $hire->id]) }}"
-                 class="btn btn-primary btn-sm" role="button" aria-pressed="true">Shorten/Extend</a>
+              <div class="btn-group btn-group-justified" style="width: inherit">
+                <div class="btn-group">
+                  <a href="{{ route('admin.hires.edit', ['hire' => $activeHire]) }}"
+                     class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
+                </div>
+              </div>
             </td>
           </tr>
         @endforeach
+        </tbody>
       </table>
     </div>
   @endif

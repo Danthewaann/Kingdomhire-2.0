@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ChartGenerator;
 use App\Http\Requests\HireRequest;
 use App\Vehicle;
 use App\Hire;
@@ -17,6 +18,28 @@ class HiresController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $activeHires = Hire::whereIsActive(true)->get()->sortByDesc('end_date');
+        $inactiveHires = Hire::whereIsActive(false)->get()->sortByDesc('end_date');
+        $activeVehicles = Vehicle::all();
+        $allVehicles = Vehicle::withTrashed()->get();
+
+        ChartGenerator::drawOverallPastHiresBarChart($inactiveHires, $allVehicles);
+
+        return view('admin.admin-hires', [
+            'activeHires' => $activeHires,
+            'inactiveHires' => $inactiveHires,
+            'vehicles' => $allVehicles,
+            'gantt' => ChartGenerator::drawVehiclesActiveHiresGanttChart($activeVehicles)
+        ]);
     }
 
     /**

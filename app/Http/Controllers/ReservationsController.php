@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ChartGenerator;
 use App\Reservation;
 use App\Hire;
 use App\Http\Requests\ReservationRequest;
@@ -18,6 +19,23 @@ class ReservationsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $reservations = Reservation::all();
+        $vehicles = Vehicle::all();
+        ChartGenerator::drawReservationsBarChart($vehicles);
+
+        return view('admin.admin-reservations', [
+            'reservations' => $reservations,
+            'vehicles' => $vehicles
+        ]);
     }
 
     /**
@@ -41,9 +59,7 @@ class ReservationsController extends Controller
 
         ]);
 
-        return redirect()->route('admin.vehicles.show', [
-            'vehicle' => $vehicle
-        ]);
+        return back();
     }
 
     /**

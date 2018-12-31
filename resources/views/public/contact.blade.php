@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-8">
         <h1 class="main-header">Contact us</h1>
-        <p class="paragraph">Have any queries or complaints? <br>You can contact us via mobile phone or email, whichever you prefer.</p>
+        <p class="paragraph">Have any queries? <br>You can contact us via mobile phone or email, whichever you prefer.</p>
       </div>
       <div class="col-md-4 col-sm-12">
         <div class="row">

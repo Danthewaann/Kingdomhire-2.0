@@ -19,6 +19,23 @@ class VehicleGearTypesController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $vehicleGearTypes = VehicleGearType::with(['vehicles' => function ($q) {
+            $q->withTrashed();
+        }])->get();
+
+        return view('admin.admin-vehicle-gear-types', [
+            'vehicleGearTypes' => $vehicleGearTypes,
+        ]);
+    }
+
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

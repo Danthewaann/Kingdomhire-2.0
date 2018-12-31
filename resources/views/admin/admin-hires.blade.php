@@ -1,15 +1,20 @@
 @extends('layouts.admin-main')
 
 @section('content')
-  <div class="panel panel-default">
-    <div class="panel-heading"><h1>Hires Dashboard</h1></div>
-  </div>
   <div class="row">
-    <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+      @include('admin.common.alert')
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Hires dashboard</h3>
+        </div>
+      </div>
       @include('admin.hire.list-active')
-    </div>
-    <div class="col-md-6 col-sm-6 col-xs-12">
       @include('admin.hire.list-inactive')
+    </div>
+    <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+      @include('admin.charts.active-hires')
+      @include('admin.charts.inactive-hires')
     </div>
   </div>
 @endsection

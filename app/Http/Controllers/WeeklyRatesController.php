@@ -19,6 +19,20 @@ class WeeklyRatesController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $rates = WeeklyRate::all();
+
+        return view('admin.admin-weekly-rates', [
+            'rates' => $rates,
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

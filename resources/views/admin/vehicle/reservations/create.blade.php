@@ -5,17 +5,7 @@
   <div class="panel-body">
     <form class="form-horizontal" action="{{ route('admin.reservations.store') }}" method="post">
       @csrf
-      <div class="form-group">
-        <label for="vehicle_id" class="col-sm-4 control-label">Vehicle*</label>
-        <div class="col-sm-8">
-          <select id="vehicle_id" class="form-control" name="vehicle_id">
-            @foreach($vehicles as $vehicle)
-              <option value="{{ $vehicle->id }}">{{ $vehicle->name().' - '.$vehicle->name }}</option>
-            @endforeach
-          </select>
-        </div>
-      </div>
-      {{--<input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">--}}
+      <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
       <div class="form-group{{ $errors->reservations->has('start_date') ? ' has-error' : '' }}">
         <label for="start_date" class="col-sm-4 control-label">Start Date*</label>
         <div class="col-sm-8">

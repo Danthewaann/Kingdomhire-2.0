@@ -26,6 +26,26 @@ class VehiclesController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $activeVehicles = Vehicle::all();
+        $inactiveVehicles = Vehicle::onlyTrashed()->get();
+        $vehicleTypes = VehicleType::with(['vehicles' => function ($q) {
+            $q->withTrashed();
+        }])->get();
+
+        return view('admin.admin-vehicles', [
+            'vehicleTypes' => $vehicleTypes,
+            'activeVehicles' => $activeVehicles,
+            'inactiveVehicles' => $inactiveVehicles,
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

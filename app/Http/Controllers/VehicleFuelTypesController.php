@@ -19,6 +19,22 @@ class VehicleFuelTypesController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $vehicleFuelTypes = VehicleFuelType::with(['vehicles' => function ($q) {
+            $q->withTrashed();
+        }])->get();
+
+        return view('admin.admin-vehicle-fuel-types', [
+            'vehicleFuelTypes' => $vehicleFuelTypes,
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

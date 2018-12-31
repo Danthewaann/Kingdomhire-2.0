@@ -5,7 +5,7 @@
 {{--<div class="container-fluid">--}}
   <div class="row">
     <div class="col-lg-4 col-md-12">
-      @include('admin.reservation.create')
+      @include('admin.vehicle.reservations.create')
       @include('admin.vehicle.hires.show-active')
       @include('admin.vehicle.reservations.show-all')
     </div>

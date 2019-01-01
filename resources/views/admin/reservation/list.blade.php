@@ -10,7 +10,7 @@
     </div>
   @endif
   @if(!$reservations->isEmpty())
-    <div class="scrollable-table">
+    <div class="scrollable-table" style="max-height: 615px">
       <table class="table table-condensed panel-table">
         <thead>
         <tr>

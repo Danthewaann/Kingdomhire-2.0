@@ -3,6 +3,7 @@
 @section('content')
 <div class="col-lg-4 col-lg-offset-4 col-sm-10 col-sm-offset-1">
   <div class="row">
+    @include('admin.common.alert')
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2>Edit reservation</h2>
@@ -87,7 +88,7 @@
               <div class="col-sm-6 col-sm-offset-4">
                 <div class="btn-group">
                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
-                  <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
+                  <a href="{{ URL::previous() }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
                 </div>
               </div>
             </div>

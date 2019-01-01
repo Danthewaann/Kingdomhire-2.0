@@ -9,6 +9,7 @@
           <h3>Vehicles dashboard</h3>
         </div>
       </div>
+      @include('admin.vehicle.create')
       @include('admin.vehicle.lists.categories')
     </div>
     <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12">

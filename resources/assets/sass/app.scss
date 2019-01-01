@@ -21,41 +21,6 @@
 @import "image";
 @import "public/public";
 
-//@media(max-width:767px) {
-//  html {
-//    font-size: 1rem;
-//  }
-//  .vehicle-img {
-//    height: 200px;
-//    line-height: 200px;
-//  }
-//}
-//@media(min-width:768px) {
-//  html {
-//    font-size: 1.2rem;
-//  }
-//
-//  .vehicle-img {
-//    height: 250px;
-//    line-height: 250px;
-//  }
-//}
-//@media(min-width:992px) {
-//  html {
-//    font-size: 1.4rem;
-//  }
-//
-//  .vehicle-img {
-//    height: 275px;
-//    line-height: 2750px;
-//  }
-//}
-//@media(min-width:1200px) {
-//  html {
-//    font-size: 1.6rem;
-//  }
-//}
-
 .logo {
   filter: drop-shadow(1px 1px 5px rgba(0,0,0,0.2));
   max-width: 700px;
@@ -75,4 +40,12 @@
 
 .text-link:hover, .text-link:focus {
   text-decoration: none !important;
+}
+
+button[type="submit"] {
+  float: left;
+}
+
+.btn-group {
+  float: left;
 }

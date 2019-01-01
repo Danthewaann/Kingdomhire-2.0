@@ -87,10 +87,8 @@
         </div>
       @endif
       <div class="row">
-        <div class="col-sm-6 col-sm-offset-4">
-          <div class="btn-group">
-            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Book reservation</button>
-          </div>
+        <div class="col-sm-4 col-sm-offset-4">
+          <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Book reservation</button>
         </div>
       </div>
     </form>

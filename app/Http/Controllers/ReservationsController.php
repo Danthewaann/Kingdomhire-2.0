@@ -46,7 +46,6 @@ class ReservationsController extends Controller
      */
     public function store(ReservationRequest $request)
     {
-        $vehicle = Vehicle::find($request->vehicle_id);
         if ($request->start_date == date('Y-m-d')) {
             Hire::create($request->all());
         }
@@ -100,9 +99,7 @@ class ReservationsController extends Controller
             'reservation' => 'Successfully updated reservation!'
         ]);
 
-        return redirect()->route('admin.vehicles.show', [
-            'vehicle' => $reservation->vehicle
-        ]);
+        return back();
     }
 
     /**

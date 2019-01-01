@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Events\HireCreating;
+use Illuminate\Database\Eloquent\Collection;
+
 /**
  * App\Hire
  *
@@ -79,5 +81,24 @@ class Hire extends ConflictableModel
         }
 
         return $id;
+    }
+
+    /**
+     * Get number of hires made in each unique year
+     * @return Collection
+     */
+    public static function getYearlyHires()
+    {
+        $years = [];
+        $hires = Hire::whereIsActive(false)->get();
+        foreach ($hires as $hire) {
+            $year = date('Y', strtotime($hire->end_date));
+            if (!array_key_exists($year, $years)) {
+                $years[$year] = 0;
+            }
+            $years[$year]++;
+        }
+
+        return collect($years)->sortKeysDesc();
     }
 }

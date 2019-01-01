@@ -13,8 +13,19 @@
       @include('admin.hire.list-inactive')
     </div>
     <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
-      @include('admin.charts.active-hires')
-      @include('admin.charts.inactive-hires')
+      <div class="row">
+        <div class="col-lg-12">
+          @include('admin.charts.active-hires')
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          @include('admin.charts.yearly-hires-table')
+        </div>
+        <div class="col-lg-9">
+          @include('admin.charts.inactive-hires')
+        </div>
+      </div>
     </div>
   </div>
 @endsection

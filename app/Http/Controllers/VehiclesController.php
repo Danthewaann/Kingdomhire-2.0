@@ -42,6 +42,10 @@ class VehiclesController extends Controller
             'vehicleTypes' => $vehicleTypes,
             'activeVehicles' => $activeVehicles,
             'inactiveVehicles' => $inactiveVehicles,
+            'rates' => WeeklyRate::all(),
+            'types' => VehicleType::all(),
+            'fuelTypes' => VehicleFuelType::all(),
+            'gearTypes' => VehicleGearType::all()
         ]);
     }
 

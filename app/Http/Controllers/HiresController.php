@@ -29,6 +29,7 @@ class HiresController extends Controller
     {
         $activeHires = Hire::whereIsActive(true)->get()->sortByDesc('end_date');
         $inactiveHires = Hire::whereIsActive(false)->get()->sortByDesc('end_date');
+        $yearlyHires = Hire::getYearlyHires();
         $activeVehicles = Vehicle::all();
         $allVehicles = Vehicle::withTrashed()->get();
 
@@ -37,6 +38,7 @@ class HiresController extends Controller
         return view('admin.admin-hires', [
             'activeHires' => $activeHires,
             'inactiveHires' => $inactiveHires,
+            'yearlyHires' => $yearlyHires,
             'vehicles' => $allVehicles,
             'gantt' => ChartGenerator::drawVehiclesActiveHiresGanttChart($activeVehicles)
         ]);
@@ -71,8 +73,6 @@ class HiresController extends Controller
             'hire' => 'Successfully updated active hire!'
         ]);
 
-        return redirect()->route('admin.vehicles.show', [
-            'vehicle' => $hire->vehicle
-        ]);
+        return back();
     }
 }

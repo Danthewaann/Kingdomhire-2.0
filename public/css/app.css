@@ -8883,6 +8883,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 .panel-body,
 .panel-heading {
+  text-align: center;
   color: white;
 }
 
@@ -9040,5 +9041,13 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 .text-link:hover,
 .text-link:focus {
   text-decoration: none !important;
+}
+
+button[type="submit"] {
+  float: left;
+}
+
+.btn-group {
+  float: left;
 }
 

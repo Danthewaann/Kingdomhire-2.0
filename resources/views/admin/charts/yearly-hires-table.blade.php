@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      @foreach($vehicle->getYearlyHires() as $year => $hires)
+      @foreach($yearlyHires as $year => $hires)
         <tr>
           <td class="first">{{ $year }}</td>
           <td>{{ $hires }}</td>
@@ -18,7 +18,7 @@
       @endforeach
       <tr>
         <td class="first">Total hires</td>
-        <td>{{ $vehicle->hires->count() }}</td>
+        <td>{{ $inactiveHires->count() }}</td>
       </tr>
     </tbody>
   </table>

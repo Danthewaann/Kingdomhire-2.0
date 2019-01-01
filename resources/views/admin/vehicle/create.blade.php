@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3>Create vehicle</h3>
+    <h3>Create new vehicle</h3>
   </div>
   <div class="panel-body">
     <form action="{{ route('admin.vehicles.store') }}" method="post" enctype="multipart/form-data">

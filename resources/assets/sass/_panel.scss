@@ -1,6 +1,4 @@
-.panel-body,
-.panel-heading {
-  text-align: center;
+.panel {
   color: white;
   h5 {
     margin: 5px 0 0 0;
@@ -9,10 +7,14 @@
     margin: 0;
   }
   h3 {
+    text-align: center;
     margin: 0;
   }
   h4 {
     margin: 5px 0 0 0;
+  }
+  .panel-heading {
+    text-align: center;
   }
 }
 

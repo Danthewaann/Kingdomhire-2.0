@@ -22,7 +22,7 @@
         <li class="{{ Request::is('admin') ? 'active' : '' }}">
           <a href="{{ route('admin.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
         </li>
-        <li class="dropdown{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
+        <li class="dropdown{{ Request::is('admin/vehicles') ? ' active' : '' }}">
           <a href="{{ route('admin.vehicles.index') }}"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Vehicles</a>
         </li>
         <li class="{{ Request::is('admin/reservations*') ? 'active' : '' }}">
@@ -63,7 +63,7 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href="{{ route('admin.users.create') }}">Create a user</a>
+              <a href="{{ route('admin.users.create') }}">Create new user</a>
             </li>
             <li>
               <a href="{{ route('admin.users.index') }}" class="submenu">Users</span></a>
@@ -76,13 +76,12 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href="{{ route('admin.users.edit', ['user' => Auth::user()->id]) }}">Change info</a>
+              <a href="{{ route('admin.users.edit', ['user' => Auth::user()->id]) }}">Update info</a>
             </li>
             <li>
-              <a href="{{ route('admin.users.edit-password', ['user' => Auth::user()->id]) }}">Change password</a>
+              <a href="{{ route('admin.users.edit-password', ['user' => Auth::user()->id]) }}">Update password</a>
             </li>
             <li>
-              {{--<button type="button" class="btn btn-info" data-toggle="modal" data-target="#user-{{ Auth::user()->id }}-delete"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>--}}
               <a href="#" data-toggle="modal" data-target="#user-{{ Auth::user()->id }}-delete">Delete account</a>
             </li>
             <li>

@@ -5,7 +5,7 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2>Change password</h2>
+        <h3>Update password</h3>
       </div>
       <div class="panel-body">
         <form class="form-horizontal" action="{{ route('admin.users.update-password', ['user' => $user->id]) }}" method="post">

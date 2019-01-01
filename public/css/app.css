@@ -8881,30 +8881,29 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
   background-color: #3f9469;
 }
 
-.panel-body,
-.panel-heading {
-  text-align: center;
+.panel {
   color: white;
 }
 
-.panel-body h5,
-.panel-heading h5 {
+.panel h5 {
   margin: 5px 0 0 0;
 }
 
-.panel-body h2,
-.panel-heading h2 {
+.panel h2 {
   margin: 0;
 }
 
-.panel-body h3,
-.panel-heading h3 {
+.panel h3 {
+  text-align: center;
   margin: 0;
 }
 
-.panel-body h4,
-.panel-heading h4 {
+.panel h4 {
   margin: 5px 0 0 0;
+}
+
+.panel .panel-heading {
+  text-align: center;
 }
 
 .vehicle-panel-heading {

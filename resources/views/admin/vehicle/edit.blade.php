@@ -10,7 +10,7 @@
     @endif
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2 style="padding-left: 5px">Edit Form</h2>
+        <h3>Edit vehicle</h3>
       </div>
       <div class="panel-body">
         <div class="row">

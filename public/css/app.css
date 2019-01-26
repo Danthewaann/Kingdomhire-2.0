@@ -8960,6 +8960,35 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
   }
 }
 
+.vehicle-img img.admin {
+  width: 100%;
+  height: 300px;
+}
+
+@media (max-width: 767px) {
+  .vehicle-img img.admin {
+    height: 230px;
+  }
+}
+
+@media (min-width: 768px) {
+  .vehicle-img img.admin {
+    height: 250px;
+  }
+}
+
+@media (min-width: 992px) {
+  .vehicle-img img.admin {
+    height: 320px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .vehicle-img img.admin {
+    height: 300px;
+  }
+}
+
 .vehicle-img div.vehicle-img-na {
   height: 100%;
 }

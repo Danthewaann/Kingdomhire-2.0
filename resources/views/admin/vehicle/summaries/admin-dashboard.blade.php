@@ -13,7 +13,7 @@
     @foreach($vehicle->images as $image)
       @if($loop->first)
         <div class="vehicle-img">
-          <img src="{{ $image->image_uri }}"/>
+          <img class="admin" src="{{ $image->image_uri }}"/>
             <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
         </div>
       @endif

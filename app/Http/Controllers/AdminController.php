@@ -29,24 +29,19 @@ class AdminController extends Controller
     public function __invoke()
     {
         $activeVehicles = Vehicle::all();
-        $inactiveVehicles = Vehicle::onlyTrashed()->get();
         $allVehicles = Vehicle::withTrashed()->get();
         $pastHires = Hire::whereIsActive(false)->get()->sortBy('end_date');
         $activeHires = Hire::whereIsActive(true)->get()->sortBy('end_date');
+        $yearlyHires = Hire::getYearlyHires();
         ChartGenerator::drawReservationsBarChart($activeVehicles);
         ChartGenerator::drawOverallPastHiresBarChart($pastHires, $allVehicles);
-        $vehicleTypes = VehicleType::with(['vehicles' => function ($q) {
-            $q->withTrashed();
-        }])->get();
 
-        return view('admin.home', [
-            'vehicleTypes' => $vehicleTypes,
-            'activeVehicles' => $activeVehicles,
-            'inactiveVehicles' => $inactiveVehicles,
-            'pastHires' => $pastHires,
+        return view('admin.admin-home', [
+            'vehicles' => $activeVehicles,
+            'yearlyHires' => $yearlyHires,
+            'inactiveHires' => $pastHires,
             'activeHires' => $activeHires,
             'reservations' => Reservation::all(),
-            'rates' => WeeklyRate::all(),
             'gantt' => ChartGenerator::drawVehiclesActiveHiresGanttChart($activeVehicles)
         ]);
     }

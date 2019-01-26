@@ -14,13 +14,13 @@ class VehicleGearTypesTableSeeder extends Seeder
     {
         DB::table('vehicle_gear_types')->delete();
         VehicleGearType::create([
-            'name' => 'Manual'
+            'name' => 'Manual',
         ]);
         VehicleGearType::create([
-            'name' => 'Automatic'
+            'name' => 'Automatic',
         ]);
         VehicleGearType::create([
-            'name' => 'Manual/Automatic'
+            'name' => 'Manual/Automatic',
         ]);
     }
 }

@@ -14,25 +14,25 @@ class VehicleTypesTableSeeder extends Seeder
     {
         DB::table('vehicle_types')->delete();
         VehicleType::create([
-           'name' => 'Hatchback'
+            'name' => 'Hatchback',
         ]);
         VehicleType::create([
-            'name' => '4-by-4'
+            'name' => '4-by-4',
         ]);
         VehicleType::create([
-            'name' => 'Large Van'
+            'name' => 'Large Van',
         ]);
         VehicleType::create([
-            'name' => 'Small Van'
+            'name' => 'Small Van',
         ]);
         VehicleType::create([
-            'name' => 'People Carrier'
+            'name' => 'People Carrier',
         ]);
         VehicleType::create([
-            'name' => '4-door Saloon'
+            'name' => '4-door Saloon',
         ]);
         VehicleType::create([
-            'name' => 'Convertible'
+            'name' => 'Convertible',
         ]);
     }
 }

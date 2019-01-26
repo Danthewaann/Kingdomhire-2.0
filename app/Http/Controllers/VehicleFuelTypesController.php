@@ -60,7 +60,7 @@ class VehicleFuelTypesController extends Controller
             'vehicle_fuel_type_add' => 'Successfully created fuel type '.$vehicleFuelType->name
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.vehicle-fuel-types.index');
     }
 
     /**
@@ -91,7 +91,7 @@ class VehicleFuelTypesController extends Controller
             'weekly_rate' => 'Successfully updated fuel type '.$vehicleFuelType->name
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.vehicle-fuel-types.index');
     }
 
     /**
@@ -111,6 +111,6 @@ class VehicleFuelTypesController extends Controller
             'vehicle_fuel_type' => 'Successfully deleted fuel type '.$vehicleFuelType->name
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.vehicle-fuel-types.index');
     }
 }

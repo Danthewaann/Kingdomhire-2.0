@@ -1,4 +1,4 @@
-<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
+<div class="col-lg-12 col-md-8 col-sm-12 col-xs-12">
   @if($activeVehicles->isNotEmpty() or $inactiveVehicles->isNotEmpty())
     <div class="tab-content">
       @if($activeVehicles->isNotEmpty())

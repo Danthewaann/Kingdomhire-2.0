@@ -23,6 +23,16 @@ class ConflictableModel extends Model
     }
 
     /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
+    /**
      * Determine if this model conflicts with another ConflictableModel.
      * start and end dates from this model is compared against the time period
      * between the start and end dates of the other model.

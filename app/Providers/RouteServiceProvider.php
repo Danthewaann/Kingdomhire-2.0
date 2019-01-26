@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Hire;
+use App\Reservation;
 use App\VehicleFuelType;
 use App\VehicleGearType;
 use App\VehicleType;
@@ -30,27 +32,32 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::pattern('reservation', '[0-9]+');
-        Route::pattern('hire', '[0-9]+');
-
         Route::bind('vehicle', function ($value) {
-            return Vehicle::withTrashed()->where('slug', $value)->first();
+            return Vehicle::withTrashed()->whereSlug($value)->first();
+        });
+
+        Route::bind('reservation', function ($value) {
+            return Reservation::whereName($value)->first();
+        });
+
+        Route::bind('hire', function ($value) {
+            return Hire::whereName($value)->first();
         });
 
         Route::bind('weekly_rate', function ($value) {
-            return WeeklyRate::whereName($value)->first();
+            return WeeklyRate::whereSlug($value)->first();
         });
 
         Route::bind('vehicle_fuel_type', function ($value) {
-            return VehicleFuelType::whereName($value)->first();
+            return VehicleFuelType::whereSlug($value)->first();
         });
 
         Route::bind('vehicle_gear_type', function ($value) {
-            return VehicleGearType::whereName($value)->first();
+            return VehicleGearType::whereSlug($value)->first();
         });
 
         Route::bind('vehicle_type', function ($value) {
-            return VehicleType::whereName($value)->first();
+            return VehicleType::whereSlug($value)->first();
         });
 
         Route::bind('user', function ($value) {

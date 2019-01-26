@@ -1,7 +1,6 @@
 @extends('layouts.admin-main')
 
 @section('content')
-@include('admin.weekly-rate.delete-modal')
 <div class="col-lg-4 col-lg-offset-4 col-sm-10 col-sm-offset-1">
   <div class="row">
     <div class="panel panel-default">
@@ -9,7 +8,7 @@
         <h2>Edit weekly rate</h2>
       </div>
       <div class="panel-body">
-        <form class="form-horizontal" action="{{ route('admin.weekly-rates.update', ['weekly_rate' => $rate->name]) }}" method="post" id="weekly_rate_edit_form">
+        <form class="form-horizontal" action="{{ route('admin.weekly-rates.update', ['weekly_rate' => $rate->slug]) }}" method="post" id="weekly_rate_edit_form">
           @csrf
           @method('PATCH')
           <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -60,11 +59,11 @@
         </form>
           <div class="form-group">
             <div class="row">
-              <div class="col-sm-2 col-sm-offset-4">
-                <button type="submit" form="weekly_rate_edit_form" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
-              </div>
-              <div class="col-sm-3 col-sm-offset-1">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#weekly-rate-{{ $rate->id }}-delete" style="float: right"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
+              <div class="col-sm-6 col-sm-offset-4">
+                <div class="btn-group">
+                  <button type="submit" form="weekly_rate_edit_form" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
+                  <a href="{{ URL::previous() }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
+                </div>
               </div>
             </div>
           </div>

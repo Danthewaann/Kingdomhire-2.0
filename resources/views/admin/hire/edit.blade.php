@@ -8,7 +8,7 @@
         <h2>Edit active hire</h2>
       </div>
       <div class="panel-body">
-        <form class="form-horizontal" action="{{ route('admin.hires.update', ['hire' => $hire->id]) }}" method="post">
+        <form class="form-horizontal" action="{{ route('admin.hires.update', ['hire' => $hire->name]) }}" method="post">
           @csrf
           @method('PATCH')
           <div class="form-group">

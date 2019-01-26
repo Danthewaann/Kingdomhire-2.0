@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\WeeklyRateEvent;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -29,6 +30,26 @@ class WeeklyRate extends Model
     ];
 
     protected $table = 'weekly_rates';
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'creating' => WeeklyRateEvent::class,
+        'updating' => WeeklyRateEvent::class
+    ];
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     /**
      * Get vehicles associated with the vehicle rate

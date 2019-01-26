@@ -16,6 +16,7 @@ class CreateVehicleGearTypesTable extends Migration
         Schema::create('vehicle_gear_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->string('slug');
             $table->timestamps();
         });
     }

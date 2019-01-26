@@ -9,7 +9,7 @@
         <h2>Edit reservation</h2>
       </div>
       <div class="panel-body">
-        <form class="form-horizontal" action="{{ route('admin.reservations.update', ['reservation' => $reservation->id]) }}" method="post">
+        <form class="form-horizontal" action="{{ route('admin.reservations.update', ['reservation' => $reservation->name]) }}" method="post">
           @csrf
           @method('PATCH')
             <div class="form-group">

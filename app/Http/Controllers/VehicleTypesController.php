@@ -60,7 +60,7 @@ class VehicleTypesController extends Controller
             'vehicle_gear_type_add' => 'Successfully created vehicle type '.$vehicleType->name
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.vehicle-types.index');
     }
 
     /**
@@ -91,7 +91,7 @@ class VehicleTypesController extends Controller
             'vehicle_gear_type' => 'Successfully updated vehicle type '.$vehicleType->name
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.vehicle-types.index');
     }
 
     /**
@@ -111,6 +111,6 @@ class VehicleTypesController extends Controller
             'vehicle_gear_type' => 'Successfully deleted vehicle type '.$vehicleType->name
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.vehicle-types.index');
     }
 }

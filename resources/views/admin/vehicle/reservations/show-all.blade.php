@@ -30,7 +30,7 @@
             <td>
               <div class="btn-group btn-group-vertical" style="width: 100%">
                 <div class="btn-group">
-                  <a href="{{ route('admin.reservations.edit', ['reservation' => $reservation->id]) }}"
+                  <a href="{{ route('admin.reservations.edit', ['reservation' => $reservation->name]) }}"
                      class="btn btn-primary" style="width: 100%" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit
                   </a>
                 </div>

@@ -32,7 +32,7 @@ class VehiclesController extends Controller
      */
     public function index()
     {
-        $activeVehicles = Vehicle::all();
+        $activeVehicles = Vehicle::all()->sortBy('created_at');
         $inactiveVehicles = Vehicle::onlyTrashed()->get();
         $vehicleTypes = VehicleType::with(['vehicles' => function ($q) {
             $q->withTrashed();

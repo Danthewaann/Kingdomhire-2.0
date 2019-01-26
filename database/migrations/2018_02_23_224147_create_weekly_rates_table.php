@@ -16,6 +16,7 @@ class CreateWeeklyRatesTable extends Migration
         Schema::create('weekly_rates', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->string('slug');
             $table->float('weekly_rate_min', 5, 2);
             $table->float('weekly_rate_max', 5, 2);
             $table->timestamps();

@@ -31,7 +31,7 @@
             <td>
               <div class="btn-group btn-group-justified" style="width: inherit">
                 <div class="btn-group">
-                  <a href="{{ route('admin.hires.edit', ['hire' => $activeHire]) }}"
+                  <a href="{{ route('admin.hires.edit', ['hire' => $activeHire->name]) }}"
                      class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
                 </div>
               </div>

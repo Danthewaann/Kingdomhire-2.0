@@ -2,13 +2,13 @@
 
 @section('content')
   <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
       @include('admin.common.alert')
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <h3>Hires dashboard</h3>
-        </div>
-      </div>
+      {{--<div class="panel panel-default">--}}
+        {{--<div class="panel-body">--}}
+          {{--<h3>Hires dashboard</h3>--}}
+        {{--</div>--}}
+      {{--</div>--}}
       @include('admin.hire.list-active')
       @include('admin.hire.list-inactive')
     </div>

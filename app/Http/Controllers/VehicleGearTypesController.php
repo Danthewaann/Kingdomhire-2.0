@@ -61,7 +61,7 @@ class VehicleGearTypesController extends Controller
             'vehicle_gear_type_add' => 'Successfully created gear type '.$vehicleGearType->name
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.vehicle-gear-types.index');
     }
 
     /**
@@ -92,7 +92,7 @@ class VehicleGearTypesController extends Controller
             'vehicle_gear_type' => 'Successfully updated gear type '.$vehicleGearType->name
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.vehicle-gear-types.index');
     }
 
     /**
@@ -112,6 +112,6 @@ class VehicleGearTypesController extends Controller
             'vehicle_gear_type' => 'Successfully deleted gear type '.$vehicleGearType->name
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.vehicle-gear-types.index');
     }
 }

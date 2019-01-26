@@ -21,6 +21,18 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\HireCreating' => [
             'App\Listeners\HireCreating'
+        ],
+        'App\Events\VehicleGearTypeEvent' => [
+            'App\Listeners\VehicleGearTypeListener'
+        ],
+        'App\Events\VehicleFuelTypeEvent' => [
+            'App\Listeners\VehicleFuelTypeListener'
+        ],
+        'App\Events\VehicleTypeEvent' => [
+            'App\Listeners\VehicleTypeListener'
+        ],
+        'App\Events\WeeklyRateEvent' => [
+            'App\Listeners\WeeklyRateListener'
         ]
     ];
 

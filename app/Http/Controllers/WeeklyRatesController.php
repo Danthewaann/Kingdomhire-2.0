@@ -60,7 +60,7 @@ class WeeklyRatesController extends Controller
             'weekly_rate_add' => 'Successfully created weekly rate '.$vehicle_rate->getFullName()
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.weekly-rates.index');
     }
 
     /**
@@ -91,7 +91,7 @@ class WeeklyRatesController extends Controller
             'weekly_rate' => 'Successfully updated weekly rate '.$weeklyRate->getFullName()
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.weekly-rates.index');
     }
 
     /**
@@ -111,6 +111,6 @@ class WeeklyRatesController extends Controller
             'weekly_rate' => 'Successfully deleted weekly rate '.$weeklyRate->getFullName()
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.weekly-rates.index');
     }
 }

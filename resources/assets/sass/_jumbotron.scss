@@ -27,9 +27,9 @@
   -moz-filter: blur(6px);
   -o-filter: blur(6px);
   -ms-filter: blur(6px);
-  filter: blur(10px);
+  filter: blur(6px);
   transform: scale(1.03);
-  opacity: 0.9;
+  // opacity: 0.9;
   //margin: auto;
 }
 
@@ -39,7 +39,7 @@
 
   .bg {
     @extend %jumbotron-base-img;
-    background: #000 url("/static/nav-img.jpg") 28% 40% no-repeat;
+    background: #000 url("/static/nav-img.jpg") 50% 40% no-repeat;
   }
 }
 

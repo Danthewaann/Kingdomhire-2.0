@@ -31,17 +31,17 @@
 			<div class="col-md-12">
 				<div class="row">
 					<div class="col-md-6">
-            <img src="{{ asset('static/van-right.jpg') }}" width="100%">
+						<img src="{{ asset('static/van-right.jpg') }}" width="100%">
 						<h2>Our fleet of vehicles</h2>
 						<p class="paragraph">We have a wide selection of vehicles to choose from. We provide hatchbacks, 4-door saloons, people carriers, small vans and large vans.
 						Our fleet is ever expanding to include more diverse vehicles, and we ensure that our vehicles are reliable and maintained, so make sure to get in
 							touch to see if we have what you want.</p>
 					</div>
-          <div class="col-md-6">
-            <img src="{{ asset('static/home.jpg') }}" width="100%">
-            <h2>Making a reservation</h2>
-            <p class="paragraph">You need to call us to be able to reserve a vehicle. Make sure to reserve your vehicle at least 1 day before expected pickup.</p>
-          </div>
+					<div class="col-md-6">
+						<img src="{{ asset('static/home.jpg') }}" width="100%">
+						<h2>Making a reservation</h2>
+						<p class="paragraph">You need to call us to be able to reserve a vehicle. Make sure to reserve your vehicle at least 1 day before expected pickup.</p>
+					</div>
 				</div>
 			</div>
 		</div>

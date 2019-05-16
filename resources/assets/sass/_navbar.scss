@@ -52,7 +52,7 @@ nav {
 
 .vehicle-navbar-tabs > li > a:hover {
   background-color: $light-green !important;
-  border: 1px solid rgb(75, 206, 138);
+  border: 1px solid $lighter-green;
 }
 
 .vehicle-navbar-tabs > li > a:focus {
@@ -79,11 +79,6 @@ nav {
   background-color: $dark-green !important;
   //border-top: 1px solid rgb(75, 206, 138);;
   //padding: 10px 0px 0px 10px;
-}
-
-.vehicle-dashboard-tab-content {
-  //background-color: $brand-info;
-  //padding: 20px;
 }
 
 nav-tabs-justified > .active > a,
@@ -120,5 +115,5 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-  border: 1px solid rgb(75, 206, 138);
+  border: 1px solid $lighter-green;
 }

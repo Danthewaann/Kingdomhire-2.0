@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
   <div class="col-lg-3 col-md-5 col-sm-6 col-xs-12">
-    <!-- @include('admin.common.alert') -->
+    @include('admin.common.alert')
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3>Admin dashboard</h3>
@@ -16,11 +16,10 @@
   </div>
   <div class="col-lg-9 col-md-7 col-xs-12">
     <div class="row">
-      <div class="col-lg-12 col-sm-12 col-xs-12">
+      <div class="col-md-12 col-sm-12 col-xs-12">
         @include('admin.charts.active-hires')
       </div>
       <div class="col-lg-5 col-md-12 col-sm-6 col-xs-12">
-        <!-- @include('admin.charts.reservations') -->
         @include('admin.hire.list-active')
         @include('admin.reservation.list')
       </div>

@@ -20,13 +20,13 @@ div.scrollable-chart::-webkit-scrollbar {
 
 div.scrollable-table::-webkit-scrollbar-thumb,
 div.scrollable-chart::-webkit-scrollbar-thumb {
-  background: $lighter-green;
+  background: rgb(75, 206, 138);
   //border-radius: 5px;
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
 }
 
 div.scrollable-table::-webkit-scrollbar-thumb:hover,
 div.scrollable-chart::-webkit-scrollbar-thumb:hover {
-  background: darken($lighter-green, 5);
+  background: rgb(75, 206, 138);
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
 }

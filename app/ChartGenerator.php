@@ -68,7 +68,7 @@ class ChartGenerator
                 ],
             ],
             'hAxis' => [
-                'baselineColor' => 'rgb(75, 206, 138)',
+                'baselineColor' => 'rgb(62, 167, 113)',
                 'textStyle' => [
                     'color' => 'white',
                 ],
@@ -76,7 +76,7 @@ class ChartGenerator
                 'maxValue' => ($maxReservationsForVehicle > 5 ? $maxReservationsForVehicle : 5),
                 'gridlines' => [
                     'count' => ($maxReservationsForVehicle > 5 ? $maxReservationsForVehicle : 5),
-                    'color' => 'rgb(75, 206, 138)'
+                    'color' => 'rgb(62, 167, 113)'
                 ],
                 'minorGridlines' => [
                     'count' => 0
@@ -243,7 +243,7 @@ class ChartGenerator
                 'slantedTextAngle' => 90
             ],
             'vAxis' => [
-                'baselineColor' => 'rgb(75, 206, 138)',
+                'baselineColor' => 'rgb(62, 167, 113)',
                 'textStyle' => [
                     'color' => 'white',
                 ],
@@ -251,7 +251,7 @@ class ChartGenerator
                 'maxValue' => ($maxAmountOfHiresForMonth >= 5 ? $maxAmountOfHiresForMonth : 5),
                 'gridlines' => [
                     'count' => ($maxAmountOfHiresForMonth >= 5 ? $maxAmountOfHiresForMonth : 5)+1,
-                    'color' => 'rgb(75, 206, 138)'
+                    'color' => 'rgb(62, 167, 113)'
                 ],
                 'minorGridlines' => [
                     'count' => 0

@@ -8838,14 +8838,14 @@ div.scrollable-chart::-webkit-scrollbar {
 
 div.scrollable-table::-webkit-scrollbar-thumb,
 div.scrollable-chart::-webkit-scrollbar-thumb {
-  background: #3ea771;
+  background: #4bce8a;
   -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
           box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
 }
 
 div.scrollable-table::-webkit-scrollbar-thumb:hover,
 div.scrollable-chart::-webkit-scrollbar-thumb:hover {
-  background: #379464;
+  background: #4bce8a;
   -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
           box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0 inset;
 }

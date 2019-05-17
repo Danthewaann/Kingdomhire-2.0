@@ -189,7 +189,7 @@ class VehiclesController extends Controller
             'vehicle' => 'Successfully deleted vehicle '.$vehicle->name()
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.vehicles.index');
     }
 
     /**

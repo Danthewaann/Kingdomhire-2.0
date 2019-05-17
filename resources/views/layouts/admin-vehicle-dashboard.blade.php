@@ -20,10 +20,10 @@
   @include('layouts.admin-navbar-base')
 
   <div class="jumbotron jumbotron-admin">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         @include('admin.vehicle.summaries.vehicle-dashboard')
-        <div class="col-lg-9 col-sm-7">
+        <div class="col-lg-8 col-sm-6">
           @yield('content')
         </div>
       </div>

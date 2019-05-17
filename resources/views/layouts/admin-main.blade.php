@@ -20,7 +20,7 @@
   @include('layouts.admin-navbar-base')
 
   <div class="jumbotron jumbotron-admin">
-    <div class="container-fluid">
+    <div class="container">
       @yield('content')
     </div>
   </div>

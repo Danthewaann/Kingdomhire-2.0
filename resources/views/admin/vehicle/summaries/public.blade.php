@@ -10,7 +10,7 @@
       </div>
     @else
       <div class="vehicle-img">
-        <img src="{{ $vehicle->images->first()->image_uri }}"/>
+        <img class="public "src="{{ $vehicle->images->first()->image_uri }}"/>
         <button class="btn btn-info vehicle-img-button vehicle-open-modal" data-vehicle="{{ $vehicle->slug }}">View images</button>
       </div>
     @endif

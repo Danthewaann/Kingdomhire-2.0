@@ -1,5 +1,8 @@
 <div class="col-lg-2 col-md-3 col-sm-3">
   <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3>Vehicles</h2>
+    </div>
     <div class="panel-body" style="padding: 0">
       <ul class="nav nav-pills nav-stacked vehicle-navbar-tabs" id="myTabs">
         <li class="active"><a href="#all" class="btn" data-toggle="pill">All</a></li>

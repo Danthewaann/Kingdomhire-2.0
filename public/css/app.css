@@ -8333,17 +8333,18 @@ button.close {
   }
 }
 
+.jumbotron-nav,
 .jumbotron-home,
 .jumbotron-vehicles,
 .jumbotron-contact {
   margin: 0;
   overflow: hidden;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
   position: relative;
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
+.jumbotron-nav .bg,
 .jumbotron-home .bg,
 .jumbotron-vehicles .bg,
 .jumbotron-contact .bg {
@@ -8362,33 +8363,49 @@ button.close {
           transform: scale(1.03);
 }
 
-.jumbotron-home {
+.jumbotron-nav {
   text-align: center;
+}
+
+.jumbotron-nav .bg {
+  background: #000 url("/static/nav-img.jpg") 50% 40% no-repeat;
+}
+
+.jumbotron-home {
+  -webkit-box-shadow: inset 0px 0px 0px 2px black;
+          box-shadow: inset 0px 0px 0px 2px black;
 }
 
 .jumbotron-home .bg {
   background: #000 url("/static/nav-img.jpg") 50% 40% no-repeat;
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
 }
 
 .jumbotron-vehicles {
-  text-align: center;
+  -webkit-box-shadow: inset 0px 0px 0px 2px black;
+          box-shadow: inset 0px 0px 0px 2px black;
 }
 
 .jumbotron-vehicles .bg {
   background: #000 url("/static/van.jpg") 45% 44% no-repeat;
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
 }
 
 .jumbotron-contact {
-  text-align: center;
+  -webkit-box-shadow: inset 0px 0px 0px 2px black;
+          box-shadow: inset 0px 0px 0px 2px black;
 }
 
 .jumbotron-contact .bg {
   background: #000 url("/static/carRepair.jpg") 50% 38% no-repeat;
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
 }
 
 .jumbotron .container {
   position: relative;
-  z-index: 2;
 }
 
 .jumbotron-vehicle-dashboard {
@@ -8399,11 +8416,15 @@ button.close {
 
 .jumbotron-admin {
   margin-bottom: 0;
+  -webkit-box-shadow: inset 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
 }
 
 .jumbotron-header {
   margin-bottom: 0;
   padding-top: 28px;
+  -webkit-box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.1);
 }
 
 .jumbotron-content {
@@ -8918,38 +8939,38 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
   background-color: #307251;
 }
 
-.vehicle-img img {
+.vehicle-img img.public {
   width: 100%;
   height: 300px;
 }
 
 @media (max-width: 767px) {
-  .vehicle-img img {
+  .vehicle-img img.public {
     height: 230px;
   }
 }
 
 @media (min-width: 768px) {
-  .vehicle-img img {
+  .vehicle-img img.public {
     height: 250px;
   }
 }
 
 @media (min-width: 992px) {
-  .vehicle-img img {
+  .vehicle-img img.public {
     height: 300px;
   }
 }
 
 @media (min-width: 1200px) {
-  .vehicle-img img {
+  .vehicle-img img.public {
     height: 325px;
   }
 }
 
 .vehicle-img img.admin {
   width: 100%;
-  height: 300px;
+  height: 200px;
 }
 
 @media (max-width: 767px) {
@@ -8960,19 +8981,48 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 768px) {
   .vehicle-img img.admin {
-    height: 250px;
+    height: 300px;
   }
 }
 
 @media (min-width: 992px) {
   .vehicle-img img.admin {
-    height: 320px;
+    height: 200px;
   }
 }
 
 @media (min-width: 1200px) {
   .vehicle-img img.admin {
-    height: 300px;
+    height: 200px;
+  }
+}
+
+.vehicle-img img.dashboard {
+  width: 100%;
+  height: 200px;
+}
+
+@media (max-width: 767px) {
+  .vehicle-img img.dashboard {
+    height: 230px;
+  }
+}
+
+@media (min-width: 768px) {
+  .vehicle-img img.dashboard {
+    height: 250px;
+  }
+}
+
+@media (min-width: 992px) {
+  .vehicle-img img.dashboard {
+    height: 250px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .vehicle-img img.dashboard {
+    height: 250px;
   }
 }
 

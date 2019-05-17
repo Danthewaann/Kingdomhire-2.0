@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-static-top public-navbar">
-  <div class="jumbotron jumbotron-home">
+  <div class="jumbotron jumbotron-nav">
     <div class="bg"></div>
-    <div class="container-fluid">
+    <div class="container">
       <div class="navbar-header public-navbar-header">
         <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo" width="100%">
 
@@ -15,7 +15,7 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid">
+  <div class="container">
     <div class="collapse navbar-collapse" id="app-navbar-collapse">
       <!-- Left Side Of Navbar -->
       <ul class="nav navbar-nav">

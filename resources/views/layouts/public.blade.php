@@ -16,7 +16,7 @@
 <body>
   <div id="app">
     <nav class="navbar navbar-default navbar-static-top public-navbar">
-      <div class="jumbotron jumbotron-home">
+      <div class="jumbotron jumbotron-nav">
         <div class="bg"></div>
         <div class="container">
           <div class="navbar-header public-navbar-header">
@@ -40,7 +40,7 @@
               <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
             </li>
             <li class="{{ Request::is('vehicles') ? ' active' : '' }}">
-              <a href={{ route('public.vehicles') }}><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Vehicles</a>
+              <a href="{{ route('public.vehicles') }}"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Vehicles</a>
             </li>
             <li class="{{ Request::is('contact') ? ' active' : '' }}">
               <a href="{{ route('public.contact') }}"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;Contact</a>

@@ -1,7 +1,7 @@
 @include('admin.vehicle.modals.image-gallery')
 @includeWhen(!$vehicle->trashed() ,'admin.vehicle.modals.discontinue')
 @include('admin.vehicle.modals.destroy')
-<div class="col-lg-3 col-md-5 col-sm-5">
+<div class="col-lg-4 col-md-6 col-sm-6">
   @include('admin.common.alert')
   <div class="panel panel-default">
     <div class="panel-heading vehicle-panel-dashboard-heading">
@@ -16,7 +16,7 @@
     </div>
     @else
       <div class="vehicle-img">
-        <img src="{{ $vehicle->images->first()->image_uri }}" class="vehicle-dashboard-img"/>
+        <img class="dashboard" src="{{ $vehicle->images->first()->image_uri }}"/>
         <button class="btn btn-info vehicle-img-button vehicle-open-modal" data-vehicle="{{ $vehicle->slug }}">View images</button>
       </div>
     @endif

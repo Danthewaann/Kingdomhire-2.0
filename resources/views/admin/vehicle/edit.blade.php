@@ -14,7 +14,7 @@
       </div>
       <div class="panel-body">
         <div class="row">
-          <div class="col-md-4 col-xs-12">
+          <div class="col-lg-5 col-md-12 col-xs-12">
             <form action="{{ route('admin.vehicles.update', ['vehicle' => $vehicle->slug]) }}" method="post" enctype="multipart/form-data" id="vehicle_edit_form">
               @csrf
               @method('PATCH')
@@ -55,7 +55,7 @@
                     </select>
                   </div>
                   <div class="form-group{{ $errors->hasBag('edit') ? ' has-error' : '' }}">
-                    <label for="vehicle_images_add"><span class="glyphicon glyphicon-upload"></span> Add Images</label>
+                    <label for="vehicle_images_add">Add Images</label>
                     <input type="file" class="form-control" name="vehicle_images_add[]" id="vehicle_images_add" value="{{ $vehicle->image_path }}" data-multiple-caption="{count} files selected" multiple>
                     @if($errors->hasBag('edit') and $errors->edit->has('vehicle_images_add'))
                       <div class="help-block">
@@ -87,12 +87,12 @@
               </div>
             </div>
           </div>
-          <div class="col-md-7 col-sm-6 col-xs-12">
+          <div class="col-lg-7 col-md-12 col-xs-12">
             <div class="row">
             @foreach($vehicle->images as $image)
-              <div class="col-md-4 col-sm-12" style="margin-top: 22px">
-                <img src="{{ $image->image_uri }}" style="width: 100%; height: 175px"/>
-                <table class="table">
+              <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: 22px">
+                <img src="{{ $image->image_uri }}" style="width: 100%;"/>
+                <table class="table table-condensed">
                   <tr>
                     <td class="last">{{ $image->name }}</td>
                   </tr>

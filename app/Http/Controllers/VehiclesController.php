@@ -95,7 +95,7 @@ class VehiclesController extends Controller
         Session::flash('status', [
             'Successfully created vehicle!',
             'Vehicle Name = '.$vehicle->name(),
-            'Vehicle Id = '.$vehicle->id,
+            'Vehicle Id = '.$vehicle->name,
         ]);
 
         return redirect()->route('admin.home');
@@ -165,9 +165,7 @@ class VehiclesController extends Controller
         }
 
         Session::flash('status', [
-            'edit' => 'Successfully edited '.$vehicle->name(),
-            'Vehicle Name = '.$vehicle->name(),
-            'Vehicle Id = '.$vehicle->id,
+            'edit' => 'Successfully edited '.$vehicle->name().' - '.$vehicle->name
         ]);
 
         return redirect()->route('admin.vehicles.show', [

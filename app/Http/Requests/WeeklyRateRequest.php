@@ -29,7 +29,19 @@ class WeeklyRateRequest extends FormRequest
             'name' => 'required',
             'weekly_rate' => 'nullable',
             'weekly_rate_min' => 'required|numeric|min:1|max:100',
-            'weekly_rate_max' => 'required|numeric|min:2|max:200'
+            'weekly_rate_max' => 'required|numeric|min:2|max:200|gt:weekly_rate_min'
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'weekly_rate_max.gt' => 'Max rate must be greater than min rate'
         ];
     }
 

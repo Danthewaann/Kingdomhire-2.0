@@ -10,3 +10,7 @@
 .form-control[readonly] {
   background-color: $dark-green;
 }
+
+#start_date_readonly {
+  background-color: $input-bg-disabled;
+}

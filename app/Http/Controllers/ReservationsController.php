@@ -8,6 +8,7 @@ use App\Hire;
 use App\Http\Requests\ReservationRequest;
 use App\Vehicle;
 use Session;
+use URL;
 
 class ReservationsController extends Controller
 {
@@ -69,6 +70,9 @@ class ReservationsController extends Controller
      */
     public function edit(Reservation $reservation)
     {
+        if(!Session::has('url') || empty(Session::get('url'))) {
+            Session::put('url', URL::previous());
+        }
         return view('admin.reservation.edit', [
             'vehicle' => $reservation->vehicle,
             'reservation' => $reservation
@@ -99,7 +103,8 @@ class ReservationsController extends Controller
             'reservation' => 'Successfully updated reservation!'
         ]);
 
-        return back();
+        $url = Session::pull('url');
+        return redirect()->to($url);
     }
 
     /**

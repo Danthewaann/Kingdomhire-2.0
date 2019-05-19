@@ -54,12 +54,12 @@ class VehicleImagesTableSeeder extends Seeder
             'image_uri' => asset('storage/imgs/Kia_Sedona/kia_sedona.jpg')
         ]);
         VehicleImage::create([
-            'name' => 'megane_convertable.jpg',
+            'name' => 'megane_convertible.jpg',
             'vehicle_id' => Vehicle::where([
                 ['make', '=', 'Megane'],
                 ['model', '=', 'Convertible']
             ])->first()->id,
-            'image_uri' => asset('storage/imgs/Megane_Convertable/megane_convertable.jpg')
+            'image_uri' => asset('storage/imgs/Megane_Convertible/megane_convertible.jpg')
         ]);
     }
 }

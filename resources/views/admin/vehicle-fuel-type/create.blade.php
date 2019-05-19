@@ -7,7 +7,7 @@
       @csrf
       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
         <label for="name" class="control-label col-sm-4">Name*</label>
-        <div class="col-sm-6">
+        <div class="col-sm-8">
           <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" autocomplete="off" placeholder="Enter name">
           @if( $errors->has('name'))
             <div class="help-block">

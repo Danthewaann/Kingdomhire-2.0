@@ -10,7 +10,7 @@
     </div>
   @endif
   @if($activeHires->count() > 0)
-    <div class="scrollable-table" style="max-height: 570px">
+    <div class="scrollable-table">
       <table class="table table-condensed panel-table">
         <thead>
         <tr>
@@ -29,7 +29,12 @@
             <td>{{ date('j/M/Y', strtotime($activeHire->start_date)) }}</td>
             <td>{{ date('j/M/Y', strtotime($activeHire->end_date)) }}</td>
             <td>
-              <div class="btn-group btn-group-justified" style="width: inherit">
+              <div class="btn-group btn-group-vertical" style="width: 100%">
+                <div class="btn-group">
+                  <a href="{{ route('admin.vehicles.show', ['vehicle' => $activeHire->vehicle->slug]) }}"
+                     class="btn btn-primary" style="width: 100%" role="button" aria-pressed="true"><span class="glyphicon glyphicon-dashboard"></span>&nbsp;&nbsp;Vehicle
+                  </a>
+                </div>
                 <div class="btn-group">
                   <a href="{{ route('admin.hires.edit', ['hire' => $activeHire->name]) }}"
                      class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>

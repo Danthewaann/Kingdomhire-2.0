@@ -5,7 +5,7 @@
     @if($vehicle->images->isEmpty())
       <div class="vehicle-img">
         <div class="vehicle-img-na">
-          <h2><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;No Image(s)</h2>
+          <h2 class="public"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;No Image(s)</h2>
         </div>
       </div>
     @else

@@ -1,7 +1,7 @@
 @extends('layouts.admin-main')
 
 @section('content')
-<div class="col-lg-4 col-lg-offset-4 col-sm-10 col-sm-offset-1">
+<div class="col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1">
   <div class="row">
     @include('admin.common.alert')
     <div class="panel panel-default">
@@ -15,7 +15,7 @@
             <div class="form-group">
               <label for="name" class="control-label col-sm-4">Belongs to</label>
               <div class="col-sm-6">
-                {{ Form::text('vehicle', $vehicle->name(), array('class' => 'form-control', 'disabled' => 'true')) }}
+                {{ Form::text('vehicle', $vehicle->name().' - '.$vehicle->name, array('class' => 'form-control', 'disabled' => 'true')) }}
               </div>
             </div>
             <div class="form-group{{ $errors->reservations->has('start_date') ? ' has-error' : '' }}">
@@ -88,7 +88,7 @@
               <div class="col-sm-6 col-sm-offset-4">
                 <div class="btn-group">
                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
-                  <a href="{{ URL::previous() }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
+                  <a href="{{ Session::get('url') }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
                 </div>
               </div>
             </div>

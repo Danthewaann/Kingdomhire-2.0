@@ -7,6 +7,7 @@ use App\Http\Requests\HireRequest;
 use App\Vehicle;
 use App\Hire;
 use Session;
+use URL;
 
 class HiresController extends Controller
 {
@@ -52,6 +53,9 @@ class HiresController extends Controller
      */
     public function edit(Hire $hire)
     {
+        if(!Session::has('url') || empty(Session::get('url'))) {
+            Session::put('url', URL::previous());
+        }
         return view('admin.hire.edit', [
             'vehicle' => $hire->vehicle,
             'hire' => $hire
@@ -73,6 +77,7 @@ class HiresController extends Controller
             'hire' => 'Successfully updated active hire!'
         ]);
 
-        return back();
+        $url = Session::pull('url');
+        return redirect()->to($url);
     }
 }

@@ -22,7 +22,7 @@
         <li class="{{ Request::is('admin') ? 'active' : '' }}">
           <a href="{{ route('admin.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
         </li>
-        <li class="dropdown{{ Request::is('admin/vehicles') ? ' active' : '' }}">
+        <li class="dropdown{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
           <a href="{{ route('admin.vehicles.index') }}"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Vehicles</a>
         </li>
         {{--<li class="{{ Request::is('admin/reservations*') ? 'active' : '' }}">--}}
@@ -31,7 +31,7 @@
         {{--<li class="{{ Request::is('admin/hires*') ? 'active' : '' }}">--}}
           {{--<a href="{{ route('admin.hires.index') }}"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Hires</a>--}}
         {{--</li>--}}
-        <li class="dropdown{{ Request::is('admin/other/*') ? ' active' : '' }}">
+        <li class="dropdown{{ Request::is('admin/other*') ? ' active' : '' }}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
             <span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Other <span class="caret"></span>
           </a>

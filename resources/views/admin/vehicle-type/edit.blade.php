@@ -1,7 +1,7 @@
 @extends('layouts.admin-main')
 
 @section('content')
-<div class="col-lg-4 col-lg-offset-4 col-sm-10 col-sm-offset-1">
+<div class="col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1">
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -30,7 +30,7 @@
               <div class="col-sm-6 col-sm-offset-4">
                 <div class="btn-group">
                   <button type="submit" form="vehicle_type_edit_form" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Update</button>
-                  <a href="{{ URL::previous() }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
+                  <a href="{{ route('admin.vehicle-types.index') }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
                 </div>
               </div>
             </div>

@@ -11,7 +11,7 @@
     @if($vehicle->images->isEmpty())
     <div class="vehicle-img">
       <div class="vehicle-img-na">
-        <h2><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;No Image(s)</h2>
+        <h2 class="dashboard"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;No Image(s)</h2>
       </div>
     </div>
     @else
@@ -22,7 +22,7 @@
     @endif
     <table class="table table-condensed vehicle-table-dashboard">
       <tr>
-        <th class="first">Vehicle Id</th>
+        <th class="first">ID</th>
         <td class="first">{{ $vehicle->name }}</td>
       </tr>
       <tr>

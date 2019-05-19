@@ -15,22 +15,26 @@
               <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <label for="email" class="col-sm-4 control-label">E-Mail Address</label>
                 <div class="col-sm-6">
-                  <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                  <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" autofocus>
                   @if ($errors->has('email'))
-                    <span class="help-block">
-                      <strong>{{ $errors->first('email') }}</strong>
-                    </span>
+                    <div class="help-block">
+                      <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('email') }}</strong>
+                      </div>
+                    </div>
                   @endif
                 </div>
               </div>
               <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                 <label for="password" class="col-sm-4 control-label">Password</label>
                 <div class="col-sm-6">
-                  <input id="password" type="password" class="form-control" name="password" required>
+                  <input id="password" type="password" class="form-control" name="password">
                   @if ($errors->has('password'))
-                    <span class="help-block">
-                      <strong>{{ $errors->first('password') }}</strong>
-                    </span>
+                    <div class="help-block">
+                      <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('password') }}</strong>
+                      </div>
+                    </div>
                   @endif
                 </div>
               </div>

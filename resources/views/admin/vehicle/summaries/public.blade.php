@@ -10,13 +10,13 @@
       </div>
     @else
       <div class="vehicle-img">
-        <img class="public "src="{{ $vehicle->images->first()->image_uri }}"/>
+        <img class="public" src="{{ $vehicle->images->first()->image_uri }}"/>
         <button class="btn btn-info vehicle-img-button vehicle-open-modal" data-vehicle="{{ $vehicle->slug }}">View images</button>
       </div>
     @endif
   <table class="table table-condensed vehicle-table-public">
     <tr>
-      <th class="first">Vehicle Id</th>
+      <th class="first">ID</th>
       <td class="first">{{ $vehicle->name }}</td>
     </tr>
     <tr>

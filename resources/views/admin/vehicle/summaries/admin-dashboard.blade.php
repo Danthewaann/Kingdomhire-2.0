@@ -21,7 +21,7 @@
   @endif
   <table class="table table-condensed vehicle-table-admin">
     <tr>
-      <th class="first">Vehicle Id</th>
+      <th class="first">ID</th>
       <td class="first">{{ $vehicle->name }}</td>
     </tr>
     <tr>

@@ -2,7 +2,7 @@
   <div class="panel-heading">
     <h3>Yearly hires</h3>
   </div>
-  <table class="table table-condensed table-bordered panel-table">
+  <table class="table table-condensed table-bordered panel-table-2">
     <thead>
       <tr>
         <th class="first">Year</th>

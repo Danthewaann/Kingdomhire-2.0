@@ -9,7 +9,7 @@
   </div>
   @endif
   @if($vehicle->hasActiveHire())
-    <div class="scrollable-list" style="max-height: 570px">
+    <div class="scrollable-table" style="max-height: 570px">
       <table class="table table-condensed panel-table">
         <thead>
           <tr>

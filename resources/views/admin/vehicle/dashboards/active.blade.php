@@ -9,7 +9,6 @@
             <h3>Schedule</h3>
             <h5>R = Reservation</h5>
             <h5>H = Active hire</h5>
-            <h5>{{Route::current()->getName()}}</h5>
           </div>
           {!! $gantt !!}
         </div>

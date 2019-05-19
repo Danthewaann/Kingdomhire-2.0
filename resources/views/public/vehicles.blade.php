@@ -14,17 +14,6 @@
         <p class="paragraph">Below are all the vehicles in that are in our fleet. <br>You need to call us to be able to reserve a vehicle.
           <br>Make sure to reserve your vehicle at least 1 day before expected pickup.</p>
       </div>
-      <!-- @include('admin.vehicle.lists.public') -->
-      <!-- <div class="col-md-4 col-sm-12">
-        <div class="row">
-          <div class="col-md-12 col-sm-6">
-            @include('public.opening-hours-table')
-          </div>
-          <div class="col-md-12 col-sm-6">
-            @include('public.contact-table')
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </div>

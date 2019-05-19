@@ -9,12 +9,7 @@
       <h3 style="margin-left: -5px">No reservations</h3>
     </div>
     @endif
-  <!-- </div> -->
-  <!-- <div class="panel-body">
-    <button class="btn btn-lg btn-primary" style="width: 100%; border-radius: 0"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Book reservation</button>
-  </div> -->
   @if(!$vehicle->reservations->isEmpty())
-  <!-- <div class="panel-footer" style="padding: 0; background: unset;"> -->
     <div class="scrollable-table">
       <table class="table table-condensed panel-table">
         <thead>
@@ -49,6 +44,5 @@
         </tbody>
       </table>
     </div>
-  <!-- </div> -->
   @endif
 </div>

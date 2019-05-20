@@ -26,7 +26,7 @@
                   @if ($errors->has('email'))
                     <div class="help-block">
                       <div class="alert alert-danger">
-                      <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('email') }}</strong>
+                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('email') }}</strong>
                       </div>
                     </div>
                   @endif

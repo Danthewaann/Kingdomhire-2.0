@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-7">
     @include('admin.vehicle.charts.yearly-hires-graph')
   </div>
   <div class="col-md-5">

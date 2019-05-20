@@ -14,7 +14,7 @@
       <table class="table table-condensed panel-table">
         <thead>
           <tr>
-            <th class="first">Hired By</th>
+            <th class="first">ID</th>
             <th>Start Date</th>
             <th>End Date</th>
           </tr>

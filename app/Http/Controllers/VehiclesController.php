@@ -32,20 +32,22 @@ class VehiclesController extends Controller
      */
     public function index()
     {
-        $activeVehicles = Vehicle::all()->sortBy('created_at');
         $inactiveVehicles = Vehicle::onlyTrashed()->get();
-        $vehicleTypes = VehicleType::with(['vehicles' => function ($q) {
-            $q->withTrashed();
-        }])->get();
+        $vehicleTypes = VehicleType::with(['vehicles'])->get();
+        $activeVehicles = [];
 
+        foreach ($vehicleTypes as $vehicleType) {
+            foreach ($vehicleType->vehicles as $vehicle) {
+                array_push($activeVehicles, $vehicle);
+            }
+        }
+
+        $activeVehicles = collect($activeVehicles);
+        
         return view('admin.admin-vehicles', [
-            'vehicleTypes' => $vehicleTypes,
             'activeVehicles' => $activeVehicles,
+            'vehicleTypes' => $vehicleTypes,
             'inactiveVehicles' => $inactiveVehicles,
-            'rates' => WeeklyRate::all(),
-            'types' => VehicleType::all(),
-            'fuelTypes' => VehicleFuelType::all(),
-            'gearTypes' => VehicleGearType::all()
         ]);
     }
 
@@ -98,7 +100,7 @@ class VehiclesController extends Controller
             'Vehicle Id = '.$vehicle->name,
         ]);
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.vehicles.index');
     }
 
     /**
@@ -184,7 +186,9 @@ class VehiclesController extends Controller
         $vehicle->forceDelete();
 
         Session::flash('status', [
-            'vehicle' => 'Successfully deleted vehicle '.$vehicle->name()
+            'Successfully deleted vehicle!',
+            'Vehicle Name = '.$vehicle->name(),
+            'Vehicle Id = '.$vehicle->name,
         ]);
 
         return redirect()->route('admin.vehicles.index');

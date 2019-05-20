@@ -23,7 +23,7 @@
     </div>
     <div class="panel-footer" style="padding: 0;">
       <ul class="nav nav-pills nav-stacked vehicle-navbar-tabs" id="myTabs">
-        @if($activeVehicles->isNotEmpty())
+        @if($vehicleTypes->isNotEmpty())
           <li class="active"><a href="#all" class="btn" data-toggle="pill">All</a></li>
           @foreach($vehicleTypes as $vehicleType)
             @if($vehicleType->vehicles->count() > 0)

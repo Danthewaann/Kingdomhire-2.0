@@ -15,7 +15,7 @@ class ReservationsTableSeeder extends Seeder
     public function run()
     {
         DB::table('reservations')->delete();
-        $start_date = strtotime("2014-01-01");
+        $start_date = strtotime("2016-01-01");
         $end_date = strtotime("2018-12-31");
         $vehicles = Vehicle::all();
         $faker = Factory::create();

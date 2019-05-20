@@ -13,7 +13,6 @@ class PagesController extends Controller
         return view('public.vehicles', [
             'vehicleTypes' => VehicleType::with(['vehicles'])->get()
         ]);
-
     }
 
     public function contact()

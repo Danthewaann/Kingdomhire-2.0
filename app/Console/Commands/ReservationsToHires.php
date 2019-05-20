@@ -55,7 +55,7 @@ class ReservationsToHires extends Command
                     ));
 
                     Reservation::destroy($reservation->id);
-                    Log::channel('cron')->info("[ReservationsToHires] Reservation [id = " . $reservation->id .
+                    Log::channel('cron')->info("[ReservationsToHires] Reservation [id = " . $reservation->name .
                         ", start_date = " . $reservation->start_date . ", end_date = " . $reservation->end_date . "] converted to hire");
                 }
             }

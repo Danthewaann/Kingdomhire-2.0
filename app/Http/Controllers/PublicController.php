@@ -6,7 +6,7 @@ use App\Vehicle;
 use App\VehicleImage;
 use App\VehicleType;
 
-class PagesController extends Controller
+class PublicController extends Controller
 {
     public function vehicles()
     {

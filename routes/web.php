@@ -13,9 +13,9 @@
 
 /* Public page routes */
 Route::name('public.')->group(function () {
-    Route::get('/', 'PagesController@home')->name('home');
-    Route::get('/vehicles', 'PagesController@vehicles')->name('vehicles');
-    Route::get('/contact', 'PagesController@contact')->name('contact');
+    Route::get('/', 'PublicController@home')->name('home');
+    Route::get('/vehicles', 'PublicController@vehicles')->name('vehicles');
+    Route::get('/contact', 'PublicController@contact')->name('contact');
 });
 
 /* Administrative private routes */

@@ -39,11 +39,16 @@ class CreateUser extends Command
      */
     public function handle()
     {
-        User::create([
-            'name' => $this->argument('name'),
-            'email' => $this->argument('email'),
-            'password' => Hash::make($this->argument('password'))
-        ]);
-        echo 'Successfully created user!';
+        try {
+            User::create([
+                'name' => $this->argument('name'),
+                'email' => $this->argument('email'),
+                'password' => Hash::make($this->argument('password'))
+            ]);
+            echo "Successfully created user!\n";
+        } catch (\Illuminate\Database\QueryException $exception) { 
+            echo "Failed to create user!\n";
+            echo $exception->getMessage() . "\n";
+        }
     }
 }

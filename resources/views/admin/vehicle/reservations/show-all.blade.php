@@ -35,7 +35,7 @@
                     </a>
                   </div>
                   <div class="btn-group">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reservation-{{ $reservation->id }}"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reservation-{{ $reservation->name }}"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
                   </div>
                 </div>
               </td>

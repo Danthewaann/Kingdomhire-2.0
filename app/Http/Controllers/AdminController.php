@@ -8,6 +8,7 @@ use App\Vehicle;
 use App\Reservation;
 use App\VehicleType;
 use App\WeeklyRate;
+use Session;
 
 class AdminController extends Controller
 {
@@ -28,6 +29,7 @@ class AdminController extends Controller
      */
     public function __invoke()
     {
+        Session::forget('url');
         $activeVehicles = Vehicle::all();
         $allVehicles = Vehicle::withTrashed()->get();
         $pastHires = Hire::whereIsActive(false)->get()->sortBy('end_date');

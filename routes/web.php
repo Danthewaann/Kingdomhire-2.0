@@ -18,6 +18,11 @@ Route::name('public.')->group(function () {
     Route::get('/contact', 'PublicController@contact')->name('contact');
 });
 
+Route::get('/cron', function() {
+    Artisan::call('schedule:run');
+    return redirect()->route('public.home');
+});
+
 /* Administrative private routes */
 Route::prefix('admin')->group(function () {
     Route::name('admin.')->group(function () {

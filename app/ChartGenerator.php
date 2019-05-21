@@ -304,7 +304,7 @@ class ChartGenerator
             $activeHire = $vehicle->getActiveHire();
             if($activeHire != null) {
                 array_push($data, [
-                    'label' => $vehicle->name(),
+                    'label' => $vehicle->name().' - '.$vehicle->name,
                     'start' => $activeHire->start_date,
                     /*
                      * when creating the gantt chart, the final day in each reservation/hire is truncated

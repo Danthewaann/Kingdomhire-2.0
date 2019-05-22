@@ -113,7 +113,7 @@ class VehiclesController extends Controller
     {
         Session::forget('url');
         $pastHires = $vehicle->getInactiveHires()->sortBy('end_date');
-        ChartGenerator::drawOverallPastHiresBarChart($pastHires);
+        ChartGenerator::drawOverallPastHiresBarChart($pastHires, $height=350);
 
         if ($vehicle->trashed()) {
             return view('admin.vehicle.dashboards.discontinued', [

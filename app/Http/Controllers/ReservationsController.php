@@ -88,8 +88,13 @@ class ReservationsController extends Controller
      */
     public function update(ReservationRequest $request, Reservation $reservation)
     {
-        if ($reservation->hasStarted()) {
-            Hire::create($request->all());
+        if ($request->start_date >= date('Y-m-d')) {
+            Hire::create([
+                'name' => $reservation->name,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'vehicle_id' => $reservation->vehicle->id
+            ]);
             try {
                 $reservation->delete();
             } catch (\Exception $e) {

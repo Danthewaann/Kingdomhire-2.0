@@ -19,7 +19,7 @@ class ConflictableModel extends Model
 
     public function hasStarted()
     {
-        return $this->start_date == date('Y-m-d');
+        return $this->start_date >= date('Y-m-d');
     }
 
     /**

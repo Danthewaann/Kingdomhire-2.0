@@ -85,7 +85,7 @@ class ChartGenerator
         ]);
     }
 
-    public static function drawOverallPastHiresBarChart($pastHires, $vehicles = [])
+    public static function drawOverallPastHiresBarChart($pastHires, $height=400)
     {
         $years = [];
         $maxAmountOfHiresForMonth = 0;
@@ -219,7 +219,7 @@ class ChartGenerator
             'fontSize' => '1.1em',
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
-            'height' => count($vehicles) > 1 ? 450 : 400,
+            'height' => $height,
             'width' => '100%',
             'chartArea' => [
                 'left' => '7.5%',

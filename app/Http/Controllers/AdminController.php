@@ -31,12 +31,11 @@ class AdminController extends Controller
     {
         Session::forget('url');
         $activeVehicles = Vehicle::all();
-        $allVehicles = Vehicle::withTrashed()->get();
         $pastHires = Hire::whereIsActive(false)->get()->sortBy('end_date');
         $activeHires = Hire::whereIsActive(true)->get()->sortBy('end_date');
         $yearlyHires = Hire::getYearlyHires();
         ChartGenerator::drawReservationsBarChart($activeVehicles);
-        ChartGenerator::drawOverallPastHiresBarChart($pastHires, $allVehicles);
+        ChartGenerator::drawOverallPastHiresBarChart($pastHires);
 
         return view('admin.admin-home', [
             'vehicles' => $activeVehicles,

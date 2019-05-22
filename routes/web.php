@@ -20,7 +20,7 @@ Route::name('public.')->group(function () {
 
 Route::get('/cron', function() {
     Artisan::call('schedule:run');
-    return redirect()->route('public.home');
+    // return redirect()->route('public.home');
 });
 
 /* Administrative private routes */

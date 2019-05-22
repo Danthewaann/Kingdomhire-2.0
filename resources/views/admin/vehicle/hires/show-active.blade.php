@@ -5,11 +5,11 @@
   </div>
   @else
   <div class="panel-body">
-    <h3 style="margin-left: -5px">No active hire</h3>
+    <h3>No active hire</h3>
   </div>
   @endif
   @if($vehicle->hasActiveHire())
-    <div class="scrollable-table" style="max-height: 570px">
+    <div class="scrollable-table">
       <table class="table table-condensed panel-table">
         <thead>
           <tr>

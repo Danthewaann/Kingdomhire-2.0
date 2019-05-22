@@ -2,7 +2,7 @@
   @include('admin.weekly-rate.delete-modal')
 @endforeach
 <div class="panel panel-default">
-  @if(!$rates->isEmpty())
+  @if($rates->isNotEmpty())
     <div class="panel-heading">
       <h3>Weekly rates</h3>
       <h5>{{ count($rates) }} weekly rate(s) in total</h5>
@@ -12,7 +12,7 @@
       <h3 style="margin-left: -5px">No weekly rates</h3>
     </div>
   @endif
-  @if(!$rates->isEmpty())
+  @if($rates->isNotEmpty())
     <table class="table table-condensed panel-table">
       <tr>
         <th class="first">Name</th>

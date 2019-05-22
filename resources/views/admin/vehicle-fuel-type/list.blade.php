@@ -2,7 +2,7 @@
   @include('admin.vehicle-fuel-type.delete-modal')
 @endforeach
 <div class="panel panel-default">
-  @if(!$vehicleFuelTypes->isEmpty())
+  @if($vehicleFuelTypes->isNotEmpty())
     <div class="panel-heading">
       <h3>Fuel types</h3>
       <h5>{{ count($vehicleFuelTypes) }} fuel type(s) in total</h5>
@@ -12,7 +12,7 @@
       <h3 style="margin-left: -5px">No vehicle fuel types</h3>
     </div>
   @endif
-  @if(!$vehicleFuelTypes->isEmpty())
+  @if($vehicleFuelTypes->isNotEmpty())
     <table class="table table-condensed panel-table">
       <tr>
         <th class="first">Name</th>

@@ -23,6 +23,13 @@ class ConflictableModel extends Model
     }
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['vehicle'];
+
+    /**
      * Get the route key for the model.
      *
      * @return string

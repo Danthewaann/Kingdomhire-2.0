@@ -31,8 +31,8 @@ class AdminController extends Controller
     {
         Session::forget('url');
         $activeVehicles = Vehicle::all();
-        $pastHires = Hire::whereIsActive(false)->get()->sortBy('end_date');
-        $activeHires = Hire::whereIsActive(true)->get()->sortBy('end_date');
+        $pastHires = Hire::whereIsActive(false)->get();
+        $activeHires = Hire::whereIsActive(true)->get();
         $yearlyHires = Hire::getYearlyHires();
         ChartGenerator::drawReservationsBarChart($activeVehicles);
         ChartGenerator::drawOverallPastHiresBarChart($pastHires);

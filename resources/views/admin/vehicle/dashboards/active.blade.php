@@ -4,18 +4,12 @@
 <div class="row">
   @if($gantt != null)
     <div class="col-md-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3>Schedule</h3>
-          <h5>R = Reservation</h5>
-          <h5>H = Active hire</h5>
-        </div>
-        {!! $gantt !!}
-      </div>
+      @include('admin.vehicle.charts.schedule')
     </div>
   @endif
   <div class="col-lg-6 col-md-12">
     @include('admin.vehicle.hires.show-active')
+    @include('admin.vehicle.hires.show-inactive')
     @include('admin.vehicle.reservations.show-all')
   </div>
   <div class="col-lg-6 col-md-12">

@@ -6,10 +6,10 @@
     </div>
   @else
     <div class="panel-body">
-      <h3 style="margin-left: -5px">No active hires</h3>
+      <h3>No active hires</h3>
     </div>
   @endif
-  @if($activeHires->count() > 0)
+  @if($activeHires->isNotEmpty())
     <div class="scrollable-table">
       <table class="table table-condensed panel-table">
         <thead>
@@ -22,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($activeHires as $activeHire)
+        @foreach($activeHires->sortBy('end_date') as $activeHire)
           <tr>
             <td class="first">{{ $activeHire->name }}</td>
             <td>{{ $activeHire->vehicle->name() }}</td>

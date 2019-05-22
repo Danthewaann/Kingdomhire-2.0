@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  @if(!$reservations->isEmpty())
+  @if($reservations->isNotEmpty())
     <div class="panel-heading">
       <h3>Reservations</h3>
       <h5>{{ count($reservations) }} reservation(s) in total</h5>
@@ -9,7 +9,7 @@
       <h3 style="margin-left: -5px">No reservations</h3>
     </div>
   @endif
-  @if(!$reservations->isEmpty())
+  @if($reservations->isNotEmpty())
     <div class="scrollable-table">
       <table class="table table-condensed panel-table">
         <thead>

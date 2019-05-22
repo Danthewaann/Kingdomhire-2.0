@@ -1,16 +1,16 @@
 <div class="panel panel-default">
-  @if(!$inactiveHires->isEmpty())
+  @if($inactiveHires->isNotEmpty())
   <div class="panel-heading">
     <h3>Past hires</h3>
     <span>{{ count($inactiveHires) }} hire(s) in total</span>
   </div>
   @else
     <div class="panel-body">
-      <h3 style="margin-left: -5px">No active hires</h3>
+      <h3>No active hires</h3>
     </div>
   @endif
-  @if($inactiveHires->count() > 0)
-    <div class="scrollable-table" style="max-height: 655px">
+  @if($inactiveHires->isNotEmpty())
+    <div class="scrollable-table">
       <table class="table table-condensed panel-table">
         <thead>
         <tr>
@@ -21,12 +21,12 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($inactiveHires as $activeHire)
+        @foreach($inactiveHires->sortByDesc('end_date') as $inactiveHire)
           <tr>
-            <td class="first">{{ $activeHire->name }}</td>
-            <td>{{ $activeHire->vehicle->name() }}</td>
-            <td>{{ date('j/M/Y', strtotime($activeHire->start_date)) }}</td>
-            <td>{{ date('j/M/Y', strtotime($activeHire->end_date)) }}</td>
+            <td class="first">{{ $inactiveHire->name }}</td>
+            <td>{{ $inactiveHire->vehicle->name() }}</td>
+            <td>{{ date('j/M/Y', strtotime($inactiveHire->start_date)) }}</td>
+            <td>{{ date('j/M/Y', strtotime($inactiveHire->end_date)) }}</td>
           </tr>
         @endforeach
         </tbody>

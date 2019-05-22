@@ -48,7 +48,7 @@ class Hire extends ConflictableModel
      */
     public function vehicle()
     {
-        return $this->belongsTo(Vehicle::class, 'vehicle_id');
+        return $this->belongsTo(Vehicle::class, 'vehicle_id')->withTrashed();
     }
 
     public function __toString()

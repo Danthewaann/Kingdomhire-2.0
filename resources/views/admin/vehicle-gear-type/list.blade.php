@@ -2,7 +2,7 @@
   @include('admin.vehicle-gear-type.delete-modal')
 @endforeach
 <div class="panel panel-default">
-  @if(!$vehicleGearTypes->isEmpty())
+  @if($vehicleGearTypes->isNotEmpty())
     <div class="panel-heading">
       <h3>Gear types</h3>
       <h5>{{ count($vehicleGearTypes) }} gear type(s) in total</h5>
@@ -12,7 +12,7 @@
       <h3 style="margin-left: -5px">No vehicle gear types</h3>
     </div>
   @endif
-  @if(!$vehicleGearTypes->isEmpty())
+  @if($vehicleGearTypes->isNotEmpty())
     <table class="table panel-table table-responsive">
       <tr>
         <th class="first">Name</th>

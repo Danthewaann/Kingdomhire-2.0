@@ -126,7 +126,7 @@ class ReservationsController extends Controller
         }
 
         Session::flash('status', [
-            'reservation' => 'Successfully canceled reservation!'
+            'reservation' => 'Successfully cancelled reservation!'
         ]);
 
         return redirect()->back();

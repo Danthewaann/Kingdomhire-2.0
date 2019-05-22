@@ -112,20 +112,20 @@ class VehiclesController extends Controller
     public function show(Vehicle $vehicle)
     {
         Session::forget('url');
-        $pastHires = $vehicle->getInactiveHires()->sortBy('end_date');
-        ChartGenerator::drawOverallPastHiresBarChart($pastHires, $height=350);
+        $inactiveHires = $vehicle->getInactiveHires();
+        ChartGenerator::drawOverallPastHiresBarChart($inactiveHires, $height=350);
 
         if ($vehicle->trashed()) {
             return view('admin.vehicle.dashboards.discontinued', [
                 'vehicle' => $vehicle,
-                'pastHires' => $pastHires
+                'inactiveHires' => $inactiveHires
             ]);
         }
         else {
             return view('admin.vehicle.dashboards.active', [
                 'vehicle' => $vehicle,
+                'inactiveHires' => $inactiveHires,
                 'gantt' => ChartGenerator::drawVehicleReservationsAndHiresGanttChart($vehicle),
-                'pastHires' => $pastHires
             ]);
         }
     }

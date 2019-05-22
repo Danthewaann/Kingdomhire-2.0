@@ -18,6 +18,9 @@
           <div class="col-md-12">
             @include('admin.reservation.list')
           </div>
+          <div class="col-md-12">
+            @include('admin.hire.list-inactive')
+          </div>
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@
         @if($vehicleTypes->isNotEmpty())
           <li class="active"><a href="#all" class="btn" data-toggle="pill">All</a></li>
           @foreach($vehicleTypes as $vehicleType)
-            @if($vehicleType->vehicles->count() > 0)
+            @if($vehicleType->vehicles->isNotEmpty())
               <li><a data-toggle="pill" class="btn" href="#{{ str_replace(" ", "-", $vehicleType->name) }}">{{ $vehicleType->name }}s</a></li>
             @endif
           @endforeach

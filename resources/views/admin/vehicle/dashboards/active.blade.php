@@ -9,8 +9,8 @@
   @endif
   <div class="col-lg-6 col-md-12">
     @include('admin.vehicle.hires.show-active')
-    @include('admin.vehicle.hires.show-inactive')
     @include('admin.vehicle.reservations.show-all')
+    @include('admin.vehicle.hires.show-inactive')
   </div>
   <div class="col-lg-6 col-md-12">
     @include('admin.vehicle.reservations.create')

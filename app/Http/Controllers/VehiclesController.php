@@ -140,7 +140,10 @@ class VehiclesController extends Controller
     {
         return view('admin.vehicle.edit', [
             'vehicle' => $vehicle,
-            'rates' => WeeklyRate::all()
+            'rates' => WeeklyRate::all(),
+            'types' => VehicleType::all(),
+            'fuelTypes' => VehicleFuelType::all(),
+            'gearTypes' => VehicleGearType::all()
         ]);
     }
 
@@ -154,7 +157,10 @@ class VehiclesController extends Controller
     public function update(VehicleUpdateRequest $request, Vehicle $vehicle)
     {
         $vehicle->status = ($request->vehicle_status == null) ? $vehicle->status : $request->vehicle_status;
-        $vehicle->weekly_rate_id = ($request->rate_name != "") ? WeeklyRate::whereName($request->rate_name)->first()->id : null;
+        $vehicle->weekly_rate_id = ($request->weekly_rate != "") ? WeeklyRate::whereName($request->weekly_rate)->first()->id : null;
+        $vehicle->vehicle_type_id = ($request->vehicle_type != "") ? VehicleType::whereName($request->vehicle_type)->first()->id : null;
+        $vehicle->vehicle_fuel_type_id = ($request->fuel_type != "") ? VehicleFuelType::whereName($request->fuel_type)->first()->id : null;
+        $vehicle->vehicle_gear_type_id = ($request->gear_type != "") ? VehicleGearType::whereName($request->gear_type)->first()->id : null;
         $vehicle->save();
 
         if($request->hasFile('vehicle_images_add')) {

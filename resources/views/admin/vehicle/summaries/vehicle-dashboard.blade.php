@@ -60,6 +60,16 @@
         </td>
       </tr>
       <tr>
+        <th class="last">Weekly Rate</th>
+        <td class="last">
+          @if($vehicle->rate != null)
+            {{ $vehicle->rate->getFullName() }}
+          @else
+            N/A
+          @endif
+        </td>
+      </tr>
+      <tr>
         <th>Seats</th>
         <td>{{ $vehicle->seats }}</td>
       </tr>
@@ -75,16 +85,6 @@
           <th>Last Changed</th>
           <td>{{ date('j/M/Y H:ia', strtotime($vehicle->updated_at)) }}</td>
         @endif
-      </tr>
-      <tr>
-        <th class="last">Weekly Rate</th>
-        <td class="last">
-          @if($vehicle->rate != null)
-            {{ $vehicle->rate->getFullName() }}
-          @else
-            N/A
-          @endif
-        </td>
       </tr>
     </table>
     <div class="panel-footer">

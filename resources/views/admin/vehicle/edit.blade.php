@@ -36,20 +36,77 @@
                     @endif
                   </div>
                   <div class="form-group">
-                    <label for="rate_name">Weekly Rate</label>
-                    <select id="rate_name" class="form-control" name="rate_name">
+                    <label for="vehicle_type">Vehicle Type</label>
+                    <select id="vehicle_type" class="form-control" name="vehicle_type">
+                      @if($vehicle->type != null)
+                        <option value="{{ $vehicle->type->name }}">{{ $vehicle->type->name }}</option>
+                      @else
+                        <option value="">N/A</option>
+                      @endif
+                      @foreach($types as $type)
+                          @if($vehicle->type != null)
+                            @if($type->name != $vehicle->type->name)
+                              <option value="{{ $type->name }}">{{ $type->name }}</option>
+                            @endif
+                          @else
+                            <option value="{{ $type->name }}">{{ $type->name }}</option>
+                          @endif
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="fuel_type">Fuel Type</label>
+                    <select id="fuel_type" class="form-control" name="fuel_type">
+                      @if($vehicle->fuelType != null)
+                        <option value="{{ $vehicle->fuelType->name }}">{{ $vehicle->fuelType->name }}</option>
+                      @else
+                        <option value="">N/A</option>
+                      @endif
+                      @foreach($fuelTypes as $fuelType)
+                          @if($vehicle->fuelType != null)
+                            @if($fuelType->name != $vehicle->fuelType->name)
+                              <option value="{{ $fuelType->name }}">{{ $fuelType->name }}</option>
+                            @endif
+                          @else
+                            <option value="{{ $fuelType->name }}">{{ $fuelType->name }}</option>
+                          @endif
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="gear_type">Gear Type</label>
+                    <select id="gear_type" class="form-control" name="gear_type">
+                      @if($vehicle->gearType != null)
+                        <option value="{{ $vehicle->gearType->name }}">{{ $vehicle->gearType->name }}</option>
+                      @else
+                        <option value="">N/A</option>
+                      @endif
+                      @foreach($gearTypes as $gearType)
+                          @if($vehicle->gearType != null)
+                            @if($gearType->name != $vehicle->gearType->name)
+                              <option value="{{ $gearType->name }}">{{ $gearType->name }}</option>
+                            @endif
+                          @else
+                            <option value="{{ $gearType->name }}">{{ $gearType->name }}</option>
+                          @endif
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="weekly_rate">Weekly Rate</label>
+                    <select id="weekly_rate" class="form-control" name="weekly_rate">
                       @if($vehicle->rate != null)
-                        <option value="{{ $vehicle->rate->name }}">{{ $vehicle->rate->name }} (£{{ $vehicle->rate->weekly_rate_min }}-£{{ $vehicle->rate->weekly_rate_max }})</option>
+                        <option value="{{ $vehicle->rate->name }}">{{ $vehicle->rate->getFullName() }}</option>
                       @else
                         <option value="">N/A</option>
                       @endif
                       @foreach($rates as $rate)
                           @if($vehicle->rate != null)
                             @if($rate->name != $vehicle->rate->name)
-                              <option value="{{ $rate->name }}">{{ $rate->name }} (£{{ $rate->weekly_rate_min }}-£{{ $rate->weekly_rate_max }})</option>
+                              <option value="{{ $rate->name }}">{{ $rate->getFullName() }}</option>
                             @endif
                           @else
-                            <option value="{{ $rate->name }}">{{ $rate->name }} (£{{ $rate->weekly_rate_min }}-£{{ $rate->weekly_rate_max }})</option>
+                            <option value="{{ $rate->name }}">{{ $rate->getFullName() }}</option>
                           @endif
                       @endforeach
                     </select>

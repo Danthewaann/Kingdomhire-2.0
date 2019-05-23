@@ -82,6 +82,12 @@
     </nav>
     @yield('content')
   </div>
+  <div class="jumbotron jumbotron-footer">
+    <div class="container">
+      <!-- <span class="glyphicon glyphicon-copyright-mark"></span>  -->
+      &copy; {{ date('Y') }} Kingdomhire.com
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>

@@ -8416,8 +8416,7 @@ button.close {
 
 .jumbotron-admin {
   margin-bottom: 0;
-  -webkit-box-shadow: inset 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
-          box-shadow: inset 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .jumbotron-header {
@@ -8427,10 +8426,15 @@ button.close {
 }
 
 .jumbotron-content {
-  -webkit-box-shadow: inset 0 2px 0px rgba(0, 0, 0, 0.2);
-          box-shadow: inset 0 2px 0px rgba(0, 0, 0, 0.2);
   background-color: #36815b;
   margin-bottom: 0;
+}
+
+.jumbotron-footer {
+  text-align: center;
+  padding: 0;
+  margin: 20px 0 20px 0;
+  height: 20px;
 }
 
 .vehicle-table-public {

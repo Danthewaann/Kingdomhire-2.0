@@ -23,7 +23,7 @@
               <div class="col-sm-6">
                 <div class="input-group">
                   {{ Form::text('start_date', $reservation->start_date, array(
-                    'class' => 'form-control', 'autocomplete' => 'off', 'placeholder' => 'e.g. '.date('Y-m-d'), 'id' => 'start_date'))
+                    'class' => 'form-control', 'autocomplete' => 'off', 'readonly' => 'readonly', 'placeholder' => 'e.g. '.date('Y-m-d'), 'id' => 'start_date'))
                   }}
                   <span class="input-group-addon" id="start_date_calender"> <span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
@@ -41,7 +41,7 @@
               <div class="col-sm-6">
                 <div class="input-group">
                   {{ Form::text('end_date', $reservation->end_date, array(
-                    'class' => 'form-control datepicker', 'autocomplete' => 'off',
+                    'class' => 'form-control datepicker', 'autocomplete' => 'off', 'readonly' => 'readonly',
                     'placeholder' => 'e.g. '.date('Y-m-d', strtotime(date('Y-m-d') . ' +3 days')), 'id' => 'end_date'))
                   }}
                   <span class="input-group-addon" id="end_date_calender"> <span class="glyphicon glyphicon-calendar"></span></span>

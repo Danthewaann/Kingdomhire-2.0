@@ -38,7 +38,7 @@
               <div class="col-sm-6">
                 <div class="input-group">
                   {{ Form::text('end_date', $hire->end_date, array(
-                    'class' => 'form-control', 'autocomplete' => 'off',
+                    'class' => 'form-control', 'autocomplete' => 'off', 'readonly' => 'readonly',
                     'placeholder' => 'e.g. '.date('Y-m-d', strtotime(date('Y-m-d') . ' +3 days')), 'id' => 'end_date'))
                   }}
                   <span class="input-group-addon" id="end_date_calender"> <span class="glyphicon glyphicon-calendar"></span></span>

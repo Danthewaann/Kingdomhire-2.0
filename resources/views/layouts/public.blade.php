@@ -87,7 +87,7 @@
   <div class="jumbotron jumbotron-footer">
     <div class="container">
       <!-- <span class="glyphicon glyphicon-copyright-mark"></span>  -->
-      &copy; {{ date('Y') }} Kingdomhire.com
+      <p>&copy; {{ date('Y') }} Kingdomhire.com</p>
     </div>
   </div>
 

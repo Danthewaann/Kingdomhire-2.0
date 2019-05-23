@@ -49,23 +49,25 @@
           <!-- Right Side Of Navbar -->
           <ul class="nav navbar-nav navbar-right">
             <!-- Authentication Links -->
-            @guest
-              <li class="{{ Request::is('login') ? ' active' : '' }}">
-                <a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</a>
-              </li>
-            @else
+            @auth
               <li>
                 <a href="{{ route('admin.home') }}"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;Admin Dashboard</a>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                  <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ Auth::user()->name }} <span class="caret">
+                  <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ Auth::user()->name }} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
+                    <a href="{{ route('admin.users.edit', ['user' => Auth::user()->id]) }}">Update info</a>
+                  </li>
+                  <li>
+                    <a href="{{ route('admin.users.edit-password', ['user' => Auth::user()->id]) }}">Update password</a>
+                  </li>
+                  <li>
                     <a href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
+                      onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
                       Logout
                     </a>
 
@@ -75,7 +77,7 @@
                   </li>
                 </ul>
               </li>
-            @endguest
+            @endauth
           </ul>
         </div>
       </div>

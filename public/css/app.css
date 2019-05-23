@@ -8416,13 +8416,11 @@ button.close {
 
 .jumbotron-admin {
   margin-bottom: 0;
-  border-top: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .jumbotron-header {
   margin-bottom: 0;
   padding-top: 28px;
-  border-top: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .jumbotron-content {

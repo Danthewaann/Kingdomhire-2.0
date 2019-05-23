@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.login')
 
 @section('content')
 <div class="jumbotron jumbotron-header">

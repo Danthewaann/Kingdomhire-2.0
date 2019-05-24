@@ -30,10 +30,6 @@
               <td>
               <div class="btn-group btn-group-vertical" style="width: 100%">
                 <div class="btn-group">
-                  <a href="{{ route('admin.hires.edit', ['hire' => $hire->name]) }}"
-                     class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
-                </div>
-                <div class="btn-group">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#hire-{{ $hire->name }}"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
                 </div>
               </div>

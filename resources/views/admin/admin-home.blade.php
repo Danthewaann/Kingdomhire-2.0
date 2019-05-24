@@ -6,35 +6,35 @@
     @include('admin.common.alert')
   </div>
   <div class="col-lg-12">
-    @include('admin.charts.active-hires')
-  </div>
-  <div class="col-lg-5 col-md-6 col-sm-7 col-xs-12">
     <div class="row">
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-12">
-            @include('admin.hire.list-active')  
+      <div class="col-lg-3 col-sm-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3>Admin Dashboard</h3>
           </div>
-          <div class="col-md-12">
-            @include('admin.reservation.list')
-          </div>
-          <div class="col-md-12">
-            @include('admin.hire.list-inactive')
+          <div class="panel-body">
+            <h4>Welcome, {{ Auth::user()->name }}</h4>
           </div>
         </div>
+        @include('admin.charts.yearly-hires-table')
       </div>
-    </div>
-  </div>
-  <div class="col-lg-7 col-md-6 col-sm-5 col-xs-12">
-    <div class="row">
-      <div class="col-lg-8 col-sm-12">
-        @if($vehicles->isNotEmpty())
-          @include('admin.reservation.create')
-        @endif  
-        @include('admin.charts.inactive-hires')
-      </div>
-      <div class="col-lg-4 col-sm-12">
-      @include('admin.charts.yearly-hires-table')
+      <div class="col-lg-9 col-sm-9">
+        @include('admin.charts.active-hires')
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            @include('admin.hire.list-active') 
+            @include('admin.reservation.list')
+            @if($vehicles->isNotEmpty())
+              @include('admin.reservation.create')
+            @endif
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            @include('admin.charts.inactive-hires')
+          </div>
+          <div class="col-lg-6 col-md-8 col-sm-12">
+            @include('admin.hire.list-inactive') 
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -53,13 +53,18 @@ class HiresController extends Controller
      */
     public function edit(Hire $hire)
     {
-        if(!Session::has('url') || empty(Session::get('url'))) {
-            Session::put('url', URL::previous());
+        if($hire->is_active == false) {
+            abort(404);
         }
-        return view('admin.hire.edit', [
-            'vehicle' => $hire->vehicle,
-            'hire' => $hire
-        ]);
+        else {
+            if(!Session::has('url') || empty(Session::get('url'))) {
+                Session::put('url', URL::previous());
+            }
+            return view('admin.hire.edit', [
+                'vehicle' => $hire->vehicle,
+                'hire' => $hire
+            ]);
+        }
     }
 
     /**

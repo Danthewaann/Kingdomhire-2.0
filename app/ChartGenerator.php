@@ -289,7 +289,7 @@ class ChartGenerator
         $gantt = null;
         if ($reservationsAndActiveHire->isNotEmpty()) {
             $gantt = new GanttChart($data, array(
-                'cellwidth' => 30,
+                'cellwidth' => 20,
                 'cellheight' => 35
             ));
         }
@@ -319,7 +319,7 @@ class ChartGenerator
         $gantt = null;
         if (count($data) > 0) {
             $gantt = new GanttChart($data, array(
-                'cellwidth' => 35,
+                'cellwidth' => 20,
                 'cellheight' => 35
             ));
         }

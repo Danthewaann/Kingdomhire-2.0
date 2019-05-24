@@ -60,7 +60,7 @@
   display: block;
   padding: 0 20px;
   color: white;
-  font-size: 1em;
+  font-size: 11px;
   /*border-bottom: 1px solid #001f27;*/
   border-bottom: 1px solid rgb(62, 167, 113);
   overflow: hidden;
@@ -95,7 +95,7 @@
 .gantt header .gantt-day span {
   text-indent: 0;
   text-align: center;
-  font-size: 14px;
+  font-size: 11px;
 }
 
 .gantt header .gantt-day.today span {

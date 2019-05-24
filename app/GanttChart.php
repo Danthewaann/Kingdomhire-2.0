@@ -81,7 +81,7 @@ class GanttChart extends Gantt
             $offset = (($block['start'] - $this->first->month()->timestamp) / $this->seconds);
             $top    = round($i * ($this->options['cellheight'] + 1));
             $left   = round($offset * $this->options['cellwidth']);
-            $width  = round($days * $this->options['cellwidth']-2);
+            $width  = round($days * $this->options['cellwidth']-1);
             $height = round($this->options['cellheight']-1);
             $class  = ($block['class']) ? ' ' . $block['class'] : '';
             $html[] = '<span class="gantt-block' . $class . '" style="left: ' . $left . 'px; width: ' . $width . 'px; height: ' . $height . 'px"><strong class="gantt-block-label">' . $days . '</strong></span>';

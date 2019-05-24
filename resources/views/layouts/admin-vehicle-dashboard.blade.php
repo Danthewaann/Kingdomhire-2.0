@@ -26,7 +26,7 @@
           @include('admin.common.alert')
         </div>
         @include('admin.vehicle.summaries.vehicle-dashboard')
-        <div class="col-lg-8 col-md-7 col-sm-6">
+        <div class="col-lg-8 col-md-8 col-sm-6">
           @yield('content')
         </div>
       </div>

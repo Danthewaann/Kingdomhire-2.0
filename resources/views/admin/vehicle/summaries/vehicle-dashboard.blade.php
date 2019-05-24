@@ -1,7 +1,7 @@
 @include('admin.vehicle.modals.image-gallery')
 @includeWhen(!$vehicle->trashed() ,'admin.vehicle.modals.discontinue')
 @include('admin.vehicle.modals.destroy')
-<div class="col-lg-4 col-md-5 col-sm-6">
+<div class="col-lg-4 col-md-4 col-sm-6">
   <div class="panel panel-default">
     <div class="panel-heading vehicle-panel-dashboard-heading">
       <h2>Vehicle Dashboard</h2>
@@ -86,7 +86,7 @@
         @endif
       </tr>
     </table>
-    <div class="panel-footer">
+    <div class="panel-footer" style="padding: 0">
       @if($vehicle->trashed())
         {{ Form::open(['route' => ['admin.vehicles.recontinue', $vehicle->slug], 'method' => 'patch', 'id' => 'vehicle_recontinue_form']) }}
         {{ Form::close() }}

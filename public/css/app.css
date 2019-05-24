@@ -8545,6 +8545,10 @@ button.close {
   border: 0 !important;
 }
 
+.panel-table tbody {
+  font-size: 12px;
+}
+
 .panel-table tbody tr th.first {
   padding-left: 10px;
 }
@@ -8942,6 +8946,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 }
 
 .panel h4 {
+  text-align: center;
   margin: 5px 0 0 0;
 }
 
@@ -9056,7 +9061,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 992px) {
   .vehicle-img img.dashboard {
-    height: 250px;
+    height: 230px;
   }
 }
 

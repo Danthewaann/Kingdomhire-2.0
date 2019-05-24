@@ -57,7 +57,8 @@ class VehicleFuelTypesController extends Controller
         ));
 
         Session::flash('status', [
-            'vehicle_fuel_type_add' => 'Successfully created fuel type '.$vehicleFuelType->name
+            'vehicle_fuel_type_add' => 'Successfully created fuel type!',
+            'Name = '.$vehicleFuelType->name
         ]);
 
         return redirect()->route('admin.vehicle-fuel-types.index');
@@ -88,7 +89,8 @@ class VehicleFuelTypesController extends Controller
         $vehicleFuelType->update($request->all());
 
         Session::flash('status', [
-            'weekly_rate' => 'Successfully updated fuel type '.$vehicleFuelType->name
+            'weekly_rate' => 'Successfully updated fuel type!',
+            'Name = '.$vehicleFuelType->name
         ]);
 
         return redirect()->route('admin.vehicle-fuel-types.index');
@@ -108,7 +110,8 @@ class VehicleFuelTypesController extends Controller
         }
 
         Session::flash('status', [
-            'vehicle_fuel_type' => 'Successfully deleted fuel type '.$vehicleFuelType->name
+            'vehicle_fuel_type' => 'Successfully deleted fuel type!',
+            'Name = '.$vehicleFuelType->name
         ]);
 
         return redirect()->route('admin.vehicle-fuel-types.index');

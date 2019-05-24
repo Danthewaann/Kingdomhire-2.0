@@ -96,8 +96,8 @@ class VehiclesController extends Controller
 
         Session::flash('status', [
             'Successfully created vehicle!',
-            'Vehicle Name = '.$vehicle->name(),
-            'Vehicle Id = '.$vehicle->name,
+            'ID = '.$vehicle->name,
+            'Name = '.$vehicle->name(),
         ]);
 
         return redirect()->route('admin.vehicles.index');
@@ -174,7 +174,9 @@ class VehiclesController extends Controller
         }
 
         Session::flash('status', [
-            'edit' => 'Successfully edited '.$vehicle->name().' - '.$vehicle->name
+            'edit' => 'Successfully updated vehicle!',
+            'ID = '.$vehicle->name,
+            'Name = '.$vehicle->name(),
         ]);
 
         return redirect()->route('admin.vehicles.show', [
@@ -194,8 +196,8 @@ class VehiclesController extends Controller
 
         Session::flash('status', [
             'Successfully deleted vehicle!',
-            'Vehicle Name = '.$vehicle->name(),
-            'Vehicle Id = '.$vehicle->name,
+            'ID = '.$vehicle->name,
+            'Name = '.$vehicle->name(),
         ]);
 
         return redirect()->route('admin.vehicles.index');
@@ -224,7 +226,9 @@ class VehiclesController extends Controller
         }
 
         Session::flash('status', [
-            'discontinue' => 'Successfully discontinued '.$vehicle->name()
+            'discontinue' => 'Successfully discontinued vehicle!',
+            'ID = '.$vehicle->name,
+            'Name = '.$vehicle->name(),
         ]);
 
         return redirect()->route('admin.vehicles.show', [
@@ -245,7 +249,9 @@ class VehiclesController extends Controller
         $vehicle->restore();
 
         Session::flash('status', [
-            're-continue' => 'Successfully re-continued '.$vehicle->name()
+            're-continue' => 'Successfully re-continued vehicle!',
+            'ID = '.$vehicle->name,
+            'Name = '.$vehicle->name(),
         ]);
 
         return redirect()->route('admin.vehicles.show', [

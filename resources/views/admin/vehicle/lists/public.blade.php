@@ -22,7 +22,7 @@
         @foreach($vehicleTypes as $vehicleType)
           @if($vehicleType->vehicles->isNotEmpty())
             @foreach($vehicleType->vehicles as $vehicle)
-              <div class="col-lg-6 col-sm-12">
+              <div class="col-lg-4 col-md-6 col-sm-6">
                 @include('admin.vehicle.summaries.public')
               </div>
             @endforeach
@@ -35,7 +35,7 @@
         <div id="{{ str_replace(" ", "-", $vehicleType->name) }}" class="tab-pane fade">
           <div class="row">
             @foreach($vehicleType->vehicles as $vehicle)
-              <div class="col-lg-6 col-sm-12">
+              <div class="col-lg-4 col-md-6 col-sm-6">
                 @include('admin.vehicle.summaries.public')
               </div>
             @endforeach

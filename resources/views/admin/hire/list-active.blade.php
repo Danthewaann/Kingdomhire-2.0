@@ -22,22 +22,26 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($activeHires->sortBy('end_date') as $activeHire)
+        @foreach($activeHires->sortBy('end_date') as $hire)
+          @include('admin.hire.destroy-modal')
           <tr>
-            <td class="first">{{ $activeHire->name }}</td>
-            <td>{{ $activeHire->vehicle->name() }}</td>
-            <td>{{ date('j/M/Y', strtotime($activeHire->start_date)) }}</td>
-            <td>{{ date('j/M/Y', strtotime($activeHire->end_date)) }}</td>
+            <td class="first">{{ $hire->name }}</td>
+            <td>{{ $hire->vehicle->name() }}</td>
+            <td>{{ date('j/M/Y', strtotime($hire->start_date)) }}</td>
+            <td>{{ date('j/M/Y', strtotime($hire->end_date)) }}</td>
             <td>
               <div class="btn-group btn-group-vertical" style="width: 100%">
                 <div class="btn-group">
-                  <a href="{{ route('admin.vehicles.show', ['vehicle' => $activeHire->vehicle->slug]) }}"
+                  <a href="{{ route('admin.vehicles.show', ['vehicle' => $hire->vehicle->slug]) }}"
                      class="btn btn-primary" style="width: 100%" role="button" aria-pressed="true"><span class="glyphicon glyphicon-dashboard"></span>&nbsp;&nbsp;Vehicle
                   </a>
                 </div>
                 <div class="btn-group">
-                  <a href="{{ route('admin.hires.edit', ['hire' => $activeHire->name]) }}"
+                  <a href="{{ route('admin.hires.edit', ['hire' => $hire->name]) }}"
                      class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
+                </div>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#hire-{{ $hire->name }}"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
                 </div>
               </div>
             </td>

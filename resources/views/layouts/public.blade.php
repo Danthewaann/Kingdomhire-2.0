@@ -43,7 +43,7 @@
               <a href="{{ route('public.vehicles') }}"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Vehicles</a>
             </li>
             <li class="{{ Request::is('contact') ? ' active' : '' }}">
-              <a href="{{ route('public.contact') }}"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;Contact</a>
+              <a href="{{ route('public.contact') }}"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;Contact Us</a>
             </li>
           </ul>
           <!-- Right Side Of Navbar -->

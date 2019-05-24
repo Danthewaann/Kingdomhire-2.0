@@ -187,6 +187,15 @@ class Vehicle extends Model
     }
 
     /**
+     * Get the vehicle full name (make + model + id)
+     * @return string
+     */
+    public function fullName()
+    {
+        return $this->make.' '.$this->model.' - '.$this->name;
+    }
+
+    /**
      * Get number of hires made in each unique year
      * @return Collection
      */

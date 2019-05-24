@@ -156,7 +156,7 @@ $alert-danger-text: white;
 //$state-success-border: $lighter-green;
 
 //modal
-$modal-content-bg: $light-green;
+$modal-content-bg: lighten($light-green, 2.5%);
 $modal-header-border-color: $lighter-green;
 $modal-footer-border-color: $lighter-green;
 $modal-content-border-color: $lighter-green;

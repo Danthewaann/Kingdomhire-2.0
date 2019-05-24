@@ -48,15 +48,18 @@ class ReservationsController extends Controller
     public function store(ReservationRequest $request)
     {
         if ($request->start_date == date('Y-m-d')) {
-            Hire::create($request->all());
+            $reservation = Hire::create($request->all());
         }
         else {
-            Reservation::create($request->all());
+            $reservation = Reservation::create($request->all());
         }
 
         Session::flash('status', [
-            'reservation' => 'Successfully booked reservation!'
-
+            'reservation' => 'Successfully booked reservation!',
+            'ID = '.$reservation->name,
+            'Vehicle = '.$reservation->vehicle->fullName(),
+            'Start Date = '.date('j/M/Y', strtotime($reservation->start_date)),
+            'End Date = '.date('j/M/Y', strtotime($reservation->end_date)),
         ]);
 
         return back();
@@ -105,7 +108,11 @@ class ReservationsController extends Controller
         }
 
         Session::flash('status', [
-            'reservation' => 'Successfully updated reservation!'
+            'reservation' => 'Successfully updated reservation!',
+            'ID = '.$reservation->name,
+            'Vehicle = '.$reservation->vehicle->fullName(),
+            'Start Date = '.date('j/M/Y', strtotime($reservation->start_date)),
+            'End Date = '.date('j/M/Y', strtotime($reservation->end_date)),
         ]);
 
         $url = Session::pull('url');
@@ -126,7 +133,11 @@ class ReservationsController extends Controller
         }
 
         Session::flash('status', [
-            'reservation' => 'Successfully cancelled reservation!'
+            'reservation' => 'Successfully cancelled reservation!',
+            'ID = '.$reservation->name,
+            'Vehicle = '.$reservation->vehicle->fullName(),
+            'Start Date = '.date('j/M/Y', strtotime($reservation->start_date)),
+            'End Date = '.date('j/M/Y', strtotime($reservation->end_date)),
         ]);
 
         return redirect()->back();

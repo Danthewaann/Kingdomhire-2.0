@@ -50,14 +50,15 @@ class WeeklyRatesController extends Controller
      */
     public function store(WeeklyRateRequest $request)
     {
-        $vehicle_rate = WeeklyRate::create(array(
+        $weeklyRate = WeeklyRate::create(array(
             'name' => $request->name,
             'weekly_rate_min' => $request->weekly_rate_min,
             'weekly_rate_max' => $request->weekly_rate_max
         ));
 
         Session::flash('status', [
-            'weekly_rate_add' => 'Successfully created weekly rate '.$vehicle_rate->getFullName()
+            'weekly_rate_add' => 'Successfully created weekly rate!',
+            'Name = '.$weeklyRate->getFullName()
         ]);
 
         return redirect()->route('admin.weekly-rates.index');
@@ -88,7 +89,8 @@ class WeeklyRatesController extends Controller
         $weeklyRate->update($request->all());
 
         Session::flash('status', [
-            'weekly_rate' => 'Successfully updated weekly rate '.$weeklyRate->getFullName()
+            'weekly_rate' => 'Successfully updated weekly rate!',
+            'Name = '.$weeklyRate->getFullName()
         ]);
 
         return redirect()->route('admin.weekly-rates.index');
@@ -108,7 +110,8 @@ class WeeklyRatesController extends Controller
         }
 
         Session::flash('status', [
-            'weekly_rate' => 'Successfully deleted weekly rate '.$weeklyRate->getFullName()
+            'weekly_rate' => 'Successfully deleted weekly rate!',
+            'Name = '.$weeklyRate->getFullName()
         ]);
 
         return redirect()->route('admin.weekly-rates.index');

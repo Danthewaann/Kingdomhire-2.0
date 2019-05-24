@@ -7360,7 +7360,7 @@ button.close {
 
 .modal-content {
   position: relative;
-  background-color: #36815b;
+  background-color: #3a8a61;
   background-clip: padding-box;
   border: 1px solid #999;
   border: 1px solid #3ea771;
@@ -8705,6 +8705,14 @@ img.hover-shadow {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.modal-header {
+  background-color: #36815b;
+}
+
+.modal-footer {
+  background-color: #36815b;
+}
+
 .datepicker table tr td.new,
 .datepicker table tr td.old {
   color: #3ea771;
@@ -8981,19 +8989,19 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 768px) {
   .vehicle-img img.public {
-    height: 250px;
+    height: 220px;
   }
 }
 
 @media (min-width: 992px) {
   .vehicle-img img.public {
-    height: 300px;
+    height: 230px;
   }
 }
 
 @media (min-width: 1200px) {
   .vehicle-img img.public {
-    height: 325px;
+    height: 230px;
   }
 }
 

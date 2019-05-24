@@ -74,10 +74,38 @@ class HiresController extends Controller
         $hire->update($request->all());
 
         Session::flash('status', [
-            'hire' => 'Successfully updated active hire!'
+            'hire' => 'Successfully updated hire!',
+            'ID = '.$hire->name,
+            'Vehicle = '.$hire->vehicle->fullName(),
+            'Start Date = '.date('j/M/Y', strtotime($hire->start_date)),
+            'End Date = '.date('j/M/Y', strtotime($hire->end_date)),
         ]);
 
         $url = Session::pull('url');
         return redirect()->to($url);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Hire  $hire
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Hire $hire)
+    {
+        try {
+            $$hire->delete();
+        } catch (\Exception $e) {
+        }
+
+        Session::flash('status', [
+            'hire' => 'Successfully deleted hire!',
+            'ID = '.$hire->name,
+            'Vehicle = '.$hire->vehicle->fullName(),
+            'Start Date = '.date('j/M/Y', strtotime($hire->start_date)),
+            'End Date = '.date('j/M/Y', strtotime($hire->end_date)),
+        ]);
+
+        return redirect()->back();
     }
 }

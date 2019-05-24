@@ -7,6 +7,11 @@
       </div>
       <div class="modal-body">
         Are you sure you want to cancel this reservation?
+        <ul>
+          <li>ID = {{ $reservation->name }}</li>
+          <li>Start Date = {{ date('j/M/Y', strtotime($reservation->start_date)) }}</li>
+          <li>End Date = {{ date('j/M/Y', strtotime($reservation->end_date)) }}</li>
+        </ul>
       </div>
       {{ Form::open(['route' => ['admin.reservations.destroy', $reservation->name], 'method' => 'delete', 'id' => 'reservation-'.$reservation->name.'-cancel-form']) }}
       {{ Form::close() }}

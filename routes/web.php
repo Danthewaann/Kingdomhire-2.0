@@ -64,7 +64,7 @@ Route::prefix('admin')->group(function () {
 
         /* Hire specific routes */
         Route::resource('hires', 'HiresController')->only([
-            'index', 'edit', 'update',
+            'index', 'edit', 'update', 'destroy'
         ]);
 
         /* User specific routes */

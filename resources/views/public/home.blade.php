@@ -6,46 +6,16 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h1 class="main-header">Kingdomhire</h1>
+				<h3>Car &amp; Van Hire Specialist</h3>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-8">
-				<!-- <h1>Car &amp; Van Hire Specialist</h3> -->
-				<!-- <div class="row">
-					<div class="col-md-6">
-						<img src="{{ asset('static/carRepair.jpg') }}" width="100%">
-					</div>
-					<div class="col-md-6">
-						<img src="{{ asset('static/insideCar.jpg') }}" width="100%">
-					</div>
-				</div> -->
 				<p class="paragraph">Kingdomhire is a one-man business owned and ran by proprietor Keith Black. The business specialises in vehicle hire and repair.
 					 Keith's experience spans over 40 years of working in the motor industry, so you can expect high quality service.</p>
 				<p class="paragraph">Kingdomhire is located and based just outside <b>Markethill, Co. Armagh.</b> Exact directions can be found on our <b><a class="text-link" href="{{ route('public.contact') }}">Contact page.</a></b>
 					Kingdom Car Hire cater for general, public and business needs. Whatever you need, we are sure we can help you out.</p>
-				<div class="row">
-					<div class="col-md-12 col-sm-6">
-						<div class="row">
-							<div class="col-md-6 col-sm-12">
-								@include('public.opening-hours-table')
-							</div>
-							<div class="col-md-6 col-sm-12">
-								@include('public.contact-table')
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
-			<!-- <div class="col-md-4 col-sm-12">
-				<div class="row">
-					<div class="col-md-12 col-sm-6">
-						@include('public.opening-hours-table')
-					</div>
-					<div class="col-md-12 col-sm-6">
-						@include('public.contact-table')
-					</div>
-				</div>
-			</div> -->
 		</div>
 	</div>
 </div>

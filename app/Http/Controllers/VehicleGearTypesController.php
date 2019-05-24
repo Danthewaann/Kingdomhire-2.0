@@ -58,7 +58,8 @@ class VehicleGearTypesController extends Controller
         ));
 
         Session::flash('status', [
-            'vehicle_gear_type_add' => 'Successfully created gear type '.$vehicleGearType->name
+            'vehicle_gear_type_add' => 'Successfully created gear type!',
+            'Name = '.$vehicleGearType->name
         ]);
 
         return redirect()->route('admin.vehicle-gear-types.index');
@@ -89,7 +90,8 @@ class VehicleGearTypesController extends Controller
         $vehicleGearType->update($request->all());
 
         Session::flash('status', [
-            'vehicle_gear_type' => 'Successfully updated gear type '.$vehicleGearType->name
+            'vehicle_gear_type' => 'Successfully updated gear type!',
+            'Name = '.$vehicleGearType->name
         ]);
 
         return redirect()->route('admin.vehicle-gear-types.index');
@@ -109,7 +111,8 @@ class VehicleGearTypesController extends Controller
         }
 
         Session::flash('status', [
-            'vehicle_gear_type' => 'Successfully deleted gear type '.$vehicleGearType->name
+            'vehicle_gear_type' => 'Successfully deleted gear type!',
+            'Name = '.$vehicleGearType->name
         ]);
 
         return redirect()->route('admin.vehicle-gear-types.index');

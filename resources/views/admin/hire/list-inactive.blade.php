@@ -6,7 +6,7 @@
   </div>
   @else
     <div class="panel-body">
-      <h3>No active hires</h3>
+      <h3>No past hires</h3>
     </div>
   @endif
   @if($inactiveHires->isNotEmpty())

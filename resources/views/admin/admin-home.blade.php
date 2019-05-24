@@ -27,12 +27,10 @@
             @if($vehicles->isNotEmpty())
               @include('admin.reservation.create')
             @endif
+            @include('admin.hire.list-inactive') 
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12">
             @include('admin.charts.inactive-hires')
-          </div>
-          <div class="col-lg-6 col-md-8 col-sm-12">
-            @include('admin.hire.list-inactive') 
           </div>
         </div>
       </div>

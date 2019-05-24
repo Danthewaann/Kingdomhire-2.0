@@ -4,11 +4,24 @@
 <div class="jumbotron jumbotron-header">
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-12">
         <h1 class="main-header">Contact us</h1>
-        <p class="paragraph">Have any queries? <br>You can contact us via mobile phone or email, whichever you prefer.</p>
       </div>
-      <div class="col-md-4 col-sm-12">
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <p class="paragraph">Have any queries? You can contact us via mobile phone or email, whichever you prefer.</p>
+        <div class="row">
+          <div class="col-md-6">
+            @include('public.opening-hours-table')
+          </div>
+          <div class="col-md-6">
+          @include('public.contact-table')
+          </div>
+        </div>
+        
+      </div>
+      <!-- <div class="col-md-4 col-sm-12">
         <div class="row">
           <div class="col-md-12 col-sm-6">
             @include('public.opening-hours-table')
@@ -17,7 +30,7 @@
             @include('public.contact-table')
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

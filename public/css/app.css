@@ -8946,12 +8946,16 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 }
 
 .panel h4 {
-  text-align: center;
   margin: 5px 0 0 0;
 }
 
 .panel .panel-heading {
   text-align: center;
+}
+
+.panel .panel-body h4 {
+  text-align: center;
+  margin: 5px 0 0 0;
 }
 
 .vehicle-panel-heading {

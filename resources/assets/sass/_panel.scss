@@ -11,11 +11,17 @@
     margin: 0;
   }
   h4 {
-    text-align: center;
     margin: 5px 0 0 0;
   }
   .panel-heading {
     text-align: center;
+  }
+
+  .panel-body {
+    h4 {
+      text-align: center;
+      margin: 5px 0 0 0;
+    }
   }
 }
 

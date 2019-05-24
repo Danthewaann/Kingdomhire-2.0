@@ -8445,6 +8445,7 @@ button.close {
   border-top: unset !important;
   text-align: right;
   vertical-align: middle;
+  width: 45%;
 }
 
 .vehicle-table-public tbody tr th.first {
@@ -8476,6 +8477,7 @@ button.close {
   border-top: unset !important;
   text-align: right;
   vertical-align: middle;
+  width: 45%;
 }
 
 .vehicle-table-dashboard tbody tr th.first {
@@ -8507,6 +8509,7 @@ button.close {
   border-top: unset !important;
   text-align: right;
   vertical-align: middle;
+  width: 45%;
 }
 
 .vehicle-table-admin tbody tr th.first {

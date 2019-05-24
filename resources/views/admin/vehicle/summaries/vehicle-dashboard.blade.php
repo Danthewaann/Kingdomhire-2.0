@@ -79,10 +79,10 @@
       <tr>
         @if($vehicle->trashed())
           <th>Date Discontinued</th>
-          <td>{{ date('j/M/Y H:ia', strtotime($vehicle->deleted_at)) }}</td>
+          <td class="last">{{ date('j/M/Y H:ia', strtotime($vehicle->deleted_at)) }}</td>
         @else
           <th>Last Changed</th>
-          <td>{{ date('j/M/Y H:ia', strtotime($vehicle->updated_at)) }}</td>
+          <td class="last">{{ date('j/M/Y H:ia', strtotime($vehicle->updated_at)) }}</td>
         @endif
       </tr>
     </table>

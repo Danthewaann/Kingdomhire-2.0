@@ -9083,19 +9083,19 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 768px) {
   .vehicle-img div.vehicle-img-na h2.public {
-    line-height: 250px;
+    line-height: 220px;
   }
 }
 
 @media (min-width: 992px) {
   .vehicle-img div.vehicle-img-na h2.public {
-    line-height: 300px;
+    line-height: 230px;
   }
 }
 
 @media (min-width: 1200px) {
   .vehicle-img div.vehicle-img-na h2.public {
-    line-height: 325px;
+    line-height: 230px;
   }
 }
 

@@ -31,17 +31,17 @@
             <td>{{ date('j/M/Y', strtotime($reservation->end_date)) }}</td>
             <td>
               <div class="btn-group btn-group-vertical" style="width: 100%">
-                <div class="btn-group">
+                <div class="btn-group btn-group-sm">
                   <a href="{{ route('admin.vehicles.show', ['vehicle' => $reservation->vehicle->slug]) }}"
                      class="btn btn-primary" style="width: 100%" role="button" aria-pressed="true"><span class="glyphicon glyphicon-dashboard"></span>&nbsp;&nbsp;Vehicle
                   </a>
                 </div>
-                <div class="btn-group">
+                <div class="btn-group btn-group-sm">
                   <a href="{{ route('admin.reservations.edit', ['reservation' => $reservation->name]) }}"
                      class="btn btn-primary" style="width: 100%" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit
                   </a>
                 </div>
-                <div class="btn-group">
+                <div class="btn-group btn-group-sm">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reservation-{{ $reservation->name }}"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Cancel</button>
                 </div>
               </div>

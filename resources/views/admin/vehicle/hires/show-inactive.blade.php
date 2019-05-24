@@ -29,8 +29,8 @@
               <td>{{ date('j/M/Y', strtotime($hire->end_date)) }}</td>
               <td>
               <div class="btn-group btn-group-vertical" style="width: 100%">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#hire-{{ $hire->name }}"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
+                <div class="btn-group btn-group-sm">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#hire-{{ $hire->name }}" style="height: 37px"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
                 </div>
               </div>
             </td>

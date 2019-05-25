@@ -26,14 +26,19 @@ class ChartGenerator
         }
 
         $maxReservationsForVehicle = 0;
-        foreach ($activeVehicles as $vehicle) {
+
+        $vehicles = $activeVehicles->reject(function ($item) {
+            return count($item->reservations) < 1;
+        });
+
+        foreach ($vehicles as $vehicle) {
             //Get the number of reservations from the vehicle that has the most reservations
             $numOfReservations = count($vehicle->reservations);
             if($numOfReservations > $maxReservationsForVehicle) {
                 $maxReservationsForVehicle = $numOfReservations;
             }
             try {
-            	$vehiclesTable->addRow([$vehicle->name(), $numOfReservations]);
+                $vehiclesTable->addRow([$vehicle->name(), $numOfReservations]);
             } catch (InvalidCellCount $e) {
             } catch (InvalidRowDefinition $e) {
             } catch (InvalidRowProperty $e) {
@@ -45,14 +50,14 @@ class ChartGenerator
             'colors' => [
                 'rgb(75, 206, 138)'
             ],
-            'height' => 700,
+            'height' => (count($vehicles) > 1 ? count($vehicles) * 80 : 150),
             'width' => '100%',
             'fontSize' => '1.1em',
             'fontName' => 'Helvetica',
             'chartArea' => [
-                'top' => '7.5%',
-                'width' => '95%',
-                'height' => '85%'
+                'top' => '10%',
+                'width' => '90%',
+                'height' => '80%'
             ],
             'legend' => [
                 'position' => 'top',
@@ -60,6 +65,9 @@ class ChartGenerator
                     'color' => 'white',
                     'fontName' => 'Helvetica',
                 ]
+            ],
+            'bar' => [
+                'groupWidth' => (count($vehicles) > 1 ? '75%' : '50%')
             ],
             'vAxis' => [
                 'textPosition' => 'in',

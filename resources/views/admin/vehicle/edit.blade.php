@@ -14,7 +14,7 @@
       </div>
       <div class="panel-body">
         <div class="row">
-          <div class="col-lg-5 col-md-12 col-xs-12">
+          <div class="col-lg-7 col-md-12 col-xs-12">
             <form action="{{ route('admin.vehicles.update', ['vehicle' => $vehicle->slug]) }}" method="post" enctype="multipart/form-data" id="vehicle_edit_form">
               @csrf
               @method('PATCH')
@@ -114,10 +114,11 @@
                   <div class="form-group{{ $errors->hasBag('edit') ? ' has-error' : '' }}">
                     <label for="vehicle_images_add">Add Images</label>
                     <input type="file" class="form-control" name="vehicle_images_add[]" id="vehicle_images_add" value="{{ $vehicle->image_path }}" data-multiple-caption="{count} files selected" multiple>
-                    @if($errors->hasBag('edit') and $errors->edit->has('vehicle_images_add'))
+                    @if($errors->hasBag('edit') and $errors->edit->has('vehicle_images_add.*'))
                       <div class="help-block">
                         <div class="alert alert-danger" role="alert">
-                          <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->edit->first('vehicle_images_add') }}</strong>
+                          <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ array_values($errors->edit->get('vehicle_images_add.*'))[0][0] }}</strong><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ array_values($errors->edit->get('vehicle_images_add.*'))[0][1] }}
                         </div>
                       </div>
                     @endif
@@ -144,10 +145,10 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-7 col-md-12 col-xs-12">
+          <div class="col-lg-5 col-md-12 col-xs-12">
             <div class="row">
             @foreach($vehicle->images as $image)
-              <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: 22px">
+              <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top: 22px">
                 <img src="{{ $image->image_uri }}" style="width: 100%;"/>
                 <table class="table table-condensed">
                   <tr>

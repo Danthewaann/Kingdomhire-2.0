@@ -32,7 +32,8 @@ class VehicleUpdateRequest extends FormRequest
     {
         return [
             'vehicle_status' => 'nullable',
-            'vehicle_images_add' => 'nullable|array',
+            'vehicle_images_add' => 'nullable',
+            'vehicle_images_add.*' => 'image|mimes:jpeg,jpg,png,gif',
             'vehicle_images_del' => 'nullable|array'
         ];
     }
@@ -45,7 +46,8 @@ class VehicleUpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'vehicle_images_add.image' => 'Only image type files can be uploaded'
+            'vehicle_images_add.*.image' => 'Only image type files can be uploaded',
+            'vehicle_images_add.*.mimes' => 'Images must be a file of type: jpeg, jpg, png, gif.'
         ];
     }
 

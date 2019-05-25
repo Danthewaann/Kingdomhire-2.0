@@ -27,7 +27,8 @@ class VehicleStoreRequest extends FormRequest
             'make' => 'required',
             'model' => 'required',
             'seats' => 'required|numeric|min:1|max:256',
-            'vehicle_images' => 'array|nullable|image'
+            'vehicle_images' => 'nullable',
+            'vehicle_images.*' => 'image|mimes:jpeg,jpg,png,gif'
         ];
     }
 
@@ -42,7 +43,8 @@ class VehicleStoreRequest extends FormRequest
             'make.required' => 'Vehicle make (manufacturer) is required',
             'model.required' => 'Vehicle model is required',
             'seats.required' => 'Number of seats is required',
-            'vehicle_images.image' => 'Only image type files can be uploaded'
+            'vehicle_images.*.image' => 'Only image type files can be uploaded',
+            'vehicle_images.*.mimes' => 'Images must be a file of type: jpeg, jpg, png, gif.'
         ];
     }
 

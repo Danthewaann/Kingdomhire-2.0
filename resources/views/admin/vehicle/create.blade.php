@@ -97,10 +97,11 @@
                     <label for="vehicle_image" class="control-label col-sm-3">Image(s)</label>
                     <div class="col-sm-9">
                       <input type="file" class="form-control" name="vehicle_images[]" id="vehicle_image" multiple>
-                      @if( $errors->has('vehicle_images'))
+                      @if( $errors->has('vehicle_images.*'))
                         <div class="help-block">
                           <div class="alert alert-danger" role="alert">
-                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('vehicle_images') }}</strong>
+                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ array_values($errors->get('vehicle_images.*'))[0][0] }}</strong><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ array_values($errors->get('vehicle_images.*'))[0][1] }}
                           </div>
                         </div>
                       @endif

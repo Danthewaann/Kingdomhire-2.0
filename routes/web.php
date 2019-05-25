@@ -19,8 +19,9 @@ Route::name('public.')->group(function () {
 });
 
 Route::get('/cron', function() {
-    Artisan::call('schedule:run');
-    // return redirect()->route('public.home');
+    Artisan::call('scheduler:reservations-to-hires');
+    Artisan::call('scheduler:active-to-inactive-hires');
+    return redirect()->route('public.home');
 });
 
 /* Administrative private routes */

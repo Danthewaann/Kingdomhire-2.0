@@ -319,7 +319,7 @@ class ChartGenerator
         $gantt = null;
         if (count($data) > 0) {
             $gantt = new GanttChart($data, array(
-                'cellwidth' => 20,
+                'cellwidth' => 22,
                 'cellheight' => 35
             ));
         }

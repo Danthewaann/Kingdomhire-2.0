@@ -12,12 +12,12 @@ $(document).ready(function () {
 
     $('.modal-prev').click(function () {
         var vehicle = $(this).data('vehicle');
-        plusSlides(-1, vehicle + '-images');
+        plusSlides(-1, vehicle);
     });
 
     $('.modal-next').click(function () {
         var vehicle = $(this).data('vehicle');
-        plusSlides(1, vehicle + '-images');
+        plusSlides(1, vehicle);
     });
 });
 

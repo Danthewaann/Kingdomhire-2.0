@@ -28,8 +28,8 @@ class WeeklyRateRequest extends FormRequest
         return [
             'name' => 'required',
             'weekly_rate' => 'nullable',
-            'weekly_rate_min' => 'required|numeric|min:1|max:100',
-            'weekly_rate_max' => 'required|numeric|min:2|max:200|gt:weekly_rate_min'
+            'weekly_rate_min' => 'required|numeric|min:1|',
+            'weekly_rate_max' => 'required|numeric|min:2|gt:weekly_rate_min'
         ];
     }
 

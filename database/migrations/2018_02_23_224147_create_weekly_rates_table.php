@@ -17,8 +17,8 @@ class CreateWeeklyRatesTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('slug');
-            $table->float('weekly_rate_min', 5, 2);
-            $table->float('weekly_rate_max', 5, 2);
+            $table->float('weekly_rate_min', 6, 2);
+            $table->float('weekly_rate_max', 6, 2);
             $table->timestamps();
         });
     }

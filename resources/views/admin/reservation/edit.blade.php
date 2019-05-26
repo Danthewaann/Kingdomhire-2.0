@@ -1,7 +1,7 @@
 @extends('layouts.admin-main')
 
 @section('content')
-<div class="col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1">
+<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
   <div class="row">
     @include('admin.common.alert')
     <div class="panel panel-default">
@@ -57,7 +57,7 @@
             </div>
             @if( $errors->reservations->has('reservation') or $errors->reservations->has('hire'))
               <div class="form-group has-error">
-                <div class="col-md-6 col-md-offset-4">
+                <div class="col-sm-6 col-sm-offset-4">
                   <div class="alert alert-danger" role="alert">
                     <div class="help-block">
                       <div class="row">

@@ -75,7 +75,6 @@ class ReservationRequest extends FormRequest
 
                 if (!empty($errorMessages)) {
                     $validator->errors()->merge($errorMessages);
-                    // dd($errorMessages);
                     $this->failedValidation($validator);
                 }
             });

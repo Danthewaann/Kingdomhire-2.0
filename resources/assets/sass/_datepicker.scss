@@ -1,11 +1,11 @@
 .datepicker table tr td.new,
 .datepicker table tr td.old {
-  color: $lighter-green;
+  color: lighten($light-green, 40%);
 }
 
 .datepicker table tr td.today {
   color: white;
-  background-color: $lighter-green;
+  background-color: darken($light-green, 10%);
 }
 
 .datepicker table tr td.day:hover,
@@ -32,4 +32,51 @@
 
 #end_date_calender:hover {
   cursor: pointer;
+}
+
+.datepicker table tr td.disabled, 
+.datepicker table tr td.disabled:hover {
+  color: lighten($light-green, 10%);
+}
+
+.datepicker table tr td span.disabled, 
+.datepicker table tr td span.disabled:hover {
+  color: lighten($light-green, 10%);
+}
+
+.datepicker table tr td.active.active, 
+.datepicker table tr td.active.highlighted.active, 
+.datepicker table tr td.active.highlighted:active, 
+.datepicker table tr td.active:active {
+  background-color: $lighter-green;
+}
+
+.datepicker table tr td.active.active.focus, 
+.datepicker table tr td.active.active:focus, 
+.datepicker table tr td.active.active:hover, 
+.datepicker table tr td.active.highlighted.active.focus, 
+.datepicker table tr td.active.highlighted.active:focus, 
+.datepicker table tr td.active.highlighted.active:hover, 
+.datepicker table tr td.active.highlighted:active.focus, 
+.datepicker table tr td.active.highlighted:active:focus, 
+.datepicker table tr td.active.highlighted:active:hover, 
+.datepicker table tr td.active:active.focus, 
+.datepicker table tr td.active:active:focus, 
+.datepicker table tr td.active:active:hover {
+  background-color: $dark-green;
+}
+
+.datepicker table tr td span.active.active, 
+.datepicker table tr td span.active.disabled.active, 
+.datepicker table tr td span.active.disabled:active, 
+.datepicker table tr td span.active.disabled:hover.active, 
+.datepicker table tr td span.active.disabled:hover:active, 
+.datepicker table tr td span.active:active, 
+.datepicker table tr td span.active:hover.active, 
+.datepicker table tr td span.active:hover:active {
+  background-color: darken($light-green, 10%);
+}
+
+.datepicker table tr td span.active:hover.active:hover {
+  background-color: $dark-green;
 }

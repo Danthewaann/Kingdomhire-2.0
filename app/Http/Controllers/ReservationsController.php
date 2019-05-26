@@ -47,12 +47,12 @@ class ReservationsController extends Controller
      */
     public function store(ReservationRequest $request)
     {
-        if ($request->start_date == date('Y-m-d')) {
-            $reservation = Hire::create($request->all());
+        $reservation = new Reservation($request->all());
+        if ($reservation->hasStarted()) {
+            $reservation = new Hire($request->all());
         }
-        else {
-            $reservation = Reservation::create($request->all());
-        }
+
+        $reservation->save();
 
         Session::flash('status', [
             'reservation' => 'Successfully booked reservation!',

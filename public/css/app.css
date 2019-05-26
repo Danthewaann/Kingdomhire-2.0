@@ -8722,12 +8722,12 @@ img.hover-shadow {
 
 .datepicker table tr td.new,
 .datepicker table tr td.old {
-  color: #3ea771;
+  color: #a8dbc1;
 }
 
 .datepicker table tr td.today {
   color: white;
-  background-color: #3ea771;
+  background-color: #275d42;
 }
 
 .datepicker table tr td.day:hover,
@@ -8754,6 +8754,53 @@ img.hover-shadow {
 
 #end_date_calender:hover {
   cursor: pointer;
+}
+
+.datepicker table tr td.disabled,
+.datepicker table tr td.disabled:hover {
+  color: #45a574;
+}
+
+.datepicker table tr td span.disabled,
+.datepicker table tr td span.disabled:hover {
+  color: #45a574;
+}
+
+.datepicker table tr td.active.active,
+.datepicker table tr td.active.highlighted.active,
+.datepicker table tr td.active.highlighted:active,
+.datepicker table tr td.active:active {
+  background-color: #3ea771;
+}
+
+.datepicker table tr td.active.active.focus,
+.datepicker table tr td.active.active:focus,
+.datepicker table tr td.active.active:hover,
+.datepicker table tr td.active.highlighted.active.focus,
+.datepicker table tr td.active.highlighted.active:focus,
+.datepicker table tr td.active.highlighted.active:hover,
+.datepicker table tr td.active.highlighted:active.focus,
+.datepicker table tr td.active.highlighted:active:focus,
+.datepicker table tr td.active.highlighted:active:hover,
+.datepicker table tr td.active:active.focus,
+.datepicker table tr td.active:active:focus,
+.datepicker table tr td.active:active:hover {
+  background-color: #307251;
+}
+
+.datepicker table tr td span.active.active,
+.datepicker table tr td span.active.disabled.active,
+.datepicker table tr td span.active.disabled:active,
+.datepicker table tr td span.active.disabled:hover.active,
+.datepicker table tr td span.active.disabled:hover:active,
+.datepicker table tr td span.active:active,
+.datepicker table tr td span.active:hover.active,
+.datepicker table tr td span.active:hover:active {
+  background-color: #275d42;
+}
+
+.datepicker table tr td span.active:hover.active:hover {
+  background-color: #307251;
 }
 
 nav {

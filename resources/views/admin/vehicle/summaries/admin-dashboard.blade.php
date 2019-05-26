@@ -10,14 +10,10 @@
       <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
     </div>
   @else
-    @foreach($vehicle->images as $image)
-      @if($loop->first)
-        <div class="vehicle-img">
-          <img class="admin" src="{{ $image->image_uri }}"/>
-            <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
-        </div>
-      @endif
-    @endforeach
+    <div class="vehicle-img">
+      <img class="admin" src="{{ $vehicle->images->first()->image_uri }}"/>
+        <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
+    </div> 
   @endif
   <table class="table table-condensed vehicle-table-admin">
     <tr>
@@ -54,13 +50,7 @@
     </tr>
     <tr>
       <th class="last">Weekly Rate</th>
-      <td class="last">
-        @if($vehicle->rate != null)
-          {{ $vehicle->rate->getFullName() }}
-        @else
-          N/A
-        @endif
-      </td>
+      <td class="last">@if($vehicle->rate != null) {{ $vehicle->rate->getFullName() }} @else N/A @endif</td>
     </tr>
   </table>
 </div>

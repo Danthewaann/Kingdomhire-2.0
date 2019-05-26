@@ -9001,7 +9001,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 768px) {
   .vehicle-img img.public {
-    height: 220px;
+    height: 200px;
   }
 }
 
@@ -9013,7 +9013,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 1200px) {
   .vehicle-img img.public {
-    height: 230px;
+    height: 220px;
   }
 }
 
@@ -9095,7 +9095,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 768px) {
   .vehicle-img div.vehicle-img-na h2.public {
-    line-height: 220px;
+    line-height: 200px;
   }
 }
 
@@ -9107,7 +9107,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 1200px) {
   .vehicle-img div.vehicle-img-na h2.public {
-    line-height: 230px;
+    line-height: 220px;
   }
 }
 

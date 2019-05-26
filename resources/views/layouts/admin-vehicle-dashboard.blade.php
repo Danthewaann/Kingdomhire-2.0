@@ -22,9 +22,11 @@
   <div class="jumbotron jumbotron-admin">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12">
-          @include('admin.common.alert')
-        </div>
+        @if(session()->has('status'))
+          <div class="col-lg-12">
+            @include('admin.common.alert')
+          </div>
+        @endif
         @include('admin.vehicle.summaries.vehicle-dashboard')
         <div class="col-lg-8 col-md-8 col-sm-6">
           @yield('content')

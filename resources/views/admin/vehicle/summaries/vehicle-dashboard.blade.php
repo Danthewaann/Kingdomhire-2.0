@@ -30,43 +30,19 @@
       </tr>
       <tr>
         <th>Vehicle Type</th>
-        <td>
-          @if($vehicle->type != null)
-            {{ $vehicle->type->name }}
-          @else
-            N/A
-          @endif
-        </td>
+        <td>@if($vehicle->type != null) {{ $vehicle->type->name }} @else N/A @endif</td>
       </tr>
       <tr>
         <th>Fuel Type</th>
-        <td>
-          @if($vehicle->fuelType != null)
-            {{ $vehicle->fuelType->name }}
-          @else
-            N/A
-          @endif
-        </td>
+        <td>@if($vehicle->fuelType != null) {{ $vehicle->fuelType->name }} @else N/A @endif</td>
       </tr>
       <tr>
         <th>Gear Type</th>
-        <td>
-          @if($vehicle->gearType != null)
-            {{ $vehicle->gearType->name }}
-          @else
-            N/A
-          @endif
-        </td>
+        <td>@if($vehicle->gearType != null) {{ $vehicle->gearType->name }} @else N/A @endif</td>
       </tr>
       <tr>
         <th class="last">Weekly Rate</th>
-        <td class="last">
-          @if($vehicle->rate != null)
-            {{ $vehicle->rate->getFullName() }}
-          @else
-            N/A
-          @endif
-        </td>
+        <td class="last">@if($vehicle->rate != null) {{ $vehicle->rate->getFullName() }} @else N/A @endif</td>
       </tr>
       <tr>
         <th>Seats</th>
@@ -99,7 +75,7 @@
                 <a class="btn btn-primary" href="{{ route('admin.vehicles.edit', ['vehicle' => $vehicle->slug]) }}"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
               </div>
               <div class="btn-group">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#vehicle-{{ $vehicle->id }}-discontinue"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;Discontinue</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ $vehicle->slug }}-discontinue"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;Discontinue</button>
               </div>
             @else
               <div class="btn-group">
@@ -107,7 +83,7 @@
               </div>
             @endif
             <div class="btn-group">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#vehicle-{{ $vehicle->id }}-delete"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ $vehicle->slug }}-delete"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
             </div>
           </div>
         </div>

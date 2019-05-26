@@ -46,49 +46,48 @@
               <a href="{{ route('public.contact') }}"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;Contact Us</a>
             </li>
           </ul>
-          <!-- Right Side Of Navbar -->
-          <ul class="nav navbar-nav navbar-right">
-            <!-- Authentication Links -->
-            @auth
-              <li>
-                <a href="{{ route('admin.home') }}"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;Admin Dashboard</a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                  <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ Auth::user()->name }} <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="{{ route('admin.users.edit', ['user' => Auth::user()->id]) }}">Update info</a>
-                  </li>
-                  <li>
-                    <a href="{{ route('admin.users.edit-password', ['user' => Auth::user()->id]) }}">Update password</a>
-                  </li>
-                  <li>
-                    <a href="{{ route('logout') }}"
-                      onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                      Logout
-                    </a>
+					@auth
+						<!-- Right Side Of Navbar -->
+						<ul class="nav navbar-nav navbar-right">
+							<!-- Authentication Links -->
+							<li>
+								<a href="{{ route('admin.home') }}"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;Admin Dashboard</a>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+									<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ Auth::user()->name }} <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="{{ route('admin.users.edit', ['user' => Auth::user()->id]) }}">Update info</a>
+									</li>
+									<li>
+										<a href="{{ route('admin.users.edit-password', ['user' => Auth::user()->id]) }}">Update password</a>
+									</li>
+									<li>
+										<a href="{{ route('logout') }}"
+											onclick="event.preventDefault();
+														document.getElementById('logout-form').submit();">
+											Logout
+										</a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                      {{ csrf_field() }}
-                    </form>
-                  </li>
-                </ul>
-              </li>
-            @endauth
-          </ul>
+										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+											{{ csrf_field() }}
+										</form>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					@endauth
         </div>
       </div>
     </nav>
     @yield('content')
-  </div>
-  <div class="jumbotron jumbotron-footer">
-    <div class="container">
-      <!-- <span class="glyphicon glyphicon-copyright-mark"></span>  -->
-      <p>&copy; {{ date('Y') }} Kingdomhire.com</p>
-    </div>
+		<div class="jumbotron jumbotron-footer">
+			<div class="container">
+				<p>&copy; {{ date('Y') }} Kingdomhire.com</p>
+			</div>
+		</div>
   </div>
 
   <!-- Scripts -->

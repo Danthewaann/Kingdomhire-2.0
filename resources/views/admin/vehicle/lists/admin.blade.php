@@ -11,7 +11,7 @@
         </div>
       </div>
       @foreach($vehicleTypes as $vehicleType)
-        @if($vehicleType->vehicles->count() > 0)
+        @if($vehicleType->vehicles->isNotEmpty())
           <div id="{{ str_replace(" ", "-", $vehicleType->name) }}" class="tab-pane fade">
             <div class="row">
               @foreach($vehicleType->vehicles->sortByDesc('created_at') as $vehicle)

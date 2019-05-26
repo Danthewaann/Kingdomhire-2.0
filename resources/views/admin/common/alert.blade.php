@@ -3,7 +3,6 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
-    {{--<span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;--}}
     @if(is_array(session()->get('status')))
       @foreach(session()->get('status') as $message)
         @if($loop->first)

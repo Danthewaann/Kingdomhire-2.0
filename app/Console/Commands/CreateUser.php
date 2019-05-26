@@ -20,7 +20,7 @@ class CreateUser extends Command
      *
      * @var string
      */
-    protected $description = 'Create a new user (name, email and password)';
+    protected $description = 'Create a new user (name + email with password prompt)';
 
     /**
      * Create a new command instance.
@@ -44,6 +44,7 @@ class CreateUser extends Command
             system('stty -echo');
             $password = rtrim(fgets(STDIN));
             system('stty echo');
+            echo "\n";
             User::create([
                 'name' => $this->argument('name'),
                 'email' => $this->argument('email'),

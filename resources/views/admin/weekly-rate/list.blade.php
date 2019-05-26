@@ -9,37 +9,43 @@
     </div>
   @else
     <div class="panel-body">
-      <h3 style="margin-left: -5px">No weekly rates</h3>
+      <h3>No weekly rates</h3>
     </div>
   @endif
   @if($rates->isNotEmpty())
-    <table class="table table-condensed panel-table">
-      <tr>
-        <th class="first">Name</th>
-        <th>Min Rate</th>
-        <th>Max Rate</th>
-        <th>Vehicles</th>
-        <th></th>
-      </tr>
-      @foreach($rates as $rate)
+    <div class="scrollable-table">
+      <table class="table table-condensed panel-table">
+        <thead>
         <tr>
-          <td class="first">{{ $rate->name }}</td>
-          <td>£{{ $rate->weekly_rate_min }}</td>
-          <td>£{{ $rate->weekly_rate_max }}</td>
-          <td>{{ $rate->vehicles->count() }}</td>
-          <td>
-            <div class="btn-group btn-group-vertical" style="width: 100%">
-              <div class="btn-group">
-                <a href="{{ route('admin.weekly-rates.edit', ['rate' => $rate->slug]) }}"
-                   class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
-              </div>
-              <div class="btn-group">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#weekly-rate-{{ $rate->id }}-delete" style="float: right"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
-              </div>
-            </div>
-          </td>
+          <th class="first">Name</th>
+          <th>Min Rate</th>
+          <th>Max Rate</th>
+          <th>Vehicles</th>
+          <th></th>
         </tr>
-      @endforeach
-    </table>
+        </thead>
+        <tbody>
+        @foreach($rates as $rate)
+          <tr>
+            <td class="first">{{ $rate->name }}</td>
+            <td>£{{ $rate->weekly_rate_min }}</td>
+            <td>£{{ $rate->weekly_rate_max }}</td>
+            <td>{{ $rate->vehicles->count() }}</td>
+            <td>
+              <div class="btn-group btn-group-vertical" style="width: 100%">
+                <div class="btn-group">
+                  <a href="{{ route('admin.weekly-rates.edit', ['rate' => $rate->slug]) }}"
+                    class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
+                </div>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#weekly-rate-{{ $rate->id }}-delete" style="float: right"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        @endforeach
+        </tbody>
+      </table>
+    </div>
   @endif
 </div>

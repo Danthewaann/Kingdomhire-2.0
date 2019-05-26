@@ -6,7 +6,7 @@
     </div>  
     @else
     <div class="panel-body">
-      <h3 style="margin-left: -5px">No reservations</h3>
+      <h3>No reservations</h3>
     </div>
     @endif
   @if($vehicle->reservations->isNotEmpty())

@@ -13,29 +13,35 @@
     </div>
   @endif
   @if($vehicleFuelTypes->isNotEmpty())
-    <table class="table table-condensed panel-table">
-      <tr>
-        <th class="first">Name</th>
-        <th>Vehicles</th>
-        <th></th>
-      </tr>
-      @foreach($vehicleFuelTypes as $vehicleFuelType)
+    <div class="scrollable-table">
+      <table class="table table-condensed panel-table">
+        <thead>
         <tr>
-          <td class="first">{{ $vehicleFuelType->name }}</td>
-          <td>{{ $vehicleFuelType->vehicles->count() }}</td>
-          <td>
-            <div class="btn-group btn-group-vertical" style="width: 100%">
-              <div class="btn-group">
-                <a href="{{ route('admin.vehicle-fuel-types.edit', ['vehicle-fuel-type' => $vehicleFuelType->slug]) }}"
-                   class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
-              </div>
-              <div class="btn-group">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#vehicle-fuel-type-{{ $vehicleFuelType->id }}-delete" style="float: right"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
-              </div>
-            </div>
-          </td>
+          <th class="first">Name</th>
+          <th>Vehicles</th>
+          <th></th>
         </tr>
-      @endforeach
-    </table>
+        </thead>
+        <tbody>
+        @foreach($vehicleFuelTypes as $vehicleFuelType)
+          <tr>
+            <td class="first">{{ $vehicleFuelType->name }}</td>
+            <td>{{ $vehicleFuelType->vehicles->count() }}</td>
+            <td>
+              <div class="btn-group btn-group-vertical" style="width: 100%">
+                <div class="btn-group">
+                  <a href="{{ route('admin.vehicle-fuel-types.edit', ['vehicle-fuel-type' => $vehicleFuelType->slug]) }}"
+                    class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
+                </div>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#vehicle-fuel-type-{{ $vehicleFuelType->id }}-delete" style="float: right"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        @endforeach
+        </tbody>
+      </table>
+    </div>
   @endif
 </div>

@@ -36,13 +36,13 @@
         <div class="collapse navbar-collapse vehicle-dashboard-navbar-collapse" id="app-navbar-collapse">
           <!-- Left Side Of Navbar -->
           <ul class="nav navbar-nav">
-            <li class="{{ Request::is('/') ? 'active' : '' }}">
+            <li class="{{ Request::is('/') || Request::is('home') ? 'active' : '' }}">
               <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
             </li>
             <li class="{{ Request::is('vehicles') ? ' active' : '' }}">
               <a href="{{ route('public.vehicles') }}"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Vehicles</a>
             </li>
-            <li class="{{ Request::is('contact') ? ' active' : '' }}">
+            <li class="{{ Request::is('contact-us') ? ' active' : '' }}">
               <a href="{{ route('public.contact') }}"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;Contact Us</a>
             </li>
           </ul>

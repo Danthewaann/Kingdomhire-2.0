@@ -106,7 +106,7 @@ class Vehicle extends Model
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
 
-        $vehicle_ids = Vehicle::withTrashed()->pluck('id')->toArray();
+        $vehicle_ids = Vehicle::withTrashed()->pluck('name')->toArray();
         if (in_array($randomString, $vehicle_ids)) {
             return Vehicle::createUniqueId();
         }

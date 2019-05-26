@@ -22,11 +22,11 @@
         @include('admin.charts.active-hires')
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-12">
-            @include('admin.hire.list-active') 
-            @include('admin.reservation.list')
             @if($vehicles->isNotEmpty())
               @include('admin.reservation.create')
             @endif
+            @include('admin.hire.list-active') 
+            @include('admin.reservation.list')
             @include('admin.hire.list-inactive') 
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12">

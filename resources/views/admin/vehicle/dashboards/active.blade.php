@@ -10,9 +10,9 @@
 @endif
 <div class="row">
   <div class="col-lg-6 col-md-7 col-sm-12">
+    @include('admin.vehicle.reservations.create')
     @include('admin.vehicle.hires.show-active')
     @include('admin.vehicle.reservations.show-all')
-    @include('admin.vehicle.reservations.create')
     @include('admin.vehicle.hires.show-inactive')
   </div>
   <div class="col-lg-6 col-md-5 col-sm-12">

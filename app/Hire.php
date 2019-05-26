@@ -90,7 +90,7 @@ class Hire extends ConflictableModel
     public static function getYearlyHires()
     {
         $years = [];
-        $hires = Hire::whereIsActive(false)->get();
+        $hires = Hire::all();
         foreach ($hires as $hire) {
             $year = date('Y', strtotime($hire->end_date));
             if (!array_key_exists($year, $years)) {

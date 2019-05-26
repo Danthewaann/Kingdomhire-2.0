@@ -93,7 +93,7 @@ class ChartGenerator
         ]);
     }
 
-    public static function drawOverallPastHiresBarChart($pastHires, $height=400)
+    public static function drawOverallHiresBarChart($hires, $height=400)
     {
         $years = [];
         $maxAmountOfHiresForMonth = 0;
@@ -113,7 +113,7 @@ class ChartGenerator
             'Dec' => 0
         ];
 
-        if(count($pastHires) == 0) {
+        if(count($hires) == 0) {
             $pastHiresTable = \Lava::DataTable();
             try {
                 $pastHiresTable->addStringColumn('Month')
@@ -132,7 +132,7 @@ class ChartGenerator
             }
         }
         else {
-            foreach ($pastHires as $hire) {
+            foreach ($hires as $hire) {
                 $year = date('Y', strtotime($hire->end_date));
                 if (!array_key_exists($year, $years)) {
                     $years[$year] = $hiresPerMonth;

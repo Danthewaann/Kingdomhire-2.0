@@ -35,7 +35,7 @@ class AdminController extends Controller
         $activeHires = Hire::whereIsActive(true)->get();
         $yearlyHires = Hire::getYearlyHires();
         ChartGenerator::drawReservationsBarChart($activeVehicles);
-        ChartGenerator::drawOverallPastHiresBarChart($pastHires);
+        ChartGenerator::drawOverallHiresBarChart(Hire::all());
 
         return view('admin.admin-home', [
             'vehicles' => $activeVehicles,

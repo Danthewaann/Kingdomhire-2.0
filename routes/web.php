@@ -13,9 +13,10 @@
 
 /* Public page routes */
 Route::name('public.')->group(function () {
-    Route::get('/', 'PublicController@home')->name('home');
+    Route::get('/', 'PublicController@home')->name('root');
+    Route::get('/home', 'PublicController@home')->name('home');
     Route::get('/vehicles', 'PublicController@vehicles')->name('vehicles');
-    Route::get('/contact', 'PublicController@contact')->name('contact');
+    Route::get('/contact-us', 'PublicController@contact')->name('contact');
 });
 
 Route::get('/cron', function() {
@@ -70,7 +71,7 @@ Route::prefix('admin')->group(function () {
 
         /* User specific routes */
         Route::resource('users', 'UsersController')->only([
-            'index', 'create', 'store', 'edit', 'update', 'destroy'
+            'edit', 'update'
         ]);
         Route::get('/users/{user}/change-password', 'UsersController@editPassword')->name('users.edit-password');
         Route::patch('/users/{user}/change-password', 'UsersController@updatePassword')->name('users.update-password');

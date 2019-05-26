@@ -38,14 +38,14 @@ class ListUsers extends Command
      */
     public function handle()
     {
-        $users = User::all();
-        if($users->isNotEmpty()) {
-            foreach($users as $user) {
-                echo "Name: " . $user->name . " Email: " . $user->email . "\n";
-            }
+        $headers = ['Name', 'Email'];
+        $users = User::all(['name', 'email'])->toArray();
+
+        if(count($users) < 1) {
+            $this->error("No users exist!");
         }
         else {
-            echo "No users exist!\n";
+            $this->table($headers, $users);
         }
     }
 }

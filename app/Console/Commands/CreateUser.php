@@ -40,20 +40,16 @@ class CreateUser extends Command
     public function handle()
     {
         try {
-            echo "User password: ";
-            system('stty -echo');
-            $password = rtrim(fgets(STDIN));
-            system('stty echo');
-            echo "\n";
+            $password = $this->secret('Enter password');
             User::create([
                 'name' => $this->argument('name'),
                 'email' => $this->argument('email'),
                 'password' => Hash::make($password)
             ]);
-            echo "Successfully created user!\n";
+            $this->info("Successfully created user!");
         } catch (\Illuminate\Database\QueryException $exception) { 
-            echo "Failed to create user!\n";
-            echo $exception->getMessage() . "\n";
+            $this->error("Failed to create user!\n");
+            $this->error($exception->getMessage());
         }
     }
 }

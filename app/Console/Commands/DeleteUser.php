@@ -40,11 +40,11 @@ class DeleteUser extends Command
     {
         $user = User::where('email', $this->argument('email'))->first();
         if(is_null($user)) {
-            echo "No user exists with provided email!\n";
+            $this->error("No user exists with provided email!");
         }
         else {
             $user->delete();
-            echo "Successfully deleted user with email: ".$this->argument('email')."\n";
+            $this->info("Successfully deleted user with email: ".$this->argument('email'));
         }
     }
 }

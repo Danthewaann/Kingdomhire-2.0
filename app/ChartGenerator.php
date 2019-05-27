@@ -132,7 +132,7 @@ class ChartGenerator
             }
         }
         else {
-            foreach ($hires as $hire) {
+            foreach ($hires->sortBy('end_date') as $hire) {
                 $year = date('Y', strtotime($hire->end_date));
                 if (!array_key_exists($year, $years)) {
                     $years[$year] = $hiresPerMonth;

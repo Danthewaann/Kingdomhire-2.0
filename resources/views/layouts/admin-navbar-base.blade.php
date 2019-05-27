@@ -51,7 +51,7 @@
         <li>
           <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;Public Site</a>
         </li>
-        <!-- <li class="dropdown{{ Request::is('admin/users*') ? ' active' : '' }}">
+        {{-- <li class="dropdown{{ Request::is('admin/users*') ? ' active' : '' }}">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
             <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Users <span class="caret"></span>
           </a>
@@ -63,7 +63,7 @@
               <a href="{{ route('admin.users.index') }}" class="submenu">Users</span></a>
             </li>
           </ul>
-        </li> -->
+        </li> --}}
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
             <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ Auth::user()->name }} <span class="caret"></span>

@@ -9267,3 +9267,7 @@ body {
   color: white;
 }
 
+option:disabled {
+  color: #3ea771;
+}
+

@@ -50,3 +50,7 @@ body {
 .has-error .input-group-addon {
   color: white;
 }
+
+option:disabled {
+  color: $lighter-green;
+}

@@ -57,6 +57,11 @@
                     <label for="rate_name" class="control-label col-sm-3">Weekly Rate*</label>
                     <div class="col-sm-9">
                       <select id="rate_name" class="form-control" name="rate_name">
+                        @if($rates->count() > 0)
+                          <option disabled selected>Select...</option>
+                        @else
+                          <option value="" selected>N/A</option>
+                        @endif
                         @foreach($rates as $rate)
                           <option value="{{ $rate->name }}">{{ $rate->getFullname() }}</option>
                         @endforeach
@@ -67,6 +72,11 @@
                     <label for="type" class="control-label col-sm-3">Vehicle Type*</label>
                     <div class="col-sm-9">
                       <select id="type" class="form-control" name="type">
+                        @if($types->count() > 0)
+                          <option disabled selected>Select...</option>
+                        @else
+                          <option value="" selected>N/A</option>
+                        @endif
                         @foreach($types as $type)
                           <option value="{{ $type->name }}">{{ $type->name }}</option>
                         @endforeach
@@ -77,6 +87,11 @@
                     <label for="fuel_type" class="control-label col-sm-3">Fuel Type*</label>
                     <div class="col-sm-9">
                       <select id="fuel_type" class="form-control" name="fuel_type">
+                        @if($fuelTypes->count() > 0)
+                          <option disabled selected>Select...</option>
+                        @else
+                          <option value="" selected>N/A</option>
+                        @endif
                         @foreach($fuelTypes as $type)
                           <option value="{{ $type->name }}">{{ $type->name }}</option>
                         @endforeach
@@ -87,6 +102,11 @@
                     <label for="gear_type" class="control-label col-sm-3">Gear Type*</label>
                     <div class="col-sm-9">
                       <select id="gear_type" class="form-control" name="gear_type">
+                        @if($gearTypes->count() > 0)
+                          <option disabled selected>Select...</option>
+                        @else
+                          <option value="" selected>N/A</option>
+                        @endif
                         @foreach($gearTypes as $type)
                           <option value="{{ $type->name }}">{{ $type->name }}</option>
                         @endforeach

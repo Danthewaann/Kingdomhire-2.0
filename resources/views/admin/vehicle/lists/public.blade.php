@@ -1,47 +1,54 @@
-<div class="col-lg-2 col-md-3 col-sm-3">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3>Vehicles</h2>
-    </div>
-    <div class="panel-body" style="padding: 0">
-      <ul class="nav nav-pills nav-stacked vehicle-navbar-tabs" id="myTabs">
-        <li class="active"><a href="#all" class="btn" data-toggle="pill">All</a></li>
-        @foreach($vehicleTypes as $vehicleType)
-          @if($vehicleType->vehicles->isNotEmpty())
-            <li><a data-toggle="pill" class="btn" href="#{{ str_replace(" ", "-", $vehicleType->name) }}">{{ $vehicleType->name }}s</a></li>
-          @endif
-        @endforeach
-      </ul>
-    </div>
+@if($vehicleCount < 1)
+  <div class="col-lg-12">
+    <h1 style="text-align: center">No Vehicles</h2>
+    <h3 style="text-align: center">Come back later!</h5>
   </div>
-</div>
-<div class="col-lg-10 col-sm-9">
-  <div class="tab-content">
-    <div id="all" class="tab-pane fade in active">
-      <div class="row">
-        @foreach($vehicleTypes as $vehicleType)
-          @if($vehicleType->vehicles->isNotEmpty())
-            @foreach($vehicleType->vehicles as $vehicle)
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                @include('admin.vehicle.summaries.public')
-              </div>
-            @endforeach
-          @endif
-        @endforeach
+@else
+  <div class="col-lg-2 col-md-3 col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>Vehicles</h2>
+      </div>
+      <div class="panel-body" style="padding: 0">
+        <ul class="nav nav-pills nav-stacked vehicle-navbar-tabs" id="myTabs">
+          <li class="active"><a href="#all" class="btn" data-toggle="pill">All</a></li>
+          @foreach($vehicleTypes as $vehicleType)
+            @if($vehicleType->vehicles->isNotEmpty())
+              <li><a data-toggle="pill" class="btn" href="#{{ str_replace(" ", "-", $vehicleType->name) }}">{{ $vehicleType->name }}s</a></li>
+            @endif
+          @endforeach
+        </ul>
       </div>
     </div>
-    @foreach($vehicleTypes as $vehicleType)
-      @if($vehicleType->vehicles->isNotEmpty())
-        <div id="{{ str_replace(" ", "-", $vehicleType->name) }}" class="tab-pane fade">
-          <div class="row">
-            @foreach($vehicleType->vehicles as $vehicle)
-              <div class="col-lg-4 col-md-6 col-sm-6">
-                @include('admin.vehicle.summaries.public')
-              </div>
-            @endforeach
-          </div>
-        </div>
-      @endif
-    @endforeach
   </div>
-</div>
+  <div class="col-lg-10 col-sm-9">
+    <div class="tab-content">
+      <div id="all" class="tab-pane fade in active">
+        <div class="row">
+          @foreach($vehicleTypes as $vehicleType)
+            @if($vehicleType->vehicles->isNotEmpty())
+              @foreach($vehicleType->vehicles as $vehicle)
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  @include('admin.vehicle.summaries.public')
+                </div>
+              @endforeach
+            @endif
+          @endforeach
+        </div>
+      </div>
+      @foreach($vehicleTypes as $vehicleType)
+        @if($vehicleType->vehicles->isNotEmpty())
+          <div id="{{ str_replace(" ", "-", $vehicleType->name) }}" class="tab-pane fade">
+            <div class="row">
+              @foreach($vehicleType->vehicles as $vehicle)
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                  @include('admin.vehicle.summaries.public')
+                </div>
+              @endforeach
+            </div>
+          </div>
+        @endif
+      @endforeach
+    </div>
+  </div>
+@endif

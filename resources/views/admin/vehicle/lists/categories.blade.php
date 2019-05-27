@@ -10,7 +10,7 @@
     <div class="panel-heading">
       <h3>No vehicles present</h3>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" style="padding: 0">
       <a class="btn btn-lg btn-primary" style="width: 100%; border: 0; border-radius: 0" role="button" href="{{ route('admin.vehicles.create') }}"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Add Vehicle</a>
     </div>
   @else

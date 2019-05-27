@@ -11,7 +11,8 @@ class PublicController extends Controller
     public function vehicles()
     {
         return view('public.vehicles', [
-            'vehicleTypes' => VehicleType::with(['vehicles'])->get()
+            'vehicleTypes' => VehicleType::with(['vehicles'])->get(),
+            'vehicleCount' => Vehicle::count()
         ]);
     }
 

@@ -85,7 +85,7 @@
     @yield('content')
 		<div class="jumbotron jumbotron-footer">
 			<div class="container">
-				<p>&copy; {{ date('Y') }} Kingdomhire.com</p>
+				<p>&copy; {{ date('Y') }} kingdomhire.com</p>
 			</div>
 		</div>
   </div>

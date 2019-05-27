@@ -19,11 +19,6 @@ Route::name('public.')->group(function () {
     Route::get('/contact-us', 'PublicController@contact')->name('contact');
 });
 
-Route::get('/cron', function() {
-    Artisan::call('scheduler:reservations-to-hires');
-    Artisan::call('scheduler:active-to-inactive-hires');
-    return redirect()->route('public.home');
-});
 
 /* Administrative private routes */
 Route::prefix('admin')->group(function () {

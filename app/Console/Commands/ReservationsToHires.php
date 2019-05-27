@@ -54,9 +54,12 @@ class ReservationsToHires extends Command
                         'vehicle_id' => $reservation->vehicle->id,
                     ));
 
+                    $message = "[ReservationsToHires] Reservation [id = " . $reservation->name .
+                    ", start_date = " . $reservation->start_date . ", end_date = " . $reservation->end_date . "] converted to hire";
+
                     Reservation::destroy($reservation->id);
-                    Log::channel('cron')->info("[ReservationsToHires] Reservation [id = " . $reservation->name .
-                        ", start_date = " . $reservation->start_date . ", end_date = " . $reservation->end_date . "] converted to hire");
+                    Log::channel('cron')->info($message);
+                    $this->info($message);
                 }
             }
 

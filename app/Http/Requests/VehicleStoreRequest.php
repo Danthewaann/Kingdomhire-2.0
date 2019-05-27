@@ -27,6 +27,10 @@ class VehicleStoreRequest extends FormRequest
             'make' => 'required',
             'model' => 'required',
             'seats' => 'required|numeric|min:1|max:256',
+            'weeklyRate' => 'required',
+            'vehicleType' => 'required',
+            'fuelType' => 'required',
+            'gearType' => 'required',
             'vehicle_images' => 'nullable',
             'vehicle_images.*' => 'image|mimes:jpeg,jpg,png,gif'
         ];

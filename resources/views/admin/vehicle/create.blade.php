@@ -44,7 +44,7 @@
                     <label for="seats" class="control-label col-sm-3">Seats*</label>
                     <div class="col-sm-9">
                       <input type="number" class="form-control" id="seats" name="seats" placeholder="Enter number of seats" value="{{ old('seats') }}" autocomplete="off">
-                      @if( $errors->has('seats'))
+                      @if($errors->has('seats'))
                         <div class="help-block">
                           <div class="alert alert-danger" role="alert">
                             <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('seats') }}</strong>
@@ -54,63 +54,87 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="rate_name" class="control-label col-sm-3">Weekly Rate*</label>
+                    <label for="weeklyRate" class="control-label col-sm-3">Weekly Rate*</label>
                     <div class="col-sm-9">
-                      <select id="rate_name" class="form-control" name="rate_name">
-                        @if($rates->count() > 0)
-                          <option disabled selected>Select...</option>
-                        @else
-                          <option value="" selected>N/A</option>
+                      <select id="weeklyRate" class="form-control" name="weeklyRate">
+                        @if($weeklyRates->count() > 0)
+                          <option disabled {{ old("weeklyRate") == "" ? "selected" : "" }}>Select...</option>
                         @endif
-                        @foreach($rates as $rate)
-                          <option value="{{ $rate->name }}">{{ $rate->getFullname() }}</option>
+                        @foreach($weeklyRates as $rate)
+                          <option value="{{ $rate->name }}" {{ old("weeklyRate") == $rate->name ? "selected" : "" }}>{{ $rate->getFullname() }}</option>
                         @endforeach
+                        <option value="na" {{ old("weeklyRate") == "na" ? "selected" : "" }}>N/A</option>
                       </select>
+                      @if($errors->has('weeklyRate'))
+                        <div class="help-block">
+                          <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('weeklyRate') }}</strong>
+                          </div>
+                        </div>
+                      @endif
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="type" class="control-label col-sm-3">Vehicle Type*</label>
+                    <label for="vehicleType" class="control-label col-sm-3">Vehicle Type*</label>
                     <div class="col-sm-9">
-                      <select id="type" class="form-control" name="type">
-                        @if($types->count() > 0)
-                          <option disabled selected>Select...</option>
-                        @else
-                          <option value="" selected>N/A</option>
+                      <select id="vehicleType" class="form-control" name="vehicleType">
+                        @if($vehicleTypes->count() > 0)
+                          <option disabled {{ old("vehicleType") == "" ? "selected" : "" }}>Select...</option>
                         @endif
-                        @foreach($types as $type)
-                          <option value="{{ $type->name }}">{{ $type->name }}</option>
+                        @foreach($vehicleTypes as $type)
+                          <option value="{{ $type->name }}" {{ old("vehicleType") == $type->name ? "selected" : "" }}>{{ $type->name }}</option>
                         @endforeach
+                        <option value="na" {{ old("vehicleType") == "na" ? "selected" : "" }}>N/A</option>
                       </select>
+                      @if($errors->has('vehicleType'))
+                        <div class="help-block">
+                          <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('vehicleType') }}</strong>
+                          </div>
+                        </div>
+                      @endif
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="fuel_type" class="control-label col-sm-3">Fuel Type*</label>
+                    <label for="fuelType" class="control-label col-sm-3">Fuel Type*</label>
                     <div class="col-sm-9">
-                      <select id="fuel_type" class="form-control" name="fuel_type">
+                      <select id="fuelType" class="form-control" name="fuelType">
                         @if($fuelTypes->count() > 0)
-                          <option disabled selected>Select...</option>
-                        @else
-                          <option value="" selected>N/A</option>
+                          <option disabled {{ old("fuelType") == "" ? "selected" : "" }}>Select...</option>
                         @endif
                         @foreach($fuelTypes as $type)
-                          <option value="{{ $type->name }}">{{ $type->name }}</option>
+                          <option value="{{ $type->name }}" {{ old("fuelType") == $type->name ? "selected" : "" }}>{{ $type->name }}</option>
                         @endforeach
+                        <option value="na" {{ old("fuelType") == "na" ? "selected" : "" }}>N/A</option>
                       </select>
+                      @if($errors->has('fuelType'))
+                        <div class="help-block">
+                          <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('fuelType') }}</strong>
+                          </div>
+                        </div>
+                      @endif
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="gear_type" class="control-label col-sm-3">Gear Type*</label>
+                    <label for="gearType" class="control-label col-sm-3">Gear Type*</label>
                     <div class="col-sm-9">
-                      <select id="gear_type" class="form-control" name="gear_type">
+                      <select id="gearType" class="form-control" name="gearType">
                         @if($gearTypes->count() > 0)
-                          <option disabled selected>Select...</option>
-                        @else
-                          <option value="" selected>N/A</option>
+                          <option disabled {{ old("gearType") == "" ? "selected" : "" }}>Select...</option>
                         @endif
                         @foreach($gearTypes as $type)
-                          <option value="{{ $type->name }}">{{ $type->name }}</option>
+                          <option value="{{ $type->name }}" {{ old("gearType") == $type->name ? "selected" : "" }}>{{ $type->name }}</option>
                         @endforeach
+                        <option value="na" {{ old("gearType") == "na" ? "selected" : "" }}>N/A</option>
                       </select>
+                      @if($errors->has('gearType'))
+                        <div class="help-block">
+                          <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('gearType') }}</strong>
+                          </div>
+                        </div>
+                      @endif
                     </div>
                   </div>
                   <div class="form-group{{ $errors->has('vehicle_images') ? ' has-error' : '' }}">

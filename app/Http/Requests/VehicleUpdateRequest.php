@@ -31,7 +31,11 @@ class VehicleUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'vehicle_status' => 'nullable',
+            'status' => 'nullable',
+            'weeklyRate' => 'required',
+            'vehicleType' => 'required',
+            'fuelType' => 'required',
+            'gearType' => 'required',
             'vehicle_images_add' => 'nullable',
             'vehicle_images_add.*' => 'image|mimes:jpeg,jpg,png,gif',
             'vehicle_images_del' => 'nullable|array'

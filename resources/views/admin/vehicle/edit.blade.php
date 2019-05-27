@@ -19,11 +19,11 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label for="vehicle_status">Status</label>
+                <label for="status">Status</label>
                 @if($vehicle->status == 'Out for hire')
-                  <input type="text" id="vehicle_status" class="form-control" disabled value="{{ $vehicle->status }}">
+                  <input type="text" id="status" class="form-control" disabled value="{{ $vehicle->status }}">
                 @else
-                <select id="vehicle_status" class="form-control" name="vehicle_status">
+                <select id="status" class="form-control" name="status">
                   <option value="{{ $vehicle->status }}">{{ $vehicle->status }}</option>
                   @if($vehicle->status == 'Available')
                     <option value="Unavailable">Unavailable</option>
@@ -34,10 +34,10 @@
                 @endif
               </div>
               <div class="form-group">
-                <label for="vehicle_type">Vehicle Type</label>
-                <select id="vehicle_type" class="form-control" name="vehicle_type">
-                  <option value="{{ $vehicle->type != null ? $vehicle->type->name : '' }}" selected>{{ $vehicle->type != null ? $vehicle->type->name : 'N/A' }}</option>
-                  @foreach($types as $type)
+                <label for="vehicleType">Vehicle Type</label>
+                <select id="vehicleType" class="form-control" name="vehicleType">
+                  <option value="{{ $vehicle->type != null ? $vehicle->type->name : 'na' }}" selected>{{ $vehicle->type != null ? $vehicle->type->name : 'N/A' }}</option>
+                  @foreach($vehicleTypes as $type)
                       @if($vehicle->type != null)
                         @if($type->name != $vehicle->type->name)
                           <option value="{{ $type->name }}">{{ $type->name }}</option>
@@ -47,14 +47,14 @@
                       @endif
                   @endforeach
                   @if($vehicle->type != null)
-                    <option value="">N/A</option>
+                    <option value="na">N/A</option>
                   @endif
                 </select>
               </div>
               <div class="form-group">
-                <label for="fuel_type">Fuel Type</label>
-                <select id="fuel_type" class="form-control" name="fuel_type">
-                  <option value="{{ $vehicle->fuelType != null ? $vehicle->fuelType->name : '' }}" selected>{{ $vehicle->fuelType != null ? $vehicle->fuelType->name : 'N/A' }}</option>
+                <label for="fuelType">Fuel Type</label>
+                <select id="fuelType" class="form-control" name="fuelType">
+                  <option value="{{ $vehicle->fuelType != null ? $vehicle->fuelType->name : 'na' }}" selected>{{ $vehicle->fuelType != null ? $vehicle->fuelType->name : 'N/A' }}</option>
                   @foreach($fuelTypes as $fuelType)
                       @if($vehicle->fuelType != null)
                         @if($fuelType->name != $vehicle->fuelType->name)
@@ -65,14 +65,14 @@
                       @endif
                   @endforeach
                   @if($vehicle->fuelType != null)
-                    <option value="">N/A</option>
+                    <option value="na">N/A</option>
                   @endif
                 </select>
               </div>
               <div class="form-group">
-                <label for="gear_type">Gear Type</label>
-                <select id="gear_type" class="form-control" name="gear_type">
-                  <option value="{{ $vehicle->gearType != null ? $vehicle->gearType->name : '' }}" selected>{{ $vehicle->gearType != null ? $vehicle->gearType->name : 'N/A' }}</option>
+                <label for="gearType">Gear Type</label>
+                <select id="gearType" class="form-control" name="gearType">
+                  <option value="{{ $vehicle->gearType != null ? $vehicle->gearType->name : 'na' }}" selected>{{ $vehicle->gearType != null ? $vehicle->gearType->name : 'N/A' }}</option>
                   @foreach($gearTypes as $gearType)
                       @if($vehicle->gearType != null)
                         @if($gearType->name != $vehicle->gearType->name)
@@ -83,15 +83,15 @@
                       @endif
                   @endforeach
                   @if($vehicle->gearType != null)
-                    <option value="">N/A</option>
+                    <option value="na">N/A</option>
                   @endif
                 </select>
               </div>
               <div class="form-group">
-                <label for="weekly_rate">Weekly Rate</label>
-                <select id="weekly_rate" class="form-control" name="weekly_rate">
-                  <option value="{{ $vehicle->rate != null ? $vehicle->rate->name : '' }}" selected>{{ $vehicle->rate != null ? $vehicle->rate->name : 'N/A' }}</option>
-                  @foreach($rates as $rate)
+                <label for="weeklyRate">Weekly Rate</label>
+                <select id="weeklyRate" class="form-control" name="weeklyRate">
+                  <option value="{{ $vehicle->rate != null ? $vehicle->rate->name : 'na' }}" selected>{{ $vehicle->rate != null ? $vehicle->rate->name : 'N/A' }}</option>
+                  @foreach($weeklyRates as $rate)
                       @if($vehicle->rate != null)
                         @if($rate->name != $vehicle->rate->name)
                           <option value="{{ $rate->name }}">{{ $rate->getFullName() }}</option>
@@ -101,7 +101,7 @@
                       @endif
                   @endforeach
                   @if($vehicle->rate != null)
-                    <option value="">N/A</option>
+                    <option value="na">N/A</option>
                   @endif
                 </select>
               </div>

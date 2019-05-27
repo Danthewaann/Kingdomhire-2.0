@@ -8,7 +8,7 @@
       <div class="modal-body">
         Are you sure you want to delete this gear type?
       </div>
-      {{ Form::open(['route' => ['admin.vehicle-gear-types.destroy', $vehicleGearType->name],
+      {{ Form::open(['route' => ['admin.vehicle-gear-types.destroy', $vehicleGearType->slug],
                                  'method' => 'delete', 'id' => 'vehicle-gear-type-'.$vehicleGearType->id.'-delete-form']) }}
       {{ Form::close() }}
       <div class="modal-footer">

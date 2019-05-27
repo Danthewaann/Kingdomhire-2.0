@@ -32,21 +32,28 @@ class VehiclesController extends Controller
      */
     public function index()
     {
-        $inactiveVehicles = Vehicle::onlyTrashed()->get();
-        $vehicleTypes = VehicleType::with(['vehicles'])->get();
         $activeVehicles = [];
+        $vehiclesWithType = Vehicle::where('vehicle_type_id', '!=', null)->get();
+        $vehiclesWithNoType = Vehicle::whereVehicleTypeId(null)->get();
+        $inactiveVehicles = Vehicle::onlyTrashed()->get();
+        $vehicleTypes = VehicleType::all();
 
-        foreach ($vehicleTypes as $vehicleType) {
-            foreach ($vehicleType->vehicles as $vehicle) {
-                array_push($activeVehicles, $vehicle);
-            }
+        foreach ($vehiclesWithNoType as $vehicle) {
+            array_push($activeVehicles, $vehicle);
         }
 
+        foreach ($vehiclesWithType as $vehicle) {
+            array_push($activeVehicles, $vehicle);
+        }
+        
         $activeVehicles = collect($activeVehicles);
         
         return view('admin.admin-vehicles', [
             'activeVehicles' => $activeVehicles,
+            'vehiclesWithType' => $vehiclesWithType,
+            'vehiclesWithNoType' => $vehiclesWithNoType,
             'vehicleTypes' => $vehicleTypes,
+            'vehicleCount' => Vehicle::withTrashed()->count(),
             'inactiveVehicles' => $inactiveVehicles,
         ]);
     }
@@ -59,8 +66,8 @@ class VehiclesController extends Controller
     public function create()
     {
         return view('admin.vehicle.create', [
-            'rates' => WeeklyRate::all(),
-            'types' => VehicleType::all(),
+            'weeklyRates' => WeeklyRate::all(),
+            'vehicleTypes' => VehicleType::all(),
             'fuelTypes' => VehicleFuelType::all(),
             'gearTypes' => VehicleGearType::all()
         ]);
@@ -74,10 +81,10 @@ class VehiclesController extends Controller
      */
     public function store(VehicleStoreRequest $request)
     {
-        $fuel_type_id = VehicleFuelType::whereName($request->fuel_type)->first()->id;
-        $gear_type_id = VehicleGearType::whereName($request->gear_type)->first()->id;
-        $type_id = VehicleType::whereName($request->type)->first()->id;
-        $weekly_rate_id =  WeeklyRate::whereName($request->rate_name)->first()->id;
+        $fuel_type_id = ($request->fuelType != "na") ? VehicleFuelType::whereName($request->fuelType)->first()->id : null;
+        $gear_type_id = ($request->gearType != "na") ? VehicleGearType::whereName($request->gearType)->first()->id : null;
+        $type_id = ($request->vehicleType != "na") ? VehicleType::whereName($request->vehicleType)->first()->id : null;
+        $weekly_rate_id =  ($request->weeklyRate != "na") ? WeeklyRate::whereName($request->weeklyRate)->first()->id : null;
 
         $vehicle = Vehicle::create([
             'make' => $request->make,
@@ -140,8 +147,8 @@ class VehiclesController extends Controller
     {
         return view('admin.vehicle.edit', [
             'vehicle' => $vehicle,
-            'rates' => WeeklyRate::all(),
-            'types' => VehicleType::all(),
+            'weeklyRates' => WeeklyRate::all(),
+            'vehicleTypes' => VehicleType::all(),
             'fuelTypes' => VehicleFuelType::all(),
             'gearTypes' => VehicleGearType::all()
         ]);
@@ -156,11 +163,11 @@ class VehiclesController extends Controller
      */
     public function update(VehicleUpdateRequest $request, Vehicle $vehicle)
     {
-        $vehicle->status = ($request->vehicle_status == null) ? $vehicle->status : $request->vehicle_status;
-        $vehicle->weekly_rate_id = ($request->weekly_rate != "") ? WeeklyRate::whereName($request->weekly_rate)->first()->id : null;
-        $vehicle->vehicle_type_id = ($request->vehicle_type != "") ? VehicleType::whereName($request->vehicle_type)->first()->id : null;
-        $vehicle->vehicle_fuel_type_id = ($request->fuel_type != "") ? VehicleFuelType::whereName($request->fuel_type)->first()->id : null;
-        $vehicle->vehicle_gear_type_id = ($request->gear_type != "") ? VehicleGearType::whereName($request->gear_type)->first()->id : null;
+        $vehicle->status = ($request->status == null) ? $vehicle->status : $request->status;
+        $vehicle->weekly_rate_id = ($request->weeklyRate != "na") ? WeeklyRate::whereName($request->weeklyRate)->first()->id : null;
+        $vehicle->vehicle_type_id = ($request->vehicleType != "na") ? VehicleType::whereName($request->vehicleType)->first()->id : null;
+        $vehicle->vehicle_fuel_type_id = ($request->fuelType != "na") ? VehicleFuelType::whereName($request->fuelType)->first()->id : null;
+        $vehicle->vehicle_gear_type_id = ($request->gearType != "na") ? VehicleGearType::whereName($request->gearType)->first()->id : null;
         $vehicle->save();
 
         if($request->hasFile('vehicle_images_add')) {

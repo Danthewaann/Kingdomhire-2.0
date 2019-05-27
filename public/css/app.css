@@ -8839,12 +8839,11 @@ nav {
 }
 
 .vehicle-navbar-tabs {
-  background-color: #3a8a61;
   padding: 10px;
 }
 
 .vehicle-navbar-tabs > li > a:hover {
-  background-color: #36815b !important;
+  background-color: #3a8a61 !important;
   border: 1px solid #3ea771;
 }
 
@@ -8853,7 +8852,7 @@ nav {
 }
 
 .vehicle-navbar-tabs > li > a:active {
-  background-color: #36815b !important;
+  background-color: #3a8a61 !important;
 }
 
 .vehicle-dashboard-navbar-tabs > li > a:focus {
@@ -8861,28 +8860,6 @@ nav {
 }
 
 .vehicle-dashboard-navbar-tabs > li > a:active {
-  background-color: #307251 !important;
-}
-
-nav-tabs-justified > .active > a,
-.nav-tabs.nav-justified > .active > a,
-.nav-tabs-justified > .active > a:hover,
-.nav-tabs.nav-justified > .active > a:hover,
-.nav-tabs.nav-justified > .active > a:hover,
-.nav-tabs-justified > .active > a:focus,
-.nav-tabs.nav-justified > .active > a:focus,
-.nav-tabs.nav-justified > .active > a:focus {
-  background-color: #307251 !important;
-}
-
-nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
-.nav-tabs.vehicle-dashboard-navbar-tabs.nav-justified > .active > a,
-.nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a:hover,
-.vehicle-dashboard-navbar-tabs.nav-tabs.nav-justified > .active > a:hover,
-.nav-tabs.vehicle-dashboard-navbar-tabs.nav-justified > .active > a:hover,
-.nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a:focus,
-.vehicle-dashboard-navbar-tabs.nav-tabs.nav-justified > .active > a:focus,
-.nav-tabs.vehicle-dashboard-navbar-tabs.nav-justified > .active > a:focus {
   background-color: #307251 !important;
 }
 
@@ -8894,7 +8871,7 @@ nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-  background-color: #36815b !important;
+  background-color: #3a8a61 !important;
 }
 
 .nav-pills > li.active > a,
@@ -9005,6 +8982,10 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
   margin: 5px 0 0 0;
 }
 
+.panel .panel-footer h4 {
+  text-align: center;
+}
+
 .vehicle-panel-heading {
   background-color: #36815b !important;
 }
@@ -9060,7 +9041,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 1200px) {
   .vehicle-img img.public {
-    height: 220px;
+    height: 175px;
   }
 }
 
@@ -9154,7 +9135,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 @media (min-width: 1200px) {
   .vehicle-img div.vehicle-img-na h2.public {
-    line-height: 220px;
+    line-height: 175px;
   }
 }
 

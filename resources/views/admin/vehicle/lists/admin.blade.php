@@ -1,6 +1,6 @@
 @if($activeVehicles->isNotEmpty() or $inactiveVehicles->isNotEmpty())
   <div class="tab-content">
-    @if($activeVehicles->isNotEmpty())
+    @if($vehiclesWithType->isNotEmpty())
       <div id="all" class="tab-pane fade in active">
         <div class="row">
           @foreach($activeVehicles->sortByDesc('created_at') as $vehicle)
@@ -11,18 +11,27 @@
         </div>
       </div>
       @foreach($vehicleTypes as $vehicleType)
-        @if($vehicleType->vehicles->isNotEmpty())
-          <div id="{{ str_replace(" ", "-", $vehicleType->name) }}" class="tab-pane fade">
-            <div class="row">
-              @foreach($vehicleType->vehicles->sortByDesc('created_at') as $vehicle)
-                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                  @include('admin.vehicle.summaries.admin-dashboard')
-                </div>            
-              @endforeach
-            </div>
+        <div id="{{ str_replace(" ", "-", $vehicleType->name) }}" class="tab-pane fade">
+          <div class="row">
+            @foreach($vehiclesWithType->where('vehicle_type_id', $vehicleType->id)->sortByDesc('created_at') as $vehicle)
+              <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                @include('admin.vehicle.summaries.admin-dashboard')
+              </div>            
+            @endforeach
           </div>
-        @endif
+        </div>
       @endforeach
+    @endif
+    @if($vehiclesWithNoType->isNotEmpty())
+      <div id="na" class="tab-pane fade{{ $vehiclesWithType->isEmpty() ? ' in active' : '' }}">
+        <div class="row">
+          @foreach($vehiclesWithNoType->sortByDesc('created_at') as $vehicle)
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+              @include('admin.vehicle.summaries.admin-dashboard')
+            </div>
+          @endforeach
+        </div>
+      </div>
     @endif
     @if($inactiveVehicles->isNotEmpty())
       <div id="discontinued" class="tab-pane fade{{ $activeVehicles->isEmpty() ? ' in active' : '' }}">

@@ -34,6 +34,24 @@
                 @endif
               </div>
               <div class="form-group">
+                <label for="weeklyRate">Weekly Rate</label>
+                <select id="weeklyRate" class="form-control" name="weeklyRate">
+                  <option value="{{ $vehicle->rate != null ? $vehicle->rate->name : 'na' }}" selected>{{ $vehicle->rate != null ? $vehicle->rate->name : 'N/A' }}</option>
+                  @foreach($weeklyRates as $rate)
+                      @if($vehicle->rate != null)
+                        @if($rate->name != $vehicle->rate->name)
+                          <option value="{{ $rate->name }}">{{ $rate->getFullName() }}</option>
+                        @endif
+                      @else
+                        <option value="{{ $rate->name }}">{{ $rate->getFullName() }}</option>
+                      @endif
+                  @endforeach
+                  @if($vehicle->rate != null)
+                    <option value="na">N/A</option>
+                  @endif
+                </select>
+              </div>
+              <div class="form-group">
                 <label for="vehicleType">Vehicle Type</label>
                 <select id="vehicleType" class="form-control" name="vehicleType">
                   <option value="{{ $vehicle->type != null ? $vehicle->type->name : 'na' }}" selected>{{ $vehicle->type != null ? $vehicle->type->name : 'N/A' }}</option>
@@ -87,24 +105,6 @@
                   @endif
                 </select>
               </div>
-              <div class="form-group">
-                <label for="weeklyRate">Weekly Rate</label>
-                <select id="weeklyRate" class="form-control" name="weeklyRate">
-                  <option value="{{ $vehicle->rate != null ? $vehicle->rate->name : 'na' }}" selected>{{ $vehicle->rate != null ? $vehicle->rate->name : 'N/A' }}</option>
-                  @foreach($weeklyRates as $rate)
-                      @if($vehicle->rate != null)
-                        @if($rate->name != $vehicle->rate->name)
-                          <option value="{{ $rate->name }}">{{ $rate->getFullName() }}</option>
-                        @endif
-                      @else
-                        <option value="{{ $rate->name }}">{{ $rate->getFullName() }}</option>
-                      @endif
-                  @endforeach
-                  @if($vehicle->rate != null)
-                    <option value="na">N/A</option>
-                  @endif
-                </select>
-              </div>
               <div class="form-group{{ $errors->hasBag('edit') ? ' has-error' : '' }}">
                 <label for="vehicle_images_add">Add Images</label>
                 <input type="file" class="form-control" name="vehicle_images_add[]" id="vehicle_images_add" value="{{ $vehicle->image_path }}" data-multiple-caption="{count} files selected" multiple>
@@ -112,7 +112,7 @@
                   <div class="help-block">
                     <div class="alert alert-danger" role="alert">
                       <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ array_values($errors->edit->get('vehicle_images_add.*'))[0][0] }}</strong><br>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ array_values($errors->edit->get('vehicle_images_add.*'))[0][1] }}
+                      {{ array_values($errors->edit->get('vehicle_images_add.*'))[0][1] }}
                     </div>
                   </div>
                 @endif

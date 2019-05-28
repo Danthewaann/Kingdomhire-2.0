@@ -24,7 +24,7 @@
       <div class="row">
         @if(session()->has('status'))
           <div class="col-lg-12">
-            @include('admin.common.alert')
+            @include('admin.common.alert-success')
           </div>
         @endif
         @include('admin.vehicle.summaries.vehicle-dashboard')

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
   <div class="col-lg-12">
-    @include('admin.common.alert')
+    @include('admin.common.alert-success')
   </div>
   <div class="col-lg-12">
     <div class="row">

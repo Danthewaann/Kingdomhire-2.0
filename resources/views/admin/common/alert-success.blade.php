@@ -8,7 +8,7 @@
         @if($loop->first)
           <span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;<strong>{{ $message }}</strong><br>
         @else
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $message }}<br>
+          {{ $message }}<br>
         @endif
       @endforeach
     @else

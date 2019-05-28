@@ -19,11 +19,7 @@
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="make" name="make" value="{{ old('make') }}" autocomplete="off" placeholder="Enter make">
                       @if( $errors->has('make'))
-                        <div class="help-block">
-                          <div class="alert alert-danger" role="alert">
-                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('make') }}</strong>
-                          </div>
-                        </div>
+                        @include('admin.common.alert-danger', ['error' => $errors->first('make')])
                       @endif
                     </div>
                   </div>
@@ -32,11 +28,7 @@
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="model" name="model" value="{{ old('model') }}" autocomplete="off" placeholder="Enter model">
                       @if( $errors->has('model'))
-                        <div class="help-block">
-                          <div class="alert alert-danger" role="alert">
-                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('model') }}</strong>
-                          </div>
-                        </div>
+                        @include('admin.common.alert-danger', ['error' => $errors->first('model')])
                       @endif
                     </div>
                   </div>
@@ -45,11 +37,7 @@
                     <div class="col-sm-9">
                       <input type="number" class="form-control" id="seats" name="seats" placeholder="Enter number of seats" value="{{ old('seats') }}" autocomplete="off">
                       @if($errors->has('seats'))
-                        <div class="help-block">
-                          <div class="alert alert-danger" role="alert">
-                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('seats') }}</strong>
-                          </div>
-                        </div>
+                        @include('admin.common.alert-danger', ['error' => $errors->first('seats')])
                       @endif
                     </div>
                   </div>
@@ -66,11 +54,7 @@
                         <option value="na" {{ old("weeklyRate") == "na" ? "selected" : "" }}>N/A</option>
                       </select>
                       @if($errors->has('weeklyRate'))
-                        <div class="help-block">
-                          <div class="alert alert-danger" role="alert">
-                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('weeklyRate') }}</strong>
-                          </div>
-                        </div>
+                        @include('admin.common.alert-danger', ['error' => $errors->first('weeklyRate')])
                       @endif
                     </div>
                   </div>
@@ -87,11 +71,7 @@
                         <option value="na" {{ old("vehicleType") == "na" ? "selected" : "" }}>N/A</option>
                       </select>
                       @if($errors->has('vehicleType'))
-                        <div class="help-block">
-                          <div class="alert alert-danger" role="alert">
-                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('vehicleType') }}</strong>
-                          </div>
-                        </div>
+                        @include('admin.common.alert-danger', ['error' => $errors->first('vehicleType')])
                       @endif
                     </div>
                   </div>
@@ -108,11 +88,7 @@
                         <option value="na" {{ old("fuelType") == "na" ? "selected" : "" }}>N/A</option>
                       </select>
                       @if($errors->has('fuelType'))
-                        <div class="help-block">
-                          <div class="alert alert-danger" role="alert">
-                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('fuelType') }}</strong>
-                          </div>
-                        </div>
+                        @include('admin.common.alert-danger', ['error' => $errors->first('fuelType')])
                       @endif
                     </div>
                   </div>
@@ -129,11 +105,7 @@
                         <option value="na" {{ old("gearType") == "na" ? "selected" : "" }}>N/A</option>
                       </select>
                       @if($errors->has('gearType'))
-                        <div class="help-block">
-                          <div class="alert alert-danger" role="alert">
-                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('gearType') }}</strong>
-                          </div>
-                        </div>
+                        @include('admin.common.alert-danger', ['error' => $errors->first('gearType')])
                       @endif
                     </div>
                   </div>

@@ -9233,6 +9233,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 .text-link {
   font-weight: bolder;
   color: white;
+  text-decoration: underline;
 }
 
 .text-link:hover,

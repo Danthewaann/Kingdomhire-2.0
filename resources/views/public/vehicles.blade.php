@@ -19,7 +19,7 @@
             <span style="padding: 5px 0; font-size: 22px" class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;<strong style="font-size: 22px">Important note!</strong><br>
             The vehicles listed below may no longer be available.<br>
             Kingdomhire.com is currently being revamped, and soon all our vehicles will
-            be listed on our site, so until then you can <a class="text-link" style="text-decoration: underline" href="{{ route('public.contact')}}">contact us</a> to see what we have available.<br>
+            be listed on our site, so until then you can <a class="text-link" href="{{ route('public.contact')}}">contact us</a> to see what we have available.<br>
           </div>
       </div>
     </div>

@@ -12,11 +12,11 @@
       <div class="col-md-8">
         <p class="paragraph">Have any queries? You can contact us via mobile phone or email, whichever you prefer.</p>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-sm-6">
             @include('public.opening-hours-table')
           </div>
-          <div class="col-md-6">
-          @include('public.contact-table')
+          <div class="col-sm-6">
+            @include('public.contact-table')
           </div>
         </div>
       </div>

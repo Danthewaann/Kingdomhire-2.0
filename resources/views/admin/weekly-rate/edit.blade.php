@@ -16,11 +16,7 @@
             <div class="col-sm-6">
               <input id="name" type="text" class="form-control" name="name" value="{{ $rate->name }}" autocomplete="off">
               @if( $errors->has('name'))
-                <div class="help-block">
-                  <div class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('name') }}</strong>
-                  </div>
-                </div>
+                @include('admin.common.alert-danger', ['error' => $errors->first('name')])
               @endif
             </div>
           </div>
@@ -32,11 +28,7 @@
                 <input id="weekly_rate_min" type="text" class="form-control" name="weekly_rate_min" value="{{ $rate->weekly_rate_min }}" autocomplete="off">
               </div>
               @if( $errors->has('weekly_rate_min'))
-                <div class="help-block">
-                  <div class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('weekly_rate_min') }}</strong>
-                  </div>
-                </div>
+                @include('admin.common.alert-danger', ['error' => $errors->first('weekly_rate_min')])
               @endif
             </div>
           </div>
@@ -48,11 +40,7 @@
                 <input id="weekly_rate_max" type="text" class="form-control" name="weekly_rate_max" value="{{ $rate->weekly_rate_max }}" autocomplete="off">
               </div>
               @if( $errors->has('weekly_rate_max'))
-                <div class="help-block">
-                  <div class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('weekly_rate_max') }}</strong>
-                  </div>
-                </div>
+                @include('admin.common.alert-danger', ['error' => $errors->first('weekly_rate_max')])
               @endif
             </div>
           </div>

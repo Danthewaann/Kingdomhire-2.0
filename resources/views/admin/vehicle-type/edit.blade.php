@@ -16,11 +16,7 @@
             <div class="col-sm-6">
               <input id="name" type="text" class="form-control" name="name" value="{{ $vehicleType->name }}" autocomplete="off">
               @if( $errors->has('name'))
-                <div class="help-block">
-                  <div class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('name') }}</strong>
-                  </div>
-                </div>
+                @include('admin.common.alert-danger', ['error' => $errors->first('name')])
               @endif
             </div>
           </div>

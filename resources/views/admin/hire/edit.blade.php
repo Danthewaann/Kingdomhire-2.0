@@ -25,11 +25,7 @@
                   <span class="input-group-addon"> <span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
                 @if( $errors->hires->has('start_date'))
-                  <div class="help-block">
-                    <div class="alert alert-danger" role="alert">
-                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->hires->first('start_date') }}</strong>
-                    </div>
-                  </div>
+                  @include('admin.common.alert-danger', ['error' => $errors->hires->first('start_date')])
                 @endif
               </div>
             </div>
@@ -45,9 +41,7 @@
                 </div>
                 @if( $errors->hires->has('end_date'))
                   <div class="help-block">
-                    <div class="alert alert-danger" role="alert">
-                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->hires->first('end_date') }}</strong>
-                    </div>
+                    @include('admin.common.alert-danger', ['error' => $errors->hires->first('end_date')])
                   </div>
                 @endif
               </div>

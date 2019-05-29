@@ -1,11 +1,6 @@
 @extends('layouts.admin-vehicle-dashboard')
 
 @section('content')
-@if(!empty(session()->get('status')['edit']))
-  <div class="alert alert-success" style="margin-top: 22px">
-    <span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;{{ session()->get('status')['edit'] }}
-  </div>
-@endif
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3>Edit vehicle</h3>

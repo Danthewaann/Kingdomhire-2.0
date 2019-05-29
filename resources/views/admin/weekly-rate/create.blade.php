@@ -11,11 +11,7 @@
         <div class="col-sm-8">
           <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" autocomplete="off" placeholder="Enter name">
           @if( $errors->has('name'))
-            <div class="help-block">
-              <div class="alert alert-danger" role="alert">
-                <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('name') }}</strong>
-              </div>
-            </div>
+            @include('admin.common.alert-danger', ['error' => $errors->first('name')])
           @endif
         </div>
       </div>
@@ -27,11 +23,7 @@
             <input type="text" class="form-control" id="weekly_rate_min" name="weekly_rate_min" value="{{ old('weekly_rate_min') }}" autocomplete="off" placeholder="Enter min rate">
           </div>
           @if( $errors->has('weekly_rate_min'))
-            <div class="help-block">
-              <div class="alert alert-danger" role="alert">
-                <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('weekly_rate_min') }}</strong>
-              </div>
-            </div>
+            @include('admin.common.alert-danger', ['error' => $errors->first('weekly_rate_min')])
           @endif
         </div>
       </div>
@@ -43,11 +35,7 @@
             <input type="text" class="form-control" id="weekly_rate_max" name="weekly_rate_max" value="{{ old('weekly_rate_max') }}" autocomplete="off" placeholder="Enter max rate">
           </div>
           @if( $errors->has('weekly_rate_max'))
-            <div class="help-block">
-              <div class="alert alert-danger" role="alert">
-                <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->first('weekly_rate_max') }}</strong>
-              </div>
-            </div>
+            @include('admin.common.alert-danger', ['error' => $errors->first('weekly_rate_max')])
           @endif
         </div>
       </div>

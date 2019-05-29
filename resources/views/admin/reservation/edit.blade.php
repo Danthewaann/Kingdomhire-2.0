@@ -28,11 +28,7 @@
                   <span class="input-group-addon" id="start_date_calender"> <span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
                 @if( $errors->reservations->has('start_date'))
-                  <div class="help-block">
-                    <div class="alert alert-danger" role="alert">
-                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->reservations->first('start_date') }}</strong>
-                    </div>
-                  </div>
+                  @include('admin.common.alert-danger', ['error' => $errors->reservations->first('start_date')])
                 @endif
               </div>
             </div>
@@ -47,11 +43,7 @@
                   <span class="input-group-addon" id="end_date_calender"> <span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
                 @if( $errors->reservations->has('end_date'))
-                  <div class="help-block">
-                    <div class="alert alert-danger" role="alert">
-                      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ $errors->reservations->first('end_date') }}</strong>
-                    </div>
-                  </div>
+                  @include('admin.common.alert-danger', ['error' => $errors->reservations->first('end_date')])
                 @endif
               </div>
             </div>

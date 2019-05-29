@@ -18,7 +18,7 @@
       <h4>Vehicle Types</h3>
       <hr style="margin: 10px 10px 5px 10px">
       <ul class="nav nav-pills nav-stacked vehicle-navbar-tabs" id="myTabs">
-        @if($vehiclesWithType->isNotEmpty())
+        @if($activeVehicles->isNotEmpty())
           <li class="active"><a href="#all" class="btn" data-toggle="pill">All</a></li>
           @foreach($vehicleTypes as $vehicleType)
             @if($vehicleType->vehicles->isNotEmpty())
@@ -27,7 +27,7 @@
           @endforeach
         @endif
         @if($vehiclesWithNoType->isNotEmpty())
-          <li class="{{ $vehiclesWithType->isEmpty() ? 'active' : '' }}"><a data-toggle="pill" class="btn" href="#na">N/A</a></li>
+          <li><a data-toggle="pill" class="btn" href="#na">N/A</a></li>
         @endif
         @if($inactiveVehicles->isNotEmpty())
           <li class="{{ $activeVehicles->isEmpty() ? 'active' : '' }}"><a data-toggle="pill" class="btn" href="#discontinued">Discontinued</a></li>

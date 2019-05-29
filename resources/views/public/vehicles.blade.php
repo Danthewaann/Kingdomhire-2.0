@@ -10,7 +10,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1 class="main-header">Our fleet</h1>
+        <h1 class="main-header">Our Fleet</h1>
       </div>
       <div class="col-md-6">
         <p class="paragraph">Below are all the vehicles in that are in our fleet. You need to call us to be able to reserve a vehicle.

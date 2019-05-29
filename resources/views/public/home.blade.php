@@ -5,8 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1 class="main-header">Kingdomhire</h1>
-				<h3>Car &amp; Van Hire Specialist</h3>
+				<h1 class="main-header">Welcome</h1>
 			</div>
 		</div>
 		<div class="row">

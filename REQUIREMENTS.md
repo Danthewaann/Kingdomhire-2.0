@@ -11,7 +11,7 @@
 8. ~~The system should be able to tell the admin if a newly created reservation/hire conflicts with any other reservation or hire for a specific vehicle~~  
 9. ~~The system should automatically convert any reservations in the database into hires if their start date is less than or equal to today's date~~  
 10. The system should be able to automatically generate charts based on data in the database;  
-   10.1 Number of reservations per vehicle
+   10.1 Number of reservations per vehicle  
    10.2. Number of hires per month per year for a specific vehicle   
    10.3. Number of hires per month per year for all vehicles   
    10.4. Schedule of a specific vehicle (gantt chart showing reservations and active hire)   

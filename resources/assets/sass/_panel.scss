@@ -32,16 +32,22 @@
 }
 
 .vehicle-panel-heading {
-  background-color: $light-green !important;
+  height: 80px;
+  overflow: auto;
   h3 {
     text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); 
   }
 }
 
 .vehicle-panel-admin-heading {
-  //background-color: $dark-green !important;
+  height: 80px;
   h3 {
-    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); 
   }
 }
 

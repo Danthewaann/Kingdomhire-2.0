@@ -15,13 +15,14 @@ class ReservationsTableSeeder extends Seeder
     public function run()
     {
         DB::table('reservations')->delete();
-        $start_date = strtotime("2016-01-01");
-        $end_date = strtotime("2018-12-31");
+
+        // The following creates dummy reservations for every vehicle
+        $start_date = strtotime("3 years ago");
+        $end_date = strtotime("+3 weeks");
         $vehicles = Vehicle::all();
-        $faker = Factory::create();
 
         foreach ($vehicles as $vehicle) {
-            $numOfReservations = rand(1, 30);
+            $numOfReservations = rand(15, 40);
             for($i = 0; $i < $numOfReservations; $i++) {
                 $reservationLength = rand(3, 10);
                 $start = date('Y-m-d', rand($start_date, $end_date));
@@ -29,7 +30,6 @@ class ReservationsTableSeeder extends Seeder
                 $reservations = Reservation::whereVehicleId($vehicle->id)->get();
 
                 $new = new Reservation([
-//                    'name' => substr($faker->firstName, 0, 1) . substr($faker->lastName, 0, 1),
                     'start_date' => $start,
                     'end_date' => $end,
                     'vehicle_id' => $vehicle->id

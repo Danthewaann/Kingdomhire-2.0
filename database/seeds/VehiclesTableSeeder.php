@@ -92,6 +92,6 @@ class VehiclesTableSeeder extends Seeder
             'weekly_rate_id' => $medium
         ]);
 
-//        factory(Vehicle::class, 15)->create();
+       factory(Vehicle::class, 15)->create();
     }
 }

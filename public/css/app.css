@@ -8987,15 +8987,27 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 }
 
 .vehicle-panel-heading {
-  background-color: #36815b !important;
+  height: 80px;
+  overflow: auto;
 }
 
 .vehicle-panel-heading h3 {
   text-align: center;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.vehicle-panel-admin-heading {
+  height: 80px;
 }
 
 .vehicle-panel-admin-heading h3 {
-  text-align: center;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .vehicle-panel-dashboard-heading h2,

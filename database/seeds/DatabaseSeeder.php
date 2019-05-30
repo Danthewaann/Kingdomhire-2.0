@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         Eloquent::unguard();
         $this->call([
-            UsersTableSeeder::class,
             WeeklyRatesTableSeeder::class,
             VehicleFuelTypesTableSeeder::class,
             VehicleGearTypesTableSeeder::class,

@@ -50,14 +50,13 @@ class ChartGenerator
             'colors' => [
                 'rgb(75, 206, 138)'
             ],
-            'height' => (count($vehicles) > 1 ? count($vehicles) * 80 : 150),
+            'height' => (count($vehicles) > 1 ? count($vehicles) * 50 : 100),
             'width' => '100%',
             'fontSize' => '1.1em',
             'fontName' => 'Helvetica',
             'chartArea' => [
-                'top' => '10%',
-                'width' => '90%',
-                'height' => '80%'
+                'width' => '92,5%',
+                'height' => '85%'
             ],
             'legend' => [
                 'position' => 'top',
@@ -81,9 +80,9 @@ class ChartGenerator
                     'color' => 'white',
                 ],
                 'minValue' => 0,
-                'maxValue' => ($maxReservationsForVehicle > 5 ? $maxReservationsForVehicle : 5),
+                'maxValue' => ($maxReservationsForVehicle > 2 ? $maxReservationsForVehicle : 2),
                 'gridlines' => [
-                    'count' => ($maxReservationsForVehicle > 5 ? $maxReservationsForVehicle : 5),
+                    'count' => ($maxReservationsForVehicle > 2 ? $maxReservationsForVehicle : 2)+1,
                     'color' => 'rgb(62, 167, 113)'
                 ],
                 'minorGridlines' => [
@@ -190,16 +189,10 @@ class ChartGenerator
             $json_str = json_encode($json);
             $pastHiresTable = DataFactory::createFromJson($json_str);
 
-            $r = 75;
-            $g = 206;
-            $b = 138;
             foreach (array_keys($years) as $year) {
                 array_push($series, [
                     'labelInLegend' => $year,
                 ]);
-                $r += 30;
-                $g += 5;
-                $b += 15;
             }
 
             foreach ($years as $year) {
@@ -227,7 +220,7 @@ class ChartGenerator
             'fontSize' => '1.1em',
             'isStacked' => 'true',
             'backgroundColor' => 'transparent',
-            'height' => $height,
+            'height' => ($maxAmountOfHiresForMonth >= 40 ? 550 : $height),
             'width' => '100%',
             'chartArea' => [
                 'left' => '7.5%',

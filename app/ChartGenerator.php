@@ -50,13 +50,14 @@ class ChartGenerator
             'colors' => [
                 'rgb(75, 206, 138)'
             ],
-            'height' => (count($vehicles) > 1 ? count($vehicles) * 50 : 100),
+            'height' => (count($vehicles) > 1 ? (count($vehicles) * 50) + 60 : 150),
             'width' => '100%',
             'fontSize' => '1.1em',
             'fontName' => 'Helvetica',
             'chartArea' => [
+                'top' => 30,
                 'width' => '92,5%',
-                'height' => '85%'
+                'height' => (count($vehicles) > 1 ? count($vehicles) * 50 : 100)
             ],
             'legend' => [
                 'position' => 'top',

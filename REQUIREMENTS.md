@@ -18,8 +18,9 @@
    10.5. ~~Active hires for all vehicles (gantt chart)~~  
 11. An admin should be able to generate reports/charts;  
    11.1. List of most popular vehicles hired within a month/year (Not needed)   
-   11.2. List of hires made within a month/year (Not needed) 
-12. An admin should be able to download any generated reports/charts in a pdf file format (Not needed)
+   11.2. List of hires made within a month/year (Not needed)  
+   11.3. ~~List of hires made per vehicle~~  
+12. ~~An admin should be able to download any generated reports/charts in a pdf file format~~  
 13. ~~An admin should be able to reset their password if they forget it, this will require an email verification process~~  
 14. ~~An admin should be able to change their password, they will need to know their current password to do able to do this~~  
 15. An admin should be able to export the content of the entire database into a spreadsheet friendly format (Not needed)

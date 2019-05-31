@@ -24,6 +24,7 @@ Route::name('public.')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::name('admin.')->group(function () {
         Route::get('/', 'AdminController')->name('home');
+        Route::get('/report', 'AdminController@generateReport')->name('report');
 
         /* Vehicle specific routes */
         Route::resource('vehicles', 'VehiclesController')->only([

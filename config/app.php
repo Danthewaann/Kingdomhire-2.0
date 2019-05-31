@@ -232,7 +232,10 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
-        'Gantt' => Swatkins\LaravelGantt\GanttServiceProvider::class
+        'Gantt' => Swatkins\LaravelGantt\GanttServiceProvider::class,
+        'PdfReport' => Jimmyjs\ReportGenerator\Facades\PdfReportFacade::class,
+        'ExcelReport' => Jimmyjs\ReportGenerator\Facades\ExcelReportFacade::class,
+        'CSVReport' => Jimmyjs\ReportGenerator\Facades\CSVReportFacade::class
 
     ],
 

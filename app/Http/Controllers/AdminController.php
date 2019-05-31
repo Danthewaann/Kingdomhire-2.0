@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ChartGenerator;
+use App\ReportGenerator;
 use App\Hire;
 use App\Vehicle;
 use App\Reservation;
@@ -45,6 +46,11 @@ class AdminController extends Controller
             'reservations' => Reservation::all(),
             'gantt' => ChartGenerator::drawVehiclesActiveHiresGanttChart($activeVehicles)
         ]);
+    }
+
+    public function generateReport()
+    {
+        return ReportGenerator::generateHiresPerVehicleReport();
     }
 }
 

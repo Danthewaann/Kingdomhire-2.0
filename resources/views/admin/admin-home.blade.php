@@ -17,7 +17,7 @@
           </div>
           <div class="panel-footer" style="padding: 0">
               <a class="btn btn-lg btn-primary" style="width: 100%; border: 0; border-radius: 0" 
-              role="button" href="{{ route('admin.report') }}" target="_blank"><span class="glyphicon glyphicon-duplicate"></span>&nbsp;&nbsp;Generate Report</a>
+              role="button" href="{{ route('admin.report') }}"><span class="glyphicon glyphicon-duplicate"></span>&nbsp;&nbsp;Generate Report</a>
           </div>
         </div>
         @include('admin.charts.yearly-hires-table')

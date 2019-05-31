@@ -26,6 +26,7 @@
   max-width: 700px;
   width: 100%;
   margin: auto;
+  display: block;
 }
 
 .map {
@@ -54,4 +55,32 @@ body {
 
 option:disabled {
   color: $lighter-green;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.position-ref {
+  position: relative;
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: 36px;
+  padding: 20px;
+}
+
+.btn {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

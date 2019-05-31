@@ -34,6 +34,11 @@
       </div>
     </div>
   </div>
+  <div class="jumbotron jumbotron-admin-footer">
+    <div class="container">
+      <p>&copy; {{ date('Y') }} kingdomhire.com</p>
+    </div>
+  </div>
 </div>
 
 <!-- Scripts -->

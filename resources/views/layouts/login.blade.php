@@ -14,8 +14,13 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-  <div id="app" style="height: 100%">
+  <div id="app">
     @yield('content')
+  </div>
+  <div class="jumbotron jumbotron-footer">
+    <div class="container">
+      <p>&copy; {{ date('Y') }} kingdomhire.com</p>
+    </div>
   </div>
 
   <!-- Scripts -->

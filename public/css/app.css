@@ -8435,6 +8435,17 @@ button.close {
   height: 20px;
 }
 
+.jumbotron-admin-footer {
+  background-color: #36815b;
+  text-align: center;
+  margin: 0;
+  padding: 20px 0 20px 0;
+}
+
+.jumbotron-admin-footer p {
+  margin-bottom: 0;
+}
+
 .vehicle-table-public {
   height: 254px !important;
   margin-bottom: 0;
@@ -9233,6 +9244,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
   max-width: 700px;
   width: 100%;
   margin: auto;
+  display: block;
 }
 
 .map {
@@ -9263,5 +9275,39 @@ body {
 
 option:disabled {
   color: #3ea771;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.flex-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.position-ref {
+  position: relative;
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: 36px;
+  padding: 20px;
+}
+
+.btn {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 

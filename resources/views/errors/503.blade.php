@@ -6,9 +6,15 @@
     <div class="flex-center position-ref full-height">
       <div class="content">
         <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo">
-        <div class="title">Page Not Found</div>
-        <div style="text-align: center">
-          <a class="btn btn-lg btn-info" role="button" href="{{ route('public.home') }}">Return to Kingdomhire</a>
+        <div class="title">
+          @if($exception->getMessage() != null)
+            Status: {{ $exception->getMessage() }}...
+          @else
+            Status: kingdomhire is offline 
+          @endif  
+        </div>
+        <div class="title">
+          We'll be right back!
         </div>
       </div>
     </div>

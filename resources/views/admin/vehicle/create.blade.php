@@ -41,6 +41,19 @@
                       @endif
                     </div>
                   </div>
+                  <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                      <label for="status" class="control-label col-sm-3">Status*</label>
+                      <div class="col-sm-9">
+                        <select id="status" class="form-control" name="status">
+                          <option disabled {{ old("status") == "" ? "selected" : "" }}>Select...</option>
+                          <option value="unavailable" {{ old("status") == "Unavailable" ? "selected" : "" }}>Unavailable</option>
+                          <option value="available" {{ old("status") == "Available" ? "selected" : "" }}>Available</option>
+                        </select>
+                        @if($errors->has('status'))
+                          @include('admin.common.alert-danger', ['error' => $errors->first('status')])
+                        @endif
+                      </div>
+                    </div>
                   <div class="form-group">
                     <label for="weeklyRate" class="control-label col-sm-3">Weekly Rate*</label>
                     <div class="col-sm-9">

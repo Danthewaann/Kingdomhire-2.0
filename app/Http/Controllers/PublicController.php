@@ -11,8 +11,11 @@ class PublicController extends Controller
     public function vehicles()
     {
         $activeVehicles = [];
-        $vehiclesWithType = Vehicle::where('vehicle_type_id', '!=', null)->get();
-        $vehiclesWithNoType = Vehicle::whereVehicleTypeId(null)->get();
+        $vehicleTypes = VehicleType::whereHas('vehicles', function($query) {
+            $query->where('status', '!=', 'Unavailable');
+        })->get();
+        $vehiclesWithType = Vehicle::where('vehicle_type_id', '!=', null)->where('status', '!=', 'Unavailable')->get();
+        $vehiclesWithNoType = Vehicle::whereVehicleTypeId(null)->where('status', '!=', 'Unavailable')->get();
 
         foreach ($vehiclesWithNoType as $vehicle) {
             array_push($activeVehicles, $vehicle);
@@ -28,7 +31,7 @@ class PublicController extends Controller
             'activeVehicles' => $activeVehicles,
             'vehiclesWithType' => $vehiclesWithType,
             'vehiclesWithNoType' => $vehiclesWithNoType,
-            'vehicleTypes' => VehicleType::all(),
+            'vehicleTypes' => $vehicleTypes,
             'vehicleCount' => Vehicle::count()
         ]);
     }

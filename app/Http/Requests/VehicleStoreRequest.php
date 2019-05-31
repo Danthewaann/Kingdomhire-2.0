@@ -27,6 +27,7 @@ class VehicleStoreRequest extends FormRequest
             'make' => 'required',
             'model' => 'required',
             'seats' => 'required|numeric|min:1|max:256',
+            'status' => 'required',
             'weeklyRate' => 'required',
             'vehicleType' => 'required',
             'fuelType' => 'required',

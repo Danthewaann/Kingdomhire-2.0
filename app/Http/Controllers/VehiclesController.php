@@ -92,6 +92,7 @@ class VehiclesController extends Controller
             'vehicle_fuel_type_id' => $fuel_type_id,
             'vehicle_gear_type_id' => $gear_type_id,
             'seats' => $request->seats,
+            'status' => $request->status,
             'vehicle_type_id' => $type_id,
             'weekly_rate_id' => $weekly_rate_id
         ]);

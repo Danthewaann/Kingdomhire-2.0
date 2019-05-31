@@ -9,6 +9,7 @@ use PdfReport;
 use ExcelReport;
 use CSVReport;
 use DateTime;
+use Session;
 
 class ReportGenerator
 {
@@ -88,6 +89,14 @@ class ReportGenerator
                                 ->make();
 
             return $report->stream();
+        }
+        else {
+            Session::flash('status', [
+                'Failed to generate PDF report!',
+                'No vehicles or hires found to generate report with!'
+            ]);
+
+            return back();
         }
     }
 }

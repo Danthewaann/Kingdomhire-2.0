@@ -15,7 +15,7 @@ The application needs to be compatible with *MySQL 5.5*, due to the web host onl
    More important business info will need to be displayed on the website, along with a more complete list of vehicles
 
 # Setup
-It is best to intall [*Homestead*](https://laravel.com/docs/5.6/homestead#installation-and-setup) and all of its prerequisites before setting up this website.
+It is best to install [*Homestead*](https://laravel.com/docs/5.6/homestead#installation-and-setup) and all of its prerequisites before setting up this website.
 
 After installing Homestead, do the following:
   1. run `cd Kingdomhire-2.0`  
@@ -27,7 +27,7 @@ After installing Homestead, do the following:
   7. run `cd /home/vagrant/Kingdomhire-2.0`
   8. run `php artisan migrate --seed` to create and populate the db with dummy data (exclude `--seed` if you only want to create the db)
   9. run `php artisan schedule:run` to convert reservations to active hires, and any active hires to past hires  
-  10. run `php artisan user:create` to create a user so you can login to the admin dashboard (provide name + email + password prompt)
+  10. run `php artisan user:create` to create a user so you can login to the admin dashboard (you can login to the dashboard at http://homestead.test/login)  
   11. The application should now be viewable at http://homestead.test (or something similar)
   12. Enjoy browsing the application!  
 

@@ -46,7 +46,7 @@ class SetupCronFile extends Command
         }
         else {
             if($this->option('override')) {
-                $files = glob($this->dir.'/*');
+                $files = glob($this->dir.'/{,.}*', GLOB_BRACE);
                 foreach($files as $file) { 
                     if(is_file($file))
                         unlink($file); 

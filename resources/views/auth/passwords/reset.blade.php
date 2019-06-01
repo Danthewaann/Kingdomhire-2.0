@@ -1,9 +1,13 @@
 @extends('layouts.login')
 
 @section('content')
-<div class="jumbotron jumbotron-header">
+<div class="jumbotron jumbotron-content">
     <div class="container">
+        <div class="flex-center position-ref full-height">
         <div class="row">
+            <div class="col-md-8 col-md-offset-2" style="margin-bottom: 30px">
+                <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo">
+            </div>
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Reset Password</h3></div>

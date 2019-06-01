@@ -17,12 +17,12 @@ The application needs to be compatible with *MySQL 5.5*, due to the web host onl
 # Setup
 It is best to install [*Homestead*](https://laravel.com/docs/5.6/homestead#installation-and-setup) and all of its prerequisites before setting up this website.
 
-### Other prerequisites  
+## Other prerequisites  
 1. `sudo apt install php7.2` or [php7.2](https://www.php.net/downloads.php)  
 1. `sudo apt install composer` or [Composer](https://getcomposer.org/)  
 2. `sudo apt install npm` or [Npm](https://www.npmjs.com/get-npm)  
 
-### Installation steps  
+## Installation steps  
 After installing Homestead, do the following:
   1. run `cd Kingdomhire-2.0`  
   2. run `composer install` to install php dependencies  
@@ -36,7 +36,7 @@ After installing Homestead, do the following:
   10. run `php artisan storage:link` to create public/storage symlink to storage/app/public  
   11. run `php artisan schedule:run` to convert reservations to active hires, and any active hires to past hires  
   12. run `php artisan user:create` to create a user so you can login to the admin dashboard (you can login to the dashboard at http://homestead.test/login)  
-  13. The application should now be viewable at http://homestead.test (or something similar)
+  13. The application should now be viewable at http://homestead.test (or something similar e.g. 192.168.10.10)
   14. Enjoy browsing the application!  
 
 # Other Documentation

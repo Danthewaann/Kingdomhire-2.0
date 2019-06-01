@@ -6,7 +6,7 @@
     <div class="flex-center position-ref full-height">
       <div class="content">
         <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo">
-        <div class="title">Page Not Found</div>
+        <div class="title">Internal server error</div>
         <a class="btn btn-lg btn-primary" role="button" href="{{ route('public.home') }}">Return to Kingdomhire</a>
       </div>
     </div>

@@ -16,10 +16,10 @@
 <body>
   <div id="app">
     @yield('content')
-  </div>
-  <div class="jumbotron jumbotron-footer">
-    <div class="container">
-      <p>&copy; {{ date('Y') }} kingdomhire.com</p>
+    <div class="jumbotron jumbotron-footer">
+      <div class="container">
+        <p>&copy; {{ date('Y') }} kingdomhire.com</p>
+      </div>
     </div>
   </div>
 

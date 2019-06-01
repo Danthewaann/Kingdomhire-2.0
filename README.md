@@ -17,27 +17,21 @@ The application needs to be compatible with *MySQL 5.5*, due to the web host onl
 # Setup
 It is best to install [*Homestead*](https://laravel.com/docs/5.6/homestead#installation-and-setup) and all of its prerequisites before setting up this website.
 
-## Other prerequisites  
-1. `sudo apt install php7.2` or [php7.2](https://www.php.net/downloads.php)  
-1. `sudo apt install composer` or [Composer](https://getcomposer.org/)  
-2. `sudo apt install npm` or [Npm](https://www.npmjs.com/get-npm)  
-
 ## Installation steps  
 After installing Homestead, do the following:
-  1. run `cd Kingdomhire-2.0`  
-  2. run `composer install` to install php dependencies  
-  3. run `npm install` to install node dependencies    
-  4. run `composer run-script post-root-package-install` to create .env config file
-  5. run `php artisan key:generate` to create application key
-  6. run `vagrant up` to start your VM if you haven't already    
-  7. run `vagrant ssh` into your laravel/homestead VM
-  8. run `cd /home/vagrant/Kingdomhire-2.0`
-  9. run `php artisan migrate --seed` to create and populate the db with dummy data (exclude `--seed` if you only want to create the db)
-  10. run `php artisan storage:link` to create public/storage symlink to storage/app/public  
-  11. run `php artisan schedule:run` to convert reservations to active hires, and any active hires to past hires  
-  12. run `php artisan user:create` to create a user so you can login to the admin dashboard (you can login to the dashboard at http://homestead.test/login)  
-  13. The application should now be viewable at http://homestead.test (or something similar e.g. 192.168.10.10)
-  14. Enjoy browsing the application!  
+  1. run `vagrant up` to start your VM if you haven't already    
+  2. run `vagrant ssh` into your laravel/homestead VM
+  3. run `cd /home/vagrant/Kingdomhire-2.0`
+  4. run `composer install` to install php dependencies  
+  5. run `npm install` to install node dependencies    
+  6. run `composer run-script post-root-package-install` to create .env config file
+  7. run `php artisan key:generate` to create application key
+  8. run `php artisan migrate --seed` to create and populate the db with dummy data (exclude `--seed` if you only want to create the db)
+  9. run `php artisan storage:link` to create public/storage symlink to storage/app/public  
+  10. run `php artisan schedule:run` to convert reservations to active hires, and any active hires to past hires  
+  11. run `php artisan user:create` to create a user so you can login to the admin dashboard (you can login to the dashboard at http://homestead.test/login)  
+  12. The application should now be viewable at http://homestead.test (or something similar e.g. 192.168.10.10)
+  13. Enjoy browsing the application!  
 
 # Other Documentation
 ### [Database Design](DATABASE.md)  

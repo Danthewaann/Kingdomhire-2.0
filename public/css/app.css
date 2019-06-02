@@ -8972,6 +8972,8 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 }
 
 .panel {
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   color: white;
 }
 
@@ -9005,9 +9007,18 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
   text-align: center;
 }
 
+.vehicle-categories div.panel-heading {
+  background-color: #327755;
+}
+
+.vehicle-categories div.panel-body {
+  background-color: #36815b;
+}
+
 .vehicle-panel-heading {
   height: 80px;
   overflow: auto;
+  background-color: #327755 !important;
 }
 
 .vehicle-panel-heading h3 {
@@ -9032,11 +9043,6 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 .vehicle-panel-dashboard-heading h2,
 .vehicle-panel-dashboard-heading h4 {
   text-align: center;
-}
-
-.panel {
-  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .vehicle-img {

@@ -19,11 +19,12 @@ It is best to install [*Homestead*](https://laravel.com/docs/5.6/homestead#insta
 
 ## Installation steps  
 After installing Homestead, do the following:
+  1. run `git clone https://github.com/danielcrblack/Kingdomhire-2.0.git`    
+  2. run `cd Kingdomhire-2.0`    
+  2. run `composer install` to install php dependencies. (Install [composer](https://getcomposer.org/))
   1. run `vagrant up` to start your VM if you haven't already    
   2. run `vagrant ssh` into your laravel/homestead VM
-  3. run `cd /home/vagrant/Kingdomhire-2.0`
-  4. run `composer install` to install php dependencies  
-  5. run `npm install` to install node dependencies    
+  3. run `cd /home/vagrant/Kingdomhire-2.0`     
   6. run `composer run-script post-root-package-install` to create .env config file
   7. run `php artisan key:generate` to create application key
   8. run `php artisan migrate --seed` to create and populate the db with dummy data (exclude `--seed` if you only want to create the db)

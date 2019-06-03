@@ -9277,7 +9277,8 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 .text-link:hover,
 .text-link:focus,
 .text-link-arrow:hover,
-.text-link-arrow:focus {
+.text-link-arrow:focus,
+.text-link-arrow:active {
   text-decoration: none !important;
 }
 

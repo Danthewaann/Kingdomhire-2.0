@@ -86,6 +86,7 @@ $(document).ready(function () {
     $('.vehicle-close-modal').click(function () {
         var vehicle = $(this).data('vehicle');
         document.getElementById(vehicle).style.display = 'none';
+        slideIndex = 1;
     });
 
     $('.modal-prev').click(function () {

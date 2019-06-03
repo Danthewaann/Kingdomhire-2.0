@@ -8,8 +8,8 @@
       </div>
     @endfor
       @if(count($vehicle->images) > 1)
-        <a class="modal-prev text-link" data-vehicle="{{ $vehicle->slug }}">&#10094;</a>
-        <a class="modal-next text-link" data-vehicle="{{ $vehicle->slug }}">&#10095;</a>
+        <a class="modal-prev text-link-arrow" data-vehicle="{{ $vehicle->slug }}">&#10094;</a>
+        <a class="modal-next text-link-arrow" data-vehicle="{{ $vehicle->slug }}">&#10095;</a>
       @endif
   </div>
 </div>

@@ -8634,7 +8634,7 @@ table.contact-info tr.buttons td {
   margin: auto;
   padding: 0;
   width: 90%;
-  max-width: 1000px;
+  max-width: 900px;
 }
 
 /* The Close Button */
@@ -9275,8 +9275,16 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 }
 
 .text-link:hover,
-.text-link:focus {
+.text-link:focus,
+.text-link-arrow:hover,
+.text-link-arrow:focus {
   text-decoration: none !important;
+}
+
+.text-link-arrow {
+  font-weight: bolder;
+  color: white;
+  text-decoration: none;
 }
 
 body {

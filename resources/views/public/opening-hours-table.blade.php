@@ -6,7 +6,7 @@
   </tr>
   <tr>
     <th>Saturday</th>
-    <td>9am - 1pm</td>
+    <td>9am - 4pm</td>
   </tr>
   <tr>
     <th>Sunday</th>

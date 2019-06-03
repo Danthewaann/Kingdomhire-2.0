@@ -2,7 +2,7 @@
 <table class="table contact-info">
   <tr>
     <th>Phone</th>
-    <td>07775534402</td>
+    <td>+44 7775534402</td>
   </tr>
   <tr>
     <th>E-Mail</th>

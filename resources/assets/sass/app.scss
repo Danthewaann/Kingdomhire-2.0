@@ -41,8 +41,15 @@
   text-decoration: underline;
 }
 
-.text-link:hover, .text-link:focus {
+.text-link:hover, .text-link:focus, 
+.text-link-arrow:hover, .text-link-arrow:focus {
   text-decoration: none !important;
+}
+
+.text-link-arrow {
+  font-weight: bolder;
+  color: white;
+  text-decoration: none;
 }
 
 body {

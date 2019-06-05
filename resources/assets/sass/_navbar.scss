@@ -1,5 +1,5 @@
 nav {
-  font-size: 1.2em !important;
+  font-size: 1.4em !important;
 }
 
 .navbar-nav > li > a {
@@ -56,7 +56,9 @@ nav {
   // background-color: lighten($light-green, 2.5%);
   padding: 10px;
 }
-
+.vehicle-navbar-tabs > li > a {
+  font-size: 1.3em;
+}
 .vehicle-navbar-tabs > li > a:hover {
   background-color: lighten($light-green, 2.5%) !important;
   border: 1px solid $lighter-green;

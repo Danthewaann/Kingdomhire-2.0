@@ -10,7 +10,8 @@
     </div>
     <div class="row">
       <div class="col-md-8">
-        <p class="paragraph">Have any queries? You can contact us via mobile phone or email, whichever you prefer.</p>
+        <p class="paragraph">Have any queries? You can contact us via mobile phone or email, whichever you prefer.
+        The opening hours detailed below are approximate, exceptions include vehicle pick-ups and drop-offs by appointment.</p>
         <div class="row">
           <div class="col-sm-6">
             @include('public.opening-hours-table')

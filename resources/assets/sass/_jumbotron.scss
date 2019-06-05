@@ -39,7 +39,8 @@
 
   .bg {
     @extend %jumbotron-base-img;
-    background: #000 url("/static/nav-img.jpg") 50% 40% no-repeat;
+    //background: #000 url("/static/nav-img.jpg") 50% 40% no-repeat;
+    background: #000 url("/static/nav.jpg") 45% 40% no-repeat;
   }
 }
 

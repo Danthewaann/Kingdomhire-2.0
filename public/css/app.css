@@ -8368,7 +8368,7 @@ button.close {
 }
 
 .jumbotron-nav .bg {
-  background: #000 url("/static/nav-img.jpg") 50% 40% no-repeat;
+  background: #000 url("/static/nav.jpg") 45% 40% no-repeat;
 }
 
 .jumbotron-home {
@@ -8449,6 +8449,7 @@ button.close {
 .vehicle-table-public {
   height: 254px !important;
   margin-bottom: 0;
+  font-size: 1.1em;
 }
 
 .vehicle-table-public tbody tr th {
@@ -8815,7 +8816,7 @@ img.hover-shadow {
 }
 
 nav {
-  font-size: 1.2em !important;
+  font-size: 1.4em !important;
 }
 
 .navbar-nav > li > a {
@@ -8859,6 +8860,10 @@ nav {
 
 .vehicle-navbar-tabs {
   padding: 10px;
+}
+
+.vehicle-navbar-tabs > li > a {
+  font-size: 1.3em;
 }
 
 .vehicle-navbar-tabs > li > a:hover {
@@ -9008,6 +9013,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 }
 
 .vehicle-categories div.panel-heading {
+  font-size: 1.7em;
   background-color: #327755;
 }
 
@@ -9237,10 +9243,74 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 .paragraph {
   text-align: justify;
+  font-size: 1.4em !important;
+}
+
+.caption {
+  color: #ededed;
+  margin-top: 20px;
+  margin-bottom: 0 !important;
+  text-align: center;
+  font-size: 1.2em !important;
+}
+
+@media (max-width: 767px) {
+  .caption {
+    margin-bottom: 20px !important;
+  }
+}
+
+.owner {
+  width: 100%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 767px) {
+  .home-hr {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .home-hr {
+    display: none;
+  }
+}
+
+.public-img {
+  width: 100%;
+  height: 310px;
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 767px) {
+  .public-img {
+    height: 200px;
+  }
 }
 
 .main-header {
   margin-top: 10px;
+  font-size: 4em;
+}
+
+@media (max-width: 767px) {
+  .main-header {
+    text-align: center;
+  }
+}
+
+.sub-header {
+  font-size: 2.5em;
+}
+
+@media (max-width: 767px) {
+  .sub-header {
+    text-align: center;
+  }
 }
 
 .table-header {
@@ -9289,6 +9359,7 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 }
 
 body {
+  font-size: 1.3em;
   text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
 }
 

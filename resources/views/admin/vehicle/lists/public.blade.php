@@ -5,11 +5,13 @@
   </div>
 @else
   <div class="col-lg-3 col-md-3 col-sm-3">
-    <div class="panel panel-default">
+    <div class="panel panel-default vehicle-categories">
       <div class="panel-heading">
-        <h4>Vehicle Types</h3>
+        <h2>Our Fleet</h2>
       </div>
       <div class="panel-footer" style="border-top: 0">
+        <h4>Vehicle Types</h4>
+        <hr style="margin: 10px 10px 5px 10px">
         <ul class="nav nav-pills nav-stacked vehicle-navbar-tabs" id="myTabs">
           @if($activeVehicles->isNotEmpty())
             <li class="active"><a href="#all" class="btn" data-toggle="pill">All</a></li>

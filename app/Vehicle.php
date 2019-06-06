@@ -3,10 +3,12 @@
 namespace App;
 
 use App\Events\VehicleCreating;
+use App\Events\VehicleDeleting;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 /**
  * App\Vehicle
@@ -70,6 +72,7 @@ class Vehicle extends Model
      */
     protected $dispatchesEvents = [
         'creating' => VehicleCreating::class,
+        'deleting' => VehicleDeleting::class
     ];
 
     /**
@@ -196,6 +199,15 @@ class Vehicle extends Model
     }
 
     /**
+     * Get the vehicle storage friendly name (make + model + id)
+     * @return string
+     */
+    public function storageName()
+    {
+        return $this->make.'_'.$this->model.'_'.$this->name;
+    }
+
+    /**
      * Get number of hires made in each unique year
      * @return Collection
      */
@@ -250,25 +262,45 @@ class Vehicle extends Model
     public function linkImages($images)
     {
         $i = $this->images->count();
+        $dir = 'imgs/'.$this->storageName();
+        if (!empty($images)) {
+            if (!Storage::disk('local')->exists('public/'.$dir)) {
+                Storage::disk('local')->makeDirectory('public/'.$dir);
+            }
+        }
         foreach ($images as $image) {
             $i++;
-            $image_name = $this->make.'_'.$this->model.'_'.$i.'.'.$image->extension();
-            $image_path = $image->storeAs('imgs/'.$this->make.'_'.$this->model, $image_name, 'public');
+            $image_name = $this->storageName().'_'.$i.'.'.$image->extension();
+            $path = $dir.'/'.$image_name;
+            $resize = Image::make($image)->widen(900);
+            $resize->save(storage_path('app/public/'.$path));
 
-            VehicleImage::create(array(
+            VehicleImage::create([
                 'name' => $image_name,
-                'image_uri' => asset('storage/' . $image_path),
+                'image_uri' => asset('storage/' . $path),
                 'vehicle_id' => $this->id
-            ));
+            ]);
         }
     }
 
-    public function deleteImages($deleteImages)
+    public function deleteImages($deleteImages = [])
     {
-        foreach ($deleteImages as $deleteImage) {
-            $imageInStorage = $this->images->where('name', $deleteImage)->first();
-            unlink(storage_path('app/public/imgs/'.$this->make.'_'.$this->model.'/'.$imageInStorage->name));
-            $imageInStorage->delete();
+        if (!empty($deleteImages)) {
+            foreach ($deleteImages as $deleteImage) {
+                $imageInStorage = $this->images->where('name', $deleteImage)->first();
+                unlink(storage_path('app/public/imgs/'.$this->storageName().'/'.$imageInStorage->name));
+                $imageInStorage->delete();
+            }
+        }
+        else {
+            foreach ($this->images as $image) {
+                unlink(storage_path('app/public/imgs/'.$this->storageName().'/'.$image->name));
+                $image->delete();
+            }
+        }
+
+        if (VehicleImage::whereVehicleId($this->id)->count() == 0) {
+            Storage::disk('local')->deleteDirectory('public/imgs/'.$this->storageName());
         }
     }
 }

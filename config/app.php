@@ -171,6 +171,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
         Swatkins\LaravelGantt\GanttServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -235,7 +236,8 @@ return [
         'Gantt' => Swatkins\LaravelGantt\GanttServiceProvider::class,
         'PdfReport' => Jimmyjs\ReportGenerator\Facades\PdfReportFacade::class,
         'ExcelReport' => Jimmyjs\ReportGenerator\Facades\ExcelReportFacade::class,
-        'CSVReport' => Jimmyjs\ReportGenerator\Facades\CSVReportFacade::class
+        'CSVReport' => Jimmyjs\ReportGenerator\Facades\CSVReportFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 

@@ -10,6 +10,7 @@
         "barryvdh/laravel-ide-helper": "^2.4",
         "doctrine/dbal": "~2.3",
         "fideloper/proxy": "^4.0",
+        "intervention/image": "^2.4",
         "jimmyjs/laravel-report-generator": "^1.1",
         "khill/datatableplus": "dev-master",
         "khill/lavacharts": "3.1.*",

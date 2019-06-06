@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\VehicleCreating' => [
             'App\Listeners\VehicleCreating',
         ],
+        'App\Events\VehicleDeleting' => [
+            'App\Listeners\VehicleDeleting',
+        ],
         'App\Events\ReservationCreating' => [
             'App\Listeners\ReservationCreating'
         ],

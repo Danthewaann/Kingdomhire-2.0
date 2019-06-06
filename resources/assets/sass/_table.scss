@@ -153,6 +153,29 @@ table.contact-info {
 .opening-hours th,
 .contact-info td,
 .opening-hours td {
-  font-size: 1.2em;
+  font-size: 1.4em;
   text-align: justify;
+}
+
+.opening-hours {
+  tr {
+    th {
+      text-align: right;
+    }
+    td {
+      text-align: left;
+    }
+  }
+}
+
+.contact-info {
+  tr {
+    th {
+      width: 50%;
+      text-align: right;
+    }
+    td {
+      text-align: left;
+    }
+  }
 }

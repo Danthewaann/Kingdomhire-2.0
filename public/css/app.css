@@ -8601,8 +8601,25 @@ table.contact-info tr.buttons td {
 .opening-hours th,
 .contact-info td,
 .opening-hours td {
-  font-size: 1.2em;
+  font-size: 1.4em;
   text-align: justify;
+}
+
+.opening-hours tr th {
+  text-align: right;
+}
+
+.opening-hours tr td {
+  text-align: left;
+}
+
+.contact-info tr th {
+  width: 50%;
+  text-align: right;
+}
+
+.contact-info tr td {
+  text-align: left;
 }
 
 /* The Modal (background) */
@@ -9314,7 +9331,15 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 }
 
 .table-header {
+  font-size: 2.5em;
+  text-align: center;
   padding-left: 8px;
+}
+
+@media (max-width: 767px) {
+  .table-header {
+    text-align: center;
+  }
 }
 
 .static-img {

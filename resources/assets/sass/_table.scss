@@ -169,12 +169,15 @@ table.contact-info {
 }
 
 .contact-info {
+  table-layout: fixed;
   tr {
     th {
-      width: 50%;
+      width: 25%;
       text-align: right;
     }
     td {
+      width: 75%;
+      word-wrap: break-word;
       text-align: left;
     }
   }

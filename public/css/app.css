@@ -8613,12 +8613,18 @@ table.contact-info tr.buttons td {
   text-align: left;
 }
 
+.contact-info {
+  table-layout: fixed;
+}
+
 .contact-info tr th {
-  width: 50%;
+  width: 25%;
   text-align: right;
 }
 
 .contact-info tr td {
+  width: 75%;
+  word-wrap: break-word;
   text-align: left;
 }
 

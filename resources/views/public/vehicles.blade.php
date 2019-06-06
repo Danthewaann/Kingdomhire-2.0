@@ -24,7 +24,7 @@
         <img class="public-img" src="{{ asset('static/business.jpg') }}" width="100%">
         <h2 class="sub-header">Vehicle Rates/Hire Period</h2>
         <p class="paragraph">
-          Our vehicle rates are competitive and can vary. They are also negotiable, so it's best to
+          Our vehicle rates are competitive and can vary from vehicle to vehicle. They are also negotiable, so it's best to
           <b><a class="text-link" href="{{ route('public.contact') }}">Contact Us</a></b> to discuss pricing.
           Standard minimum renting period is <b>3 days</b> for all vehicles, large vans are an exception, where
           they start at <b>1 day</b> minimum rental.
@@ -35,7 +35,7 @@
         <h2 class="sub-header">Insurance Policy</h2>
         <p class="paragraph">
           Most of our vehicles come with insurance as standard.
-          If you wish to use your own insurance, we are sure we are able to facilitate you.
+          If you wish to use your own insurance, we are sure we can facilitate you.
         </p>
       </div>
     </div>

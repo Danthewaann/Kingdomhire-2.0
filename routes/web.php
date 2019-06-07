@@ -17,6 +17,7 @@ Route::name('public.')->group(function () {
     Route::get('/home', 'PublicController@home')->name('home');
     Route::get('/vehicles', 'PublicController@vehicles')->name('vehicles');
     Route::get('/contact-us', 'PublicController@contact')->name('contact');
+    Route::post('/contact-us', 'PublicController@postContactForm')->name('postContact');
 });
 
 

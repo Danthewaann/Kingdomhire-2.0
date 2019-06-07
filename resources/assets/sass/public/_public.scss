@@ -1,6 +1,6 @@
 .paragraph {
   text-align: justify;
-  font-size: 1.4em !important;
+  font-size: 1.3em !important;
 }
 
 .caption {
@@ -63,14 +63,5 @@
 
 .table-header {
   font-size: 2.5em;
-  text-align: center;
-  @media(max-width:767px) {
-    text-align: center;
-  }
   padding-left: 8px;
-}
-
-.static-img {
-  width: 100%;
-  border-radius: 5px; 
 }

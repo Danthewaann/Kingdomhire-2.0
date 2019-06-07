@@ -15,11 +15,13 @@
 					Kingdomhire is a one-man business owned and ran by proprietor <b>Keith Black</b>.
 					The business specialises in vehicle hire and repair.
 	 				Keith's experience spans over 40 years of working in the motor industry,
-					so you can expect high quality service.</p>
+					so you can expect high quality service.
+				</p>
 				<p class="paragraph">
 					Kingdomhire is located and based just outside <b>Markethill, Co. Armagh.</b> Exact directions can be found on our
 					<b><a class="text-link" href="{{ route('public.contact') }}">Contact Us</a></b> page.
-					Kingdomhire cater for general, public and business needs. Whatever you need, we are sure we can help you out.</p>
+					Kingdomhire cater for general, public and business needs. Whatever you need, we are sure we can help you out.
+				</p>
 			</div>
 		</div>
 	</div>

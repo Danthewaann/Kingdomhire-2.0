@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Vehicle;
 use App\VehicleImage;
 use App\VehicleType;
+use Illuminate\Http\Request;
+use Validator;
+use Session;
+use Mail;
 
 class PublicController extends Controller
 {
@@ -44,5 +48,37 @@ class PublicController extends Controller
     public function home()
     {
         return view('public.home');
+    }
+
+    public function postContactForm(Request $request)
+    {
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required',
+            'g-recaptcha-response' => 'required|captcha'
+        ];
+
+        $messages = [
+            'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
+            'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.'
+        ];
+
+        Validator::make($request->all(), $rules, $messages)->validate();
+
+        Mail::send('email.contact-us', [
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'user_message' => nl2br($request->get('message'))
+        ], function($message) use ($request) {
+            $message->from($request->get('email'), $request->get('name'));
+            $message->to('danielcrblack@gmail.com')->subject('Kingdomhire | User Contact');
+        });
+
+        Session::flash('status', [
+            'E-Mail sent successfully!'
+        ]);
+
+        return back();
     }
 }

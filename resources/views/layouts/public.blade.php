@@ -94,5 +94,6 @@
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('js/modal-gallery.js') }}"></script>
+  {!! NoCaptcha::renderJs() !!}
 </body>
 </html>

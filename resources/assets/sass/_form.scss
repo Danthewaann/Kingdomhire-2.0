@@ -14,3 +14,33 @@
 #start_date_readonly {
   background-color: $input-bg-disabled;
 }
+
+div.contact-form {
+  h2 {
+    margin-bottom: 5px; 
+  }
+  hr {
+    margin-top: 0;
+  }
+  .form-control {
+    background-color: $light-green;
+  }
+  .control-label {
+    font-size: 1.2em;
+  }
+  .input-group-addon {
+    background-color: $dark-green;
+  }
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: unset;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: white;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: white;
+  }
+}

@@ -1,12 +1,12 @@
 .vehicle-table-public {
-  height: 170px !important;
+  height: 170px;
   margin-bottom: 0;
   font-size: 1.1em;
   tbody {
     tr {
       th {
         background-color: $light-green;
-        border-top: unset !important;
+        border-top: none;
         text-align: right;
         vertical-align: middle;
         width: 45%;
@@ -16,15 +16,15 @@
       }
       td {
         vertical-align: middle;
-        border-bottom: 1px solid $lighter-green !important;
-        border-left: 1px solid $lighter-green !important;
+        border-bottom: 1px solid $lighter-green;
+        border-left: 1px solid $lighter-green;
         background-color: lighten($light-green, 2.5%);
       }
       td.first {
         border-top: 1px solid $lighter-green !important;
       }
       td.last {
-        border-bottom: unset !important;
+        border-bottom: unset;
       }
     }
   }
@@ -139,46 +139,55 @@
   }
 }
 
-table.contact-info {
-  margin-bottom: 0 !important;
-
-  tr.buttons {
-    td {
-      padding: 15px 0px 0px 0px;
-    }
+div.opening-hours,
+div.address-info {
+  @media(max-width:767px) {
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+  table {
+    font-size: 1.3em;
+    text-align: justify;
   }
 }
 
-.contact-info th,
-.opening-hours th,
-.contact-info td,
-.opening-hours td {
-  font-size: 1.4em;
-  text-align: justify;
-}
-
-.opening-hours {
-  tr {
-    th {
-      text-align: right;
-    }
-    td {
-      text-align: left;
-    }
-  }
-}
-
-.contact-info {
+div.contact-info {
   table-layout: fixed;
-  tr {
+  @media(max-width:767px) {
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+  table {
+    font-size: 1.3em;
+    text-align: justify;
+    tr {
+      th {
+        width: 25%;
+      }
+      td {
+        width: 75%;
+        word-wrap: break-word;
+      }
+    }
+
+    tr.buttons {
+      td {
+        padding: 15px 0px 0px 0px;
+      }
+    }
+  }
+}
+
+div.contact-us-email {
+  font-size: 1.3em;
+  table {
     th {
-      width: 25%;
+      width: 45%;
+      border-right: 1px solid $lighter-green;
       text-align: right;
     }
     td {
-      width: 75%;
-      word-wrap: break-word;
-      text-align: left;
+      width: 55%
     }
   }
 }

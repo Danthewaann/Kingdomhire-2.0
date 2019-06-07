@@ -6,7 +6,7 @@
         <div class="bg"></div>
         <div class="container">
             <div class="navbar-header public-navbar-header">
-                <img class="logo" src="{{ asset('static/Kingdomhire_logo.svg') }}">
+                <img class="logo" src="{{ $message->embed(public_path('/static/Kingdomhire_logo.png')) }}">
             </div>
             <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
                 <div class="panel panel-default" style="margin-top: 30px">

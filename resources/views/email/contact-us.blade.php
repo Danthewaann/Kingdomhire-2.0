@@ -1,5 +1,6 @@
+@extends('layouts.email')
 
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@section('content')
 <div class="contact-us-email">
     <div class="jumotron jumbotron-nav">
         <div class="bg"></div>
@@ -41,3 +42,4 @@
         </div>
     </div>
 </div>
+@endsection

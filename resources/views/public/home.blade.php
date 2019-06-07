@@ -19,7 +19,7 @@
 				<p class="paragraph">
 					Kingdomhire is located and based just outside <b>Markethill, Co. Armagh.</b> Exact directions can be found on our
 					<b><a class="text-link" href="{{ route('public.contact') }}">Contact Us</a></b> page.
-					Kingdom Car Hire cater for general, public and business needs. Whatever you need, we are sure we can help you out.</p>
+					Kingdomhire cater for general, public and business needs. Whatever you need, we are sure we can help you out.</p>
 			</div>
 		</div>
 	</div>

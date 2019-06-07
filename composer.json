@@ -10,6 +10,7 @@
         "barryvdh/laravel-dompdf": "^0.8.4",
         "barryvdh/laravel-ide-helper": "^2.4",
         "doctrine/dbal": "~2.3",
+        "fedeisas/laravel-mail-css-inliner": "^2.2",
         "fideloper/proxy": "^4.0",
         "intervention/image": "^2.4",
         "jimmyjs/laravel-report-generator": "^1.1",

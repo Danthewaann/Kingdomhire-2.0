@@ -15,13 +15,13 @@
       </div>
     @endif
   <table class="table table-condensed vehicle-table-public">
-    <tr>
+    {{-- <tr>
       <th class="first">ID</th>
       <td class="first">{{ $vehicle->name }}</td>
-    </tr>
+    </tr> --}}
     <tr>
-      <th>Vehicle Type</th>
-      <td>@if($vehicle->type != null) {{ $vehicle->type->name }} @else N/A @endif</td>
+      <th class="first">Vehicle Type</th>
+      <td class="first">@if($vehicle->type != null) {{ $vehicle->type->name }} @else N/A @endif</td>
     </tr>
     <tr>
       <th>Fuel Type</th>

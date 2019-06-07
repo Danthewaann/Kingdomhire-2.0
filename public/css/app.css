@@ -9304,7 +9304,6 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 
 .public-img {
   width: 100%;
-  height: 310px;
   -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
@@ -9312,6 +9311,24 @@ div.scrollable-chart::-webkit-scrollbar-thumb:hover {
 @media (max-width: 767px) {
   .public-img {
     height: 200px;
+  }
+}
+
+@media (min-width: 768px) {
+  .public-img {
+    height: 230px;
+  }
+}
+
+@media (min-width: 992px) {
+  .public-img {
+    height: 270px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .public-img {
+    height: 310px;
   }
 }
 

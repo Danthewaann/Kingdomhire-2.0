@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-sm-6">
         <img class="public-img" src="{{ asset('static/business.jpg') }}" width="100%">
         <h2 class="sub-header">Vehicle Rates/Hire Period</h2>
         <p class="paragraph">
@@ -30,7 +30,7 @@
           they start at <b>1 day</b> minimum rental.
         </p>
       </div>
-      <div class="col-md-6">
+      <div class="col-sm-6">
         <img class="public-img" src="{{ asset('static/home-front-2.jpg') }}" width="100%">
         <h2 class="sub-header">Insurance Policy</h2>
         <p class="paragraph">

@@ -9432,12 +9432,11 @@ div.contact-us-email {
   border-radius: 10px;
   border: 1px solid #3ea771;
   text-shadow: none;
-  font-size: 1.2em;
   text-align: center;
 }
 
 div.contact-us-email .logo {
-  width: 55%;
+  width: 100%;
 }
 
 div.contact-us-email hr {

@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>E-Mail</th>
-                <td>{{ $email }}</td>
+            <td><a href="mailto:{{ $email }}">{{ $email }}</a></td>
             </tr> 
         </tbody>        
     </table>
@@ -25,6 +25,6 @@
         <p>{!! $user_message !!}</p>
     </div>
     <hr>
-    <p>&copy; {{ date('Y') }} kingdomhire.com</p>    
+    <p>&copy; {{ date('Y') }} <a class="no-link">kingdomhire.com</a></p>    
 </div>
 @endsection

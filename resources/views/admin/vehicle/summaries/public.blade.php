@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default public-vehicle-panel">
   <div class="panel-heading vehicle-panel-heading">
     <h3>{{ $vehicle->name() }}</h3>
   </div>

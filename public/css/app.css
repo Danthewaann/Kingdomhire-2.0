@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600&display=swap);@charset "UTF-8";
 
 /*!
  * Bootstrap v3.4.1 (https://getbootstrap.com/)
@@ -1405,7 +1405,7 @@ html {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   line-height: 1.6;
   color: white;
@@ -7482,7 +7482,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -7616,7 +7616,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -8588,8 +8588,38 @@ button.close {
 @media (max-width: 767px) {
   div.opening-hours,
   div.address-info {
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  div.opening-hours,
+  div.address-info {
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  div.opening-hours,
+  div.address-info {
     margin-bottom: 30px;
     margin-top: 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  div.opening-hours h2.table-header,
+  div.address-info h2.table-header {
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) {
+  div.opening-hours h2.table-header,
+  div.address-info h2.table-header {
+    text-align: left;
   }
 }
 
@@ -8599,51 +8629,162 @@ div.address-info table {
   text-align: justify;
 }
 
-div.contact-info {
-  table-layout: fixed;
+div.opening-hours table tbody tr th,
+div.address-info table tbody tr th {
+  border-right: 1px solid #3ea771;
+  word-wrap: break-word;
 }
 
 @media (max-width: 767px) {
+  div.opening-hours table tbody tr th,
+  div.address-info table tbody tr th {
+    width: 40%;
+  }
+}
+
+@media (min-width: 768px) {
+  div.opening-hours table tbody tr th,
+  div.address-info table tbody tr th {
+    width: 50%;
+    text-align: right;
+  }
+}
+
+@media (min-width: 992px) {
+  div.opening-hours table tbody tr th,
+  div.address-info table tbody tr th {
+    text-align: left;
+    width: 35%;
+  }
+}
+
+div.opening-hours table tbody tr td,
+div.address-info table tbody tr td {
+  word-wrap: break-word;
+}
+
+@media (max-width: 767px) {
+  div.opening-hours table tbody tr td,
+  div.address-info table tbody tr td {
+    width: 60%;
+  }
+}
+
+@media (min-width: 768px) {
+  div.opening-hours table tbody tr td,
+  div.address-info table tbody tr td {
+    text-align: left;
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  div.opening-hours table tbody tr td,
+  div.address-info table tbody tr td {
+    width: 65%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.contact-info {
+    margin-top: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  div.contact-info {
+    margin-top: 50px;
+  }
+}
+
+@media (min-width: 992px) {
   div.contact-info {
     margin-bottom: 30px;
     margin-top: 30px;
   }
 }
 
+@media (min-width: 768px) {
+  div.contact-info h2.table-header {
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) {
+  div.contact-info h2.table-header {
+    text-align: left;
+  }
+}
+
 div.contact-info table {
+  table-layout: fixed;
   font-size: 1.3em;
   text-align: justify;
 }
 
-div.contact-info table tr th {
-  width: 25%;
-}
-
-div.contact-info table tr td {
-  width: 75%;
+div.contact-info table tbody tr th {
+  border-right: 1px solid #3ea771;
   word-wrap: break-word;
 }
 
-div.contact-info table tr.buttons td {
+@media (max-width: 767px) {
+  div.contact-info table tbody tr th {
+    width: 25%;
+  }
+}
+
+@media (min-width: 768px) {
+  div.contact-info table tbody tr th {
+    width: 50%;
+    text-align: right;
+  }
+}
+
+@media (min-width: 992px) {
+  div.contact-info table tbody tr th {
+    text-align: left;
+    width: 25%;
+  }
+}
+
+@media (min-width: 1200px) {
+  div.contact-info table tbody tr th {
+    text-align: left;
+    width: 20%;
+  }
+}
+
+div.contact-info table tbody tr td {
+  word-wrap: break-word;
+}
+
+@media (max-width: 767px) {
+  div.contact-info table tbody tr td {
+    width: 75%;
+  }
+}
+
+@media (min-width: 768px) {
+  div.contact-info table tbody tr td {
+    text-align: left;
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  div.contact-info table tbody tr td {
+    width: 75%;
+  }
+}
+
+@media (min-width: 1200px) {
+  div.contact-info table tbody tr td {
+    width: 80%;
+  }
+}
+
+div.contact-info table tbody tr.buttons td {
   padding: 15px 0px 0px 0px;
-}
-
-div.contact-us-email {
-  font-size: 1.3em;
-}
-
-div.contact-us-email .panel {
-  margin: auto;
-}
-
-div.contact-us-email table tbody th {
-  width: 45%;
-  border-right: 1px solid #3ea771;
-  text-align: right;
-}
-
-div.contact-us-email table tbody td {
-  width: 55%;
 }
 
 /* The Modal (background) */
@@ -8857,7 +8998,7 @@ img.hover-shadow {
 }
 
 nav {
-  font-size: 1.4em !important;
+  font-size: 1.3em !important;
 }
 
 .navbar-nav > li > a {
@@ -9030,7 +9171,7 @@ div.contact-form .form-control {
 }
 
 div.contact-form .control-label {
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 div.contact-form .input-group-addon {
@@ -9093,6 +9234,11 @@ div.contact-form :-moz-placeholder {
   text-align: center;
 }
 
+.vehicle-categories {
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
 .vehicle-categories div.panel-heading {
   font-size: 1.7em;
   background-color: #327755;
@@ -9103,13 +9249,19 @@ div.contact-form :-moz-placeholder {
   background-color: #36815b;
 }
 
-.vehicle-panel-heading {
+.public-vehicle-panel {
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px;
+}
+
+.public-vehicle-panel .vehicle-panel-heading {
   height: 80px;
   overflow: auto;
   background-color: #327755 !important;
 }
 
-.vehicle-panel-heading h3 {
+.public-vehicle-panel .vehicle-panel-heading h3 {
   text-align: center;
   position: relative;
   top: 50%;
@@ -9345,8 +9497,8 @@ div.contact-form :-moz-placeholder {
 .owner {
   width: 100%;
   border-radius: 50%;
-  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 767px) {
@@ -9363,8 +9515,8 @@ div.contact-form :-moz-placeholder {
 
 .public-img {
   width: 100%;
-  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 767px) {
@@ -9452,11 +9604,13 @@ div.contact-us-email table {
 }
 
 div.contact-us-email table tbody th {
+  color: white;
   width: 40%;
   text-align: right;
 }
 
 div.contact-us-email table tbody td {
+  color: white;
   width: 60%;
   text-align: left;
 }
@@ -9477,6 +9631,7 @@ div.contact-us-email .content hr {
 }
 
 div.contact-us-email .content p {
+  color: white;
   text-align: left;
   padding-left: 2.5%;
   padding-right: 2.5%;
@@ -9494,8 +9649,8 @@ div.contact-us-email .content p {
 .map {
   width: 100%;
   height: 500px;
-  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
 .text-link {
@@ -9524,7 +9679,7 @@ div.contact-us-email .content p {
 }
 
 body {
-  font-size: 1.3em;
+  font-size: 1.4em;
   text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -9568,5 +9723,18 @@ option:disabled {
 .btn {
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+div.g-recaptcha {
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  div.g-recaptcha {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+  }
 }
 

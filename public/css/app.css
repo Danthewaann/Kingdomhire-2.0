@@ -9417,32 +9417,58 @@ div.contact-form :-moz-placeholder {
   padding-left: 8px;
 }
 
+body.contact-us-email {
+  background-color: #307251;
+}
+
 div.contact-us-email {
-  font-size: 1.3em;
-}
-
-div.contact-us-email .panel {
+  background-color: #36815b;
+  padding: 20px;
   margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 600px;
+  border-radius: 10px;
+  border: 1px solid #3ea771;
+  text-shadow: none;
+  font-size: 1.3em;
+  text-align: center;
 }
 
-div.contact-us-email .bg {
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #000 url("http://www.kingdomhire.com/static/nav.jpg") 45% 40% no-repeat;
+div.contact-us-email .logo {
+  width: 500px;
+}
+
+div.contact-us-email hr {
+  width: 450px;
+}
+
+div.contact-us-email table {
+  margin: auto;
+  width: 450px;
 }
 
 div.contact-us-email table tbody th {
   width: 45%;
-  border-right: 1px solid #3ea771;
   text-align: right;
 }
 
 div.contact-us-email table tbody td {
   width: 55%;
+  text-align: left;
+}
+
+div.contact-us-email .content h2 {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: -10px;
+}
+
+div.contact-us-email .content p {
+  margin: 0;
+  text-align: left;
+  padding-left: 75px;
+  padding-right: 75px;
 }
 
 .logo {

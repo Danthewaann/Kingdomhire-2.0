@@ -10,7 +10,7 @@
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="all">
 </head>
-<body>
+<body class="contact-us-email">
   <div id="app">
     @yield('content')
   </div>

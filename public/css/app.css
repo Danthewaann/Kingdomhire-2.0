@@ -8445,7 +8445,6 @@ button.close {
 .vehicle-table-public {
   height: 170px;
   margin-bottom: 0;
-  font-size: 1.1em;
 }
 
 .vehicle-table-public tbody tr th {
@@ -8625,7 +8624,7 @@ button.close {
 
 div.opening-hours table,
 div.address-info table {
-  font-size: 1.3em;
+  font-size: 1.2em;
   text-align: justify;
 }
 
@@ -8718,7 +8717,7 @@ div.address-info table tbody tr td {
 
 div.contact-info table {
   table-layout: fixed;
-  font-size: 1.3em;
+  font-size: 1.2em;
   text-align: justify;
 }
 
@@ -9473,6 +9472,7 @@ div.contact-form :-moz-placeholder {
   border-color: #3ea771;
   border-left: 0;
   border-bottom: 0;
+  font-size: 12px;
 }
 
 .paragraph {
@@ -9545,17 +9545,12 @@ div.contact-form :-moz-placeholder {
 
 .main-header {
   margin-top: 10px;
-  font-size: 4em;
 }
 
 @media (max-width: 767px) {
   .main-header {
     text-align: center;
   }
-}
-
-.sub-header {
-  font-size: 2.5em;
 }
 
 @media (max-width: 767px) {
@@ -9565,7 +9560,6 @@ div.contact-form :-moz-placeholder {
 }
 
 .table-header {
-  font-size: 2.5em;
   padding-left: 8px;
 }
 

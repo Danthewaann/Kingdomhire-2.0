@@ -9420,8 +9420,6 @@ div.contact-form :-moz-placeholder {
 body.contact-us-email {
   color: white;
   background-color: #307251;
-  padding-top: 30px;
-  padding-bottom: 30px;
 }
 
 div.contact-us-email {
@@ -9432,6 +9430,7 @@ div.contact-us-email {
   border-radius: 10px;
   border: 1px solid #3ea771;
   text-shadow: none;
+  font-size: 14px;
   text-align: center;
 }
 
@@ -9439,13 +9438,8 @@ div.contact-us-email .logo {
   width: 100%;
 }
 
-div.contact-us-email hr {
-  width: 55%;
-}
-
 div.contact-us-email table {
   margin: auto;
-  width: 55%;
 }
 
 div.contact-us-email table tbody th {

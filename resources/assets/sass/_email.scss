@@ -1,8 +1,8 @@
 body.contact-us-email {
     color: white;
     background-color: $dark-green;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    // padding-top: 30px;
+    // padding-bottom: 30px;
 }
 
 div.contact-us-email {
@@ -13,17 +13,14 @@ div.contact-us-email {
     border-radius: 10px;
     border: 1px solid $lighter-green;
     text-shadow: none;
-    // font-size: 1.2em;
+    font-size: 14px;
     text-align: center;
     .logo {
         width: 100%;
     }
-    hr {
-        width: 55%;
-    }
     table {
         margin: auto;
-        width: 55%;
+        // width: 55%;
         tbody {
             th {
                 width: 45%;

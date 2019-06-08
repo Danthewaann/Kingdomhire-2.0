@@ -21,7 +21,7 @@
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <img class="public-img" src="{{ asset('static/business.jpg') }}" width="100%">
+        <img class="public-img" src="{{ asset('static/business.jpg') }}" alt="Our facilities">
         <h2 class="sub-header">Vehicle Rates/Hire Period</h2>
         <p class="paragraph">
           Our vehicle rates are competitive and can vary from vehicle to vehicle. They are also negotiable, so it's best to
@@ -31,7 +31,7 @@
         </p>
       </div>
       <div class="col-sm-6">
-        <img class="public-img" src="{{ asset('static/home-front-2.jpg') }}" width="100%">
+        <img class="public-img" src="{{ asset('static/home-front-2.jpg') }}" alt="Kingdomhire location">
         <h2 class="sub-header">Insurance Policy</h2>
         <p class="paragraph">
           Most of our vehicles come with insurance as standard.

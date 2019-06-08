@@ -51,6 +51,10 @@
   position: relative;
   max-height: 700px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  img {
+    width:100%; 
+    max-height: 600px;
+  }
 }
 
 /* Next & previous buttons */

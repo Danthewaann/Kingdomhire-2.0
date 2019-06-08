@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
-				<img class="owner" src="{{ asset('static/owner.jpg') }}">
+				<img class="owner" src="{{ asset('static/owner.jpg') }}" alt="Proprietor - Keith Black">
 				<p class="caption">Proprietor - Keith Black</p>
 			</div>
 			<div class="col-sm-8">
@@ -32,7 +32,7 @@
 			<div class="col-md-12">
 				<div class="row">
 					<div class="col-sm-6">
-						<img class="public-img" src="{{ asset('static/vehicles.jpg') }}">
+						<img class="public-img" src="{{ asset('static/vehicles.jpg') }}" alt="Our fleet of vehicles">
 						<h2 class="sub-header">Our Fleet of Vehicles</h2>
 						<p class="paragraph">
 							We have a wide selection of vehicles to choose from. We provide hatchbacks, 4-door saloons, people carriers, small vans and large vans.
@@ -41,7 +41,7 @@
 						</p>
 					</div>
 					<div class="col-sm-6">
-						<img class="public-img" src="{{ asset('static/home-front.jpg') }}">
+						<img class="public-img" src="{{ asset('static/home-front.jpg') }}" alt="Kingdomhire location">
 						<h2 class="sub-header">Making a Reservation</h2>
 						<p class="paragraph">
 							You need to call/e-mail us to be able to reserve a vehicle.

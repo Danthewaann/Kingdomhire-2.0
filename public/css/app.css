@@ -8847,6 +8847,11 @@ div.contact-info table tbody tr.buttons td {
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
+.modal-slides img {
+  width: 100%;
+  max-height: 600px;
+}
+
 /* Next & previous buttons */
 
 .modal-prev,

@@ -5,7 +5,7 @@
   <div class="container">
     <div class="flex-center position-ref full-height">
       <div class="content">
-        <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo">
+        <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo" alt="Kingdomhire logo">
         <div class="title">
           @if($exception->getMessage() != null)
             Status: {{ $exception->getMessage() }}...

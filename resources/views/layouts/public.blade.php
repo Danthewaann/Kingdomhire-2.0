@@ -21,9 +21,8 @@
         <div class="bg"></div>
         <div class="container">
           <div class="navbar-header public-navbar-header">
-            <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo" width="100%">
+            <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo" alt="Kingdomhire logo">
 
-          <!-- Collapsed Hamburger -->
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
               <span class="sr-only">Toggle Navigation</span>
               <span class="icon-bar"></span>
@@ -35,7 +34,6 @@
       </div>
       <div class="container">
         <div class="collapse navbar-collapse vehicle-dashboard-navbar-collapse" id="app-navbar-collapse">
-          <!-- Left Side Of Navbar -->
           <ul class="nav navbar-nav">
             <li class="{{ Request::is('/') || Request::is('home') ? 'active' : '' }}">
               <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
@@ -48,9 +46,7 @@
             </li>
           </ul>
 					@auth
-						<!-- Right Side Of Navbar -->
 						<ul class="nav navbar-nav navbar-right">
-							<!-- Authentication Links -->
 							<li>
 								<a href="{{ route('admin.home') }}"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;Admin Dashboard</a>
 							</li>
@@ -91,7 +87,6 @@
 		</div>
   </div>
 
-  <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('js/modal-gallery.js') }}"></script>
   {!! NoCaptcha::renderJs() !!}

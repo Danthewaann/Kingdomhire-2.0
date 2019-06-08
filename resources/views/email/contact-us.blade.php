@@ -25,6 +25,8 @@
         <p>{!! $user_message !!}</p>
     </div>
     <hr>
+    <a class="btn btn-lg btn-primary" role="button" href="mailto:{{ $email }}">Reply</a>
+    <hr>
     <p>&copy; {{ date('Y') }} <a class="no-link">kingdomhire.com</a></p>    
 </div>
 @endsection

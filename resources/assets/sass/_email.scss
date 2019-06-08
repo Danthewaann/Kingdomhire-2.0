@@ -9,8 +9,9 @@ div.contact-us-email {
     color: white;
     background-color: $light-green;
     padding: 20px;
-    margin: 30px;
+    margin: auto;
     width: 100%;
+    max-width: 600px;
     border-radius: 10px;
     border: 1px solid $lighter-green;
     text-shadow: none;

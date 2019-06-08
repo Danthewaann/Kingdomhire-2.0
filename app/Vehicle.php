@@ -204,7 +204,7 @@ class Vehicle extends Model
      */
     public function storageName()
     {
-        return $this->make.'_'.$this->model.'_'.$this->name;
+        return str_slug($this->make.'_'.$this->model.'_'.$this->name);
     }
 
     /**

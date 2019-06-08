@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>E-Mail</th>
-            <td><a href="mailto:{{ $email }}">{{ $email }}</a></td>
+            <td><a class="text-link" href="mailto:{{ $email }}">{{ $email }}</a></td>
             </tr> 
         </tbody>        
     </table>

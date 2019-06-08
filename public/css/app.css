@@ -8632,13 +8632,13 @@ div.contact-us-email {
   font-size: 1.3em;
 }
 
-div.contact-us-email table th {
+div.contact-us-email table tbody th {
   width: 45%;
   border-right: 1px solid #3ea771;
   text-align: right;
 }
 
-div.contact-us-email table td {
+div.contact-us-email table tbody td {
   width: 55%;
 }
 

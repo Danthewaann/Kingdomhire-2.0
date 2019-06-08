@@ -181,13 +181,15 @@ div.contact-info {
 div.contact-us-email {
   font-size: 1.3em;
   table {
-    th {
-      width: 45%;
-      border-right: 1px solid $lighter-green;
-      text-align: right;
-    }
-    td {
-      width: 55%
+    tbody {
+      th {
+        width: 45%;
+        border-right: 1px solid $lighter-green;
+        text-align: right;
+      }
+      td {
+        width: 55%
+      }
     }
   }
 }

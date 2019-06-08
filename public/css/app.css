@@ -9428,11 +9428,7 @@ div.contact-us-email {
   color: white;
   background-color: #36815b;
   padding: 20px;
-  margin: auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  width: 90%;
-  max-width: 100%;
+  margin: 30px;
   border-radius: 10px;
   border: 1px solid #3ea771;
   text-shadow: none;
@@ -9441,7 +9437,7 @@ div.contact-us-email {
 }
 
 div.contact-us-email .logo {
-  width: 500px;
+  width: 55%;
 }
 
 div.contact-us-email hr {

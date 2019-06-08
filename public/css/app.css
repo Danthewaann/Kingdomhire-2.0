@@ -9502,13 +9502,13 @@ div.contact-form :-moz-placeholder {
 }
 
 @media (max-width: 767px) {
-  .home-hr {
+  .public-hr {
     display: block;
   }
 }
 
 @media (min-width: 768px) {
-  .home-hr {
+  .public-hr {
     display: none;
   }
 }

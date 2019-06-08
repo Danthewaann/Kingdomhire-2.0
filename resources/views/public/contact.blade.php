@@ -16,6 +16,7 @@
           Our opening hours are approximate, exceptions include vehicle pick-ups and drop-offs by appointment.
         </p>
         @include('public.contact-form')
+        <hr class="public-hr">
       </div>
       <div class="col-md-4 col-sm-12">
         @include('public.opening-hours-table')

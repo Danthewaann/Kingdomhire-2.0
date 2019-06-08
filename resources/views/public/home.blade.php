@@ -9,7 +9,7 @@
 				<p class="caption">Proprietor - Keith Black</p>
 			</div>
 			<div class="col-sm-8">
-				<hr class="home-hr">
+				<hr class="public-hr">
 				<h1 class="main-header">Welcome to Kingdomhire</h1>
 				<p class="paragraph">
 					Kingdomhire is a one-man business owned and ran by proprietor <b>Keith Black</b>.

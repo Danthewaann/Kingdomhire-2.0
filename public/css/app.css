@@ -9425,12 +9425,13 @@ body.contact-us-email {
 }
 
 div.contact-us-email {
+  color: white;
   background-color: #36815b;
   padding: 20px;
   margin: auto;
   margin-top: 30px;
   margin-bottom: 30px;
-  width: 600px;
+  width: 60%;
   border-radius: 10px;
   border: 1px solid #3ea771;
   text-shadow: none;
@@ -9443,12 +9444,12 @@ div.contact-us-email .logo {
 }
 
 div.contact-us-email hr {
-  width: 450px;
+  width: 55%;
 }
 
 div.contact-us-email table {
   margin: auto;
-  width: 450px;
+  width: 55%;
 }
 
 div.contact-us-email table tbody th {
@@ -9468,10 +9469,11 @@ div.contact-us-email .content h2 {
 }
 
 div.contact-us-email .content p {
-  margin: 0;
+  width: 55%;
+  margin: auto;
   text-align: left;
-  padding-left: 75px;
-  padding-right: 75px;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
 }
 
 .logo {

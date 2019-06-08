@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Session;
 use Mail;
+use Sitemap;
 
 class PublicController extends Controller
 {
@@ -79,5 +80,35 @@ class PublicController extends Controller
         ]);
 
         return back();
+    }
+
+    public function siteMap()
+    {
+        Sitemap::addTag(asset('static/Kingdomhire_logo.svg'), now(), null, null);
+        Sitemap::addTag(asset('static/nav.jpg'), now(), null, null);
+        
+        $tag = Sitemap::addTag(route('public.root'), now(), null, '0.8');
+        $tag->addImage(asset('static/owner.jpg'), 'Proprietor - Keith Black');
+        $tag->addImage(asset('static/vehicles.jpg'), 'Our Fleet of Vehicles');
+        $tag->addImage(asset('static/home-front.jpg'), 'Making a Reservation');
+
+        $tag = Sitemap::addTag(route('public.home'), now(), null, '0.4');
+        $tag->addImage(asset('static/owner.jpg'), 'Proprietor - Keith Black');
+        $tag->addImage(asset('static/vehicles.jpg'), 'Our Fleet of Vehicles');
+        $tag->addImage(asset('static/home-front.jpg'), 'Making a Reservation');
+
+        $tag = Sitemap::addTag(route('public.vehicles'), now(), 'daily', '0.8');
+        $tag->addImage(asset('static/business.jpg'), 'Vehicle Rates/Hire Period');
+        $tag->addImage(asset('static/home-front-2.jpg'), 'Insurance Policy');
+
+        foreach(Vehicle::all() as $vehicle) {
+            foreach($vehicle->images as $image) {
+                $tag->addImage($image->image_uri, $vehicle->name() . ' - ' . $image->name);
+            }
+        }
+
+        Sitemap::addTag(route('public.contact'), now(), null, '0.6');
+        
+        return Sitemap::render();
     }
 }

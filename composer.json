@@ -20,7 +20,8 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "~5.0",
         "maatwebsite/excel": "~2.1.0",
-        "swatkins/laravel-gantt": "^1.0"
+        "swatkins/laravel-gantt": "^1.0",
+        "watson/sitemap": "^2.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

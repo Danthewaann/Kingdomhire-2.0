@@ -174,6 +174,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Fedeisas\LaravelMailCssInliner\LaravelMailCssInlinerServiceProvider::class,
+        Watson\Sitemap\SitemapServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -241,6 +242,7 @@ return [
         'CSVReport' => Jimmyjs\ReportGenerator\Facades\CSVReportFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'Sitemap' => Watson\Sitemap\Facades\Sitemap::class,
 
     ],
 

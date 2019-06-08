@@ -13,6 +13,7 @@
 
 /* Public page routes */
 Route::name('public.')->group(function () {
+    Route::get('/sitemap', 'PublicController@siteMap')->name('siteMap');
     Route::get('/', 'PublicController@home')->name('root');
     Route::get('/home', 'PublicController@home')->name('home');
     Route::get('/vehicles', 'PublicController@vehicles')->name('vehicles');

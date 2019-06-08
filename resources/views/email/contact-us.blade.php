@@ -19,7 +19,7 @@
             </tr> 
         </tbody>        
     </table>
-    <div class="content">
+    <div class="email-content">
         <h2>E-Mail Content</h2>
         <hr>
         <p>{!! $user_message !!}</p>

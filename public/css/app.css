@@ -9592,6 +9592,18 @@ div.contact-us-email hr {
   max-width: 450px;
 }
 
+div.contact-us-email h2 {
+  color: white;
+}
+
+div.contact-us-email h5 {
+  color: white;
+}
+
+div.contact-us-email p {
+  color: white;
+}
+
 div.contact-us-email table {
   margin: auto;
   max-width: 450px;
@@ -9601,6 +9613,7 @@ div.contact-us-email table tbody th {
   color: white;
   width: 40%;
   text-align: right;
+  border-right: 1px solid #3ea771;
 }
 
 div.contact-us-email table tbody td {
@@ -9609,23 +9622,22 @@ div.contact-us-email table tbody td {
   text-align: left;
 }
 
-div.contact-us-email .content {
+div.contact-us-email .email-content {
   margin: auto;
   max-width: 450px;
 }
 
-div.contact-us-email .content h2 {
+div.contact-us-email .email-content h2 {
   text-align: center;
   margin-top: 50px;
   margin-bottom: -10px;
 }
 
-div.contact-us-email .content hr {
+div.contact-us-email .email-content hr {
   max-width: 100%;
 }
 
-div.contact-us-email .content p {
-  color: white;
+div.contact-us-email .email-content p {
   text-align: left;
   padding-left: 2.5%;
   padding-right: 2.5%;

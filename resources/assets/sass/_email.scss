@@ -23,6 +23,15 @@ div.contact-us-email {
     hr {
         max-width: 450px;
     }
+    h2 {
+        color: white;
+    }
+    h5 {
+        color: white;
+    }
+    p { 
+        color: white;
+    }
     table {
         margin: auto;
         max-width: 450px;
@@ -31,6 +40,7 @@ div.contact-us-email {
                 color: white;
                 width: 40%;
                 text-align: right;
+                border-right: 1px solid $lighter-green;
             }
             td {
                 color: white;
@@ -39,7 +49,7 @@ div.contact-us-email {
             }
         }
     }
-    .content {
+    .email-content {
         margin: auto;
         max-width: 450px;
         h2 {
@@ -51,7 +61,6 @@ div.contact-us-email {
             max-width: 100%;
         }
         p { 
-            color: white;
             text-align: left;
             padding-left: 2.5%;
             padding-right: 2.5%;

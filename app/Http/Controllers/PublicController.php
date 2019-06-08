@@ -71,7 +71,7 @@ class PublicController extends Controller
             'email' => $request->get('email'),
             'user_message' => nl2br($request->get('message'))
         ], function($message) use ($request) {
-            $message->to('danielcrblack@gmail.com')->subject('Kingdomhire | User Contact');
+            $message->to('kingdomhire@googlemail.com')->subject('E-Mail Received');
         });
 
         Session::flash('status', [

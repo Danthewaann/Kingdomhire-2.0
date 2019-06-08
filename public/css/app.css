@@ -9427,6 +9427,8 @@ div.contact-us-email {
   background-color: #36815b;
   padding: 20px;
   margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
   width: 100%;
   max-width: 600px;
   border-radius: 10px;
@@ -9440,18 +9442,28 @@ div.contact-us-email .logo {
   width: 100%;
 }
 
+div.contact-us-email hr {
+  max-width: 450px;
+}
+
 div.contact-us-email table {
   margin: auto;
+  max-width: 450px;
 }
 
 div.contact-us-email table tbody th {
-  width: 45%;
+  width: 40%;
   text-align: right;
 }
 
 div.contact-us-email table tbody td {
-  width: 55%;
+  width: 60%;
   text-align: left;
+}
+
+div.contact-us-email .content {
+  margin: auto;
+  max-width: 450px;
 }
 
 div.contact-us-email .content h2 {
@@ -9460,8 +9472,11 @@ div.contact-us-email .content h2 {
   margin-bottom: -10px;
 }
 
+div.contact-us-email .content hr {
+  max-width: 100%;
+}
+
 div.contact-us-email .content p {
-  margin: auto;
   text-align: left;
   padding-left: 2.5%;
   padding-right: 2.5%;

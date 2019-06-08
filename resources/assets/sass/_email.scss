@@ -1,8 +1,6 @@
 body.contact-us-email {
     color: white;
     background-color: $dark-green;
-    // padding-top: 30px;
-    // padding-bottom: 30px;
 }
 
 div.contact-us-email {
@@ -10,6 +8,8 @@ div.contact-us-email {
     background-color: $light-green;
     padding: 20px;
     margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
     width: 100%;
     max-width: 600px;
     border-radius: 10px;
@@ -20,28 +20,35 @@ div.contact-us-email {
     .logo {
         width: 100%;
     }
+    hr {
+        max-width: 450px;
+    }
     table {
         margin: auto;
-        // width: 55%;
+        max-width: 450px;
         tbody {
             th {
-                width: 45%;
+                width: 40%;
                 text-align: right;
             }
             td {
-                width: 55%;
+                width: 60%;
                 text-align: left;
             }
         }
     }
     .content {
+        margin: auto;
+        max-width: 450px;
         h2 {
             text-align: center;
             margin-top: 50px;
             margin-bottom: -10px;
         }
+        hr {
+            max-width: 100%;
+        }
         p { 
-            margin: auto;
             text-align: left;
             padding-left: 2.5%;
             padding-right: 2.5%;

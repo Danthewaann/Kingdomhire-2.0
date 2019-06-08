@@ -1,0 +1,22 @@
+div.contact-us-email {
+    font-size: 1.3em;
+    .panel {
+      margin: auto;
+    }
+
+    .bg {
+        background-image: url("http://www.kingdomhire.com/static/nav.jpg") !important;
+    }
+    table {
+      tbody {
+        th {
+          width: 45%;
+          border-right: 1px solid $lighter-green;
+          text-align: right;
+        }
+        td {
+          width: 55%
+        }
+      }
+    }
+  }

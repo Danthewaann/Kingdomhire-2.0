@@ -8,7 +8,7 @@
   <title>{{ config('app.name', 'Kingdomhire') }} | Car & Van Hire Specialist</title>
 
   <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="all">
 </head>
 <body>
   <div id="app">

@@ -15,14 +15,16 @@
                         <h5>Sent through Kingdomhire contact form</h5>
                     </div>
                     <table class="table">
-                        <tr>
-                            <th>Sent By</th>
-                            <td>{{ $name }}</td>
-                        </tr>
-                        <tr>
-                            <th>E-Mail</th>
-                            <td>{{ $email }}</td>
-                        </tr>         
+                        <tbody>
+                            <tr>
+                                <th>Sent By</th>
+                                <td>{{ $name }}</td>
+                            </tr>
+                            <tr>
+                                <th>E-Mail</th>
+                                <td>{{ $email }}</td>
+                            </tr> 
+                        </tbody>        
                     </table>
                 </div>
                 <div class="panel panel-default">

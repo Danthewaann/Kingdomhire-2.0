@@ -10,6 +10,7 @@ div.contact-us-email {
     background-color: $light-green;
     padding: 20px;
     margin: 30px;
+    width: 100%;
     border-radius: 10px;
     border: 1px solid $lighter-green;
     text-shadow: none;
@@ -39,7 +40,6 @@ div.contact-us-email {
             margin-bottom: -10px;
         }
         p { 
-            width: 55%;
             margin: auto;
             text-align: left;
             padding-left: 2.5%;

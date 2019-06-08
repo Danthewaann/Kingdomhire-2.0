@@ -9427,6 +9427,7 @@ div.contact-us-email {
   background-color: #36815b;
   padding: 20px;
   margin: 30px;
+  width: 100%;
   border-radius: 10px;
   border: 1px solid #3ea771;
   text-shadow: none;
@@ -9459,7 +9460,6 @@ div.contact-us-email .content h2 {
 }
 
 div.contact-us-email .content p {
-  width: 55%;
   margin: auto;
   text-align: left;
   padding-left: 2.5%;

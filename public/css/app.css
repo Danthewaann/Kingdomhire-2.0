@@ -9418,13 +9418,13 @@ div.contact-form :-moz-placeholder {
 }
 
 body.contact-us-email {
+  color: white;
   background-color: #307251;
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
 div.contact-us-email {
-  color: white;
   background-color: #36815b;
   padding: 20px;
   margin: auto;

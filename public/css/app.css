@@ -9426,6 +9426,12 @@ div.contact-us-email .panel {
 }
 
 div.contact-us-email .bg {
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: #000 url("http://www.kingdomhire.com/static/nav.jpg") 45% 40% no-repeat;
 }
 

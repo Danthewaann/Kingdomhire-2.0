@@ -16,7 +16,7 @@
 </head>
 <body>
   <div id="app">
-    <nav class="navbar navbar-default navbar-static-top public-navbar">
+    <nav class="navbar navbar-default navbar-static-top public-navbar scene_element scene_element--fadeindown">
       <div class="jumbotron jumbotron-nav">
         <div class="bg"></div>
         <div class="container">
@@ -79,12 +79,14 @@
         </div>
       </div>
     </nav>
-    @yield('content')
-		<div class="jumbotron jumbotron-footer">
-			<div class="container">
-				<p>&copy; {{ date('Y') }} kingdomhire.com</p>
-			</div>
-		</div>
+    <div class="scene_element scene_element--fadeinup">
+      @yield('content')
+      <div class="jumbotron jumbotron-footer">
+        <div class="container">
+          <p>&copy; {{ date('Y') }} kingdomhire.com</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="{{ asset('js/app.js') }}"></script>

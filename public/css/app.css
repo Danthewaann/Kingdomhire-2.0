@@ -8786,6 +8786,194 @@ div.contact-info table tbody tr.buttons td {
   padding: 15px 0px 0px 0px;
 }
 
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 50px, 0);
+            transform: translate3d(0, 50px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 50px, 0);
+            transform: translate3d(0, 50px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -50px, 0);
+            transform: translate3d(0, -50px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -50px, 0);
+            transform: translate3d(0, -50px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(30px, 0, 0);
+            transform: translate3d(30px, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(30px, 0, 0);
+            transform: translate3d(30px, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-20px, 0, 0);
+            transform: translate3d(-20px, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-20px, 0, 0);
+            transform: translate3d(-20px, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.scene_element {
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.scene_element--fadein {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+
+.scene_element--fadeinup {
+  -webkit-animation-name: fadeInUp;
+          animation-name: fadeInUp;
+}
+
+.scene_element--fadeindown {
+  -webkit-animation-name: fadeInDown;
+          animation-name: fadeInDown;
+}
+
+.scene_element--fadeinright {
+  -webkit-animation-name: fadeInRight;
+          animation-name: fadeInRight;
+}
+
+.scene_element--fadeinleft {
+  -webkit-animation-name: fadeInLeft;
+          animation-name: fadeInLeft;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
 /* The Modal (background) */
 
 .img-modal {
@@ -8799,8 +8987,6 @@ div.contact-info table tbody tr.buttons td {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.7);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
 }
 
 .img-modal:after {
@@ -8817,6 +9003,12 @@ div.contact-info table tbody tr.buttons td {
   padding: 0;
   width: 90%;
   max-width: 900px;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.5s;
+  animation-name: zoom;
+  animation-duration: 0.5s;
 }
 
 /* The Close Button */
@@ -8840,6 +9032,7 @@ div.contact-info table tbody tr.buttons td {
 /* Hide the slides by default */
 
 .modal-slides {
+  background: transparent;
   display: none;
   position: relative;
   max-height: 700px;
@@ -8849,7 +9042,7 @@ div.contact-info table tbody tr.buttons td {
 
 .modal-slides img {
   width: 100%;
-  max-height: 600px;
+  height: 600px;
 }
 
 /* Next & previous buttons */

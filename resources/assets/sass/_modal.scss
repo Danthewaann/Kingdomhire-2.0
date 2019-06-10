@@ -1,3 +1,83 @@
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	
+	100% {
+		opacity:1;
+	}
+}
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		transform: translate3d(0,50px,0);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, -50px, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes fadeInRight {
+	0% {
+		opacity: 0;
+		transform: translate3d(30px, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes fadeInLeft {
+	0% {
+		opacity: 0;
+		transform: translate3d(-20px, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+	.scene_element {
+		animation-duration: 1s;
+		transition-timing-function: ease-in-out;
+		animation-fill-mode: both;
+	}
+	.scene_element--fadein {
+		animation-name: fadeIn;
+	}
+	.scene_element--fadeinup {
+		animation-name:fadeInUp
+	}
+	.scene_element--fadeindown {
+		animation-name: fadeInDown;
+	}
+	.scene_element--fadeinright {
+		animation-name: fadeInRight;
+	}
+	.scene_element--fadeinleft {
+		animation-name: fadeInLeft;
+	}
+	
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
 /* The Modal (background) */
 .img-modal {
   display: none;
@@ -10,7 +90,6 @@
   height: 100%;
   overflow: auto;
   background-color: rgba(0,0,0,0.7);
-  transition: 0.5s;
 }
 
 .img-modal:after {
@@ -25,6 +104,11 @@
   padding: 0;
   width: 90%;
   max-width: 900px;
+  transition-timing-function: ease-in-out;
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.5s;
+  animation-name: zoom;
+  animation-duration: 0.5s;
   //max-height: 500px;
 }
 
@@ -47,13 +131,14 @@
 
 /* Hide the slides by default */
 .modal-slides {
+  background: transparent;
   display: none;
   position: relative;
   max-height: 700px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   img {
-    width:100%; 
-    max-height: 600px;
+    width: 100%; 
+    height: 600px;
   }
 }
 

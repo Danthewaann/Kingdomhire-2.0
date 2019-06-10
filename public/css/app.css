@@ -9001,7 +9001,7 @@ div.contact-info table tbody tr.buttons td {
   background-color: #fefefe;
   margin: auto;
   padding: 0;
-  width: 90%;
+  width: 100%;
   max-width: 900px;
   -webkit-transition-timing-function: ease-in-out;
           transition-timing-function: ease-in-out;
@@ -9009,6 +9009,14 @@ div.contact-info table tbody tr.buttons td {
   -webkit-animation-duration: 0.5s;
   animation-name: zoom;
   animation-duration: 0.5s;
+  width: 100%;
+  height: 600px;
+}
+
+@media (max-width: 767px) {
+  .img-modal-content {
+    height: 270px;
+  }
 }
 
 /* The Close Button */
@@ -9017,7 +9025,7 @@ div.contact-info table tbody tr.buttons td {
   color: white;
   position: absolute;
   top: 10px;
-  right: 25px;
+  right: 10px;
   font-size: 35px;
   font-weight: bold;
 }
@@ -9032,17 +9040,17 @@ div.contact-info table tbody tr.buttons td {
 /* Hide the slides by default */
 
 .modal-slides {
-  background: transparent;
   display: none;
   position: relative;
-  max-height: 700px;
+  width: inherit;
+  height: inherit;
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .modal-slides img {
-  width: 100%;
-  height: 600px;
+  width: inherit;
+  height: inherit;
 }
 
 /* Next & previous buttons */
@@ -9053,11 +9061,11 @@ div.contact-info table tbody tr.buttons td {
   position: absolute;
   top: 50%;
   width: auto;
-  padding: 16px;
+  padding: 12px;
   margin-top: -50px;
   color: white;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1.4em;
   -webkit-transition: 0.6s ease;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
@@ -9065,7 +9073,14 @@ div.contact-info table tbody tr.buttons td {
    -ms-user-select: none;
        user-select: none;
   -webkit-user-select: none;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 767px) {
+  .modal-prev,
+  .modal-next {
+    font-size: 1em;
+  }
 }
 
 /* Position the "next button" to the right */
@@ -9086,11 +9101,17 @@ div.contact-info table tbody tr.buttons td {
 
 .numbertext {
   color: #f2f2f2;
-  background-color: rgba(0, 0, 0, 0.5);
-  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 1.4em;
   padding: 8px 12px;
   position: absolute;
   top: 0;
+}
+
+@media (max-width: 767px) {
+  .numbertext {
+    font-size: 1em;
+  }
 }
 
 img.hover-shadow {

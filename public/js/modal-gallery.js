@@ -78,44 +78,59 @@ module.exports = __webpack_require__(39);
 
 $(document).ready(function () {
     $('.vehicle-open-modal').click(function () {
-        var vehicle = $(this).data('vehicle');
-        document.getElementById(vehicle).style.display = 'block';
-        showSlides(1, vehicle);
+        vehicle = $(this).data('vehicle');
+        showModal(vehicle);
     });
 
     $('.vehicle-close-modal').click(function () {
-        var vehicle = $(this).data('vehicle');
-        document.getElementById(vehicle).style.display = 'none';
-        slideIndex = 1;
+        vehicle = $(this).data('vehicle');
+        closeModal(vehicle);
     });
 
     $('.modal-prev').click(function () {
-        var vehicle = $(this).data('vehicle');
+        vehicle = $(this).data('vehicle');
         plusSlides(-1, vehicle);
     });
 
     $('.modal-next').click(function () {
-        var vehicle = $(this).data('vehicle');
+        vehicle = $(this).data('vehicle');
         plusSlides(1, vehicle);
+    });
+
+    $(window).click(function (event) {
+        var modal = document.getElementById(vehicle);
+        if (event.target == modal) {
+            closeModal(vehicle);
+        }
     });
 });
 
 var slideIndex = 1;
+var vehicle = null;
+
+function showModal(vehicle) {
+    $('#' + vehicle).css('display', 'block');
+    showSlides(1, vehicle);
+}
+
+function closeModal(vehicle) {
+    $('#' + vehicle).fadeOut(300);
+    slideIndex = 1;
+}
 
 // Next/previous controls
-function plusSlides(n, vehicle_id) {
-    showSlides(slideIndex += n, vehicle_id);
+function plusSlides(n, vehicle) {
+    showSlides(slideIndex += n, vehicle);
 }
 
 // Thumbnail image controls
-function currentSlide(n, vehicle_id) {
-    showSlides(slideIndex = n, vehicle_id);
+function currentSlide(n, vehicle) {
+    showSlides(slideIndex = n, vehicle);
 }
 
-function showSlides(n, vehicle_id) {
+function showSlides(n, vehicle) {
     var i;
-    var slides = document.querySelectorAll('.' + vehicle_id + '-images');
-    console.log(slides, vehicle_id);
+    var slides = $('.' + vehicle + '-images');
     if (n > slides.length) {
         slideIndex = 1;
     }

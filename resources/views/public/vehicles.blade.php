@@ -14,8 +14,8 @@
       </div>
       <div class="col-md-6">
         <p class="paragraph">
-          Below are all the vehicles that are in our fleet. Not all our vehicles may be be listed on our website,
-          so it's best to call us to see what we have available.
+          Below are most of the vehicles that are in our fleet. Not all our vehicles may be be listed on this page,
+          so it's best to <b><a class="text-link" href="{{ route('public.contact') }}">Contact Us</a></b> to see what we have available.
         </p>
       </div>
     </div>

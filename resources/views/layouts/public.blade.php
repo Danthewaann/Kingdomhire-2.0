@@ -9,23 +9,17 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @if(Request::is('/') || Request::is('home'))
-    <title>Welcome | Kingdomhire - Car & Van Hire Company</title>
-    <meta name="description" content="Kingdomhire is a car & van hire company based in Markethill, 
-    Co. Armagh. We provide a wide range of vehicles, such as Hatchbacks, People Carriers and Vans. 
-    Get in contact with us if you are interested in hiring from us.">
+    <title>Welcome | Kingdomhire - Car & Van Rental Agency</title>
+    <meta name="description" content="Car & Van Rental Agency Based in Markethill, Co. Armagh. We provide a wide range of vehicles to rent. Contact us if you are interested in renting from us.">
   @elseif(Request::is('vehicles'))
-    <title>Our Fleet Of Vehicles | Kingdomhire - Car & Van Hire Company</title>
-    <meta name="description" content="Our fleet includes Hatchbacks, Small/Large Vans, People Carriers (MPVs), Convertibles and more. 
-    Our fleet is ever expanding to include more diverse vehicles, get in contact with us to see what we have available.">
+    <title>Our Fleet Of Vehicles | Kingdomhire - Car & Van Rental Agency</title>
+    <meta name="description" content="Our fleet includes Hatchbacks, Large Vans, Small Vans, People Carriers (MPVs), Convertibles and more. Contact us to see what we have available.">
   @elseif(Request::is('contact-us'))
-    <title>Our Contact Info & Directions | Kingdomhire - Car & Van Hire Company</title>
-    <meta name="description" content="Need to get in contact with us? Need to get directions to Kingdomhire? All of that information is available on this 
-    page for your convenience">
+    <title>Our Contact Info & Directions | Kingdomhire - Car & Van Rental Agency</title>
+    <meta name="description" content="Want to rent a vehicle from us? Need to get directions to Kingdomhire? All our contact information is available on this page">
   @else
-    <title>Welcome | Kingdomhire - Car & Van Hire Company</title>
-    <meta name="description" content="Kingdomhire is a car & van hire company based in Markethill, 
-    Co. Armagh. We provide a wide range of vehicles, such as Hatchbacks, People Carriers and Vans. 
-    Get in contact with us if you are interested in hiring from us.">
+    <title>Welcome | Kingdomhire - Car & Van Rental Agency</title>
+    <meta name="description" content="Car & Van Rental Agency Based in Markethill, Co. Armagh. We provide a wide range of vehicles to rent. Contact us if you are interested in renting from us.">
   @endif
 
   <!-- Styles -->

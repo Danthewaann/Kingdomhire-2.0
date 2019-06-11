@@ -35,8 +35,8 @@
 						<img class="public-img" src="{{ asset('static/vehicles.jpg') }}" alt="Our fleet of vehicles">
 						<h2 class="sub-header">Our Fleet of Vehicles</h2>
 						<p class="paragraph">
-							We have a wide selection of vehicles to choose from. We provide hatchbacks, 4-door saloons, people carriers, small vans and large vans.
-							Our fleet is ever expanding to include more diverse vehicles, and we ensure that our vehicles are reliable and well maintained.
+							We have a wide selection of vehicles to choose from. We provide <b>Hatchbacks</b>, <b>People Carriers (MPVs)</b>, 
+							<b>Small Vans</b>, <b>Large Vans</b>, <b>Convertibles</b> and more. Our fleet is ever expanding to include more vehicles, and we ensure that our vehicles are reliable and well maintained.
 							You can check out what we have available on our <b><a class="text-link" href="{{ route('public.vehicles') }}">Vehicles</a></b> page.
 						</p>
 					</div>
@@ -44,8 +44,8 @@
 						<img class="public-img" src="{{ asset('static/home-front.jpg') }}" alt="Kingdomhire location">
 						<h2 class="sub-header">Making a Reservation</h2>
 						<p class="paragraph">
-							You need to call/e-mail us to be able to reserve a vehicle.
-							You should aim to reserve the vehicle you want to hire at least 1 day before expected pickup.
+							You need to <b><a class="text-link" href="{{ route('public.contact') }}">Contact Us</a></b> to be able to reserve a vehicle.
+							You should aim to reserve the vehicle you want to rent at least <b>1 day</b> before expected pickup.
 							More information is available about making reservations on our
 							<b><a class="text-link" href="{{ route('public.vehicles') }}">Vehicles</a></b> page.
 						</p>

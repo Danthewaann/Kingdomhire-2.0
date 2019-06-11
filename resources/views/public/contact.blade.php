@@ -13,7 +13,7 @@
         <h1 class="main-header">Contact Us</h1>
         <p class="paragraph">
           Have any queries? You can contact us via mobile phone or email, whichever you prefer.
-          Our opening hours are approximate, exceptions include vehicle pick-ups and drop-offs by appointment.
+          Our <b>opening hours are approximate</b>, exceptions include vehicle pick-ups and drop-offs by appointment.
         </p>
         @include('public.contact-form')
         <hr class="public-hr">

@@ -8624,7 +8624,7 @@ button.close {
 
 div.opening-hours table,
 div.address-info table {
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-align: justify;
 }
 
@@ -8717,7 +8717,7 @@ div.address-info table tbody tr td {
 
 div.contact-info table {
   table-layout: fixed;
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-align: justify;
 }
 

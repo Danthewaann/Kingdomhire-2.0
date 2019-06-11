@@ -14,6 +14,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('vendor/swatkins/gantt/css/gantt.css') }}" rel="stylesheet" type="text/css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=bOMa9p6jxO">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=bOMa9p6jxO">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=bOMa9p6jxO">
+  <link rel="manifest" href="/site.webmanifest?v=bOMa9p6jxO">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg?v=bOMa9p6jxO" color="#339966">
+  <link rel="shortcut icon" href="/favicon.ico?v=bOMa9p6jxO">
+  <meta name="msapplication-TileColor" content="#339966">
+  <meta name="theme-color" content="#339966">
 </head>
 <body>
 <div id="app">

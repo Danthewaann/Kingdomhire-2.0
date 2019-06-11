@@ -11,14 +11,12 @@
   @if(Request::is('/') || Request::is('home'))
     <title>Welcome | Kingdomhire - Car & Van Hire Company</title>
     <meta name="description" content="Kingdomhire is a car & van hire company based in Markethill, 
-    Co. Armagh. The business is owned and ran by proprietor Keith Black with over 40 years
-    of experience working in the motor industry. We provide a wide range of vehicles, such as Hatchbacks, People Carriers and Vans. 
-    Make sure to get in contact with us if you are interested in hiring from us.">
+    Co. Armagh. We provide a wide range of vehicles, such as Hatchbacks, People Carriers and Vans. 
+    Get in contact with us if you are interested in hiring from us.">
   @elseif(Request::is('vehicles'))
     <title>Our Fleet Of Vehicles | Kingdomhire - Car & Van Hire Company</title>
     <meta name="description" content="Our fleet includes Hatchbacks, Small/Large Vans, People Carriers (MPVs), Convertibles and more. 
-    Our fleet is ever expanding to include more diverse vehicles, and we ensure that our vehicles are reliable and well maintained. Make sure
-    to get in contact with us to see what we have available.">
+    Our fleet is ever expanding to include more diverse vehicles, get in contact with us to see what we have available.">
   @elseif(Request::is('contact-us'))
     <title>Our Contact Info & Directions | Kingdomhire - Car & Van Hire Company</title>
     <meta name="description" content="Need to get in contact with us? Need to get directions to Kingdomhire? All of that information is available on this 
@@ -26,9 +24,8 @@
   @else
     <title>Welcome | Kingdomhire - Car & Van Hire Company</title>
     <meta name="description" content="Kingdomhire is a car & van hire company based in Markethill, 
-    Co. Armagh. The business is owned and ran by proprietor Keith Black with over 40 years
-    of experience working in the motor industry. We provide a wide range of vehicles, such as Hatchbacks, People Carriers and Vans. 
-    Make sure to get in contact with us if you are interested in hiring from us.">
+    Co. Armagh. We provide a wide range of vehicles, such as Hatchbacks, People Carriers and Vans. 
+    Get in contact with us if you are interested in hiring from us.">
   @endif
 
   <!-- Styles -->

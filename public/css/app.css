@@ -9770,6 +9770,7 @@ body.contact-us-email {
   padding-bottom: 30px;
 }
 
+div.contact-us-email,
 div.email-receipt {
   color: white;
   background-color: #36815b;
@@ -9784,38 +9785,56 @@ div.email-receipt {
   text-align: center;
 }
 
+div.contact-us-email .logo,
 div.email-receipt .logo {
   width: 100%;
 }
 
+div.contact-us-email hr,
 div.email-receipt hr {
   max-width: 450px;
 }
 
+div.contact-us-email h2,
 div.email-receipt h2 {
   text-align: center;
   margin-top: 50px;
   margin-bottom: 5px;
 }
 
+div.contact-us-email h5,
 div.email-receipt h5 {
   color: white;
 }
 
+div.contact-us-email p,
 div.email-receipt p {
   color: white;
 }
 
+div.contact-us-email table,
 div.email-receipt table {
   margin: auto;
   max-width: 450px;
 }
 
+div.contact-us-email table tbody th#sent_by,
+div.contact-us-email table tbody th#email,
+div.email-receipt table tbody th#sent_by,
+div.email-receipt table tbody th#email {
+  width: 40%;
+  text-align: right;
+  border-right: 1px solid #3ea771;
+}
+
+div.contact-us-email table tbody th,
 div.email-receipt table tbody th {
   color: white;
   width: 40%;
 }
 
+div.contact-us-email table tbody th#subject,
+div.contact-us-email table tbody th#message,
 div.email-receipt table tbody th#subject,
 div.email-receipt table tbody th#message {
   width: 30%;
@@ -9824,105 +9843,20 @@ div.email-receipt table tbody th#message {
   font-size: 1.5em;
 }
 
+div.contact-us-email table tbody td#subject_td,
+div.contact-us-email table tbody td#message_td,
 div.email-receipt table tbody td#subject_td,
 div.email-receipt table tbody td#message_td {
   width: 70%;
   font-size: 1.1em;
 }
 
+div.contact-us-email table tbody td,
 div.email-receipt table tbody td {
   color: white;
   width: 60%;
   text-align: left;
   vertical-align: middle;
-}
-
-div.email-receipt .email-content {
-  margin: auto;
-  max-width: 450px;
-}
-
-div.email-receipt .email-content hr {
-  max-width: 100%;
-}
-
-div.email-receipt .email-content p {
-  text-align: left;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
-}
-
-div.contact-us-email {
-  color: white;
-  background-color: #36815b;
-  padding: 20px;
-  margin: auto;
-  width: 100%;
-  max-width: 600px;
-  border-radius: 10px;
-  border: 1px solid #3ea771;
-  text-shadow: none;
-  font-size: 14px;
-  text-align: center;
-}
-
-div.contact-us-email .logo {
-  width: 100%;
-}
-
-div.contact-us-email hr {
-  max-width: 450px;
-}
-
-div.contact-us-email h2 {
-  color: white;
-}
-
-div.contact-us-email h5 {
-  color: white;
-}
-
-div.contact-us-email p {
-  color: white;
-}
-
-div.contact-us-email table {
-  margin: auto;
-  max-width: 450px;
-}
-
-div.contact-us-email table tbody th {
-  color: white;
-  width: 40%;
-  text-align: right;
-  border-right: 1px solid #3ea771;
-}
-
-div.contact-us-email table tbody td {
-  color: white;
-  width: 60%;
-  text-align: left;
-}
-
-div.contact-us-email .email-content {
-  margin: auto;
-  max-width: 450px;
-}
-
-div.contact-us-email .email-content h2 {
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: -10px;
-}
-
-div.contact-us-email .email-content hr {
-  max-width: 100%;
-}
-
-div.contact-us-email .email-content p {
-  text-align: left;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
 }
 
 .logo {

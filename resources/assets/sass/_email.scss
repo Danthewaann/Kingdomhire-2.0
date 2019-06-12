@@ -5,6 +5,7 @@ body.contact-us-email {
     padding-bottom: 30px;
 }
 
+div.contact-us-email,
 div.email-receipt {
     color: white;
     background-color: $light-green;
@@ -38,6 +39,11 @@ div.email-receipt {
         margin: auto;
         max-width: 450px;
         tbody {
+            th#sent_by, th#email {
+                width: 40%;
+                text-align: right;
+                border-right: 1px solid $lighter-green;
+            }
             th { 
                 color: white;
                 width: 40%;
@@ -60,79 +66,67 @@ div.email-receipt {
             }
         }
     }
-    .email-content {
-        margin: auto;
-        max-width: 450px;
-        hr {
-            max-width: 100%;
-        }
-        p { 
-            text-align: left;
-            padding-left: 2.5%;
-            padding-right: 2.5%;
-        }
-    }
 }
 
-div.contact-us-email {
-    color: white;
-    background-color: $light-green;
-    padding: 20px;
-    margin: auto;
-    width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
-    border: 1px solid $lighter-green;
-    text-shadow: none;
-    font-size: 14px;
-    text-align: center;
-    .logo {
-        width: 100%;
-    }
-    hr {
-        max-width: 450px;
-    }
-    h2 {
-        color: white;
-    }
-    h5 {
-        color: white;
-    }
-    p { 
-        color: white;
-    }
-    table {
-        margin: auto;
-        max-width: 450px;
-        tbody {
-            th {
-                color: white;
-                width: 40%;
-                text-align: right;
-                border-right: 1px solid $lighter-green;
-            }
-            td {
-                color: white;
-                width: 60%;
-                text-align: left;
-            }
-        }
-    }
-    .email-content {
-        margin: auto;
-        max-width: 450px;
-        h2 {
-            text-align: center;
-            margin-top: 50px;
-            margin-bottom: -10px;
-        }
-        hr {
-            max-width: 100%;
-        }
-        p { 
-            text-align: left;
-            padding-left: 2.5%;
-            padding-right: 2.5%;
-        }
-    }
-}
+// div.contact-us-email {
+//     color: white;
+//     background-color: $light-green;
+//     padding: 20px;
+//     margin: auto;
+//     width: 100%;
+//     max-width: 600px;
+//     border-radius: 10px;
+//     border: 1px solid $lighter-green;
+//     text-shadow: none;
+//     font-size: 14px;
+//     text-align: center;
+//     .logo {
+//         width: 100%;
+//     }
+//     hr {
+//         max-width: 450px;
+//     }
+//     h2 {
+//         color: white;
+//     }
+//     h5 {
+//         color: white;
+//     }
+//     p { 
+//         color: white;
+//     }
+//     table {
+//         margin: auto;
+//         max-width: 450px;
+//         tbody {
+//             th {
+//                 color: white;
+//                 width: 40%;
+//                 text-align: right;
+//                 border-right: 1px solid $lighter-green;
+//             }
+//             td {
+//                 color: white;
+//                 width: 60%;
+//                 text-align: left;
+//             }
+//         }
+//     }
+//     .email-content {
+//         margin: auto;
+//         max-width: 450px;
+//         h2 {
+//             text-align: center;
+//             margin-top: 50px;
+//             margin-bottom: -10px;
+//         }
+//         hr {
+//             max-width: 100%;
+//         }
+//         p { 
+//             text-align: left;
+//             padding-left: 2.5%;
+//             padding-right: 2.5%;
+//         }
+//     }
+// }

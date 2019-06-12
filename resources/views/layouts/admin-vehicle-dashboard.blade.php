@@ -15,14 +15,14 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('vendor/swatkins/gantt/css/gantt.css') }}" rel="stylesheet" type="text/css">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=bOMa9p6jxO">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=bOMa9p6jxO">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=bOMa9p6jxO">
-  <link rel="manifest" href="/site.webmanifest?v=bOMa9p6jxO">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg?v=bOMa9p6jxO" color="#339966">
-  <link rel="shortcut icon" href="/favicon.ico?v=bOMa9p6jxO">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=sxQYcq">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=sxQYcq">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=sxQYcq">
+  <link rel="manifest" href="/site.webmanifest?v=sxQYcq">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg?v=sxQYcq" color="#339966">
+  <link rel="shortcut icon" href="/favicon.ico?v=sxQYcq">
   <meta name="msapplication-TileColor" content="#339966">
-  <meta name="theme-color" content="#339966">
+  <meta name="theme-color" content="#2c885a">
 </head>
 <body>
 <div id="app">

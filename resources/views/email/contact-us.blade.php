@@ -5,12 +5,10 @@
     <div class="navbar-header public-navbar-header">
         <img class="logo" src="{{ $message->embed(public_path('/static/Kingdomhire_logo.png')) }}">
     </div>
+    <h2>E-Mail Received</h2>
+    <h5>Sent through Kingdomhire email form</h5> 
     <table class="table">
         <tbody>
-            <tr>
-                <h2>E-Mail Received</h2>
-                <h5>Sent through Kingdomhire email form</h5> 
-            </tr>
             <tr>
                 <th id="sent_by">Sent By</th>
                 <td>{{ $name }}</td>

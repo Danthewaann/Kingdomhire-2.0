@@ -1,5 +1,5 @@
 <div class="contact-info">
-  <h2 class="table-header"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;Contact Info</h2>
+  <header><h2 class="table-header"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;Contact Info</h2></header>
   <table class="table">
     <tr>
       <th>Phone</th>

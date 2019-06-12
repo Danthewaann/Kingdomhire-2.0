@@ -52,6 +52,10 @@ nav {
 //  border: 0 !important;
 //}
 
+.tab-pane {
+  @extend %scene_element--fadeinup;
+}
+
 .vehicle-navbar-tabs {
   // background-color: lighten($light-green, 2.5%);
   padding: 10px;

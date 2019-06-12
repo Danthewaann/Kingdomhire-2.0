@@ -1,15 +1,14 @@
-<div class="contact-form">
-    <h2>Email Form</h2>
-    <hr>
-    <form class="form-horizontal" action="{{ route('public.postContact') }}" method="post">
-        @csrf
+<form class="contact-form form-horizontal" action="{{ route('public.postContact') }}" method="post">
+    @csrf
+    <fieldset>
+        <legend>Email Us</legend>
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
             <label for="name" class="col-md-2 col-sm-3 control-label">Name*</label>
             <div class="col-md-10 col-sm-9">
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                     {{ Form::text('name', '', array(
-                    'class' => 'form-control', 'autocomplete' => 'off',
+                    'class' => 'form-control',
                     'placeholder' => 'Enter Name...', 'id' => 'name'))
                     }}
                 </div>
@@ -24,12 +23,27 @@
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
                     {{ Form::email('email', '', array(
-                    'class' => 'form-control', 'autocomplete' => 'off',
+                    'class' => 'form-control',
                     'placeholder' => 'Enter E-Mail...', 'id' => 'email'))
                     }}
                 </div>
                 @if( $errors->has('email'))
                     @include('admin.common.alert-danger', ['error' => $errors->first('email')])
+                @endif
+            </div>
+        </div>
+        <div class="form-group{{ $errors->has('subject') ? ' has-error' : '' }}">
+            <label for="subject" class="col-md-2 col-sm-3 control-label">Subject*</label>
+            <div class="col-md-10 col-sm-9">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-tag"></span></span>
+                    {{ Form::text('subject', '', array(
+                    'class' => 'form-control', 'autocomplete' => 'off',
+                    'placeholder' => 'Enter Subject...', 'id' => 'subject'))
+                    }}
+                </div>
+                @if( $errors->has('subject'))
+                    @include('admin.common.alert-danger', ['error' => $errors->first('subject')])
                 @endif
             </div>
         </div>
@@ -62,5 +76,5 @@
                 <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-upload"></span>&nbsp;&nbsp;Submit</button>
             </div>
         </div>
-    </form>
-</div>
+    </fieldset>
+</form>

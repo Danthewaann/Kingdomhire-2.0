@@ -9,6 +9,7 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 // Local scss
+@import "animation";
 @import "jumbotron";
 @import "table";
 @import "modal";
@@ -62,6 +63,18 @@
 body {
   font-size: 1.4em;
   text-shadow: 0px 0px 3px rgba(0,0,0, 0.2)
+}
+
+main {
+  @extend %scene_element--fadeinup;
+}
+
+nav {
+  @extend %scene_element--fadeindown;
+}
+
+footer {
+  @extend %scene_element--fadeinup;
 }
 
 .has-error .input-group-addon {

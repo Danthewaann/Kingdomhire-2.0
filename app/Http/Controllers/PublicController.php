@@ -56,6 +56,7 @@ class PublicController extends Controller
         $rules = [
             'name' => 'required',
             'email' => 'required|email',
+            'subject' => 'required',
             'message' => 'required',
             'g-recaptcha-response' => 'required|captcha'
         ];
@@ -70,13 +71,22 @@ class PublicController extends Controller
         Mail::send('email.contact-us', [
             'name' => $request->get('name'),
             'email' => $request->get('email'),
+            'subject' => $request->get('subject'),
             'user_message' => nl2br($request->get('message'))
         ], function($message) use ($request) {
             $message->to('kingdomhire@googlemail.com')->subject('E-Mail Received');
         });
 
+        Mail::send('email.receipt', [
+            'subject' => $request->get('subject'),
+            'user_message' => nl2br($request->get('message'))
+        ], function($message) use ($request) {
+            $message->to($request->get('email'))->subject('E-Mail Receipt | Kingdomhire');
+        });
+
         Session::flash('status', [
-            'E-Mail sent successfully!'
+            'E-Mail sent successfully!',
+            'We\'ve sent an E-Mail receipt to ' . $request->get('email')
         ]);
 
         return back();

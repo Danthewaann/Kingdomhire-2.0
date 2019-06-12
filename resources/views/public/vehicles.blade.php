@@ -1,12 +1,7 @@
 @extends('layouts.public')
 
 @section('content')
-@foreach($vehicleTypes as $vehicleType)
-  @foreach($vehicleType->vehicles as $vehicle)
-    @include('admin.vehicle.modals.image-gallery')
-  @endforeach
-@endforeach
-<div class="jumbotron jumbotron-header">
+<section class="jumbotron jumbotron-header">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -40,12 +35,12 @@
       </div>
     </div>
   </div>
-</div>
-<div class="jumbotron jumbotron-content">
+</section>
+<section class="jumbotron jumbotron-content">
   <div class="container">
     <div class="row">
       @include('admin.vehicle.lists.public')
     </div>
   </div>
-</div>
+</section>
 @endsection

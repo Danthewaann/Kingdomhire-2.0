@@ -22,10 +22,11 @@
     <div class="email-content">
         <h2>E-Mail Content</h2>
         <hr>
-        <p>{!! $user_message !!}</p>
+        <p><b>Subject:</b> {{ $subject }}</p>
+        <p><b>Message:</b><br>{!! $user_message !!}</p>
     </div>
     <hr>
-    <a class="btn btn-lg btn-primary" role="button" href="mailto:{{ $email }}">Reply</a>
+    <a class="btn btn-lg btn-primary" role="button" href="mailto:{{ $email }}">Reply to {{ $name }}</a>
     <hr>
     <p>&copy; {{ date('Y') }} <a class="no-link">kingdomhire.com</a></p>    
 </div>

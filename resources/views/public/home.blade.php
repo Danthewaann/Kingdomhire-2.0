@@ -18,7 +18,7 @@
 					so you can expect high quality service.
 				</p>
 				<p class="paragraph">
-					Kingdomhire is located and based just outside <b>Markethill, Co. Armagh.</b> Exact directions can be found on our
+					Kingdomhire is based in <b>Northern Ireland</b>, located just outside <b>Markethill, Co. Armagh.</b> Exact directions can be found on our
 					<b><a class="text-link" href="{{ route('public.contact') }}">Contact Us</a></b> page.
 					Kingdomhire cater for general, public and business needs. Whatever you need, we are sure we can help you out.
 				</p>

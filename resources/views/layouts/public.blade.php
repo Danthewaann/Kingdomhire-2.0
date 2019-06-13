@@ -11,7 +11,7 @@
 
   @if(Request::is('/') || Request::is('home'))
     <title>Welcome | Kingdomhire - Car & Van Rental Agency</title>
-    <meta name="description" content="Car & Van Rental Agency Based in Markethill, Co. Armagh. We provide a wide range of vehicles to rent. Contact us if you are interested in renting from us.">
+    <meta name="description" content="Car & Van Rental Agency Based in Armagh, Northern Ireland. We provide a wide range of vehicles to rent. Contact us if you are interested in renting from us.">
   @elseif(Request::is('vehicles'))
     <title>Our Fleet Of Vehicles | Kingdomhire - Car & Van Rental Agency</title>
     <meta name="description" content="Our fleet includes Hatchbacks, Large Vans, Small Vans, People Carriers (MPVs), Convertibles and more. Contact us to see what we have available.">

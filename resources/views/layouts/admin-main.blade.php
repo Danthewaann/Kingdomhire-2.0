@@ -33,7 +33,7 @@
       </div>
     </div>
   </main>
-  <footer class="jumbotron jumbotron-footer">
+  <footer class="jumbotron jumbotron-admin-footer">
     <div class="container">
       <p>&copy; {{ date('Y') }} kingdomhire.com</p>
     </div>

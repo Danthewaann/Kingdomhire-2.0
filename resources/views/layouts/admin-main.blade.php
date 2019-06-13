@@ -25,26 +25,25 @@
   <meta name="theme-color" content="#2c885a">
 </head>
 <body>
-<div id="app">
   @include('layouts.admin-navbar-base')
-
-  <div class="jumbotron jumbotron-admin">
-    <div class="container">
-      @yield('content')
+  <main>
+    <div class="jumbotron jumbotron-admin">
+      <div class="container">
+        @yield('content')
+      </div>
     </div>
-  </div>
-  <div class="jumbotron jumbotron-admin-footer">
+  </main>
+  <footer class="jumbotron jumbotron-footer">
     <div class="container">
       <p>&copy; {{ date('Y') }} kingdomhire.com</p>
     </div>
-  </div>
-</div>
+  </footer>
 
 
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
-<script src="{{ asset('js/datepicker.js') }}"></script>
-<script src="{{ asset('js/modal-gallery.js') }}"></script>
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="{{ asset('js/datepicker.js') }}"></script>
+  <script src="{{ asset('js/modal-gallery.js') }}"></script>
 </body>
 </html>

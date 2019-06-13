@@ -273,7 +273,7 @@ class Vehicle extends Model
             $image_name = $this->storageName().'_'.$i.'.'.$image->extension();
             $path = $dir.'/'.$image_name;
             $resize = Image::make($image)->widen(900);
-            $resize->save(storage_path('app/public/'.$path));
+            $resize->save(storage_path('app/public/'.$path), 60);
 
             VehicleImage::create([
                 'name' => $image_name,

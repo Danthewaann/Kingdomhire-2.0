@@ -25,35 +25,34 @@
   <meta name="theme-color" content="#2c885a">
 </head>
 <body>
-<div id="app">
   @include('layouts.admin-navbar-base')
-
-  <div class="jumbotron jumbotron-admin">
-    <div class="container">
-      <div class="row">
-        @if(session()->has('status'))
-          <div class="col-lg-12">
-            @include('admin.common.alert-success')
+  <main>
+    <div class="jumbotron jumbotron-admin">
+      <div class="container">
+        <div class="row">
+          @if(session()->has('status'))
+            <div class="col-lg-12">
+              @include('admin.common.alert-success')
+            </div>
+          @endif
+          @include('admin.vehicle.summaries.vehicle-dashboard')
+          <div class="col-lg-8 col-md-8 col-sm-6">
+            @yield('content')
           </div>
-        @endif
-        @include('admin.vehicle.summaries.vehicle-dashboard')
-        <div class="col-lg-8 col-md-8 col-sm-6">
-          @yield('content')
         </div>
       </div>
     </div>
-  </div>
-  <div class="jumbotron jumbotron-admin-footer">
+  </main>
+  <footer class="jumbotron jumbotron-admin-footer">
     <div class="container">
       <p>&copy; {{ date('Y') }} kingdomhire.com</p>
     </div>
-  </div>
-</div>
+  </footer>
 
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
-<script src="{{ asset('js/datepicker.js') }}"></script>
-<script src="{{ asset('js/modal-gallery.js') }}"></script>
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="{{ asset('js/datepicker.js') }}"></script>
+  <script src="{{ asset('js/modal-gallery.js') }}"></script>
 </body>
 </html>

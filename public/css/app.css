@@ -8512,17 +8512,30 @@ nav {
 }
 
 .jumbotron-nav,
+.jumbotron-with-bg,
 .jumbotron-home,
 .jumbotron-vehicles,
 .jumbotron-contact {
   margin: 0;
   overflow: hidden;
   position: relative;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 130px;
+  padding-bottom: 130px;
+}
+
+@media (max-width: 767px) {
+  .jumbotron-nav,
+  .jumbotron-with-bg,
+  .jumbotron-home,
+  .jumbotron-vehicles,
+  .jumbotron-contact {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 
 .jumbotron-nav .bg,
+.jumbotron-with-bg .bg,
 .jumbotron-home .bg,
 .jumbotron-vehicles .bg,
 .jumbotron-contact .bg {
@@ -8537,12 +8550,42 @@ nav {
   -o-filter: blur(6px);
   -ms-filter: blur(6px);
   filter: blur(6px);
-  -webkit-transform: scale(1.03);
-          transform: scale(1.03);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+@media (max-width: 767px) {
+  .jumbotron-nav .bg,
+  .jumbotron-with-bg .bg,
+  .jumbotron-home .bg,
+  .jumbotron-vehicles .bg,
+  .jumbotron-contact .bg {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+  }
 }
 
 .jumbotron-nav .bg {
-  background: #000 url("/static/nav.jpg") 45% 40% no-repeat;
+  background-image: url("/static/nav.jpg");
+  background-position: 50% 45%;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 767px) {
+  .jumbotron-nav .bg {
+    background-position: 0px -30px;
+  }
+}
+
+.jumbotron-with-bg .bg {
+  background-image: url("/static/nav.jpg");
+  background-position: 0% 60%;
+  background-repeat: no-repeat;
 }
 
 .jumbotron-home {
@@ -9224,11 +9267,11 @@ nav {
 
 .public-navbar-header {
   min-width: 100%;
-  margin: 10px 0px;
 }
 
 .navbar-header {
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .navbar-toggle {

@@ -1,7 +1,8 @@
 @extends('layouts.login')
 
 @section('content')
-<div class="jumbotron jumbotron-content">
+<div class="jumbotron jumbotron-with-bg">
+  <div class="bg"></div>
   <div class="container">
     <div class="flex-center position-ref full-height">
       <div class="row">

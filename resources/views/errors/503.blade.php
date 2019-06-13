@@ -1,16 +1,17 @@
 @extends('layouts.login')
 
 @section('content')
-<div class="jumbtron jumbotron-content">
+<div class="jumbtron jumbotron-with-bg">
+  <div class="bg"></div>
   <div class="container">
     <div class="flex-center position-ref full-height">
       <div class="content">
         <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo" alt="Kingdomhire logo">
         <div class="title">
           @if($exception->getMessage() != null)
-            Status: {{ $exception->getMessage() }}...
+            {{ $exception->getMessage() }}...
           @else
-            Status: kingdomhire is offline 
+            Kingdomhire is offline 
           @endif  
         </div>
         <div class="title">

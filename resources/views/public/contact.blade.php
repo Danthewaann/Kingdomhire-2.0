@@ -11,16 +11,16 @@
     </div>
     <div class="row">
       <div class="col-md-8 col-sm-12">
-        <header class="main-header"><h1>Contact Us</h1></header>
-      </div>
-      <article class="col-md-8 col-sm-12">
-        <p class="paragraph">
-          Have any queries? You can contact us via mobile phone or email, whichever you prefer.
-          Our <b>opening hours are approximate</b>, exceptions include vehicle pick-ups and drop-offs by appointment.
-        </p>
+        <header>
+          <h1 class="main-header">Contact Us</h1>
+          <p class="paragraph">
+            Have any queries? You can contact us via mobile phone or email, whichever you prefer.
+            Our <b>opening hours are approximate</b>, exceptions include vehicle pick-ups and drop-offs by appointment.
+          </p>
+        </header>
         @include('public.contact-form')
         <hr class="public-hr">
-      </article>
+      </div>
       <article class="col-md-4 col-sm-12">
         @include('public.opening-hours-table')
         @include('public.address-table')

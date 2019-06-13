@@ -39,9 +39,7 @@
 <section class="jumbotron jumbotron-content">
   <div class="container">
     <div class="row">
-      <article> 
-        @include('admin.vehicle.lists.public')
-      </article>
+      @include('admin.vehicle.lists.public')
     </div>
   </div>
 </section>

@@ -31,7 +31,7 @@
   <div class="col-lg-9 col-sm-9">
     <div class="tab-content">
       @if($vehiclesWithType->isNotEmpty())
-        <div id="all" class="tab-pane fade in active">
+        <article id="all" class="tab-pane fade in active">
           <div class="row">
             @foreach($activeVehicles->sortByDesc('created_at') as $vehicle)
               <div class="col-lg-4 col-md-6 col-sm-6">
@@ -39,9 +39,9 @@
               </div>
             @endforeach
           </div>
-        </div>
+        </article>
         @foreach($vehicleTypes as $vehicleType)
-          <div id="{{ str_replace(" ", "-", $vehicleType->name) }}" class="tab-pane fade">
+          <article id="{{ str_replace(" ", "-", $vehicleType->name) }}" class="tab-pane fade">
             <div class="row">
               @foreach($vehiclesWithType->where('vehicle_type_id', $vehicleType->id)->sortByDesc('created_at') as $vehicle)
                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -49,11 +49,11 @@
                 </div>           
               @endforeach
             </div>
-          </div>
+          </article>
         @endforeach
       @endif
       @if($vehiclesWithNoType->isNotEmpty())
-        <div id="na" class="tab-pane fade{{ $vehiclesWithType->isEmpty() ? ' in active' : '' }}">
+        <article id="na" class="tab-pane fade{{ $vehiclesWithType->isEmpty() ? ' in active' : '' }}">
           <div class="row">
             @foreach($vehiclesWithNoType->sortByDesc('created_at') as $vehicle)
               <div class="col-lg-4 col-md-6 col-sm-6">
@@ -61,7 +61,7 @@
               </div>
             @endforeach
           </div>
-        </div>
+        </article>
       @endif
     </div>
   </div>

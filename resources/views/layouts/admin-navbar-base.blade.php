@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top public-navbar">
+<nav class="navbar navbar-default navbar-static-top admin-navbar">
   <div class="jumbotron jumbotron-nav">
     <div class="bg"></div>
     <div class="container">
@@ -22,7 +22,7 @@
         <li class="{{ Request::is('admin') ? 'active' : '' }}">
           <a href="{{ route('admin.home') }}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
         </li>
-        <li class="dropdown{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
+        <li class="{{ Request::is('admin/vehicles*') ? ' active' : '' }}">
           <a href="{{ route('admin.vehicles.index') }}"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Vehicles</a>
         </li>
         <li class="dropdown{{ Request::is('admin/other*') ? ' active' : '' }}">

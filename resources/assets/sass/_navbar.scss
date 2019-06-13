@@ -9,12 +9,11 @@ nav {
 .public-navbar {
   margin-bottom: 0;
   border: 0;
-  z-index: unset !important;
 }
 
 .admin-navbar {
   border: 0;
-  //z-index: 0;
+  margin-bottom: 0;
 }
 
 .public-navbar-header {
@@ -53,9 +52,9 @@ nav {
 //  border: 0 !important;
 //}
 
-.tab-pane {
-  @extend %scene_element--fadeinup;
-}
+// .tab-pane {
+//   @extend %scene_element--fadeinup;
+// }
 
 .vehicle-navbar-tabs {
   // background-color: lighten($light-green, 2.5%);

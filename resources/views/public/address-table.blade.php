@@ -1,5 +1,5 @@
 <div class="address-info">
-    <header><h2 class="table-header"><span class="glyphicon glyphicon glyphicon-globe"></span>&nbsp;Address Info</h2></header>
+    <header class="table-header"><h2><span class="glyphicon glyphicon glyphicon-globe"></span>&nbsp;Address Info</h2></header>
     <table class="table">
         <tr>
             <th>Street</th>

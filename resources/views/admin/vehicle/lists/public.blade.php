@@ -1,5 +1,5 @@
 @if($vehicleCount < 1)
-  <div class="col-lg-12">
+  <div class="col-sm-12">
     <h1 style="text-align: center">No Vehicles</h2>
     <h3 style="text-align: center">Come back later!</h5>
   </div>

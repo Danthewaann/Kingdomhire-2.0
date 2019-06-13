@@ -10,8 +10,10 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-md-8 col-sm-12">
+        <header class="main-header"><h1>Contact Us</h1></header>
+      </div>
       <article class="col-md-8 col-sm-12">
-        <header><h1 class="main-header">Contact Us</h1></header>
         <p class="paragraph">
           Have any queries? You can contact us via mobile phone or email, whichever you prefer.
           Our <b>opening hours are approximate</b>, exceptions include vehicle pick-ups and drop-offs by appointment.
@@ -30,7 +32,7 @@
 <section class="jumbotron jumbotron-content">
   <div class="container">
     <div class="row">
-      <header><h2 class="sub-header">Where to Find Us?</h2></header>
+      <h2 class="sub-header">Where to Find Us?</h2>
       <p class="paragraph">For directions, you can use the map below to help find your way to Kingdomhire.</p>
       <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9313.696456269257!2d-6.502924066660125!3d54.29645086742982!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x9d3b28ee1d8f52c1!2sKingdom+Car+Hire!5e0!3m2!1sen!2suk!4v1459283163122"
               class="map">

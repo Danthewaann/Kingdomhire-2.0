@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1 class="main-header">Our Fleet</h1>
+        <header class="main-header"><h1>Our Fleet</h1></header>
       </div>
       <div class="col-md-6">
         <p class="paragraph">
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-6">
+      <article class="col-sm-6">
         <img class="public-img" src="{{ asset('static/business.jpg') }}" alt="Our facilities">
         <h2 class="sub-header">Vehicle Rates/Hire Period</h2>
         <p class="paragraph">
@@ -24,22 +24,24 @@
           Standard minimum renting period is <b>3 days</b> for all vehicles, large vans are an exception, where
           they start at <b>1 day</b> minimum rental.
         </p>
-      </div>
-      <div class="col-sm-6">
+      </article>
+      <article class="col-sm-6">
         <img class="public-img" src="{{ asset('static/home-front-2.jpg') }}" alt="Kingdomhire location">
         <h2 class="sub-header">Insurance Policy</h2>
         <p class="paragraph">
           Most of our vehicles come with insurance as standard.
           If you wish to use your own insurance, we are sure we can facilitate you.
         </p>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 <section class="jumbotron jumbotron-content">
   <div class="container">
     <div class="row">
-      @include('admin.vehicle.lists.public')
+      <article> 
+        @include('admin.vehicle.lists.public')
+      </article>
     </div>
   </div>
 </section>

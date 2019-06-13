@@ -1,5 +1,5 @@
 <div class="opening-hours"> 
-  <header><h2 class="table-header"><span class="glyphicon glyphicon-calendar"></span>&nbsp;Opening Hours</h2></header>
+  <header class="table-header"><h2><span class="glyphicon glyphicon-calendar"></span>&nbsp;Opening Hours</h2></header>
   <table class="table">
     <tr>
       <th>Weekdays</th>

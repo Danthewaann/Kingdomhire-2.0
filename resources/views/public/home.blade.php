@@ -8,9 +8,11 @@
 				<img class="owner" src="{{ asset('static/owner.jpg') }}" alt="Proprietor - Keith Black">
 				<figcaption class="caption">Proprietor - Keith Black</figcaption>		
 			</figure>
-			<article class="col-sm-8">
+			<div class="col-sm-8">
 				<hr class="public-hr">
-				<header><h1 class="main-header">Welcome to Kingdomhire</h1></header>
+				<header class="main-header"><h1>Welcome to Kingdomhire</h1></header>
+			</div>
+			<article class="col-sm-8">
 				<p class="paragraph">
 					Kingdomhire is a one-man business owned and ran by proprietor <b>Keith Black</b>.
 					The business specialises in vehicle hire and repair.

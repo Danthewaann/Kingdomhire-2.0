@@ -9,6 +9,7 @@
         <tbody>
             <tr><th style="border-top: none; border-right: none;"><h2>E-Mail Receipt</h2></tr><th>
             <tr><td style="text-align: center">This is a copy of the email you sent us</tr></td>
+            <tr><td style="text-align: center">Date received (local time): {{ date('jS F Y, g:ia') }}</td></tr>
         </tbody>
     </table>
     <table class="table">

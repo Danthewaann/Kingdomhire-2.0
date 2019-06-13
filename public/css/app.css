@@ -9863,9 +9863,11 @@ div.email-receipt table {
 
 div.contact-us-email table tbody th#sent_by,
 div.contact-us-email table tbody th#email,
+div.contact-us-email table tbody th#date_received,
 div.email-receipt table tbody th#sent_by,
-div.email-receipt table tbody th#email {
-  width: 40%;
+div.email-receipt table tbody th#email,
+div.email-receipt table tbody th#date_received {
+  width: 30%;
   text-align: right;
   border-right: 1px solid #3ea771;
 }
@@ -9883,7 +9885,6 @@ div.email-receipt table tbody th#message {
   width: 30%;
   text-align: right;
   border-right: 1px solid #3ea771;
-  font-size: 1.5em;
 }
 
 div.contact-us-email table tbody td#subject_td,
@@ -9897,7 +9898,7 @@ div.email-receipt table tbody td#message_td {
 div.contact-us-email table tbody td,
 div.email-receipt table tbody td {
   color: white;
-  width: 60%;
+  width: 70%;
   text-align: left;
   vertical-align: middle;
 }

@@ -16,6 +16,10 @@
             <tr>
                 <th id="email">E-Mail</th>
                 <td><a class="text-link" href="mailto:{{ $email }}?subject=Re: {{ rawurlencode($subject) }}">{{ $email }}</a></td>
+            </tr>
+            <tr>
+                <th id="date_received">Date Received</th>
+                <td>{{ date('jS F Y, g:ia') }}</td>    
             </tr> 
         </tbody>        
     </table>

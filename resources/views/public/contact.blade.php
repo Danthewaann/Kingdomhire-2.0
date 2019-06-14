@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-sm-12">
         @include('admin.common.alert-success')
-        @include('admin.common.alert-error', ['error_message' => 'Errors found in contact us form!'])
+        @include('admin.common.alert-error', ['error_message' => $errors->has('error_message') ? $errors->first('error_message') : 'Errors found in contact us form!'])
       </div>
     </div>
     <div class="row">

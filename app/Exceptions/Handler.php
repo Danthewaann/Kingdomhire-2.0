@@ -48,6 +48,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException)
+        {
+            return redirect()
+                    ->back()
+                    ->withInput()
+                    ->withErrors([
+                        'error_message' => 'Form validation token was expired. Please try again'
+                    ]);
+        }   
+
         return parent::render($request, $exception);
     }
 }

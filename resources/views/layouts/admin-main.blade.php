@@ -25,6 +25,43 @@
   <meta name="theme-color" content="#2c885a">
 </head>
 <body>
+  <div id="modals">
+    @if(!empty($reservations))
+      @foreach($reservations->sortBy('end_date') as $reservation)
+        @include('admin.reservation.destroy-modal')
+      @endforeach
+    @endif
+    @if(!empty($activeHires))  
+      @foreach($activeHires->sortByDesc('end_date') as $hire)
+        @include('admin.hire.destroy-modal')  
+      @endforeach
+    @endif
+    @if(!empty($inactiveHires))
+      @foreach($inactiveHires->sortByDesc('end_date') as $hire)
+        @include('admin.hire.destroy-modal')  
+      @endforeach
+    @endif
+    @if(!empty($weeklyRates))
+      @foreach($weeklyRates as $weeklyRate)
+        @include('admin.weekly-rate.destroy-modal')  
+      @endforeach
+    @endif
+    @if(!empty($vehicleTypes))
+      @foreach($vehicleTypes as $vehicleType)
+        @include('admin.vehicle-type.destroy-modal')  
+      @endforeach
+    @endif
+    @if(!empty($vehicleFuelTypes))
+      @foreach($vehicleFuelTypes as $vehicleFuelType)
+        @include('admin.vehicle-fuel-type.destroy-modal')  
+      @endforeach
+    @endif
+    @if(!empty($vehicleGearTypes))
+      @foreach($vehicleGearTypes as $vehicleGearType)
+        @include('admin.vehicle-gear-type.destroy-modal')  
+      @endforeach
+    @endif
+  </div>
   @include('layouts.admin-navbar-base')
   <main>
     <div class="jumbotron jumbotron-admin">

@@ -25,6 +25,20 @@
   <meta name="theme-color" content="#2c885a">
 </head>
 <body>
+  <div id="vehicle-modals">
+    @include('admin.vehicle.modals.image-gallery')
+    @includeWhen(!$vehicle->trashed() ,'admin.vehicle.modals.discontinue')
+    @include('admin.vehicle.modals.destroy')
+    @foreach($vehicle->reservations->sortBy('end_date') as $reservation)
+      @include('admin.reservation.destroy-modal')
+    @endforeach
+    @if($vehicle->hasActiveHire())
+      @include('admin.hire.destroy-modal', ['hire' => $vehicle->getActiveHire()]) 
+    @endif
+    @foreach($vehicle->getInactiveHires()->sortByDesc('end_date') as $hire)
+      @include('admin.hire.destroy-modal')  
+    @endforeach
+  </div>
   @include('layouts.admin-navbar-base')
   <main>
     <div class="jumbotron jumbotron-admin">

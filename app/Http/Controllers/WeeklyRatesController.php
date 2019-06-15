@@ -25,10 +25,10 @@ class WeeklyRatesController extends Controller
      */
     public function index()
     {
-        $rates = WeeklyRate::all();
+        $weeklyRates = WeeklyRate::all();
 
         return view('admin.admin-weekly-rates', [
-            'rates' => $rates,
+            'weeklyRates' => $weeklyRates,
         ]);
     }
 

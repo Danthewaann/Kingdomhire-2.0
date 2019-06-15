@@ -1,6 +1,3 @@
-@include('admin.vehicle.modals.image-gallery')
-@includeWhen(!$vehicle->trashed() ,'admin.vehicle.modals.discontinue')
-@include('admin.vehicle.modals.destroy')
 <div class="col-lg-4 col-md-4 col-sm-6">
   <div class="panel panel-default">
     <div class="panel-heading vehicle-panel-dashboard-heading">

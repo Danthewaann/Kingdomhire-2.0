@@ -8,13 +8,13 @@
         <h2>Edit weekly rate</h2>
       </div>
       <div class="panel-body">
-        <form class="form-horizontal" action="{{ route('admin.weekly-rates.update', ['weekly_rate' => $rate->slug]) }}" method="post" id="weekly_rate_edit_form">
+        <form class="form-horizontal" action="{{ route('admin.weekly-rates.update', ['weekly_rate' => $weeklyRate->slug]) }}" method="post" id="weekly_rate_edit_form">
           @csrf
           @method('PATCH')
           <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
             <label for="name" class="control-label col-sm-4">Name*</label>
             <div class="col-sm-6">
-              <input id="name" type="text" class="form-control" name="name" value="{{ $rate->name }}" autocomplete="off">
+              <input id="name" type="text" class="form-control" name="name" value="{{ $weeklyRate->name }}" autocomplete="off">
               @if( $errors->has('name'))
                 @include('admin.common.alert-danger', ['error' => $errors->first('name')])
               @endif
@@ -25,7 +25,7 @@
             <div class="col-sm-6">
               <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                <input id="weekly_rate_min" type="text" class="form-control" name="weekly_rate_min" value="{{ $rate->weekly_rate_min }}" autocomplete="off">
+                <input id="weekly_rate_min" type="text" class="form-control" name="weekly_rate_min" value="{{ $weeklyRate->weekly_rate_min }}" autocomplete="off">
               </div>
               @if( $errors->has('weekly_rate_min'))
                 @include('admin.common.alert-danger', ['error' => $errors->first('weekly_rate_min')])
@@ -37,7 +37,7 @@
             <div class="col-sm-6">
               <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                <input id="weekly_rate_max" type="text" class="form-control" name="weekly_rate_max" value="{{ $rate->weekly_rate_max }}" autocomplete="off">
+                <input id="weekly_rate_max" type="text" class="form-control" name="weekly_rate_max" value="{{ $weeklyRate->weekly_rate_max }}" autocomplete="off">
               </div>
               @if( $errors->has('weekly_rate_max'))
                 @include('admin.common.alert-danger', ['error' => $errors->first('weekly_rate_max')])

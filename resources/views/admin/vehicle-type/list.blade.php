@@ -1,6 +1,3 @@
-@foreach($vehicleTypes as $vehicleType)
-  @include('admin.vehicle-type.delete-modal')
-@endforeach
 <div class="panel panel-default">
   @if($vehicleTypes->isNotEmpty())
     <div class="panel-heading">

@@ -14,4 +14,5 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/datepicker.js', 'public/js')
     .js('resources/assets/js/modal-gallery.js', 'public/js')
+    .js('resources/assets/js/vehicle-image-order.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');

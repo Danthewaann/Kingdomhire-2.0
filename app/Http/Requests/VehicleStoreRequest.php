@@ -32,8 +32,8 @@ class VehicleStoreRequest extends FormRequest
             'vehicleType' => 'required',
             'fuelType' => 'required',
             'gearType' => 'required',
-            'vehicle_images' => 'nullable',
-            'vehicle_images.*' => 'image|mimes:jpeg,jpg,png,gif'
+            'vehicle_images_add' => 'nullable',
+            'vehicle_images_add.*' => 'image|mimes:jpeg,jpg,png,gif'
         ];
     }
 

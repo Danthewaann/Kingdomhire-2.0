@@ -177,7 +177,7 @@ class Vehicle extends Model
      */
     public function images()
     {
-        return $this->hasMany(VehicleImage::class)->orderBy('name');
+        return $this->hasMany(VehicleImage::class)->orderBy('order');
     }
 
     /**
@@ -259,8 +259,10 @@ class Vehicle extends Model
         return $items;
     }
 
-    public function linkImages($images)
+    public function linkImages($request)
     {
+        $images = $request->file('vehicle_images_add');
+
         $i = $this->images->count();
         $dir = 'imgs/'.$this->storageName();
         if (!empty($images)) {
@@ -278,7 +280,8 @@ class Vehicle extends Model
             VehicleImage::create([
                 'name' => $image_name,
                 'image_uri' => asset('storage/' . $path),
-                'vehicle_id' => $this->id
+                'vehicle_id' => $this->id,
+                'order' => $request->get(explode(".", $image->getClientOriginalName())[0] . '_order')
             ]);
         }
     }
@@ -301,6 +304,18 @@ class Vehicle extends Model
 
         if (VehicleImage::whereVehicleId($this->id)->count() == 0) {
             Storage::disk('local')->deleteDirectory('public/imgs/'.$this->storageName());
+        }
+    }
+
+    public function updateImageOrder($request)
+    {
+        foreach ($this->images()->get() as $image) {
+            $order_key = $image->getNameWithoutExtension() . '_order';
+            $new_order = $request->get($order_key);
+            if ($new_order != null) {
+                $image->order = $new_order;
+                $image->save();
+            }
         }
     }
 }

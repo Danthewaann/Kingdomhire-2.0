@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/vehicle-image-order.js": "/js/vehicle-image-order.js",
     "/js/modal-gallery.js": "/js/modal-gallery.js",
     "/js/datepicker.js": "/js/datepicker.js"
 }

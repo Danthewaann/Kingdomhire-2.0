@@ -54,5 +54,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
   <script src="{{ asset('js/datepicker.js') }}"></script>
   <script src="{{ asset('js/modal-gallery.js') }}"></script>
+  @if(Request::is('admin/vehicles/*'))
+    <script>
+      var images = {!! json_encode($vehicle->images->toArray()) !!}
+    </script>
+    <script src="{{ asset('js/vehicle-image-order.js') }}"></script>
+  @endif
 </body>
 </html>

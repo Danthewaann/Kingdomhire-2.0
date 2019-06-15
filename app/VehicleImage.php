@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
 class VehicleImage extends Model
 {
     protected $fillable = [
-        'image_uri', 'vehicle_id', 'name'
+        'image_uri', 'vehicle_id', 'name', 'order'
     ];
     /**
      * Get vehicle associated with the image
@@ -34,5 +34,10 @@ class VehicleImage extends Model
     public function vehicle()
     {
         return $this->belongsTo(Vehicle::class, 'vehicle_id');
+    }
+
+    public function getNameWithoutExtension()
+    {
+        return explode(".", $this->name)[0];
     }
 }

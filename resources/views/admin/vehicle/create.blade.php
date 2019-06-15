@@ -1,7 +1,7 @@
 @extends('layouts.admin-main')
 
 @section('content')
-<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -122,18 +122,23 @@
                       @endif
                     </div>
                   </div>
-                  <div class="form-group{{ $errors->has('vehicle_images') ? ' has-error' : '' }}">
-                    <label for="vehicle_image" class="control-label col-sm-3">Image(s)</label>
+                  <div class="form-group{{ $errors->has('vehicle_images_add') ? ' has-error' : '' }}">
+                    <label for="vehicle_images_add" class="control-label col-sm-3">Image(s)</label>
                     <div class="col-sm-9">
-                      <input type="file" class="form-control" name="vehicle_images[]" id="vehicle_image" multiple>
-                      @if( $errors->has('vehicle_images.*'))
+                      <input type="file" class="form-control" name="vehicle_images_add[]" id="vehicle_images_add" multiple>
+                      @if( $errors->has('vehicle_images_add.*'))
                         <div class="help-block">
                           <div class="alert alert-danger" role="alert">
-                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ array_values($errors->get('vehicle_images.*'))[0][0] }}</strong><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ array_values($errors->get('vehicle_images.*'))[0][1] }}
+                            <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{ array_values($errors->get('vehicle_images_add.*'))[0][0] }}</strong><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ array_values($errors->get('vehicle_images_add.*'))[0][1] }}
                           </div>
                         </div>
                       @endif
+                    </div>
+                  </div>
+                  <div class="form-group" id="vehicle_image_order_container">
+                    <label class="control-label col-sm-3">Image Order</label>
+                    <div class="col-sm-9" id="vehicle_image_order_images">
                     </div>
                   </div>
                 </div>

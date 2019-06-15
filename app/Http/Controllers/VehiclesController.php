@@ -97,9 +97,8 @@ class VehiclesController extends Controller
             'weekly_rate_id' => $weekly_rate_id
         ]);
 
-        if($request->hasFile('vehicle_images')) {
-            $images = $request->file('vehicle_images');
-            $vehicle->linkImages($images);
+        if($request->hasFile('vehicle_images_add')) {
+            $vehicle->linkImages($request);
         }
 
         Session::flash('status', [
@@ -172,14 +171,15 @@ class VehiclesController extends Controller
         $vehicle->save();
 
         if($request->hasFile('vehicle_images_add')) {
-            $images = $request->file('vehicle_images_add');
-            $vehicle->linkImages($images);
+            $vehicle->linkImages($request);
         }
 
         if($request->has('vehicle_images_del')) {
             $images = $request->get('vehicle_images_del');
             $vehicle->deleteImages($images);
         }
+
+        $vehicle->updateImageOrder($request);
 
         Session::flash('status', [
             'edit' => 'Successfully updated vehicle!',

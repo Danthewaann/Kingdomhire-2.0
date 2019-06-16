@@ -56,19 +56,6 @@ class VehicleUpdateRequest extends FormRequest
     }
 
     /**
-     * Configure the validator instance.
-     *
-     * @param  \Illuminate\Validation\Validator  $validator
-     * @return void
-     */
-    public function withValidator($validator)
-    {
-        if ($validator->passes()) {
-            //TODO need to validate provided images
-        }
-    }
-
-    /**
      * Get data to be validated from the request. From Route URL
      *
      * @return array

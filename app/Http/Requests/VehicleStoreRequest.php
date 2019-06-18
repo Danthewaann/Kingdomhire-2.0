@@ -48,22 +48,9 @@ class VehicleStoreRequest extends FormRequest
             'make.required' => 'Vehicle make (manufacturer) is required',
             'model.required' => 'Vehicle model is required',
             'seats.required' => 'Number of seats is required',
-            'vehicle_images.*.image' => 'Only image type files can be uploaded',
-            'vehicle_images.*.mimes' => 'Images must be a file of type: jpeg, jpg, png, gif.'
+            'vehicle_images_add.*.image' => 'Only image type files can be uploaded',
+            'vehicle_images_add.*.mimes' => 'Images must be a file of type: jpeg, jpg, png, gif.'
         ];
-    }
-
-    /**
-     * Configure the validator instance.
-     *
-     * @param  \Illuminate\Validation\Validator  $validator
-     * @return void
-     */
-    public function withValidator($validator)
-    {
-        if ($validator->passes()) {
-            //TODO need to validate provided images
-        }
     }
 
     /**

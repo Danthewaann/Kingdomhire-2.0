@@ -13,53 +13,19 @@ class VehicleImagesTableSeeder extends Seeder
      */
     public function run()
     {
-        VehicleImage::create([
-            'name' => 'peugeot_307.jpg',
-            'vehicle_id' => Vehicle::where([
-                ['make', '=', 'Peugeot'],
-                ['model', '=', '307']
-            ])->first()->id,
-            'image_uri' => asset('storage/imgs/Peugeot_307/peugeot_307.jpg')
-        ]);
-        VehicleImage::create([
-            'name' => 'peugeot_308.jpg',
-            'vehicle_id' => Vehicle::where([
-                ['make', '=', 'Peugeot'],
-                ['model', '=', '308']
-            ])->first()->id,
-            'image_uri' => asset('storage/imgs/Peugeot_308/peugeot_308.jpg')
-        ]);
-        VehicleImage::create([
-            'name' => 'renault_master.jpg',
-            'vehicle_id' => Vehicle::where([
-                ['make', '=', 'Renault'],
-                ['model', '=', 'Master']
-            ])->first()->id,
-            'image_uri' => asset('storage/imgs/Renault_Master/renault_master.jpg')
-        ]);
-        VehicleImage::create([
-            'name' => 'renault_traffic.jpg',
-            'vehicle_id' => Vehicle::where([
-                ['make', '=', 'Renault'],
-                ['model', '=', 'Traffic']
-            ])->first()->id,
-            'image_uri' => asset('storage/imgs/Renault_Traffic/renault_traffic.jpg')
-        ]);
-        VehicleImage::create([
-            'name' => 'kia_sedona.jpg',
-            'vehicle_id' => Vehicle::where([
-                ['make', '=', 'Kia'],
-                ['model', '=', 'Sedona']
-            ])->first()->id,
-            'image_uri' => asset('storage/imgs/Kia_Sedona/kia_sedona.jpg')
-        ]);
-        VehicleImage::create([
-            'name' => 'megane_convertible.jpg',
-            'vehicle_id' => Vehicle::where([
-                ['make', '=', 'Megane'],
-                ['model', '=', 'Convertible']
-            ])->first()->id,
-            'image_uri' => asset('storage/imgs/Megane_Convertible/megane_convertible.jpg')
-        ]);
+        $vehicles = Vehicle::all();
+
+        foreach ($vehicles as $vehicle) {
+            $nameArr = explode("-", $vehicle->storageName());
+            $nameLen = count($nameArr);
+            $name = $nameArr[0];
+            for ($i = 1; $i < $nameLen - 1; $i++) {
+                $name = $name . "-" . $nameArr[$i];
+            }
+        
+            $dir = __DIR__.'/../../storage/app/test/imgs/';
+            $imgs = glob($dir.$name.'/*');
+            $vehicle->linkImages($imgs);
+        }
     }
 }

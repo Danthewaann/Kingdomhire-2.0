@@ -98,7 +98,8 @@ class VehiclesController extends Controller
         ]);
 
         if($request->hasFile('vehicle_images_add')) {
-            $vehicle->linkImages($request);
+            $images = $request->file('vehicle_images_add');
+            $vehicle->linkImages($images, $request);
         }
 
         Session::flash('status', [
@@ -171,7 +172,8 @@ class VehiclesController extends Controller
         $vehicle->save();
 
         if($request->hasFile('vehicle_images_add')) {
-            $vehicle->linkImages($request);
+            $images = $request->file('vehicle_images_add');
+            $vehicle->linkImages($images, $request);
         }
 
         if($request->has('vehicle_images_del')) {

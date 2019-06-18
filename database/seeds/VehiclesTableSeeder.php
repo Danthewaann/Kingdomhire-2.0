@@ -19,79 +19,151 @@ class VehiclesTableSeeder extends Seeder
     public function run()
     {
         DB::table('vehicles')->delete();
-        $small = WeeklyRate::whereName('Small')->first()->id;
-        $medium = WeeklyRate::whereName('Medium')->first()->id;
-        $large = WeeklyRate::whereName('Large')->first()->id;
-        $petrol = VehicleFuelType::whereName('Petrol')->first()->id;
-        $diesel = VehicleFuelType::whereName('Diesel')->first()->id;
-        $manual = VehicleGearType::whereName('Manual')->first()->id;
-        $automatic = VehicleGearType::whereName('Automatic')->first()->id;
-        $manualAutomatic = VehicleGearType::whereName('Manual/Automatic')->first()->id;
-        $vehicleTypes = [
-            'Hatchback' => VehicleType::whereName('Hatchback')->first()->id,
-            '4-by-4' => VehicleType::whereName('4-by-4')->first()->id,
-            'Large Van' => VehicleType::whereName('Large Van')->first()->id,
-            'Small Van' => VehicleType::whereName('Small Van')->first()->id,
-            'People Carrier' => VehicleType::whereName('People Carrier')->first()->id,
-            '4-door Saloon' => VehicleType::whereName('4-door Saloon')->first()->id,
-            'Convertible' => VehicleType::whereName('Convertible')->first()->id
+        $weeklyRates = WeeklyRate::all(['id', 'name']);
+        $fuelTypes = VehicleFuelType::all(['id', 'name']);
+        $gearTypes = VehicleGearType::all(['id', 'name']);
+        $vehicleTypes = VehicleType::all(['id', 'name']);
+
+        $vehicles = [
+            new Vehicle([
+                'make' => 'Mercedes',
+                'model' => 'CLC 160',
+                'seats' => '4',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Petrol')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Manual')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'Hatchback')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Nissan',
+                'model' => 'Note',
+                'seats' => '5',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Petrol')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Automatic')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'Hatchback')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Kia',
+                'model' => 'Sedona',
+                'seats' => '7',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Diesel')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Automatic')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'People Carrier')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Citroën',
+                'model' => 'Relay',
+                'seats' => '3',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Diesel')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Manual')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'Large Van')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Peugeot',
+                'model' => '807',
+                'seats' => '7',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Diesel')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Manual')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'People Carrier')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Renault',
+                'model' => 'Grand Scenic',
+                'seats' => '7',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Diesel')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Manual')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'People Carrier')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Hyundai',
+                'model' => 'Santa Fe',
+                'seats' => '7',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Diesel')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Automatic')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'People Carrier')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Citroën',
+                'model' => 'C3',
+                'seats' => '5',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Petrol')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Manual')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'Hatchback')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Peugeot',
+                'model' => '308',
+                'seats' => '5',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Diesel')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Manual')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'Hatchback')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Vauxhall',
+                'model' => 'Corsa',
+                'seats' => '5',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Petrol')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Manual')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'Hatchback')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Renault',
+                'model' => 'Master',
+                'seats' => '3',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Diesel')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Manual')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'Large Van')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Megane',
+                'model' => 'Convertible',
+                'seats' => '5',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Petrol')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Automatic')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'Convertible')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Kia',
+                'model' => 'Sedona',
+                'seats' => '7',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Diesel')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Manual')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'People Carrier')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Renault',
+                'model' => 'Traffic',
+                'seats' => '3',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Diesel')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Manual')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'Small Van')->first()->id,
+                'weekly_rate_id' => null,
+            ]),
+            new Vehicle([
+                'make' => 'Peugeot',
+                'model' => '307',
+                'seats' => '4',
+                'vehicle_fuel_type_id' => $fuelTypes->where('name', 'Petrol')->first()->id,
+                'vehicle_gear_type_id' => $gearTypes->where('name', 'Manual')->first()->id,
+                'vehicle_type_id' => $vehicleTypes->where('name', 'Hatchback')->first()->id,
+                'weekly_rate_id' => null,
+            ])
         ];
 
-        Vehicle::create([
-            'make' => 'Peugeot',
-            'model' => '307',
-            'vehicle_fuel_type_id' => $petrol,
-            'vehicle_gear_type_id' => $manual,
-            'seats' => '4',
-            'vehicle_type_id' => $vehicleTypes['Hatchback'],
-            'weekly_rate_id' => $small
-        ]);
-        Vehicle::create([
-            'make' => 'Peugeot',
-            'model' => '308',
-            'vehicle_fuel_type_id' => $petrol,
-            'vehicle_gear_type_id' => $manual,
-            'seats' => '5',
-            'vehicle_type_id' => $vehicleTypes['Hatchback'],
-            'weekly_rate_id' => $small
-        ]);
-        Vehicle::create([
-            'make' => 'Renault',
-            'model' => 'Master',
-            'vehicle_fuel_type_id' => $diesel,
-            'vehicle_gear_type_id' => $manual,
-            'seats' => '3',
-            'vehicle_type_id' => $vehicleTypes['Large Van'],
-            'weekly_rate_id' => $large
-        ]);
-        Vehicle::create([
-            'make' => 'Renault',
-            'model' => 'Traffic',
-            'vehicle_fuel_type_id' => $diesel,
-            'vehicle_gear_type_id' => $manual,
-            'seats' => '3',
-            'vehicle_type_id' => $vehicleTypes['Small Van'],
-            'weekly_rate_id' => $medium
-        ]);
-        Vehicle::create([
-            'make' => 'Kia',
-            'model' => 'Sedona',
-            'vehicle_fuel_type_id' => $diesel,
-            'vehicle_gear_type_id' => $manualAutomatic,
-            'seats' => '7',
-            'vehicle_type_id' => $vehicleTypes['People Carrier'],
-            'weekly_rate_id' => $medium
-        ]);
-        Vehicle::create([
-            'make' => 'Megane',
-            'model' => 'Convertible',
-            'vehicle_fuel_type_id' => $petrol,
-            'vehicle_gear_type_id' => $automatic,
-            'seats' => '5',
-            'vehicle_type_id' => $vehicleTypes['Convertible'],
-            'weekly_rate_id' => $medium
-        ]);
-
-       factory(Vehicle::class, 15)->create();
+        foreach ($vehicles as $vehicle) {
+            $vehicle->save();
+        }
     }
 }

@@ -204,7 +204,7 @@ class Vehicle extends Model
      */
     public function storageName()
     {
-        return str_slug($this->make.'_'.$this->model.'_'.$this->name);
+        return str_slug($this->make.' '.$this->model.' '.$this->name);
     }
 
     /**
@@ -259,10 +259,8 @@ class Vehicle extends Model
         return $items;
     }
 
-    public function linkImages($request)
+    public function linkImages($images, $http_request=null)
     {
-        $images = $request->file('vehicle_images_add');
-
         $i = $this->images->count();
         $dir = 'imgs/'.$this->storageName();
         if (!empty($images)) {
@@ -271,8 +269,13 @@ class Vehicle extends Model
             }
         }
         foreach ($images as $image) {
+            if (is_string($image)) {
+                $image = imagecreatefromjpeg($image);
+            }
+            $image_type = gettype($image);
+
             $i++;
-            $image_name = $this->storageName().'_'.$i.'.'.$image->extension();
+            $image_name = $image_type == 'object' ? $this->storageName().'_'.$i.'.'.$image->extension() : $this->storageName().'_'.$i.'.'.$image['mime'][2];
             $path = $dir.'/'.$image_name;
             $resize = Image::make($image)->widen(900);
             $resize->save(storage_path('app/public/'.$path), 60);
@@ -281,7 +284,7 @@ class Vehicle extends Model
                 'name' => $image_name,
                 'image_uri' => asset('storage/' . $path),
                 'vehicle_id' => $this->id,
-                'order' => $request->get(explode(".", $image->getClientOriginalName())[0] . '_order')
+                'order' => $http_request != null ? $http_request->get(explode(".", $image->getClientOriginalName())[0] . '_order') : 1
             ]);
         }
     }

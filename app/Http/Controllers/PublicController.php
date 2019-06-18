@@ -10,6 +10,7 @@ use Validator;
 use Session;
 use Mail;
 use Sitemap;
+use App;
 
 class PublicController extends Controller
 {
@@ -58,7 +59,7 @@ class PublicController extends Controller
             'email' => 'required|email',
             'subject' => 'required',
             'message' => 'required',
-            'g-recaptcha-response' => 'required|captcha'
+            'g-recaptcha-response' => App::environment() === 'production' ? 'required' : 'nullable' . '|captcha'
         ];
 
         $messages = [

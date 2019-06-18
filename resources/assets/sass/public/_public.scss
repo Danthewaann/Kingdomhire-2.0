@@ -15,6 +15,7 @@
 }
 
 .owner {
+  margin-top: 22px;
   width: 100%;
   border-radius: 50%;
   box-shadow: 0px 0px 20px rgba(0,0,0, 0.2);
@@ -46,14 +47,7 @@
   box-shadow: 0px 0px 20px rgba(0,0,0, 0.2);
 }
 
-.main-header {
-  margin-top: 10px;
-  @media(max-width:767px) {
-    text-align: center;
-  }
-}
-
-.sub-header {
+.main-header, .sub-header {
   @media(max-width:767px) {
     text-align: center;
   }

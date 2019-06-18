@@ -58,11 +58,15 @@
 
 .jumbotron-with-bg {
   @extend %jumbotron-base;
+  height: 100vh;
 
   .bg {
     @extend %jumbotron-base-img;
     background-image: url("/static/nav.jpg");
     background-position: 0% 60%;
+    @media(max-width:767px) {
+      background-position: -250px -75px;
+    }
     background-repeat: no-repeat;
   }
 }
@@ -109,7 +113,7 @@
 }
 
 .jumbotron .container {
-  position:relative;
+  position: relative;
 }
 
 .jumbotron-vehicle-dashboard {
@@ -124,12 +128,21 @@
 
 .jumbotron-header {
   margin-bottom: 0;
-  padding-top: 28px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  @media(max-width:767px) {
+    padding-top: 0;
+  }
 }
 
 .jumbotron-content {
   background-color: $light-green;
   margin-bottom: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  @media(max-width:767px) {
+    padding-top: 0;
+  }
 }
 
 .jumbotron-footer {

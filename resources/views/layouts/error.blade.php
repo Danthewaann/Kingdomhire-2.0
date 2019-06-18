@@ -8,7 +8,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>Login | Kingdomhire - Car & Van Rental Agency</title>
+  <title>Error | Kingdomhire - Car & Van Rental Agency</title>
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">

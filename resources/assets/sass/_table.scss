@@ -152,12 +152,14 @@ div.address-info {
   margin-bottom: 30px;
   margin-top: 30px;
   }
-  h2.table-header {
-    @media(min-width:768px) {
-     text-align: center;
-    }
-    @media(min-width:992px) {
-      text-align: left;
+  header.table-header {
+    h2 {
+      @media(min-width:768px) {
+        text-align: center;
+      }
+      @media(min-width:992px) {
+        text-align: left;
+      }
     }
   }
   table {
@@ -209,12 +211,14 @@ div.contact-info {
   margin-bottom: 30px;
   margin-top: 30px;
   }
-  h2.table-header {
-    @media(min-width:768px) {
-     text-align: center;
-    }
-    @media(min-width:992px) {
-      text-align: left;
+  header.table-header {
+    h2 {
+      @media(min-width:768px) {
+      text-align: center;
+      }
+      @media(min-width:992px) {
+        text-align: left;
+      }
     }
   }
   table {

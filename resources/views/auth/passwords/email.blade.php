@@ -6,7 +6,7 @@
   <div class="container login-container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2" style="margin-bottom: 30px">
-          <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo" alt="Kingdomhire logo">
+        <img src="{{ asset('static/Kingdomhire_logo.svg') }}" class="logo" alt="Kingdomhire logo">
       </div>
       <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">

@@ -58,7 +58,7 @@
 
 .jumbotron-with-bg {
   @extend %jumbotron-base;
-  height: 100vh;
+  min-height: 900px;
 
   .bg {
     @extend %jumbotron-base-img;

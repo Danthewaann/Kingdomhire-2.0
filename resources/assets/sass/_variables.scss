@@ -1,22 +1,17 @@
 
 // Body
-//$body-bg: #439D70;
+$body-bg: $dark-green;
 
 // Colours
 $light-green: rgb(54, 129, 91);
 $lighter-green: rgb(62, 167, 113);
-// $dark-green: lighten(#227049, 2.5%);
 $dark-green:#307251;
 $darker-green: #3b8b63;
-
-$body-bg: $dark-green;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
 $list-group-border: $laravel-border-color;
 $navbar-default-border: $laravel-border-color;
-//$panel-default-border: $laravel-border-color;
-//$panel-inner-border: $laravel-border-color;
 
 // Brands
 $brand-primary: $dark-green;
@@ -62,24 +57,17 @@ $panel-default-text: $text-color;
 $panel-footer-bg: $light-green;
 $panel-heading-padding: 10px;
 
-//tables
+// Tables
 $table-bg-hover: #368F62;
 $table-border-color: $lighter-green;
 
-//jumbotron
-$jumbotron-color: white;
-$jumbotron-bg: $dark-green;
-
-//tabs
-$nav-tabs-border-color: unset;
-
-//thumbnails
+// Thumbnails
 $thumbnail-border: 0;
 $thumbnail-bg: $dark-green;
 $thumbnail-caption-color: white;
 $thumbnail-border-radius: 0;
 
-//tabs
+// Tabs
 $nav-link-hover-bg: $dark-green;
 $nav-tabs-border-color: $brand-primary;
 $nav-tabs-link-hover-border-color: $brand-primary;
@@ -89,55 +77,35 @@ $nav-tabs-active-link-hover-border-color: $brand-primary;
 $nav-tabs-justified-link-border-color: rgb(75, 206, 138);
 $nav-tabs-justified-active-link-border-color: rgb(75, 206, 138);
 
-//wells
+// Wells
 $well-bg: $dark-green;
 
-//dropdowns
-//** Background for the dropdown menu.
-$dropdown-bg:                    $light-green;
-//** Dropdown menu `border-color`.
-$dropdown-border:                $lighter-green;
-//** Dropdown menu `border-color` **for IE8**.
-$dropdown-fallback-border:       $lighter-green;
-//** Divider color for between dropdown items.
-$dropdown-divider-bg:           $lighter-green;
+// Dropdowns
+$dropdown-bg: $light-green;
+$dropdown-border: $lighter-green;
+$dropdown-fallback-border: $lighter-green;
+$dropdown-divider-bg: $lighter-green;
+$dropdown-link-color:white;
+$dropdown-link-hover-color:white;
+$dropdown-link-hover-bg: $dark-green;
+$dropdown-header-color:white;
 
-//** Dropdown link text color.
-$dropdown-link-color:            white;
-//** Hover color for dropdown links.
-$dropdown-link-hover-color:      white;
-//** Hover background for dropdown links.
-$dropdown-link-hover-bg:         $dark-green;
-
-$dropdown-header-color: white;
-
-//** Active dropdown menu item text color.
-//$dropdown-link-active-color:     $component-active-color !default;
-////** Active dropdown menu item background color.
-//$dropdown-link-active-bg:        $component-active-bg !default;
-//
-////** Disabled dropdown menu item background color.
-//$dropdown-link-disabled-color:   $gray-light !default;
-//
-////** Text color for headers within dropdown menus.
-//$dropdown-header-color:          $gray-light !default;
-
+// Jumbotrons
 $jumbotron-font-size: 18px;
+$jumbotron-color: white;
+$jumbotron-bg: $dark-green;
 
-//** Background color on `.list-group-item`
-$list-group-bg:                 $light-green;
-//** `.list-group-item` border color
-$list-group-border:             $lighter-green;
+// List groups
+$list-group-bg: $light-green;
+$list-group-border: $lighter-green;
+$list-group-link-color:white;
+$list-group-hover-bg: $dark-green;
+$list-group-link-hover-color:white;
 
-$list-group-link-color:         white;
-$list-group-hover-bg:           $dark-green;
-$list-group-link-hover-color:   white;
-
+// Headings
 $headings-small-color: white;
 
-//$border-radius-base: 0;
-//$border-radius-large: 0;
-
+// inputs
 $input-border: $lighter-green;
 $input-group-addon-bg: lighten($dark-green, 5);
 $input-color: white;
@@ -146,30 +114,30 @@ $input-bg: $dark-green;
 $input-border-focus: $lighter-green;
 $input-bg-disabled: lighten($light-green, 5);
 
+// Alerts/States
 $state-danger-text: $lighter-green;
 $state-danger-bg: lighten($light-green, 5);
 $state-danger-border: $lighter-green;
 $alert-danger-text: white;
 
-//$state-success-text: white;
-//$state-success-bg: $light-green;
-//$state-success-border: $lighter-green;
-
-//modal
+// Modals
 $modal-content-bg: lighten($light-green, 2.5%);
 $modal-header-border-color: $lighter-green;
 $modal-footer-border-color: $lighter-green;
 $modal-content-border-color: $lighter-green;
 
-//popovers
+// Popovers
 $popover-bg: $light-green;
 $popover-border-color: $lighter-green;
 
+// Hr
 $hr-border: $lighter-green;
 
-$navbar-default-toggle-hover-bg:           lighten($lighter-green, 5%);
-$navbar-default-toggle-icon-bar-bg:        white;
-$navbar-default-toggle-border-color:       lighten($lighter-green, 5%);
+// Navbars
+$navbar-default-toggle-hover-bg: lighten($lighter-green, 5%);
+$navbar-default-toggle-icon-bar-bg:white;
+$navbar-default-toggle-border-color: lighten($lighter-green, 5%);
 
+// Legends
 $legend-color: white;
 $legend-border-color: $lighter-green;

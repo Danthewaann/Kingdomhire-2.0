@@ -15,10 +15,6 @@
       </div>
     @endif
   <table class="table table-condensed vehicle-table-public">
-    {{-- <tr>
-      <th class="first">ID</th>
-      <td class="first">{{ $vehicle->name }}</td>
-    </tr> --}}
     <tr>
       <th class="first">Vehicle Type</th>
       <td class="first">@if($vehicle->type != null) {{ $vehicle->type->name }} @else N/A @endif</td>
@@ -35,9 +31,5 @@
       <th class="last">Seats</th>
       <td class="last">{{ $vehicle->seats }}</td>
     </tr>
-    {{--<tr>--}}
-      {{--<th class="last">Weekly Rate</th>--}}
-      {{--<td class="last">@if($vehicle->rate != null) {{ $vehicle->rate->getFullName() }} @else N/A @endif</td>--}}
-    {{--</tr>--}}
   </table>
 </div>

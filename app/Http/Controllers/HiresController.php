@@ -22,30 +22,6 @@ class HiresController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $activeHires = Hire::whereIsActive(true)->get()->sortByDesc('end_date');
-        $inactiveHires = Hire::whereIsActive(false)->get()->sortByDesc('end_date');
-        $yearlyHires = Hire::getYearlyHires();
-        $activeVehicles = Vehicle::all();
-        $allVehicles = Vehicle::withTrashed()->get();
-
-        ChartGenerator::drawOverallPastHiresBarChart($inactiveHires, $allVehicles);
-
-        return view('admin.admin-hires', [
-            'activeHires' => $activeHires,
-            'inactiveHires' => $inactiveHires,
-            'yearlyHires' => $yearlyHires,
-            'vehicles' => $allVehicles,
-            'gantt' => ChartGenerator::drawVehiclesActiveHiresGanttChart($activeVehicles)
-        ]);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Hire  $hire

@@ -15,7 +15,6 @@
           </select>
         </div>
       </div>
-      {{--<input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">--}}
       <div class="form-group{{ $errors->reservations->has('start_date') ? ' has-error' : '' }}">
         <label for="start_date" class="col-sm-4 control-label">Start Date*</label>
         <div class="col-sm-8">

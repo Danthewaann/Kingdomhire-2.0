@@ -23,23 +23,6 @@ class ReservationsController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $reservations = Reservation::all();
-        $vehicles = Vehicle::all();
-        ChartGenerator::drawReservationsBarChart($vehicles);
-
-        return view('admin.admin-reservations', [
-            'reservations' => $reservations,
-            'vehicles' => $vehicles
-        ]);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param ReservationRequest $request

@@ -59,12 +59,12 @@ Route::prefix('admin')->group(function () {
 
         /* Reservation specific routes */
         Route::resource('reservations', 'ReservationsController')->only([
-            'index', 'store', 'edit', 'update', 'destroy'
+            'store', 'edit', 'update', 'destroy'
         ]);
 
         /* Hire specific routes */
         Route::resource('hires', 'HiresController')->only([
-            'index', 'edit', 'update', 'destroy'
+            'edit', 'update', 'destroy'
         ]);
 
         /* User specific routes */

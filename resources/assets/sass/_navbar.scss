@@ -18,7 +18,6 @@ nav {
 
 .public-navbar-header {
   min-width: 100%;
-  // margin: 10px 0px;
 }
 
 .navbar-header {
@@ -31,33 +30,22 @@ nav {
 }
 
 .vehicle-dashboard-navbar-tabs {
-  //background-color: transparent !important;
   border-radius: 4px 4px 0 0;
   margin-bottom: 0;
-  //border: 0;
-  //padding: 10px 0px 0px 10px;
 }
 
 .vehicle-dashboard-navbar-tabs > li > a:hover {
-  //background-color: #3b8b63 !important;
   background-color: $dark-green !important;
   border-top: 1px solid rgb(75, 206, 138);
   border-left: 1px solid rgb(75, 206, 138);
   border-right: 1px solid rgb(75, 206, 138);
-  //rgb(75, 206, 138);
-  //padding: 10px 0px 0px 10px;
 }
-
-//.vehicle-dashboard-navbar-tabs > li > a:focus {
-//  border: 0 !important;
-//}
 
 .tab-pane {
   @extend %scene_element--fadeinup;
 }
 
 .vehicle-navbar-tabs {
-  // background-color: lighten($light-green, 2.5%);
   padding: 10px;
 }
 .vehicle-navbar-tabs > li > a {
@@ -69,50 +57,21 @@ nav {
 }
 
 .vehicle-navbar-tabs > li > a:focus {
-  //background-color: #439D70;
   background-color: $light-green;
-  //border-top: 1px solid rgb(75, 206, 138);;
-  //padding: 10px 0px 0px 10px;
 }
 
 .vehicle-navbar-tabs > li > a:active {
-  //background-color: #439D70 !important;
   background-color: lighten($light-green, 2.5%) !important;
-  //border-top: 1px solid rgb(75, 206, 138);;
-  //padding: 10px 0px 0px 10px;
 }
 
 .vehicle-dashboard-navbar-tabs > li > a:focus {
   background-color: $dark-green;
-  //border-top: 1px solid rgb(75, 206, 138);;
-  //padding: 10px 0px 0px 10px;
 }
 
 .vehicle-dashboard-navbar-tabs > li > a:active {
   background-color: $dark-green !important;
-  //border-top: 1px solid rgb(75, 206, 138);;
-  //padding: 10px 0px 0px 10px;
+
 }
-
-// nav-tabs-justified > .active > a,
-// .nav-tabs.nav-justified > .active > a,
-// .nav-tabs-justified > .active > a:hover,
-// .nav-tabs.nav-justified > .active > a:hover,
-// .nav-tabs-justified > .active > a:focus,
-// .nav-tabs.nav-justified > .active > a:focus {
-//   //background-color: #439D70 !important;
-//   background-color: lighten($light-green, 2.5%) !important;
-// }
-
-// nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a,
-// .nav-tabs.nav-justified.vehicle-dashboard-navbar-tabs > .active > a,
-// .nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a:hover,
-// .nav-tabs.nav-justified.vehicle-dashboard-navbar-tabs > .active > a:hover,
-// .nav-tabs-justified.vehicle-dashboard-navbar-tabs > .active > a:focus,
-// .nav-tabs.nav-justified.vehicle-dashboard-navbar-tabs > .active > a:focus {
-//   //background-color: #3b8b63 !important;
-//   background-color: lighten($light-green, 2.5%) !important;
-// }
 
 .nav-pills > li > a {
   color: $text-color;

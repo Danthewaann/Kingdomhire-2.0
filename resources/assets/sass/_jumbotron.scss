@@ -1,11 +1,6 @@
 %jumbotron-base {
-  //width: 100%;
-  //height: 100%;
-  //alignment: center;
-  //max-width: 3000px;
   margin: 0;
   overflow: hidden;
-  // text-shadow: 2px 2px rgba(0,0,0,0.4);
   position: relative;
   padding-top: 130px;
   padding-bottom: 130px;
@@ -13,13 +8,9 @@
     padding-top: 40px;
     padding-bottom: 40px;
   }
-  //box-shadow: inset 0 0 20px 10px rgba(0,0,0,0.8);
-  //margin-bottom: 0;
 }
 
 %jumbotron-base-img {
-  //width: 60%;
-  //height: 100%;
   background-size: cover;
   position: absolute;
   top: 0;
@@ -68,39 +59,6 @@
       background-position: -250px -75px;
     }
     background-repeat: no-repeat;
-  }
-}
-
-.jumbotron-home {
-  @extend %jumbotron-base;
-  box-shadow: inset 0px 0px 0px 2px black;
-
-  .bg {
-    @extend %jumbotron-base-img;
-    background: #000 url("/static/nav-img.jpg") 50% 40% no-repeat;
-    filter: blur(10px);
-  }
-}
-
-.jumbotron-vehicles {
-  @extend %jumbotron-base;
-  box-shadow: inset 0px 0px 0px 2px black;
-
-  .bg {
-    @extend %jumbotron-base-img;
-    background: #000 url("/static/van.jpg") 45% 44% no-repeat;
-    filter: blur(10px);
-  }
-}
-
-.jumbotron-contact {
-  @extend %jumbotron-base;
-  box-shadow: inset 0px 0px 0px 2px black;
-
-  .bg {
-    @extend %jumbotron-base-img;
-    background: #000 url("/static/carRepair.jpg") 50% 38% no-repeat;
-    filter: blur(10px);
   }
 }
 

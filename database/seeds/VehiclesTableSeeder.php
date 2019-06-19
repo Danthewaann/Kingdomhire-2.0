@@ -18,7 +18,10 @@ class VehiclesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('vehicles')->delete();
+        $vehicles = Vehicle::all();
+        foreach ($vehicles as $vehicle) {
+            $vehicle->forceDelete();
+        }
         $weeklyRates = WeeklyRate::all(['id', 'name']);
         $fuelTypes = VehicleFuelType::all(['id', 'name']);
         $gearTypes = VehicleGearType::all(['id', 'name']);

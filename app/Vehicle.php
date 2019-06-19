@@ -270,12 +270,16 @@ class Vehicle extends Model
         }
         foreach ($images as $image) {
             if (is_string($image)) {
-                $image = imagecreatefromjpeg($image);
+                $info = getimagesize($image);
+                $extension = image_type_to_extension($info[2]);
             }
-            $image_type = gettype($image);
+            else {
+                $extension = '.'.$image->extension();
+            }
+            // $image_type = gettype($image);
 
             $i++;
-            $image_name = $image_type == 'object' ? $this->storageName().'_'.$i.'.'.$image->extension() : $this->storageName().'_'.$i.'.'.$image['mime'][2];
+            $image_name = $this->storageName().'_'.$i.$extension;
             $path = $dir.'/'.$image_name;
             $resize = Image::make($image)->widen(900);
             $resize->save(storage_path('app/public/'.$path), 60);

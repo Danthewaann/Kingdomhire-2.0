@@ -3,7 +3,8 @@ __vehicles__ (__id__, name, slug, make, model, vehicle_type_id*, vehicle_gear_ty
 __weekly_rates__ (__id__, name, slug, weekly_rate_min, weekly_rate_max, created_at, updated_at)  
 __vehicle_types__ (__id__, name, slug, created_at, updated_at)  
 __vehicle_fuel_types__ (__id__, name, slug, created_at, updated_at)  
-__vehicle_gear_types__ (__id__, name, slug, created_at, updated_at)     
+__vehicle_gear_types__ (__id__, name, slug, created_at, updated_at)  
+__vehicle_images__ (__id__, name, image_uri, created_at, updated_at, order, vehicle_id*)      
 __reservations__ (__id__, name, vehicle_id*, start_date, end_date, created_at, updated_at)  
 __hires__ (__id__, name, vehicle_id*, start_date, end_date, created_at, updated_at, is_active)  
 __users__ (__id__, name, email, password, remember_token, created_at, updated_at)    
@@ -49,7 +50,19 @@ __name__ NOT NULL VARCHAR(191) UNIQUE
 __slug__ NOT NULL VARCHAR(191)  
 __created_at__	NOT NULL TIMESTAMP   
 __updated_at__	NOT NULL TIMESTAMP     
+PRIMARY KEY (__id__)
+
+| vehicle_images schema          |
+|:----------------------------- |
+__id__ NOT NULL INT INCREMENTS  
+__name__ NOT NULL VARCHAR(191) UNIQUE   
+__image_uri__ NOT NULL VARCHAR(191)  
+__created_at__	NOT NULL TIMESTAMP   
+__updated_at__	NOT NULL TIMESTAMP  
+__order__	NOT NULL INT UNSIGNED DEFAULTS 1  
+__vehicle_id__ NOT NULL INT UNSIGNED         
 PRIMARY KEY (__id__)  
+FOREIGN KEY (__vehicle_id__) REFERENCES __vehicles__(__vehicle_id__)
 
 | reservations schema           |
 |:----------------------------- |

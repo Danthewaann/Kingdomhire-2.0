@@ -73,7 +73,7 @@ class WeeklyRatesController extends Controller
     public function edit(WeeklyRate $weeklyRate)
     {
         return view('admin.weekly-rate.edit', [
-            'rate' => $weeklyRate
+            'weeklyRate' => $weeklyRate
         ]);
     }
 

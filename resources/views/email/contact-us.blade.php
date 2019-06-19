@@ -27,7 +27,14 @@
         <tbody>
             <tr><th colspan="2" style="border-top: none; border-right: none;"><h2>E-Mail Content</h2></th></tr>
             <tr><th id="subject">Subject</th><td id="subject_td">{{ $subject }}</td></tr>
-            <tr><th id="message">Message</th><td id="message_td">{!! $user_message !!}</td></tr>
+            <tr>
+                <th id="message">Message</th>
+                <td id="message_td">
+                    @foreach($user_message as $line)
+                        {{ $line }} <br>
+                    @endforeach
+                </td>
+            </tr>
             <tr>
                 <td style="text-align: center; padding-top: 20px; padding-bottom: 20px" colspan="2">
                 <a class="btn btn-lg btn-primary" role="button" href="mailto:{{ $email }}?subject=Re: {{ rawurlencode($subject) }}">Reply to {{ $name }}</a>

@@ -128,17 +128,12 @@
 
 .jumbotron-header {
   margin-bottom: 0;
-  padding-top: 30px;
   padding-bottom: 30px;
-  @media(max-width:767px) {
-    padding-top: 0;
-  }
 }
 
 .jumbotron-content {
   background-color: $light-green;
   margin-bottom: 0;
-  padding-top: 30px;
   padding-bottom: 30px;
 }
 

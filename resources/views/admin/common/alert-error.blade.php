@@ -1,5 +1,5 @@
 @if(session()->has('errors'))
-  <div class="alert alert-danger alert-dismissible fade in" id="status-alert">
+  <div class="alert alert-danger alert-dismissible fade in" id="status-alert" style="margin-bottom: 22px">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>

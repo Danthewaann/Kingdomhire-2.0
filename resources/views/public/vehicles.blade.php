@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <header class="main-header"><h1>Our Fleet</h1></header>
+        <header><h1 class="main-header">Our Fleet</h1></header>
       </div>
       <div class="col-md-6">
         <p class="paragraph">

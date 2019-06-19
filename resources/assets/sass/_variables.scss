@@ -1,12 +1,12 @@
 
-// Body
-$body-bg: $dark-green;
-
 // Colours
 $light-green: rgb(54, 129, 91);
 $lighter-green: rgb(62, 167, 113);
 $dark-green:#307251;
 $darker-green: #3b8b63;
+
+// Body
+$body-bg: $dark-green;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);

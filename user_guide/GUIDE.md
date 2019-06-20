@@ -2,7 +2,7 @@
 
 ## Table of Contents
 1. [Login to admin dashboard](#Login-to-admin-dashboard)
-2. [Vehicles](#Vehicle)   
+2. [Vehicles](#Vehicles)   
   2.1 [Create a vehicle](#Create-a-vehicle)  
   2.2 [Edit a vehicle](#Edit-a-vehicle)  
   2.3 [Delete a vehicle](#Delete-a-vehicle)   

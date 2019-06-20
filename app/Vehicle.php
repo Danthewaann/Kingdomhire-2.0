@@ -261,7 +261,6 @@ class Vehicle extends Model
 
     public function linkImages($images, $http_request=null)
     {
-        $i = $this->images->count();
         $dir = 'imgs/'.$this->storageName();
         if (!empty($images)) {
             if (!Storage::disk('local')->exists('public/'.$dir)) {
@@ -276,11 +275,11 @@ class Vehicle extends Model
             else {
                 $extension = '.'.$image->extension();
             }
-            // $image_type = gettype($image);
 
-            $i++;
-            $image_name = $this->storageName().'_'.$i.$extension;
+            $image_name = $this->storageName().$extension;
+            $image_name = VehicleImage::createUniqueName($image_name, $this->id);
             $path = $dir.'/'.$image_name;
+
             $resize = Image::make($image)->widen(900);
             $resize->save(storage_path('app/public/'.$path), 60);
 

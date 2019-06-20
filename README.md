@@ -37,4 +37,5 @@ After installing Homestead, do the following:
 # Other Documentation
 ### [Database Design](DATABASE.md)  
 ### [Requirements List](REQUIREMENTS.md)
+### [User Guide](user_guide/GUIDE.md)
  

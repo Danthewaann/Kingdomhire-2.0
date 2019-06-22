@@ -13,6 +13,7 @@ $(document).ready(function () {
 
 var images = window.images === undefined ? [] : window.images;
 var uploaded_images = [];
+var site_name = window.site_name;
 console.log(images);
 
 function drawRadioBtns(image, length) {
@@ -36,7 +37,7 @@ function drawRadioBtns(image, length) {
 function drawImage(image) {
     var img = $('<img src="#" style="width: 100%">');
     if (image.uploaded_image === undefined) {
-        img.attr('src', image.image_uri).show();
+        img.attr('src', site_name + image.image_uri).show();
     }
     else {
         var reader = new FileReader();

@@ -285,7 +285,7 @@ class Vehicle extends Model
 
             VehicleImage::create([
                 'name' => $image_name,
-                'image_uri' => asset('storage/' . $path),
+                'image_uri' => 'storage/' . $path,
                 'vehicle_id' => $this->id,
                 'order' => $http_request != null ? $http_request->get(explode(".", $image->getClientOriginalName())[0] . '_order') : 1
             ]);

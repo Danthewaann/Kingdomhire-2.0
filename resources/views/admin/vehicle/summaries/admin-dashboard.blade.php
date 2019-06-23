@@ -11,7 +11,7 @@
     </div>
   @else
     <div class="vehicle-img">
-      <img class="admin" src="{{ $vehicle->images->first()->image_uri }}"/>
+      <img class="admin" src="{{ asset($vehicle->images->first()->image_uri) }}"/>
         <a href="{{ route('admin.vehicles.show', ['vehicle' => $vehicle->slug]) }}" class="btn btn-info vehicle-img-button">Dashboard</a>
     </div> 
   @endif

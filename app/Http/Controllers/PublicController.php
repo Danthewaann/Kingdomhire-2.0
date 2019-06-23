@@ -116,7 +116,7 @@ class PublicController extends Controller
 
         foreach(Vehicle::all() as $vehicle) {
             foreach($vehicle->images as $image) {
-                $tag->addImage($image->image_uri, $vehicle->name() . ' - ' . $image->name);
+                $tag->addImage(asset($image->image_uri), $vehicle->name() . ' - ' . $image->name);
             }
         }
 

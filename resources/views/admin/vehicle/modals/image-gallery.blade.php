@@ -4,7 +4,7 @@
     @for($i = 0; $i < count($vehicle->images); $i++)
       <div class="modal-slides {{ $vehicle->slug.'-images' }}">
         <div class="numbertext">{{ $i+1 }} / {{ count($vehicle->images) }}</div>
-        <img src="{{ $vehicle->images[$i]->image_uri }}" alt="{{ $vehicle->name() . ' - ' . $vehicle->images[$i]->name }}">
+        <img src="{{ asset($vehicle->images[$i]->image_uri) }}" alt="{{ $vehicle->name() . ' - ' . $vehicle->images[$i]->name }}">
       </div>
     @endfor
       @if(count($vehicle->images) > 1)

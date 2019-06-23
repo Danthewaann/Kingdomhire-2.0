@@ -70,7 +70,8 @@
   <script src="{{ asset('js/modal-gallery.js') }}"></script>
   @if(Request::is('admin/vehicles/*'))
     <script>
-      var images = {!! json_encode($vehicle->images->toArray()) !!}
+      var images = {!! json_encode($vehicle->images->toArray()) !!};
+      var site_name = "{{ env('APP_URL', '') }}/";
     </script>
     <script src="{{ asset('js/vehicle-image-order.js') }}"></script>
   @endif

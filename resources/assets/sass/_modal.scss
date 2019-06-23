@@ -4,6 +4,7 @@
   position: fixed;
   z-index: 2000;
   padding-top: 100px;
+  padding-bottom: 50px;
   left: 0;
   top: 0;
   width: 100%;
@@ -24,15 +25,12 @@
   padding: 0;
   width: 95%;
   max-width: 900px;
+  max-height: 675px;
   transition-timing-function: ease-in-out;
   -webkit-animation-name: zoom;
   -webkit-animation-duration: 0.5s;
   animation-name: zoom;
   animation-duration: 0.5s;
-  @media(max-width:767px) {
-    height: 250px;
-  }
-  height: 600px;
 }
 
 /* The Close Button */

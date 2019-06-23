@@ -280,7 +280,7 @@ class Vehicle extends Model
             $image_name = VehicleImage::createUniqueName($image_name, $this->id);
             $path = $dir.'/'.$image_name;
 
-            $resize = Image::make($image)->widen(900);
+            $resize = Image::make($image)->resize(900, 675);
             $resize->save(storage_path('app/public/'.$path), 60);
 
             VehicleImage::create([

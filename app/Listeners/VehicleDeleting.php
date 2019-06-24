@@ -17,6 +17,8 @@ class VehicleDeleting
     public function handle(VehicleDeletingEvent $event)
     {
         $vehicle = $event->vehicle;
-        $vehicle->deleteImages();
+        if ($vehicle->isForceDeleting()) {
+            $vehicle->deleteImages();
+        }
     }
 }

@@ -4,7 +4,7 @@
     <h3 style="text-align: center">Come back later!</h5>
   </div>
 @else
-  <div class="col-lg-3 col-md-3 col-sm-3">
+  <div class="col-lg-3 col-md-3 col-sm-4">
     <div class="panel panel-default vehicle-categories">
       <div class="panel-heading">
         <h2>Our Fleet</h2>
@@ -28,13 +28,13 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-9 col-sm-9">
+  <div class="col-lg-9 col-md-9 col-sm-8">
     <div class="tab-content">
       @if($vehiclesWithType->isNotEmpty())
         <article id="all" class="tab-pane fade in active">
           <div class="row">
             @foreach($activeVehicles->sortByDesc('created_at') as $vehicle)
-              <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="col-lg-4 col-md-6 col-sm-12">
                 @include('admin.vehicle.summaries.public')
               </div>
             @endforeach
@@ -44,7 +44,7 @@
           <article id="{{ str_replace(" ", "-", $vehicleType->name) }}" class="tab-pane fade">
             <div class="row">
               @foreach($vehiclesWithType->where('vehicle_type_id', $vehicleType->id)->sortByDesc('created_at') as $vehicle)
-                <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                   @include('admin.vehicle.summaries.public')
                 </div>           
               @endforeach
@@ -56,7 +56,7 @@
         <article id="na" class="tab-pane fade{{ $vehiclesWithType->isEmpty() ? ' in active' : '' }}">
           <div class="row">
             @foreach($vehiclesWithNoType->sortByDesc('created_at') as $vehicle)
-              <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="col-lg-4 col-md-6 col-sm-12">
                 @include('admin.vehicle.summaries.public')
               </div>
             @endforeach

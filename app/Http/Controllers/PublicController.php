@@ -111,8 +111,8 @@ class PublicController extends Controller
         $tag->addImage(asset('static/home-front.jpg'), 'Making a Reservation');
 
         $tag = Sitemap::addTag(route('public.vehicles'), now(), 'daily', '0.8');
-        $tag->addImage(asset('static/business.jpg'), 'Vehicle Rates/Hire Period');
-        $tag->addImage(asset('static/home-front-2.jpg'), 'Insurance Policy');
+        $tag->addImage(asset('static/entrance.jpg'), 'Vehicle Rates/Hire Period');
+        $tag->addImage(asset('static/business.jpg'), 'Insurance Policy');
 
         foreach(Vehicle::all() as $vehicle) {
             foreach($vehicle->images as $image) {

@@ -52,10 +52,10 @@ class CreateUser extends Command
         $email_option = $this->argument('email');
         $password = null;
         $has_error = false;
-        
+
         if ($test_option) {
             $user->name = $test_name;
-            $user->password = $test_password;
+            $user->password = Hash::make($test_password);
             $user->email = $test_email;
         }
         else {

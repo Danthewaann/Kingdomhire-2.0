@@ -1,6 +1,7 @@
 @extends('layouts.admin-vehicle-dashboard')
 
 @section('content')
+  {{--@dd($errors)--}}
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3>Edit vehicle</h3>
@@ -13,6 +14,33 @@
           @method('PATCH')
           <div class="row">
             <div class="col-md-12">
+              <div class="form-group">
+                <label for="make" class="control-label col-sm-3">Make</label>
+                <div class="col-sm-9">
+                  <input type="text" id="make" class="form-control" name="make" value="{{ $vehicle->make }}"/>
+                  @if( $errors->has('make'))
+                    @include('admin.common.alert-danger', ['error' => $errors->first('make')])
+                  @endif
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="model" class="control-label col-sm-3">Model</label>
+                <div class="col-sm-9">
+                  <input type="text" id="model" class="form-control" name="model" value="{{ $vehicle->model }}"/>
+                  @if( $errors->has('model'))
+                    @include('admin.common.alert-danger', ['error' => $errors->first('model')])
+                  @endif
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="seats" class="control-label col-sm-3">Seats</label>
+                <div class="col-sm-9">
+                  <input type="number" id="seats" class="form-control" name="seats" value="{{ $vehicle->seats }}"/>
+                  @if( $errors->has('seats'))
+                    @include('admin.common.alert-danger', ['error' => $errors->first('seats')])
+                  @endif
+                </div>
+              </div>
               <div class="form-group">
                 <label for="status" class="control-label col-sm-3">Status</label>
                 <div class="col-sm-9">

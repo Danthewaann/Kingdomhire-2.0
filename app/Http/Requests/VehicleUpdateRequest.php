@@ -7,13 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 class VehicleUpdateRequest extends FormRequest
 {
     /**
-     * The key to be used for the view error bag.
-     *
-     * @var string
-     */
-    protected $errorBag = 'edit';
-
-    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -31,6 +24,9 @@ class VehicleUpdateRequest extends FormRequest
     public function rules()
     {
         return [
+            'make' => 'required',
+            'model' => 'required',
+            'seats' => 'required|numeric|min:1|max:255',
             'status' => 'nullable',
             'weeklyRate' => 'required',
             'vehicleType' => 'required',
@@ -50,6 +46,9 @@ class VehicleUpdateRequest extends FormRequest
     public function messages()
     {
         return [
+            'make.required' => 'Vehicle make (manufacturer) is required',
+            'model.required' => 'Vehicle model is required',
+            'seats.required' => 'Number of seats is required',
             'vehicle_images_add.*.image' => 'Only image type files can be uploaded',
             'vehicle_images_add.*.mimes' => 'Images must be a file of type: jpeg, jpg, png, gif.'
         ];

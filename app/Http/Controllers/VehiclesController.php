@@ -164,6 +164,9 @@ class VehiclesController extends Controller
      */
     public function update(VehicleUpdateRequest $request, Vehicle $vehicle)
     {
+        $vehicle->make = $request->make;
+        $vehicle->model = $request->model;
+        $vehicle->seats = $request->seats;
         $vehicle->status = ($request->status == null) ? $vehicle->status : $request->status;
         $vehicle->weekly_rate_id = ($request->weeklyRate != "na") ? WeeklyRate::whereName($request->weeklyRate)->first()->id : null;
         $vehicle->vehicle_type_id = ($request->vehicleType != "na") ? VehicleType::whereName($request->vehicleType)->first()->id : null;

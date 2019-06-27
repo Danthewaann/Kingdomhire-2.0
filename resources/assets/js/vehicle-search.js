@@ -9,6 +9,7 @@ var type_selection = "All";
 var gear_selection = "All";
 var fuel_selection = "All";
 var seats_selection = "Any";
+var sort_vehicles = "Ascending";
 
 function sortVehiclesDesc(a, b) {
     if (a.name > b.name) return -1;
@@ -126,10 +127,10 @@ function drawRadioBtnsForAttribute(attribute_id, container_id, attribute_arr) {
     attribute_container.append(html);
 }
 
-function drawVehicles(sort="Ascending") {
+function drawVehicles() {
     var vehicleSearchResults = $('#vehicle-search-results');
     vehicleSearchResults.empty();
-    if (sort === "Ascending") {
+    if (sort_vehicles === "Ascending") {
         vehicles.sort(sortVehicleAsc);
     } else {
         vehicles.sort(sortVehiclesDesc);
@@ -188,16 +189,18 @@ $(document).ready(function () {
         drawVehicles();
     });
 
-    $('#vehicle-sort-ascending').click(function (e) {
+    $('#vehicle-sort-ascending').find('a').click(function (e) {
         $('#vehicle-sort-descending').removeClass('active');
-        drawVehicles("Ascending");
-        $(this).addClass('active');
+        sort_vehicles = "Ascending";
+        drawVehicles();
+        $(this).parent().addClass('active');
     });
 
-    $('#vehicle-sort-descending').click(function (e) {
+    $('#vehicle-sort-descending').find('a').click(function (e) {
         $('#vehicle-sort-ascending').removeClass('active');
-        drawVehicles("Descending");
-        $(this).addClass('active');
+        sort_vehicles = "Descending";
+        drawVehicles();
+        $(this).parent().addClass('active');
     });
 
     $('#vehicle-search-reset').click(function () {

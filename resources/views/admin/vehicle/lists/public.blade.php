@@ -54,8 +54,8 @@
                   Sort Vehicles <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a id="vehicle-sort-ascending">Ascending</a></li>
-                  <li><a id="vehicle-sort-descending">Descending</a></li>
+                  <li class="active" id="vehicle-sort-ascending"><a>Ascending</a></li>
+                  <li id="vehicle-sort-descending"><a>Descending</a></li>
                 </ul>
               </div>
               <div class="btn-group" style="width: 30%"><button style="width: 100%" id="vehicle-search-reset" class="btn btn-lg btn-primary">Reset</button></div>

@@ -1,7 +1,6 @@
 @extends('layouts.admin-vehicle-dashboard')
 
 @section('content')
-  {{--@dd($errors)--}}
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3>Edit vehicle</h3>

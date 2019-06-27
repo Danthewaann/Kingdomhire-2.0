@@ -45,6 +45,10 @@ nav {
   @extend %scene_element--fadeinup;
 }
 
+.tab-pane-no-vehicles {
+  @extend %scene_element--fadein;
+}
+
 .vehicle-navbar-tabs {
   padding: 10px;
 }

@@ -34,13 +34,26 @@
 
 .vehicle-categories {
   box-shadow: unset;
+  h4 {
+    margin: 11px 0 !important;
+  }
   div.panel-heading {
+    height: 80px;
     font-size: 1.7em;
-    background-color: lighten($dark-green, 1.5%)
+    background-color: lighten($light-green, 2.5%);
+    h2, h3 {
+      text-align: center;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
   div.panel-body {
-    font-size: 1.4em;
-    background-color: $light-green
+    background-color: lighten($dark-green, 1.5%) !important;
+  }
+
+  div.panel-footer {
+    background-color: lighten($light-green, 2.5%);
   }
 }
 

@@ -52,3 +52,12 @@
 .table-header {
   padding-left: 8px;
 }
+
+.vehicle-search-hr-bottom{
+  margin: 15px 11px 10px;
+}
+
+#vehicle-sort-ascending:hover,
+#vehicle-sort-descending:hover {
+  cursor: pointer;
+}

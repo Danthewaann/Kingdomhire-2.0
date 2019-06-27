@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Vehicle;
 use App\VehicleImage;
 use App\VehicleType;
+use App\VehicleFuelType;
+use App\VehicleGearType;
 use Illuminate\Http\Request;
 use Validator;
 use Session;
@@ -17,28 +19,37 @@ class PublicController extends Controller
     public function vehicles()
     {
         $activeVehicles = [];
-        $vehicleTypes = VehicleType::whereHas('vehicles', function($query) {
-            $query->where('status', '!=', 'Unavailable');
-        })->get();
-        $vehiclesWithType = Vehicle::where('vehicle_type_id', '!=', null)->where('status', '!=', 'Unavailable')->get();
-        $vehiclesWithNoType = Vehicle::whereVehicleTypeId(null)->where('status', '!=', 'Unavailable')->get();
+        $jsonVehicles = Vehicle::with('images')->get();
+        $jsonVehicles->transform(function($i) {
+            $fuel_type = VehicleFuelType::find($i->vehicle_fuel_type_id);
+            $gear_type = VehicleGearType::find($i->vehicle_gear_type_id);
+            $type = VehicleType::find($i->vehicle_type_id);
 
-        foreach ($vehiclesWithNoType as $vehicle) {
-            array_push($activeVehicles, $vehicle);
-        }
+            $i->fuel_type = $fuel_type != null ? $fuel_type->name : '';
+            $i->gear_type = $gear_type != null ? $gear_type->name : '';
+            $i->type = $type != null ? $type->name : '';
+            $i->seats = $i->seats . ' seats';
+            $i->name = $i->make . ' ' . $i->model;
+            unset(
+                $i->vehicle_fuel_type_id, $i->vehicle_gear_type_id, $i->vehicle_type_id,
+                $i->id, $i->created_at, $i->updated_at, $i->deleted_at,
+                $i->status, $i->weekly_rate_id
+            );
 
-        foreach ($vehiclesWithType as $vehicle) {
-            array_push($activeVehicles, $vehicle);
-        }
-        
-        $activeVehicles = collect($activeVehicles);
+            foreach ($i->images as $image) {
+                unset(
+                    $image->id, $image->order, $image->created_at, $image->updated_at,
+                    $image->vehicle_id
+                );
+            }
+
+            return $i;
+        });
 
         return view('public.vehicles', [
             'activeVehicles' => $activeVehicles,
-            'vehiclesWithType' => $vehiclesWithType,
-            'vehiclesWithNoType' => $vehiclesWithNoType,
-            'vehicleTypes' => $vehicleTypes,
-            'vehicleCount' => Vehicle::count()
+            'jsonVehicles' => $jsonVehicles,
+            'vehicleCount' => $jsonVehicles->count()
         ]);
     }
 

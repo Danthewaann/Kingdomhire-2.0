@@ -38,12 +38,10 @@
 <body>
   @if(Request::is('vehicles'))
     <div id="vehicle-images-container">
-      @foreach($vehicleTypes as $vehicleType)
-        @foreach($vehicleType->vehicles as $vehicle)
-          @if($vehicle->images->count() > 0)
-            @include('admin.vehicle.modals.image-gallery')
-          @endif  
-        @endforeach
+      @foreach($jsonVehicles as $vehicle)
+        @if($vehicle->images->count() > 0)
+          @include('admin.vehicle.modals.image-gallery')
+        @endif
       @endforeach
     </div>
   @endif  
@@ -56,9 +54,17 @@
       <p>&copy; {{ date('Y') }} kingdomhire.com</p>
     </div>
   </footer>
-
   <script src="{{ asset('js/app.js') }}"></script>
-  <script src="{{ asset('js/modal-gallery.js') }}"></script>
-  {!! NoCaptcha::renderJs() !!}
+  @if(Request::is('vehicles'))
+    <script>
+      var vehicles = {!! json_encode($jsonVehicles->toArray()) !!};
+      var site_name = "{{ env('APP_URL', '') }}/";
+    </script>
+    <script src="{{ asset('js/vehicle-search.js') }}"></script>
+    <script src="{{ asset('js/modal-gallery.js') }}"></script>
+  @endif
+  @if(Request::is('contact-us'))
+    {!! NoCaptcha::renderJs() !!}
+  @endif
 </body>
 </html>

@@ -209,6 +209,7 @@ $(document).ready(function () {
         fuel_selection = fuel_types[0];
         gear_selection = gear_types[0];
         seats_selection = seats[0];
+        sort_vehicles = "Ascending";
         drawVehicles();
 
         $('#vehicle_types').find('li.active').removeClass('active');
@@ -222,6 +223,9 @@ $(document).ready(function () {
 
         $('#seats').find('li.active').removeClass('active');
         $('#seats').find('li.seats_all').addClass('active');
+
+        $('#vehicle-sort-descending').removeClass('active');
+        $('#vehicle-sort-ascending').addClass('active');
 
     });
 });

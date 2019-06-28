@@ -13,46 +13,18 @@
       line-height: 200px;
       vertical-align: middle;
     }
-    h2.public {
+    h2.public, h2.admin, h2.dashboard {
       @media(max-width:767px) {
-        line-height: 400px;
+        line-height: 246px;
       }
       @media(min-width:768px) {
-        line-height: 351px;
+        line-height: 257px;
       }
       @media(min-width:992px) {
-        line-height: 248.81px;
-      }
-      @media(min-width:1200px) {
         line-height: 200px;
       }
-    }
-    h2.admin {
-      @media(max-width:767px) {
-        line-height: 400px;
-      }
-      @media(min-width:768px) {
-        line-height: 351px;
-      }
-      @media(min-width:992px) {
-        line-height: 218.48px;
-      }
       @media(min-width:1200px) {
-        line-height: 200px;
-      }
-    }
-    h2.dashboard {
-      @media(max-width:767px) {
-        line-height: 230px;
-      }
-      @media(min-width:768px) {
-        line-height: 250px;
-      }
-      @media(min-width:992px) {
-        line-height: 250px;
-      }
-      @media(min-width:1200px) {
-        line-height: 250px;
+        line-height: 268px;
       }
     }
   }

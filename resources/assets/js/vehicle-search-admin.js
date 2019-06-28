@@ -62,7 +62,7 @@ function drawImageThumbnail(vehicle) {
         var image_uri = site_name + vehicle.images[0].image_uri;
         var image_name = vehicle.make + ' ' + vehicle.model + ' - ' + vehicle.images[0].name;
         html = '<div class="vehicle-img"> \
-                    <img class="public" src="'+ image_uri + '" alt="' + image_name + '"> \
+                    <img class="admin" src="'+ image_uri + '" alt="' + image_name + '"> \
                     <button class="btn btn-info vehicle-img-button vehicle-open-modal" data-vehicle="' + vehicle.slug + '">View images</button> \
                     <a href="' + vehicle_dashboard + '" class="btn btn-info vehicle-dashboard-button">Dashboard</a> \
                 </div>'
@@ -70,7 +70,7 @@ function drawImageThumbnail(vehicle) {
     else {
         html = '<div class="vehicle-img"> \
                   <div class="vehicle-img-na"> \
-                    <h2 class="public"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;No Image(s)</h2> \
+                    <h2 class="admin"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;No Image(s)</h2> \
                   </div> \
                   <a href="' + vehicle_dashboard + '" class="btn btn-info vehicle-dashboard-button">Dashboard</a> \
                 </div>'

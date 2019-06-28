@@ -1,5 +1,7 @@
 .paragraph {
-  text-align: justify;
+  @media(max-width:767px) {
+    text-align: center;
+  }
   font-size: 1.3em !important;
 }
 

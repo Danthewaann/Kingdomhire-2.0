@@ -227,7 +227,12 @@ class Vehicle extends Model
 
     public function getNextReservation()
     {
-        return $this->reservations->sortBy('end_date')->first();
+        if ($this->reservations->count() == 0) {
+            return null;
+        }
+        else {
+            return $this->reservations->sortBy('end_date')->first();
+        }
     }
 
     public function hasActiveHire()

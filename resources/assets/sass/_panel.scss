@@ -32,8 +32,7 @@
   }
 }
 
-.vehicle-categories {
-  box-shadow: unset;
+.vehicle-categories-public {
   h4 {
     margin: 11px 0 !important;
   }
@@ -41,7 +40,7 @@
     height: 80px;
     font-size: 1.7em;
     background-color: lighten($light-green, 2.5%);
-    h2, h3 {
+    h2 {
       text-align: center;
       position: relative;
       top: 50%;
@@ -57,8 +56,39 @@
   }
 }
 
+.vehicle-categories-admin {
+  h4 {
+    margin: 11px 0 !important;
+  }
+  div.panel-heading {
+    //height: 80px;
+    padding: unset;
+    font-size: 1.7em;
+    background-color: lighten($light-green, 2.5%);
+    hr {
+      margin-top: 15px;
+      margin-bottom: 0;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 15px;
+    }
+    a.add-vehicle-btn {
+      width: 100%;
+      border-radius: 0;
+      border: 0;
+    }
+  }
+  div.panel-body {
+    background-color: lighten($dark-green, 1.5%) !important;
+  }
+
+  div.panel-footer {
+    background-color: lighten($light-green, 2.5%);
+  }
+}
+
 .public-vehicle-panel {
-  box-shadow: unset;
   margin-bottom: 40px;
   .vehicle-panel-heading {
     height: 80px;

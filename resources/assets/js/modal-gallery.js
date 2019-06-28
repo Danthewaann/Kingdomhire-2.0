@@ -4,6 +4,11 @@ $(document).ready(function () {
         showModal(vehicle);
     });
 
+    $('.vehicle-open-modal').click(function () {
+        vehicle = $(this).data('vehicle');
+        showModal(vehicle);
+    });
+
     $('.vehicle-close-modal').click(function () {
         vehicle = $(this).data('vehicle');
         closeModal(vehicle);

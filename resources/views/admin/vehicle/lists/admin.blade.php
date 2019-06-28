@@ -1,48 +1,16 @@
-@if($activeVehicles->isNotEmpty() or $inactiveVehicles->isNotEmpty())
-  <div class="tab-content">
-    @if($vehiclesWithType->isNotEmpty())
-      <div id="all" class="tab-pane fade in active">
-        <div class="row">
-          @foreach($activeVehicles->sortByDesc('created_at') as $vehicle)
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-              @include('admin.vehicle.summaries.admin-dashboard')
-            </div>
-          @endforeach
-        </div>
-      </div>
-      @foreach($vehicleTypes as $vehicleType)
-        <div id="{{ str_replace(" ", "-", $vehicleType->name) }}" class="tab-pane fade">
-          <div class="row">
-            @foreach($vehiclesWithType->where('vehicle_type_id', $vehicleType->id)->sortByDesc('created_at') as $vehicle)
-              <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                @include('admin.vehicle.summaries.admin-dashboard')
-              </div>            
-            @endforeach
-          </div>
-        </div>
-      @endforeach
-    @endif
-    @if($vehiclesWithNoType->isNotEmpty())
-      <div id="na" class="tab-pane fade{{ $vehiclesWithType->isEmpty() ? ' in active' : '' }}">
-        <div class="row">
-          @foreach($vehiclesWithNoType->sortByDesc('created_at') as $vehicle)
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-              @include('admin.vehicle.summaries.admin-dashboard')
-            </div>
-          @endforeach
-        </div>
-      </div>
-    @endif
-    @if($inactiveVehicles->isNotEmpty())
-      <div id="discontinued" class="tab-pane fade{{ $activeVehicles->isEmpty() ? ' in active' : '' }}">
-        <div class="row">
-          @foreach($inactiveVehicles->sortByDesc('deleted_at') as $vehicle)
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-              @include('admin.vehicle.summaries.admin-dashboard')
-            </div>
-          @endforeach
-        </div>
-      </div>
-    @endif
+@if($vehicleCount < 1)
+  <div class="col-sm-12" style="text-align: center">
+    <h1>No Vehicles</h1>
+    <h3>Why not add one?</h3>
+    <hr>
+    <a class="btn btn-lg btn-info add-vehicle-btn" role="button" href="{{ route('admin.vehicles.create') }}"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Add Vehicle</a>
+  </div>
+@else
+  <div class="col-lg-12 col-md-5 col-sm-6">
+    @include('admin.vehicle.lists.categories')
+  </div>
+  <div class="col-lg-12 col-md-7 col-sm-6 col-xs-12">
+    <div class="row tab-content" id="vehicle-search-results" href="#vehicle-search-results-tab">
+    </div>
   </div>
 @endif

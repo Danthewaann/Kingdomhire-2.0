@@ -18,7 +18,6 @@ class PublicController extends Controller
 {
     public function vehicles()
     {
-        $activeVehicles = [];
         $jsonVehicles = Vehicle::with('images')->get();
         $jsonVehicles->transform(function($i) {
             $fuel_type = VehicleFuelType::find($i->vehicle_fuel_type_id);
@@ -47,7 +46,6 @@ class PublicController extends Controller
         });
 
         return view('public.vehicles', [
-            'activeVehicles' => $activeVehicles,
             'jsonVehicles' => $jsonVehicles,
             'vehicleCount' => $jsonVehicles->count()
         ]);

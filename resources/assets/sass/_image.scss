@@ -61,7 +61,7 @@
   transition: 0.5s;
   background-color: $dark-green;
 
-  a, button {
+  button.vehicle-img-button {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -69,6 +69,17 @@
     border-color: $lighter-green;
     border-left: 0;
     border-bottom: 0;
-    font-size: 12px;
+    font-size: 14px;
+  }
+
+  a.vehicle-dashboard-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px 0px 0px 0px;
+    border-color: $lighter-green;
+    border-right: 0;
+    border-bottom: 0;
+    font-size: 14px;
   }
 }

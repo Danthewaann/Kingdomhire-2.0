@@ -26,7 +26,16 @@
 </head>
 <body>
   <div id="modals">
-    @if(!empty($reservations))
+  @if(Request::is('admin/vehicles'))
+    <div id="vehicle-images-container">
+      @foreach($jsonVehicles as $vehicle)
+        @if($vehicle->images->count() > 0)
+          @include('admin.vehicle.modals.image-gallery')
+        @endif
+      @endforeach
+    </div>
+  @endif
+  @if(!empty($reservations))
       @foreach($reservations->sortBy('end_date') as $reservation)
         @include('admin.reservation.destroy-modal')
       @endforeach
@@ -81,7 +90,14 @@
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
   <script src="{{ asset('js/datepicker.js') }}"></script>
-  <script src="{{ asset('js/modal-gallery.js') }}"></script>
+  @if(Request::is('admin/vehicles'))
+    <script>
+        var vehicles = {!! json_encode($jsonVehicles->toArray()) !!};
+        var site_name = "{{ env('APP_URL', '') }}/";
+    </script>
+    <script src="{{ asset('js/vehicle-search-admin.js') }}"></script>
+    <script src="{{ asset('js/modal-gallery.js') }}"></script>
+  @endif
   @if(Request::is('admin/vehicles/*'))
     <script src="{{ asset('js/vehicle-image-order.js') }}"></script>
   @endif

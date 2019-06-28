@@ -32,29 +32,50 @@ class VehiclesController extends Controller
      */
     public function index()
     {
-        $activeVehicles = [];
-        $vehiclesWithType = Vehicle::where('vehicle_type_id', '!=', null)->get();
-        $vehiclesWithNoType = Vehicle::whereVehicleTypeId(null)->get();
-        $inactiveVehicles = Vehicle::onlyTrashed()->get();
-        $vehicleTypes = VehicleType::all();
+        $jsonVehicles = Vehicle::withTrashed()->with(['images', 'hires', 'reservations'])->get();
+        $jsonVehicles->transform(function($vehicle) {
+            $fuel_type = VehicleFuelType::find($vehicle->vehicle_fuel_type_id);
+            $gear_type = VehicleGearType::find($vehicle->vehicle_gear_type_id);
+            $type = VehicleType::find($vehicle->vehicle_type_id);
 
-        foreach ($vehiclesWithNoType as $vehicle) {
-            array_push($activeVehicles, $vehicle);
-        }
+            $vehicle->active_hire = $vehicle->getActiveHire();
+            $vehicle->next_reservation = $vehicle->getNextReservation();
 
-        foreach ($vehiclesWithType as $vehicle) {
-            array_push($activeVehicles, $vehicle);
-        }
-        
-        $activeVehicles = collect($activeVehicles);
+            if ($vehicle->active_hire != null) {
+                $vehicle->active_hire->start_date = date('j/M/Y', strtotime($vehicle->active_hire->start_date));
+                $vehicle->active_hire->end_date = date('j/M/Y', strtotime($vehicle->active_hire->end_date));
+            }
+
+            if ($vehicle->next_reservation != null) {
+                $vehicle->next_reservation->start_date = date('j/M/Y', strtotime($vehicle->next_reservation->start_date));
+                $vehicle->next_reservation->end_date = date('j/M/Y', strtotime($vehicle->next_reservation->end_date));
+            }
+
+            $vehicle->fuel_type = $fuel_type != null ? $fuel_type->name : '';
+            $vehicle->gear_type = $gear_type != null ? $gear_type->name : '';
+            $vehicle->type = $type != null ? $type->name : '';
+            $vehicle->seats = $vehicle->seats . ' seats';
+            $vehicle->id = $vehicle->name;
+            $vehicle->name = $vehicle->make . ' ' . $vehicle->model;
+
+            unset(
+                $vehicle->vehicle_fuel_type_id, $vehicle->vehicle_gear_type_id, $vehicle->vehicle_type_id,
+                $vehicle->created_at, $vehicle->updated_at, $vehicle->weekly_rate_id, $vehicle->hires, $vehicle->reservations
+            );
+
+            foreach ($vehicle->images as $image) {
+                unset(
+                    $image->id, $image->order, $image->created_at, $image->updated_at,
+                    $image->vehicle_id
+                );
+            }
+
+            return $vehicle;
+        });
         
         return view('admin.admin-vehicles', [
-            'activeVehicles' => $activeVehicles,
-            'vehiclesWithType' => $vehiclesWithType,
-            'vehiclesWithNoType' => $vehiclesWithNoType,
-            'vehicleTypes' => $vehicleTypes,
-            'vehicleCount' => Vehicle::withTrashed()->count(),
-            'inactiveVehicles' => $inactiveVehicles,
+            'jsonVehicles' => $jsonVehicles,
+            'vehicleCount' => $jsonVehicles->count(),
         ]);
     }
 

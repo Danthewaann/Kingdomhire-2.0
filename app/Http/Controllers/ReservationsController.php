@@ -32,6 +32,8 @@ class ReservationsController extends Controller
     {
         $reservation = new Reservation($request->all());
         if ($reservation->hasStarted()) {
+            $reservation->vehicle->status = "Out for hire";
+            $reservation->vehicle->save();
             $reservation = new Hire($request->all());
         }
 
@@ -81,6 +83,8 @@ class ReservationsController extends Controller
                 'end_date' => $request->end_date,
                 'vehicle_id' => $reservation->vehicle->id
             ]);
+            $reservation->vehicle->status = "Out for hire";
+            $reservation->vehicle->save();
             try {
                 $reservation->delete();
             } catch (\Exception $e) {

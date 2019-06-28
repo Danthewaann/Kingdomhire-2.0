@@ -11,7 +11,7 @@
   <title>Login | Kingdomhire - Car & Van Rental Agency</title>
 
   <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=sxQYcq">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=sxQYcq">
@@ -33,7 +33,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}"></script>
-  <script src="{{ asset('js/modal-gallery.js') }}"></script>
+  <script src="{{ mix('js/app.js') }}"></script>
+  <script src="{{ mix('js/modal-gallery.js') }}"></script>
 </body>
 </html>

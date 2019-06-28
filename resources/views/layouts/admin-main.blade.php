@@ -12,7 +12,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css">
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('vendor/swatkins/gantt/css/gantt.css') }}" rel="stylesheet" type="text/css">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=sxQYcq">
@@ -87,19 +87,19 @@
 
 
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ mix('js/app.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
-  <script src="{{ asset('js/datepicker.js') }}"></script>
+  <script src="{{ mix('js/datepicker.js') }}"></script>
   @if(Request::is('admin/vehicles'))
     <script>
         var vehicles = {!! json_encode($jsonVehicles->toArray()) !!};
         var site_name = "{{ env('APP_URL', '') }}/";
     </script>
-    <script src="{{ asset('js/vehicle-search-admin.js') }}"></script>
-    <script src="{{ asset('js/modal-gallery.js') }}"></script>
+    <script src="{{ mix('js/vehicle-search-admin.js') }}"></script>
+    <script src="{{ mix('js/modal-gallery.js') }}"></script>
   @endif
   @if(Request::is('admin/vehicles/*'))
-    <script src="{{ asset('js/vehicle-image-order.js') }}"></script>
+    <script src="{{ mix('js/vehicle-image-order.js') }}"></script>
   @endif
 </body>
 </html>

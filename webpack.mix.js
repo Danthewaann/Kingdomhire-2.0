@@ -11,6 +11,10 @@ let mix = require('laravel-mix');
  |
  */
 
+if (mix.inProduction()) {
+    mix.version();
+}
+
 mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/datepicker.js', 'public/js')
     .js('resources/assets/js/modal-gallery.js', 'public/js')

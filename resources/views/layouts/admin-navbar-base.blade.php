@@ -51,19 +51,6 @@
         <li>
           <a href="{{ route('public.home') }}"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;Public Site</a>
         </li>
-        {{-- <li class="dropdown{{ Request::is('admin/users*') ? ' active' : '' }}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-            <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;Users <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="{{ route('admin.users.create') }}">Create new user</a>
-            </li>
-            <li>
-              <a href="{{ route('admin.users.index') }}" class="submenu">Users</span></a>
-            </li>
-          </ul>
-        </li> --}}
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
             <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ Auth::user()->name }} <span class="caret"></span>
@@ -75,9 +62,6 @@
             <li>
               <a href="{{ route('admin.users.edit-password', ['user' => Auth::user()->id]) }}">Update password</a>
             </li>
-            <!-- <li>
-              <a href="#" data-toggle="modal" data-target="#user-{{ Auth::user()->id }}-delete">Delete account</a>
-            </li> -->
             <li>
               <a href="{{ route('logout') }}"
                  onclick="event.preventDefault();

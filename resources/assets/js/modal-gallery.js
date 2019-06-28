@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.vehicle-open-modal').click(function () {
+    $('#vehicle-search-results').on('click', 'button.vehicle-open-modal', function () {
         vehicle = $(this).data('vehicle');
         showModal(vehicle);
     });

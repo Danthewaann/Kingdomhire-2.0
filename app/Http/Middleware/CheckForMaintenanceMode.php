@@ -24,20 +24,23 @@ class CheckForMaintenanceMode {
 
     public function handle(Request $request, Closure $next)
     {
-        $requestPath = $request->getPathInfo();
-        $requestAcceptable = false;
-        foreach ($this->acceptedPaths as $path) {
-            if (preg_match('/' . $path . '/', $requestPath) == 1) {
-                $requestAcceptable = true;
-                break;
+        if ($this->app->isDownForMaintenance()) {
+            $requestPath = $request->getPathInfo();
+            $requestAcceptable = false;
+            foreach ($this->acceptedPaths as $path) {
+                if (preg_match('/' . $path . '/', $requestPath) == 1) {
+                    $requestAcceptable = true;
+                    break;
+                }
+            }
+
+            if (!$requestAcceptable)
+            {
+                $maintenanceMode = new MaintenanceMode($this->app);
+                return $maintenanceMode->handle($request, $next);
             }
         }
 
-        if ($this->app->isDownForMaintenance() && !$requestAcceptable)
-        {
-            $maintenanceMode = new MaintenanceMode($this->app);
-            return $maintenanceMode->handle($request, $next);
-        }
 
         return $next($request);
     }

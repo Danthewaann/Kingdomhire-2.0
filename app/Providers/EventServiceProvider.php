@@ -13,6 +13,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
+        'App\Events\VehicleUpdating' => [
+            'App\Listeners\VehicleUpdating',
+        ],
         'App\Events\VehicleCreating' => [
             'App\Listeners\VehicleCreating',
         ],

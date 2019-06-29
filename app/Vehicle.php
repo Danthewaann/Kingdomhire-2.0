@@ -4,6 +4,7 @@ namespace App;
 
 use App\Events\VehicleCreating;
 use App\Events\VehicleDeleting;
+use App\Events\VehicleUpdating;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
@@ -72,7 +73,8 @@ class Vehicle extends Model
      */
     protected $dispatchesEvents = [
         'creating' => VehicleCreating::class,
-        'deleting' => VehicleDeleting::class
+        'deleting' => VehicleDeleting::class,
+        'updating' => VehicleUpdating::class
     ];
 
     /**

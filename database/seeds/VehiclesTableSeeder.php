@@ -18,7 +18,7 @@ class VehiclesTableSeeder extends Seeder
      */
     public function run()
     {
-        $vehicles = Vehicle::all();
+        $vehicles = Vehicle::withTrashed()->get();
         foreach ($vehicles as $vehicle) {
             $vehicle->forceDelete();
         }

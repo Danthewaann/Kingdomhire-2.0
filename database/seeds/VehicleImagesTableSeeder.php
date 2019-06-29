@@ -13,10 +13,11 @@ class VehicleImagesTableSeeder extends Seeder
      */
     public function run()
     {
-        $vehicles = Vehicle::all();
+        DB::table('vehicle_images')->delete();
+        $vehicles = Vehicle::withTrashed()->get();
 
         foreach ($vehicles as $vehicle) {
-            $nameArr = explode("-", $vehicle->storageName());
+            $nameArr = explode(" ", str_slug($vehicle->name()));
             $nameLen = count($nameArr);
             $name = $nameArr[0];
             for ($i = 1; $i < $nameLen - 1; $i++) {

@@ -201,12 +201,12 @@ class Vehicle extends Model
     }
 
     /**
-     * Get the vehicle storage friendly name (make + model + id)
+     * Get the vehicle storage friendly name (just the id)
      * @return string
      */
     public function storageName()
     {
-        return str_slug($this->make.' '.$this->model.' '.$this->name);
+        return $this->name;
     }
 
     /**
@@ -283,8 +283,7 @@ class Vehicle extends Model
                 $extension = '.'.$image->extension();
             }
 
-            $image_name = $this->storageName().$extension;
-            $image_name = VehicleImage::createUniqueName($image_name, $this->id);
+            $image_name = VehicleImage::createUniqueName($extension, $this->id);
             $path = $dir.'/'.$image_name;
 
             $resize = Image::make($image)->resize(900, 675);

@@ -7,24 +7,29 @@ use Illuminate\Database\Eloquent\Collection;
 /**
  * App\Hire
  *
- * @property-read \App\Vehicle $vehicle
- * @mixin \Eloquent
  * @property int $id
- * @property string|null $name
+ * @property string $name
  * @property string $start_date
  * @property string $end_date
  * @property int $is_active
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $vehicle_id
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereName($value)
+ * @property-read array $conflict_data
+ * @property-read bool $conflicts
+ * @property-read \App\Vehicle $vehicle
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereStartDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hire whereVehicleId($value)
+ * @mixin \Eloquent
  */
 class Hire extends ConflictableModel
 {

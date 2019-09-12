@@ -8,14 +8,6 @@ use App\Reservation;
 use App\Hire;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * App\ConflictModel
- *
- * @mixin \Eloquent
- * @property string|null $name
- * @property string $start_date
- * @property string $end_date
- */
 abstract class ConflictableModel extends Model
 {
     /**

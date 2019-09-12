@@ -5,18 +5,24 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\VehicleRate
+ * App\WeeklyRate
  *
  * @property int $id
  * @property string $name
+ * @property string $slug
  * @property float $weekly_rate_min
  * @property float $weekly_rate_max
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read string $full_name
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Vehicle[] $vehicles
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereWeeklyRateMax($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\WeeklyRate whereWeeklyRateMin($value)

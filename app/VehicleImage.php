@@ -10,14 +10,19 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $image_uri
  * @property string $name
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int|null $vehicle_id
+ * @property int $order
  * @property-read \App\Vehicle|null $vehicle
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleImage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleImage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleImage query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleImage whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleImage whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleImage whereImageUri($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleImage whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleImage whereOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleImage whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleImage whereVehicleId($value)
  * @mixin \Eloquent

@@ -4,6 +4,25 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\VehicleFuelType
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Vehicle[] $vehicles
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleFuelType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleFuelType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleFuelType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleFuelType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleFuelType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleFuelType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleFuelType whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VehicleFuelType whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class VehicleFuelType extends Model
 {
     /**

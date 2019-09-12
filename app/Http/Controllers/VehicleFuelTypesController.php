@@ -25,9 +25,11 @@ class VehicleFuelTypesController extends Controller
      */
     public function index()
     {
-        $vehicleFuelTypes = VehicleFuelType::with(['vehicles' => function ($q) {
-            $q->withTrashed();
-        }])->get();
+        $vehicleFuelTypes = VehicleFuelType::with([
+            'vehicles' => function ($vehicles) {
+                $vehicles->withTrashed();
+            }
+        ])->get();
 
         return view('admin.admin-vehicle-fuel-types', [
             'vehicleFuelTypes' => $vehicleFuelTypes,
@@ -52,9 +54,7 @@ class VehicleFuelTypesController extends Controller
      */
     public function store(VehicleFuelTypeRequest $request)
     {
-        $vehicleFuelType = VehicleFuelType::create(array(
-            'name' => $request->name,
-        ));
+        $vehicleFuelType = VehicleFuelType::create($request->all());
 
         Session::flash('status', [
             'vehicle_fuel_type_add' => 'Successfully created fuel type!',
@@ -104,10 +104,7 @@ class VehicleFuelTypesController extends Controller
      */
     public function destroy(VehicleFuelType $vehicleFuelType)
     {
-        try {
-            $vehicleFuelType->delete();
-        } catch (\Exception $e) {
-        }
+        $vehicleFuelType->delete();
 
         Session::flash('status', [
             'vehicle_fuel_type' => 'Successfully deleted fuel type!',

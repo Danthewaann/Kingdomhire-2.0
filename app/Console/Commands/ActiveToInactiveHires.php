@@ -41,13 +41,12 @@ class ActiveToInactiveHires extends Command
      */
     public function handle()
     {
-        $vehicles = Vehicle::all();
-        foreach ($vehicles as $vehicle) {
-            $activeHire = $vehicle->getActiveHire();
+        foreach (Vehicle::all() as $vehicle) {
+            $activeHire = $vehicle->active_hire;
             if ($activeHire != null) {
                 if ($activeHire->end_date <= date('Y-m-d')) {
-                    Hire::whereId($activeHire->id)->update(['is_active' => false]);
-                    Vehicle::whereId($vehicle->id)->update(['status' => 'Available']);
+                    // Re-save hire to convert it into an inactive hire
+                    $activeHire->save();
 
                     $message = "[ActiveToInactiveHires] Active hire [id = " . $activeHire->name .
                     ", start_date = " . $activeHire->start_date . ", end_date = " . $activeHire->end_date . "] set to inactive";

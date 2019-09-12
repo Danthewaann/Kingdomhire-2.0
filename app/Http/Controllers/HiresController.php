@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ChartGenerator;
-use App\Http\Requests\HireRequest;
-use App\Vehicle;
+use App\Http\Requests\HireUpdateRequest;
 use App\Hire;
 use Session;
 use URL;
@@ -29,7 +27,7 @@ class HiresController extends Controller
      */
     public function edit(Hire $hire)
     {
-        if($hire->is_active == false) {
+        if(!$hire->is_active) {
             abort(404);
         }
         else {
@@ -46,18 +44,22 @@ class HiresController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param HireRequest $request
+     * @param HireUpdateRequest $request
      * @param  \App\Hire $hire
      * @return \Illuminate\Http\Response
      */
-    public function update(HireRequest $request, Hire $hire)
+    public function update(HireUpdateRequest $request, Hire $hire)
     {
-        $hire->update($request->all());
-
+        // If hire failed to updated (conflicts with another reservaton/hire), 
+        // redirect back to use and flash error messages
+        if (!$hire->update($request->all()) && $hire->conflicts) {
+            return back()->withInput()->withErrors($hire->conflict_data, 'hires');
+        }
+        
         Session::flash('status', [
             'hire' => 'Successfully updated hire!',
             'ID = '.$hire->name,
-            'Vehicle = '.$hire->vehicle->fullName(),
+            'Vehicle = '.$hire->vehicle->full_name,
             'Start Date = '.date('j/M/Y', strtotime($hire->start_date)),
             'End Date = '.date('j/M/Y', strtotime($hire->end_date)),
         ]);
@@ -74,19 +76,16 @@ class HiresController extends Controller
      */
     public function destroy(Hire $hire)
     {
-        try {
-            $$hire->delete();
-        } catch (\Exception $e) {
-        }
+        $hire->delete();
 
         Session::flash('status', [
             'hire' => 'Successfully deleted hire!',
             'ID = '.$hire->name,
-            'Vehicle = '.$hire->vehicle->fullName(),
+            'Vehicle = '.$hire->vehicle->full_name,
             'Start Date = '.date('j/M/Y', strtotime($hire->start_date)),
             'End Date = '.date('j/M/Y', strtotime($hire->end_date)),
         ]);
 
-        return redirect()->back();
+        return back();
     }
 }

@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ChartGenerator;
-use App\Reservation;
+use App\DataVisualisation\ChartGenerator;
 use App\WeeklyRate;
 use App\VehicleType;
 use App\VehicleGearType;
@@ -32,50 +31,8 @@ class VehiclesController extends Controller
      */
     public function index()
     {
-        $jsonVehicles = Vehicle::withTrashed()->with(['images', 'hires', 'reservations'])->get();
-        $jsonVehicles->transform(function($vehicle) {
-            $fuel_type = VehicleFuelType::find($vehicle->vehicle_fuel_type_id);
-            $gear_type = VehicleGearType::find($vehicle->vehicle_gear_type_id);
-            $type = VehicleType::find($vehicle->vehicle_type_id);
-
-            $vehicle->active_hire = $vehicle->getActiveHire();
-            $vehicle->next_reservation = $vehicle->getNextReservation();
-
-            if ($vehicle->active_hire != null) {
-                $vehicle->active_hire->start_date = date('j/M/Y', strtotime($vehicle->active_hire->start_date));
-                $vehicle->active_hire->end_date = date('j/M/Y', strtotime($vehicle->active_hire->end_date));
-            }
-
-            if ($vehicle->next_reservation != null) {
-                $vehicle->next_reservation->start_date = date('j/M/Y', strtotime($vehicle->next_reservation->start_date));
-                $vehicle->next_reservation->end_date = date('j/M/Y', strtotime($vehicle->next_reservation->end_date));
-            }
-
-            $vehicle->fuel_type = $fuel_type != null ? $fuel_type->name : '';
-            $vehicle->gear_type = $gear_type != null ? $gear_type->name : '';
-            $vehicle->type = $type != null ? $type->name : '';
-            $vehicle->seats = $vehicle->seats . ' seats';
-            $vehicle->id = $vehicle->name;
-            $vehicle->name = $vehicle->make . ' ' . $vehicle->model;
-
-            unset(
-                $vehicle->vehicle_fuel_type_id, $vehicle->vehicle_gear_type_id, $vehicle->vehicle_type_id,
-                $vehicle->created_at, $vehicle->updated_at, $vehicle->weekly_rate_id, $vehicle->hires, $vehicle->reservations
-            );
-
-            foreach ($vehicle->images as $image) {
-                unset(
-                    $image->id, $image->order, $image->created_at, $image->updated_at,
-                    $image->vehicle_id
-                );
-            }
-
-            return $vehicle;
-        });
-        
         return view('admin.admin-vehicles', [
-            'jsonVehicles' => $jsonVehicles,
-            'vehicleCount' => $jsonVehicles->count(),
+            'jsonVehicles' => Vehicle::withTrashed()->withAll()->get()
         ]);
     }
 
@@ -102,23 +59,10 @@ class VehiclesController extends Controller
      */
     public function store(VehicleStoreRequest $request)
     {
-        $fuel_type_id = ($request->fuelType != "na") ? VehicleFuelType::whereName($request->fuelType)->first()->id : null;
-        $gear_type_id = ($request->gearType != "na") ? VehicleGearType::whereName($request->gearType)->first()->id : null;
-        $type_id = ($request->vehicleType != "na") ? VehicleType::whereName($request->vehicleType)->first()->id : null;
-        $weekly_rate_id =  ($request->weeklyRate != "na") ? WeeklyRate::whereName($request->weeklyRate)->first()->id : null;
+        $vehicle = Vehicle::create($request->all());
 
-        $vehicle = Vehicle::create([
-            'make' => $request->make,
-            'model' => $request->model,
-            'vehicle_fuel_type_id' => $fuel_type_id,
-            'vehicle_gear_type_id' => $gear_type_id,
-            'seats' => $request->seats,
-            'status' => $request->status,
-            'vehicle_type_id' => $type_id,
-            'weekly_rate_id' => $weekly_rate_id
-        ]);
-
-        if($request->hasFile('vehicle_images_add')) {
+        // Link uploaded images with vehicle if there is any 
+        if ($request->hasFile('vehicle_images_add')) {
             $images = $request->file('vehicle_images_add');
             $vehicle->linkImages($images, $request);
         }
@@ -126,7 +70,7 @@ class VehiclesController extends Controller
         Session::flash('status', [
             'Successfully created vehicle!',
             'ID = '.$vehicle->name,
-            'Name = '.$vehicle->name(),
+            'Name = '.$vehicle->make_model,
         ]);
 
         return redirect()->route('admin.vehicles.index');
@@ -141,9 +85,10 @@ class VehiclesController extends Controller
     public function show(Vehicle $vehicle)
     {
         Session::forget('url');
-        $inactiveHires = $vehicle->getInactiveHires();
-        ChartGenerator::drawOverallHiresBarChart($vehicle->hires, $height=350);
+        $inactiveHires = $vehicle->inactive_hires;
+        ChartGenerator::drawOverallHiresBarChart($vehicle->hires, 350);
 
+        // Show specific dashboard for discontinued vehicles
         if ($vehicle->trashed()) {
             return view('admin.vehicle.dashboards.discontinued', [
                 'vehicle' => $vehicle,
@@ -185,32 +130,27 @@ class VehiclesController extends Controller
      */
     public function update(VehicleUpdateRequest $request, Vehicle $vehicle)
     {
-        $vehicle->make = $request->make;
-        $vehicle->model = $request->model;
-        $vehicle->seats = $request->seats;
-        $vehicle->status = ($request->status == null) ? $vehicle->status : $request->status;
-        $vehicle->weekly_rate_id = ($request->weeklyRate != "na") ? WeeklyRate::whereName($request->weeklyRate)->first()->id : null;
-        $vehicle->vehicle_type_id = ($request->vehicleType != "na") ? VehicleType::whereName($request->vehicleType)->first()->id : null;
-        $vehicle->vehicle_fuel_type_id = ($request->fuelType != "na") ? VehicleFuelType::whereName($request->fuelType)->first()->id : null;
-        $vehicle->vehicle_gear_type_id = ($request->gearType != "na") ? VehicleGearType::whereName($request->gearType)->first()->id : null;
-        $vehicle->save();
+        $vehicle->update($request->all());
 
+        // Link uploaded images with vehicle if there is any 
         if($request->hasFile('vehicle_images_add')) {
             $images = $request->file('vehicle_images_add');
             $vehicle->linkImages($images, $request);
         }
 
+        // Delete images linked with vehicle if any are provided
         if($request->has('vehicle_images_del')) {
             $images = $request->get('vehicle_images_del');
             $vehicle->deleteImages($images);
         }
 
+        // Update the order of images for display in vehicle image galleries
         $vehicle->updateImageOrder($request);
 
         Session::flash('status', [
             'edit' => 'Successfully updated vehicle!',
             'ID = '.$vehicle->name,
-            'Name = '.$vehicle->name(),
+            'Name = '.$vehicle->make_model,
         ]);
 
         return redirect()->route('admin.vehicles.show', [
@@ -231,7 +171,7 @@ class VehiclesController extends Controller
         Session::flash('status', [
             'Successfully deleted vehicle!',
             'ID = '.$vehicle->name,
-            'Name = '.$vehicle->name(),
+            'Name = '.$vehicle->make_model,
         ]);
 
         return redirect()->route('admin.vehicles.index');
@@ -245,24 +185,12 @@ class VehiclesController extends Controller
      */
     public function discontinue(Vehicle $vehicle)
     {
-        $vehicle->status = 'Unavailable';
-        $vehicle->save();
-        Reservation::destroy($vehicle->reservations->pluck('id')->toArray());
-        if ($vehicle->hasActiveHire())  {
-            $activeHire = $vehicle->getActiveHire();
-            $activeHire->is_active = false;
-            $activeHire->save();
-        }
-
-        try {
-            $vehicle->delete();
-        } catch (\Exception $e) {
-        }
+        $vehicle->delete();
 
         Session::flash('status', [
             'discontinue' => 'Successfully discontinued vehicle!',
             'ID = '.$vehicle->name,
-            'Name = '.$vehicle->name(),
+            'Name = '.$vehicle->make_model,
         ]);
 
         return redirect()->route('admin.vehicles.show', [
@@ -278,14 +206,12 @@ class VehiclesController extends Controller
      */
     public function recontinue(Vehicle $vehicle)
     {
-        $vehicle->status = 'Available';
-        $vehicle->save();
         $vehicle->restore();
 
         Session::flash('status', [
             're-continue' => 'Successfully re-continued vehicle!',
             'ID = '.$vehicle->name,
-            'Name = '.$vehicle->name(),
+            'Name = '.$vehicle->make_model,
         ]);
 
         return redirect()->route('admin.vehicles.show', [

@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
   <div class="row">
-    @include('admin.common.alert')
+    @include('admin.common.alert-success')
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2>Edit reservation</h2>
@@ -15,7 +15,7 @@
             <div class="form-group">
               <label for="name" class="control-label col-sm-4">Belongs to</label>
               <div class="col-sm-6">
-                {{ Form::text('vehicle', $vehicle->name().' - '.$vehicle->name, array('class' => 'form-control', 'disabled' => 'true')) }}
+                {{ Form::text('vehicle', $vehicle->full_name, array('class' => 'form-control', 'disabled' => 'true')) }}
               </div>
             </div>
             <div class="form-group{{ $errors->reservations->has('start_date') ? ' has-error' : '' }}">

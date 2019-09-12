@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Validator;
@@ -29,7 +28,6 @@ class UserUpdatePasswordRequest extends FormRequest
         return [
             'user' => 'required',
             'new_password' => 'required|confirmed|min:6',
-            'new_password_confirmation' => 'required',
             'current_password' => 'required'
         ];
     }
@@ -54,17 +52,15 @@ class UserUpdatePasswordRequest extends FormRequest
      */
     public function withValidator($validator)
     {
-        if ($validator->passes()) {
-            $validator->after(function (Validator $validator) {
-                $data = $validator->getData();
-                if (!Hash::check($data['current_password'], $data['user']->password)) {
-                    $validator->errors()->merge([
-                        'current_password' => 'Provided password doesn\'t match current password.'
-                    ]);
-                    $this->failedValidation($validator);
-                }
-            });
-        }
+        // Check that the provided password matches the user password in the database.
+        $validator->after(function (Validator $validator) {
+            if (!Hash::check($this->current_password, $this->user->password)) {
+                $validator->errors()->add(
+                    'current_password', 'Provided password doesn\'t match current password.'
+                );
+                $this->failedValidation($validator);
+            }
+        });
     }
 
     /**

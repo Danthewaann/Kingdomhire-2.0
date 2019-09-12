@@ -2,30 +2,34 @@
 
 namespace App;
 
-use App\Events\VehicleTypeEvent;
 use Illuminate\Database\Eloquent\Model;
 
 class VehicleType extends Model
 {
-    protected $fillable = [
-        'name'
-    ];
-
-    protected $table = 'vehicle_types';
+    /**
+     * The attributes that are mass assignable.
+     * 
+     * @var array
+     */
+    protected $fillable = ['name'];
 
     /**
-     * The event map for the model.
+     * The attributes that should be visible in arrays.
      *
      * @var array
      */
-    protected $dispatchesEvents = [
-        'creating' => VehicleTypeEvent::class,
-        'updating' => VehicleTypeEvent::class
-    ];
+    protected $visible = ['name'];
+
+    /**
+     * The table name for the model.
+     * 
+     * @var array
+     */
+    protected $table = 'vehicle_types';
 
     /**
      * Get the route key for the model.
-     *
+     * 
      * @return string
      */
     public function getRouteKeyName()
@@ -34,7 +38,8 @@ class VehicleType extends Model
     }
 
     /**
-     * Get vehicles associated with the vehicle type
+     * Get vehicles associated with the vehicle type.
+     * 
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function vehicles()

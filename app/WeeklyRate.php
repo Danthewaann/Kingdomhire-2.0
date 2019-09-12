@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Events\WeeklyRateEvent;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -25,25 +24,32 @@ use Illuminate\Database\Eloquent\Model;
  */
 class WeeklyRate extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     * 
+     * @var array
+     */
     protected $fillable = [
         'name', 'weekly_rate_min', 'weekly_rate_max'
     ];
 
-    protected $table = 'weekly_rates';
-
     /**
-     * The event map for the model.
+     * The attributes that should be visible in arrays.
      *
      * @var array
      */
-    protected $dispatchesEvents = [
-        'creating' => WeeklyRateEvent::class,
-        'updating' => WeeklyRateEvent::class
-    ];
+    protected $visible = ['name', 'weekly_rate_min', 'weekly_rate_max'];
+
+    /**
+     * The table name for the model.
+     * 
+     * @var array
+     */
+    protected $table = 'weekly_rates';
 
     /**
      * Get the route key for the model.
-     *
+     * 
      * @return string
      */
     public function getRouteKeyName()
@@ -52,7 +58,8 @@ class WeeklyRate extends Model
     }
 
     /**
-     * Get vehicles associated with the vehicle rate
+     * Get vehicles associated with the vehicle rate.
+     * 
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function vehicles()
@@ -60,7 +67,13 @@ class WeeklyRate extends Model
         return $this->hasMany(Vehicle::class);
     }
 
-    public function getFullName()
+    /**
+     * Returns the full name for the weekly rate.
+     * Example of what is returned `Small (£50-£100)`.
+     * `
+     * @return string
+     */
+    public function getFullNameAttribute()
     {
         return $this->name.' (£'.$this->weekly_rate_min.'-£'.$this->weekly_rate_max.')';
     }

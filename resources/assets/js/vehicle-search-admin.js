@@ -14,22 +14,22 @@ var sort_vehicles = "Ascending";
 var state_selection = "All";
 
 function sortVehiclesDesc(a, b) {
-    if (a.name > b.name) return -1;
-    else if (a.name < b.name) return 1;
+    if (a.make_model > b.make_model) return -1;
+    else if (a.make_model < b.make_model) return 1;
     else return 0;
 }
 
 function sortVehicleAsc(a, b) {
-    if (a.name < b.name) return -1;
-    else if (a.name > b.name) return 1;
+    if (a.make_model < b.make_model) return -1;
+    else if (a.make_model > b.make_model) return 1;
     else return 0;
 }
 
 function parseVehicles() {
     for (var i = 0; i < vehicles.length; i++) {
-        pushDistinct(vehicle_types, "type", vehicles[i]);
-        pushDistinct(gear_types, "gear_type", vehicles[i]);
-        pushDistinct(fuel_types, "fuel_type", vehicles[i]);
+        pushDistinct(vehicle_types, "type_name", vehicles[i]);
+        pushDistinct(gear_types, "gear_type_name", vehicles[i]);
+        pushDistinct(fuel_types, "fuel_type_name", vehicles[i]);
         pushDistinct(seats, "seats", vehicles[i]);
         pushDistinct(vehicle_states, "status", vehicles[i]);
     }
@@ -46,7 +46,7 @@ function parseVehicles() {
 }
 
 function pushDistinct(arr, type, vehicle) {
-    if (vehicle[type] === "") {
+    if (vehicle[type] === null) {
         vehicle[type] = "N/A";
     }
     if (!arr.includes(vehicle[type])) {
@@ -60,7 +60,7 @@ function drawImageThumbnail(vehicle) {
     var vehicle_dashboard = site_name + 'admin/vehicles/' + vehicle.slug;
     if (hasImages) {
         var image_uri = site_name + vehicle.images[0].image_uri;
-        var image_name = vehicle.make + ' ' + vehicle.model + ' - ' + vehicle.images[0].name;
+        var image_name = vehicle.make_model + ' - ' + vehicle.images[0].name;
         html = '<div class="vehicle-img"> \
                     <img class="admin" src="'+ image_uri + '" alt="' + image_name + '"> \
                     <button class="btn btn-info vehicle-img-button vehicle-open-modal" data-vehicle="' + vehicle.slug + '">View images</button> \
@@ -102,13 +102,13 @@ function drawVehicleSummary(vehicle) {
     var html = '<div class="col-lg-4 col-md-6 col-sm-12"> \
                     <div class="panel panel-default"> \
                       <div class="panel-heading vehicle-panel-admin-heading"> \
-                        <h3>' + vehicle.make + ' ' + vehicle.model + '</h3> \
+                        <h3>' + vehicle.make_model + '</h3> \
                       </div>'
                       + drawImageThumbnail(vehicle) +
                       '<table class="table table-condensed vehicle-table-admin"> \
                         <tr> \
                           <th class="first">ID</th> \
-                          <td class="first">' + vehicle.id + '</td> \
+                          <td class="first">' + vehicle.name + '</td> \
                         </tr> \
                         <tr> \
                           <th>Status</th> \
@@ -116,15 +116,15 @@ function drawVehicleSummary(vehicle) {
                         </tr> \
                         <tr> \
                           <th>Vehicle Type</th> \
-                          <td>' + vehicle.type + '</td> \
+                          <td>' + vehicle.type_name + '</td> \
                         </tr> \
                         <tr> \
                           <th>Fuel Type</th> \
-                          <td>' + vehicle.fuel_type + '</td> \
+                          <td>' + vehicle.fuel_type_name + '</td> \
                         </tr> \
                         <tr> \
                           <th>Gear Type</th> \
-                          <td>' + vehicle.gear_type + '</td> \
+                          <td>' + vehicle.gear_type_name + '</td> \
                         </tr> \
                         <tr> \
                           <th>Seats</th> \
@@ -159,12 +159,14 @@ function drawRadioBtnsForAttribute(attribute_id, container_id, attribute_arr) {
     var active = "";
     var id = "";
     var plural = "";
+    var seats = ""
     for (var i = 0; i < attribute_arr.length; i++) {
         active = i === 0 ? "active " : "";
         id = i === 0 ? attribute_id + "_all" : "";
         plural = (attribute_id === "vehicle_type" && i === 0) || attribute_id !== "vehicle_type" ? "" : "s";
+        seats = (attribute_id === "seats" && i === 0) || attribute_id !== "seats" ? '' : ' seats';
         html += '<li class="' + active + id + '"> \
-                    <a data-toggle="pill" class="btn">' + attribute_arr[i] + plural + '</a> \
+                    <a data-toggle="pill" class="btn">' + attribute_arr[i] + seats + plural + '</a> \
                 </li>'
     }
 
@@ -181,10 +183,10 @@ function drawVehicles() {
     }
     var html = '';
     for (var i = 0; i < vehicles.length; i++) {
-        var type_matches = vehicles[i].type === type_selection || type_selection === "All";
-        var fuel_matches = vehicles[i].fuel_type === fuel_selection || fuel_selection === "All";
-        var gear_matches = vehicles[i].gear_type === gear_selection || gear_selection === "All";
-        var seats_matches = vehicles[i].seats === seats_selection || seats_selection === "Any";
+        var type_matches = vehicles[i].type_name === type_selection || type_selection === "All";
+        var fuel_matches = vehicles[i].fuel_type_name === fuel_selection || fuel_selection === "All";
+        var gear_matches = vehicles[i].gear_type_name === gear_selection || gear_selection === "All";
+        var seats_matches = vehicles[i].seats + " seats" === seats_selection || seats_selection === "Any";
         var state_matches = vehicles[i].status === state_selection || state_selection === "All";
         var vehicle_matches = type_matches && fuel_matches && gear_matches && seats_matches && state_matches;
         if (vehicle_matches) {
@@ -208,7 +210,6 @@ function drawVehicles() {
 
 $(document).ready(function () {
     parseVehicles();
-    console.log(vehicles);
     drawAllRadioBtns();
     drawVehicles();
 

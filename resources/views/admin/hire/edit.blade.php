@@ -14,7 +14,7 @@
           <div class="form-group">
             <label for="name" class="control-label col-sm-4">Belongs to</label>
             <div class="col-sm-6">
-              {{ Form::text('vehicle', $vehicle->name().' - '.$vehicle->name, array('class' => 'form-control', 'disabled' => 'true')) }}
+              {{ Form::text('vehicle', $vehicle->full_name, array('class' => 'form-control', 'disabled' => 'true')) }}
             </div>
           </div>
             <div class="form-group{{ $errors->hires->has('start_date') ? ' has-error' : '' }}">

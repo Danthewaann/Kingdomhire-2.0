@@ -32,10 +32,11 @@
     @foreach($vehicle->reservations->sortBy('end_date') as $reservation)
       @include('admin.reservation.destroy-modal')
     @endforeach
-    @if($vehicle->hasActiveHire())
-      @include('admin.hire.destroy-modal', ['hire' => $vehicle->getActiveHire()]) 
+    @php($activeHire = $vehicle->active_hire)
+    @if($activeHire != null)
+      @include('admin.hire.destroy-modal', ['hire' => $activeHire]) 
     @endif
-    @foreach($vehicle->getInactiveHires()->sortByDesc('end_date') as $hire)
+    @foreach($vehicle->inactive_hires->sortByDesc('end_date') as $hire)
       @include('admin.hire.destroy-modal')  
     @endforeach
   </div>

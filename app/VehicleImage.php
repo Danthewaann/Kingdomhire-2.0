@@ -24,15 +24,28 @@ use Illuminate\Database\Eloquent\Model;
  */
 class VehicleImage extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     * 
+     * @var array
+     */
     protected $fillable = [
         'image_uri', 'vehicle_id', 'name', 'order'
     ];
 
     /**
-     * Create a unique vehicle image name that doesn't
-     * conflict with any vehicle image name that exists
-     * in the database
+     * The attributes that should be visible in arrays.
      *
+     * @var array
+     */
+    protected $visible = [
+        'image_uri', 'name', 'order'
+    ];
+
+    /**
+     * Create a unique vehicle image name that doesn't
+     * conflict with any vehicle image name that exists in the database.
+     * 
      * @param string $extension vehicle image extension (.jpg etc)
      * @param int $vehicle_id vehicle id linked with image
      * @param int $length character length of generated num for name
@@ -57,7 +70,8 @@ class VehicleImage extends Model
     }
 
     /**
-     * Get vehicle associated with the image
+     * Get vehicle associated with the image.
+     * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function vehicle()
@@ -65,6 +79,12 @@ class VehicleImage extends Model
         return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 
+    /**
+     * Get the image name without its entension.
+     * e.g. image.jpg => image
+     * 
+     * @return string
+     */
     public function getNameWithoutExtension()
     {
         return explode(".", $this->name)[0];

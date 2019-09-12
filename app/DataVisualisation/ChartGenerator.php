@@ -1,48 +1,41 @@
 <?php
 
-namespace App;
+namespace App\DataVisualisation;
 
-use DB;
-use Khill\Lavacharts\Exceptions\InvalidCellCount;
-use Khill\Lavacharts\Exceptions\InvalidColumnType;
-use Khill\Lavacharts\Exceptions\InvalidLabel;
-use Khill\Lavacharts\Exceptions\InvalidRowDefinition;
-use Khill\Lavacharts\Exceptions\InvalidRowProperty;
 use Khill\Lavacharts\DataTables\DataFactory;
-use Khill\Lavacharts\Charts\ChartFactory;
-use Khill\Lavacharts\Volcano;
+use Illuminate\Database\Eloquent\Collection;
 use Lava;
+use App\Vehicle;
+use App\Reservation;
+use App\Hire;
 
 class ChartGenerator
 {
-    public static function drawReservationsBarChart($activeVehicles)
+    /**
+     * Draw reservations chart for active vehicles
+     * Only vehicles that have at least 1 reservation will be included
+     * in the chart
+     * 
+     * @param CollectionW $activeVehicles 
+     */
+    public static function drawReservationsBarChart(Collection $activeVehicles)
     {
         $vehiclesTable = Lava::DataTable();
-        try {
-            $vehiclesTable->addStringColumn('Vehicle')
-                ->addNumberColumn('Number of reservations');
-        } catch (InvalidColumnType $e) {
-        } catch (InvalidLabel $e) {
-        }
+        $vehiclesTable->addStringColumn('Vehicle');
+        $vehiclesTable->addNumberColumn('Number of reservations');
 
-        $maxReservationsForVehicle = 0;
-
-        $vehicles = $activeVehicles->reject(function ($item) {
-            return count($item->reservations) < 1;
+        $vehicles = $activeVehicles->reject(function ($vehicle) {
+            return $vehicle->reservations->count() < 1;
         });
+        $maxReservationsForVehicle = 0;
 
         foreach ($vehicles as $vehicle) {
             //Get the number of reservations from the vehicle that has the most reservations
-            $numOfReservations = count($vehicle->reservations);
+            $numOfReservations = $vehicle->reservations->count();
             if($numOfReservations > $maxReservationsForVehicle) {
                 $maxReservationsForVehicle = $numOfReservations;
             }
-            try {
-                $vehiclesTable->addRow([$vehicle->name(), $numOfReservations]);
-            } catch (InvalidCellCount $e) {
-            } catch (InvalidRowDefinition $e) {
-            } catch (InvalidRowProperty $e) {
-            }
+            $vehiclesTable->addRow([$vehicle->make_model, $numOfReservations]);
         }
 
         Lava::BarChart('Vehicle Reservations', $vehiclesTable, [
@@ -93,7 +86,14 @@ class ChartGenerator
         ]);
     }
 
-    public static function drawOverallHiresBarChart($hires, $height=400)
+    /**
+     * Draw hires chart for all vehicles
+     * Both active and past hires will be included in the chart
+     * 
+     * @param Collection $hires
+     * @param int $height - height of chart in pixels, defaults to 400
+     */
+    public static function drawOverallHiresBarChart(Collection $hires, $height=400)
     {
         $years = [];
         $maxAmountOfHiresForMonth = 0;
@@ -114,21 +114,12 @@ class ChartGenerator
         ];
 
         if(count($hires) == 0) {
-            $pastHiresTable = \Lava::DataTable();
-            try {
-                $pastHiresTable->addStringColumn('Month')
-                    ->addNumberColumn('Number of hires');
-            } catch (InvalidColumnType $e) {
-            } catch (InvalidLabel $e) {
-            }
+            $pastHiresTable = Lava::DataTable();
+            $pastHiresTable->addStringColumn('Month');
+            $pastHiresTable->addNumberColumn('Number of hires');
 
             foreach ($hiresPerMonth as $month => $hires) {
-                try {
-                    $pastHiresTable->addRow([$month, $hires]);
-                } catch (InvalidCellCount $e) {
-                } catch (InvalidRowDefinition $e) {
-                } catch (InvalidRowProperty $e) {
-                }
+                $pastHiresTable->addRow([$month, $hires]);
             }
         }
         else {
@@ -187,8 +178,7 @@ class ChartGenerator
                 }
             }
 
-            $json_str = json_encode($json);
-            $pastHiresTable = DataFactory::createFromJson($json_str);
+            $pastHiresTable = DataFactory::createFromJson(json_encode($json));
 
             foreach (array_keys($years) as $year) {
                 array_push($series, [
@@ -263,11 +253,18 @@ class ChartGenerator
         ]);
     }
 
+    /**
+     * Draw Gantt chart that includes both reservations and the active
+     * hire of a specific vehicle
+     * 
+     * @param App\Vehicle $vehicle
+     * @return App\DataVisualisation\GanttChart $gantt
+     */
     public static function drawVehicleReservationsAndHiresGanttChart(Vehicle $vehicle)
     {
         $data = array();
-        $reservations = Reservation::whereVehicleId($vehicle->id)->get();
-        $activeHire = $vehicle->getActiveHire();
+        $reservations = $vehicle->reservations;
+        $activeHire = $vehicle->active_hire;
         if($activeHire != null) {
             $reservationsAndActiveHire = $reservations->merge(collect([$activeHire]))->sortBy('start_date');
         }
@@ -277,7 +274,7 @@ class ChartGenerator
 
         foreach ($reservationsAndActiveHire as $item) {
             array_push($data, [
-                'label' => ($item instanceof Reservation ? 'R' : 'H'). ' ('.$item->name.')',
+                'label' => strtoupper(((string) $item)) . ' ('.$item->name.')',
                 'start' => $item->start_date,
                 /*
                  * when creating the gantt chart, the final day in each reservation/hire is truncated
@@ -292,21 +289,27 @@ class ChartGenerator
         if ($reservationsAndActiveHire->isNotEmpty()) {
             $gantt = new GanttChart($data, array(
                 'cellwidth' => 20,
-                'cellheight' => 35
+                'cellheight' => 40
             ));
         }
 
         return $gantt;
     }
 
-    public static function drawVehiclesActiveHiresGanttChart($vehicles)
+    /**
+     * Draw Gantt chart that includes active hires for all vehicles
+     * 
+     * @param App\Vehicle[] $vehicles
+     * @return App\DataVisualisation\GanttChart $gantt
+     */
+    public static function drawVehiclesActiveHiresGanttChart(Collection $vehicles)
     {
         $data = array();
         foreach ($vehicles as $vehicle) {
-            $activeHire = $vehicle->getActiveHire();
+            $activeHire = $vehicle->active_hire;
             if($activeHire != null) {
                 array_push($data, [
-                    'label' => $vehicle->name().' - '.$vehicle->name,
+                    'label' => $vehicle->full_name,
                     'start' => $activeHire->start_date,
                     /*
                      * when creating the gantt chart, the final day in each reservation/hire is truncated

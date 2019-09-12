@@ -42,29 +42,18 @@ class ReservationsToHires extends Command
      */
     public function handle()
     {
-        $vehicles = Vehicle::all();
-        foreach($vehicles as $vehicle) {
+        foreach(Vehicle::all() as $vehicle) {
             foreach ($vehicle->reservations as $reservation) {
-                if ($reservation->start_date <= date('Y-m-d')) {
-                    Hire::create(array(
-                        'name' => $reservation->name,
-                        'is_active' => ($reservation->end_date >= date('Y-m-d')),
-                        'start_date' => $reservation->start_date,
-                        'end_date' => $reservation->end_date,
-                        'vehicle_id' => $reservation->vehicle->id,
-                    ));
+                if ($reservation->canConvertToHire()) {
+                    // Re-save reservation to convert it to a hire
+                    $reservation->save();
 
                     $message = "[ReservationsToHires] Reservation [id = " . $reservation->name .
                     ", start_date = " . $reservation->start_date . ", end_date = " . $reservation->end_date . "] converted to hire";
 
-                    Reservation::destroy($reservation->id);
                     Log::channel('cron')->info($message);
                     $this->info($message);
                 }
-            }
-
-            if($vehicle->hasActiveHire()) {
-                Vehicle::whereId($vehicle->id)->update(['status' => 'Out for hire']);
             }
         }
     }

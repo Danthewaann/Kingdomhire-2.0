@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\DataVisualisation;
 
 use DB;
 use App\Hire;
@@ -9,12 +9,18 @@ use PdfReport;
 use ExcelReport;
 use CSVReport;
 use DateTime;
-use Session;
 
 class ReportGenerator
 {
+    /**
+     * Generates a Pdf report that lists the details of hires for
+     * each vehicle
+     * 
+     * @return PdfReport $report
+     */
     public static function generateHiresPerVehicleReport()
     {
+        $report = null;
         $vehicles_count = Vehicle::withTrashed()->count();
         $hires_count = Hire::count();
         if($vehicles_count > 0 && $hires_count > 0) {
@@ -88,15 +94,9 @@ class ReportGenerator
                                 ])
                                 ->make();
 
-            return $report->stream();
+            
         }
-        else {
-            Session::flash('status', [
-                'Failed to generate PDF report!',
-                'No vehicles or hires found to generate report with!'
-            ]);
 
-            return back();
-        }
+        return $report;
     }
 }

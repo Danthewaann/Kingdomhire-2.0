@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\VehicleFuelType;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Validator;
 
 class VehicleFuelTypeRequest extends FormRequest
 {
@@ -26,39 +24,21 @@ class VehicleFuelTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' =>'required|unique:vehicle_fuel_types,name,' . $this->vehicle_fuel_type['id'],
             'vehicle_fuel_type' => 'nullable'
         ];
     }
 
     /**
-     * Configure the validator instance.
+     * Get custom messages for validator errors.
      *
-     * @param  \Illuminate\Validation\Validator  $validator
-     * @return void
+     * @return array
      */
-    public function withValidator($validator)
+    public function messages()
     {
-        if ($validator->passes()) {
-            $validator->after(function (Validator $validator) {
-                if (!is_null($this->vehicle_fuel_type)) {
-                    $vehicleFuelTypes = VehicleFuelType::all()->reject(function ($fuelType) {
-                        return $fuelType->id == $this->vehicle_fuel_type->id;
-                    });
-                }
-                else {
-                    $vehicleFuelTypes = VehicleFuelType::all();
-                }
-                foreach ($vehicleFuelTypes as $vehicleFuelType) {
-                    if ($vehicleFuelType->name == $this->name) {
-                        $validator->errors()->merge([
-                            'name' => 'Fuel type \''. $this->name .'\' already exists'
-                        ]);
-                        $this->failedValidation($validator);
-                    }
-                }
-            });
-        }
+        return [
+            'name.unique' => 'Fuel type \':input\' already exists'
+        ];
     }
 
     /**

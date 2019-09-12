@@ -2,7 +2,7 @@
   <div class="panel panel-default">
     <div class="panel-heading vehicle-panel-dashboard-heading">
       <h2>Vehicle Dashboard</h2>
-      <h4>{{ $vehicle->name() }}</h4>
+      <h4>{{ $vehicle->make_model }}</h4>
     </div>
     @if($vehicle->images->isEmpty())
     <div class="vehicle-img">
@@ -39,7 +39,7 @@
       </tr>
       <tr>
         <th class="last">Weekly Rate</th>
-        <td class="last">@if($vehicle->rate != null) {{ $vehicle->rate->getFullName() }} @else N/A @endif</td>
+        <td class="last">@if($vehicle->weeklyRate != null) {{ $vehicle->weeklyRate->full_name }} @else N/A @endif</td>
       </tr>
       <tr>
         <th>Seats</th>

@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\ChartGenerator;
 use App\Reservation;
-use App\Hire;
-use App\Http\Requests\ReservationRequest;
-use App\Vehicle;
+use App\Http\Requests\ReservationStoreRequest;
+use App\Http\Requests\ReservationUpdateRequest;
 use Session;
 use URL;
 
@@ -25,24 +23,23 @@ class ReservationsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param ReservationRequest $request
+     * @param ReservationStoreRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ReservationRequest $request)
+    public function store(ReservationStoreRequest $request)
     {
         $reservation = new Reservation($request->all());
-        if ($reservation->hasStarted()) {
-            $reservation->vehicle->status = "Out for hire";
-            $reservation->vehicle->save();
-            $reservation = new Hire($request->all());
+        // If reservation failed to save (conflicts with another reservaton/hire), 
+        // redirect back to use and flash error messages
+        if (!$reservation->save() && $reservation->conflicts) {
+            return back()->withInput()->withErrors($reservation->conflict_data, 'reservations');
         }
 
-        $reservation->save();
-
+        $bookedMessage = $reservation->canConvertToHire() ? 'hire' : 'reservation';
         Session::flash('status', [
-            'reservation' => 'Successfully booked reservation!',
+            'reservation' => 'Successfully booked ' . $bookedMessage . '!',
             'ID = '.$reservation->name,
-            'Vehicle = '.$reservation->vehicle->fullName(),
+            'Vehicle = '.$reservation->vehicle->full_name,
             'Start Date = '.date('j/M/Y', strtotime($reservation->start_date)),
             'End Date = '.date('j/M/Y', strtotime($reservation->end_date)),
         ]);
@@ -70,40 +67,28 @@ class ReservationsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param ReservationRequest $request
+     * @param ReservationUpdateRequest $request
      * @param  \App\Reservation $reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(ReservationRequest $request, Reservation $reservation)
+    public function update(ReservationUpdateRequest $request, Reservation $reservation)
     {
-        if ($request->start_date >= date('Y-m-d')) {
-            Hire::create([
-                'name' => $reservation->name,
-                'start_date' => $request->start_date,
-                'end_date' => $request->end_date,
-                'vehicle_id' => $reservation->vehicle->id
-            ]);
-            $reservation->vehicle->status = "Out for hire";
-            $reservation->vehicle->save();
-            try {
-                $reservation->delete();
-            } catch (\Exception $e) {
-            }
-        }
-        else {
-            $reservation->update($request->all());
+        // If reservation failed to update (conflicts with another reservaton/hire), 
+        // redirect back to use and flash error messages
+        if (!$reservation->update($request->all()) && $reservation->conflicts) {
+            return back()->withInput()->withErrors($reservation->conflict_data, 'reservations');
         }
 
+        $convertedMessage = $reservation->canConvertToHire() ? ' (converted to hire)' : '';
         Session::flash('status', [
-            'reservation' => 'Successfully updated reservation!',
+            'reservation' => 'Successfully updated reservation!'.$convertedMessage,
             'ID = '.$reservation->name,
-            'Vehicle = '.$reservation->vehicle->fullName(),
+            'Vehicle = '.$reservation->vehicle->full_name,
             'Start Date = '.date('j/M/Y', strtotime($reservation->start_date)),
             'End Date = '.date('j/M/Y', strtotime($reservation->end_date)),
         ]);
 
-        $url = Session::pull('url');
-        return redirect()->to($url);
+        return redirect()->to(Session::pull('url'));
     }
 
     /**
@@ -114,19 +99,16 @@ class ReservationsController extends Controller
      */
     public function destroy(Reservation $reservation)
     {
-        try {
-            $reservation->delete();
-        } catch (\Exception $e) {
-        }
+        $reservation->delete();
 
         Session::flash('status', [
             'reservation' => 'Successfully cancelled reservation!',
             'ID = '.$reservation->name,
-            'Vehicle = '.$reservation->vehicle->fullName(),
+            'Vehicle = '.$reservation->vehicle->full_name,
             'Start Date = '.date('j/M/Y', strtotime($reservation->start_date)),
             'End Date = '.date('j/M/Y', strtotime($reservation->end_date)),
         ]);
-
-        return redirect()->back();
+        
+        return back();
     }
 }

@@ -25,9 +25,11 @@ class VehicleTypesController extends Controller
      */
     public function index()
     {
-        $vehicleTypes = VehicleType::with(['vehicles' => function ($q) {
-            $q->withTrashed();
-        }])->get();
+        $vehicleTypes = VehicleType::with([
+            'vehicles' => function ($vehicles) {
+                $vehicles->withTrashed();
+            }
+        ])->get();
 
         return view('admin.admin-vehicle-types', [
             'vehicleTypes' => $vehicleTypes,
@@ -52,9 +54,7 @@ class VehicleTypesController extends Controller
      */
     public function store(VehicleTypeRequest $request)
     {
-        $vehicleType = VehicleType::create(array(
-            'name' => $request->name,
-        ));
+        $vehicleType = VehicleType::create($request->all());
 
         Session::flash('status', [
             'vehicle_gear_type_add' => 'Successfully created vehicle type!',
@@ -104,10 +104,7 @@ class VehicleTypesController extends Controller
      */
     public function destroy(VehicleType $vehicleType)
     {
-        try {
-            $vehicleType->delete();
-        } catch (\Exception $e) {
-        }
+        $vehicleType->delete();
 
         Session::flash('status', [
             'vehicle_gear_type' => 'Successfully deleted vehicle type!',

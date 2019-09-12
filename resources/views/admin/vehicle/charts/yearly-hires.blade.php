@@ -18,7 +18,7 @@
       @endforeach
       <tr>
         <td class="first">Total hires</td>
-        <td>{{ $vehicle->hires->count() }}</td>
+        <td>{{ $vehicle->inactive_hires->count() }}</td>
       </tr>
     </tbody>
   </table>

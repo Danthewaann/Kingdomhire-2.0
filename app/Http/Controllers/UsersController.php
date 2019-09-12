@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserPUTRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserUpdatePasswordRequest;
 use App\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Session;
 
@@ -19,49 +18,6 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('admin.user.index', [
-            'users' => User::all()
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin.user.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param UserPUTRequest $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(UserPUTRequest $request)
-    {
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
-
-        Session::flash('status', [
-            'user' => 'Successfully created user \''. $user->name .'\'!'
-        ]);
-
-        return redirect()->route('admin.home');
     }
 
     /**
@@ -93,11 +49,11 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UserPUTRequest $request
+     * @param UserUpdateRequest $request
      * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UserPUTRequest $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
         $user->update([
             'name' => $request->name,
@@ -129,23 +85,5 @@ class UsersController extends Controller
         ]);
 
         return redirect()->route('admin.home');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-        Auth::logout();
-
-        try {
-            $user->delete();
-        } catch (\Exception $e) {
-        }
-
-        return redirect()->route('public.home');
     }
 }

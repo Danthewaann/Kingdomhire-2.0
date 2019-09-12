@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\ChartGenerator;
-use App\ReportGenerator;
+use App\DataVisualisation\ChartGenerator;
+use App\DataVisualisation\ReportGenerator;
 use App\Hire;
 use App\Vehicle;
 use App\Reservation;
-use App\VehicleType;
-use App\WeeklyRate;
 use Session;
 
 class AdminController extends Controller
@@ -28,29 +26,48 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __invoke()
+    public function home()
     {
         Session::forget('url');
-        $activeVehicles = Vehicle::all();
-        $pastHires = Hire::whereIsActive(false)->get();
-        $activeHires = Hire::whereIsActive(true)->get();
-        $yearlyHires = Hire::getYearlyHires();
-        ChartGenerator::drawReservationsBarChart($activeVehicles);
-        ChartGenerator::drawOverallHiresBarChart($pastHires->concat($activeHires));
+        
+        $vehicles = Vehicle::all();
+        $hires = Hire::all();
+        $reservations = Reservation::all();
+        $pastHires = $hires->where('is_active', false);
+        $activeHires = $hires->where('is_active', true);
+        $yearlyHires = Hire::getYearlyHires($pastHires);
+        $activeHiresGanttChart = ChartGenerator::drawVehiclesActiveHiresGanttChart($vehicles);
+        ChartGenerator::drawReservationsBarChart($vehicles);
+        ChartGenerator::drawOverallHiresBarChart($hires);
 
         return view('admin.admin-home', [
-            'vehicles' => $activeVehicles,
+            'vehicles' => $vehicles,
             'yearlyHires' => $yearlyHires,
             'inactiveHires' => $pastHires,
             'activeHires' => $activeHires,
-            'reservations' => Reservation::all(),
-            'gantt' => ChartGenerator::drawVehiclesActiveHiresGanttChart($activeVehicles)
+            'reservations' => $reservations,
+            'gantt' => $activeHiresGanttChart
         ]);
     }
 
-    public function generateReport()
+    /**
+     * Generate and return a PdfReport of all hires per vehicle
+     *
+     * @return PdfReport|\Illuminate\Http\Response
+     */
+    public function generateHiresPerVehicleReport()
     {
-        return ReportGenerator::generateHiresPerVehicleReport();
+        $report = ReportGenerator::generateHiresPerVehicleReport();
+        if($report != null) {
+            return $report->stream();
+        }
+        else {
+            Session::flash('status', [
+                'Failed to generate PDF report!',
+                'No vehicles or hires found to generate report with!'
+            ]);
+            return back();
+        }
     }
 }
 

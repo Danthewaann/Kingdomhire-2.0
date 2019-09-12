@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\VehicleGearType;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Validator;
 
 class VehicleGearTypeRequest extends FormRequest
 {
@@ -26,39 +24,21 @@ class VehicleGearTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' =>'required|unique:vehicle_gear_types,name,' . $this->vehicle_gear_type['id'],
             'vehicle_gear_type' => 'nullable'
         ];
     }
 
     /**
-     * Configure the validator instance.
+     * Get custom messages for validator errors.
      *
-     * @param  \Illuminate\Validation\Validator  $validator
-     * @return void
+     * @return array
      */
-    public function withValidator($validator)
+    public function messages()
     {
-        if ($validator->passes()) {
-            $validator->after(function (Validator $validator) {
-                if (!is_null($this->vehicle_gear_type)) {
-                    $vehicleGearTypes = VehicleGearType::all()->reject(function ($gearType) {
-                        return $gearType->id == $this->vehicle_gear_type->id;
-                    });
-                }
-                else {
-                    $vehicleGearTypes = VehicleGearType::all();
-                }
-                foreach ($vehicleGearTypes as $vehicleGearType) {
-                    if ($vehicleGearType->name == $this->name) {
-                        $validator->errors()->merge([
-                            'name' => 'Gear type \''. $this->name .'\' already exists'
-                        ]);
-                        $this->failedValidation($validator);
-                    }
-                }
-            });
-        }
+        return [
+            'name.unique' => 'Gear type \':input\' already exists'
+        ];
     }
 
     /**

@@ -3,83 +3,51 @@
 namespace App\Http\Controllers;
 
 use App\Vehicle;
-use App\VehicleImage;
-use App\VehicleType;
-use App\VehicleFuelType;
-use App\VehicleGearType;
-use Illuminate\Http\Request;
-use Validator;
+use App\Http\Requests\ContactFormRequest;
 use Session;
 use Mail;
 use Sitemap;
-use App;
 
 class PublicController extends Controller
 {
     public function vehicles()
     {
-        $jsonVehicles = Vehicle::with('images')->get();
-        $jsonVehicles->transform(function($i) {
-            $fuel_type = VehicleFuelType::find($i->vehicle_fuel_type_id);
-            $gear_type = VehicleGearType::find($i->vehicle_gear_type_id);
-            $type = VehicleType::find($i->vehicle_type_id);
-
-            $i->fuel_type = $fuel_type != null ? $fuel_type->name : '';
-            $i->gear_type = $gear_type != null ? $gear_type->name : '';
-            $i->type = $type != null ? $type->name : '';
-            $i->seats = $i->seats . ' seats';
-            $i->name = $i->make . ' ' . $i->model;
-            unset(
-                $i->vehicle_fuel_type_id, $i->vehicle_gear_type_id, $i->vehicle_type_id,
-                $i->id, $i->created_at, $i->updated_at, $i->deleted_at,
-                $i->status, $i->weekly_rate_id
-            );
-
-            foreach ($i->images as $image) {
-                unset(
-                    $image->id, $image->order, $image->created_at, $image->updated_at,
-                    $image->vehicle_id
-                );
-            }
-
-            return $i;
-        });
-
         return view('public.vehicles', [
-            'jsonVehicles' => $jsonVehicles,
-            'vehicleCount' => $jsonVehicles->count()
+            'jsonVehicles' => Vehicle::withAll()->get()
         ]);
     }
 
+    /**
+     * Show the contact-us html page
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function contact()
     {
         return view('public.contact');
     }
 
+    /**
+     * Show the home html page
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function home()
     {
         return view('public.home');
     }
 
-    public function postContactForm(Request $request)
+    /**
+     * Send a POST request to submit an email
+     *
+     * @param ContactFormRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postContactForm(ContactFormRequest $request)
     {
-        $rules = [
-            'name' => 'required',
-            'email' => 'required|email',
-            'subject' => 'required',
-            'message' => 'required',
-            'g-recaptcha-response' => App::environment() === 'production' ? 'required' : 'nullable' . '|captcha'
-        ];
-
-        $messages = [
-            'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
-            'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.'
-        ];
-
-        Validator::make($request->all(), $rules, $messages)->validate();
-
         $message = explode("\n", $request->get('message'));
 
+        // Send email to kingdomhire
         Mail::send('email.contact-us', [
             'name' => $request->get('name'),
             'email' => $request->get('email'),
@@ -89,6 +57,7 @@ class PublicController extends Controller
             $message->to('kingdomhire@googlemail.com')->subject('E-Mail Received');
         });
 
+        // Send email receipt back to the initial sender
         Mail::send('email.receipt', [
             'subject' => $request->get('subject'),
             'user_message' => $message
@@ -104,6 +73,11 @@ class PublicController extends Controller
         return back();
     }
 
+    /**
+     * Show the sitemap, to allow web crawlers to index the site and its content.
+     *
+     * @return Sitemap
+     */
     public function siteMap()
     {
         Sitemap::addTag(asset('static/Kingdomhire_logo.svg'), now(), null, null);
@@ -125,7 +99,7 @@ class PublicController extends Controller
 
         foreach(Vehicle::all() as $vehicle) {
             foreach($vehicle->images as $image) {
-                $tag->addImage(asset($image->image_uri), $vehicle->name() . ' - ' . $image->name);
+                $tag->addImage(asset($image->image_uri), $vehicle->full_name);
             }
         }
 

@@ -10,7 +10,7 @@
         <div class="col-sm-8">
           <select id="vehicle_id" class="form-control" name="vehicle_id">
             @foreach($vehicles as $vehicle)
-              <option value="{{ $vehicle->id }}" {{ old("vehicle_id") == $vehicle->id ? "selected" : "" }}>{{ $vehicle->name().' - '.$vehicle->name }}</option>
+              <option value="{{ $vehicle->id }}" {{ old("vehicle_id") == $vehicle->id ? "selected" : "" }}>{{ $vehicle->full_name }}</option>
             @endforeach
           </select>
         </div>

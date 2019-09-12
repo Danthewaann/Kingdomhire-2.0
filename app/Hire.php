@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Events\HireCreating;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -29,21 +28,23 @@ use Illuminate\Database\Eloquent\Collection;
  */
 class Hire extends ConflictableModel
 {
-    protected $fillable = ['vehicle_id', 'is_active', 'start_date', 'end_date', 'name'];
-
-    protected $conflict_message = 'conflicts with current active hire';
+    /**
+     * Conflict message string.
+     * 
+     * @var string
+     */
+    protected $conflictMessage = 'conflicts with current active hire';
 
     /**
-     * The event map for the model.
-     *
+     * The attributes that are mass assignable.
+     * 
      * @var array
      */
-    protected $dispatchesEvents = [
-        'creating' => HireCreating::class,
-    ];
+    protected $fillable = ['vehicle_id', 'start_date', 'end_date', 'is_active'];
 
     /**
-     * Get vehicle associated with this hire
+     * Get vehicle associated with this hire.
+     * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function vehicle()
@@ -51,54 +52,29 @@ class Hire extends ConflictableModel
         return $this->belongsTo(Vehicle::class, 'vehicle_id')->withTrashed();
     }
 
-    public function __toString()
-    {
-        return "hire";
-    }
-
     /**
-     * Create a unique hire id that doesn't
-     * conflict with any hire id that exists
-     * in the database
-     *
-     * @param $vehicle_id
-     * @param int $length character length of generated id
-     * @return string the newly generated id
-     */
-    public static function createUniqueId($vehicle_id, $length = 4)
-    {
-        $characters = '0123456789';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-
-        $id = $vehicle_id.'-'.$randomString;
-        $hire_ids = Hire::all()->pluck('name')->toArray();
-        if (in_array($id, $hire_ids)) {
-            return Hire::createUniqueId($vehicle_id);
-        }
-
-        return $id;
-    }
-
-    /**
-     * Get number of hires made in each unique year
+     * Get number of hires made in each unique year.
+     * Can pass in a Collection instance to parse instead of retreiving all
+     * the hires from the database.
+     * 
+     * @param Collection|null $hires
      * @return Collection
      */
-    public static function getYearlyHires()
+    public static function getYearlyHires(Collection $hires = null)
     {
         $years = [];
-        $hires = Hire::all();
+        if ($hires == null) {
+            $hires = Hire::all();
+        }
         foreach ($hires as $hire) {
+            // Get the year that the current hire ends in
             $year = date('Y', strtotime($hire->end_date));
+            // If the year doesn't exist in $years, create $year => 0
             if (!array_key_exists($year, $years)) {
                 $years[$year] = 0;
             }
             $years[$year]++;
         }
-
         return collect($years)->sortKeysDesc();
     }
 }

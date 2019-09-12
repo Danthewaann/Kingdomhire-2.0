@@ -1,4 +1,4 @@
-@if($vehicleCount < 1)
+@if(count($jsonVehicles) < 1)
   <div class="col-sm-12">
     <h1 style="text-align: center">No Vehicles</h1>
     <h3 style="text-align: center">Come back later!</h3>

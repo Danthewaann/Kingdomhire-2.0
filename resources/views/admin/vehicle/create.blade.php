@@ -62,9 +62,9 @@
                           <option disabled {{ old("weeklyRate") == "" ? "selected" : "" }}>Select...</option>
                         @endif
                         @foreach($weeklyRates as $rate)
-                          <option value="{{ $rate->name }}" {{ old("weeklyRate") == $rate->name ? "selected" : "" }}>{{ $rate->getFullname() }}</option>
+                          <option value="{{ $rate->name }}" {{ old("weeklyRate") == $rate->name ? "selected" : "" }}>{{ $rate->full_name }}</option>
                         @endforeach
-                        <option value="na" {{ old("weeklyRate") == "na" ? "selected" : "" }}>N/A</option>
+                        <option value="" {{ old("weeklyRate") == "" ? "selected" : "" }}>N/A</option>
                       </select>
                       @if($errors->has('weeklyRate'))
                         @include('admin.common.alert-danger', ['error' => $errors->first('weeklyRate')])
@@ -72,19 +72,19 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="vehicleType" class="control-label col-sm-3">Vehicle Type*</label>
+                    <label for="type" class="control-label col-sm-3">Vehicle Type*</label>
                     <div class="col-sm-9">
-                      <select id="vehicleType" class="form-control" name="vehicleType">
+                      <select id="type" class="form-control" name="type">
                         @if($vehicleTypes->count() > 0)
-                          <option disabled {{ old("vehicleType") == "" ? "selected" : "" }}>Select...</option>
+                          <option disabled {{ old("type") == "" ? "selected" : "" }}>Select...</option>
                         @endif
                         @foreach($vehicleTypes as $type)
-                          <option value="{{ $type->name }}" {{ old("vehicleType") == $type->name ? "selected" : "" }}>{{ $type->name }}</option>
+                          <option value="{{ $type->name }}" {{ old("type") == $type->name ? "selected" : "" }}>{{ $type->name }}</option>
                         @endforeach
-                        <option value="na" {{ old("vehicleType") == "na" ? "selected" : "" }}>N/A</option>
+                        <option value="" {{ old("type") == "" ? "selected" : "" }}>N/A</option>
                       </select>
-                      @if($errors->has('vehicleType'))
-                        @include('admin.common.alert-danger', ['error' => $errors->first('vehicleType')])
+                      @if($errors->has('type'))
+                        @include('admin.common.alert-danger', ['error' => $errors->first('type')])
                       @endif
                     </div>
                   </div>
@@ -98,7 +98,7 @@
                         @foreach($fuelTypes as $type)
                           <option value="{{ $type->name }}" {{ old("fuelType") == $type->name ? "selected" : "" }}>{{ $type->name }}</option>
                         @endforeach
-                        <option value="na" {{ old("fuelType") == "na" ? "selected" : "" }}>N/A</option>
+                        <option value="" {{ old("fuelType") == "" ? "selected" : "" }}>N/A</option>
                       </select>
                       @if($errors->has('fuelType'))
                         @include('admin.common.alert-danger', ['error' => $errors->first('fuelType')])
@@ -115,7 +115,7 @@
                         @foreach($gearTypes as $type)
                           <option value="{{ $type->name }}" {{ old("gearType") == $type->name ? "selected" : "" }}>{{ $type->name }}</option>
                         @endforeach
-                        <option value="na" {{ old("gearType") == "na" ? "selected" : "" }}>N/A</option>
+                        <option value="" {{ old("gearType") == "" ? "selected" : "" }}>N/A</option>
                       </select>
                       @if($errors->has('gearType'))
                         @include('admin.common.alert-danger', ['error' => $errors->first('gearType')])

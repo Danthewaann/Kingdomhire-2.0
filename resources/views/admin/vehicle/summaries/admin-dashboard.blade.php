@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-heading vehicle-panel-admin-heading">
-    <h3>{{ $vehicle->name() }}</h3>
+    <h3>{{ $vehicle->make_model }}</h3>
   </div>
   @if($vehicle->images->isEmpty())
     <div class="vehicle-img">
@@ -27,10 +27,11 @@
     <tr>
       <th>Active Hire</th>
       <td>
-        @if($vehicle->hasActiveHire())
-          {{ $vehicle->getActiveHire()->name }}<br>
-          {{ date('j/M/Y', strtotime($vehicle->getActiveHire()->start_date)) }} to<br>
-          {{ date('j/M/Y', strtotime($vehicle->getActiveHire()->end_date)) }}
+        @php($activeHire = $vehicle->active_hire)
+        @if($activeHire != null)
+          {{ $activeHire->name }}<br>
+          {{ date('j/M/Y', strtotime($activeHire->start_date)) }} to<br>
+          {{ date('j/M/Y', strtotime($activeHire->end_date)) }}
         @else
           No active hire
         @endif
@@ -40,9 +41,9 @@
       <th>Next Reservation</th>
       <td>
         @if($vehicle->reservations->isNotEmpty())
-          {{ $vehicle->getNextReservation()->name }}<br>
-          {{ date('j/M/Y', strtotime($vehicle->getNextReservation()->start_date)) }} to<br>
-          {{ date('j/M/Y', strtotime($vehicle->getNextReservation()->end_date)) }}
+          {{ $vehicle->next_reservation->name }}<br>
+          {{ date('j/M/Y', strtotime($vehicle->next_reservation->start_date)) }} to<br>
+          {{ date('j/M/Y', strtotime($vehicle->next_reservation->end_date)) }}
         @else
           No reservations
         @endif
@@ -50,7 +51,7 @@
     </tr>
     <tr>
       <th class="last">Weekly Rate</th>
-      <td class="last">@if($vehicle->rate != null) {{ $vehicle->rate->getFullName() }} @else N/A @endif</td>
+      <td class="last">@if($vehicle->weekly_rate != null) {{ $vehicle->weekly_rate->full_name }} @else N/A @endif</td>
     </tr>
   </table>
 </div>

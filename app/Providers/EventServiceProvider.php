@@ -12,35 +12,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $listen = [
-        'App\Events\VehicleUpdating' => [
-            'App\Listeners\VehicleUpdating',
-        ],
-        'App\Events\VehicleCreating' => [
-            'App\Listeners\VehicleCreating',
-        ],
-        'App\Events\VehicleDeleting' => [
-            'App\Listeners\VehicleDeleting',
-        ],
-        'App\Events\ReservationCreating' => [
-            'App\Listeners\ReservationCreating'
-        ],
-        'App\Events\HireCreating' => [
-            'App\Listeners\HireCreating'
-        ],
-        'App\Events\VehicleGearTypeEvent' => [
-            'App\Listeners\VehicleGearTypeListener'
-        ],
-        'App\Events\VehicleFuelTypeEvent' => [
-            'App\Listeners\VehicleFuelTypeListener'
-        ],
-        'App\Events\VehicleTypeEvent' => [
-            'App\Listeners\VehicleTypeListener'
-        ],
-        'App\Events\WeeklyRateEvent' => [
-            'App\Listeners\WeeklyRateListener'
-        ]
-    ];
+    protected $listen = [];
 
     /**
      * Register any events for your application.

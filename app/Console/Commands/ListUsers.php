@@ -20,17 +20,7 @@ class ListUsers extends Command
      * @var string
      */
     protected $description = 'List all users in database';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
+    
     /**
      * Execute the console command.
      *

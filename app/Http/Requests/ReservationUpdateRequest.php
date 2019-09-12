@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class WeeklyRateRequest extends FormRequest
+class ReservationUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,23 +24,9 @@ class WeeklyRateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>'nullable|unique:weekly_rates,name,' . $this->weekly_rate['id'],
-            'weekly_rate' => 'nullable',
-            'weekly_rate_min' => 'required|numeric|min:1|',
-            'weekly_rate_max' => 'required|numeric|min:2|gt:weekly_rate_min'
-        ];
-    }
-
-    /**
-     * Get custom messages for validator errors.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'name.unique' => 'Weekly rate \':input\' already exists',
-            'weekly_rate_max.gt' => 'Max rate must be greater than min rate'
+            'reservation' => 'required',
+            'start_date' => 'required|date_format:Y-m-d|after_or_equal:today',
+            'end_date' => 'required|date_format:Y-m-d|after:start_date'
         ];
     }
 

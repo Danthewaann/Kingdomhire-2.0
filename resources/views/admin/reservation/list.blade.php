@@ -26,7 +26,7 @@
           @include('admin.reservation.destroy-modal')
           <tr>
             <td class="first">{{ $reservation->name ? $reservation->name : 'N/A'  }}</td>
-            <td>{{ $reservation->vehicle->name() }}</td>
+            <td>{{ $reservation->vehicle->make_model }}</td>
             <td>{{ date('j/M/Y', strtotime($reservation->start_date)) }}</td>
             <td>{{ date('j/M/Y', strtotime($reservation->end_date)) }}</td>
             <td>

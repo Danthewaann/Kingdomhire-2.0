@@ -1,11 +1,18 @@
 <?php
 
-namespace App;
+namespace App\DataVisualisation;
+
 use Swatkins\LaravelGantt\Gantt;
 
-
+// The code here is taken from Swatkins\LaravelGantt\Gantt
 class GanttChart extends Gantt
 {
+    /**
+     * Generates the html needed to display a gantt chart to
+     * visualise the schedule for all vehicles
+     * 
+     * @return string $html
+     */
     function render() {
 
         $html = array();

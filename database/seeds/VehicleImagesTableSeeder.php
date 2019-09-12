@@ -17,7 +17,7 @@ class VehicleImagesTableSeeder extends Seeder
         $vehicles = Vehicle::withTrashed()->get();
 
         foreach ($vehicles as $vehicle) {
-            $nameArr = explode(" ", str_slug($vehicle->name()));
+            $nameArr = explode(" ", str_slug($vehicle->make_model));
             $nameLen = count($nameArr);
             $name = $nameArr[0];
             for ($i = 1; $i < $nameLen - 1; $i++) {

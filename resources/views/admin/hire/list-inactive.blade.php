@@ -26,7 +26,7 @@
           @include('admin.hire.destroy-modal')
           <tr>
             <td class="first">{{ $hire->name }}</td>
-            <td>{{ $hire->vehicle->name() }}</td>
+            <td>{{ $hire->vehicle->make_model }}</td>
             <td>{{ date('j/M/Y', strtotime($hire->start_date)) }}</td>
             <td>{{ date('j/M/Y', strtotime($hire->end_date)) }}</td>
             <td>

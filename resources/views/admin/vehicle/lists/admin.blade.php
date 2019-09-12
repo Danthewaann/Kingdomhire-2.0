@@ -1,4 +1,4 @@
-@if($vehicleCount < 1)
+@if(count($jsonVehicles) < 1)
   <div class="col-sm-12" style="text-align: center">
     <h1>No Vehicles</h1>
     <h3>Why not add one?</h3>

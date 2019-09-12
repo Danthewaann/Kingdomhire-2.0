@@ -2,12 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Validator;
 
-class UserPUTRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,11 +26,10 @@ class UserPUTRequest extends FormRequest
     public function rules()
     {
         return [
-            'user' => 'nullable',
+            'user' => 'required',
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,' . $this->user['id'],
             'password' => 'required',
-            'password_confirmation' => 'required_without:user|same:password'
         ];
     }
 
@@ -43,7 +41,7 @@ class UserPUTRequest extends FormRequest
     public function messages()
     {
         return [
-            'password_confirmation.required_without' => 'Password confirmation doesn\'t match password'
+            'email.unique' => 'Provided email is already in use'
         ];
     }
 
@@ -55,36 +53,10 @@ class UserPUTRequest extends FormRequest
      */
     public function withValidator($validator)
     {
+        // Check that the provided password matches the user password in the database.
         $validator->after(function (Validator $validator) {
-            $errorMessages = [];
-            $data = $validator->getData();
-            if (isset($data['user'])) {
-                if (!is_null($data['password'])) {
-                    if (!Hash::check($data['password'], $data['user']->password)) {
-                        $errorMessages['password'] = 'Provided password is incorrect';
-                    }
-                }
-                else {
-                    $this->failedValidation($validator);
-                }
-
-                $users = User::all()->reject(function ($user) use ($data){
-                    return $user->id == $data['user']->id;
-                });
-            }
-            else {
-                $users = User::all();
-            }
-
-            foreach ($users as $user) {
-                if ($data['email'] == $user->email) {
-                    $errorMessages['email'] = 'Provided email is already in use';
-                    break;
-                }
-            }
-
-            if (!empty($errorMessages)) {
-                $validator->errors()->merge($errorMessages);
+            if (!Hash::check($this->password, $this->user->password)) {
+                $validator->errors()->add('password', 'Provided password is incorrect');
                 $this->failedValidation($validator);
             }
         });

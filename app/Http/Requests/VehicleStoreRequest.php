@@ -3,6 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\WeeklyRate;
+use App\VehicleFuelType;
+use App\VehicleGearType;
+use App\VehicleType;
 
 class VehicleStoreRequest extends FormRequest
 {
@@ -28,10 +32,10 @@ class VehicleStoreRequest extends FormRequest
             'model' => 'required',
             'seats' => 'required|numeric|min:1|max:255',
             'status' => 'required',
-            'weeklyRate' => 'required',
-            'vehicleType' => 'required',
-            'fuelType' => 'required',
-            'gearType' => 'required',
+            'weeklyRate' => 'nullable',
+            'type' => 'nullable',
+            'fuelType' => 'nullable',
+            'gearType' => 'nullable',
             'vehicle_images_add' => 'nullable',
             'vehicle_images_add.*' => 'image|mimes:jpeg,jpg,png,gif'
         ];
@@ -51,6 +55,26 @@ class VehicleStoreRequest extends FormRequest
             'vehicle_images_add.*.image' => 'Only image type files can be uploaded',
             'vehicle_images_add.*.mimes' => 'Images must be a file of type: jpeg, jpg, png, gif.'
         ];
+    }
+
+    /**
+     * Get the validator instance for the request.
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    public function getValidatorInstance()
+    {
+        $weeklyRate = WeeklyRate::whereName($this->request->get('weeklyRate'))->first();
+        $fuelType = VehicleFuelType::whereName($this->request->get('fuelType'))->first();
+        $gearType = VehicleGearType::whereName($this->request->get('gearType'))->first();
+        $type = VehicleType::whereName($this->request->get('type'))->first();
+
+        $this->merge(['weekly_rate_id' => $weeklyRate != null ? $weeklyRate->id : null]);
+        $this->merge(['vehicle_fuel_type_id' => $fuelType != null ? $fuelType->id : null]);
+        $this->merge(['vehicle_gear_type_id' => $gearType != null ? $gearType->id : null]);
+        $this->merge(['vehicle_type_id' => $type != null ? $type->id : null]);
+        
+        return parent::getValidatorInstance();
     }
 
     /**

@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\VehicleType;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Validator;
 
 class VehicleTypeRequest extends FormRequest
 {
@@ -26,39 +24,21 @@ class VehicleTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' =>'required|unique:vehicle_types,name,' . $this->vehicle_type['id'],
             'vehicle_type' => 'nullable'
         ];
     }
 
     /**
-     * Configure the validator instance.
+     * Get custom messages for validator errors.
      *
-     * @param  \Illuminate\Validation\Validator  $validator
-     * @return void
+     * @return array
      */
-    public function withValidator($validator)
+    public function messages()
     {
-        if ($validator->passes()) {
-            $validator->after(function (Validator $validator) {
-                if (!is_null($this->vehicle_type)) {
-                    $vehicleTypes = VehicleType::all()->reject(function ($type) {
-                        return $type->id == $this->vehicle_type->id;
-                    });
-                }
-                else {
-                    $vehicleTypes = VehicleType::all();
-                }
-                foreach ($vehicleTypes as $vehicleType) {
-                    if ($vehicleType->name == $this->name) {
-                        $validator->errors()->merge([
-                            'name' => 'Vehicle type \''. $this->name .'\' already exists'
-                        ]);
-                        $this->failedValidation($validator);
-                    }
-                }
-            });
-        }
+        return [
+            'name.unique' => 'Vehicle type \':input\' already exists'
+        ];
     }
 
     /**

@@ -2,7 +2,8 @@
 
 namespace App;
 
-use App\Events\ReservationCreating;
+use Carbon\Carbon;
+
 /**
  * App\Reservation
  *
@@ -25,21 +26,23 @@ use App\Events\ReservationCreating;
  */
 class Reservation extends ConflictableModel
 {
-    protected $fillable = ['vehicle_id', 'is_active', 'start_date', 'end_date', 'name'];
-
-    protected $conflict_message = 'conflicts with another reservation';
+    /**
+     * Conflict message string.
+     * 
+     * @var string
+     */
+    protected $conflictMessage = 'conflicts with another reservation';
 
     /**
-     * The event map for the model.
-     *
+     * The attributes that are mass assignable.
+     * 
      * @var array
      */
-    protected $dispatchesEvents = [
-        'creating' => ReservationCreating::class,
-    ];
+    protected $fillable = ['vehicle_id', 'start_date', 'end_date'];
 
     /**
-     * Get vehicle associated with this reservation
+     * Get vehicle associated with this reservation.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function vehicle()
@@ -47,35 +50,14 @@ class Reservation extends ConflictableModel
         return $this->belongsTo(Vehicle::class, 'vehicle_id');
     }
 
-    public function __toString()
-    {
-        return "reservation";
-    }
-
     /**
-     * Create a unique reservation id that doesn't
-     * conflict with any reservation id that exists
-     * in the database
-     *
-     * @param int vehicle_id
-     * @param int $length character length of generated id
-     * @return string the newly generated id
+     * Returns true if the reservation start date is equal to or less than todays date,
+     * meaning the reservation can be converted to a hire, otherwise return false.
+     * 
+     * @return boolean
      */
-    public static function createUniqueId($vehicle_id, $length = 4)
+    public function canConvertToHire()
     {
-        $characters = '0123456789';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-
-        $id = $vehicle_id.'-'.$randomString;
-        $reservation_ids = Reservation::all()->pluck('name')->toArray();
-        if (in_array($id, $reservation_ids)) {
-            return Reservation::createUniqueId($vehicle_id);
-        }
-
-        return $id;
+        return $this->start_date <= date('Y-m-d');
     }
 }

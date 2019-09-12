@@ -20,19 +20,26 @@ class SetupCronFile extends Command
      */
     protected $description = 'Creates /cron/cron.php in /public directory';
 
+    /**
+     * Absolute path of original cron.php file.
+     *
+     * @var string
+     */
     protected $cronFile = __DIR__.'/../../../cron.php';
-    protected $dir = __DIR__.'/../../../public/cron';
-    protected $target = __DIR__.'/../../../public/cron/cron.php';
 
     /**
-     * Create a new command instance.
+     * Absolute path to public/cron directory.
      *
-     * @return void
+     * @var string
      */
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    protected $dir = __DIR__.'/../../../public/cron';
+
+    /**
+     * Absolute path of target cron.php file.
+     *
+     * @var string
+     */
+    protected $target = __DIR__.'/../../../public/cron/cron.php';
 
     /**
      * Execute the console command.
@@ -62,6 +69,11 @@ class SetupCronFile extends Command
         }
     }
 
+    /**
+     * Copy original cron.php file to public/cron/cron.php.
+     *
+     * @return void
+     */
     private function createCronFile()
     {
         if(!mkdir($this->dir)) {

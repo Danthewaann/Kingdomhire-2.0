@@ -63,8 +63,15 @@ class VehiclesController extends Controller
 
         // Link uploaded images with vehicle if there is any 
         if ($request->hasFile('vehicle_images_add')) {
+            // Get all uploaded images and obtain all their image orders
+            // from the original request and push them into the $imageOrders array
+            $imageOrders = [];
             $images = $request->file('vehicle_images_add');
-            $vehicle->linkImages($images, $request);
+            foreach ($images as $image) {
+                $imageOrderKey = $image->getClientOriginalName() . '_order';
+                $imageOrders[$imageOrderKey] = $request->get($imageOrderKey, 1);
+            }
+            $vehicle->linkImages($request->file('vehicle_images_add'), $imageOrders);
         }
 
         Session::flash('status', [
@@ -133,19 +140,31 @@ class VehiclesController extends Controller
         $vehicle->update($request->all());
 
         // Link uploaded images with vehicle if there is any 
+        $imageOrders = [];
+        $currentImages = $vehicle->images;
         if($request->hasFile('vehicle_images_add')) {
+            // Get all uploaded images and obtain all their image orders
+            // from the original request and push them into the $imageOrders array
             $images = $request->file('vehicle_images_add');
-            $vehicle->linkImages($images, $request);
-        }
-
-        // Delete images linked with vehicle if any are provided
-        if($request->has('vehicle_images_del')) {
-            $images = $request->get('vehicle_images_del');
-            $vehicle->deleteImages($images);
+            foreach ($images as $image) {
+                $imageOrderKey = $image->getClientOriginalName() . '_order';
+                $imageOrders[$imageOrderKey] = $request->get($imageOrderKey, 1);
+            }
+            $vehicle->linkImages($images);
         }
 
         // Update the order of images for display in vehicle image galleries
-        $vehicle->updateImageOrder($request);
+        // We need to update the order of all images, both newly uploaded
+        // images, and any images already linked with the vehicle
+        foreach ($currentImages as $image) {
+            $imageOrders[$image->order_key] = $request->get($image->order_key, 1);
+        }
+        $vehicle->updateOrderOfImages($imageOrders);
+
+        // Delete images linked with vehicle if any are provided
+        if($request->has('vehicle_images_del')) {
+            $vehicle->deleteImages($request->get('vehicle_images_del'));
+        }
 
         Session::flash('status', [
             'edit' => 'Successfully updated vehicle!',

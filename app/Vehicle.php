@@ -78,9 +78,9 @@ class Vehicle extends Model
      * @var array
      */
     protected $fillable = [
-        'make', 'model', 'vehicle_fuel_type_id', 
-        'vehicle_gear_type_id', 'seats', 'status', 
-        'vehicle_type_id', 'weekly_rate_id'
+        'make', 'model', 'seats', 'status',
+        'vehicle_type_id', 'vehicle_gear_type_id', 
+        'vehicle_fuel_type_id', 'weekly_rate_id'
     ];
 
     /**
@@ -125,43 +125,6 @@ class Vehicle extends Model
     public function getRouteKeyName()
     {
         return 'slug';
-    }
-
-    /**
-     * Create a unique vehicle id that doesn't
-     * conflict with any vehicle id that exists in the database.
-     * 
-     * @param int $length character length of generated id
-     * @return string the newly generated id
-     */
-    public static function createUniqueId($length = 4)
-    {
-        $characters = '0123456789';
-        $charactersLength = strlen($characters);
-        $id = '';
-        for ($i = 0; $i < $length; $i++) {
-            $id .= $characters[rand(0, $charactersLength - 1)];
-        }
-
-        $vehicle_ids = Vehicle::withTrashed()->pluck('name')->toArray();
-        if (in_array($id, $vehicle_ids)) {
-            return Vehicle::createUniqueId();
-        }
-
-        return $id;
-    }
-
-    /**
-     * Query scope to return all relations with the vehicle.
-     * 
-     * @return void
-     */
-    public function scopeWithAll($query)
-    {
-        $query->with(
-            'hires', 'reservations', 'type', 
-            'fuelType', 'gearType', 'WeeklyRate', 'images'
-        );
     }
 
     /**
@@ -330,6 +293,43 @@ class Vehicle extends Model
     }
 
     /**
+     * Query scope to return all relations with the vehicle.
+     * 
+     * @return void
+     */
+    public function scopeWithAll($query)
+    {
+        $query->with(
+            'hires', 'reservations', 'type', 
+            'fuelType', 'gearType', 'weeklyRate', 'images'
+        );
+    }
+
+    /**
+     * Create a unique vehicle id that doesn't
+     * conflict with any vehicle id that exists in the database.
+     * 
+     * @param int $length character length of generated id
+     * @return string the newly generated id
+     */
+    public static function createUniqueId($length = 4)
+    {
+        $characters = '0123456789';
+        $charactersLength = strlen($characters);
+        $id = '';
+        for ($i = 0; $i < $length; $i++) {
+            $id .= $characters[rand(0, $charactersLength - 1)];
+        }
+
+        $vehicle_ids = Vehicle::withTrashed()->pluck('name')->toArray();
+        if (in_array($id, $vehicle_ids)) {
+            return Vehicle::createUniqueId($length);
+        }
+
+        return $id;
+    }
+
+    /**
      * Get number of hires made in each unique year.
      * Returns an associate array with year => hires.
      * 
@@ -373,38 +373,54 @@ class Vehicle extends Model
     /**
      * Link the provided images with this vehicle in the database and
      * save them in storage.
+     * $imageOrders should be an associate array, where each key is the
+     * name for an image (excluding its extension, like .jpg) 
+     * with an `_order` suffix appended onto it. e.g. 'renault-master_order'.
+     * The value of each key should be a integer, which is used 
+     * to order images in ascending order so they are displayed in vehicle
+     * image galleries in the expected order.
      * 
      * @param \Illuminate\Http\UploadedFile[]|array $images
-     * @param VehicleUpdateRequest|VehicleStoreRequest $httpRequest
+     * @param array $imageOrders
      * @return void
      */
-    public function linkImages(array $images, $httpRequest = null)
+    public function linkImages(array $images, array $imageOrders = [])
     {
-        $dir = 'imgs/'.$this->name;
+        $localFs = Storage::disk('local');
+        $targetDir = 'imgs/'.$this->name;
         if (!empty($images)) {
-            if (!Storage::disk('local')->exists('public/'.$dir)) {
-                Storage::disk('local')->makeDirectory('public/'.$dir);
+            if (!$localFs->exists('public/'.$targetDir)) {
+                $localFs->makeDirectory('public/'.$targetDir);
             }
         }
 
         foreach ($images as $image) {
+            // image is a string representing absolute path to image on current file system
             if (is_string($image)) {
+                $imageOrderKey = basename($image) . '_order';
                 $extension = image_type_to_extension(getimagesize($image)[2]);
             }
+            // or image is an instance of \Illuminate\Http\UploadedFile
             else {
+                $imageOrderKey = $image->getClientOriginalName() . '_order';
                 $extension = '.'.$image->extension();
             }
 
+            // Generate unique name for the image
             $image_name = VehicleImage::createUniqueName($extension, $this->id);
-            $path = $dir.'/'.$image_name;
+
+            // Resize the image to 900x675
             $resize = Image::make($image)->resize(900, 675);
+
+            // Store the image on the current file system
+            $path = $targetDir.'/'.$image_name;
             $resize->save(storage_path('app/public/'.$path), 60);
 
             VehicleImage::create([
                 'name' => $image_name,
                 'image_uri' => 'storage/' . $path,
                 'vehicle_id' => $this->id,
-                'order' => $httpRequest != null ? $httpRequest->get(explode(".", $image->getClientOriginalName())[0] . '_order') : 1
+                'order' => array_key_exists($imageOrderKey, $imageOrders) ? $imageOrders[$imageOrderKey] : 1
             ]);
         }
     }
@@ -422,38 +438,42 @@ class Vehicle extends Model
     {
         if (!empty($images)) {
             foreach ($images as $image) {
-                $imageInStorage = $this->images()->whereName($image)->first();
+                $imageInStorage = $this->images->where('name', $image)->first();
                 unlink(storage_path('app/public/imgs/'.$this->name.'/'.$imageInStorage->name));
                 $imageInStorage->delete();
             }
         }
         else {
-            foreach ($this->images() as $image) {
+            foreach ($this->images as $image) {
                 unlink(storage_path('app/public/imgs/'.$this->name.'/'.$image->name));
                 $image->delete();
             }
         }
 
-        if (VehicleImage::whereVehicleId($this->id)->count() == 0) {
+        if ($this->images()->get()->count() == 0) {
             Storage::disk('local')->deleteDirectory('public/imgs/'.$this->name);
         }
     }
 
     /**
      * Update the order of images for this vehicle in the database.
-     * The `order` field in the vehicle_images table will be updated
-     * with the new values passed in the $httpRequest.
+     * $imageOrders should be an associate array, where each key is the
+     * name for an image (excluding its extension, like .jpg) 
+     * with an `_order` suffix appended onto it e.g. '1234_order'.
+     * The value of each key should be a integer, which is used 
+     * to order images in ascending order so they are displayed in vehicle
+     * image galleries in the expected order.
      * 
      * @param VehicleUpdateRequest $httpRequest
+     * @param array $imageOrders
      * @return void
      */
-    public function updateImageOrder(VehicleUpdateRequest $httpRequest)
+    public function updateOrderOfImages(array $imageOrders)
     {
         foreach ($this->images()->get() as $image) {
-            $order_key = $image->getNameWithoutExtension() . '_order';
-            $new_order = $httpRequest->get($order_key);
-            if ($new_order != null) {
-                $image->update(['order' => $new_order]);
+            $newOrderValue = array_key_exists($image->order_key, $imageOrders) ? $imageOrders[$image->order_key] : null;
+            if ($newOrderValue != null) {
+                $image->update(['order' => $newOrderValue]);
             }
         }
     }

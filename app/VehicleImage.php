@@ -44,8 +44,15 @@ class VehicleImage extends Model
      * @var array
      */
     protected $visible = [
-        'image_uri', 'name', 'order'
+        'image_uri', 'name', 'order', 'order_key'
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['order_key'];
 
     /**
      * Create a unique vehicle image name that doesn't
@@ -68,7 +75,7 @@ class VehicleImage extends Model
         $new_name = $id . $extension;
         $vehicle_image_names = VehicleImage::whereVehicleId($vehicle_id)->pluck('name')->toArray();
         if (in_array($new_name, $vehicle_image_names)) {
-            return VehicleImage::createUniqueName($extension, $vehicle_id);
+            return VehicleImage::createUniqueName($extension, $vehicle_id, $length);
         }
 
         return $new_name;
@@ -85,13 +92,14 @@ class VehicleImage extends Model
     }
 
     /**
-     * Get the image name without its entension.
-     * e.g. image.jpg => image
+     * Get the image order key, which is its name without its
+     * extension, along with a `_order` suffix
+     * e.g. image.jpg => image_order
      * 
      * @return string
      */
-    public function getNameWithoutExtension()
+    public function getOrderKeyAttribute()
     {
-        return explode(".", $this->name)[0];
+        return explode(".", $this->name)[0] . "_order";
     }
 }

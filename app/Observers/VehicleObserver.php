@@ -42,23 +42,19 @@ class VehicleObserver
      */
     public function deleting(Vehicle $vehicle)
     {
-        // Set vehicle status to unavailable
-        $vehicle->update(['status' => 'Unavailable']);
-        // Delete all reservations linked to vehicle if it has any
-        $vehicle->reservations()->delete();
-        // Delete the active hire for the vehicle if it has one
-        $vehicle->hires()->where('is_active', true)->delete();
-    }
-
-    /**
-     * Handle the vehicle "force deleting" event.
-     *
-     * @param  \App\Vehicle  $vehicle
-     * @return void
-     */
-    public function forceDeleting(Vehicle $vehicle)
-    {
-        // Delete all images linked to the vehicle
-        $vehicle->deleteImages();
+        if ($vehicle->isForceDeleting()) {
+            // Delete all images linked to the vehicle
+            $vehicle->deleteImages();
+        }
+        else {
+            // Set vehicle status to unavailable
+            $vehicle->update(['status' => 'Unavailable']);
+            // Delete all reservations linked to vehicle if it has any
+            $vehicle->reservations()->delete();
+            // Delete the active hire for the vehicle if it has one
+            if ($vehicle->active_hire != null) {
+                $vehicle->active_hire->delete();
+            }
+        }
     }
 }

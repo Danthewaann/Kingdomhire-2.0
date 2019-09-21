@@ -19,14 +19,12 @@ console.log(images);
 function drawRadioBtns(image, length) {
     var str = "";
     var checked = "";
-    var name = "";
     for (var i = 1; i <= length; i++) {
         checked = image.order == i ? "checked" : "";
-        name = image.name.split(".")[0];
         str+=`
         <div class="radio-inline">
             <label>
-            <input ` + checked + ` type="radio" name="` + name + `_order" value="` + i + `"><p style="font-weight: 400; font-size: 1em; vertical-align: middle; margin: 0">` + i + `</p>
+            <input ` + checked + ` type="radio" name="` + image.order_key + `" value="` + i + `"><p style="font-weight: 400; font-size: 1em; vertical-align: middle; margin: 0">` + i + `</p>
             </label>
         </div>`;
     }

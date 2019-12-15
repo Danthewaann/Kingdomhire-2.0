@@ -24,7 +24,7 @@ class ReportGenerator
         $vehicles_count = Vehicle::withTrashed()->count();
         $hires_count = Hire::count();
         if($vehicles_count > 0 && $hires_count > 0) {
-            $vehicle_ids = Vehicle::withTrashed()->select(['id'])->get();
+            $vehicle_ids = Vehicle::withTrashed()->pluck('id')->toArray();
             $query = Hire::select(
                 'hires.id', 'hires.name as hire_id', 'vehicle_id', 'start_date', 'end_date', 
                 DB::raw('concat(vehicles.make, " ", vehicles.model, " - ", vehicles.name) as vehicle'), 'vehicles.deleted_at as vehicle_active'

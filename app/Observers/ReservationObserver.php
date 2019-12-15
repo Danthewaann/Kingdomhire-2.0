@@ -31,10 +31,10 @@ class ReservationObserver
         }
         // Determine if created/updated reservation should be a hire.
         // If the reservation is indeed a hire (start_date is a date less than or equal to today),
-        // we save the hire here then return false, which signals to not save the inital 
+        // we save the hire here then return false, which signals to not save the initial 
         // reservation, as it has been converted into a hire.
         if ($reservation->canConvertToHire()) {
-            // Create and save hire with atributes from the original reservation.
+            // Create and save hire with attributes from the original reservation.
             (new Hire($reservation->getAttributes()))->save();
             // Delete reservation if it already exists in the database.
             if ($reservation->exists) {

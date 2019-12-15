@@ -29,6 +29,8 @@
 
 #### Website Front-end Update Requirements
 - [x] Anyone should be able to see a list of all kingdomhire vehicles on the vehicles page  
-- [ ] Anyone should be able to see a vehicle's current status, which can be one of the following: *available*, *unavailable*, or *out for hire* (Not sure)
-- [x] Anyone should be able to search through the list of kingdomhire vehicles by vehicle type
-- [x] The website should display kingdomhire’s approximate opening hours   
+- [ ] Anyone should be able to see a vehicle's current status, which can be one of the following: *available*, *unavailable*, or *out for hire* (Not needed)
+- [x] Anyone should be able to search through the list of kingdomhire vehicles by the properties of each vehicle (fuel/gear type, number of seats etc)
+- [x] The website should display kingdomhire’s approximate opening hours, address and contact info
+- [x] The website should provide an email form to allow the user to send an email through the website to kingdomhire
+- [x] The website should display a interactive map that shows the user how to find their way to kingdomhire's location

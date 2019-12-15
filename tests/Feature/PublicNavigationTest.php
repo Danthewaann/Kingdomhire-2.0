@@ -22,7 +22,7 @@ class PublicNavigationTest extends TestCase
 
     public function testContact()
     {
-        $response = $this->get('/contact');
+        $response = $this->get('/contact-us');
         $response->assertStatus(200);
     }
 }

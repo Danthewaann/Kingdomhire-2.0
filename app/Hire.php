@@ -48,6 +48,13 @@ class Hire extends ConflictableModel
     protected $fillable = ['vehicle_id', 'start_date', 'end_date', 'is_active'];
 
     /**
+     * The attributes that should be visible in arrays.
+     *
+     * @var array
+     */
+    protected $visible = ['name', 'start_date', 'end_date', 'is_active'];
+
+    /**
      * Get vehicle associated with this hire.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -59,7 +66,7 @@ class Hire extends ConflictableModel
 
     /**
      * Get number of hires made in each unique year.
-     * Can pass in a Collection instance to parse instead of retreiving all
+     * Can pass in a Collection instance to parse instead of retrieving all
      * the hires from the database.
      * 
      * @param Collection|null $hires

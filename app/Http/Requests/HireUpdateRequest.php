@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Validator;
-use App\ConflictableModel;
 
 class HireUpdateRequest extends FormRequest
 {

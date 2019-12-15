@@ -29,16 +29,14 @@ abstract class ConflictableModel extends Model
      * 
      * @var array
      */
-    protected $fillable = ['vehicle_id', 'start_date', 'end_date'];
+    protected $fillable = [];
 
     /**
      * The attributes that should be visible in arrays.
      *
      * @var array
      */
-    protected $visible = [
-        'name', 'start_date', 'end_date', 'is_active'
-    ];
+    protected $visible = [];
 
     /**
      * Does the model conflict with another ConflictableModel.

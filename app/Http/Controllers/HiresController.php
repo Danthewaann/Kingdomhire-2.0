@@ -50,8 +50,8 @@ class HiresController extends Controller
      */
     public function update(HireUpdateRequest $request, Hire $hire)
     {
-        // If hire failed to updated (conflicts with another reservaton/hire), 
-        // redirect back to use and flash error messages
+        // If hire failed to updated (conflicts with another reservation/hire), 
+        // redirect back to user and flash error messages
         if (!$hire->update($request->all()) && $hire->conflicts) {
             return back()->withInput()->withErrors($hire->conflict_data, 'hires');
         }

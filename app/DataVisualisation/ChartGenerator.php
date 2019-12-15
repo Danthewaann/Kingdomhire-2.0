@@ -6,8 +6,6 @@ use Khill\Lavacharts\DataTables\DataFactory;
 use Illuminate\Database\Eloquent\Collection;
 use Lava;
 use App\Vehicle;
-use App\Reservation;
-use App\Hire;
 
 class ChartGenerator
 {

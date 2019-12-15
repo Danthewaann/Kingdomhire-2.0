@@ -29,8 +29,8 @@ class ReservationsController extends Controller
     public function store(ReservationStoreRequest $request)
     {
         $reservation = new Reservation($request->all());
-        // If reservation failed to save (conflicts with another reservaton/hire), 
-        // redirect back to use and flash error messages
+        // If reservation failed to save (conflicts with another reservation/hire), 
+        // redirect back to user and flash error messages
         if (!$reservation->save() && $reservation->conflicts) {
             return back()->withInput()->withErrors($reservation->conflict_data, 'reservations');
         }
@@ -73,8 +73,8 @@ class ReservationsController extends Controller
      */
     public function update(ReservationUpdateRequest $request, Reservation $reservation)
     {
-        // If reservation failed to update (conflicts with another reservaton/hire), 
-        // redirect back to use and flash error messages
+        // If reservation failed to update (conflicts with another reservation/hire), 
+        // redirect back to user and flash error messages
         if (!$reservation->update($request->all()) && $reservation->conflicts) {
             return back()->withInput()->withErrors($reservation->conflict_data, 'reservations');
         }

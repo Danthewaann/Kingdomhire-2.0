@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Carbon\Carbon;
-
 /**
  * App\Reservation
  *
@@ -44,6 +42,13 @@ class Reservation extends ConflictableModel
      * @var array
      */
     protected $fillable = ['vehicle_id', 'start_date', 'end_date'];
+
+    /**
+     * The attributes that should be visible in arrays.
+     *
+     * @var array
+     */
+    protected $visible = ['name', 'start_date', 'end_date'];
 
     /**
      * Get vehicle associated with this reservation.

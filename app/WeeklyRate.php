@@ -81,6 +81,6 @@ class WeeklyRate extends Model
      */
     public function getFullNameAttribute()
     {
-        return $this->name.' (£'.$this->weekly_rate_min.'-£'.$this->weekly_rate_max.')';
+        return sprintf('%s (£%d-£%d)', $this->name, $this->weekly_rate_min, $this->weekly_rate_max);
     }
 }

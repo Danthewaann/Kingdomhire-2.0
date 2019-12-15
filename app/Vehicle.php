@@ -2,8 +2,6 @@
 
 namespace App;
 
-use App\Http\Requests\VehicleUpdateRequest;
-use App\Http\Requests\VehicleStoreRequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
@@ -204,7 +202,7 @@ class Vehicle extends Model
      */
     public function getMakeModelAttribute()
     {
-        return $this->make.' '.$this->model;
+        return sprintf('%s %s', $this->make, $this->model);
     }
 
     /**
@@ -214,7 +212,7 @@ class Vehicle extends Model
      */
     public function getFullNameAttribute()
     {
-        return $this->make.' '.$this->model.' - '.$this->name;
+        return sprintf('%s %s - %s', $this->make, $this->model, $this->name);
     }
 
     /**
@@ -273,7 +271,7 @@ class Vehicle extends Model
     }
 
     /**
-     * Get the next active hire for this vehicle if it has one
+     * Get the active hire for this vehicle if it has one
      * 
      * @return App\Hire|null
      */
@@ -464,7 +462,6 @@ class Vehicle extends Model
      * to order images in ascending order so they are displayed in vehicle
      * image galleries in the expected order.
      * 
-     * @param VehicleUpdateRequest $httpRequest
      * @param array $imageOrders
      * @return void
      */

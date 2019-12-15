@@ -2,9 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Hire;
 use App\Vehicle;
-use DB;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 

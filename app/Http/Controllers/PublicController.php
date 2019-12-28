@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Vehicle;
+use App\User;
 use App\Http\Requests\ContactFormRequest;
 use Session;
 use Mail;
@@ -47,15 +48,19 @@ class PublicController extends Controller
     {
         $message = explode("\n", $request->get('message'));
 
-        // Send email to kingdomhire
-        Mail::send('email.contact-us', [
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'subject' => $request->get('subject'),
-            'user_message' => $message
-        ], function($message) use ($request) {
-            $message->to('kingdomhire@googlemail.com')->subject('E-Mail Received');
-        });
+        foreach (User::all() as $user) {
+            // Send email to each user that `accepts email` notifications
+            if ($user->receives_email) {
+                Mail::send('email.contact-us', [
+                    'name' => $request->get('name'),
+                    'email' => $request->get('email'),
+                    'subject' => $request->get('subject'),
+                    'user_message' => $message
+                ], function($message) use ($user) {
+                    $message->to($user->email)->subject('E-Mail Received');
+                });
+            }
+        }
 
         // Send email receipt back to the initial sender
         Mail::send('email.receipt', [

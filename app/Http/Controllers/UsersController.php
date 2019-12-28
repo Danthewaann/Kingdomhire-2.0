@@ -58,6 +58,7 @@ class UsersController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
+            'receives_email' => $request->receives_email
         ]);
 
         Session::flash('status', [

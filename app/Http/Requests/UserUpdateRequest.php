@@ -29,6 +29,7 @@ class UserUpdateRequest extends FormRequest
             'user' => 'required',
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $this->user['id'],
+            'receives_email' => 'nullable|boolean',
             'password' => 'required',
         ];
     }

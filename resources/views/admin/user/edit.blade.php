@@ -53,6 +53,30 @@
               @endif
             </div>
           </div>
+          <div class="form-group{{ $errors->has('receives_email') ? ' has-error' : '' }}">
+            <label for="receives_email" class="control-label col-sm-4">Receives email*</label>
+            <div class="col-sm-6">
+              <div class="radio-inline">
+                <label>
+                  <input type="radio" name="receives_email" type="radio" value="1" {{ $user->receives_email ? 'checked' : '' }}>
+                  <p>Yes</p>
+                </label>
+              </div>
+              <div class="radio-inline">
+                <label>
+                  <input type="radio" name="receives_email" type="radio" value="0" {{ !$user->receives_email ? 'checked' : '' }}>
+                  <p>No</p>
+                </label>
+              </div>
+              @if( $errors->has('receives_email'))
+                <div class="help-block">
+                  <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> <strong>{{ $errors->first('receives_email') }}</strong>
+                  </div>
+                </div>
+              @endif
+            </div>
+          </div>
           <div class="row">
             <div class="col-sm-6 col-sm-offset-4">
               <div class="btn-group">

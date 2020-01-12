@@ -46,7 +46,7 @@ After logging in, you should be directed to the **admin dashboard** (http://home
 
 1. Click on the `Add Vehicle` button on the vehicles page
 
-<img src="add-vehicle-btn.png" alt="alt text" width="250" height="450">
+<img src="add-vehicle-btn.png" alt="alt text">
 
 2. Fill out the form and click the `create` button
 
@@ -114,22 +114,136 @@ These attributes are available under the `Other` button in the navigation bar
 
 ### Create a reservation
 
+There are two ways you can book a reservation for a vehicle:
+
+#### 1st method
+1. Go to the administrator dashboard `home` page
+2. Fill out the `book reservation` form and click the `book reservation` button
+
+![](add-reservation-form-1.png)
+
+#### 2nd method
+1. Go to the administrator dashboard `vehicles` page
+2. Click the `dashboard` button of the vehicle you want to book a reservation for
+3. Fill out the vehicles `book reservation` form and click the `book reservation` button
+
+![](add-reservation-form-2.png)
+
 ### Edit a reservation
+
+There are two ways you can edit a reservation for a vehicle
+
+#### 1st method
+1. Go to the administrator dashboard `home` page
+2. Find the reservation you want to edit in the `reservations` list
+3. Click the `edit` button of the reservation you want to edit
+4. Adjust the `start date` or `end date` values then click the `update` button
+
+![](edit-reservation-list-1.png)
+
+![](edit-reservation-form.png)
+
+#### 2nd method
+1. Go to the administrator dashboard `vehicles` page
+2. Click the `dashboard` button of the vehicle you want to edit a reservation for
+3. Find the reservation you want ot edit in the `reservations` list
+4. Adjust the `start date` or `end date` values then click the `update` button
+
+![](edit-reservation-list-2.png)
+
+![](edit-reservation-form.png)
 
 ### Delete a reservation
 
+There are two ways you can delete a reservation for a vehicle
+
+#### 1st method
+1. Go to the administrator dashboard `home` page
+2. Find the reservation you want to delete in the `reservations` list
+3. Click the `cancel` button of reservation you want to delete
+
+![](edit-reservation-list-1.png)
+
+#### 2nd method
+1. Go to the administrator dashboard `vehicles` page
+2. Click the `dashboard` button of the vehicle you want to delete a reservation for
+3. Find the reservation you want ot delete in the `reservations` list
+4. Click the `cancel` button of reservation you want to delete
+
+![](edit-reservation-list-2.png)
 
 ## Hires
 
 ### Create a hire
 
+Hires cannot be created directly, you can only create a hire when booking a reservation that has a `start date` equal to `todays date`
+
+See the [Create a reservation](#Create-a-reservation) section to see how to do this
+
+If the cron scheduler if running on the system, reservations will automatically be `converted` into hires if their `start date` is equal to or less than `todays date`
+
 ### Edit a hire
+
+There are two types of hires `active` and `past` hires  
+`active` hires can be edited, however `past` hires cannot be edited
+
+There are two ways you can edit an `active` hire for a vehicle
+
+#### 1st method
+1. Go to the administrator dashboard `home` page
+3. Click the `edit` button of the `active` hire
+4. Adjust the `end date` value then click the `update` button
+
+![](edit-active-hires-list.png)
+
+![](edit-hire-form.png)
+
+#### 2nd method
+1. Go to the administrator dashboard `vehicles` page
+2. Click the `dashboard` button of the vehicle you want to edit a hire for
+3. Find the hire you want ot edit in the `hires` list
+4. Adjust the `end date` value then click the `update` button
+
+![](edit-vehicle-active-hire.png)
+
+![](edit-hire-form.png)
 
 ### Delete a hire
 
+There are two ways you can delete a hire for a vehicle
+
+You can delete both `active` and `past` hires
+
+#### 1st method
+1. Go to the administrator dashboard `home` page
+3. Click the `delete` button of the hire you want to delete
+
+![](edit-hires-list-1.png)
+
+#### 2nd method
+1. Go to the administrator dashboard `vehicles` page
+2. Click the `dashboard` button of the vehicle you want to delete a hire for
+3. Click the `delete` button of the hire you want to delete
+
+![](edit-hires-list-2.png)
 
 ## Users
 
 ### Update info
 
+1. Click the `user` button dropdown (It should be the name of the current logged in user)
+2. Click the `update info` button
+3. Update the values in the form and click the `update` button
+
+![](update-user-info-btn.png)
+
+![](update-user-info-form.png)
+
 ### Update password
+1. Click the `user` button dropdown (It should be the name of the current logged in user)
+2. Click the `update password` button
+3. Update the values in the form and click the `update` button
+
+![](update-user-password-btn.png)
+
+![](update-user-password-form.png)

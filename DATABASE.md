@@ -1,4 +1,4 @@
-\# Database Design  
+# Database Design  
 __vehicles__ (__id__, name, slug, make, model, seats, status, vehicle_type_id*, vehicle_fuel_type_id*, vehicle_gear_type_id*, weekly_rate_id*, created_at, updated_at, deleted_at)  
 __weekly_rates__ (__id__, name, slug, weekly_rate_min, weekly_rate_max, created_at, updated_at)  
 __vehicle_types__ (__id__, name, slug, created_at, updated_at)  

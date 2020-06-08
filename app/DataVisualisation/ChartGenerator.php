@@ -47,7 +47,7 @@ class ChartGenerator
             'fontName' => 'Helvetica',
             'chartArea' => [
                 'top' => 30,
-                'width' => '92,5%',
+                'width' => '92.5%',
                 'height' => (count($vehicles) > 1 ? count($vehicles) * 50 : 100)
             ],
             'legend' => [

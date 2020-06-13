@@ -46,7 +46,7 @@
                 @endif
               </div>
             </div>
-            @if( $errors->hires->has('reservation') or $errors->hires->has('hire'))
+            @if( $errors->hires->has('reservation') ?? $errors->hires->has('hire'))
               <div class="form-group has-error">
                 <div class="col-sm-6 col-sm-offset-4">
                   <div class="alert alert-danger" role="alert">

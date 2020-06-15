@@ -24,7 +24,7 @@ class VehicleGearTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>'required|unique:vehicle_gear_types,name,' . $this->vehicle_gear_type['id'],
+            'name' =>'required|unique:vehicle_gear_types,name' . ((is_null($this->vehicle_gear_type)) ? ("") : ("," . $this->vehicle_gear_type['id'])),
             'vehicle_gear_type' => 'nullable'
         ];
     }
@@ -46,7 +46,7 @@ class VehicleGearTypeRequest extends FormRequest
      *
      * @return array
      */
-    protected function validationData()
+    public function validationData()
     {
         if (method_exists($this->route(), 'parameters')) {
             $this->request->add($this->route()->parameters());

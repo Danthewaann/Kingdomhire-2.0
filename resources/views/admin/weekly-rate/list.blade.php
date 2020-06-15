@@ -31,7 +31,7 @@
             <td>
               <div class="btn-group btn-group-vertical" style="width: 100%">
                 <div class="btn-group">
-                  <a href="{{ route('admin.weekly-rates.edit', ['rate' => $weeklyRate->slug]) }}"
+                  <a href="{{ route('admin.weekly-rates.edit', ['weekly_rate' => $weeklyRate->slug]) }}"
                     class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
                 </div>
                 <div class="btn-group">

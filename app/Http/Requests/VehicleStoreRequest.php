@@ -82,7 +82,7 @@ class VehicleStoreRequest extends FormRequest
      *
      * @return array
      */
-    protected function validationData()
+    public function validationData()
     {
         if (method_exists($this->route(), 'parameters')) {
             $this->request->add($this->route()->parameters());

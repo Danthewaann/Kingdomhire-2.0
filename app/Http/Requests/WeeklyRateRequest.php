@@ -24,7 +24,7 @@ class WeeklyRateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>'nullable|unique:weekly_rates,name,' . $this->weekly_rate['id'],
+            'name' =>'required|unique:weekly_rates,name' . ((is_null($this->weekly_rate)) ? ("") : ("," . $this->weekly_rate['id'])),
             'weekly_rate' => 'nullable',
             'weekly_rate_min' => 'required|numeric|min:1|',
             'weekly_rate_max' => 'required|numeric|min:2|gt:weekly_rate_min'
@@ -49,7 +49,7 @@ class WeeklyRateRequest extends FormRequest
      *
      * @return array
      */
-    protected function validationData()
+    public function validationData()
     {
         if (method_exists($this->route(), 'parameters')) {
             $this->request->add($this->route()->parameters());

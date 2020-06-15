@@ -24,7 +24,7 @@ class VehicleFuelTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>'required|unique:vehicle_fuel_types,name,' . $this->vehicle_fuel_type['id'],
+            'name' =>'required|unique:vehicle_fuel_types,name' . ((is_null($this->vehicle_fuel_type)) ? ("") : ("," . $this->vehicle_fuel_type['id'])),
             'vehicle_fuel_type' => 'nullable'
         ];
     }
@@ -46,7 +46,7 @@ class VehicleFuelTypeRequest extends FormRequest
      *
      * @return array
      */
-    protected function validationData()
+    public function validationData()
     {
         if (method_exists($this->route(), 'parameters')) {
             $this->request->add($this->route()->parameters());

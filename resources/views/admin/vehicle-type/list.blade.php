@@ -27,7 +27,7 @@
             <td>
               <div class="btn-group btn-group-vertical" style="width: 100%">
                 <div class="btn-group">
-                  <a href="{{ route('admin.vehicle-types.edit', ['vehicle-type' => $vehicleType->slug]) }}"
+                  <a href="{{ route('admin.vehicle-types.edit', ['vehicle_type' => $vehicleType->slug]) }}"
                     class="btn btn-primary" role="button" aria-pressed="true"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit</a>
                 </div>
                 <div class="btn-group">

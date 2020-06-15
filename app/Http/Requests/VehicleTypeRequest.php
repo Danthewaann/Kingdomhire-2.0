@@ -24,7 +24,7 @@ class VehicleTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>'required|unique:vehicle_types,name,' . $this->vehicle_type['id'],
+            'name' =>'required|unique:vehicle_types,name' . ((is_null($this->vehicle_type)) ? ("") : ("," . $this->vehicle_type['id'])),
             'vehicle_type' => 'nullable'
         ];
     }
@@ -46,7 +46,7 @@ class VehicleTypeRequest extends FormRequest
      *
      * @return array
      */
-    protected function validationData()
+    public function validationData()
     {
         if (method_exists($this->route(), 'parameters')) {
             $this->request->add($this->route()->parameters());

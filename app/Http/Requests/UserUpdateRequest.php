@@ -28,7 +28,7 @@ class UserUpdateRequest extends FormRequest
         return [
             'user' => 'required',
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $this->user['id'],
+            'email' => 'required|email|unique:users,email' . ((is_null($this->user)) ? ("") : ("," . $this->user['id'])),
             'receives_email' => 'nullable|boolean',
             'password' => 'required',
         ];
@@ -68,7 +68,7 @@ class UserUpdateRequest extends FormRequest
      *
      * @return array
      */
-    protected function validationData()
+    public function validationData()
     {
         if (method_exists($this->route(), 'parameters')) {
             $this->request->add($this->route()->parameters());

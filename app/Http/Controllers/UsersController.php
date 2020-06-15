@@ -6,6 +6,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserUpdatePasswordRequest;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 class UsersController extends Controller
@@ -23,68 +24,74 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit()
     {
-        return view('admin.user.edit', [
-            'user' => $user
-        ]);
+        if (Auth::check()) {
+            return view('admin.user.edit', [
+                'user' => Auth::user()
+            ]);
+        }
     }
 
     /**
      * Show the form for editing the user password.
      *
-     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function editPassword(User $user)
+    public function editPassword()
     {
-        return view('admin.user.edit-password', [
-            'user' => $user
-        ]);
+        if (Auth::check()) {
+            return view('admin.user.edit-password', [
+                'user' => Auth::user()
+            ]);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param UserUpdateRequest $request
-     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UserUpdateRequest $request, User $user)
+    public function update(UserUpdateRequest $request)
     {
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'receives_email' => $request->receives_email
-        ]);
+        if (Auth::check()) {
+            $user = Auth::user();
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'receives_email' => $request->receives_email
+            ]);
 
-        Session::flash('status', [
-            'user' => 'Successfully updated user \''. $user->name .'\'!'
-        ]);
+            Session::flash('status', [
+                'user' => 'Successfully updated user \''. $user->name .'\'!'
+            ]);
 
-        return redirect()->route('admin.home');
+            return redirect()->route('admin.home');
+        }
     }
 
     /**
      * Update the user password.
      *
      * @param UserUpdatePasswordRequest $request
-     * @param User $user
      * @return \Illuminate\Http\Response
      */
-    public function updatePassword(UserUpdatePasswordRequest $request, User $user)
+    public function updatePassword(UserUpdatePasswordRequest $request)
     {
-        $user->update([
-            'password' => Hash::make($request->new_password)
-        ]);
+        if (Auth::check()) {
+            $user = Auth::user();
+            $user->update([
+                'password' => Hash::make($request->new_password)
+            ]);
 
-        Session::flash('status', [
-            'user' => 'Successfully updated password!'
-        ]);
+            Session::flash('status', [
+                'user' => 'Successfully updated password!'
+            ]);
 
-        return redirect()->route('admin.home');
+            return redirect()->route('admin.home');
+        }
     }
 }

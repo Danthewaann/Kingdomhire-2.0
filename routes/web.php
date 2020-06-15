@@ -68,11 +68,10 @@ Route::prefix('admin')->group(function () {
         ]);
 
         /* User specific routes */
-        Route::resource('users', 'UsersController')->only([
-            'edit', 'update'
-        ]);
-        Route::get('/users/{user}/change-password', 'UsersController@editPassword')->name('users.edit-password');
-        Route::patch('/users/{user}/change-password', 'UsersController@updatePassword')->name('users.update-password');
+        Route::get('/users/me/edit', 'UsersController@edit')->name('users.edit');
+        Route::patch('/users/me/update', 'UsersController@update')->name('users.update');
+        Route::get('/users/me/change-password', 'UsersController@editPassword')->name('users.edit-password');
+        Route::patch('/users/me/change-password', 'UsersController@updatePassword')->name('users.update-password');
     });
 });
 

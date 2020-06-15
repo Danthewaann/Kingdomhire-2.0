@@ -57,10 +57,10 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href="{{ route('admin.users.edit', ['user' => Auth::user()->id]) }}">Update info</a>
+              <a href="{{ route('admin.users.edit') }}">Update info</a>
             </li>
             <li>
-              <a href="{{ route('admin.users.edit-password', ['user' => Auth::user()->id]) }}">Update password</a>
+              <a href="{{ route('admin.users.edit-password') }}">Update password</a>
             </li>
             <li>
               <a href="{{ route('logout') }}"

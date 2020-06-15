@@ -60,10 +60,6 @@ class RouteServiceProvider extends ServiceProvider
             return VehicleType::whereSlug($value)->first();
         });
 
-        Route::bind('user', function ($value) {
-            return (Auth::user()->id == $value) ? User::find($value) : abort(404);
-        });
-
         parent::boot();
     }
 

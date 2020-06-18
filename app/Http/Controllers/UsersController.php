@@ -28,11 +28,9 @@ class UsersController extends Controller
      */
     public function edit()
     {
-        if (Auth::check()) {
-            return view('admin.user.edit', [
-                'user' => Auth::user()
-            ]);
-        }
+        return view('admin.user.edit', [
+            'user' => Auth::user()
+        ]);
     }
 
     /**
@@ -42,11 +40,9 @@ class UsersController extends Controller
      */
     public function editPassword()
     {
-        if (Auth::check()) {
-            return view('admin.user.edit-password', [
-                'user' => Auth::user()
-            ]);
-        }
+        return view('admin.user.edit-password', [
+            'user' => Auth::user()
+        ]);
     }
 
     /**
@@ -57,20 +53,18 @@ class UsersController extends Controller
      */
     public function update(UserUpdateRequest $request)
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'receives_email' => $request->receives_email
-            ]);
+        $user = Auth::user();
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'receives_email' => $request->receives_email
+        ]);
 
-            Session::flash('status', [
-                'user' => 'Successfully updated user \''. $user->name .'\'!'
-            ]);
+        Session::flash('status', [
+            'Successfully updated user \''. $user->name .'\'!'
+        ]);
 
-            return redirect()->route('admin.home');
-        }
+        return redirect()->route('admin.home');
     }
 
     /**
@@ -81,17 +75,15 @@ class UsersController extends Controller
      */
     public function updatePassword(UserUpdatePasswordRequest $request)
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $user->update([
-                'password' => Hash::make($request->new_password)
-            ]);
+        $user = Auth::user();
+        $user->update([
+            'password' => Hash::make($request->new_password)
+        ]);
 
-            Session::flash('status', [
-                'user' => 'Successfully updated password!'
-            ]);
+        Session::flash('status', [
+            'Successfully updated password!'
+        ]);
 
-            return redirect()->route('admin.home');
-        }
+        return redirect()->route('admin.home');
     }
 }

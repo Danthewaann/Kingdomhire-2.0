@@ -16,10 +16,7 @@ class UserUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        if (Auth::check()) {
-            return true;
-        }
-        return false;
+        return true;
     }
 
     /**

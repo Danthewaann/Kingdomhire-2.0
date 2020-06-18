@@ -15,11 +15,11 @@
   <table class="table">
     <tbody>
       <tr><th colspan="2" style="border-top: none; border-right: none;"><h2>E-Mail Content</h2></th></tr>
-      <tr><th id="subject">Subject</th><td id="subject_td">{{ $subject }}</td></tr>
+      <tr><th id="subject">Subject</th><td id="subject_td">{{ $request->subject }}</td></tr>
       <tr>
         <th id="message">Message</th>
         <td id="message_td">
-          @foreach($user_message as $line)
+          @foreach(explode("\n", $request->message) as $line)
             {{ $line }} <br>
           @endforeach
         </td>

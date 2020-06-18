@@ -11,11 +11,11 @@
     <tbody>
       <tr>
         <th id="sent_by">Sent By</th>
-        <td>{{ $name }}</td>
+        <td>{{ $request->name }}</td>
       </tr>
       <tr>
         <th id="email">E-Mail</th>
-        <td><a class="text-link" href="mailto:{{ $email }}?subject=Re: {{ rawurlencode($subject) }}">{{ $email }}</a></td>
+        <td><a class="text-link" href="mailto:{{ $request->email }}?subject=Re: {{ rawurlencode($request->subject) }}">{{ $request->email }}</a></td>
       </tr>
       <tr>
         <th id="date_received">Date Received</th>
@@ -26,18 +26,18 @@
   <table class="table">
     <tbody>
       <tr><th colspan="2" style="border-top: none; border-right: none;"><h2>E-Mail Content</h2></th></tr>
-      <tr><th id="subject">Subject</th><td id="subject_td">{{ $subject }}</td></tr>
+      <tr><th id="subject">Subject</th><td id="subject_td">{{ $request->subject }}</td></tr>
       <tr>
         <th id="message">Message</th>
         <td id="message_td">
-          @foreach($user_message as $line)
+          @foreach(explode("\n", $request->message) as $line)
             {{ $line }} <br>
           @endforeach
         </td>
       </tr>
       <tr>
         <td style="text-align: center; padding-top: 20px; padding-bottom: 20px" colspan="2">
-        <a class="btn btn-lg btn-primary" role="button" href="mailto:{{ $email }}?subject=Re: {{ rawurlencode($subject) }}">Reply to {{ $name }}</a>
+        <a class="btn btn-lg btn-primary" role="button" href="mailto:{{ $request->email }}?subject=Re: {{ rawurlencode($request->subject) }}">Reply to {{ $request->name }}</a>
         </td>
       </tr>
       <tr><td style="text-align: center; padding-top: 50px" colspan="2">&copy; {{ date('Y') }} <a class="no-link">kingdomhire.com</a></td></tr>

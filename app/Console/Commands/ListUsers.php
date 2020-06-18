@@ -28,8 +28,8 @@ class ListUsers extends Command
      */
     public function handle()
     {
-        $headers = ['Name', 'Email'];
-        $users = User::all(['name', 'email'])->toArray();
+        $headers = ['Name', 'Email', 'Receives Email'];
+        $users = User::all(['name', 'email', 'receives_email'])->toArray();
 
         if(count($users) < 1) {
             $this->error("No users exist!");

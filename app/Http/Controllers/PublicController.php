@@ -8,6 +8,8 @@ use App\Http\Requests\ContactFormRequest;
 use Session;
 use Mail;
 use Sitemap;
+use App\Mail\ContactUsFormSubmission;
+use App\Mail\ContactUsFormReceipt;
 
 class PublicController extends Controller
 {
@@ -46,29 +48,13 @@ class PublicController extends Controller
      */
     public function postContactForm(ContactFormRequest $request)
     {
-        $message = explode("\n", $request->get('message'));
-
-        foreach (User::all() as $user) {
-            // Send email to each user that `accepts email` notifications
-            if ($user->receives_email) {
-                Mail::send('email.contact-us', [
-                    'name' => $request->get('name'),
-                    'email' => $request->get('email'),
-                    'subject' => $request->get('subject'),
-                    'user_message' => $message
-                ], function($message) use ($user) {
-                    $message->to($user->email)->subject('E-Mail Received');
-                });
-            }
+        // Send email to all users in database
+        foreach (User::whereReceivesEmail(true)->get() as $user) {
+            Mail::send(new ContactUsFormSubmission($request, $user));
         }
 
         // Send email receipt back to the initial sender
-        Mail::send('email.receipt', [
-            'subject' => $request->get('subject'),
-            'user_message' => $message
-        ], function($message) use ($request) {
-            $message->to($request->get('email'))->subject('E-Mail Receipt | Kingdomhire');
-        });
+        Mail::send(new ContactUsFormReceipt($request));
 
         Session::flash('status', [
             'E-Mail sent successfully!',

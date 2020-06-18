@@ -58,7 +58,7 @@ class VehicleGearTypesController extends Controller
         $vehicleGearType = VehicleGearType::create($request->all());
 
         Session::flash('status', [
-            'vehicle_gear_type_add' => 'Successfully created gear type!',
+            'vehicle_gear_type' => 'Successfully created gear type!',
             'Name = '.$vehicleGearType->name
         ]);
 

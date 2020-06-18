@@ -57,7 +57,7 @@ class VehicleTypesController extends Controller
         $vehicleType = VehicleType::create($request->all());
 
         Session::flash('status', [
-            'vehicle_gear_type_add' => 'Successfully created vehicle type!',
+            'vehicle_type' => 'Successfully created vehicle type!',
             'Name = '.$vehicleType->name
         ]);
 
@@ -89,7 +89,7 @@ class VehicleTypesController extends Controller
         $vehicleType->update($request->all());
 
         Session::flash('status', [
-            'vehicle_gear_type' => 'Successfully updated vehicle type!',
+            'vehicle_type' => 'Successfully updated vehicle type!',
             'Name = '.$vehicleType->name
         ]);
 
@@ -107,7 +107,7 @@ class VehicleTypesController extends Controller
         $vehicleType->delete();
 
         Session::flash('status', [
-            'vehicle_gear_type' => 'Successfully deleted vehicle type!',
+            'vehicle_type' => 'Successfully deleted vehicle type!',
             'Name = '.$vehicleType->name
         ]);
 

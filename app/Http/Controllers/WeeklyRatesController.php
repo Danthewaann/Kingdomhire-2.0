@@ -53,7 +53,7 @@ class WeeklyRatesController extends Controller
         $weeklyRate = WeeklyRate::create($request->all());
 
         Session::flash('status', [
-            'weekly_rate_add' => 'Successfully created weekly rate!',
+            'weekly_rate' => 'Successfully created weekly rate!',
             'Name = '.$weeklyRate->full_name
         ]);
 

@@ -57,7 +57,7 @@ class VehicleFuelTypesController extends Controller
         $vehicleFuelType = VehicleFuelType::create($request->all());
 
         Session::flash('status', [
-            'vehicle_fuel_type_add' => 'Successfully created fuel type!',
+            'vehicle_fuel_type' => 'Successfully created fuel type!',
             'Name = '.$vehicleFuelType->name
         ]);
 
@@ -89,7 +89,7 @@ class VehicleFuelTypesController extends Controller
         $vehicleFuelType->update($request->all());
 
         Session::flash('status', [
-            'weekly_rate' => 'Successfully updated fuel type!',
+            'vehicle_fuel_type' => 'Successfully updated fuel type!',
             'Name = '.$vehicleFuelType->name
         ]);
 

@@ -8,7 +8,7 @@
         <h2>Edit gear type</h2>
       </div>
       <div class="panel-body">
-        <form class="form-horizontal" action="{{ route('admin.vehicle-gear-types.update', ['vehicle_gar_type' => $vehicleGearType->slug]) }}" method="post" id="vehicle_gear_type_edit_form">
+        <form class="form-horizontal" action="{{ route('admin.vehicle-gear-types.update', ['vehicle_gear_type' => $vehicleGearType->slug]) }}" method="post" id="vehicle_gear_type_edit_form">
           @csrf
           @method('PATCH')
           <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

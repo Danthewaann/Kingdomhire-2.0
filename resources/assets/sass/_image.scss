@@ -1,8 +1,18 @@
 .vehicle-img {
   img.public, img.admin, img.dashboard {
     width: 100%;
-    min-height: 200px;
-    max-height: 400px;
+    @media(max-width:767px) {
+      height: 265px;
+    }
+    @media(min-width:768px) {
+      height: 257px;
+    }
+    @media(min-width:992px) {
+      height: 200px;
+    }
+    @media(min-width:1200px) {
+      height: 265px;
+    }
   }
   div.vehicle-img-na {
     height: 100%;
@@ -15,7 +25,7 @@
     }
     h2.public, h2.admin, h2.dashboard {
       @media(max-width:767px) {
-        line-height: 246px;
+        line-height: 265px;
       }
       @media(min-width:768px) {
         line-height: 257px;
@@ -24,7 +34,7 @@
         line-height: 200px;
       }
       @media(min-width:1200px) {
-        line-height: 268px;
+        line-height: 265px;
       }
     }
   }

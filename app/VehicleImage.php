@@ -100,6 +100,6 @@ class VehicleImage extends Model
      */
     public function getOrderKeyAttribute()
     {
-        return explode(".", $this->name)[0] . "_order";
+        return preg_replace('[\.]', '_', $this->name) . "_order";
     }
 }

@@ -68,7 +68,7 @@ class VehiclesController extends Controller
             $imageOrders = [];
             $images = $request->file('vehicle_images_add');
             foreach ($images as $image) {
-                $imageOrderKey = $image->getClientOriginalName() . '_order';
+                $imageOrderKey = preg_replace('[\.]', '_', $image->getClientOriginalName()) . '_order';
                 $imageOrders[$imageOrderKey] = $request->get($imageOrderKey, 1);
             }
             $vehicle->linkImages($request->file('vehicle_images_add'), $imageOrders);
@@ -147,7 +147,7 @@ class VehiclesController extends Controller
             // from the original request and push them into the $imageOrders array
             $images = $request->file('vehicle_images_add');
             foreach ($images as $image) {
-                $imageOrderKey = $image->getClientOriginalName() . '_order';
+                $imageOrderKey = preg_replace('[\.]', '_', $image->getClientOriginalName()) . '_order';
                 $imageOrders[$imageOrderKey] = $request->get($imageOrderKey, 1);
             }
             $vehicle->linkImages($images);
@@ -167,7 +167,7 @@ class VehiclesController extends Controller
         }
 
         Session::flash('status', [
-            'edit' => 'Successfully updated vehicle!',
+            'Successfully updated vehicle!',
             'ID = '.$vehicle->name,
             'Name = '.$vehicle->make_model,
         ]);
@@ -207,7 +207,7 @@ class VehiclesController extends Controller
         $vehicle->delete();
 
         Session::flash('status', [
-            'discontinue' => 'Successfully discontinued vehicle!',
+            'Successfully discontinued vehicle!',
             'ID = '.$vehicle->name,
             'Name = '.$vehicle->make_model,
         ]);
@@ -228,7 +228,7 @@ class VehiclesController extends Controller
         $vehicle->restore();
 
         Session::flash('status', [
-            're-continue' => 'Successfully re-continued vehicle!',
+            'Successfully re-continued vehicle!',
             'ID = '.$vehicle->name,
             'Name = '.$vehicle->make_model,
         ]);

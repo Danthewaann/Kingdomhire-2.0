@@ -21,10 +21,11 @@ function drawRadioBtns(image, length) {
     var checked = "";
     for (var i = 1; i <= length; i++) {
         checked = image.order == i ? "checked" : "";
+        order_key = image.order_key === undefined ? image.name.split('.').join('_') + '_order' : image.order_key
         str+=`
         <div class="radio-inline">
             <label>
-            <input ` + checked + ` type="radio" name="` + image.order_key + `" value="` + i + `"><p style="font-weight: 400; font-size: 1em; vertical-align: middle; margin: 0">` + i + `</p>
+            <input ` + checked + ` type="radio" name="` + order_key + `" value="` + i + `"><p style="font-weight: 400; font-size: 1em; vertical-align: middle; margin: 0">` + i + `</p>
             </label>
         </div>`;
     }

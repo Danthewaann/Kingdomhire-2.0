@@ -50,22 +50,27 @@ class HiresController extends Controller
      */
     public function update(HireUpdateRequest $request, Hire $hire)
     {
-        // If hire failed to updated (conflicts with another reservation/hire), 
-        // redirect back to user and flash error messages
-        if (!$hire->update($request->all()) && $hire->conflicts) {
-            return back()->withInput()->withErrors($hire->conflict_data, 'hires');
+        if(!$hire->is_active) {
+            abort(404);
         }
-        
-        Session::flash('status', [
-            'hire' => 'Successfully updated hire!',
-            'ID = '.$hire->name,
-            'Vehicle = '.$hire->vehicle->full_name,
-            'Start Date = '.date('j/M/Y', strtotime($hire->start_date)),
-            'End Date = '.date('j/M/Y', strtotime($hire->end_date)),
-        ]);
+        else {
+            // If hire failed to updated (conflicts with another reservation/hire), 
+            // redirect back to user and flash error messages
+            if (!$hire->update($request->all()) && $hire->conflicts) {
+                return back()->withInput()->withErrors($hire->conflict_data, 'hires');
+            }
+            
+            Session::flash('status', [
+                'Successfully updated hire!',
+                'ID = '.$hire->name,
+                'Vehicle = '.$hire->vehicle->full_name,
+                'Start Date = '.date('j/M/Y', strtotime($hire->start_date)),
+                'End Date = '.date('j/M/Y', strtotime($hire->end_date)),
+            ]);
 
-        $url = Session::pull('url');
-        return redirect()->to($url);
+            $url = Session::pull('url');
+            return redirect()->to($url);
+        }
     }
 
     /**
@@ -79,7 +84,7 @@ class HiresController extends Controller
         $hire->delete();
 
         Session::flash('status', [
-            'hire' => 'Successfully deleted hire!',
+            'Successfully deleted hire!',
             'ID = '.$hire->name,
             'Vehicle = '.$hire->vehicle->full_name,
             'Start Date = '.date('j/M/Y', strtotime($hire->start_date)),

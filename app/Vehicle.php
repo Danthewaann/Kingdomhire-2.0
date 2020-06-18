@@ -384,26 +384,25 @@ class Vehicle extends Model
      */
     public function linkImages(array $images, array $imageOrders = [])
     {
-        $localFs = Storage::disk('local');
+        $publicFs = Storage::disk('public');
         $targetDir = 'imgs/'.$this->name;
         if (!empty($images)) {
-            if (!$localFs->exists('public/'.$targetDir)) {
-                $localFs->makeDirectory('public/'.$targetDir);
+            if (!$publicFs->exists($targetDir)) {
+                $publicFs->makeDirectory($targetDir);
             }
         }
 
         foreach ($images as $image) {
             // image is a string representing absolute path to image on current file system
             if (is_string($image)) {
-                $imageOrderKey = basename($image) . '_order';
+                $imageOrderKey = preg_replace('[\.]', '_', basename($image)) . '_order';
                 $extension = image_type_to_extension(getimagesize($image)[2]);
             }
             // or image is an instance of \Illuminate\Http\UploadedFile
             else {
-                $imageOrderKey = $image->getClientOriginalName() . '_order';
+                $imageOrderKey = preg_replace('[\.]', '_', $image->getClientOriginalName()) . '_order';
                 $extension = '.'.$image->extension();
             }
-
             // Generate unique name for the image
             $image_name = VehicleImage::createUniqueName($extension, $this->id);
 
@@ -412,7 +411,7 @@ class Vehicle extends Model
 
             // Store the image on the current file system
             $path = $targetDir.'/'.$image_name;
-            $resize->save(storage_path('app/public/'.$path), 60);
+            $resize->save($publicFs->path($path), 60);
 
             VehicleImage::create([
                 'name' => $image_name,
@@ -434,22 +433,23 @@ class Vehicle extends Model
      */
     public function deleteImages(array $images = [])
     {
+        $publicFs = Storage::disk('public');
         if (!empty($images)) {
             foreach ($images as $image) {
                 $imageInStorage = $this->images->where('name', $image)->first();
-                unlink(storage_path('app/public/imgs/'.$this->name.'/'.$imageInStorage->name));
+                unlink($publicFs->path('imgs/'.$this->name.'/'.$imageInStorage->name));
                 $imageInStorage->delete();
             }
         }
         else {
             foreach ($this->images as $image) {
-                unlink(storage_path('app/public/imgs/'.$this->name.'/'.$image->name));
+                unlink($publicFs->path('imgs/'.$this->name.'/'.$image->name));
                 $image->delete();
             }
         }
 
         if ($this->images()->get()->count() == 0) {
-            Storage::disk('local')->deleteDirectory('public/imgs/'.$this->name);
+            $publicFs->deleteDirectory('imgs/'.$this->name);
         }
     }
 

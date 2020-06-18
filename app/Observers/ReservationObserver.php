@@ -34,12 +34,12 @@ class ReservationObserver
         // we save the hire here then return false, which signals to not save the initial 
         // reservation, as it has been converted into a hire.
         if ($reservation->canConvertToHire()) {
-            // Create and save hire with attributes from the original reservation.
-            (new Hire($reservation->getAttributes()))->save();
             // Delete reservation if it already exists in the database.
             if ($reservation->exists) {
                 $reservation->delete();
             }
+            // Create and save hire with attributes from the original reservation.
+            Hire::create($reservation->getAttributes());
             return false;
         }
         return true;

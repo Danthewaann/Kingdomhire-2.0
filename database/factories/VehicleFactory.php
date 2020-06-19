@@ -15,6 +15,7 @@ $factory->define(Vehicle::class, function (Faker $faker) {
         'make' => $v['brand'],
         'model' => $v['model'],
         'seats' => $faker->vehicleSeatCount,
+        'status' => 'Available',
         'weekly_rate_id' => WeeklyRate::inRandomOrder()->first() != null ? WeeklyRate::inRandomOrder()->first()->id : null,
         'vehicle_fuel_type_id' => VehicleFuelType::inRandomOrder()->first() != null ? VehicleFuelType::inRandomOrder()->first()->id : null,
         'vehicle_gear_type_id' => VehicleGearType::inRandomOrder()->first() != null ? VehicleGearType::inRandomOrder()->first()->id : null,

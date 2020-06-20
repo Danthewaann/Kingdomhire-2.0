@@ -12,6 +12,7 @@ var fuel_selection = "All";
 var seats_selection = "Any";
 var sort_vehicles = "Ascending";
 var state_selection = "All";
+var caret = '<span class="caret"></span>';
 
 function sortVehiclesDesc(a, b) {
     if (a.make_model > b.make_model) return -1;
@@ -208,13 +209,26 @@ function drawVehicles() {
     vehicleSearchResults.tab('show');
 }
 
+function setupCategoryDefaults()
+{
+    $('#vehicle_types_selection').html('All ' + caret);
+    $('#fuel_types_selection').html('All ' + caret);
+    $('#gear_types_selection').html('All ' + caret);
+    $('#seats_selection').html('Any ' + caret);
+    $('#vehicle_state_selection').html('Any ' + caret);
+}
+
 $(document).ready(function () {
     parseVehicles();
     drawAllRadioBtns();
     drawVehicles();
 
+    setupCategoryDefaults();
+
     $('#vehicle_types').find('a').click(function (e) {
+        $('#vehicle_types').find('li.active').removeClass('active');
         type_selection = $(this).text();
+        $('#vehicle_types_selection').html(type_selection + ' ' + caret);
         if (type_selection !== "All") {
             type_selection = type_selection.slice(0, type_selection.length - 1);
         }
@@ -222,23 +236,61 @@ $(document).ready(function () {
     });
 
     $('#fuel_types').find('a').click(function (e) {
+        $('#fuel_types').find('li.active').removeClass('active');
         fuel_selection = $(this).text();
+        $('#fuel_types_selection').html(fuel_selection + ' ' + caret);
         drawVehicles();
     });
 
     $('#gear_types').find('a').click(function (e) {
+        $('#gear_types').find('li.active').removeClass('active');
         gear_selection = $(this).text();
+        $('#gear_types_selection').html(gear_selection + ' ' + caret);
         drawVehicles();
     });
 
     $('#seats').find('a').click(function (e) {
+        $('#seats').find('li.active').removeClass('active');
         seats_selection = $(this).text();
+        $('#seats_selection').html(seats_selection + ' ' + caret);
         drawVehicles();
     });
 
     $('#vehicle_states').find('a').click(function (e) {
+        $('#vehicle_states').find('li.active').removeClass('active');
         state_selection = $(this).text();
+        $('#vehicle_state_selection').html(state_selection + ' ' + caret);
         drawVehicles();
+    });
+
+    $('#vehicle-type-options').click(function (e) {
+        e.stopPropagation();
+        var link = $(this).find('#vehicle_types_selection');
+        link.dropdown('toggle');
+    });
+
+    $('#fuel-type-options').click(function (e) {
+        e.stopPropagation();
+        var link = $(this).find('#fuel_types_selection');
+        link.dropdown('toggle');
+    });
+
+    $('#gear-type-options').click(function (e) {
+        e.stopPropagation();
+        var link = $(this).find('#gear_types_selection');
+        link.dropdown('toggle');
+    });
+
+    $('#seat-options').click(function (e) {
+        e.stopPropagation();
+        var link = $(this).find('#seats_selection');
+        link.dropdown('toggle');
+    });
+
+    $('#vehicle-state-options').click(function (e) {
+        e.stopPropagation();
+        var link = $(this).find('#vehicle_state_selection');
+        link.dropdown('toggle');
     });
 
     $('#vehicle-sort-ascending').find('a').click(function (e) {
@@ -263,6 +315,7 @@ $(document).ready(function () {
         seats_selection = seats[0];
         sort_vehicles = "Ascending";
         state_selection = vehicle_states[0];
+        setupCategoryDefaults();
         drawVehicles();
 
         $('#vehicle_types').find('li.active').removeClass('active');

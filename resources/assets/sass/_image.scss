@@ -1,5 +1,20 @@
 .vehicle-img {
-  img.public, img.admin, img.dashboard {
+  img.public, img.admin {
+    width: 100%;
+    @media(max-width:767px) {
+      height: 225px;
+    }
+    @media(min-width:768px) {
+      height: 257px;
+    }
+    @media(min-width:992px) {
+      height: 200px;
+    }
+    @media(min-width:1200px) {
+      height: 200px;
+    }
+  }
+  img.dashboard {
     width: 100%;
     @media(max-width:767px) {
       height: 265px;
@@ -23,7 +38,21 @@
       line-height: 200px;
       vertical-align: middle;
     }
-    h2.public, h2.admin, h2.dashboard {
+    h2.public, h2.admin {
+      @media(max-width:767px) {
+        line-height: 225px;
+      }
+      @media(min-width:768px) {
+        line-height: 257px;
+      }
+      @media(min-width:992px) {
+        line-height: 200px;
+      }
+      @media(min-width:1200px) {
+        line-height: 200px;
+      }
+    }
+    h2.dashboard {
       @media(max-width:767px) {
         line-height: 265px;
       }
@@ -34,7 +63,7 @@
         line-height: 200px;
       }
       @media(min-width:1200px) {
-        line-height: 265px;
+        line-height: 200px;
       }
     }
   }

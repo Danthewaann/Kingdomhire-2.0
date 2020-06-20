@@ -11,6 +11,7 @@ use App\Vehicle;
 use App\Http\Requests\VehicleStoreRequest;
 use App\Http\Requests\VehicleUpdateRequest;
 use Session;
+use URL;
 
 class VehiclesController extends Controller
 {
@@ -31,6 +32,7 @@ class VehiclesController extends Controller
      */
     public function index()
     {
+        Session::forget('url');
         return view('admin.admin-vehicles', [
             'jsonVehicles' => Vehicle::withTrashed()->withAll()->get()
         ]);
@@ -43,6 +45,10 @@ class VehiclesController extends Controller
      */
     public function create()
     {
+        if(!Session::has('url') || empty(Session::get('url'))) {
+            Session::put('url', URL::previous());
+        }
+
         return view('admin.vehicle.create', [
             'weeklyRates' => WeeklyRate::all(),
             'vehicleTypes' => VehicleType::all(),

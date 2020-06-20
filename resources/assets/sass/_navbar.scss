@@ -52,6 +52,52 @@ nav {
 .vehicle-navbar-tabs {
   padding: 10px;
 }
+
+.vehicle-category-selection {
+  background-color: lighten($dark-green, 1.5%);
+  text-align: center; 
+  color: white; 
+  padding: 10px;
+  border: 1px solid $lighter-green;
+  border-radius: 4px;
+}
+
+.vehicle-category-selection:hover {
+  background-color: lighten($dark-green, 2.5%);
+  cursor: pointer;
+}
+
+.dropdown-toggle, .dropdown-toggle:hover, .dropdown-toggle:focus {
+  color: white;
+}
+
+.dropdown-toggle:hover, .dropdown-toggle:focus  {
+  text-decoration: none;
+}
+
+.vehicle-category-options {
+  position: relative;
+  margin: 10px 0 0;
+}
+
+.vehicle-navbar-tabs {
+  background-color: lighten($light-green, 2.5%);
+  border-top: 1px solid $lighter-green;
+  border-bottom: 1px solid $lighter-green;
+  border-left: 0;
+  border-right: 0;
+  padding: 10px;
+  // margin-left: 10px;
+  // margin-right: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.vehicle-navbar-tabs:hover {
+  background-color: lighten($light-green, 5%);
+  cursor: pointer;
+}
+
 .vehicle-navbar-tabs > li > a {
   font-size: 1.2em;
 }

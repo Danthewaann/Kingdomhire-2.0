@@ -39,7 +39,7 @@
   div.panel-heading {
     height: 80px;
     font-size: 1.7em;
-    background-color: lighten($light-green, 2.5%);
+    background-color: lighten($dark-green, 1.5%);
     h2 {
       text-align: center;
       position: relative;
@@ -48,7 +48,8 @@
     }
   }
   div.panel-body {
-    background-color: lighten($dark-green, 1.5%) !important;
+    background-color: lighten($light-green, 2.5%);
+    padding: 5px 10px 10px 10px;
   }
 
   div.panel-footer {
@@ -61,30 +62,44 @@
     margin: 11px 0 !important;
   }
   div.panel-heading {
-    //height: 80px;
     padding: unset;
     font-size: 1.7em;
-    background-color: lighten($light-green, 2.5%);
     hr {
       margin-top: 15px;
       margin-bottom: 0;
     }
     h2 {
       text-align: center;
-      margin-top: 15px;
+      padding-top: 15px;
     }
-    a.add-vehicle-btn {
+    .add-vehicle-btn {
       width: 100%;
       border-radius: 0;
       border: 0;
     }
   }
   div.panel-body {
-    background-color: lighten($dark-green, 1.5%) !important;
+    padding: 5px 10px 10px 10px;
   }
 
   div.panel-footer {
     background-color: lighten($light-green, 2.5%);
+  }
+}
+
+.admin-dashboard-panel {
+  .btn {
+    width: 100%;
+    border-radius: 0;
+    border: 0;
+  }
+
+  hr {
+    margin: 0;
+  }
+
+  div.panel-footer {
+    padding: 0;
   }
 }
 

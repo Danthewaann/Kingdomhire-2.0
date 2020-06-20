@@ -149,7 +149,7 @@
             <div class="col-sm-6 col-sm-offset-3">
               <div class="btn-group">
                 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;&nbsp;Create</button>
-                <a href="{{ route('admin.vehicles.index') }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
+                <a href="{{ Session::get('url') }}" class="btn btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>&nbsp;&nbsp;Back</a>
               </div>
             </div>
           </div>

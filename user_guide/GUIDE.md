@@ -47,8 +47,7 @@ After logging in, you should be directed to the **admin dashboard** (http://home
 1. Click on the `Add Vehicle` button on the vehicles page  
 (Can also add a vehicle from the admin home page)
 
-<img src="add-vehicle-btn.png" style="height: 500px" alt="alt text">
-<img src="add-vehicle-btn-2.png" style="height: 500px" alt="alt text">
+<img src="add-vehicle-btn.png" alt="alt text">
 
 2. Fill out the form and click the `create` button
 

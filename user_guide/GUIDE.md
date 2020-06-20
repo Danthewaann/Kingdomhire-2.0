@@ -25,28 +25,30 @@
 
 
 ## Login to admin dashboard
-1. After completing the installation steps, navigate to http://homestead.test/login in your browser
+1. After completing the installation steps, navigate to http://homestead.test/login or http://www.kingdomhire.com/login in your browser
 
 ![Login screen](login-screen.png)
 
-2. Input your test email and password that you should have created with the `php artisan user:create` command
+2. Input your email and password that you should have created with the `php artisan user:create` command
 
 ![](admin-dashboard.png)
 
-After logging in, you should be directed to the **admin dashboard** (http://homestead.test/admin). It should look similar to the above screenshot if you seeded the application with `php artisan migrate --seed` or `php artisan db:seed` command  
+After logging in, you should be directed to the **admin dashboard** (http://homestead.test/admin or http://www.kingdomhire.com/admin). It should look similar to the above screenshot if you populated the application with the `php artisan migrate --seed` or `php artisan db:seed` command  
 
 
 ## Vehicles
 
-1. Navigate to http://homestead.test/admin/vehicles
+1. Navigate to http://homestead.test/admin/vehicles or http://www.kingdomhire.com/admin/vehicles
 
 ![](vehicles-dashboard.png)
 
 ### Create a vehicle
 
-1. Click on the `Add Vehicle` button on the vehicles page
+1. Click on the `Add Vehicle` button on the vehicles page  
+(Can also add a vehicle from the admin home page)
 
 <img src="add-vehicle-btn.png" alt="alt text">
+<img src="add-vehicle-btn-2.png" alt="alt text">
 
 2. Fill out the form and click the `create` button
 

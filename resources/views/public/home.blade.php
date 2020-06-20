@@ -40,6 +40,18 @@
       </article>
       <article class="col-sm-6">
         <figure><img class="public-img" src="{{ asset('static/home-front.jpg') }}" alt="Kingdomhire location"></figure>
+        <h2 class="sub-header">Vehicle Rates/Hire Period</h2>
+        <p class="paragraph">
+          Our vehicle rates are competitive and can vary from vehicle to vehicle. They are also negotiable, so it's best to
+          <b><a class="text-link" href="{{ route('public.contact') }}">Contact Us</a></b> to discuss pricing.
+          Standard minimum renting period is <b>3 days</b> for all vehicles, large vans are an exception, where
+          they start at <b>1 day</b> minimum rental.
+        </p>
+      </article>
+    </div>
+    <div class="row">
+      <article class="col-sm-6">
+        <figure><img class="public-img" src="{{ asset('static/entrance.jpg') }}" alt="Kingdomhire main entrance"></figure>
         <header class="sub-header"><h2>Making a Reservation</h2></header>
         <p class="paragraph">
           You need to <b><a class="text-link" href="{{ route('public.contact') }}">Contact Us</a></b> to be able to reserve a vehicle.
@@ -48,7 +60,16 @@
           <b><a class="text-link" href="{{ route('public.vehicles') }}">Vehicles</a></b> page.
         </p>
       </article>
+      <article class="col-sm-6">
+        <img class="public-img" src="{{ asset('static/business.jpg') }}" alt="Our facilities">
+        <h2 class="sub-header">Insurance Policy</h2>
+        <p class="paragraph">
+          Most of our vehicles come with insurance as standard.
+          If you wish to use your own insurance, we are sure we can facilitate you.
+        </p>
+      </article>
     </div>
+  </div>
   </div>
 </section>
 @endsection

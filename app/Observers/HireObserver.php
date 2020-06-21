@@ -27,7 +27,7 @@ class HireObserver
         }
         // Create unique id for hire if it doesn't have one
         if ($hire->name == null) {
-            $hire->name = Hire::createUniqueId($vehicle->name);
+            $hire->name = Hire::createUniqueId($vehicle);
         }
         // Determine if the newly created hire is active or not
         if ($hire->end_date <= date('Y-m-d')) {

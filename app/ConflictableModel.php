@@ -183,11 +183,11 @@ abstract class ConflictableModel extends Model
      * Create a unique model id that doesn't
      * conflict with any other `ConflictableModel` id that exists in the database.
      * 
-     * @param string $vehicleName unique id of vehicle
+     * @param Vehicle $vehicle vehicle to link against
      * @param int $length character length of generated id
      * @return string $id the newly generated id
      */
-    public static function createUniqueId($vehicleName, $length = 4)
+    public static function createUniqueId(Vehicle $vehicle, $length = 4)
     {
         $characters = '0123456789';
         $charactersLength = strlen($characters);
@@ -196,14 +196,14 @@ abstract class ConflictableModel extends Model
             $id .= $characters[rand(0, $charactersLength - 1)];
         }
 
-        $id = $vehicleName . '-' . $id;
-        $modelIds = [];
-        foreach (ConflictableModel::CHILD_MODELS as $model) {
-            $modelIds = array_merge($modelIds, $model::whereVehicleId($vehicleName)->pluck('name')->toArray());
-        }
+        $id = $vehicle->name . '-' . $id;
+        $modelIds = array_merge(
+            $vehicle->reservations->pluck('name')->toArray(), 
+            $vehicle->hires->pluck('name')->toArray()
+        );
 
         if (in_array($id, $modelIds)) {
-            return ConflictableModel::createUniqueId($vehicleName, $length);
+            return ConflictableModel::createUniqueId($vehicle, $length);
         }
         return $id;
     }

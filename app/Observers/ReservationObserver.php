@@ -27,7 +27,7 @@ class ReservationObserver
         }
         // Create unique id for reservation if it doesn't have one.
         if ($reservation->name == null) {
-            $reservation->name = Reservation::createUniqueId($vehicle->name);
+            $reservation->name = Reservation::createUniqueId($vehicle);
         }
         // Determine if created/updated reservation should be a hire.
         // If the reservation is indeed a hire (start_date is a date less than or equal to today),

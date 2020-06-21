@@ -2,7 +2,7 @@
 This is the repository for the new Kingdomhire-2.0 website re-design.  
 I thought it was a good time to re-visit www.kingdomhire.com and improve the site.
 
-I am using [*Laravel 5.6*](https://laravel.com/docs/5.6/installation) to aid in the development process.  
+I am using [*Laravel 6*](https://laravel.com/docs/5.6/installation) to aid in the development process.  
 I will be using a *MySQL* database backend for the new website.  
 The application needs to be compatible with *MySQL 5.5*, due to the web host only supporting it.
 

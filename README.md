@@ -18,6 +18,8 @@ The application needs to be compatible with *MySQL 5.5*, due to the web host onl
 Clone this repo with `git clone https://github.com/dcrblack/Kingdomhire-2.0.git` and then install [*Homestead*](https://laravel.com/docs/6.x/homestead#installation-and-setup)
 and all of its prerequisites before setting up this website.
 
+I've tested this codebase with verson `v8.6.0` of Homestead, so make sure your Homestead checkout is that version e.g. `git checkout v8.6.0`.
+
 ## Installation steps  
 After installing Homestead, do the following:
   1. run `vagrant up` to start your VM if you haven't already    

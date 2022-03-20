@@ -23,7 +23,6 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^6.0",
         "maatwebsite/excel": "3.1.18",
-        "swatkins/laravel-gantt": "^1.0",
         "watson/sitemap": "^2.0"
     },
     "require-dev": {
@@ -69,6 +68,9 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "symfony/thanks": true
+        }
     }
 }

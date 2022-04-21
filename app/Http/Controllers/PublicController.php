@@ -16,7 +16,7 @@ class PublicController extends Controller
     public function vehicles()
     {
         return view('public.vehicles', [
-            'jsonVehicles' => Vehicle::withAll()->get()
+            'jsonVehicles' => Vehicle::whereStatus(Vehicle::STATUS_TYPES[0])->withAll()->get()
         ]);
     }
 
